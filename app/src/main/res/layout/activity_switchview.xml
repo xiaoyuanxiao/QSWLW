@@ -1,0 +1,54 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="280dp" >
+
+    <com.qs.qswlw.view.imageswitchview.Image3DSwitchView
+        android:id="@+id/image_switch_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <com.qs.qswlw.view.imageswitchview.Image3DView
+            android:id="@+id/list1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="fitXY"
+            android:divider="@null" />
+
+        <com.qs.qswlw.view.imageswitchview.Image3DView
+            android:id="@+id/list2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="fitXY"
+            android:divider="@null"/>
+
+        <com.qs.qswlw.view.imageswitchview.Image3DView
+            android:id="@+id/list3"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="fitXY"
+            android:divider="@null"/>
+
+        <com.qs.qswlw.view.imageswitchview.Image3DView
+            android:id="@+id/list4"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="fitXY"
+            android:divider="@null"/>
+
+        <com.qs.qswlw.view.imageswitchview.Image3DView
+            android:id="@+id/list5"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="fitXY"
+            android:divider="@null"/>
+
+        <com.qs.qswlw.view.imageswitchview.Image3DView
+            android:id="@+id/list6"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="fitXY"
+            android:divider="@null"/>
+
+    </com.qs.qswlw.view.imageswitchview.Image3DSwitchView>
+
+</RelativeLayout>

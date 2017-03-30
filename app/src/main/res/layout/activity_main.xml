@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@mipmap/bbg_02"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="68dp"
+        android:padding="6dp">
+
+        <LinearLayout
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:gravity="center"
+            android:layout_marginTop="3dp"
+            android:orientation="vertical">
+
+            <com.qs.qswlw.view.CircleImageView
+                android:id="@+id/iv_main_avater"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:src="@mipmap/image1" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+                android:text="月灵风"
+                android:textColor="@color/white"
+                android:textSize="9sp" />
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="125dp"
+            android:layout_height="50dp"
+            android:src="@mipmap/zc_logo"
+            android:layout_marginBottom="8dp"
+            android:layout_centerHorizontal="true"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:text="关于钱盛"
+            android:textColor="@color/white"
+            android:textSize="12sp" />
+    </RelativeLayout>
+
+    <com.qs.qswlw.view.MarqueeTextView
+        android:id="@+id/tv_main"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ellipsize="marquee"
+        android:marqueeRepeatLimit="marquee_forever"
+        android:scrollHorizontally="true"
+        android:singleLine="true"
+        android:background="#0e000000"
+        android:padding="4dp"
+        android:text="钱盛物联网再创辉煌！祝贺大家新年快乐！钱盛物联网再创辉煌！祝贺大家新年快乐！"
+        android:textColor="@color/white"
+        android:textSize="11sp" />
+
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:orientation="horizontal"
+        android:paddingBottom="10dp">
+
+        <RadioButton
+            android:id="@+id/rb_main_mall"
+            style="@style/tv_iv_main"
+            android:drawableTop="@mipmap/lan1"
+            android:text="钱盛商城" />
+
+        <RadioButton
+            android:id="@+id/rb_main_union"
+            style="@style/tv_iv_main"
+            android:drawableTop="@mipmap/lan2"
+            android:text="钱盛联盟" />
+
+        <RadioButton
+            android:id="@+id/rb_main_funtime"
+            style="@style/tv_iv_main"
+            android:drawableTop="@mipmap/lan3"
+            android:text="开心一刻" />
+
+        <RadioButton
+            android:id="@+id/rb_main_rankings"
+            style="@style/tv_iv_main"
+            android:drawableTop="@mipmap/lan4"
+            android:text="排名榜" />
+    </RadioGroup>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp">
+        <include layout="@layout/activity_switchview"></include>
+    </LinearLayout>
+
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:orientation="horizontal"
+        android:paddingBottom="10dp">
+
+        <RadioButton
+            android:id="@+id/rb_main_goodprojects"
+            style="@style/tv_iv_main"
+            android:drawableTop="@mipmap/hxm"
+            android:text="中国好项目" />
+
+        <RadioButton
+            android:id="@+id/rb_main_WitnessChinaBusiness"
+            style="@style/tv_iv_main"
+            android:drawableTop="@mipmap/jzhs"
+            android:text="见证华商" />
+
+        <RadioButton
+            android:id="@+id/rb_main_Win"
+            style="@style/tv_iv_main"
+            android:drawableTop="@mipmap/lan3"
+            android:text="赢在钱盛" />
+
+        <RadioButton
+            android:id="@+id/rb_main_media"
+            style="@style/tv_iv_main"
+            android:drawableTop="@mipmap/qscm"
+            android:text="钱盛传媒" />
+    </RadioGroup>
+
+</LinearLayout>

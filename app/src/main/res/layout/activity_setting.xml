@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="#a3a4a4" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#ff0000"
+                android:orientation="vertical"
+                android:paddingBottom="5dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:padding="8dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:text="我的"
+                        android:textColor="@color/white"
+                        android:textSize="15sp" />
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_alignParentRight="true"
+                        android:src="@mipmap/edit" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginTop="20dp">
+
+                    <RelativeLayout
+                        android:id="@+id/rl_setting_left"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="25dp">
+
+                        <com.qs.qswlw.view.CircleImageView
+                            android:id="@+id/iv_setting_avater"
+                            android:layout_width="80dp"
+                            android:layout_height="80dp"
+                            android:src="@mipmap/image1" />
+
+                        <TextView
+                            android:id="@+id/tv_setting_id"
+                            style="@style/tv_standard"
+                            android:layout_below="@id/iv_setting_avater"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginTop="3dp"
+                            android:text="ID:MI1654987" />
+
+                        <TextView
+                            android:id="@+id/tv_setting_name"
+                            style="@style/tv_standard"
+                            android:layout_below="@id/tv_setting_id"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginTop="3dp"
+                            android:text="刘得华" />
+                    </RelativeLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="5dp"
+                        android:layout_toRightOf="@id/rl_setting_left"
+                        android:orientation="vertical">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <TextView
+                                style="@style/tv_standard"
+                                android:text="消费总金额" />
+
+                            <TextView
+                                android:id="@+id/tv_setting_consumptionMoney"
+                                style="@style/tv_standard"
+                                android:layout_alignParentRight="true"
+                                android:text="0" />
+
+                            <View
+                                style="@style/view_standard"
+                                android:layout_below="@id/tv_setting_consumptionMoney" />
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <TextView
+                                style="@style/tv_standard"
+                                android:text="创业种子（激励）" />
+
+                            <TextView
+                                android:id="@+id/tv_setting_encourage"
+                                style="@style/tv_standard"
+                                android:layout_alignParentRight="true"
+                                android:text="0" />
+
+                            <View
+                                style="@style/view_standard"
+                                android:layout_below="@id/tv_setting_encourage" />
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <TextView
+                                style="@style/tv_standard"
+                                android:text="消费银豆" />
+
+                            <TextView
+                                android:id="@+id/tv_setting_consumerSilverbeans"
+                                style="@style/tv_standard"
+                                android:layout_alignParentRight="true"
+                                android:text="0" />
+
+                            <View
+                                style="@style/view_standard"
+                                android:layout_below="@id/tv_setting_consumerSilverbeans" />
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <TextView
+                                style="@style/tv_standard"
+                                android:text="创业金豆（提现）" />
+
+                            <TextView
+                                android:id="@+id/tv_setting_withdrawals"
+                                style="@style/tv_standard"
+                                android:layout_alignParentRight="true"
+                                android:text="0" />
+
+                            <View
+                                style="@style/view_standard"
+                                android:layout_below="@id/tv_setting_withdrawals" />
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <TextView
+                                style="@style/tv_standard"
+                                android:text="消费金豆（重消）" />
+
+                            <TextView
+                                android:id="@+id/tv_setting_consumerbeans"
+                                style="@style/tv_standard"
+                                android:layout_alignParentRight="true"
+                                android:text="0" />
+
+                            <View
+                                style="@style/view_standard"
+                                android:layout_below="@id/tv_setting_consumerbeans" />
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <TextView
+                                style="@style/tv_standard"
+                                android:text="待纳税创业金豆" />
+
+                            <TextView
+                                android:id="@+id/tv_setting_paytaxes"
+                                style="@style/tv_standard"
+                                android:layout_alignParentRight="true"
+                                android:text="0" />
+
+                            <View
+                                style="@style/view_standard"
+                                android:layout_below="@id/tv_setting_paytaxes" />
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <TextView
+                                style="@style/tv_standard"
+                                android:text="我的金币" />
+
+                            <TextView
+                                android:id="@+id/tv_setting_mygold"
+                                style="@style/tv_standard"
+                                android:layout_alignParentRight="true"
+                                android:text="0" />
+
+                            <View
+                                style="@style/view_standard"
+                                android:layout_below="@id/tv_setting_mygold" />
+                        </RelativeLayout>
+                    </LinearLayout>
+                </RelativeLayout>
+
+            </LinearLayout>
+
+            <GridView
+                android:id="@+id/gv_setting"
+                android:layout_width="match_parent"
+                android:layout_height="640dp"
+                android:numColumns="2" />
+        </LinearLayout>
+
+    </ScrollView>
+    <View
+       style="@style/view_address"/>
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="2dp">
+
+        <RadioButton
+            android:id="@+id/rb_main_mall"
+            style="@style/tv_iv_setting"
+            android:drawableTop="@mipmap/sy_03"
+            android:text="首页" />
+
+        <RadioButton
+            android:id="@+id/rb_main_beans"
+            style="@style/tv_iv_setting"
+            android:drawableTop="@mipmap/jd_03"
+            android:text="创业金豆" />
+
+        <RadioButton
+            android:id="@+id/rb_main_funtime"
+            style="@style/tv_iv_setting"
+            android:drawableTop="@mipmap/hb_03"
+            android:text="我的伙伴" />
+
+        <RadioButton
+            android:id="@+id/rb_main_exit"
+            style="@style/tv_iv_setting"
+            android:drawableTop="@mipmap/wd_03"
+            android:text="退出" />
+    </RadioGroup>
+
+</LinearLayout>
