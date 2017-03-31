@@ -1,4 +1,4 @@
-package com.qs.qswlw.activity;
+﻿package com.qs.qswlw.activity;
 
 import android.content.Intent;
 import android.view.View;
@@ -21,6 +21,7 @@ import java.util.ArrayList;
 public class ReceivingAddressActivity extends BaseActivity {
     private ImageView iv_titlebar;
     private TextView tv_titlebar_center;
+
     private EditText et_consigneeName,et_phone,et_detailedaddress,et_postcode;
     private City city ;
     private ArrayList<City> toCitys;
