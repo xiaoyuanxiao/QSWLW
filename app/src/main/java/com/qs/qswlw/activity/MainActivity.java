@@ -120,8 +120,9 @@ public class MainActivity extends BaseActivity {
     }
 
     private class MyDataAdapter extends BaseAdapter {
-        private String[] keys = {"前海公司","飞腾公司","前海公司","飞腾公司","飞腾公司"};
-        private String[] values = {"11111万","22222万","33333万","44444万","55555万"};
+        private String[] keys = {"前海公司", "飞腾公司", "前海公司", "飞腾公司", "飞腾公司"};
+        private String[] values = {"11111万", "22222万", "33333万", "44444万", "55555万"};
+
         @Override
         public int getCount() {
             return keys.length;
