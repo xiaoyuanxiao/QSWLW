@@ -33,6 +33,8 @@ public class MainActivity extends BaseActivity {
 
     @Override
     public void initfindviewByid() {
+
+
         imageSwitchView = (Image3DSwitchView) findViewById(R.id.image_switch_view);
         Image3DView list1 = (Image3DView) findViewById(R.id.list1);
         Image3DView list2 = (Image3DView) findViewById(R.id.list2);
