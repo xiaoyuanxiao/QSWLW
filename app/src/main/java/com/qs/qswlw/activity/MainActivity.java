@@ -1,6 +1,5 @@
 package com.qs.qswlw.activity;
 
-import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.view.LayoutInflater;
@@ -27,18 +26,15 @@ public class MainActivity extends BaseActivity {
     ImageView iv_main_avater;
     private View view;
     private TextView tv_item_home_head;
-
-
+    // 小雨是傻逼
 
     @Override
-    public Object initView() {
+    public Integer initView() {
         return R.layout.activity_main;
     }
 
     @Override
     public void initfindviewByid() {
-
-
         imageSwitchView = (Image3DSwitchView) findViewById(R.id.image_switch_view);
         Image3DView list1 = (Image3DView) findViewById(R.id.list1);
         Image3DView list2 = (Image3DView) findViewById(R.id.list2);
