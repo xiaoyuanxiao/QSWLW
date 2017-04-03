@@ -9,4 +9,6 @@
     <color name="line">#EFEFEF</color>
     <color name="text">#febf9c</color>
     <color name="view">#a3a4a4</color>
+    <color name="text_blue">#58b7f2</color>
+
 </resources>

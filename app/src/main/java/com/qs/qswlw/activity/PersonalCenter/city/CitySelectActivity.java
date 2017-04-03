@@ -1,4 +1,4 @@
-package com.qs.qswlw.activity.city;
+package com.qs.qswlw.activity.PersonalCenter.city;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -38,7 +38,6 @@ public class CitySelectActivity extends Activity implements OnClickListener {
 	private TextView  tv_titlebar_center;
 	private ListView lv_city;
 	private ArrayList<MyRegion> regions;
-
 	private CityAdapter adapter;
 	private static int PROVINCE = 0x00;
 	private static int CITY = 0x01;

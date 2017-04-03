@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.qs.qswlw.R;
+import com.qs.qswlw.activity.PersonalCenter.SettingActivity;
 import com.qs.qswlw.view.imageswitchview.Image3DSwitchView;
 import com.qs.qswlw.view.imageswitchview.Image3DView;
 

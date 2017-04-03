@@ -27,10 +27,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.SettingActivity"/>
-        <activity android:name=".activity.ReceivingAddressActivity"/>
-        <activity android:name=".activity.city.CitySelectActivity"/>
-        <activity android:name=".activity.city.HarvestAddressListActivity"/>
+        <activity android:name=".activity.PersonalCenter.city.CitySelectActivity"/>
+        <activity android:name=".activity.PersonalCenter.city.HarvestAddressListActivity"/>
+        <activity android:name=".activity.PersonalCenter.ImproveDocumentationActivity"/>
+        <activity android:name=".activity.PersonalCenter.SettingActivity"/>
+        <activity android:name=".activity.PersonalCenter.ReceivingAddressActivity"/>
     </application>
 
 

@@ -1,4 +1,4 @@
-package com.qs.qswlw.activity;
+package com.qs.qswlw.activity.PersonalCenter;
 
 import android.content.Intent;
 import android.view.View;
@@ -11,7 +11,9 @@ import android.widget.RadioButton;
 import android.widget.TextView;
 
 import com.qs.qswlw.R;
-import com.qs.qswlw.activity.city.HarvestAddressListActivity;
+import com.qs.qswlw.activity.BaseActivity;
+import com.qs.qswlw.activity.MainActivity;
+import com.qs.qswlw.activity.PersonalCenter.city.HarvestAddressListActivity;
 
 
 /**
@@ -54,6 +56,7 @@ public class SettingActivity extends BaseActivity {
         public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
             switch (i){
                 case 0:
+                    startActivity(new Intent(SettingActivity.this,ImproveDocumentationActivity.class));
                     break;
                 case 1:
                     break;
