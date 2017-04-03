@@ -1,4 +1,4 @@
-﻿package com.qs.qswlw.activity;
+package com.qs.qswlw.activity;
 
 import android.content.Intent;
 import android.view.View;
