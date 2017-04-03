@@ -46,10 +46,13 @@ public class EntrepreneurialSeedActivity extends BaseActivity {
         viewpager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+              //  WindowManager manager = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
+
                 /**
                  * 得到红线的宽度
                  */
-                int width = view_EntrepreneurialSeed.getWidth();
+                int width = getApplicationContext().getResources().getDisplayMetrics().widthPixels/2;
+                //int width = view_EntrepreneurialSeed.getWidth();
                 /**
                  * position是划动时左边的页码数，从0开始的，positionOffsetPixels是后一页的页码，  positionOffset是当前页与后一页的划动距离的百分比。（0--0.999999）
                  * setX是view的方法，设置当前view在父布局中距离左边的像素点

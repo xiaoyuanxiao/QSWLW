@@ -17,17 +17,23 @@
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="match_parent"
+            android:text="10%激励"
+            android:textColor="@color/view"
+            android:gravity="center"
             android:button="@null"/>
         <RadioButton
             android:id="@+id/rb_twentyPercent"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="match_parent"
+            android:text="20%激励"
+            android:textColor="@color/view"
+            android:gravity="center"
             android:button="@null" />
     </RadioGroup>
     <View
         android:id="@+id/view_EntrepreneurialSeed"
-        android:layout_width="150dp"
+        android:layout_width="160dp"
         android:layout_height="1dp"
         android:layout_gravity="bottom"
         android:background="@color/red"
