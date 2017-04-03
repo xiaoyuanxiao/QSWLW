@@ -65,6 +65,7 @@ public class SettingActivity extends BaseActivity {
                 case 2:
                     break;
                 case 3:
+                    startActivity(new Intent(SettingActivity.this,RecommendActivity.class));
                     break;
                 case 4:
                     break;

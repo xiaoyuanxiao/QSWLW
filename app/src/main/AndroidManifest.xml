@@ -33,6 +33,7 @@
         <activity android:name=".activity.PersonalCenter.SettingActivity"/>
         <activity android:name=".activity.PersonalCenter.ReceivingAddressActivity"/>
         <activity android:name=".activity.PersonalCenter.EntrepreneurialSeedActivity"/>
+        <activity android:name=".activity.PersonalCenter.RecommendActivity"/>
     </application>
 
 
