@@ -20,6 +20,7 @@ import java.util.List;
 public class EntrepreneurialSeedActivity extends BaseActivity {
     private List<BaseMode> viewpagedata;
     private RadioGroup fg_EntrepreneurialSeed;
+    private View view_EntrepreneurialSeed;
     private ViewPager viewpager;
 
 
@@ -33,6 +34,7 @@ public class EntrepreneurialSeedActivity extends BaseActivity {
     public void initfindviewByid() {
         viewpager = (ViewPager) findViewById(R.id.viewpager_entrepreneurialSeed);
         fg_EntrepreneurialSeed = (RadioGroup) findViewById(R.id.fg_EntrepreneurialSeed);
+        view_EntrepreneurialSeed = (View) findViewById(R.id.view_EntrepreneurialSeed);
         viewpagedata = new ArrayList<BaseMode>();
 
         viewpagedata.add(new TenPercentMode(this));
@@ -41,6 +43,30 @@ public class EntrepreneurialSeedActivity extends BaseActivity {
         viewpager.setAdapter(adapter);
         viewpagedata.get(0).initData();
 
+        viewpager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+                /**
+                 * 得到红线的宽度
+                 */
+                int width = view_EntrepreneurialSeed.getWidth();
+                /**
+                 * position是划动时左边的页码数，从0开始的，positionOffsetPixels是后一页的页码，  positionOffset是当前页与后一页的划动距离的百分比。（0--0.999999）
+                 * setX是view的方法，设置当前view在父布局中距离左边的像素点
+                 * */
+                view_EntrepreneurialSeed.setX(width * (position + positionOffset));
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
     }
 
     class MyOnCheckedChangeListener implements RadioGroup.OnCheckedChangeListener {
