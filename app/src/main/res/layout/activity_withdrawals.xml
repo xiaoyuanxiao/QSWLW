@@ -3,15 +3,44 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
     <include layout="@layout/titlebar"/>
-
-    <TextView
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="11sp"
-        android:textColor="@color/black"
-        android:text="1.回购请选择工商银行，建设银行，中国银行，农业银行。
-        \n2.每笔回购扣除谁续费5颗创业金豆
-        \n3.回购金豆手续费0.6%。
-        \n咨询电话：4008055806或020-36672987。"/>
+        android:orientation="vertical"
+        android:padding="10dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="12sp"
+            android:textColor="@color/black"
+            android:text="1.回购请选择工商银行，建设银行，中国银行，农业银行。"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="12sp"
+            android:layout_marginTop="6dp"
+            android:textColor="@color/black"
+            android:text="2.每笔回购扣除谁续费5颗创业金豆。"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="12sp"
+            android:layout_marginTop="6dp"
+            android:textColor="@color/black"
+            android:text="3.回购金豆手续费0.6%。"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="12sp"
+            android:layout_marginTop="6dp"
+            android:textColor="@color/black"
+            android:layout_marginBottom="10dp"
+            android:text="咨询电话：4008055806或020-36672987。"/>
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/view"/>
+
 
 </LinearLayout>
