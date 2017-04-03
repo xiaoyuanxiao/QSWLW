@@ -64,6 +64,7 @@ public class HarvestAddressListActivity extends BaseActivity{
            TextView tv_name_harvestaddresslist = (TextView) view.findViewById(R.id.tv_name_harvestaddresslist);
            // iv_item_setting.setImageResoure(R.mipmap.);
             tv_name_harvestaddresslist.setText(names[i]);
+
             return view;
         }
     }
