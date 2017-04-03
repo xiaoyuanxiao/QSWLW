@@ -10,6 +10,9 @@ import com.qs.qswlw.activity.BaseActivity;
  */
 
 public class ImproveDocumentationActivity extends BaseActivity {
+
+
+
     @Override
     public Object initView() {
         return R.layout.activity_improvedocumentation;

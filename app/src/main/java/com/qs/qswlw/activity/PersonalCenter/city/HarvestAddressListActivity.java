@@ -21,6 +21,7 @@ public class HarvestAddressListActivity extends BaseActivity{
     private ListView lv_harvestaddresslist;
     private Button btn_activity_harvest;
 
+
     @Override
     public void onClick(View view) {
         switch (view.getId()){

@@ -28,6 +28,7 @@ public class ReceivingAddressActivity extends BaseActivity {
     private TextView tv_city;
     private Button btn_save;
 
+
     @Override
     public Object initView() {
         return R.layout.activity_receivingaddress;

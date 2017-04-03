@@ -1,5 +1,6 @@
 package com.qs.qswlw.activity;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.view.View;
@@ -8,6 +9,8 @@ import android.view.View;
  * Created by 小羽 on 2017/3/22.
  */
 public abstract class BaseActivity extends FragmentActivity implements View.OnClickListener {
+    public Context context;
+
 
     @Override
     protected void onCreate(Bundle arg0) {

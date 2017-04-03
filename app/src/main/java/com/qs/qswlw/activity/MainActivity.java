@@ -1,5 +1,6 @@
 package com.qs.qswlw.activity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.view.LayoutInflater;
@@ -26,6 +27,8 @@ public class MainActivity extends BaseActivity {
     ImageView iv_main_avater;
     private View view;
     private TextView tv_item_home_head;
+
+
 
     @Override
     public Object initView() {

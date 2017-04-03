@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <include layout="@layout/titlebar"/>
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp">
+    <RadioGroup
+        android:id="@+id/fg_EntrepreneurialSeed"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/rb_tenPercent"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:button="@null"/>
+        <RadioButton
+            android:id="@+id/rb_twentyPercent"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:button="@null" />
+    </RadioGroup>
+    <View
+        android:id="@+id/view_EntrepreneurialSeed"
+        android:layout_width="150dp"
+        android:layout_height="1dp"
+        android:layout_gravity="bottom"
+        android:background="@color/red"
+        />
+    </FrameLayout>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/viewpager_entrepreneurialSeed"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_gravity="center" >
+    </android.support.v4.view.ViewPager>
+
+
+
+
+</LinearLayout>

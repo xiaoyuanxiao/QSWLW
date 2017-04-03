@@ -27,6 +27,7 @@ public class SettingActivity extends BaseActivity {
     private RadioButton rb_main_funtime;
     private RadioButton rb_main_exit;
 
+
     @Override
     public Object initView() {
         return R.layout.activity_setting;
@@ -59,6 +60,7 @@ public class SettingActivity extends BaseActivity {
                     startActivity(new Intent(SettingActivity.this,ImproveDocumentationActivity.class));
                     break;
                 case 1:
+                    startActivity(new Intent(SettingActivity.this,EntrepreneurialSeedActivity.class));
                     break;
                 case 2:
                     break;
