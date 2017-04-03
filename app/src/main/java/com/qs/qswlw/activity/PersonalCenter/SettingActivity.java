@@ -81,6 +81,9 @@ public class SettingActivity extends BaseActivity {
                 case 11:
                     break;
                 case 12:
+                    //startActivity(new Intent(SettingActivity.this,HarvestAddressListActivity.class));
+                    break;
+                case 13:
                     startActivity(new Intent(SettingActivity.this,HarvestAddressListActivity.class));
                     break;
             }
@@ -103,13 +106,13 @@ public class SettingActivity extends BaseActivity {
      */
     private class MysettingAdapter extends BaseAdapter {
 
-        public int[] ids = {R.mipmap.cyjd, R.mipmap.xfjd, R.mipmap.xfyd,
-                R.mipmap.wdjb, R.mipmap.tz, R.mipmap.cyzz, R.mipmap.wytj,
-                R.mipmap.tx,R.mipmap.scdd,R.mipmap.cyzz,R.mipmap.zz,
-                R.mipmap.cj,R.mipmap.user_address};
-        public String[] contents = {"创业金豆", "消费金豆", "消费银豆", "我的金币",
-                "我的投资", "创业种子", "我要推荐", "我要提现","商城订单",
-                "创业直捐","我要转赠","促销抽奖记录","收货地址"};
+        public int[] ids = {R.mipmap.bianji, R.mipmap.cyzz, R.mipmap.beans,
+                R.mipmap.wytj, R.mipmap.xfyd, R.mipmap.tx, R.mipmap.user_11,
+                R.mipmap.yye,R.mipmap.user_09,R.mipmap.jilu,R.mipmap.cyzz,
+                R.mipmap.cpgl,R.mipmap.cj,R.mipmap.user_address};
+        public String[] contents = {"商家完善资料", "创业种子", "我的金豆", "我要推荐",
+                "消费银豆", "我要提现", "我的让利", "商家营业额","消费录单",
+                "录单记录","创业直捐","商品管理","促销抽奖记录","收获地址"};
 
         @Override
         public int getCount() {

@@ -233,7 +233,7 @@
             <GridView
                 android:id="@+id/gv_setting"
                 android:layout_width="match_parent"
-                android:layout_height="640dp"
+                android:layout_height="580dp"
                 android:numColumns="2" />
         </LinearLayout>
 
