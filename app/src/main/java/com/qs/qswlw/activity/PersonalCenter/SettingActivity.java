@@ -70,6 +70,7 @@ public class SettingActivity extends BaseActivity {
                 case 4:
                     break;
                 case 5:
+                    startActivity(new Intent(SettingActivity.this,WithdrawalsActivity.class));
                     break;
                 case 6:
                     break;
