@@ -134,6 +134,7 @@ public class Image3DView extends ListView {
 
     }
 
+    final float with = 360f;
 
     /**
      * 在这里计算所有旋转所需要的数据。
@@ -144,7 +145,7 @@ public class Image3DView extends ListView {
         switch (mIndex) {
             case 0:
                 mDx = mWidth;
-                mRotateDegree = 360f - (2 * mWidth + mScrollX) * degreePerPix;
+                mRotateDegree = with - (2 * mWidth + mScrollX) * degreePerPix;
                 if (mScrollX < -mWidth) {
                     mDeep = 0;
                 } else {
@@ -154,7 +155,7 @@ public class Image3DView extends ListView {
             case 1:
                 if (mScrollX > 0) {
                     mDx = mWidth;
-                    mRotateDegree = (360f - BASE_DEGREE) - mScrollX * degreePerPix;
+                    mRotateDegree = (with - BASE_DEGREE) - mScrollX * degreePerPix;
                     mDeep = mScrollX * deepPerPix;
                 } else {
                     if (mScrollX < -mWidth) {
@@ -162,7 +163,7 @@ public class Image3DView extends ListView {
                         mRotateDegree = (-mScrollX - mWidth) * degreePerPix;
                     } else {
                         mDx = mWidth;
-                        mRotateDegree = 360f - (mWidth + mScrollX) * degreePerPix;
+                        mRotateDegree = with - (mWidth + mScrollX) * degreePerPix;
                     }
                     mDeep = 0;
                 }
@@ -170,7 +171,7 @@ public class Image3DView extends ListView {
             case 2:
                 if (mScrollX > 0) {
                     mDx = mWidth;
-                    mRotateDegree = 360f - mScrollX * degreePerPix;
+                    mRotateDegree = with - mScrollX * degreePerPix;
                     mDeep = 0;
                     if (mScrollX > mWidth) {
                         mDeep = (mScrollX - mWidth) * deepPerPix;
@@ -192,7 +193,7 @@ public class Image3DView extends ListView {
                 } else {
                     if (mScrollX > mWidth) {
                         mDx = mWidth;
-                        mRotateDegree = 360f - (mScrollX - mWidth) * degreePerPix;
+                        mRotateDegree = with - (mScrollX - mWidth) * degreePerPix;
                     } else {
                         mDx = -Image3DSwitchView.IMAGE_PADDING * 2;
                         mRotateDegree = BASE_DEGREE - mScrollX * degreePerPix;
