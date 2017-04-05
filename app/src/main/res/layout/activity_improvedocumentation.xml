@@ -71,10 +71,6 @@
                     android:src="@mipmap/add_pro"/>
             </LinearLayout>
 
-
-
-
-
         </LinearLayout>
     </ScrollView>
 

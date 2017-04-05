@@ -23,6 +23,7 @@ public class BusinessTurnoverActivity extends BaseActivity {
     private RadioGroup fg_BusinessTurnover;
     private View view_BusinessTurnover;
     private ViewPager viewpager;
+
     @Override
     public Object initView() {
         return R.layout.activity_businessturnover;
@@ -37,7 +38,7 @@ public class BusinessTurnoverActivity extends BaseActivity {
 
         viewpagedata.add(new TurnoverTodayMode(this));
         viewpagedata.add(new TurnoverTodayMode(this));
-       MyViewPagerAdapter adapter = new MyViewPagerAdapter();
+        MyViewPagerAdapter adapter = new MyViewPagerAdapter();
         viewpager.setAdapter(adapter);
         viewpagedata.get(0).initData();
 
@@ -48,7 +49,7 @@ public class BusinessTurnoverActivity extends BaseActivity {
                 /**
                  * 得到红线的宽度
                  */
-                int width = getApplicationContext().getResources().getDisplayMetrics().widthPixels/2;
+                int width = getApplicationContext().getResources().getDisplayMetrics().widthPixels / 2;
                 //int width = view_EntrepreneurialSeed.getWidth();
                 /**
                  * position是划动时左边的页码数，从0开始的，positionOffsetPixels是后一页的页码，  positionOffset是当前页与后一页的划动距离的百分比。（0--0.999999）
@@ -75,6 +76,7 @@ public class BusinessTurnoverActivity extends BaseActivity {
         fg_BusinessTurnover.setOnCheckedChangeListener(new MyOnCheckedChangeListener());
 
     }
+
     class MyOnCheckedChangeListener implements RadioGroup.OnCheckedChangeListener {
         @Override
         public void onCheckedChanged(RadioGroup group, int checkedId) {
@@ -97,21 +99,23 @@ public class BusinessTurnoverActivity extends BaseActivity {
 
     }
 
-    public class MyViewPagerAdapter extends PagerAdapter
-    {
+    public class MyViewPagerAdapter extends PagerAdapter {
         @Override
         public int getCount() {
             return viewpagedata.size();
         }
+
         @Override
         public boolean isViewFromObject(View view, Object object) {
             return view == object;
         }
+
         @Override
         public Object instantiateItem(ViewGroup container, int position) {
             container.addView(viewpagedata.get(position).view);
             return viewpagedata.get(position).view;
         }
+
         @Override
         public void destroyItem(ViewGroup container, int position, Object object) {
             ((ViewPager) container).removeView(viewpagedata.get(position).view);

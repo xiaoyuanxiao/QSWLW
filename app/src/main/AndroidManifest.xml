@@ -36,6 +36,7 @@
         <activity android:name=".activity.PersonalCenter.RecommendActivity"/>
         <activity android:name=".activity.PersonalCenter.WithdrawalsActivity"/>
         <activity android:name=".activity.PersonalCenter.BusinessTurnoverActivity"/>
+        <activity android:name=".activity.PersonalCenter.ConsumerSilverBeanActivity"/>
     </application>
 
 
