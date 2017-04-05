@@ -10,6 +10,7 @@ import com.qs.qswlw.activity.BaseActivity;
  */
 
 public class WithdrawalsActivity extends BaseActivity {
+
     @Override
     public Object initView() {
         return R.layout.activity_withdrawals;
@@ -17,6 +18,7 @@ public class WithdrawalsActivity extends BaseActivity {
 
     @Override
     public void initfindviewByid() {
+
 
     }
 
