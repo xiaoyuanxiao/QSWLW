@@ -1,4 +1,4 @@
-package com.qs.qswlw.activity.PersonalCenter;
+package com.qs.qswlw.Mode.PersonalCenter;
 
 import android.content.Context;
 import android.view.View;
@@ -12,9 +12,9 @@ import com.qs.qswlw.adapter.Adapter;
  * Created by xiaoyu on 2017/4/3.
  */
 
-public class TwentyPercentMode extends BaseMode {
+public class TenPercentMode extends BaseMode {
     private ListView lv_sub_entrepreneurialseed;
-    public TwentyPercentMode(Context context) {
+    public TenPercentMode(Context context) {
         super(context);
     }
 
