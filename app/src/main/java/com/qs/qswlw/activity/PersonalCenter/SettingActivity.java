@@ -75,6 +75,7 @@ public class SettingActivity extends BaseActivity {
                     startActivity(new Intent(SettingActivity.this,WithdrawalsActivity.class));
                     break;
                 case 6:
+                    startActivity(new Intent(SettingActivity.this,MyProfitActivity.class));
                     break;
                 case 7:
                     startActivity(new Intent(SettingActivity.this,BusinessTurnoverActivity.class));

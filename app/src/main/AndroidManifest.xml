@@ -38,6 +38,7 @@
         <activity android:name=".activity.PersonalCenter.BusinessTurnoverActivity"/>
         <activity android:name=".activity.PersonalCenter.ConsumerSilverBeanActivity"/>
         <activity android:name=".activity.PersonalCenter.MyGoldenBeanActivity"/>
+        <activity android:name=".activity.PersonalCenter.MyProfitActivity"/>
     </application>
 
 
