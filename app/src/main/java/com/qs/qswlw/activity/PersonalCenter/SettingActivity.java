@@ -63,6 +63,7 @@ public class SettingActivity extends BaseActivity {
                     startActivity(new Intent(SettingActivity.this,EntrepreneurialSeedActivity.class));
                     break;
                 case 2:
+                    startActivity(new Intent(SettingActivity.this,MyGoldenBeanActivity.class));
                     break;
                 case 3:
                     startActivity(new Intent(SettingActivity.this,RecommendActivity.class));
