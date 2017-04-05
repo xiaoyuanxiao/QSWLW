@@ -92,10 +92,28 @@ public class MyGoldenBeanActivity extends BaseActivity {
             ((ViewPager) container).removeView(viewpagedata.get(position).view);
         }
     }
-
+    class MyOnCheckedChangeListener implements RadioGroup.OnCheckedChangeListener {
+        @Override
+        public void onCheckedChanged(RadioGroup group, int checkedId) {
+            int position = 0;
+            switch (checkedId) {
+                case R.id.rb_myGoldenBean:
+                    position = 0;
+                    break;
+                case R.id.rb_recommendGoldenBean:
+                    position = 1;
+                    break;
+                case R.id.rb_receiveGoldenBean:
+                    position = 2;
+                    break;
+            }
+            viewpager.setCurrentItem(position);
+            viewpagedata.get(position).initData();
+        }
+    }
     @Override
     public void setOnclick() {
-
+        fg_myGoldenBean.setOnCheckedChangeListener(new MyOnCheckedChangeListener());
     }
 
     @Override
