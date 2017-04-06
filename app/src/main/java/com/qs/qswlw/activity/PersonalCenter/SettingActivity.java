@@ -91,7 +91,7 @@ public class SettingActivity extends BaseActivity {
                 case 11:
                     break;
                 case 12:
-                    //startActivity(new Intent(SettingActivity.this,HarvestAddressListActivity.class));
+                    startActivity(new Intent(SettingActivity.this,PromotionLuckDrawActivity.class));
                     break;
                 case 13:
                     startActivity(new Intent(SettingActivity.this,HarvestAddressListActivity.class));

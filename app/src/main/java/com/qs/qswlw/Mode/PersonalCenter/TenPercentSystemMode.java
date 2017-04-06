@@ -21,7 +21,7 @@ public class TenPercentSystemMode extends BaseMode {
     @Override
     protected View initView() {
         View inflate = View.inflate(context, R.layout.sub_recordlist, null);
-        ListView lv_sub_recordList = (ListView) inflate.findViewById(R.id.lv_sub_recordList);
+        lv_sub_recordList = (ListView) inflate.findViewById(R.id.lv_sub_recordList);
         lv_sub_recordList.setAdapter(new RecordListAdapter(context));
         return  inflate;
     }

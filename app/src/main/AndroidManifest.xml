@@ -41,6 +41,7 @@
         <activity android:name=".activity.PersonalCenter.MyProfitActivity"/>
         <activity android:name=".activity.PersonalCenter.ConsumptionRecordActivity"/>
         <activity android:name=".activity.PersonalCenter.RecordListActivity"/>
+        <activity android:name=".activity.PersonalCenter.PromotionLuckDrawActivity"/>
     </application>
 
 
