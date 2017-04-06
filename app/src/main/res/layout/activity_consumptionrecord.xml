@@ -108,6 +108,7 @@
             android:orientation="horizontal"
             android:background="@drawable/corners">
             <Button
+                android:id="@+id/btn_selectorfile"
                 android:layout_width="60dp"
                 android:layout_height="20dp"
                 android:text="选取文件"
