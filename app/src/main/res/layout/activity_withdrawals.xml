@@ -194,5 +194,5 @@
         android:textColor="@color/white"
         android:textSize="12sp"
         android:text="确定"
-        android:background="@color/text_blue"/>
+        android:background="@drawable/btn_corner"/>
 </LinearLayout>

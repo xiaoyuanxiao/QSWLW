@@ -81,6 +81,7 @@ public class SettingActivity extends BaseActivity {
                     startActivity(new Intent(SettingActivity.this,BusinessTurnoverActivity.class));
                     break;
                 case 8:
+                    startActivity(new Intent(SettingActivity.this,ConsumptionRecordActivity.class));
                     break;
                 case 9:
                     break;
