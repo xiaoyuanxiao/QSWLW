@@ -17,8 +17,9 @@
                 android:layout_height="wrap_content"
                 android:text="请按照以下要求填写/上传相应的资料"
                 android:layout_gravity="center_horizontal"
+                android:textColor="@color/black"
                 android:layout_marginBottom="5dp"
-                android:textSize="16sp"/>
+                android:textSize="14sp"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -70,11 +71,61 @@
                     android:layout_height="120dp"
                     android:src="@mipmap/add_pro"/>
             </LinearLayout>
-
+            <TextView
+                android:layout_marginTop="15dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="3、填写店铺名称"
+                android:textColor="@color/text_blue"/>
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:background="@drawable/corner_name_improve"
+                android:textSize="11sp"
+                android:text="葡萄牙酒庄联盟"/>
+            <TextView
+                android:layout_marginTop="15dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="4、填写店铺联系电话"
+                android:textColor="@color/text_blue"/>
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:background="@drawable/corner_name_improve"
+                android:textSize="11sp"
+                android:text="13902224107"/>
+            <TextView
+                android:layout_marginTop="15dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="6、填写店铺地址"
+                android:textColor="@color/text_blue"/>
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:background="@drawable/corner_name_improve"
+                android:textSize="11sp"
+                android:text="1678911"/>
+            <TextView
+                android:layout_marginTop="15dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="8、填写店铺主营业务"
+                android:textColor="@color/text_blue"/>
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:background="@drawable/corner_name_improve"
+                android:textSize="11sp"
+                android:text="红酒123"/>
         </LinearLayout>
-    </ScrollView>
 
-    <include layout="@layout/titlebar"/>
+    </ScrollView>
 
 
 </LinearLayout>
