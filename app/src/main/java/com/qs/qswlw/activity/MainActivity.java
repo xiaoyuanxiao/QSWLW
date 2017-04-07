@@ -11,8 +11,13 @@ import android.widget.TextView;
 
 import com.qs.qswlw.R;
 import com.qs.qswlw.activity.PersonalCenter.SettingActivity;
+import com.qs.qswlw.adapter.AllianceBusinessRankingsAdapter;
+import com.qs.qswlw.bean.AllianceBusinessRankingsContentBean;
 import com.qs.qswlw.view.imageswitchview.Image3DSwitchView;
 import com.qs.qswlw.view.imageswitchview.Image3DView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by 小羽 on 2017/3/22.
@@ -26,7 +31,7 @@ public class MainActivity extends BaseActivity {
     private View view;
     private TextView tv_item_home_head;
     // 小雨是傻逼
-
+    List<AllianceBusinessRankingsContentBean> data;
     @Override
     public Integer initView() {
         return R.layout.activity_main;
@@ -58,8 +63,13 @@ public class MainActivity extends BaseActivity {
         TextView textView2 = new TextView(this);
         textView2.setText("查看全部排名");
         list1.addFooterView(textView2);
+
+
+        data = new ArrayList<AllianceBusinessRankingsContentBean>();
+
+
         list1.setAdapter(new MyDataAdapter());
-        list2.setAdapter(new MyDataAdapter());
+        list2.setAdapter(new AllianceBusinessRankingsAdapter(this,data));
         list3.setAdapter(new MyDataAdapter());
         list4.setAdapter(new MyDataAdapter());
         list5.setAdapter(new MyDataAdapter());
@@ -88,7 +98,12 @@ public class MainActivity extends BaseActivity {
         textView6.setText("拼手气促销抽奖名单");
         list6.addHeaderView(textView6);
 
+
+
+
     }
+
+
 
     @Override
     public void setOnclick() {
