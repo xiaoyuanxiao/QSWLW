@@ -42,6 +42,7 @@
         <activity android:name=".activity.PersonalCenter.ConsumptionRecordActivity"/>
         <activity android:name=".activity.PersonalCenter.RecordListActivity"/>
         <activity android:name=".activity.PersonalCenter.PromotionLuckDrawActivity"/>
+        <activity android:name=".activity.PersonalCenter.EntrepreneurialDonationActivity"/>
     </application>
 
 
