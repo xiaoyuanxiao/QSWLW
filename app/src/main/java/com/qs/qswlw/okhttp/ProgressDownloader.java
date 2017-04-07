@@ -15,20 +15,19 @@ import okhttp3.Request;
 import okhttp3.Response;
 import okhttp3.ResponseBody;
 
-import com.cont.okhtt.ProgressResponseBody.ProgressListener;
 
 public class ProgressDownloader {
 
 	public static final String TAG = "ProgressDownloader";
 
-	private ProgressListener progressListener;
+	private ProgressResponseBody.ProgressListener progressListener;
 	private String url;
 	private OkHttpClient client;
 	private File destination;
 	private Call call;
 
 	public ProgressDownloader(String url, File destination,
-			ProgressListener progressListener) {
+			ProgressResponseBody.ProgressListener progressListener) {
 		this.url = url;
 		this.destination = destination;
 		this.progressListener = progressListener;
