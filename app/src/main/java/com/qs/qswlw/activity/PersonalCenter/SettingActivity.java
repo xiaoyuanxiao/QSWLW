@@ -90,6 +90,7 @@ public class SettingActivity extends BaseActivity {
                     startActivity(new Intent(SettingActivity.this,EntrepreneurialDonationActivity.class));
                     break;
                 case 11:
+                    startActivity(new Intent(SettingActivity.this,CommodityManagementActivity.class));
                     break;
                 case 12:
                     startActivity(new Intent(SettingActivity.this,PromotionLuckDrawActivity.class));
