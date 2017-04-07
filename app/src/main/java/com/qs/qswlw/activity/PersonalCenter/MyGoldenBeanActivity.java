@@ -7,8 +7,9 @@ import android.view.ViewGroup;
 import android.widget.RadioGroup;
 
 import com.qs.qswlw.Mode.BaseMode;
-import com.qs.qswlw.Mode.PersonalCenter.TenPercentMode;
-import com.qs.qswlw.Mode.PersonalCenter.TwentyPercentMode;
+import com.qs.qswlw.Mode.PersonalCenter.MyGoldenBeanMode;
+import com.qs.qswlw.Mode.PersonalCenter.ReceiveGoldenBeanMode;
+import com.qs.qswlw.Mode.PersonalCenter.RecommendGoldenBeanMode;
 import com.qs.qswlw.R;
 import com.qs.qswlw.activity.BaseActivity;
 
@@ -16,31 +17,29 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by xiaoyu on 2017/4/3.
+ * Created by xiaoyu on 2017/4/5.
  */
 
-public class EntrepreneurialSeedActivity extends BaseActivity {
-    private List<BaseMode> viewpagedata;
-    private RadioGroup fg_EntrepreneurialSeed;
+public class MyGoldenBeanActivity extends BaseActivity {
+    private RadioGroup fg_myGoldenBean;
     private View view_EntrepreneurialSeed;
     private ViewPager viewpager;
-
-
-
+    private List<BaseMode> viewpagedata;
     @Override
     public Object initView() {
-        return R.layout.activity_entrepreneurialseed;
+        return R.layout.activity_mygoldenbean;
     }
 
     @Override
     public void initfindviewByid() {
         viewpager = (ViewPager) findViewById(R.id.viewpager_entrepreneurialSeed);
-        fg_EntrepreneurialSeed = (RadioGroup) findViewById(R.id.fg_EntrepreneurialSeed);
+        fg_myGoldenBean = (RadioGroup) findViewById(R.id.fg_myGoldenBean);
         view_EntrepreneurialSeed = (View) findViewById(R.id.view_EntrepreneurialSeed);
         viewpagedata = new ArrayList<BaseMode>();
 
-        viewpagedata.add(new TenPercentMode(this));
-        viewpagedata.add(new TwentyPercentMode(this));
+        viewpagedata.add(new MyGoldenBeanMode(this));
+        viewpagedata.add(new RecommendGoldenBeanMode(this));
+        viewpagedata.add(new ReceiveGoldenBeanMode(this));
         MyViewPagerAdapter adapter = new MyViewPagerAdapter();
         viewpager.setAdapter(adapter);
         viewpagedata.get(0).initData();
@@ -48,7 +47,7 @@ public class EntrepreneurialSeedActivity extends BaseActivity {
         viewpager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-              //  WindowManager manager = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
+                //  WindowManager manager = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
                 /**
                  * 得到红线的宽度
                  */
@@ -73,35 +72,6 @@ public class EntrepreneurialSeedActivity extends BaseActivity {
         });
     }
 
-    class MyOnCheckedChangeListener implements RadioGroup.OnCheckedChangeListener {
-        @Override
-        public void onCheckedChanged(RadioGroup group, int checkedId) {
-            int position = 0;
-            switch (checkedId) {
-                case R.id.rb_tenPercent:
-                    position = 0;
-                    break;
-                case R.id.rb_twentyPercent:
-                    position = 1;
-                    break;
-            }
-            viewpager.setCurrentItem(position);
-            viewpagedata.get(position).initData();
-        }
-    }
-
-    @Override
-    public void setOnclick() {
-        //点击radioButton切换到指定页面
-        fg_EntrepreneurialSeed.setOnCheckedChangeListener(new MyOnCheckedChangeListener());
-    }
-
-    @Override
-    public void onClick(View view) {
-
-    }
-
-
     public class MyViewPagerAdapter extends PagerAdapter
     {
         @Override
@@ -121,5 +91,33 @@ public class EntrepreneurialSeedActivity extends BaseActivity {
         public void destroyItem(ViewGroup container, int position, Object object) {
             ((ViewPager) container).removeView(viewpagedata.get(position).view);
         }
+    }
+    class MyOnCheckedChangeListener implements RadioGroup.OnCheckedChangeListener {
+        @Override
+        public void onCheckedChanged(RadioGroup group, int checkedId) {
+            int position = 0;
+            switch (checkedId) {
+                case R.id.rb_myGoldenBean:
+                    position = 0;
+                    break;
+                case R.id.rb_recommendGoldenBean:
+                    position = 1;
+                    break;
+                case R.id.rb_receiveGoldenBean:
+                    position = 2;
+                    break;
+            }
+            viewpager.setCurrentItem(position);
+            viewpagedata.get(position).initData();
+        }
+    }
+    @Override
+    public void setOnclick() {
+        fg_myGoldenBean.setOnCheckedChangeListener(new MyOnCheckedChangeListener());
+    }
+
+    @Override
+    public void onClick(View view) {
+
     }
 }

@@ -63,29 +63,36 @@ public class SettingActivity extends BaseActivity {
                     startActivity(new Intent(SettingActivity.this,EntrepreneurialSeedActivity.class));
                     break;
                 case 2:
+                    startActivity(new Intent(SettingActivity.this,MyGoldenBeanActivity.class));
                     break;
                 case 3:
                     startActivity(new Intent(SettingActivity.this,RecommendActivity.class));
                     break;
                 case 4:
+                    startActivity(new Intent(SettingActivity.this,ConsumerSilverBeanActivity.class));
                     break;
                 case 5:
                     startActivity(new Intent(SettingActivity.this,WithdrawalsActivity.class));
                     break;
                 case 6:
+                    startActivity(new Intent(SettingActivity.this,MyProfitActivity.class));
                     break;
                 case 7:
+                    startActivity(new Intent(SettingActivity.this,BusinessTurnoverActivity.class));
                     break;
                 case 8:
+                    startActivity(new Intent(SettingActivity.this,ConsumptionRecordActivity.class));
                     break;
                 case 9:
+                    startActivity(new Intent(SettingActivity.this,RecordListActivity.class));
                     break;
                 case 10:
+                    startActivity(new Intent(SettingActivity.this,EntrepreneurialDonationActivity.class));
                     break;
                 case 11:
                     break;
                 case 12:
-                    //startActivity(new Intent(SettingActivity.this,HarvestAddressListActivity.class));
+                    startActivity(new Intent(SettingActivity.this,PromotionLuckDrawActivity.class));
                     break;
                 case 13:
                     startActivity(new Intent(SettingActivity.this,HarvestAddressListActivity.class));

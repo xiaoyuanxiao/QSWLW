@@ -3,7 +3,8 @@
     android:layout_width="match_parent"
     android:layout_height="40dp"
     android:gravity="center_vertical"
-    android:background="#d4d9de">
+    android:background="#d4d9de"
+    android:id="@+id/rl_titlebar">
 
     <ImageView
         android:id="@+id/iv_titlebar"

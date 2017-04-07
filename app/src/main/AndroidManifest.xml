@@ -35,6 +35,14 @@
         <activity android:name=".activity.PersonalCenter.EntrepreneurialSeedActivity"/>
         <activity android:name=".activity.PersonalCenter.RecommendActivity"/>
         <activity android:name=".activity.PersonalCenter.WithdrawalsActivity"/>
+        <activity android:name=".activity.PersonalCenter.BusinessTurnoverActivity"/>
+        <activity android:name=".activity.PersonalCenter.ConsumerSilverBeanActivity"/>
+        <activity android:name=".activity.PersonalCenter.MyGoldenBeanActivity"/>
+        <activity android:name=".activity.PersonalCenter.MyProfitActivity"/>
+        <activity android:name=".activity.PersonalCenter.ConsumptionRecordActivity"/>
+        <activity android:name=".activity.PersonalCenter.RecordListActivity"/>
+        <activity android:name=".activity.PersonalCenter.PromotionLuckDrawActivity"/>
+        <activity android:name=".activity.PersonalCenter.EntrepreneurialDonationActivity"/>
     </application>
 
 

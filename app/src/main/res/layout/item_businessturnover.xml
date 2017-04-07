@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="10dp">
+    
+    <TextView
+        android:id="@+id/tv_data"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="日期"
+        android:textSize="8sp"
+        android:textColor="@color/view"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"/>
+    <TextView
+        android:id="@+id/tv_money"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="全部"
+        android:textSize="8sp"
+        android:textColor="@color/view"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"/>
+    <TextView
+        android:id="@+id/tv_data_BusinessTurnover"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="2017-04-04"
+        android:textSize="10sp"
+        android:layout_marginTop="5dp"
+        android:layout_below="@+id/tv_data"
+        android:layout_alignParentLeft="true"/>
+    <TextView
+        android:id="@+id/tv_money_BusinessTurnover"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="1000.00"
+        android:textSize="10sp"
+        android:layout_marginTop="5dp"
+        android:textColor="@color/red"
+        android:layout_below="@+id/tv_money"
+        android:layout_alignParentRight="true"/>
+</RelativeLayout>
