@@ -263,7 +263,6 @@ public class Image3DView extends ListView {
 
     @Override
     protected void dispatchDraw(Canvas canvas) {
-
         if (isImageVisible()) {
             computeRotateData();
             mCamera.save();

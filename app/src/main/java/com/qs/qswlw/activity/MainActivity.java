@@ -5,7 +5,6 @@ import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -62,18 +61,18 @@ public class MainActivity extends BaseActivity {
         textView2.setText("查看全部排名");
         list1.addFooterView(textView2);
 
-        list1.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_expandable_list_item_1, listViewData));
-        list2.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_expandable_list_item_1, listViewData));
-        list3.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_expandable_list_item_1, listViewData));
-        list4.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_expandable_list_item_1, listViewData));
-        list5.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_expandable_list_item_1, listViewData));
-        list6.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_expandable_list_item_1, listViewData));
-//        list1.setAdapter(new MyDataAdapter());
-//        list2.setAdapter(new MyDataAdapter());
-//        list3.setAdapter(new MyDataAdapter());
-//        list4.setAdapter(new MyDataAdapter());
-//        list5.setAdapter(new MyDataAdapter());
-//        list6.setAdapter(new MyDataAdapter());
+//        list1.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_expandable_list_item_1, listViewData));
+//        list2.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_expandable_list_item_1, listViewData));
+//        list3.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_expandable_list_item_1, listViewData));
+//        list4.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_expandable_list_item_1, listViewData));
+//        list5.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_expandable_list_item_1, listViewData));
+//        list6.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_expandable_list_item_1, listViewData));
+        list1.setAdapter(new MyDataAdapter());
+        list2.setAdapter(new MyDataAdapter());
+        list3.setAdapter(new MyDataAdapter());
+        list4.setAdapter(new MyDataAdapter());
+        list5.setAdapter(new MyDataAdapter());
+        list6.setAdapter(new MyDataAdapter());
 
         TextView textView22 = new TextView(this);
         textView22.setText("联盟商家排行榜");
@@ -97,7 +96,6 @@ public class MainActivity extends BaseActivity {
         TextView textView6 = new TextView(this);
         textView6.setText("拼手气促销抽奖名单");
         list6.addHeaderView(textView6);
-
 
     }
 
@@ -141,13 +139,14 @@ public class MainActivity extends BaseActivity {
         }
 
         @Override
-        public View getView(int i, View view, ViewGroup viewGroup) {
-            View inflate = View.inflate(MainActivity.this, R.layout.item_home_content, null);
-            TextView key = (TextView) inflate.findViewById(R.id.tv_item_home_content_left);
-            TextView value = (TextView) inflate.findViewById(R.id.tv_item_home_content_value);
+        public View getView(int i, View convertView, ViewGroup viewGroup) {
+
+            convertView = View.inflate(MainActivity.this, R.layout.item_home_content, null);
+            TextView key = (TextView) convertView.findViewById(R.id.tv_item_home_content_left);
+            TextView value = (TextView) convertView.findViewById(R.id.tv_item_home_content_value);
             key.setText(keys[i]);
             value.setText(values[i]);
-            return view;
+            return convertView;
         }
     }
 }
