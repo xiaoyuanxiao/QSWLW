@@ -322,6 +322,7 @@ public class Image3DSwitchView extends ViewGroup {
             Image3DView childView = (Image3DView) getChildAt(mItems[i]);
             childView.setRotateData(i, getScrollX());
             childView.invalidate();
+
         }
     }
 

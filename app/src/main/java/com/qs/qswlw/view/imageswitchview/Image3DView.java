@@ -86,7 +86,18 @@ public class Image3DView extends ListView {
      * @param index   当前图片的下标
      * @param scrollX 当前图片在X轴方向滚动的距离
      */
+    int lay3 = 0;
+
     public void setRotateData(int index, int scrollX) {
+        double v = 1 - Math.cos(mRotateDegree * Math.PI / 180);
+
+        if (mIndex == 3) {
+            if (lay3 == 0)
+                lay3 = getLeft();
+            int xx = (int) (v * mWidth);
+            layout(lay3 - xx, getTop(),
+                    getRight(), getBottom());
+        }
         mIndex = index;
         mScrollX = scrollX;
     }
@@ -135,6 +146,7 @@ public class Image3DView extends ListView {
     }
 
     final float with = 360f;
+    float myx = 0f;
 
     /**
      * 在这里计算所有旋转所需要的数据。
@@ -266,7 +278,7 @@ public class Image3DView extends ListView {
         if (isImageVisible()) {
             computeRotateData();
             mCamera.save();
-            mCamera.translate(0.0f, 0.0f, mDeep);
+            mCamera.translate(0, 0, mDeep);
             mCamera.rotateY(mRotateDegree);
             mCamera.getMatrix(mMaxtrix);
             mCamera.restore();
