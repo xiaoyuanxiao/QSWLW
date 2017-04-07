@@ -44,8 +44,6 @@ public class MainActivity extends BaseActivity {
         view = LayoutInflater.from(this).inflate(R.layout.item_home_head, null);
         tv_item_home_head = (TextView) view.findViewById(R.id.tv_item_home_head);
         iv_main_avater = (ImageView) findViewById(R.id.iv_main_avater);
-
-
         imageSwitchView.setCurrentImage(1);
 
         tv_item_home_head.setText("全联盟让利金额排行榜");
@@ -60,13 +58,6 @@ public class MainActivity extends BaseActivity {
         TextView textView2 = new TextView(this);
         textView2.setText("查看全部排名");
         list1.addFooterView(textView2);
-
-//        list1.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_expandable_list_item_1, listViewData));
-//        list2.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_expandable_list_item_1, listViewData));
-//        list3.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_expandable_list_item_1, listViewData));
-//        list4.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_expandable_list_item_1, listViewData));
-//        list5.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_expandable_list_item_1, listViewData));
-//        list6.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_expandable_list_item_1, listViewData));
         list1.setAdapter(new MyDataAdapter());
         list2.setAdapter(new MyDataAdapter());
         list3.setAdapter(new MyDataAdapter());
