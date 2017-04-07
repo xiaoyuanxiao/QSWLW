@@ -25,6 +25,7 @@ public class MyGoldenBeanActivity extends BaseActivity {
     private View view_EntrepreneurialSeed;
     private ViewPager viewpager;
     private List<BaseMode> viewpagedata;
+
     @Override
     public Object initView() {
         return R.layout.activity_mygoldenbean;
@@ -51,13 +52,13 @@ public class MyGoldenBeanActivity extends BaseActivity {
                 /**
                  * 得到红线的宽度
                  */
-                int width = getApplicationContext().getResources().getDisplayMetrics().widthPixels/2;
-                //int width = view_EntrepreneurialSeed.getWidth();
+                int width = getApplicationContext().getResources().getDisplayMetrics().widthPixels / 3;
+                int redwidth = view_EntrepreneurialSeed.getWidth();
                 /**
                  * position是划动时左边的页码数，从0开始的，positionOffsetPixels是后一页的页码，  positionOffset是当前页与后一页的划动距离的百分比。（0--0.999999）
                  * setX是view的方法，设置当前view在父布局中距离左边的像素点
                  * */
-                view_EntrepreneurialSeed.setX(width * (position + positionOffset));
+                view_EntrepreneurialSeed.setX(width * (position + 1 + positionOffset) - redwidth);
             }
 
             @Override
@@ -72,26 +73,29 @@ public class MyGoldenBeanActivity extends BaseActivity {
         });
     }
 
-    public class MyViewPagerAdapter extends PagerAdapter
-    {
+    public class MyViewPagerAdapter extends PagerAdapter {
         @Override
         public int getCount() {
             return viewpagedata.size();
         }
+
         @Override
         public boolean isViewFromObject(View view, Object object) {
             return view == object;
         }
+
         @Override
         public Object instantiateItem(ViewGroup container, int position) {
             container.addView(viewpagedata.get(position).view);
             return viewpagedata.get(position).view;
         }
+
         @Override
         public void destroyItem(ViewGroup container, int position, Object object) {
             ((ViewPager) container).removeView(viewpagedata.get(position).view);
         }
     }
+
     class MyOnCheckedChangeListener implements RadioGroup.OnCheckedChangeListener {
         @Override
         public void onCheckedChanged(RadioGroup group, int checkedId) {
@@ -111,6 +115,7 @@ public class MyGoldenBeanActivity extends BaseActivity {
             viewpagedata.get(position).initData();
         }
     }
+
     @Override
     public void setOnclick() {
         fg_myGoldenBean.setOnCheckedChangeListener(new MyOnCheckedChangeListener());
