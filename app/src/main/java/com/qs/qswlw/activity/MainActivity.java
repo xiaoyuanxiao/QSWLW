@@ -11,26 +11,74 @@ import android.widget.TextView;
 
 import com.qs.qswlw.R;
 import com.qs.qswlw.activity.PersonalCenter.SettingActivity;
+import com.qs.qswlw.adapter.MytestAdapter;
+import com.qs.qswlw.okhttp.Iview.IMainView;
+import com.qs.qswlw.okhttp.Presenter.MainPresenter;
 import com.qs.qswlw.view.imageswitchview.Image3DSwitchView;
 import com.qs.qswlw.view.imageswitchview.Image3DView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by 小羽 on 2017/3/22.
  */
-public class MainActivity extends BaseActivity {
+public class MainActivity extends BaseActivity implements IMainView {
     private Image3DSwitchView imageSwitchView;
     private String[] listViewData = new String[]{
             "test1", "test2", "test3",
             "test4"};
+
+    @Override
+    public void setTitle(String title) {
+
+    }
+
+    @Override
+    public void setListdata1(List list) {
+
+    }
+
+    @Override
+    public void setListdata2(List list) {
+        listtest.clear();
+        listtest.addAll(list);
+        myDataAdapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void setListdata3(List list) {
+
+    }
+
+    @Override
+    public void setListdata4(List list) {
+
+    }
+
+    @Override
+    public void setListdata5(List list) {
+
+    }
+
+    @Override
+    public void setListdata6(List list) {
+
+    }
+
     ImageView iv_main_avater;
     private View view;
     private TextView tv_item_home_head;
     // 小雨是傻逼
+    MainPresenter mainPresenter = new MainPresenter(this);
 
     @Override
     public Integer initView() {
         return R.layout.activity_main;
     }
+
+    ArrayList listtest;
+    MytestAdapter myDataAdapter;
 
     @Override
     public void initfindviewByid() {
@@ -91,7 +139,7 @@ public class MainActivity extends BaseActivity {
         list5.addHeaderView(textView5);
 
 
-        textView6 = new TextView(this);
+        TextView textView6 = new TextView(this);
         textView6.setText("拼手气促销抽奖名单");
         list6.addHeaderView(textView6);
         mainPresenter.getdata();
@@ -99,29 +147,6 @@ public class MainActivity extends BaseActivity {
 
     }
 
-
-
-    public void test() {
-        HashMap<String, String> stringStringHashMap = new HashMap<>();
-        stringStringHashMap.put("index_data", "alert");
-        Type type = new TypeToken<BaseBean<AlertBeanRes>>() {
-        }.getType();
-        OKhttptUtils.httpPost("http://www.qiansheng.com/api/index/index", stringStringHashMap,
-                new DataCallBack<BaseBean<AlertBeanRes>>(type) {
-                    @Override
-                    public void onSuccess(BaseBean<AlertBeanRes> data) {
-                        Log.d("TAG", data.toString());
-                    }
-
-                    @Override
-                    public void onFailure(int code) {
-
-                    }
-                }
-
-
-        );
-    }
 
     @Override
     public void setOnclick() {
