@@ -11,13 +11,8 @@ import android.widget.TextView;
 
 import com.qs.qswlw.R;
 import com.qs.qswlw.activity.PersonalCenter.SettingActivity;
-import com.qs.qswlw.adapter.AllianceBusinessRankingsAdapter;
-import com.qs.qswlw.bean.AllianceBusinessRankingsContentBean;
 import com.qs.qswlw.view.imageswitchview.Image3DSwitchView;
 import com.qs.qswlw.view.imageswitchview.Image3DView;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by 小羽 on 2017/3/22.
@@ -31,7 +26,7 @@ public class MainActivity extends BaseActivity {
     private View view;
     private TextView tv_item_home_head;
     // 小雨是傻逼
-    List<AllianceBusinessRankingsContentBean> data;
+
     @Override
     public Integer initView() {
         return R.layout.activity_main;
@@ -50,9 +45,7 @@ public class MainActivity extends BaseActivity {
         tv_item_home_head = (TextView) view.findViewById(R.id.tv_item_home_head);
         iv_main_avater = (ImageView) findViewById(R.id.iv_main_avater);
         imageSwitchView.setCurrentImage(1);
-
         tv_item_home_head.setText("全联盟让利金额排行榜");
-
         list1.addHeaderView(view);
         list1.setBColor(Color.parseColor("#b82140"));
         list2.setBColor(Color.parseColor("#de2127"));
@@ -65,11 +58,15 @@ public class MainActivity extends BaseActivity {
         list1.addFooterView(textView2);
 
 
-        data = new ArrayList<AllianceBusinessRankingsContentBean>();
+        /**
+         * 测试
+         */
+        listtest = new ArrayList<>();
+        myDataAdapter = new MytestAdapter(this, listtest);
 
 
-        list1.setAdapter(new MyDataAdapter());
-        list2.setAdapter(new AllianceBusinessRankingsAdapter(this,data));
+        list1.setAdapter(myDataAdapter);
+        list2.setAdapter(new MyDataAdapter());
         list3.setAdapter(new MyDataAdapter());
         list4.setAdapter(new MyDataAdapter());
         list5.setAdapter(new MyDataAdapter());
@@ -94,16 +91,37 @@ public class MainActivity extends BaseActivity {
         list5.addHeaderView(textView5);
 
 
-        TextView textView6 = new TextView(this);
+        textView6 = new TextView(this);
         textView6.setText("拼手气促销抽奖名单");
         list6.addHeaderView(textView6);
-
-
+        mainPresenter.getdata();
 
 
     }
 
 
+
+    public void test() {
+        HashMap<String, String> stringStringHashMap = new HashMap<>();
+        stringStringHashMap.put("index_data", "alert");
+        Type type = new TypeToken<BaseBean<AlertBeanRes>>() {
+        }.getType();
+        OKhttptUtils.httpPost("http://www.qiansheng.com/api/index/index", stringStringHashMap,
+                new DataCallBack<BaseBean<AlertBeanRes>>(type) {
+                    @Override
+                    public void onSuccess(BaseBean<AlertBeanRes> data) {
+                        Log.d("TAG", data.toString());
+                    }
+
+                    @Override
+                    public void onFailure(int code) {
+
+                    }
+                }
+
+
+        );
+    }
 
     @Override
     public void setOnclick() {
@@ -114,6 +132,9 @@ public class MainActivity extends BaseActivity {
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.iv_main_avater:
+
+                mainPresenter.getEntrep();
+                startActivity(new Intent(MainActivity.this, SettingActivity.class));
                 startActivity(new Intent(MainActivity.this, SettingActivity.class));
                 break;
         }

@@ -1,18 +1,31 @@
 package com.qs.qswlw.okhttp;
 
-import com.google.gson.reflect.TypeToken;
+import android.util.Log;
+
+import com.google.gson.Gson;
 
 import java.lang.reflect.Type;
 
 public abstract class DataCallBack<T> {
-    public DataCallBack() {
+    Type type;
+
+    public DataCallBack(Type type) {
+        this.type = type;
     }
 
-    public void sendMess(final int code, final T data) {
+    public void sendMess(final int code, final String data) {
         if (code == OKhttptUtils.HTTPOK) {
-            onSuccess(data);
+            T o = new Gson().fromJson(data, type);
+            try {
+                onSuccess(o);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+
+            Log.d("TAG", "sendMess" + o.toString());
         } else if (code == OKhttptUtils.GSON_ER) {
-            //字符串解析异常
+            //字符串异常
             onFailure(code);
         } else if (code == OKhttptUtils.HTTPER) {
             //请求异常
@@ -28,8 +41,4 @@ public abstract class DataCallBack<T> {
 
     public abstract void onFailure(int code);
 
-    public Type getType() {
-        return new TypeToken<T>() {
-        }.getType();
-    }
 }

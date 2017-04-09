@@ -89,7 +89,7 @@ public class Image3DView extends ListView {
     int lay3 = 0;
 
     public void setRotateData(int index, int scrollX) {
-        double v = 1 - Math.cos(mRotateDegree * Math.PI / 180);
+       /* double v = 1 - Math.cos(mRotateDegree * Math.PI / 180);
 
         if (mIndex == 3) {
             if (lay3 == 0)
@@ -97,7 +97,7 @@ public class Image3DView extends ListView {
             int xx = (int) (v * mWidth);
             layout(lay3 - xx, getTop(),
                     getRight(), getBottom());
-        }
+        }*/
         mIndex = index;
         mScrollX = scrollX;
     }

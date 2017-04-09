@@ -12,10 +12,10 @@ import com.qs.qswlw.R;
  * Created by xiaoyu on 2017/4/3.
  */
 
-public class Adapter extends BaseAdapter {
+public class MyAdapter extends BaseAdapter {
     private Context context;
 
-    public Adapter(Context context) {
+    public MyAdapter(Context context) {
         this.context = context;
     }
 

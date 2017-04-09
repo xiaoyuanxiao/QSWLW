@@ -1,9 +1,10 @@
 package com.qs.qswlw.okhttp.Moudle;
 
-import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.qs.qswlw.okhttp.DataCallBack;
 import com.qs.qswlw.okhttp.OKhttptUtils;
 
+import java.lang.reflect.Type;
 import java.util.HashMap;
 
 /**
@@ -20,23 +21,22 @@ public class TestaMoudle implements ITestaBiz {
         void onFail();
     }
 
+    String url = "http://www.qiansheng.com/api/index/index";
+
     @Override
     public void login(String mobile, String password, final OnLoginListener onl) {
 
-        HashMap<String, Object> a = new HashMap<>();
+        HashMap<String, String> a = new HashMap<>();
         a.put("mobile"/**Key*/, mobile);
         a.put("password", password);
+        Type type = new TypeToken<BaseBean<AlertBeanRes>>() {
+        }.getType();
         OKhttptUtils.httpPost(
-                "www.xxx登入地址.com", new Gson().toJson(a),
-                new DataCallBack<String[]>() {
+                url, a,
+                new DataCallBack<BaseBean<AlertBeanRes>>(type) {
                     @Override
-                    public void onSuccess(String[] data) {
-                        if (data[0].equals("200")) {
-                            onl.onSucces(data[1]);
-                        } else {
-                            onl.onSucces(data[0]);
-                        }
-
+                    public void onSuccess(BaseBean<AlertBeanRes> data) {
+                        //onl.onSucces(data);
                     }
 
                     @Override

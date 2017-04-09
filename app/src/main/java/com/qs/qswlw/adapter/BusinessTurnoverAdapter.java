@@ -20,6 +20,9 @@ public class BusinessTurnoverAdapter extends BaseAdapter {
     }
    public String[] money = {"1000.00","1000.00","1000.00","1000.00","1000.00","1000.00","1000.00","1000.00","1000.00",};
     public String[] contents = {"2017-04_04", "2017-04_04","2017-04_04","2017-04_04","2017-04_04","2017-04_04","2017-04_04","2017-04_04","2017-04_04",};
+
+
+
     @Override
     public int getCount() {
         return contents.length;
