@@ -3,12 +3,17 @@ package com.qs.qswlw.activity.PersonalCenter;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TimePicker;
+import android.widget.Toast;
 
 import com.qs.qswlw.R;
 import com.qs.qswlw.activity.BaseActivity;
+
+import java.util.Calendar;
 
 /**
  * Created by xiaoyu on 2017/3/31.
@@ -66,6 +71,16 @@ public class ImproveDocumentationActivity extends BaseActivity {
     private ArrayAdapter<CharSequence> city_adapter;
     private ArrayAdapter<CharSequence> county_adapter;
 
+    private Spinner classification_spinner;
+    private ArrayAdapter<CharSequence> classification_adapter;
+    private Integer classificationId;
+    private String strClassification;
+
+    private int day;
+    private int hour;
+    private int minute;
+
+
     @Override
     public Object initView() {
         return R.layout.activity_improvedocumentation;
@@ -75,6 +90,63 @@ public class ImproveDocumentationActivity extends BaseActivity {
     public void initfindviewByid() {
 
         loadSpinner();
+        loadManagementClassificationSpinner();
+        loadTime();
+    }
+
+    /**
+     * 加载时间选择
+     */
+    private void loadTime() {
+        TimePicker timePicker = (TimePicker)
+                findViewById(R.id.timePicker);
+        // 获取当前的年、月、日、小时、分钟
+        // 获取当前的年、月、日、小时、分钟
+        Calendar c = Calendar.getInstance();
+        day = c.get(Calendar.DAY_OF_MONTH);
+        hour = c.get(Calendar.HOUR);
+        minute = c.get(Calendar.MINUTE);
+        // 为TimePicker指定监听器
+        timePicker.setOnTimeChangedListener(new TimePicker.OnTimeChangedListener()
+        {
+
+            @Override
+            public void onTimeChanged(TimePicker view
+                    , int hourOfDay, int minute)
+            {
+                ImproveDocumentationActivity.this.hour = hourOfDay;
+                ImproveDocumentationActivity.this.minute = minute;
+                // 显示当前日期、时间
+                //ImproveDocumentationActivity( day, hour, minute);
+                Toast.makeText(ImproveDocumentationActivity.this,"您选择的时间："+hourOfDay+"时  "
+                        +minute+"分", Toast.LENGTH_SHORT).show();
+//
+            }
+        });
+
+    }
+
+
+    /**
+     * 经营分类spinner
+     */
+    private void loadManagementClassificationSpinner() {
+        classification_spinner = (Spinner) findViewById(R.id.classification_spinner);
+        classification_adapter = ArrayAdapter.createFromResource(this, R.array.classification_item, android.R.layout.simple_spinner_item);
+        classification_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        classification_spinner.setAdapter(classification_adapter);
+        classification_spinner.setOnItemSelectedListener(new OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                classification_spinner.getSelectedItemPosition();
+                strClassification = classification_spinner.getSelectedItem().toString();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
     }
 
     @Override
@@ -94,7 +166,7 @@ public class ImproveDocumentationActivity extends BaseActivity {
         province_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         province_spinner.setAdapter(province_adapter);
         //select(province_spinner, province_adapter, R.array.province_item);
-        province_spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener()
+        province_spinner.setOnItemSelectedListener(new OnItemSelectedListener()
         {
             @Override
             public void onItemSelected(AdapterView<?> arg0, View arg1,
@@ -110,7 +182,7 @@ public class ImproveDocumentationActivity extends BaseActivity {
                     city_spinner = (Spinner) findViewById(R.id.city_spinner);
                     city_spinner.setPrompt("请选择城市");
                     select(city_spinner, city_adapter, city[provinceId]);
-                    city_spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener()
+                    city_spinner.setOnItemSelectedListener(new OnItemSelectedListener()
                     {
 
                         @Override
@@ -231,7 +303,7 @@ public class ImproveDocumentationActivity extends BaseActivity {
                                         break;
                                 }
 
-                                county_spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener()
+                                county_spinner.setOnItemSelectedListener(new OnItemSelectedListener()
                                 {
 
                                     @Override
