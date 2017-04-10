@@ -1,7 +1,7 @@
 package com.qs.qswlw.okhttp.Moudle;
 
 /**
- * Created by xiaoyu on 2017/4/10.
+ * Created by 小猴子 on 2017/4/10.
  */
 
 public class BenefitBean {
@@ -32,4 +32,5 @@ public class BenefitBean {
     public void setTotal(String total) {
         this.total = total;
     }
+
 }

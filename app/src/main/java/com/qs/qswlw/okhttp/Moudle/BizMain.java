@@ -7,6 +7,7 @@ import com.qs.qswlw.okhttp.OKhttptUtils;
 import com.qs.qswlw.okhttp.oncallback.MainEntepLisenter;
 
 import java.lang.reflect.Type;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -25,7 +26,6 @@ public class BizMain implements IMainBiz {
             testMoudle = new BizMain();
         return testMoudle;
     }
-
 
 
     private final String index_data = "index_data";
@@ -52,7 +52,7 @@ public class BizMain implements IMainBiz {
                     public void onSuccess(BaseBean<List<UnionBean>> data) {
                         List<UnionBean> result = null;
                         try {
-                            result = data.getResult().getResult();
+                            //    result = data.getResult().getResult();
                         } catch (Exception e) {
                         }
                         if (result == null)
@@ -67,20 +67,29 @@ public class BizMain implements IMainBiz {
                     }
                 });
     }
+
     @Override
     public void getentrep(final MainEntepLisenter mainEntepLisenter) {
         HashMap<String, String> stringStringHashMap = new HashMap<>();
         stringStringHashMap.put(index_data, entrep);
-        Type type = new TypeToken<BaseBean<List<EntrepBaen>>>() {
+        Type type = new TypeToken<BaseBean<EntrepBaen>>() {
         }.getType();
         OKhttptUtils.httpPost(NetUrl.baseurl, stringStringHashMap,
-                new DataCallBack<BaseBean<List<EntrepBaen>>>(type) {
+                new DataCallBack<BaseBean<EntrepBaen>>(type) {
 
                     @Override
-                    public void onSuccess(BaseBean<List<EntrepBaen>> data) {
+                    public void onSuccess(BaseBean<EntrepBaen> data) {
                         List<EntrepBaen> result = null;
                         try {
-                            result = data.getResult().getResult();
+                            ResultBean<EntrepBaen> result1 = data.getResult();
+                            //   ArrayList<EntrepBaen> result2 = result1.getResult();
+                           /* ArrayList<EntrepBaen> result1 = resultBea.getResult();
+                            data.getResult();
+                            result = data.getResult()
+
+                                    .getResult();*/
+
+//                            Log.d("TAG", result2 + "----");
                         } catch (Exception e) {
                         }
                         if (result == null)
@@ -106,16 +115,16 @@ public class BizMain implements IMainBiz {
     public void getchina(final MainEntepLisenter mainEntepLisenter) {
         HashMap<String, String> stringStringHashMap = new HashMap<>();
         stringStringHashMap.put(index_data, china);
-        Type type = new TypeToken<BaseBean<List<ChinaBean>>>() {
+        Type type = new TypeToken<BaseBean<ArrayList<ChinaBean>>>() {
         }.getType();
         OKhttptUtils.httpPost(NetUrl.baseurl, stringStringHashMap,
-                new DataCallBack<BaseBean<List<ChinaBean>>>(type) {
+                new DataCallBack<BaseBean<ArrayList<ChinaBean>>>(type) {
 
                     @Override
-                    public void onSuccess(BaseBean<List<ChinaBean>> data) {
+                    public void onSuccess(BaseBean<ArrayList<ChinaBean>> data) {
                         List<ChinaBean> result = null;
                         try {
-                            result = data.getResult().getResult();
+                            result = data.getResult().getChina();
                         } catch (Exception e) {
                         }
                         if (result == null)

@@ -5,13 +5,13 @@ package com.qs.qswlw.okhttp.Moudle;
  */
 
 public class ResultBean<T> {
-    private T result;
+    private T china;
 
-    public T getResult() {
-        return result;
+    public T getChina() {
+        return china;
     }
 
-    public void setResult(T result) {
-        this.result = result;
+    public void setChina(T china) {
+        this.china = china;
     }
 }

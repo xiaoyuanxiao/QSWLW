@@ -39,10 +39,10 @@ public class MainPresenter implements MainEntepLisenter {
     public void getEntrep() {
         iMainBiz.getentrep(this);
     }
+
     public void getChina() {
         iMainBiz.getchina(this);
     }
-
 
 
     @Override
@@ -54,6 +54,7 @@ public class MainPresenter implements MainEntepLisenter {
     public void onSuccess(List<EntrepBaen> e) {
 
     }
+
     @Override
     public void onSuccess1(List<ChinaBean> e) {
         // iMainView.setListdata2();
