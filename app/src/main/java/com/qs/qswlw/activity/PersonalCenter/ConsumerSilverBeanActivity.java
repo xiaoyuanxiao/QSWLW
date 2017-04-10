@@ -4,34 +4,46 @@ import android.view.View;
 import android.widget.ListView;
 
 import com.qs.qswlw.R;
-import com.qs.qswlw.activity.BaseActivity;
 import com.qs.qswlw.adapter.ConsumerSilverBeanAdapter;
 
 /**
  * Created by xiaoyu on 2017/4/5.
  */
 
-public class ConsumerSilverBeanActivity extends BaseActivity {
+public class ConsumerSilverBeanActivity extends BaseInfoActivity {
     private ListView lv_consumersliverbean;
 
     @Override
-    public Object initView() {
-        return R.layout.activity_consumersilverbean;
+    View setConetnView() {
+        return View.inflate(this, R.layout.activity_consumersilverbean, null);
     }
 
     @Override
     public void initfindviewByid() {
+        super.initfindviewByid();
         lv_consumersliverbean = (ListView) findViewById(R.id.lv_consumersliverbean);
         lv_consumersliverbean.setAdapter(new ConsumerSilverBeanAdapter(this));
     }
 
+
     @Override
-    public void setOnclick() {
+    public void initData() {
+        super.initData();
+        tv_titlebar_center.setText("刘花花傻逼");
 
     }
 
     @Override
+    public void setOnclick() {
+        super.setOnclick();
+
+
+    }
+
+
+    @Override
     public void onClick(View view) {
+        super.onClick(view);
 
     }
 }
