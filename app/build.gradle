@@ -21,6 +21,8 @@ android {
     dataBinding {
         enabled true
     }
+    dexOptions {
+    }
 }
 
 dependencies {
@@ -28,5 +30,4 @@ dependencies {
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:23.2.0'
     compile files('libs/gson-2.2.4.jar')
-    compile 'com.squareup.okhttp:okhttp:2.0.0'
 }
