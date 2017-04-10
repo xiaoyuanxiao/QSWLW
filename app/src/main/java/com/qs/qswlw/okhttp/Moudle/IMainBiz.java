@@ -11,13 +11,13 @@ public interface IMainBiz {
 
     void getAlert();
 
-    void getunion();
+    void getunion(MainEntepLisenter mainEntepLisenter);
 
     void getentrep(MainEntepLisenter mainEntepLisenter);
 
-    void getangel();
+    void getangel(MainEntepLisenter mainEntepLisenter);
 
-    void getchina();
+    void getchina(MainEntepLisenter mainEntepLisenter);
 
     void getluck();
 

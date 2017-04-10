@@ -13,6 +13,7 @@ import com.qs.qswlw.R;
 import com.qs.qswlw.activity.PersonalCenter.SettingActivity;
 import com.qs.qswlw.adapter.MytestAdapter;
 import com.qs.qswlw.okhttp.Iview.IMainView;
+import com.qs.qswlw.okhttp.Moudle.ChinaBean;
 import com.qs.qswlw.okhttp.Presenter.MainPresenter;
 import com.qs.qswlw.view.imageswitchview.Image3DSwitchView;
 import com.qs.qswlw.view.imageswitchview.Image3DView;
@@ -28,7 +29,7 @@ public class MainActivity extends BaseActivity implements IMainView {
     private String[] listViewData = new String[]{
             "test1", "test2", "test3",
             "test4"};
-
+    ArrayList<ChinaBean> listChina;
     @Override
     public void setTitle(String title) {
 
@@ -53,7 +54,9 @@ public class MainActivity extends BaseActivity implements IMainView {
 
     @Override
     public void setListdata4(List list) {
-
+        listtest.clear();
+        listtest.addAll(list);
+        myDataAdapter.notifyDataSetChanged();
     }
 
     @Override
@@ -106,18 +109,20 @@ public class MainActivity extends BaseActivity implements IMainView {
         list1.addFooterView(textView2);
 
 
+        listChina = new ArrayList<>();
+        myDataAdapter = new MytestAdapter(this, listChina);
         /**
          * 测试
          */
         listtest = new ArrayList<>();
-        myDataAdapter = new MytestAdapter(this, listtest);
+
 
 
         list1.setAdapter(myDataAdapter);
         list2.setAdapter(new MyDataAdapter());
         list3.setAdapter(new MyDataAdapter());
         list4.setAdapter(new MyDataAdapter());
-        list5.setAdapter(new MyDataAdapter());
+        list5.setAdapter(myDataAdapter);
         list6.setAdapter(new MyDataAdapter());
 
         TextView textView22 = new TextView(this);
