@@ -4,7 +4,10 @@ import com.google.gson.reflect.TypeToken;
 import com.qs.qswlw.okhttp.DataCallBack;
 import com.qs.qswlw.okhttp.NetUrl;
 import com.qs.qswlw.okhttp.OKhttptUtils;
+import com.qs.qswlw.okhttp.oncallback.MainBebeLisenter;
+import com.qs.qswlw.okhttp.oncallback.MainChinaLisenter;
 import com.qs.qswlw.okhttp.oncallback.MainEntepLisenter;
+import com.qs.qswlw.okhttp.oncallback.MainUnionLisenter;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -40,7 +43,7 @@ public class BizMain implements IMainBiz {
     }
 
     @Override
-    public void getunion(final MainEntepLisenter mainEntepLisenter) {
+    public void getunion(final MainUnionLisenter mainEntepLisenter) {
         HashMap<String, String> stringStringHashMap = new HashMap<>();
         stringStringHashMap.put(index_data, union);
         Type type = new TypeToken<BaseBean<List<ChinaBean>>>() {
@@ -72,24 +75,16 @@ public class BizMain implements IMainBiz {
     public void getentrep(final MainEntepLisenter mainEntepLisenter) {
         HashMap<String, String> stringStringHashMap = new HashMap<>();
         stringStringHashMap.put(index_data, entrep);
-        Type type = new TypeToken<BaseBean<EntrepBaen>>() {
+        Type type = new TypeToken<BaseBean<ResultEntrepBean<EntrepBaen>>>() {
         }.getType();
         OKhttptUtils.httpPost(NetUrl.baseurl, stringStringHashMap,
-                new DataCallBack<BaseBean<EntrepBaen>>(type) {
-
+                new DataCallBack<BaseBean<ResultEntrepBean<EntrepBaen>>>(type) {
                     @Override
-                    public void onSuccess(BaseBean<EntrepBaen> data) {
-                        List<EntrepBaen> result = null;
+                    public void onSuccess(BaseBean<ResultEntrepBean<EntrepBaen>> data) {
+                        EntrepBaen result = null;
                         try {
-                            ResultBean<EntrepBaen> result1 = data.getResult();
-                            //   ArrayList<EntrepBaen> result2 = result1.getResult();
-                           /* ArrayList<EntrepBaen> result1 = resultBea.getResult();
-                            data.getResult();
-                            result = data.getResult()
+                            result = data.getResult().getEntrep();
 
-                                    .getResult();*/
-
-//                            Log.d("TAG", result2 + "----");
                         } catch (Exception e) {
                         }
                         if (result == null)
@@ -106,22 +101,21 @@ public class BizMain implements IMainBiz {
     }
 
     @Override
-    public void getangel(MainEntepLisenter mainEntepLisenter) {
+    public void getangel(MainBebeLisenter mainEntepLisenter) {
 
     }
 
 
     @Override
-    public void getchina(final MainEntepLisenter mainEntepLisenter) {
+    public void getchina(final MainChinaLisenter mainEntepLisenter) {
         HashMap<String, String> stringStringHashMap = new HashMap<>();
         stringStringHashMap.put(index_data, china);
-        Type type = new TypeToken<BaseBean<ArrayList<ChinaBean>>>() {
+        Type type = new TypeToken<BaseBean<ResultChinaBean<ArrayList<ChinaBean>>>>() {
         }.getType();
         OKhttptUtils.httpPost(NetUrl.baseurl, stringStringHashMap,
-                new DataCallBack<BaseBean<ArrayList<ChinaBean>>>(type) {
-
+                new DataCallBack<BaseBean<ResultChinaBean<ArrayList<ChinaBean>>>>(type) {
                     @Override
-                    public void onSuccess(BaseBean<ArrayList<ChinaBean>> data) {
+                    public void onSuccess(BaseBean<ResultChinaBean<ArrayList<ChinaBean>>> data) {
                         List<ChinaBean> result = null;
                         try {
                             result = data.getResult().getChina();
@@ -130,7 +124,7 @@ public class BizMain implements IMainBiz {
                         if (result == null)
                             mainEntepLisenter.onFailure("错误信息");
                         else
-                            mainEntepLisenter.onSuccess1(result);
+                            mainEntepLisenter.onSuccess(result);
                     }
 
                     @Override

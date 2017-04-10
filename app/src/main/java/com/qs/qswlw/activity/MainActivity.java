@@ -11,9 +11,12 @@ import android.widget.TextView;
 
 import com.qs.qswlw.R;
 import com.qs.qswlw.activity.PersonalCenter.SettingActivity;
+import com.qs.qswlw.adapter.ChinaAdapter;
+import com.qs.qswlw.adapter.EntepAdapter;
 import com.qs.qswlw.adapter.MytestAdapter;
 import com.qs.qswlw.okhttp.Iview.IMainView;
 import com.qs.qswlw.okhttp.Moudle.ChinaBean;
+import com.qs.qswlw.okhttp.Moudle.EntrepBaen;
 import com.qs.qswlw.okhttp.Presenter.MainPresenter;
 import com.qs.qswlw.view.imageswitchview.Image3DSwitchView;
 import com.qs.qswlw.view.imageswitchview.Image3DView;
@@ -30,6 +33,8 @@ public class MainActivity extends BaseActivity implements IMainView {
             "test1", "test2", "test3",
             "test4"};
     ArrayList<ChinaBean> listChina;
+    List<ChinaBean> chlist;
+
     @Override
     public void setTitle(String title) {
 
@@ -41,10 +46,16 @@ public class MainActivity extends BaseActivity implements IMainView {
     }
 
     @Override
-    public void setListdata2(List list) {
-        listtest.clear();
-        listtest.addAll(list);
-        myDataAdapter.notifyDataSetChanged();
+    public void setListdata2(EntrepBaen entrepBaen) {
+        enlist.clear();
+        enlist.add(entrepBaen.getModel1() + "");
+        enlist.add(entrepBaen.getModel2() + "");
+        enlist.add(entrepBaen.getCount() + "");
+        enlist.add(entrepBaen.getShop() + "");
+        enlist.add(entrepBaen.getMoney() + "");
+        enlist.add(entrepBaen.getModel1() + "");
+        entepAdapter.notifyDataSetChanged();
+
     }
 
     @Override
@@ -53,15 +64,17 @@ public class MainActivity extends BaseActivity implements IMainView {
     }
 
     @Override
-    public void setListdata4(List list) {
+    public void setListdata4(List<ChinaBean> list) {
         listtest.clear();
         listtest.addAll(list);
         myDataAdapter.notifyDataSetChanged();
     }
 
     @Override
-    public void setListdata5(List list) {
-
+    public void setListdata5(List<ChinaBean> list) {
+        chlist.clear();
+        chlist.addAll(list);
+        chinaAdapter.notifyDataSetChanged();
     }
 
     @Override
@@ -80,8 +93,11 @@ public class MainActivity extends BaseActivity implements IMainView {
         return R.layout.activity_main;
     }
 
-    ArrayList listtest;
+    ArrayList<ChinaBean> listtest;
+    ArrayList<String> enlist;
     MytestAdapter myDataAdapter;
+    EntepAdapter entepAdapter;
+    ChinaAdapter chinaAdapter;
 
     @Override
     public void initfindviewByid() {
@@ -116,13 +132,18 @@ public class MainActivity extends BaseActivity implements IMainView {
          */
         listtest = new ArrayList<>();
 
-
-
         list1.setAdapter(myDataAdapter);
         list2.setAdapter(new MyDataAdapter());
-        list3.setAdapter(new MyDataAdapter());
+        enlist = new ArrayList<>();
+        entepAdapter = new EntepAdapter(this, enlist);
+        list3.setAdapter(entepAdapter);
+
+
         list4.setAdapter(new MyDataAdapter());
-        list5.setAdapter(myDataAdapter);
+        chlist = new ArrayList<>();
+        chinaAdapter = new ChinaAdapter(this, chlist);
+        list5.setAdapter(chinaAdapter);
+
         list6.setAdapter(new MyDataAdapter());
 
         TextView textView22 = new TextView(this);
@@ -162,8 +183,6 @@ public class MainActivity extends BaseActivity implements IMainView {
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.iv_main_avater:
-
-                mainPresenter.getEntrep();
                 startActivity(new Intent(MainActivity.this, SettingActivity.class));
                 startActivity(new Intent(MainActivity.this, SettingActivity.class));
                 break;

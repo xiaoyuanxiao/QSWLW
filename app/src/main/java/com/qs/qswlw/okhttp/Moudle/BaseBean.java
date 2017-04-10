@@ -14,7 +14,7 @@ public class BaseBean<T> {
      */
 
     private String msg;
-    private ResultBean<T> result;
+    private T result;
     private int status;
 
     public String getMsg() {
@@ -25,11 +25,11 @@ public class BaseBean<T> {
         this.msg = msg;
     }
 
-    public ResultBean<T> getResult() {
+    public T getResult() {
         return result;
     }
 
-    public void setResult(ResultBean<T> result) {
+    public void setResult(T result) {
         this.result = result;
     }
 
