@@ -30,6 +30,7 @@ public class ConsumerSilverBeanActivity extends BaseInfoActivity {
     public void initData() {
         super.initData();
         tv_titlebar_center.setText("消费银豆");
+       // rl_titlebar.setBackgroundColor(Color.parseColor("#f34649"));
 
     }
 
