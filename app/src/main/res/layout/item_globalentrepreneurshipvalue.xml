@@ -4,93 +4,99 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
     <RelativeLayout
+        android:padding="4dp"
+        android:background="@color/entrep"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/tv_entrep"
             android:drawableLeft="@mipmap/xinxin"
             android:text="消费天使20%系列" />
         <TextView
             android:id="@+id/tv_twentypercent_congtv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/tv_entrep"
             android:layout_alignParentRight="true"
             android:gravity="right"
             android:text="11111万" />
     </RelativeLayout>
     <RelativeLayout
+        android:layout_marginTop="3dp"
+        android:padding="4dp"
+        android:background="@color/entrep"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/tv_entrep"
             android:drawableLeft="@mipmap/xinxin"
             android:text="商家20%系列" />
         <TextView
             android:id="@+id/tv_twentypercent_busgtv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/tv_entrep"
             android:layout_alignParentRight="true"
             android:gravity="right"
             android:text="11111万" />
     </RelativeLayout>
     <RelativeLayout
+        android:layout_marginTop="3dp"
+        android:padding="4dp"
+        android:background="@color/entrep"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/tv_entrep"
             android:text="全联盟昨日消费" />
         <TextView
+            android:background="@color/entrep"
             android:id="@+id/tv_yesterdayConsumption_gtv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/tv_entrep"
             android:layout_alignParentRight="true"
             android:gravity="right"
             android:text="11111万" />
     </RelativeLayout>
     <RelativeLayout
+        android:layout_marginTop="3dp"
+        android:padding="4dp"
+        android:background="@color/entrep"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/tv_entrep"
             android:text="全联盟创业总额" />
         <TextView
             android:id="@+id/tv_totalEntrepreneurship_gtv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/tv_entrep"
             android:layout_alignParentRight="true"
             android:gravity="right"
             android:text="11111万" />
     </RelativeLayout>
     <RelativeLayout
+        android:layout_marginTop="3dp"
+        android:padding="4dp"
+        android:background="@color/entrep"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/tv_entrep"
             android:text="全联盟创业总人数" />
         <TextView
             android:id="@+id/tv_totalnumber_gtv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/tv_entrep"
             android:layout_alignParentRight="true"
             android:gravity="right"
             android:text="11111万" />
     </RelativeLayout>
     <RelativeLayout
+        android:layout_marginTop="3dp"
+        android:padding="4dp"
+        android:background="@color/entrep"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/tv_entrep"
             android:text="联盟商家" />
         <TextView
             android:id="@+id/tv_llianceMerchant_gtv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/tv_entrep"
             android:layout_alignParentRight="true"
             android:gravity="right"
             android:text="11111万" />

@@ -67,7 +67,7 @@ public class MainActivity extends BaseActivity implements IMainView {
         enlist.add(entrepBaen.getShop() + "");
         enlist.add(entrepBaen.getMoney() + "");
         enlist.add(entrepBaen.getModel1() + "");
-        entepAdapter.notifyDataSetChanged();
+        entrepAdapter.notifyDataSetChanged();
 
     }
 
@@ -100,8 +100,6 @@ public class MainActivity extends BaseActivity implements IMainView {
     }
 
     ImageView iv_main_avater;
-    private View view;
-    private TextView tv_item_home_head;
     // 小雨是傻逼
     MainPresenter mainPresenter = new MainPresenter(this);
 
@@ -113,7 +111,7 @@ public class MainActivity extends BaseActivity implements IMainView {
     ArrayList<ChinaBean> listtest;
     ArrayList<String> enlist;
     MytestAdapter myDataAdapter;
-    EntepAdapter entepAdapter;
+    EntepAdapter entrepAdapter;
     ChinaAdapter chinaAdapter;
     UnionAdapter unionAdapter;
     BenefitAdapter benefitAdapter;
@@ -132,17 +130,6 @@ public class MainActivity extends BaseActivity implements IMainView {
         iv_main_avater = (ImageView) findViewById(R.id.iv_main_avater);
         imageSwitchView.setCurrentImage(1);
 
-        /**
-         * 全联盟让利金额排行榜
-         */
-        view = LayoutInflater.from(this).inflate(R.layout.item_home_head, null);
-        tv_item_home_head = (TextView) view.findViewById(R.id.tv_item_home_head);
-        tv_item_home_head.setText("全联盟让利金额排行榜");
-        benefitList.addHeaderView(view);
-        TextView textView2 = new TextView(this);
-        textView2.setText("查看全部排名");
-        benefitList.addFooterView(textView2);
-
         benefitList.setBColor(Color.parseColor("#b92340"));
         unionList.setBColor(Color.parseColor("#de2128"));
         entrepList.setBColor(Color.parseColor("#f3c68b"));
@@ -152,72 +139,95 @@ public class MainActivity extends BaseActivity implements IMainView {
 
 
         /**
-         * 全联盟让利金额排行榜内容填充
+         * 全联盟让利金额排行榜内容填充、头部、尾部
          */
+//        belist = new ArrayList<>();
+//        benefitAdapter = new BenefitAdapter(this,belist);
+//        benefitList.setAdapter(benefitAdapter);
+        View benefitHeadview = LayoutInflater.from(this).inflate(R.layout.benefit_homepage_head, null);
+        TextView benefit_homepage_title = (TextView) benefitHeadview.findViewById(R.id.benefit_homepage_title);
         belist = new ArrayList<>();
-        benefitAdapter = new BenefitAdapter(this,belist);
+        benefitAdapter = new BenefitAdapter(this, belist);
+        benefit_homepage_title.setText("全联盟让利金额排行榜");
         benefitList.setAdapter(benefitAdapter);
+        benefitList.addHeaderView(benefitHeadview);
 
         /**
          * 联盟商家排行榜
          */
+//        unlist = new ArrayList<>();
+//        unionAdapter = new UnionAdapter(this,unlist);
+//        unionList.setAdapter(unionAdapter);
+        View unionHeadview = LayoutInflater.from(this).inflate(R.layout.union_homepage_head, null);
+        View unionFootview =  LayoutInflater.from(this).inflate(R.layout.union_homepage_foot, null);
         unlist = new ArrayList<>();
-        unionAdapter = new UnionAdapter(this,unlist);
+        unionAdapter = new UnionAdapter(this, unlist);
         unionList.setAdapter(unionAdapter);
-
+        unionList.addHeaderView(unionHeadview);
+        unionList.addFooterView(unionFootview);
         /**
          * 全联盟创业日值内容填充
          */
+//        enlist = new ArrayList<>();
+//        entrepAdapter = new EntepAdapter(this, enlist);
+//        entrepList.setAdapter(entrepAdapter);
+//        enlist = new ArrayList<>();
+//        entepAdapter = new EntepAdapter(this, enlist);
+//        tv_homepage_title.setText("全联盟创业日值");
+//        entrepList.setAdapter(chinaAdapter);
+//        entrepList.addHeaderView(headview);
+//        entrepList.addFooterView(footview);
+
+        View entrepHeadview = LayoutInflater.from(this).inflate(R.layout.entrep_homepage_head, null);
         enlist = new ArrayList<>();
-        entepAdapter = new EntepAdapter(this, enlist);
-        entrepList.setAdapter(entepAdapter);
+        entrepAdapter = new EntepAdapter(this, enlist);
+        entrepList.setAdapter(entrepAdapter);
+        entrepList.addHeaderView(entrepHeadview);
 
         /**
          * 创业天使创业排名榜内容填充
          */
+//      anlist   = new ArrayList<>();
+//        angelAdapter = new AngelAdapter(this, anlist);
+//        angelList.setAdapter(angelAdapter);
+
+        View angelHeadview = LayoutInflater.from(this).inflate(R.layout.angel_homepage_head, null);
         anlist = new ArrayList<>();
-        angelAdapter = new AngelAdapter(this,anlist);
+        angelAdapter = new AngelAdapter(this, anlist);
         angelList.setAdapter(angelAdapter);
+        angelList.addHeaderView(angelHeadview);
+        angelList.addFooterView(unionFootview);
+
 
         /**
          * 中国好产品排行榜内容填充
          */
+//        chlist = new ArrayList<>();
+//        chinaAdapter = new ChinaAdapter(this, chlist);
+//        chinaList.setAdapter(chinaAdapter);
+        View chinaHeadview = LayoutInflater.from(this).inflate(R.layout.china_homepage_head, null);
         chlist = new ArrayList<>();
         chinaAdapter = new ChinaAdapter(this, chlist);
         chinaList.setAdapter(chinaAdapter);
-
+        chinaList.addHeaderView(chinaHeadview);
+        chinaList.addFooterView(unionFootview);
 
         /**
          * 拼手气促销抽奖名单内容填充
          */
+//        lulist = new ArrayList<>();
+//        luckAdapter = new LuckAdapter(this, lulist);
+//        luckList.setAdapter(luckAdapter);
+
+
+
+        View luckHeadview = LayoutInflater.from(this).inflate(R.layout.luck_homepage_head, null);
         lulist = new ArrayList<>();
         luckAdapter = new LuckAdapter(this, lulist);
         luckList.setAdapter(luckAdapter);
+        luckList.addHeaderView(luckHeadview);
+        luckList.addFooterView(unionFootview);
 
-
-
-        TextView textViewUnion = new TextView(this);
-        textViewUnion.setText("联盟商家排行榜");
-        unionList.addHeaderView(textViewUnion);
-
-
-        TextView textViewEntrep = new TextView(this);
-        textViewEntrep.setText("全联盟创业日值");
-        entrepList.addHeaderView(textViewEntrep);
-
-        TextView textViewAngel = new TextView(this);
-        textViewAngel.setText("创业天使创业排名榜");
-        angelList.addHeaderView(textViewAngel);
-
-
-        TextView textViewChina = new TextView(this);
-        textViewChina.setText("中国好产品排行榜");
-        chinaList.addHeaderView(textViewChina);
-
-
-        TextView textViewLuck = new TextView(this);
-        textViewLuck.setText("拼手气促销抽奖名单");
-        luckList.addHeaderView(textViewLuck);
         mainPresenter.getdata();
 
 

@@ -71,4 +71,10 @@
         <item name="android:gravity">center_vertical</item>
     </style>
 
+    <style name="tv_entrep">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">10sp</item>
+        <item name="android:textColor">@color/red</item>
+    </style>
 </resources>

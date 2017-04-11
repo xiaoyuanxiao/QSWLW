@@ -8,6 +8,10 @@
         android:id="@+id/tv_item_home_content_left"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textSize="10sp"
+        android:maxEms="8"
+        android:singleLine="true"
+        android:ellipsize="end"
         android:text="前海公司" />
 
     <View
@@ -19,5 +23,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="right"
+        android:textSize="10sp"
         android:text="11111万" />
 </LinearLayout>
