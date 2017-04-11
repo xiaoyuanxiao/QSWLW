@@ -1,6 +1,6 @@
 package com.qs.qswlw.okhttp.oncallback;
 
-import com.qs.qswlw.okhttp.Moudle.ChinaBean;
+import com.qs.qswlw.okhttp.Moudle.AngelBean;
 
 import java.util.List;
 
@@ -9,5 +9,5 @@ import java.util.List;
  */
 
 public interface MainAngelLisenter extends BaseOnlistener {
-    void onSuccess(List<ChinaBean> e);
+    void onSuccess(List<AngelBean> e);
 }

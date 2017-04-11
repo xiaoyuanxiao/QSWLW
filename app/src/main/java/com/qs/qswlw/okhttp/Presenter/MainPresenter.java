@@ -2,12 +2,18 @@ package com.qs.qswlw.okhttp.Presenter;
 
 import com.qs.qswlw.okhttp.Factory.IBizFactory;
 import com.qs.qswlw.okhttp.Iview.IMainView;
+import com.qs.qswlw.okhttp.Moudle.AngelBean;
+import com.qs.qswlw.okhttp.Moudle.BenefitBean;
 import com.qs.qswlw.okhttp.Moudle.ChinaBean;
 import com.qs.qswlw.okhttp.Moudle.EntrepBaen;
 import com.qs.qswlw.okhttp.Moudle.IMainBiz;
+import com.qs.qswlw.okhttp.Moudle.LuckBean;
 import com.qs.qswlw.okhttp.Moudle.UnionBean;
+import com.qs.qswlw.okhttp.oncallback.MainAngelLisenter;
+import com.qs.qswlw.okhttp.oncallback.MainBenefitLisenter;
 import com.qs.qswlw.okhttp.oncallback.MainChinaLisenter;
 import com.qs.qswlw.okhttp.oncallback.MainEntepLisenter;
+import com.qs.qswlw.okhttp.oncallback.MainLuckLisenter;
 import com.qs.qswlw.okhttp.oncallback.MainUnionLisenter;
 
 import java.util.List;
@@ -40,6 +46,7 @@ public class MainPresenter {
     public void getAlert() {
 
     }
+
     public void getUnion() {
         iMainBiz.getunion(new MainUnionLisenter() {
             @Override
@@ -103,11 +110,60 @@ public class MainPresenter {
 
 
     public void getAngel() {
+        iMainBiz.getangel(new MainAngelLisenter() {
+            @Override
+            public void onSuccess(final List<AngelBean> e) {
+                iMainView.runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        iMainView.setAngelList(e);
+                    }
+                });
+            }
+
+            @Override
+            public void onFailure(String code) {
+
+            }
+        });
     }
 
     public void getLuck() {
+      iMainBiz.getluck(new MainLuckLisenter(){
+          @Override
+          public void onSuccess(final List<LuckBean> e) {
+
+              iMainView.runOnUiThread(new Runnable() {
+                  @Override
+                  public void run() {
+                      iMainView.setLuckList(e);
+                  }
+              });
+          }
+          @Override
+          public void onFailure(String code) {
+
+          }
+      });
     }
 
     public void getBenefit() {
+        iMainBiz.getbenefit(new MainBenefitLisenter(){
+            @Override
+            public void onSuccess(final List<BenefitBean> e) {
+                iMainView.runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        iMainView.setBenefitList(e);
+                    }
+                });
+            }
+
+            @Override
+            public void onFailure(String code) {
+
+            }
+
+        });
     }
 }

@@ -1,8 +1,10 @@
 package com.qs.qswlw.okhttp.Moudle;
 
 import com.qs.qswlw.okhttp.oncallback.MainAngelLisenter;
+import com.qs.qswlw.okhttp.oncallback.MainBenefitLisenter;
 import com.qs.qswlw.okhttp.oncallback.MainChinaLisenter;
 import com.qs.qswlw.okhttp.oncallback.MainEntepLisenter;
+import com.qs.qswlw.okhttp.oncallback.MainLuckLisenter;
 import com.qs.qswlw.okhttp.oncallback.MainUnionLisenter;
 
 /**
@@ -22,8 +24,8 @@ public interface IMainBiz {
 
     void getchina(MainChinaLisenter mainChinaLisenter);
 
-    void getluck();
+    void getluck(MainLuckLisenter mainLuckListener);
 
-    void getbenefit();
+    void getbenefit(MainBenefitLisenter mainBenefitListener);
 
 }

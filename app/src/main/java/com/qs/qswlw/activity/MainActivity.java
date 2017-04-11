@@ -11,13 +11,19 @@ import android.widget.TextView;
 
 import com.qs.qswlw.R;
 import com.qs.qswlw.activity.PersonalCenter.SettingActivity;
+import com.qs.qswlw.adapter.AngelAdapter;
+import com.qs.qswlw.adapter.BenefitAdapter;
 import com.qs.qswlw.adapter.ChinaAdapter;
 import com.qs.qswlw.adapter.EntepAdapter;
+import com.qs.qswlw.adapter.LuckAdapter;
 import com.qs.qswlw.adapter.MytestAdapter;
 import com.qs.qswlw.adapter.UnionAdapter;
 import com.qs.qswlw.okhttp.Iview.IMainView;
+import com.qs.qswlw.okhttp.Moudle.AngelBean;
+import com.qs.qswlw.okhttp.Moudle.BenefitBean;
 import com.qs.qswlw.okhttp.Moudle.ChinaBean;
 import com.qs.qswlw.okhttp.Moudle.EntrepBaen;
+import com.qs.qswlw.okhttp.Moudle.LuckBean;
 import com.qs.qswlw.okhttp.Moudle.UnionBean;
 import com.qs.qswlw.okhttp.Presenter.MainPresenter;
 import com.qs.qswlw.view.imageswitchview.Image3DSwitchView;
@@ -36,6 +42,9 @@ public class MainActivity extends BaseActivity implements IMainView {
             "test4"};
     List<ChinaBean> chlist;
     List<UnionBean> unlist;
+    List<BenefitBean> belist;
+    List<AngelBean> anlist;
+    List<LuckBean> lulist;
 
     @Override
     public void setTitle(String title) {
@@ -64,7 +73,9 @@ public class MainActivity extends BaseActivity implements IMainView {
 
     @Override
     public void setAngelList(List list) {
-
+        anlist.clear();
+        anlist.addAll(list);
+        angelAdapter.notifyDataSetChanged();
     }
 
     @Override
@@ -75,15 +86,17 @@ public class MainActivity extends BaseActivity implements IMainView {
     }
 
     @Override
-    public void setLuckList(List<ChinaBean> list) {
-        chlist.clear();
-        chlist.addAll(list);
-        chinaAdapter.notifyDataSetChanged();
+    public void setLuckList(List<LuckBean> list) {
+        lulist.clear();
+        lulist.addAll(list);
+        luckAdapter.notifyDataSetChanged();
     }
 
     @Override
     public void setBenefitList(List list) {
-
+        belist.clear();
+        belist.addAll(list);
+        benefitAdapter.notifyDataSetChanged();
     }
 
     ImageView iv_main_avater;
@@ -103,6 +116,9 @@ public class MainActivity extends BaseActivity implements IMainView {
     EntepAdapter entepAdapter;
     ChinaAdapter chinaAdapter;
     UnionAdapter unionAdapter;
+    BenefitAdapter benefitAdapter;
+    AngelAdapter angelAdapter;
+    LuckAdapter luckAdapter;
 
     @Override
     public void initfindviewByid() {
@@ -138,12 +154,10 @@ public class MainActivity extends BaseActivity implements IMainView {
         /**
          * 全联盟让利金额排行榜内容填充
          */
-//        listChina = new ArrayList<>();
-//        myDataAdapter = new MytestAdapter(this, listChina);
-        /**
-         * 测试
-         */
-        listtest = new ArrayList<>();
+        belist = new ArrayList<>();
+        benefitAdapter = new BenefitAdapter(this,belist);
+        benefitList.setAdapter(benefitAdapter);
+
         /**
          * 联盟商家排行榜
          */
@@ -161,29 +175,26 @@ public class MainActivity extends BaseActivity implements IMainView {
         /**
          * 创业天使创业排名榜内容填充
          */
+        anlist = new ArrayList<>();
+        angelAdapter = new AngelAdapter(this,anlist);
+        angelList.setAdapter(angelAdapter);
 
         /**
          * 中国好产品排行榜内容填充
          */
         chlist = new ArrayList<>();
         chinaAdapter = new ChinaAdapter(this, chlist);
-        chinaList.setAdapter(new MyDataAdapter());
+        chinaList.setAdapter(chinaAdapter);
 
 
         /**
          * 拼手气促销抽奖名单内容填充
          */
+        lulist = new ArrayList<>();
+        luckAdapter = new LuckAdapter(this, lulist);
+        luckList.setAdapter(luckAdapter);
 
 
-
-        angelList.setAdapter(entepAdapter);
-
-
-
-
-        luckList.setAdapter(chinaAdapter);
-
-        benefitList.setAdapter(new MyDataAdapter());
 
         TextView textViewUnion = new TextView(this);
         textViewUnion.setText("联盟商家排行榜");
