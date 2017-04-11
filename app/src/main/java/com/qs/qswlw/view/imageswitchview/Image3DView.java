@@ -274,6 +274,30 @@ public class Image3DView extends ListView {
     }
 
     @Override
+    public void draw(Canvas canvas) {
+        computeRotateData();
+        mCamera.save();
+        mCamera.translate(0, 0, mDeep);
+        mCamera.rotateY(mRotateDegree);
+        mCamera.getMatrix(mMaxtrix);
+        mCamera.restore();
+        mMaxtrix.preTranslate(-mDx, -getHeight() / 2);
+        mMaxtrix.postTranslate(mDx, getHeight() / 2);
+        if (mBitmap == null) {
+            mBitmap = Bitmap.createBitmap(getWidth() == 0 ? 100 : getWidth(), getHeight() == 0 ? 100 : getHeight(),
+                    Bitmap.Config.ARGB_8888);
+            mBitmap.eraseColor(color);
+        }
+        if (mBitmap != null && mBitmap.getWidth() != getWidth() && mBitmap.getHeight() != getHeight()) {
+            mBitmap = ThumbnailUtils.extractThumbnail(mBitmap, getWidth() == 0 ? 100 : getWidth(), getHeight() == 0 ? 100 : getHeight());
+        }
+        canvas.drawBitmap(mBitmap, mMaxtrix, new Paint());
+        canvas.concat(mMaxtrix);
+        super.draw(canvas);
+
+    }
+
+   /* @Override
     protected void dispatchDraw(Canvas canvas) {
         if (isImageVisible()) {
             computeRotateData();
@@ -299,7 +323,7 @@ public class Image3DView extends ListView {
             }
 
         }
-    }
+    }*/
 
     public void setmBitmap(Bitmap bitmap) {
         this.mBitmap = bitmap;

@@ -1,4 +1,5 @@
-<?xml version="1.0" encoding="utf-8"?><!--
+<?xml version="1.0" encoding="utf-8"?>
+<!--
   ~
   ~  MIT License
   ~
@@ -25,21 +26,5 @@
   -->
 
 <resources>
-    <declare-styleable name="UltraViewPager">
-        <attr name="upv_autoscroll" format="integer" />
-        <attr name="upv_infiniteloop" format="boolean" />
-        <attr name="upv_ratio" format="float" />
-        <attr name="upv_scrollmode" format="enum">
-            <enum name="horizontal" value="0" />
-            <enum name="vertical" value="1" />
-        </attr>
-        <attr name="upv_disablescroll" format="enum">
-            <enum name="none" value="0" />
-            <enum name="backward" value="1" />
-            <enum name="forward" value="2" />
-        </attr>
-        <attr name="upv_multiscreen" format="boolean" />
-        <attr name="upv_automeasure" format="boolean" />
-        <attr name="upv_itemratio" format="float" />
-    </declare-styleable>
+    <item name="ultraviewpager_page_container" type="id" />
 </resources>

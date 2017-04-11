@@ -17,7 +17,6 @@ public class EntepAdapter extends BaseListAdapter<String> {
     public EntepAdapter(Context context, List<String> data) {
         super(context, data);
     }
-
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
         view = View.inflate(context, R.layout.item_globalentrepreneurshipvalue, null);
