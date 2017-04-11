@@ -43,6 +43,12 @@ public class MainActivity extends BaseActivity implements IMainView {
     List<BenefitBean> belist;
     List<AngelBean> anlist;
     List<LuckBean> lulist;
+    private Image3DView benefitList;
+    private Image3DView unionList;
+    private Image3DView entrepList;
+    private Image3DView angelList;
+    private Image3DView chinaList;
+    private Image3DView luckList;
 
     @Override
     public void setTitle(String title) {
@@ -119,12 +125,12 @@ public class MainActivity extends BaseActivity implements IMainView {
     @Override
     public void initfindviewByid() {
         imageSwitchView = (Image3DSwitchView) findViewById(R.id.image_switch_view);
-        Image3DView benefitList = (Image3DView) findViewById(R.id.benefitList);
-        Image3DView unionList = (Image3DView) findViewById(R.id.unionList);
-        Image3DView entrepList = (Image3DView) findViewById(R.id.entrepList);
-        Image3DView angelList = (Image3DView) findViewById(R.id.angelList);
-        Image3DView chinaList = (Image3DView) findViewById(R.id.chinaList);
-        Image3DView luckList = (Image3DView) findViewById(R.id.luckList);
+        benefitList = (Image3DView) findViewById(R.id.benefitList);
+        unionList = (Image3DView) findViewById(R.id.unionList);
+        entrepList = (Image3DView) findViewById(R.id.entrepList);
+        angelList = (Image3DView) findViewById(R.id.angelList);
+        chinaList = (Image3DView) findViewById(R.id.chinaList);
+        luckList = (Image3DView) findViewById(R.id.luckList);
         iv_main_avater = (ImageView) findViewById(R.id.iv_main_avater);
         imageSwitchView.setCurrentImage(1);
 
@@ -136,6 +142,12 @@ public class MainActivity extends BaseActivity implements IMainView {
         luckList.setBColor(Color.parseColor("#cd2244"));
 
 
+
+    }
+
+    @Override
+    public void initData() {
+        super.initData();
         /**
          * 全联盟让利金额排行榜内容填充、头部、尾部
          */
@@ -218,10 +230,7 @@ public class MainActivity extends BaseActivity implements IMainView {
         luckList.addFooterView(unionFootview);
 
         mainPresenter.getdata();
-
-
     }
-
 
     @Override
     public void setOnclick() {
