@@ -5,8 +5,10 @@ import com.qs.qswlw.okhttp.Iview.IMainView;
 import com.qs.qswlw.okhttp.Moudle.ChinaBean;
 import com.qs.qswlw.okhttp.Moudle.EntrepBaen;
 import com.qs.qswlw.okhttp.Moudle.IMainBiz;
+import com.qs.qswlw.okhttp.Moudle.UnionBean;
 import com.qs.qswlw.okhttp.oncallback.MainChinaLisenter;
 import com.qs.qswlw.okhttp.oncallback.MainEntepLisenter;
+import com.qs.qswlw.okhttp.oncallback.MainUnionLisenter;
 
 import java.util.List;
 
@@ -39,6 +41,22 @@ public class MainPresenter {
 
     }
     public void getUnion() {
+        iMainBiz.getunion(new MainUnionLisenter() {
+            @Override
+            public void onSuccess(final List<UnionBean> e) {
+                iMainView.runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                       iMainView.setUnionList(e);
+                    }
+                });
+            }
+
+            @Override
+            public void onFailure(String code) {
+
+            }
+        });
     }
 
     public void getEntrep() {

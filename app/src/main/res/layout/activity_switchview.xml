@@ -8,12 +8,17 @@
         android:layout_height="match_parent" >
 
         <com.qs.qswlw.view.imageswitchview.Image3DView
+            android:id="@+id/benefitList"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="fitXY"
+            android:divider="@null" />
+        <com.qs.qswlw.view.imageswitchview.Image3DView
             android:id="@+id/unionList"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scaleType="fitXY"
             android:divider="@null" />
-
         <com.qs.qswlw.view.imageswitchview.Image3DView
             android:id="@+id/entrepList"
             android:layout_width="match_parent"
@@ -37,13 +42,6 @@
 
         <com.qs.qswlw.view.imageswitchview.Image3DView
             android:id="@+id/luckList"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:scaleType="fitXY"
-            android:divider="@null"/>
-
-        <com.qs.qswlw.view.imageswitchview.Image3DView
-            android:id="@+id/benefitList"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scaleType="fitXY"

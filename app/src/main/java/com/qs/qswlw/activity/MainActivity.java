@@ -102,12 +102,12 @@ public class MainActivity extends BaseActivity implements IMainView {
     @Override
     public void initfindviewByid() {
         imageSwitchView = (Image3DSwitchView) findViewById(R.id.image_switch_view);
+        Image3DView benefitList = (Image3DView) findViewById(R.id.benefitList);
         Image3DView unionList = (Image3DView) findViewById(R.id.unionList);
         Image3DView entrepList = (Image3DView) findViewById(R.id.entrepList);
         Image3DView angelList = (Image3DView) findViewById(R.id.angelList);
         Image3DView chinaList = (Image3DView) findViewById(R.id.chinaList);
         Image3DView luckList = (Image3DView) findViewById(R.id.luckList);
-        Image3DView benefitList = (Image3DView) findViewById(R.id.benefitList);
         iv_main_avater = (ImageView) findViewById(R.id.iv_main_avater);
         imageSwitchView.setCurrentImage(1);
 
@@ -117,17 +117,17 @@ public class MainActivity extends BaseActivity implements IMainView {
         view = LayoutInflater.from(this).inflate(R.layout.item_home_head, null);
         tv_item_home_head = (TextView) view.findViewById(R.id.tv_item_home_head);
         tv_item_home_head.setText("全联盟让利金额排行榜");
-        unionList.addHeaderView(view);
+        benefitList.addHeaderView(view);
         TextView textView2 = new TextView(this);
         textView2.setText("查看全部排名");
-        unionList.addFooterView(textView2);
+        benefitList.addFooterView(textView2);
 
+        benefitList.setBColor(Color.parseColor("#b82140"));
         unionList.setBColor(Color.parseColor("#b82140"));
         entrepList.setBColor(Color.parseColor("#de2127"));
         angelList.setBColor(Color.parseColor("#f3c68b"));
         chinaList.setBColor(Color.parseColor("#b82141"));
         luckList.setBColor(Color.parseColor("#f2989a"));
-        benefitList.setBColor(Color.parseColor("#cd2244"));
 
 
         /**
@@ -178,26 +178,26 @@ public class MainActivity extends BaseActivity implements IMainView {
 
         TextView textViewUnion = new TextView(this);
         textViewUnion.setText("联盟商家排行榜");
-        entrepList.addHeaderView(textViewUnion);
+        unionList.addHeaderView(textViewUnion);
 
 
         TextView textViewEntrep = new TextView(this);
         textViewEntrep.setText("全联盟创业日值");
-        angelList.addHeaderView(textViewEntrep);
+        entrepList.addHeaderView(textViewEntrep);
 
         TextView textViewAngel = new TextView(this);
         textViewAngel.setText("创业天使创业排名榜");
-        chinaList.addHeaderView(textViewAngel);
+        angelList.addHeaderView(textViewAngel);
 
 
         TextView textViewChina = new TextView(this);
         textViewChina.setText("中国好产品排行榜");
-        luckList.addHeaderView(textViewChina);
+        chinaList.addHeaderView(textViewChina);
 
 
         TextView textViewLuck = new TextView(this);
         textViewLuck.setText("拼手气促销抽奖名单");
-        benefitList.addHeaderView(textViewLuck);
+        luckList.addHeaderView(textViewLuck);
         mainPresenter.getdata();
 
 
