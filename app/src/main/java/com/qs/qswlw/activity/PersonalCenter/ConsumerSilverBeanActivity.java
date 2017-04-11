@@ -29,7 +29,7 @@ public class ConsumerSilverBeanActivity extends BaseInfoActivity {
     @Override
     public void initData() {
         super.initData();
-        tv_titlebar_center.setText("刘花花傻逼");
+        tv_titlebar_center.setText("消费银豆");
 
     }
 

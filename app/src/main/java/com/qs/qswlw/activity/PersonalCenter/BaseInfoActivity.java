@@ -44,7 +44,11 @@ public abstract class BaseInfoActivity extends BaseActivity {
 
     @Override
     public void onClick(View v) {
-
+        switch (v.getId()){
+            case R.id.iv_titlebar:
+                finish();
+                break;
+        }
 
     }
 
