@@ -14,9 +14,11 @@ import com.qs.qswlw.activity.PersonalCenter.SettingActivity;
 import com.qs.qswlw.adapter.ChinaAdapter;
 import com.qs.qswlw.adapter.EntepAdapter;
 import com.qs.qswlw.adapter.MytestAdapter;
+import com.qs.qswlw.adapter.UnionAdapter;
 import com.qs.qswlw.okhttp.Iview.IMainView;
 import com.qs.qswlw.okhttp.Moudle.ChinaBean;
 import com.qs.qswlw.okhttp.Moudle.EntrepBaen;
+import com.qs.qswlw.okhttp.Moudle.UnionBean;
 import com.qs.qswlw.okhttp.Presenter.MainPresenter;
 import com.qs.qswlw.view.imageswitchview.Image3DSwitchView;
 import com.qs.qswlw.view.imageswitchview.Image3DView;
@@ -32,8 +34,8 @@ public class MainActivity extends BaseActivity implements IMainView {
     private String[] listViewData = new String[]{
             "test1", "test2", "test3",
             "test4"};
-    ArrayList<ChinaBean> listChina;
     List<ChinaBean> chlist;
+    List<UnionBean> unlist;
 
     @Override
     public void setTitle(String title) {
@@ -41,8 +43,10 @@ public class MainActivity extends BaseActivity implements IMainView {
     }
 
     @Override
-    public void setUnionList(List list) {
-
+    public void setUnionList(List<UnionBean> list) {
+        unlist.clear();
+        unlist.addAll(list);
+        unionAdapter.notifyDataSetChanged();
     }
 
     @Override
@@ -98,6 +102,7 @@ public class MainActivity extends BaseActivity implements IMainView {
     MytestAdapter myDataAdapter;
     EntepAdapter entepAdapter;
     ChinaAdapter chinaAdapter;
+    UnionAdapter unionAdapter;
 
     @Override
     public void initfindviewByid() {
@@ -122,23 +127,30 @@ public class MainActivity extends BaseActivity implements IMainView {
         textView2.setText("查看全部排名");
         benefitList.addFooterView(textView2);
 
-        benefitList.setBColor(Color.parseColor("#b82140"));
-        unionList.setBColor(Color.parseColor("#b82140"));
-        entrepList.setBColor(Color.parseColor("#de2127"));
-        angelList.setBColor(Color.parseColor("#f3c68b"));
-        chinaList.setBColor(Color.parseColor("#b82141"));
-        luckList.setBColor(Color.parseColor("#f2989a"));
+        benefitList.setBColor(Color.parseColor("#b92340"));
+        unionList.setBColor(Color.parseColor("#de2128"));
+        entrepList.setBColor(Color.parseColor("#f3c68b"));
+        angelList.setBColor(Color.parseColor("#b92340"));
+        chinaList.setBColor(Color.parseColor("#f2989a"));
+        luckList.setBColor(Color.parseColor("#cd2244"));
 
 
         /**
          * 全联盟让利金额排行榜内容填充
          */
-        listChina = new ArrayList<>();
-        myDataAdapter = new MytestAdapter(this, listChina);
+//        listChina = new ArrayList<>();
+//        myDataAdapter = new MytestAdapter(this, listChina);
         /**
          * 测试
          */
         listtest = new ArrayList<>();
+        /**
+         * 联盟商家排行榜
+         */
+        unlist = new ArrayList<>();
+        unionAdapter = new UnionAdapter(this,unlist);
+        unionList.setAdapter(unionAdapter);
+
         /**
          * 全联盟创业日值内容填充
          */
@@ -162,11 +174,8 @@ public class MainActivity extends BaseActivity implements IMainView {
          * 拼手气促销抽奖名单内容填充
          */
 
-        /**
-         * 全联盟让利金额排名榜内容填充
-         */
 
-        unionList.setAdapter(new MyDataAdapter());
+
         angelList.setAdapter(entepAdapter);
 
 
