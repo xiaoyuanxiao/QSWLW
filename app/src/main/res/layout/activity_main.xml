@@ -1,6 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -10,48 +8,33 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="68dp"
-        android:padding="6dp">
-
-        <LinearLayout
-            android:layout_width="50dp"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:gravity="center"
-            android:layout_marginTop="3dp"
-            android:orientation="vertical">
-
-            <com.qs.qswlw.view.CircleImageView
-                android:id="@+id/iv_main_avater"
-                android:layout_width="35dp"
-                android:layout_height="35dp"
-                android:src="@mipmap/image1" />
-
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="3dp"
-                android:text="月灵风"
-                android:textColor="@color/white"
-                android:textSize="9sp" />
-        </LinearLayout>
+        android:layout_height="wrap_content"
+        android:padding="3dp">
 
         <ImageView
-            android:layout_width="125dp"
-            android:layout_height="50dp"
-            android:src="@mipmap/zc_logo"
-            android:layout_marginBottom="8dp"
+            android:id="@+id/iv_setting_main"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/user_icon"
+            android:layout_centerVertical="true"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/main_title"
             android:layout_centerHorizontal="true"/>
 
         <TextView
-            android:layout_width="wrap_content"
+            android:id="@+id/tv_ranking_main"
+           android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textSize="8sp"
+            android:textColor="@color/white"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:text="关于钱盛"
-            android:textColor="@color/white"
-            android:textSize="12sp" />
+            android:drawableTop="@mipmap/lan4"
+            android:gravity="center_horizontal"
+            android:text="排行榜" />
     </RelativeLayout>
 
     <com.qs.qswlw.view.MarqueeTextView

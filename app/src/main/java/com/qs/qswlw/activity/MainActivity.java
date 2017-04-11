@@ -60,6 +60,7 @@ public class MainActivity extends BaseActivity implements IMainView {
     private TextView tv_dialog_index_time;
     private View alertview;
     private Button btn_dialog;
+    private ImageView iv_setting_main;
 
 
     @Override
@@ -119,7 +120,6 @@ public class MainActivity extends BaseActivity implements IMainView {
         benefitAdapter.notifyDataSetChanged();
     }
 
-    ImageView iv_main_avater;
     // 小雨是傻逼
     MainPresenter mainPresenter = new MainPresenter(this);
 
@@ -140,6 +140,7 @@ public class MainActivity extends BaseActivity implements IMainView {
 
     @Override
     public void initfindviewByid() {
+        iv_setting_main = (ImageView) findViewById(R.id.iv_setting_main);
         imageSwitchView = (Image3DSwitchView) findViewById(R.id.image_switch_view);
         benefitList = (Image3DView) findViewById(R.id.benefitList);
         unionList = (Image3DView) findViewById(R.id.unionList);
@@ -147,7 +148,6 @@ public class MainActivity extends BaseActivity implements IMainView {
         angelList = (Image3DView) findViewById(R.id.angelList);
         chinaList = (Image3DView) findViewById(R.id.chinaList);
         luckList = (Image3DView) findViewById(R.id.luckList);
-        iv_main_avater = (ImageView) findViewById(R.id.iv_main_avater);
         imageSwitchView.setCurrentImage(1);
 
         benefitList.setBColor(Color.parseColor("#b92340"));
@@ -276,13 +276,13 @@ public class MainActivity extends BaseActivity implements IMainView {
 
     @Override
     public void setOnclick() {
-        iv_main_avater.setOnClickListener(this);
+        iv_setting_main.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.iv_main_avater:
+            case R.id.iv_setting_main:
                 startActivity(new Intent(MainActivity.this, SettingActivity.class));
                 break;
         }
