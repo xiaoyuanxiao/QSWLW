@@ -1,44 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="250dp"
-    android:layout_height="300dp"
-    android:background="@color/red"
-    android:gravity="center">
+    android:orientation="vertical" android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="#ea1e4f"
+    android:gravity="center"
+    android:paddingTop="30dp"
+    android:paddingBottom="40dp"
+    android:paddingLeft="30dp"
+    android:paddingRight="30dp">
     <TextView
         android:id="@+id/tv_dialog_index_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="15sp"
+        android:textColor="@color/text_yellow"
         android:text="1111"/>
     <TextView
+        android:layout_marginTop="15dp"
         android:id="@+id/tv_dialog_index_content"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="10sp"
+        android:textColor="@color/text_yellow"
         android:text="1月7日，“钱盛物联网”与广东省广州市商家代表签订合作协议。这已是新年第一周“钱盛物联网”签下的第七个管理中心。深圳XXX有限公司副总裁、深圳XXX科技有限公司等领导来访企业家共同见证签约仪式。"/>
     <TextView
         android:id="@+id/tv_dialog_index_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="15sp"
+        android:textSize="10sp"
+        android:textColor="@color/text_yellow"
         android:layout_gravity="right"
         android:text="weqwwewr"/>
     <TextView
         android:id="@+id/tv_dialog_index_time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="15sp"
+        android:textSize="10sp"
+        android:layout_marginTop="5dp"
+        android:textColor="@color/text_yellow"
         android:layout_gravity="right"
         android:text="2017-07-08"/>
 
     <Button
         android:id="@+id/btn_dialog"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingLeft="30dp"
-        android:paddingRight="30dp"
-        android:paddingTop="10dp"
-        android:paddingBottom="10dp"
+        android:layout_width="120dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/stroke_splash"
+        android:textColor="@color/text_yellow"
+        android:textSize="10sp"
         android:text="确定"/>
 
 

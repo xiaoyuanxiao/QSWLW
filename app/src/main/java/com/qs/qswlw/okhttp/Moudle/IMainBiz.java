@@ -1,9 +1,10 @@
 package com.qs.qswlw.okhttp.Moudle;
 
+import com.qs.qswlw.okhttp.oncallback.MainAlertLisenter;
 import com.qs.qswlw.okhttp.oncallback.MainAngelLisenter;
 import com.qs.qswlw.okhttp.oncallback.MainBenefitLisenter;
 import com.qs.qswlw.okhttp.oncallback.MainChinaLisenter;
-import com.qs.qswlw.okhttp.oncallback.MainEntepLisenter;
+import com.qs.qswlw.okhttp.oncallback.MainEntrepLisenter;
 import com.qs.qswlw.okhttp.oncallback.MainLuckLisenter;
 import com.qs.qswlw.okhttp.oncallback.MainUnionLisenter;
 
@@ -14,11 +15,11 @@ import com.qs.qswlw.okhttp.oncallback.MainUnionLisenter;
 public interface IMainBiz {
 
 
-    void getAlert();
+    void getAlert(MainAlertLisenter mainAlertLisenter);
 
     void getunion(MainUnionLisenter mainUnionLisenter);
 
-    void getentrep(MainEntepLisenter mainEntepLisenter);
+    void getentrep(MainEntrepLisenter mainEntepLisenter);
 
     void getangel(MainAngelLisenter mainAngelLisenter);
 

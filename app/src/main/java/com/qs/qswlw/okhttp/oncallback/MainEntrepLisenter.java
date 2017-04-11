@@ -6,6 +6,6 @@ import com.qs.qswlw.okhttp.Moudle.EntrepBaen;
  * Created by 小猴子 on 2017/4/9.
  */
 
-public interface MainEntepLisenter extends BaseOnlistener {
+public interface MainEntrepLisenter extends BaseOnlistener {
     void onSuccess(EntrepBaen e);
 }

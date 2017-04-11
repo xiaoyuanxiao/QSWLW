@@ -1,5 +1,6 @@
 package com.qs.qswlw.okhttp.Iview;
 
+import com.qs.qswlw.okhttp.Moudle.AlertBean;
 import com.qs.qswlw.okhttp.Moudle.AngelBean;
 import com.qs.qswlw.okhttp.Moudle.BenefitBean;
 import com.qs.qswlw.okhttp.Moudle.ChinaBean;
@@ -15,7 +16,7 @@ import java.util.List;
 
 public interface IMainView {
 
-    void setTitle(String title);
+    void setAlertList(AlertBean title);
 
     void setUnionList(List<UnionBean> list);
 

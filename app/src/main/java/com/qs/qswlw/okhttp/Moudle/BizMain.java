@@ -4,10 +4,11 @@ import com.google.gson.reflect.TypeToken;
 import com.qs.qswlw.okhttp.DataCallBack;
 import com.qs.qswlw.okhttp.NetUrl;
 import com.qs.qswlw.okhttp.OKhttptUtils;
+import com.qs.qswlw.okhttp.oncallback.MainAlertLisenter;
 import com.qs.qswlw.okhttp.oncallback.MainAngelLisenter;
 import com.qs.qswlw.okhttp.oncallback.MainBenefitLisenter;
 import com.qs.qswlw.okhttp.oncallback.MainChinaLisenter;
-import com.qs.qswlw.okhttp.oncallback.MainEntepLisenter;
+import com.qs.qswlw.okhttp.oncallback.MainEntrepLisenter;
 import com.qs.qswlw.okhttp.oncallback.MainLuckLisenter;
 import com.qs.qswlw.okhttp.oncallback.MainUnionLisenter;
 
@@ -34,6 +35,7 @@ public class BizMain implements IMainBiz {
 
 
     private final String index_data = "index_data";
+    private final String alert = "alert";
     private final String union = "union";
     private final String entrep = "entrep";
     private final String angel = "angel";
@@ -42,8 +44,33 @@ public class BizMain implements IMainBiz {
     private final String benefit = "benefit";
 
     @Override
-    public void getAlert() {
+    public void getAlert(final MainAlertLisenter mainAlertLisenter) {
+        HashMap<String, String> stringStringHashMap = new HashMap<>();
+        stringStringHashMap.put(index_data, alert);
+        Type type = new TypeToken<BaseBean<ResultAlertBean<AlertBean>>>() {
+        }.getType();
+        OKhttptUtils.httpPost(NetUrl.baseurl, stringStringHashMap,
+                new DataCallBack<BaseBean<ResultAlertBean<AlertBean>>>(type) {
+                    @Override
+                    public void onSuccess(BaseBean<ResultAlertBean<AlertBean>> data) {
+                        AlertBean result = null;
+                        try {
+                            result = data.getResult().getAlert();
 
+                        } catch (Exception e) {
+
+                        }
+                        if (result == null)
+                            mainAlertLisenter.onFailure("错误信息");
+                        else
+                            mainAlertLisenter.onSuccess(result);
+                    }
+
+                    @Override
+                    public void onFailure(int code) {
+                        mainAlertLisenter.onFailure("错误信息" + code);
+                    }
+                });
 
     }
 
@@ -77,7 +104,7 @@ public class BizMain implements IMainBiz {
     }
 
     @Override
-    public void getentrep(final MainEntepLisenter mainEntepLisenter) {
+    public void getentrep(final MainEntrepLisenter mainEntepLisenter) {
         HashMap<String, String> stringStringHashMap = new HashMap<>();
         stringStringHashMap.put(index_data, entrep);
         Type type = new TypeToken<BaseBean<ResultEntrepBean<EntrepBaen>>>() {

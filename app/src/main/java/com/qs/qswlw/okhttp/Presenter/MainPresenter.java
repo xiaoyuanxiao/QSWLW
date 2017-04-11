@@ -2,6 +2,7 @@ package com.qs.qswlw.okhttp.Presenter;
 
 import com.qs.qswlw.okhttp.Factory.IBizFactory;
 import com.qs.qswlw.okhttp.Iview.IMainView;
+import com.qs.qswlw.okhttp.Moudle.AlertBean;
 import com.qs.qswlw.okhttp.Moudle.AngelBean;
 import com.qs.qswlw.okhttp.Moudle.BenefitBean;
 import com.qs.qswlw.okhttp.Moudle.ChinaBean;
@@ -9,10 +10,11 @@ import com.qs.qswlw.okhttp.Moudle.EntrepBaen;
 import com.qs.qswlw.okhttp.Moudle.IMainBiz;
 import com.qs.qswlw.okhttp.Moudle.LuckBean;
 import com.qs.qswlw.okhttp.Moudle.UnionBean;
+import com.qs.qswlw.okhttp.oncallback.MainAlertLisenter;
 import com.qs.qswlw.okhttp.oncallback.MainAngelLisenter;
 import com.qs.qswlw.okhttp.oncallback.MainBenefitLisenter;
 import com.qs.qswlw.okhttp.oncallback.MainChinaLisenter;
-import com.qs.qswlw.okhttp.oncallback.MainEntepLisenter;
+import com.qs.qswlw.okhttp.oncallback.MainEntrepLisenter;
 import com.qs.qswlw.okhttp.oncallback.MainLuckLisenter;
 import com.qs.qswlw.okhttp.oncallback.MainUnionLisenter;
 
@@ -44,7 +46,22 @@ public class MainPresenter {
     }
 
     public void getAlert() {
+        iMainBiz.getAlert(new MainAlertLisenter() {
+            @Override
+            public void onSuccess(final AlertBean e) {
+                iMainView.runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        iMainView.setAlertList(e);
+                    }
+                });
+            }
 
+            @Override
+            public void onFailure(String code) {
+
+            }
+        });
     }
 
     public void getUnion() {
@@ -67,7 +84,7 @@ public class MainPresenter {
     }
 
     public void getEntrep() {
-        iMainBiz.getentrep(new MainEntepLisenter() {
+        iMainBiz.getentrep(new MainEntrepLisenter() {
             @Override
             public void onSuccess(final EntrepBaen e) {
                 iMainView.runOnUiThread(new Runnable() {

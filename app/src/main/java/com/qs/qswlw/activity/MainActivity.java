@@ -1,11 +1,14 @@
 package com.qs.qswlw.activity;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.qs.qswlw.R;
 import com.qs.qswlw.activity.PersonalCenter.SettingActivity;
@@ -17,6 +20,7 @@ import com.qs.qswlw.adapter.LuckAdapter;
 import com.qs.qswlw.adapter.MytestAdapter;
 import com.qs.qswlw.adapter.UnionAdapter;
 import com.qs.qswlw.okhttp.Iview.IMainView;
+import com.qs.qswlw.okhttp.Moudle.AlertBean;
 import com.qs.qswlw.okhttp.Moudle.AngelBean;
 import com.qs.qswlw.okhttp.Moudle.BenefitBean;
 import com.qs.qswlw.okhttp.Moudle.ChinaBean;
@@ -43,16 +47,28 @@ public class MainActivity extends BaseActivity implements IMainView {
     List<BenefitBean> belist;
     List<AngelBean> anlist;
     List<LuckBean> lulist;
+    AlertBean allist;
     private Image3DView benefitList;
     private Image3DView unionList;
     private Image3DView entrepList;
     private Image3DView angelList;
     private Image3DView chinaList;
     private Image3DView luckList;
+    private TextView tv_dialog_index_title;
+    private TextView tv_dialog_index_content;
+    private TextView tv_dialog_index_name;
+    private TextView tv_dialog_index_time;
+    private View alertview;
+    private Button btn_dialog;
+
 
     @Override
-    public void setTitle(String title) {
-
+    public void setAlertList(AlertBean title) {
+        tv_dialog_index_title.setText("喜讯");
+     //   tv_dialog_index_content.setText(allist.getIndex_content());
+        tv_dialog_index_content.setText("热烈庆祝--大家期待已久的《钱盛物联网》正式上线运营，请各位联盟商家和消费天使积极上线注册，新张期间，注册就送10个金豆，祝大家在钱盛平台上携手共进，互惠互利，大展宏图，生意兴隆、财源滚滚!");
+        tv_dialog_index_name.setText("钱盛物联网");
+        tv_dialog_index_time.setText("2017-04-09");
     }
 
     @Override
@@ -141,8 +157,35 @@ public class MainActivity extends BaseActivity implements IMainView {
         chinaList.setBColor(Color.parseColor("#f2989a"));
         luckList.setBColor(Color.parseColor("#cd2244"));
 
+        showDilog();
 
 
+    }
+    private void showDilog() {
+        allist = new AlertBean();
+        final AlertDialog.Builder builder=new AlertDialog.Builder(this);
+        final AlertDialog dialog = builder.create();
+        //alertAdapter = new AlertAdapter(this, allist);
+//        dialog_slash.setAdapter(entrepAdapter);
+        View alertview =LayoutInflater.from(MainActivity.this).inflate(R.layout.dialog_main,null);
+
+        tv_dialog_index_title = (TextView) alertview.findViewById(R.id.tv_dialog_index_title);
+        tv_dialog_index_content = (TextView) alertview.findViewById(R.id.tv_dialog_index_content);
+        tv_dialog_index_name = (TextView) alertview.findViewById(R.id.tv_dialog_index_name);
+        tv_dialog_index_time = (TextView) alertview.findViewById(R.id.tv_dialog_index_time);
+        btn_dialog = (Button) alertview.findViewById(R.id.btn_dialog);
+        btn_dialog.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
+                dialog.dismiss();
+                Toast.makeText(MainActivity.this, "表单填写完成",
+                        Toast.LENGTH_SHORT).show();
+            }
+        });
+        dialog.setView(alertview);
+        dialog.show();
     }
 
     @Override
@@ -228,7 +271,6 @@ public class MainActivity extends BaseActivity implements IMainView {
         luckList.setAdapter(luckAdapter);
         luckList.addHeaderView(luckHeadview);
         luckList.addFooterView(unionFootview);
-
         mainPresenter.getdata();
     }
 
