@@ -108,66 +108,96 @@ public class MainActivity extends BaseActivity implements IMainView {
         Image3DView chinaList = (Image3DView) findViewById(R.id.chinaList);
         Image3DView luckList = (Image3DView) findViewById(R.id.luckList);
         Image3DView benefitList = (Image3DView) findViewById(R.id.benefitList);
-        view = LayoutInflater.from(this).inflate(R.layout.item_home_head, null);
-        tv_item_home_head = (TextView) view.findViewById(R.id.tv_item_home_head);
         iv_main_avater = (ImageView) findViewById(R.id.iv_main_avater);
         imageSwitchView.setCurrentImage(1);
+
+        /**
+         * 全联盟让利金额排行榜
+         */
+        view = LayoutInflater.from(this).inflate(R.layout.item_home_head, null);
+        tv_item_home_head = (TextView) view.findViewById(R.id.tv_item_home_head);
         tv_item_home_head.setText("全联盟让利金额排行榜");
         unionList.addHeaderView(view);
+        TextView textView2 = new TextView(this);
+        textView2.setText("查看全部排名");
+        unionList.addFooterView(textView2);
+
         unionList.setBColor(Color.parseColor("#b82140"));
         entrepList.setBColor(Color.parseColor("#de2127"));
         angelList.setBColor(Color.parseColor("#f3c68b"));
         chinaList.setBColor(Color.parseColor("#b82141"));
         luckList.setBColor(Color.parseColor("#f2989a"));
         benefitList.setBColor(Color.parseColor("#cd2244"));
-        TextView textView2 = new TextView(this);
-        textView2.setText("查看全部排名");
-        unionList.addFooterView(textView2);
 
 
+        /**
+         * 全联盟让利金额排行榜内容填充
+         */
         listChina = new ArrayList<>();
         myDataAdapter = new MytestAdapter(this, listChina);
         /**
          * 测试
          */
         listtest = new ArrayList<>();
-
-        unionList.setAdapter(myDataAdapter);
-        entrepList.setAdapter(new MyDataAdapter());
+        /**
+         * 全联盟创业日值内容填充
+         */
         enlist = new ArrayList<>();
         entepAdapter = new EntepAdapter(this, enlist);
+        entrepList.setAdapter(entepAdapter);
+
+        /**
+         * 创业天使创业排名榜内容填充
+         */
+
+        /**
+         * 中国好产品排行榜内容填充
+         */
+        chlist = new ArrayList<>();
+        chinaAdapter = new ChinaAdapter(this, chlist);
+        chinaList.setAdapter(new MyDataAdapter());
+
+
+        /**
+         * 拼手气促销抽奖名单内容填充
+         */
+
+        /**
+         * 全联盟让利金额排名榜内容填充
+         */
+
+        unionList.setAdapter(myDataAdapter);
         angelList.setAdapter(entepAdapter);
 
 
-        chinaList.setAdapter(new MyDataAdapter());
-        chlist = new ArrayList<>();
-        chinaAdapter = new ChinaAdapter(this, chlist);
+
+
         luckList.setAdapter(chinaAdapter);
 
         benefitList.setAdapter(new MyDataAdapter());
 
-        TextView textView22 = new TextView(this);
-        textView22.setText("联盟商家排行榜");
-        entrepList.addHeaderView(textView22);
+        TextView textViewUnion = new TextView(this);
+        textViewUnion.setText("联盟商家排行榜");
+        entrepList.addHeaderView(textViewUnion);
 
 
-        TextView textView3 = new TextView(this);
-        textView3.setText("全联盟创业日值");
-        angelList.addHeaderView(textView3);
+        TextView textViewEntrep = new TextView(this);
+        textViewEntrep.setText("全联盟创业日值");
+        angelList.addHeaderView(textViewEntrep);
 
-        TextView textView4 = new TextView(this);
-        textView4.setText("创业天使创业排名榜");
-        chinaList.addHeaderView(textView4);
-
-
-        TextView textView5 = new TextView(this);
-        textView5.setText("中国好产品排行榜");
-        luckList.addHeaderView(textView5);
+        TextView textViewAngel = new TextView(this);
+        textViewAngel.setText("创业天使创业排名榜");
+        chinaList.addHeaderView(textViewAngel);
 
 
-        TextView textView6 = new TextView(this);
-        textView6.setText("拼手气促销抽奖名单");
-        benefitList.addHeaderView(textView6);
+        TextView textViewChina = new TextView(this);
+        textViewChina.setText("中国好产品排行榜");
+        luckList.addHeaderView(textViewChina);
+
+
+        TextView textViewLuck = new TextView(this);
+        textViewLuck.setText("拼手气促销抽奖名单");
+        benefitList.addHeaderView(textViewLuck);
         mainPresenter.getdata();
 
 
