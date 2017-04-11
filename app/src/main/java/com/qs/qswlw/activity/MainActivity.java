@@ -4,8 +4,6 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -171,12 +169,6 @@ public class MainActivity extends BaseActivity implements IMainView {
 //        enlist = new ArrayList<>();
 //        entrepAdapter = new EntepAdapter(this, enlist);
 //        entrepList.setAdapter(entrepAdapter);
-//        enlist = new ArrayList<>();
-//        entepAdapter = new EntepAdapter(this, enlist);
-//        tv_homepage_title.setText("全联盟创业日值");
-//        entrepList.setAdapter(chinaAdapter);
-//        entrepList.addHeaderView(headview);
-//        entrepList.addFooterView(footview);
 
         View entrepHeadview = LayoutInflater.from(this).inflate(R.layout.entrep_homepage_head, null);
         enlist = new ArrayList<>();
@@ -218,9 +210,6 @@ public class MainActivity extends BaseActivity implements IMainView {
 //        lulist = new ArrayList<>();
 //        luckAdapter = new LuckAdapter(this, lulist);
 //        luckList.setAdapter(luckAdapter);
-
-
-
         View luckHeadview = LayoutInflater.from(this).inflate(R.layout.luck_homepage_head, null);
         lulist = new ArrayList<>();
         luckAdapter = new LuckAdapter(this, lulist);
@@ -244,7 +233,6 @@ public class MainActivity extends BaseActivity implements IMainView {
         switch (v.getId()) {
             case R.id.iv_main_avater:
                 startActivity(new Intent(MainActivity.this, SettingActivity.class));
-                startActivity(new Intent(MainActivity.this, SettingActivity.class));
                 break;
         }
     }
@@ -253,36 +241,5 @@ public class MainActivity extends BaseActivity implements IMainView {
     protected void onDestroy() {
         super.onDestroy();
         imageSwitchView.clear();
-    }
-
-    private class MyDataAdapter extends BaseAdapter {
-        private String[] keys = {"前海公司", "飞腾公司", "前海公司", "飞腾公司", "飞腾公司"};
-        private String[] values = {"11111万", "22222万", "33333万", "44444万", "55555万"};
-
-        @Override
-        public int getCount() {
-            return keys.length;
-        }
-
-        @Override
-        public Object getItem(int i) {
-            return keys[i];
-        }
-
-        @Override
-        public long getItemId(int i) {
-            return 0;
-        }
-
-        @Override
-        public View getView(int i, View convertView, ViewGroup viewGroup) {
-
-            convertView = View.inflate(MainActivity.this, R.layout.item_home_content, null);
-            TextView key = (TextView) convertView.findViewById(R.id.tv_item_home_content_left);
-            TextView value = (TextView) convertView.findViewById(R.id.tv_item_home_content_value);
-            key.setText(keys[i]);
-            value.setText(values[i]);
-            return convertView;
-        }
     }
 }
