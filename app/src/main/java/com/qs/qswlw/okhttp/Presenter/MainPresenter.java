@@ -26,13 +26,19 @@ public class MainPresenter {
     }
 
     public void getdata() {
-        getEntrep();
         getAlert();
+        getUnion();
+        getEntrep();
         getChina();
+        getAngel();
+        getLuck();
+        getBenefit();
     }
 
     public void getAlert() {
 
+    }
+    public void getUnion() {
     }
 
     public void getEntrep() {
@@ -77,4 +83,13 @@ public class MainPresenter {
         });
     }
 
+
+    public void getAngel() {
+    }
+
+    public void getLuck() {
+    }
+
+    public void getBenefit() {
+    }
 }

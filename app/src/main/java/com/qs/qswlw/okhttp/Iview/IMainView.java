@@ -2,6 +2,7 @@ package com.qs.qswlw.okhttp.Iview;
 
 import com.qs.qswlw.okhttp.Moudle.ChinaBean;
 import com.qs.qswlw.okhttp.Moudle.EntrepBaen;
+import com.qs.qswlw.okhttp.Moudle.UnionBean;
 
 import java.util.List;
 
@@ -13,7 +14,7 @@ public interface IMainView {
 
     void setTitle(String title);
 
-    void setUnionList(List list);
+    void setUnionList(List<UnionBean> list);
 
     void setEntrepList(EntrepBaen list);
 

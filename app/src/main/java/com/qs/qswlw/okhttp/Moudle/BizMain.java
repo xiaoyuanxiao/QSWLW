@@ -4,7 +4,7 @@ import com.google.gson.reflect.TypeToken;
 import com.qs.qswlw.okhttp.DataCallBack;
 import com.qs.qswlw.okhttp.NetUrl;
 import com.qs.qswlw.okhttp.OKhttptUtils;
-import com.qs.qswlw.okhttp.oncallback.MainBebeLisenter;
+import com.qs.qswlw.okhttp.oncallback.MainAngelLisenter;
 import com.qs.qswlw.okhttp.oncallback.MainChinaLisenter;
 import com.qs.qswlw.okhttp.oncallback.MainEntepLisenter;
 import com.qs.qswlw.okhttp.oncallback.MainUnionLisenter;
@@ -43,30 +43,30 @@ public class BizMain implements IMainBiz {
     }
 
     @Override
-    public void getunion(final MainUnionLisenter mainEntepLisenter) {
+    public void getunion(final MainUnionLisenter mainUnionLisenter) {
         HashMap<String, String> stringStringHashMap = new HashMap<>();
         stringStringHashMap.put(index_data, union);
-        Type type = new TypeToken<BaseBean<List<ChinaBean>>>() {
+        Type type = new TypeToken<BaseBean<ResultUnionBean<ArrayList<UnionBean>>>>() {
         }.getType();
         OKhttptUtils.httpPost(NetUrl.baseurl, stringStringHashMap,
-                new DataCallBack<BaseBean<List<UnionBean>>>(type) {
+                new DataCallBack<BaseBean<ResultUnionBean<ArrayList<UnionBean>>>>(type) {
 
                     @Override
-                    public void onSuccess(BaseBean<List<UnionBean>> data) {
+                    public void onSuccess(BaseBean<ResultUnionBean<ArrayList<UnionBean>>> data) {
                         List<UnionBean> result = null;
                         try {
-                            //    result = data.getResult().getResult();
+                            result =  data.getResult().getUnion();
                         } catch (Exception e) {
                         }
                         if (result == null)
-                            mainEntepLisenter.onFailure("错误信息");
+                            mainUnionLisenter.onFailure("错误信息");
                         else
-                            mainEntepLisenter.onSuccess3(result);
+                            mainUnionLisenter.onSuccess(result);
                     }
 
                     @Override
                     public void onFailure(int code) {
-                        mainEntepLisenter.onFailure("错误信息" + code);
+                        mainUnionLisenter.onFailure("错误信息" + code);
                     }
                 });
     }
@@ -101,13 +101,13 @@ public class BizMain implements IMainBiz {
     }
 
     @Override
-    public void getangel(MainBebeLisenter mainEntepLisenter) {
+    public void getangel(MainAngelLisenter mainEntepLisenter) {
 
     }
 
 
     @Override
-    public void getchina(final MainChinaLisenter mainEntepLisenter) {
+    public void getchina(final MainChinaLisenter mainChinaLisenter) {
         HashMap<String, String> stringStringHashMap = new HashMap<>();
         stringStringHashMap.put(index_data, china);
         Type type = new TypeToken<BaseBean<ResultChinaBean<ArrayList<ChinaBean>>>>() {
@@ -122,14 +122,14 @@ public class BizMain implements IMainBiz {
                         } catch (Exception e) {
                         }
                         if (result == null)
-                            mainEntepLisenter.onFailure("错误信息");
+                            mainChinaLisenter.onFailure("错误信息");
                         else
-                            mainEntepLisenter.onSuccess(result);
+                            mainChinaLisenter.onSuccess(result);
                     }
 
                     @Override
                     public void onFailure(int code) {
-                        mainEntepLisenter.onFailure("错误信息" + code);
+                        mainChinaLisenter.onFailure("错误信息" + code);
                     }
                 });
     }

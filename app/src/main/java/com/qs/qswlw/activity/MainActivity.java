@@ -166,7 +166,7 @@ public class MainActivity extends BaseActivity implements IMainView {
          * 全联盟让利金额排名榜内容填充
          */
 
-        unionList.setAdapter(myDataAdapter);
+        unionList.setAdapter(new MyDataAdapter());
         angelList.setAdapter(entepAdapter);
 
 

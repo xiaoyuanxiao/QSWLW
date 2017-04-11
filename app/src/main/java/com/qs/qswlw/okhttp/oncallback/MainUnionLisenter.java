@@ -9,5 +9,5 @@ import java.util.List;
  */
 
 public interface MainUnionLisenter extends BaseOnlistener {
-    void onSuccess3(List<UnionBean> e);
+    void onSuccess(List<UnionBean> e);
 }
