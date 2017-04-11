@@ -8,42 +8,42 @@
         android:layout_height="match_parent" >
 
         <com.qs.qswlw.view.imageswitchview.Image3DView
-            android:id="@+id/list1"
+            android:id="@+id/unionList"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scaleType="fitXY"
             android:divider="@null" />
 
         <com.qs.qswlw.view.imageswitchview.Image3DView
-            android:id="@+id/list2"
+            android:id="@+id/entrepList"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scaleType="fitXY"
             android:divider="@null"/>
 
         <com.qs.qswlw.view.imageswitchview.Image3DView
-            android:id="@+id/list3"
+            android:id="@+id/angelList"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scaleType="fitXY"
             android:divider="@null"/>
 
         <com.qs.qswlw.view.imageswitchview.Image3DView
-            android:id="@+id/list4"
+            android:id="@+id/chinaList"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scaleType="fitXY"
             android:divider="@null"/>
 
         <com.qs.qswlw.view.imageswitchview.Image3DView
-            android:id="@+id/list5"
+            android:id="@+id/luckList"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scaleType="fitXY"
             android:divider="@null"/>
 
         <com.qs.qswlw.view.imageswitchview.Image3DView
-            android:id="@+id/list6"
+            android:id="@+id/benefitList"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scaleType="fitXY"

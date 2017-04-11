@@ -13,17 +13,17 @@ public interface IMainView {
 
     void setTitle(String title);
 
-    void setListdata1(List list);
+    void setUnionList(List list);
 
-    void setListdata2(EntrepBaen list);
+    void setEntrepList(EntrepBaen list);
 
-    void setListdata3(List list);
+    void setAngelList(List list);
 
-    void setListdata4(List<ChinaBean> list);
+    void setChinaList(List<ChinaBean> list);
 
-    void setListdata5(List<ChinaBean> list);
+    void setLuckList(List<ChinaBean> list);
 
-    void setListdata6(List list);
+    void setBenefitList(List list);
 
     void runOnUiThread(Runnable runnable);
 

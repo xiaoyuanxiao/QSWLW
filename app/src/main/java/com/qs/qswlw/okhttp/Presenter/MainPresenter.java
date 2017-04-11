@@ -42,7 +42,7 @@ public class MainPresenter {
                 iMainView.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        iMainView.setListdata2(e);
+                        iMainView.setEntrepList(e);
                     }
                 });
 
@@ -63,7 +63,7 @@ public class MainPresenter {
                 iMainView.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        iMainView.setListdata5(e);
+                        iMainView.setChinaList(e);
                     }
                 });
 

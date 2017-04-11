@@ -41,12 +41,12 @@ public class MainActivity extends BaseActivity implements IMainView {
     }
 
     @Override
-    public void setListdata1(List list) {
+    public void setUnionList(List list) {
 
     }
 
     @Override
-    public void setListdata2(EntrepBaen entrepBaen) {
+    public void setEntrepList(EntrepBaen entrepBaen) {
         enlist.clear();
         enlist.add(entrepBaen.getModel1() + "");
         enlist.add(entrepBaen.getModel2() + "");
@@ -59,26 +59,26 @@ public class MainActivity extends BaseActivity implements IMainView {
     }
 
     @Override
-    public void setListdata3(List list) {
+    public void setAngelList(List list) {
 
     }
 
     @Override
-    public void setListdata4(List<ChinaBean> list) {
-        listtest.clear();
-        listtest.addAll(list);
-        myDataAdapter.notifyDataSetChanged();
-    }
-
-    @Override
-    public void setListdata5(List<ChinaBean> list) {
+    public void setChinaList(List<ChinaBean> list) {
         chlist.clear();
         chlist.addAll(list);
         chinaAdapter.notifyDataSetChanged();
     }
 
     @Override
-    public void setListdata6(List list) {
+    public void setLuckList(List<ChinaBean> list) {
+        chlist.clear();
+        chlist.addAll(list);
+        chinaAdapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void setBenefitList(List list) {
 
     }
 
@@ -102,27 +102,27 @@ public class MainActivity extends BaseActivity implements IMainView {
     @Override
     public void initfindviewByid() {
         imageSwitchView = (Image3DSwitchView) findViewById(R.id.image_switch_view);
-        Image3DView list1 = (Image3DView) findViewById(R.id.list1);
-        Image3DView list2 = (Image3DView) findViewById(R.id.list2);
-        Image3DView list3 = (Image3DView) findViewById(R.id.list3);
-        Image3DView list4 = (Image3DView) findViewById(R.id.list4);
-        Image3DView list5 = (Image3DView) findViewById(R.id.list5);
-        Image3DView list6 = (Image3DView) findViewById(R.id.list6);
+        Image3DView unionList = (Image3DView) findViewById(R.id.unionList);
+        Image3DView entrepList = (Image3DView) findViewById(R.id.entrepList);
+        Image3DView angelList = (Image3DView) findViewById(R.id.angelList);
+        Image3DView chinaList = (Image3DView) findViewById(R.id.chinaList);
+        Image3DView luckList = (Image3DView) findViewById(R.id.luckList);
+        Image3DView benefitList = (Image3DView) findViewById(R.id.benefitList);
         view = LayoutInflater.from(this).inflate(R.layout.item_home_head, null);
         tv_item_home_head = (TextView) view.findViewById(R.id.tv_item_home_head);
         iv_main_avater = (ImageView) findViewById(R.id.iv_main_avater);
         imageSwitchView.setCurrentImage(1);
         tv_item_home_head.setText("全联盟让利金额排行榜");
-        list1.addHeaderView(view);
-        list1.setBColor(Color.parseColor("#b82140"));
-        list2.setBColor(Color.parseColor("#de2127"));
-        list3.setBColor(Color.parseColor("#f3c68b"));
-        list4.setBColor(Color.parseColor("#b82141"));
-        list5.setBColor(Color.parseColor("#f2989a"));
-        list6.setBColor(Color.parseColor("#cd2244"));
+        unionList.addHeaderView(view);
+        unionList.setBColor(Color.parseColor("#b82140"));
+        entrepList.setBColor(Color.parseColor("#de2127"));
+        angelList.setBColor(Color.parseColor("#f3c68b"));
+        chinaList.setBColor(Color.parseColor("#b82141"));
+        luckList.setBColor(Color.parseColor("#f2989a"));
+        benefitList.setBColor(Color.parseColor("#cd2244"));
         TextView textView2 = new TextView(this);
         textView2.setText("查看全部排名");
-        list1.addFooterView(textView2);
+        unionList.addFooterView(textView2);
 
 
         listChina = new ArrayList<>();
@@ -132,42 +132,42 @@ public class MainActivity extends BaseActivity implements IMainView {
          */
         listtest = new ArrayList<>();
 
-        list1.setAdapter(myDataAdapter);
-        list2.setAdapter(new MyDataAdapter());
+        unionList.setAdapter(myDataAdapter);
+        entrepList.setAdapter(new MyDataAdapter());
         enlist = new ArrayList<>();
         entepAdapter = new EntepAdapter(this, enlist);
-        list3.setAdapter(entepAdapter);
+        angelList.setAdapter(entepAdapter);
 
 
-        list4.setAdapter(new MyDataAdapter());
+        chinaList.setAdapter(new MyDataAdapter());
         chlist = new ArrayList<>();
         chinaAdapter = new ChinaAdapter(this, chlist);
-        list5.setAdapter(chinaAdapter);
+        luckList.setAdapter(chinaAdapter);
 
-        list6.setAdapter(new MyDataAdapter());
+        benefitList.setAdapter(new MyDataAdapter());
 
         TextView textView22 = new TextView(this);
         textView22.setText("联盟商家排行榜");
-        list2.addHeaderView(textView22);
+        entrepList.addHeaderView(textView22);
 
 
         TextView textView3 = new TextView(this);
         textView3.setText("全联盟创业日值");
-        list3.addHeaderView(textView3);
+        angelList.addHeaderView(textView3);
 
         TextView textView4 = new TextView(this);
         textView4.setText("创业天使创业排名榜");
-        list4.addHeaderView(textView4);
+        chinaList.addHeaderView(textView4);
 
 
         TextView textView5 = new TextView(this);
         textView5.setText("中国好产品排行榜");
-        list5.addHeaderView(textView5);
+        luckList.addHeaderView(textView5);
 
 
         TextView textView6 = new TextView(this);
         textView6.setText("拼手气促销抽奖名单");
-        list6.addHeaderView(textView6);
+        benefitList.addHeaderView(textView6);
         mainPresenter.getdata();
 
 
