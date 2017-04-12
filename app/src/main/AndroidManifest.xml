@@ -47,6 +47,8 @@
         <activity android:name=".activity.PersonalCenter.CommodityManagementActivity"/>
         <activity android:name=".activity.LoginActivity"/>
         <activity android:name=".activity.RankingActivity"/>
+        <activity android:name=".activity.RegisterActivity"
+            android:windowSoftInputMode="adjustUnspecified|stateHidden"/>
     </application>
 
 

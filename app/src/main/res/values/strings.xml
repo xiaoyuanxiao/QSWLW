@@ -77,6 +77,10 @@
         <item>鲜花</item>
     </string-array>
 
+    <string-array name="consume_item">
+        <item>消费者</item>
+
+    </string-array>
 
     <!-- 个地级市-->
     <string-array name="beijin_province_item">
