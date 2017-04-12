@@ -27,7 +27,9 @@
                 android:layout_height="wrap_content"
                 android:src="@mipmap/user_l"/>
             <EditText
-                android:layout_width="wrap_content"
+                android:id="@+id/edt_username"
+                android:layout_width="0dp"
+                android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:background="@null"
@@ -46,7 +48,9 @@
                 android:layout_height="wrap_content"
                 android:src="@mipmap/pwd_l"/>
             <EditText
-                android:layout_width="wrap_content"
+                android:id="@+id/edt_password"
+                android:layout_width="0dp"
+                android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:background="@null"
@@ -54,6 +58,7 @@
                 android:hint="密码"/>
         </LinearLayout>
         <Button
+            android:id="@+id/btn_login"
             android:layout_marginTop="15dp"
             android:layout_width="match_parent"
             android:layout_height="40dp"
