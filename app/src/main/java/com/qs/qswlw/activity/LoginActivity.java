@@ -20,7 +20,7 @@ public class LoginActivity extends BaseInfoActivity implements ILoginView {
     LoginPresenter loginPresenter = new LoginPresenter(this);
     private Button btn_login;
     private EditText edt_username,edt_password;
-    private TextView tv_newuser_register;
+    private TextView tv_newuser_register,tv_forgetPassword;
 
 
     @Override
@@ -30,6 +30,7 @@ public class LoginActivity extends BaseInfoActivity implements ILoginView {
         edt_username = (EditText) inflate.findViewById(R.id.edt_username);
         edt_password = (EditText) inflate.findViewById(R.id.edt_password);
         tv_newuser_register = (TextView) inflate.findViewById(R.id.tv_newuser_register);
+        tv_forgetPassword = (TextView) inflate.findViewById(R.id.tv_forgetPassword);
         return inflate;
     }
 
@@ -52,6 +53,7 @@ public class LoginActivity extends BaseInfoActivity implements ILoginView {
         super.setOnclick();
         btn_login.setOnClickListener(this);
         tv_newuser_register.setOnClickListener(this);
+        tv_forgetPassword.setOnClickListener(this);
     }
 
     @Override
@@ -65,6 +67,9 @@ public class LoginActivity extends BaseInfoActivity implements ILoginView {
                 break;
             case R.id.tv_newuser_register:
                 startActivity(new Intent(this,RegisterActivity.class));
+                break;
+            case R.id.tv_forgetPassword:
+                startActivity(new Intent(this,ForgetPasswordActivity.class));
                 break;
         }
     }
