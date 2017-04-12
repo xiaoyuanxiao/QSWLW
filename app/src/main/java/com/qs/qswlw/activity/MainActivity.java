@@ -50,6 +50,7 @@ public class MainActivity extends BaseActivity implements IMainView {
     private View alertview;
     private Button btn_dialog;
     private ImageView iv_setting_main;
+    private TextView tv_ranking_main;
 
 
     @Override
@@ -109,7 +110,6 @@ public class MainActivity extends BaseActivity implements IMainView {
         benefitAdapter.notifyDataSetChanged();
     }
 
-    // 小雨是傻逼
     MainPresenter mainPresenter = new MainPresenter(this);
 
     @Override
@@ -138,17 +138,14 @@ public class MainActivity extends BaseActivity implements IMainView {
         angelList = (Image3DView) findViewById(R.id.angelList);
         chinaList = (Image3DView) findViewById(R.id.chinaList);
         luckList = (Image3DView) findViewById(R.id.luckList);
+        tv_ranking_main = (TextView) findViewById(R.id.tv_ranking_main);
+
         imageSwitchView.setCurrentImage(1);
-        benefitList.setBColor(Color.parseColor("#b92340"));
-        unionList.setBColor(Color.parseColor("#de2128"));
-        entrepList.setBColor(Color.parseColor("#f3c68b"));
-        angelList.setBColor(Color.parseColor("#b92340"));
-        chinaList.setBColor(Color.parseColor("#f2989a"));
-        luckList.setBColor(Color.parseColor("#cd2244"));
         showDilog();
 
 
     }
+
 
     private void showDilog() {
         allist = new AlertBean();
@@ -178,6 +175,12 @@ public class MainActivity extends BaseActivity implements IMainView {
     @Override
     public void initData() {
         super.initData();
+        benefitList.setBColor(Color.parseColor("#b92340"));
+        unionList.setBColor(Color.parseColor("#de2128"));
+        entrepList.setBColor(Color.parseColor("#f3c68b"));
+        angelList.setBColor(Color.parseColor("#b92340"));
+        chinaList.setBColor(Color.parseColor("#f2989a"));
+        luckList.setBColor(Color.parseColor("#cd2244"));
         /**
          * 全联盟让利金额排行榜内容填充、头部、尾部
          */
@@ -241,17 +244,19 @@ public class MainActivity extends BaseActivity implements IMainView {
         luckList.addFooterView(luckFootview);
         mainPresenter.getdata();
     }
-
     @Override
     public void setOnclick() {
         iv_setting_main.setOnClickListener(this);
+        tv_ranking_main.setOnClickListener(this);
     }
-
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.iv_setting_main:
                 startActivity(new Intent(MainActivity.this, LoginActivity.class));
+                break;
+            case R.id.tv_ranking_main:
+                startActivity(new Intent(MainActivity.this, RankingActivity.class));
                 break;
         }
     }
