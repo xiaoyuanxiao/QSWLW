@@ -2,18 +2,28 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center_horizontal">
-    <TextView
-        android:layout_width="wrap_content"
+    android:gravity="center">
+    <LinearLayout
+        android:layout_width="240dp"
         android:layout_height="wrap_content"
-        android:textSize="10sp"
-        android:textColor="@color/red"
-        android:text="全联盟创业日期"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="10sp"
-        android:textColor="@color/red"
-        android:text="激励日期：2017-04-10"/>
+        android:orientation="vertical"
+        android:gravity="center">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="11sp"
+            android:textColor="@color/red"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="4dp"
+            android:text="全联盟创业日期"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="11sp"
+            android:textColor="@color/red"
+            android:text="激励日期：2017-04-10"
+            android:layout_marginBottom="10dp"/>
+    </LinearLayout>
+
 
 </LinearLayout>

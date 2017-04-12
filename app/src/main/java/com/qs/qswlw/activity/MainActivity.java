@@ -165,8 +165,6 @@ public class MainActivity extends BaseActivity implements IMainView {
         allist = new AlertBean();
         final AlertDialog.Builder builder = new AlertDialog.Builder(this);
         final AlertDialog dialog = builder.create();
-        //alertAdapter = new AlertAdapter(this, allist);
-//        dialog_slash.setAdapter(entrepAdapter);
         View alertview = LayoutInflater.from(MainActivity.this).inflate(R.layout.dialog_main, null);
 
         tv_dialog_index_title = (TextView) alertview.findViewById(R.id.tv_dialog_index_title);
@@ -198,10 +196,8 @@ public class MainActivity extends BaseActivity implements IMainView {
 //        benefitAdapter = new BenefitAdapter(this,belist);
 //        benefitList.setAdapter(benefitAdapter);
         View benefitHeadview = LayoutInflater.from(this).inflate(R.layout.benefit_homepage_head, null);
-        TextView benefit_homepage_title = (TextView) benefitHeadview.findViewById(R.id.benefit_homepage_title);
         belist = new ArrayList<>();
         benefitAdapter = new BenefitAdapter(this, belist);
-        benefit_homepage_title.setText("全联盟让利金额排行榜");
         benefitList.setAdapter(benefitAdapter);
         benefitList.addHeaderView(benefitHeadview);
 
@@ -237,13 +233,12 @@ public class MainActivity extends BaseActivity implements IMainView {
 //      anlist   = new ArrayList<>();
 //        angelAdapter = new AngelAdapter(this, anlist);
 //        angelList.setAdapter(angelAdapter);
-        View unionFootview2 = LayoutInflater.from(this).inflate(R.layout.union_homepage_foot, null);
         View angelHeadview = LayoutInflater.from(this).inflate(R.layout.angel_homepage_head, null);
         anlist = new ArrayList<>();
         angelAdapter = new AngelAdapter(this, anlist);
         angelList.setAdapter(angelAdapter);
         angelList.addHeaderView(angelHeadview);
-        angelList.addFooterView(unionFootview2);
+        angelList.addFooterView(unionFootview);
 
 
         /**
@@ -252,13 +247,13 @@ public class MainActivity extends BaseActivity implements IMainView {
 //        chlist = new ArrayList<>();
 //        chinaAdapter = new ChinaAdapter(this, chlist);
 //        chinaList.setAdapter(chinaAdapter);
-        View unionFootview3 = LayoutInflater.from(this).inflate(R.layout.union_homepage_foot, null);
+        View chinaFootview = LayoutInflater.from(this).inflate(R.layout.china_homepage_foot, null);
         View chinaHeadview = LayoutInflater.from(this).inflate(R.layout.china_homepage_head, null);
         chlist = new ArrayList<>();
         chinaAdapter = new ChinaAdapter(this, chlist);
         chinaList.setAdapter(chinaAdapter);
         chinaList.addHeaderView(chinaHeadview);
-        chinaList.addFooterView(unionFootview3);
+        chinaList.addFooterView(chinaFootview);
 
         /**
          * 拼手气促销抽奖名单内容填充
@@ -267,12 +262,12 @@ public class MainActivity extends BaseActivity implements IMainView {
 //        luckAdapter = new LuckAdapter(this, lulist);
 //        luckList.setAdapter(luckAdapter);
         View luckHeadview = LayoutInflater.from(this).inflate(R.layout.luck_homepage_head, null);
-        View unionFootview4 = LayoutInflater.from(this).inflate(R.layout.union_homepage_foot, null);
+        View luckFootview = LayoutInflater.from(this).inflate(R.layout.luck_homepage_foot, null);
         lulist = new ArrayList<>();
         luckAdapter = new LuckAdapter(this, lulist);
         luckList.setAdapter(luckAdapter);
         luckList.addHeaderView(luckHeadview);
-        luckList.addFooterView(unionFootview4);
+        luckList.addFooterView(luckFootview);
         mainPresenter.getdata();
     }
 
