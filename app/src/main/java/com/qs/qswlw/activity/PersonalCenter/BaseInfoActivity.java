@@ -14,11 +14,10 @@ import com.qs.qswlw.activity.BaseActivity;
 
 public abstract class BaseInfoActivity extends BaseActivity {
 
-    public RelativeLayout rl_titlebar;
+    public RelativeLayout title;
     public ImageView iv_titlebar;
     public TextView tv_titlebar_center;
     public TextView tv_titlebar_right;
-
 
     @Override
     public Object initView() {
@@ -29,7 +28,7 @@ public abstract class BaseInfoActivity extends BaseActivity {
     public void initfindviewByid() {
         RelativeLayout viewById = (RelativeLayout) findViewById(R.id.conten_relay);
         viewById.addView(setConetnView());
-        rl_titlebar = (RelativeLayout) findViewById(R.id.rl_titlebar);
+        title = (RelativeLayout) findViewById(R.id.title);
         iv_titlebar = (ImageView) findViewById(R.id.iv_titlebar);
         tv_titlebar_center = (TextView) findViewById(R.id.tv_titlebar_center);
         tv_titlebar_right = (TextView) findViewById(R.id.tv_titlebar_right);
@@ -52,5 +51,5 @@ public abstract class BaseInfoActivity extends BaseActivity {
 
     }
 
-    abstract View setConetnView();
+    public abstract View setConetnView();
 }

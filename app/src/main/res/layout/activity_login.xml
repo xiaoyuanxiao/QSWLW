@@ -1,23 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <include layout="@layout/titlebar" />
-
+    android:layout_height="match_parent"
+    android:orientation="vertical">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:layout_margin="35dp"
+        android:layout_marginLeft="35dp"
+        android:layout_marginRight="35dp"
         android:gravity="center_horizontal"
         android:orientation="vertical">
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@mipmap/cyzz"/>
+            android:src="@mipmap/logo_l"/>
         <LinearLayout
-            android:layout_marginTop="20dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
@@ -28,7 +27,9 @@
                 android:layout_height="wrap_content"
                 android:src="@mipmap/user_l"/>
             <EditText
-                android:layout_width="wrap_content"
+                android:id="@+id/edt_username"
+                android:layout_width="0dp"
+                android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:background="@null"
@@ -47,7 +48,9 @@
                 android:layout_height="wrap_content"
                 android:src="@mipmap/pwd_l"/>
             <EditText
-                android:layout_width="wrap_content"
+                android:id="@+id/edt_password"
+                android:layout_width="0dp"
+                android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:background="@null"
@@ -55,6 +58,7 @@
                 android:hint="密码"/>
         </LinearLayout>
         <Button
+            android:id="@+id/btn_login"
             android:layout_marginTop="15dp"
             android:layout_width="match_parent"
             android:layout_height="40dp"
@@ -69,6 +73,7 @@
             android:layout_marginTop="10dp"
             android:gravity="center_vertical">
             <TextView
+                android:id="@+id/tv_forgetPassword"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="忘记密码"
@@ -81,6 +86,7 @@
                 android:layout_marginLeft="15dp"
                 android:layout_marginRight="12dp"/>
             <TextView
+                android:id="@+id/tv_newuser_register"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="新用户注册"
@@ -92,4 +98,4 @@
     </LinearLayout>
 
 
-</RelativeLayout>
+</LinearLayout>

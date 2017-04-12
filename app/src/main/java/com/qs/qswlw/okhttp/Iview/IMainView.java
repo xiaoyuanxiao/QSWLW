@@ -4,7 +4,7 @@ import com.qs.qswlw.okhttp.Moudle.AlertBean;
 import com.qs.qswlw.okhttp.Moudle.AngelBean;
 import com.qs.qswlw.okhttp.Moudle.BenefitBean;
 import com.qs.qswlw.okhttp.Moudle.ChinaBean;
-import com.qs.qswlw.okhttp.Moudle.EntrepBaen;
+import com.qs.qswlw.okhttp.Moudle.EntrepBean;
 import com.qs.qswlw.okhttp.Moudle.LuckBean;
 import com.qs.qswlw.okhttp.Moudle.UnionBean;
 
@@ -20,7 +20,7 @@ public interface IMainView {
 
     void setUnionList(List<UnionBean> list);
 
-    void setEntrepList(EntrepBaen list);
+    void setEntrepList(EntrepBean list);
 
     void setAngelList(List<AngelBean> list);
 

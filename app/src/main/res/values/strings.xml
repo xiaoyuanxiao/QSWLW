@@ -77,7 +77,19 @@
         <item>鲜花</item>
     </string-array>
 
-
+    <string-array name="consume_item">
+        <item>消费者</item>
+    </string-array>
+    <string-array name="forgetpw_item">
+        <item>请选择用户类型</item>
+        <item>消费天使</item>
+        <item>商家</item>
+        <item>创业天使</item>
+        <item>省创业管理中心</item>
+        <item>市创业管理中心</item>
+        <item>区创业管理中心</item>
+        <item>创业中心</item>
+    </string-array>
     <!-- 个地级市-->
     <string-array name="beijin_province_item">
         <item>北京</item>

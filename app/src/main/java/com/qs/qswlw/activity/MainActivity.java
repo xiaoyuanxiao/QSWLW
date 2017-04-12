@@ -11,7 +11,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.qs.qswlw.R;
-import com.qs.qswlw.activity.PersonalCenter.SettingActivity;
 import com.qs.qswlw.adapter.AngelAdapter;
 import com.qs.qswlw.adapter.BenefitAdapter;
 import com.qs.qswlw.adapter.ChinaAdapter;
@@ -24,7 +23,7 @@ import com.qs.qswlw.okhttp.Moudle.AlertBean;
 import com.qs.qswlw.okhttp.Moudle.AngelBean;
 import com.qs.qswlw.okhttp.Moudle.BenefitBean;
 import com.qs.qswlw.okhttp.Moudle.ChinaBean;
-import com.qs.qswlw.okhttp.Moudle.EntrepBaen;
+import com.qs.qswlw.okhttp.Moudle.EntrepBean;
 import com.qs.qswlw.okhttp.Moudle.LuckBean;
 import com.qs.qswlw.okhttp.Moudle.UnionBean;
 import com.qs.qswlw.okhttp.Presenter.MainPresenter;
@@ -39,28 +38,19 @@ import java.util.List;
  */
 public class MainActivity extends BaseActivity implements IMainView {
     private Image3DSwitchView imageSwitchView;
-    private String[] listViewData = new String[]{
-            "test1", "test2", "test3",
-            "test4"};
+
     List<ChinaBean> chlist;
     List<UnionBean> unlist;
     List<BenefitBean> belist;
     List<AngelBean> anlist;
     List<LuckBean> lulist;
     AlertBean allist;
-    private Image3DView benefitList;
-    private Image3DView unionList;
-    private Image3DView entrepList;
-    private Image3DView angelList;
-    private Image3DView chinaList;
-    private Image3DView luckList;
-    private TextView tv_dialog_index_title;
-    private TextView tv_dialog_index_content;
-    private TextView tv_dialog_index_name;
-    private TextView tv_dialog_index_time;
+    private Image3DView benefitList,unionList,entrepList,angelList,chinaList,luckList;
+    private TextView tv_dialog_index_title,tv_dialog_index_content,tv_dialog_index_name,tv_dialog_index_time;
     private View alertview;
     private Button btn_dialog;
     private ImageView iv_setting_main;
+    private TextView tv_ranking_main;
 
 
     @Override
@@ -80,7 +70,7 @@ public class MainActivity extends BaseActivity implements IMainView {
     }
 
     @Override
-    public void setEntrepList(EntrepBaen entrepBaen) {
+    public void setEntrepList(EntrepBean entrepBaen) {
         enlist.clear();
         enlist.add(entrepBaen.getModel1() + "");
         enlist.add(entrepBaen.getModel2() + "");
@@ -120,7 +110,6 @@ public class MainActivity extends BaseActivity implements IMainView {
         benefitAdapter.notifyDataSetChanged();
     }
 
-    // 小雨是傻逼
     MainPresenter mainPresenter = new MainPresenter(this);
 
     @Override
@@ -149,24 +138,19 @@ public class MainActivity extends BaseActivity implements IMainView {
         angelList = (Image3DView) findViewById(R.id.angelList);
         chinaList = (Image3DView) findViewById(R.id.chinaList);
         luckList = (Image3DView) findViewById(R.id.luckList);
+        tv_ranking_main = (TextView) findViewById(R.id.tv_ranking_main);
+
         imageSwitchView.setCurrentImage(1);
-        benefitList.setBColor(Color.parseColor("#b92340"));
-        unionList.setBColor(Color.parseColor("#de2128"));
-        entrepList.setBColor(Color.parseColor("#f3c68b"));
-        angelList.setBColor(Color.parseColor("#b92340"));
-        chinaList.setBColor(Color.parseColor("#f2989a"));
-        luckList.setBColor(Color.parseColor("#cd2244"));
         showDilog();
 
 
     }
 
+
     private void showDilog() {
         allist = new AlertBean();
         final AlertDialog.Builder builder = new AlertDialog.Builder(this);
         final AlertDialog dialog = builder.create();
-        //alertAdapter = new AlertAdapter(this, allist);
-//        dialog_slash.setAdapter(entrepAdapter);
         View alertview = LayoutInflater.from(MainActivity.this).inflate(R.layout.dialog_main, null);
 
         tv_dialog_index_title = (TextView) alertview.findViewById(R.id.tv_dialog_index_title);
@@ -191,26 +175,24 @@ public class MainActivity extends BaseActivity implements IMainView {
     @Override
     public void initData() {
         super.initData();
+        benefitList.setBColor(Color.parseColor("#b92340"));
+        unionList.setBColor(Color.parseColor("#de2128"));
+        entrepList.setBColor(Color.parseColor("#f3c68b"));
+        angelList.setBColor(Color.parseColor("#b92340"));
+        chinaList.setBColor(Color.parseColor("#f2989a"));
+        luckList.setBColor(Color.parseColor("#cd2244"));
         /**
          * 全联盟让利金额排行榜内容填充、头部、尾部
          */
-//        belist = new ArrayList<>();
-//        benefitAdapter = new BenefitAdapter(this,belist);
-//        benefitList.setAdapter(benefitAdapter);
         View benefitHeadview = LayoutInflater.from(this).inflate(R.layout.benefit_homepage_head, null);
-        TextView benefit_homepage_title = (TextView) benefitHeadview.findViewById(R.id.benefit_homepage_title);
         belist = new ArrayList<>();
         benefitAdapter = new BenefitAdapter(this, belist);
-        benefit_homepage_title.setText("全联盟让利金额排行榜");
         benefitList.setAdapter(benefitAdapter);
         benefitList.addHeaderView(benefitHeadview);
 
         /**
          * 联盟商家排行榜
          */
-//        unlist = new ArrayList<>();
-//        unionAdapter = new UnionAdapter(this,unlist);
-//        unionList.setAdapter(unionAdapter);
         View unionHeadview = LayoutInflater.from(this).inflate(R.layout.union_homepage_head, null);
         View unionFootview = LayoutInflater.from(this).inflate(R.layout.union_homepage_foot, null);
         unlist = new ArrayList<>();
@@ -221,9 +203,6 @@ public class MainActivity extends BaseActivity implements IMainView {
         /**
          * 全联盟创业日值内容填充
          */
-//        enlist = new ArrayList<>();
-//        entrepAdapter = new EntepAdapter(this, enlist);
-//        entrepList.setAdapter(entrepAdapter);
 
         View entrepHeadview = LayoutInflater.from(this).inflate(R.layout.entrep_homepage_head, null);
         enlist = new ArrayList<>();
@@ -234,58 +213,50 @@ public class MainActivity extends BaseActivity implements IMainView {
         /**
          * 创业天使创业排名榜内容填充
          */
-//      anlist   = new ArrayList<>();
-//        angelAdapter = new AngelAdapter(this, anlist);
-//        angelList.setAdapter(angelAdapter);
-        View unionFootview2 = LayoutInflater.from(this).inflate(R.layout.union_homepage_foot, null);
         View angelHeadview = LayoutInflater.from(this).inflate(R.layout.angel_homepage_head, null);
         anlist = new ArrayList<>();
         angelAdapter = new AngelAdapter(this, anlist);
         angelList.setAdapter(angelAdapter);
         angelList.addHeaderView(angelHeadview);
-        angelList.addFooterView(unionFootview2);
+        angelList.addFooterView(unionFootview);
 
 
         /**
          * 中国好产品排行榜内容填充
          */
-//        chlist = new ArrayList<>();
-//        chinaAdapter = new ChinaAdapter(this, chlist);
-//        chinaList.setAdapter(chinaAdapter);
-        View unionFootview3 = LayoutInflater.from(this).inflate(R.layout.union_homepage_foot, null);
+        View chinaFootview = LayoutInflater.from(this).inflate(R.layout.china_homepage_foot, null);
         View chinaHeadview = LayoutInflater.from(this).inflate(R.layout.china_homepage_head, null);
         chlist = new ArrayList<>();
         chinaAdapter = new ChinaAdapter(this, chlist);
         chinaList.setAdapter(chinaAdapter);
         chinaList.addHeaderView(chinaHeadview);
-        chinaList.addFooterView(unionFootview3);
+        chinaList.addFooterView(chinaFootview);
 
         /**
          * 拼手气促销抽奖名单内容填充
          */
-//        lulist = new ArrayList<>();
-//        luckAdapter = new LuckAdapter(this, lulist);
-//        luckList.setAdapter(luckAdapter);
         View luckHeadview = LayoutInflater.from(this).inflate(R.layout.luck_homepage_head, null);
-        View unionFootview4 = LayoutInflater.from(this).inflate(R.layout.union_homepage_foot, null);
+        View luckFootview = LayoutInflater.from(this).inflate(R.layout.luck_homepage_foot, null);
         lulist = new ArrayList<>();
         luckAdapter = new LuckAdapter(this, lulist);
         luckList.setAdapter(luckAdapter);
         luckList.addHeaderView(luckHeadview);
-        luckList.addFooterView(unionFootview4);
+        luckList.addFooterView(luckFootview);
         mainPresenter.getdata();
     }
-
     @Override
     public void setOnclick() {
         iv_setting_main.setOnClickListener(this);
+        tv_ranking_main.setOnClickListener(this);
     }
-
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.iv_setting_main:
-                startActivity(new Intent(MainActivity.this, SettingActivity.class));
+                startActivity(new Intent(MainActivity.this, LoginActivity.class));
+                break;
+            case R.id.tv_ranking_main:
+                startActivity(new Intent(MainActivity.this, RankingActivity.class));
                 break;
         }
     }

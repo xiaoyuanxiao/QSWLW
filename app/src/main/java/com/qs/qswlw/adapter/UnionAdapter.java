@@ -24,11 +24,13 @@ public class UnionAdapter extends BaseListAdapter<UnionBean> {
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
         view = View.inflate(context, R.layout.item_home_content, null);
-        TextView key = (TextView) view.findViewById(R.id.tv_item_home_content_left);
-        TextView value = (TextView) view.findViewById(R.id.tv_item_home_content_value);
+        TextView tv_item_home_content_left = (TextView) view.findViewById(R.id.tv_item_home_content_left);
+        TextView tv_item_home_content_value = (TextView) view.findViewById(R.id.tv_item_home_content_value);
+        tv_item_home_content_left.setTextColor(context.getResources().getColor(R.color.text_yellow));
+        tv_item_home_content_value.setTextColor(context.getResources().getColor(R.color.text_yellow));
         UnionBean unionBean = data.get(i);
-        key.setText(unionBean.getStore_name());
-        value.setText(unionBean.getSum_money());
+        tv_item_home_content_left.setText(unionBean.getStore_name());
+        tv_item_home_content_value.setText(unionBean.getSum_money()+"元");
         return view;
     }
 }

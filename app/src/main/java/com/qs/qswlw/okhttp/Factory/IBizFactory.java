@@ -1,6 +1,8 @@
 package com.qs.qswlw.okhttp.Factory;
 
+import com.qs.qswlw.okhttp.Moudle.BizLogin;
 import com.qs.qswlw.okhttp.Moudle.BizMain;
+import com.qs.qswlw.okhttp.Moudle.ILoginBiz;
 import com.qs.qswlw.okhttp.Moudle.IMainBiz;
 import com.qs.qswlw.okhttp.Moudle.ITestaBiz;
 import com.qs.qswlw.okhttp.Moudle.TestaMoudle;
@@ -21,6 +23,9 @@ public class IBizFactory {
 
     public static IMainBiz getMainBiz() {
         return BizMain.getInstans();
+    }
+    public static ILoginBiz getLoginBiz() {
+        return BizLogin.getInstans();
     }
 
 }

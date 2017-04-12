@@ -6,7 +6,7 @@ import com.qs.qswlw.okhttp.Moudle.AlertBean;
 import com.qs.qswlw.okhttp.Moudle.AngelBean;
 import com.qs.qswlw.okhttp.Moudle.BenefitBean;
 import com.qs.qswlw.okhttp.Moudle.ChinaBean;
-import com.qs.qswlw.okhttp.Moudle.EntrepBaen;
+import com.qs.qswlw.okhttp.Moudle.EntrepBean;
 import com.qs.qswlw.okhttp.Moudle.IMainBiz;
 import com.qs.qswlw.okhttp.Moudle.LuckBean;
 import com.qs.qswlw.okhttp.Moudle.UnionBean;
@@ -28,7 +28,7 @@ public class MainPresenter {
 
     IMainView iMainView;
     IMainBiz iMainBiz;
-    private List<EntrepBaen> e;
+    private List<EntrepBean> e;
 
     public MainPresenter(IMainView iMainView) {
         iMainBiz = IBizFactory.getMainBiz();
@@ -86,7 +86,7 @@ public class MainPresenter {
     public void getEntrep() {
         iMainBiz.getentrep(new MainEntrepLisenter() {
             @Override
-            public void onSuccess(final EntrepBaen e) {
+            public void onSuccess(final EntrepBean e) {
                 iMainView.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {

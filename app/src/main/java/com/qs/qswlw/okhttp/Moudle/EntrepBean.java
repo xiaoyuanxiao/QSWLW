@@ -4,7 +4,7 @@ package com.qs.qswlw.okhttp.Moudle;
  * Created by 小猴子 on 2017/4/9.
  */
 
-public class EntrepBaen {
+public class EntrepBean {
     /**
      * model1 : 0
      * model2 : 0

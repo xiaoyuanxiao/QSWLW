@@ -14,7 +14,7 @@ public class ConsumerSilverBeanActivity extends BaseInfoActivity {
     private ListView lv_consumersliverbean;
 
     @Override
-    View setConetnView() {
+   public View setConetnView() {
         return View.inflate(this, R.layout.activity_consumersilverbean, null);
     }
 
