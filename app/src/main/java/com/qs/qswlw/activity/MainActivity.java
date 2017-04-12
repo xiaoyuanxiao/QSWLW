@@ -11,7 +11,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.qs.qswlw.R;
-import com.qs.qswlw.activity.PersonalCenter.SettingActivity;
 import com.qs.qswlw.adapter.AngelAdapter;
 import com.qs.qswlw.adapter.BenefitAdapter;
 import com.qs.qswlw.adapter.ChinaAdapter;
@@ -280,7 +279,7 @@ public class MainActivity extends BaseActivity implements IMainView {
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.iv_setting_main:
-                startActivity(new Intent(MainActivity.this, SettingActivity.class));
+                startActivity(new Intent(MainActivity.this, LoginActivity.class));
                 break;
         }
     }
