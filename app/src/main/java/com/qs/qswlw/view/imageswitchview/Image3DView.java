@@ -281,9 +281,13 @@ public class Image3DView extends ListView {
         mCamera.rotateY(mRotateDegree);
         mCamera.getMatrix(mMaxtrix);
         mCamera.restore();
-        mMaxtrix.preTranslate(-mDx, -getHeight() / 2);
-        mMaxtrix.postTranslate(mDx, getHeight() / 2);
+        mMaxtrix.preTranslate(-mDx, -getHeight() / 3);
+        mMaxtrix.postTranslate(mDx, getHeight() / 3);
+
+
         if (mBitmap == null) {
+
+
             mBitmap = Bitmap.createBitmap(getWidth() == 0 ? 100 : getWidth(), getHeight() == 0 ? 100 : getHeight(),
                     Bitmap.Config.ARGB_8888);
             mBitmap.eraseColor(color);
@@ -293,6 +297,8 @@ public class Image3DView extends ListView {
         }
         canvas.drawBitmap(mBitmap, mMaxtrix, new Paint());
         canvas.concat(mMaxtrix);
+//        canvas.drawRoundRect(rectF, roundPx, roundPx, paint);
+//        PorterDuff.Mode dstIn = PorterDuff.Mode.DST_IN;
         super.draw(canvas);
 
     }

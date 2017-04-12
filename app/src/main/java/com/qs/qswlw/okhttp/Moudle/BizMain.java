@@ -107,6 +107,8 @@ public class BizMain implements IMainBiz {
     public void getentrep(final MainEntrepLisenter mainEntepLisenter) {
         HashMap<String, String> stringStringHashMap = new HashMap<>();
         stringStringHashMap.put(index_data, entrep);
+
+
         Type type = new TypeToken<BaseBean<ResultEntrepBean<EntrepBean>>>() {
         }.getType();
         OKhttptUtils.httpPost(NetUrl.baseurl, stringStringHashMap,

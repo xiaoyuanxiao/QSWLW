@@ -13,7 +13,7 @@ public abstract class DataCallBack<T> {
         this.type = type;
     }
 
-    public void sendMess(final int code, final String data) {
+    public void sendMess(int code, String data) {
         if (code == OKhttptUtils.HTTPOK) {
             T o = new Gson().fromJson(data, type);
             try {

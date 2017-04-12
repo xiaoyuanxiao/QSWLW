@@ -12,21 +12,21 @@ public class EntrepBean {
      * shop : 2
      * money : 0
      */
-    private int model1;
-    private int model2;
+    private float model1;
+    private float model2;
     private String count;
     private String shop;
     private String money;
 
-    public int getModel1() {
+    public float getModel1() {
         return model1;
     }
 
-    public void setModel1(int model1) {
+    public void setModel1(float model1) {
         this.model1 = model1;
     }
 
-    public int getModel2() {
+    public float getModel2() {
         return model2;
     }
 

@@ -1,17 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
     <RelativeLayout
-        android:padding="4dp"
+        android:layout_width="240dp"
+        android:layout_height="wrap_content"
         android:background="@color/entrep"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:padding="4dp">
+
         <TextView
             style="@style/tv_entrep"
             android:drawableLeft="@mipmap/xinxin"
             android:text="消费天使20%系列" />
+
         <TextView
             android:id="@+id/tv_twentypercent_congtv"
             style="@style/tv_entrep"
@@ -19,16 +22,19 @@
             android:gravity="right"
             android:text="11111万" />
     </RelativeLayout>
+
     <RelativeLayout
-        android:layout_marginTop="3dp"
-        android:padding="4dp"
-        android:background="@color/entrep"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="3dp"
+        android:background="@color/entrep"
+        android:padding="4dp">
+
         <TextView
             style="@style/tv_entrep"
             android:drawableLeft="@mipmap/xinxin"
             android:text="商家20%系列" />
+
         <TextView
             android:id="@+id/tv_twentypercent_busgtv"
             style="@style/tv_entrep"
@@ -36,32 +42,38 @@
             android:gravity="right"
             android:text="11111万" />
     </RelativeLayout>
+
     <RelativeLayout
-        android:layout_marginTop="3dp"
-        android:padding="4dp"
-        android:background="@color/entrep"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="3dp"
+        android:background="@color/entrep"
+        android:padding="4dp">
+
         <TextView
             style="@style/tv_entrep"
             android:text="全联盟昨日消费" />
+
         <TextView
-            android:background="@color/entrep"
             android:id="@+id/tv_yesterdayConsumption_gtv"
             style="@style/tv_entrep"
             android:layout_alignParentRight="true"
+            android:background="@color/entrep"
             android:gravity="right"
             android:text="11111万" />
     </RelativeLayout>
+
     <RelativeLayout
-        android:layout_marginTop="3dp"
-        android:padding="4dp"
-        android:background="@color/entrep"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="3dp"
+        android:background="@color/entrep"
+        android:padding="4dp">
+
         <TextView
             style="@style/tv_entrep"
             android:text="全联盟创业总额" />
+
         <TextView
             android:id="@+id/tv_totalEntrepreneurship_gtv"
             style="@style/tv_entrep"
@@ -69,15 +81,18 @@
             android:gravity="right"
             android:text="11111万" />
     </RelativeLayout>
+
     <RelativeLayout
-        android:layout_marginTop="3dp"
-        android:padding="4dp"
-        android:background="@color/entrep"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="3dp"
+        android:background="@color/entrep"
+        android:padding="4dp">
+
         <TextView
             style="@style/tv_entrep"
             android:text="全联盟创业总人数" />
+
         <TextView
             android:id="@+id/tv_totalnumber_gtv"
             style="@style/tv_entrep"
@@ -85,15 +100,18 @@
             android:gravity="right"
             android:text="11111万" />
     </RelativeLayout>
+
     <RelativeLayout
-        android:layout_marginTop="3dp"
-        android:padding="4dp"
-        android:background="@color/entrep"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="3dp"
+        android:background="@color/entrep"
+        android:padding="4dp">
+
         <TextView
             style="@style/tv_entrep"
             android:text="联盟商家" />
+
         <TextView
             android:id="@+id/tv_llianceMerchant_gtv"
             style="@style/tv_entrep"

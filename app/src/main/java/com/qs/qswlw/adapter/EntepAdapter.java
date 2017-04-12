@@ -17,6 +17,7 @@ public class EntepAdapter extends BaseListAdapter<String> {
     public EntepAdapter(Context context, List<String> data) {
         super(context, data);
     }
+
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
         view = View.inflate(context, R.layout.item_globalentrepreneurshipvalue, null);
@@ -26,15 +27,20 @@ public class EntepAdapter extends BaseListAdapter<String> {
         TextView tv_totalEntrepreneurship_gtv = (TextView) view.findViewById(R.id.tv_totalEntrepreneurship_gtv);
         TextView tv_totalnumber_gtv = (TextView) view.findViewById(R.id.tv_totalnumber_gtv);
         TextView tv_llianceMerchant_gtv = (TextView) view.findViewById(R.id.tv_llianceMerchant_gtv);
-        tv_twentypercent_congtv.setText(data.get(i));
-        tv_twentypercent_busgtv.setText(data.get(i));
-        tv_yesterdayConsumption_gtv.setText(data.get(i));
-        tv_totalEntrepreneurship_gtv.setText(data.get(i));
-        tv_totalnumber_gtv.setText(data.get(i));
-        tv_llianceMerchant_gtv.setText(data.get(i));
+        tv_twentypercent_congtv.setText(data.get(0));
+        tv_twentypercent_busgtv.setText(data.get(1));
+        tv_yesterdayConsumption_gtv.setText(data.get(2));
+        tv_totalEntrepreneurship_gtv.setText(data.get(3));
+        tv_totalnumber_gtv.setText(data.get(4));
+        tv_llianceMerchant_gtv.setText(data.get(5));
         return view;
     }
-//    String[] keys = {"消费天使20%", "商家傻逼20%", "全所发生的", "全联盟创业总额", "fff", "fsdfsd", "fsaf"};
+
+    @Override
+    public int getCount() {
+        return super.getCount() >= 1 ? 1 : 0;
+    }
+    //    String[] keys = {"消费天使20%", "商家傻逼20%", "全所发生的", "全联盟创业总额", "fff", "fsdfsd", "fsaf"};
 //
 //    public EntepAdapter(Context context, List<String> data) {
 //        super(context, data);

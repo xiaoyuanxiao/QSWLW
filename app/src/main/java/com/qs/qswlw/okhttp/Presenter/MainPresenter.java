@@ -71,7 +71,7 @@ public class MainPresenter {
                 iMainView.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                       iMainView.setUnionList(e);
+                        iMainView.setUnionList(e);
                     }
                 });
             }
@@ -146,26 +146,27 @@ public class MainPresenter {
     }
 
     public void getLuck() {
-      iMainBiz.getluck(new MainLuckLisenter(){
-          @Override
-          public void onSuccess(final List<LuckBean> e) {
+        iMainBiz.getluck(new MainLuckLisenter() {
+            @Override
+            public void onSuccess(final List<LuckBean> e) {
 
-              iMainView.runOnUiThread(new Runnable() {
-                  @Override
-                  public void run() {
-                      iMainView.setLuckList(e);
-                  }
-              });
-          }
-          @Override
-          public void onFailure(String code) {
+                iMainView.runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        iMainView.setLuckList(e);
+                    }
+                });
+            }
 
-          }
-      });
+            @Override
+            public void onFailure(String code) {
+
+            }
+        });
     }
 
     public void getBenefit() {
-        iMainBiz.getbenefit(new MainBenefitLisenter(){
+        iMainBiz.getbenefit(new MainBenefitLisenter() {
             @Override
             public void onSuccess(final List<BenefitBean> e) {
                 iMainView.runOnUiThread(new Runnable() {

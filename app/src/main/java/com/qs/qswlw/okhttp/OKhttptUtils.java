@@ -49,13 +49,13 @@ public class OKhttptUtils {
                     responseHandler.sendMess(arg1.code(), null);
                     return;
                 }
-                String string = arg1.body().string();
+                String s = new String(arg1.body().bytes());
                 try {
-                    Log.d("TAG", "arg1.body().string()==" + string);
-                    responseHandler.sendMess(200, string);
+                    Log.d("TAG", "responseHandler-----arg1.body().string()==" + s);
+                    responseHandler.sendMess(200, s);
 
                 } catch (Exception e) {
-                    Log.d("TAG", "arg1.body().string()==" + string);
+                    Log.d("TAG", "Exception----arg1.body().string()==" + s);
                     responseHandler.sendMess(3000, null);
                 }
             }

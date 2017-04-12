@@ -45,8 +45,8 @@ public class MainActivity extends BaseActivity implements IMainView {
     List<AngelBean> anlist;
     List<LuckBean> lulist;
     AlertBean allist;
-    private Image3DView benefitList,unionList,entrepList,angelList,chinaList,luckList;
-    private TextView tv_dialog_index_title,tv_dialog_index_content,tv_dialog_index_name,tv_dialog_index_time;
+    private Image3DView benefitList, unionList, entrepList, angelList, chinaList, luckList;
+    private TextView tv_dialog_index_title, tv_dialog_index_content, tv_dialog_index_name, tv_dialog_index_time;
     private View alertview;
     private Button btn_dialog;
     private ImageView iv_setting_main;
@@ -55,11 +55,11 @@ public class MainActivity extends BaseActivity implements IMainView {
 
     @Override
     public void setAlertList(AlertBean title) {
-        tv_dialog_index_title.setText("喜讯");
+        tv_dialog_index_title.setText(title.getIndex_title());
         //   tv_dialog_index_content.setText(allist.getIndex_content());
-        tv_dialog_index_content.setText("热烈庆祝--大家期待已久的《钱盛物联网》正式上线运营，请各位联盟商家和消费天使积极上线注册，新张期间，注册就送10个金豆，祝大家在钱盛平台上携手共进，互惠互利，大展宏图，生意兴隆、财源滚滚!");
-        tv_dialog_index_name.setText("钱盛物联网");
-        tv_dialog_index_time.setText("2017-04-09");
+        tv_dialog_index_content.setText(title.getIndex_content());
+        tv_dialog_index_name.setText(title.getIndex_name());
+        tv_dialog_index_time.setText(title.getIndex_time());
     }
 
     @Override
@@ -139,11 +139,8 @@ public class MainActivity extends BaseActivity implements IMainView {
         chinaList = (Image3DView) findViewById(R.id.chinaList);
         luckList = (Image3DView) findViewById(R.id.luckList);
         tv_ranking_main = (TextView) findViewById(R.id.tv_ranking_main);
-
         imageSwitchView.setCurrentImage(1);
         showDilog();
-
-
     }
 
 
@@ -152,14 +149,12 @@ public class MainActivity extends BaseActivity implements IMainView {
         final AlertDialog.Builder builder = new AlertDialog.Builder(this);
         final AlertDialog dialog = builder.create();
         View alertview = LayoutInflater.from(MainActivity.this).inflate(R.layout.dialog_main, null);
-
         tv_dialog_index_title = (TextView) alertview.findViewById(R.id.tv_dialog_index_title);
         tv_dialog_index_content = (TextView) alertview.findViewById(R.id.tv_dialog_index_content);
         tv_dialog_index_name = (TextView) alertview.findViewById(R.id.tv_dialog_index_name);
         tv_dialog_index_time = (TextView) alertview.findViewById(R.id.tv_dialog_index_time);
         btn_dialog = (Button) alertview.findViewById(R.id.btn_dialog);
         btn_dialog.setOnClickListener(new View.OnClickListener() {
-
             @Override
             public void onClick(View v) {
                 // TODO Auto-generated method stub
@@ -213,12 +208,13 @@ public class MainActivity extends BaseActivity implements IMainView {
         /**
          * 创业天使创业排名榜内容填充
          */
+        View unionFootview2 = LayoutInflater.from(this).inflate(R.layout.union_homepage_foot, null);
         View angelHeadview = LayoutInflater.from(this).inflate(R.layout.angel_homepage_head, null);
         anlist = new ArrayList<>();
         angelAdapter = new AngelAdapter(this, anlist);
         angelList.setAdapter(angelAdapter);
         angelList.addHeaderView(angelHeadview);
-        angelList.addFooterView(unionFootview);
+        angelList.addFooterView(unionFootview2);
 
 
         /**
@@ -244,11 +240,13 @@ public class MainActivity extends BaseActivity implements IMainView {
         luckList.addFooterView(luckFootview);
         mainPresenter.getdata();
     }
+
     @Override
     public void setOnclick() {
         iv_setting_main.setOnClickListener(this);
         tv_ranking_main.setOnClickListener(this);
     }
+
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
