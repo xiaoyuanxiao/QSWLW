@@ -1,8 +1,10 @@
 package com.qs.qswlw.activity;
 
+import android.content.Intent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.qs.qswlw.R;
 import com.qs.qswlw.activity.PersonalCenter.BaseInfoActivity;
@@ -18,6 +20,7 @@ public class LoginActivity extends BaseInfoActivity implements ILoginView {
     LoginPresenter loginPresenter = new LoginPresenter(this);
     private Button btn_login;
     private EditText edt_username,edt_password;
+    private TextView tv_newuser_register;
 
 
     @Override
@@ -26,6 +29,7 @@ public class LoginActivity extends BaseInfoActivity implements ILoginView {
         btn_login = (Button) inflate.findViewById(R.id.btn_login);
         edt_username = (EditText) inflate.findViewById(R.id.edt_username);
         edt_password = (EditText) inflate.findViewById(R.id.edt_password);
+        tv_newuser_register = (TextView) inflate.findViewById(R.id.tv_newuser_register);
         return inflate;
     }
 
@@ -47,6 +51,7 @@ public class LoginActivity extends BaseInfoActivity implements ILoginView {
     public void setOnclick() {
         super.setOnclick();
         btn_login.setOnClickListener(this);
+        tv_newuser_register.setOnClickListener(this);
     }
 
     @Override
@@ -57,6 +62,9 @@ public class LoginActivity extends BaseInfoActivity implements ILoginView {
                 String username = edt_username.getText().toString();
                 String password = edt_password.getText().toString();
                 loginPresenter.getLogin(username,password);
+                break;
+            case R.id.tv_newuser_register:
+                startActivity(new Intent(this,RegisterActivity.class));
                 break;
         }
     }
