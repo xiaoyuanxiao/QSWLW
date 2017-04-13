@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -55,7 +56,7 @@ public class MainActivity extends BaseActivity implements IMainView {
     private ImageView iv_setting_main;
     private TextView tv_ranking_main;
     private LinearLayout ll_footview_union;
-    private RadioButton rb_main_goodprojects,rb_main_media;
+    private RadioButton rb_main_goodprojects,rb_main_media,rb_main_mall;
 
 
     @Override
@@ -146,6 +147,7 @@ public class MainActivity extends BaseActivity implements IMainView {
         tv_ranking_main = (TextView) findViewById(R.id.tv_ranking_main);
         rb_main_goodprojects = (RadioButton) findViewById(R.id.rb_main_goodprojects);
         rb_main_media = (RadioButton) findViewById(R.id.rb_main_media);
+        rb_main_mall = (RadioButton) findViewById(R.id.rb_main_mall);
         imageSwitchView.setCurrentImage(1);
         showDilog();
     }
@@ -274,6 +276,7 @@ public class MainActivity extends BaseActivity implements IMainView {
         tv_ranking_main.setOnClickListener(this);
         rb_main_goodprojects.setOnClickListener(this);
         rb_main_media.setOnClickListener(this);
+        rb_main_mall.setOnClickListener(this);
     }
 
     @Override
@@ -290,6 +293,14 @@ public class MainActivity extends BaseActivity implements IMainView {
                 break;
             case R.id.rb_main_media:
                 startActivity(new Intent(MainActivity.this,InteractionActivity.class));
+                break;
+            case R.id.rb_main_mall:
+                //实例化WebView对象
+                WebView webview = new WebView(this);
+                //设置WebView属性，能够执行Javascript脚本
+                webview.getSettings().setJavaScriptEnabled(true);
+                //加载需要显示的网页
+                webview.loadUrl("http://qiansheng.dian7dian.com/index.php?m=Mobile&c=Index&a=index");
                 break;
         }
     }
