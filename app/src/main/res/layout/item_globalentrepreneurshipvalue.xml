@@ -2,13 +2,14 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:padding="5dp">
 
     <RelativeLayout
-        android:layout_width="240dp"
+        android:layout_width="213dp"
         android:layout_height="wrap_content"
         android:background="@color/entrep"
-        android:padding="4dp">
+        android:padding="6dp">
 
         <TextView
             style="@style/tv_entrep"
@@ -28,7 +29,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="3dp"
         android:background="@color/entrep"
-        android:padding="4dp">
+        android:padding="6dp">
 
         <TextView
             style="@style/tv_entrep"
@@ -48,7 +49,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="3dp"
         android:background="@color/entrep"
-        android:padding="4dp">
+        android:padding="6dp">
 
         <TextView
             style="@style/tv_entrep"
@@ -68,7 +69,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="3dp"
         android:background="@color/entrep"
-        android:padding="4dp">
+        android:padding="6dp">
 
         <TextView
             style="@style/tv_entrep"
@@ -87,7 +88,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="3dp"
         android:background="@color/entrep"
-        android:padding="4dp">
+        android:padding="6dp">
 
         <TextView
             style="@style/tv_entrep"
@@ -106,7 +107,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="3dp"
         android:background="@color/entrep"
-        android:padding="4dp">
+        android:padding="6dp">
 
         <TextView
             style="@style/tv_entrep"
