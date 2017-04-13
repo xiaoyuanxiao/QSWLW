@@ -7,10 +7,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.qs.qswlw.R;
+import com.qs.qswlw.activity.PersonalCenter.SettingActivity;
 import com.qs.qswlw.adapter.AngelAdapter;
 import com.qs.qswlw.adapter.BenefitAdapter;
 import com.qs.qswlw.adapter.ChinaAdapter;
@@ -51,6 +53,7 @@ public class MainActivity extends BaseActivity implements IMainView {
     private Button btn_dialog;
     private ImageView iv_setting_main;
     private TextView tv_ranking_main;
+    private LinearLayout ll_footview_union;
 
 
     @Override
@@ -195,6 +198,12 @@ public class MainActivity extends BaseActivity implements IMainView {
         unionList.setAdapter(unionAdapter);
         unionList.addHeaderView(unionHeadview);
         unionList.addFooterView(unionFootview);
+        unionFootview.findViewById(R.id.ll_footview).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this,RankingActivity.class));
+            }
+        });
         /**
          * 全联盟创业日值内容填充
          */
@@ -215,7 +224,12 @@ public class MainActivity extends BaseActivity implements IMainView {
         angelList.setAdapter(angelAdapter);
         angelList.addHeaderView(angelHeadview);
         angelList.addFooterView(unionFootview2);
-
+        unionFootview2.findViewById(R.id.ll_footview).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this,RankingActivity.class));
+            }
+        });
 
         /**
          * 中国好产品排行榜内容填充
@@ -227,7 +241,12 @@ public class MainActivity extends BaseActivity implements IMainView {
         chinaList.setAdapter(chinaAdapter);
         chinaList.addHeaderView(chinaHeadview);
         chinaList.addFooterView(chinaFootview);
-
+        chinaFootview.findViewById(R.id.china_footview).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this,SettingActivity.class));
+            }
+        });
         /**
          * 拼手气促销抽奖名单内容填充
          */
@@ -256,6 +275,7 @@ public class MainActivity extends BaseActivity implements IMainView {
             case R.id.tv_ranking_main:
                 startActivity(new Intent(MainActivity.this, RankingActivity.class));
                 break;
+
         }
     }
 

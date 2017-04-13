@@ -21,21 +21,24 @@
             android:layout_weight="1"
             android:padding="7dp"
             android:clickable="true"
-            android:background="@drawable/selector_ranking_main">
+            android:background="@color/white">
 
             <TextView
+                android:id="@+id/tv_dayranking"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="日排名"
-                android:textColor="#666666"
+                android:textColor="@color/tv_ranking"
                 android:layout_centerVertical="true"
                 android:textSize="11sp" />
 
             <ImageView
+                android:id="@+id/iv_dayranking"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:background="@drawable/ranking_main"
+                android:background="@mipmap/oo_03"
+                android:clickable="true"
                 android:layout_alignParentRight="true"/>
         </RelativeLayout>
         <RelativeLayout
@@ -46,21 +49,23 @@
             android:padding="7dp"
             android:layout_marginLeft="10dp"
             android:clickable="true"
-            android:background="@drawable/selector_ranking_main">
+            android:background="@color/white">
 
             <TextView
+                android:id="@+id/tv_weekranking"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="周排名"
                 android:layout_centerVertical="true"
-                android:textColor="#666666"
+                android:textColor="@color/tv_ranking"
                 android:textSize="11sp" />
 
             <ImageView
+                android:id="@+id/iv_weekranking"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:background="@drawable/ranking_main"
+                android:background="@mipmap/oo_03"
                 android:layout_alignParentRight="true"/>
         </RelativeLayout>
         <RelativeLayout
@@ -71,21 +76,23 @@
             android:padding="7dp"
             android:layout_marginLeft="10dp"
             android:clickable="true"
-            android:background="@drawable/selector_ranking_main">
+            android:background="@color/white">
 
             <TextView
+                android:id="@+id/tv_monthranking"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="月排名"
                 android:layout_centerVertical="true"
-                android:textColor="#666666"
+                android:textColor="@color/tv_ranking"
                 android:textSize="11sp" />
 
             <ImageView
+                android:id="@+id/iv_monthranking"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:background="@drawable/ranking_main"
+                android:background="@mipmap/oo_03"
                 android:layout_alignParentRight="true" />
         </RelativeLayout>
     </LinearLayout>
