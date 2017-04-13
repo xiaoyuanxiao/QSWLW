@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -54,6 +55,7 @@ public class MainActivity extends BaseActivity implements IMainView {
     private ImageView iv_setting_main;
     private TextView tv_ranking_main;
     private LinearLayout ll_footview_union;
+    private RadioButton rb_main_goodprojects,rb_main_media;
 
 
     @Override
@@ -142,6 +144,8 @@ public class MainActivity extends BaseActivity implements IMainView {
         chinaList = (Image3DView) findViewById(R.id.chinaList);
         luckList = (Image3DView) findViewById(R.id.luckList);
         tv_ranking_main = (TextView) findViewById(R.id.tv_ranking_main);
+        rb_main_goodprojects = (RadioButton) findViewById(R.id.rb_main_goodprojects);
+        rb_main_media = (RadioButton) findViewById(R.id.rb_main_media);
         imageSwitchView.setCurrentImage(1);
         showDilog();
     }
@@ -268,6 +272,8 @@ public class MainActivity extends BaseActivity implements IMainView {
     public void setOnclick() {
         iv_setting_main.setOnClickListener(this);
         tv_ranking_main.setOnClickListener(this);
+        rb_main_goodprojects.setOnClickListener(this);
+        rb_main_media.setOnClickListener(this);
     }
 
     @Override
@@ -279,7 +285,12 @@ public class MainActivity extends BaseActivity implements IMainView {
             case R.id.tv_ranking_main:
                 startActivity(new Intent(MainActivity.this, RankingActivity.class));
                 break;
-
+            case R.id.rb_main_goodprojects:
+                startActivity(new Intent(MainActivity.this,ProjectRecommendationActivity.class));
+                break;
+            case R.id.rb_main_media:
+                startActivity(new Intent(MainActivity.this,InteractionActivity.class));
+                break;
         }
     }
 

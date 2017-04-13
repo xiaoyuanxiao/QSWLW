@@ -110,25 +110,23 @@
             android:id="@+id/rb_main_goodprojects"
             style="@style/tv_iv_main"
             android:drawableTop="@mipmap/hxm"
-            android:text="中国好项目" />
+            android:text="项目推荐" />
 
         <RadioButton
             android:id="@+id/rb_main_WitnessChinaBusiness"
             style="@style/tv_iv_main"
             android:drawableTop="@mipmap/jzhs"
             android:text="见证华商" />
-
+        <RadioButton
+            android:id="@+id/rb_main_media"
+            style="@style/tv_iv_main"
+            android:drawableTop="@mipmap/qscm"
+            android:text="互动吧" />
         <RadioButton
             android:id="@+id/rb_main_Win"
             style="@style/tv_iv_main"
             android:drawableTop="@mipmap/lan3"
             android:text="赢在钱盛" />
-
-        <RadioButton
-            android:id="@+id/rb_main_media"
-            style="@style/tv_iv_main"
-            android:drawableTop="@mipmap/qscm"
-            android:text="钱盛传媒" />
     </RadioGroup>
 
 </LinearLayout>
