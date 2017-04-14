@@ -105,6 +105,7 @@ public class Image3DSwitchView extends ViewGroup {
             // 每张图片的宽度设定为控件宽度的百分之六十
             mImageWidth = (int) (mWidth * 0.7);
             MyApplication.WIDTH = mImageWidth;
+            MyApplication.Height = mHeight;
             if (mCurrentImage >= 0 && mCurrentImage < mCount) {
                 mScroller.abortAnimation();
                 setScrollX(0);

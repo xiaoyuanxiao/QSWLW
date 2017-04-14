@@ -30,7 +30,7 @@ public class UnionAdapter extends BaseListAdapter<UnionBean> {
         TextView tv_item_home_content_left = (TextView) view.findViewById(R.id.tv_item_home_content_left);
         TextView tv_item_home_content_value = (TextView) view.findViewById(R.id.tv_item_home_content_value);
         RelativeLayout rl_width = (RelativeLayout) view.findViewById(R.id.rl_width);
-        rl_width.setLayoutParams(new LinearLayout.LayoutParams(MyApplication.WIDTH, LinearLayout.LayoutParams.WRAP_CONTENT));
+        rl_width.setLayoutParams(new LinearLayout.LayoutParams(MyApplication.WIDTH, (MyApplication.Height-108)/6));
         tv_item_home_content_left.setTextColor(context.getResources().getColor(R.color.text_yellow));
         tv_item_home_content_value.setTextColor(context.getResources().getColor(R.color.text_yellow));
         UnionBean unionBean = data.get(i);

@@ -32,7 +32,7 @@ public class ChinaAdapter extends BaseListAdapter<ChinaBean> {
         TextView key = (TextView) convertView.findViewById(tv_item_home_content_left);
         TextView value = (TextView) convertView.findViewById(tv_item_home_content_value);
         RelativeLayout rl_width = (RelativeLayout) convertView.findViewById(R.id.rl_width);
-        rl_width.setLayoutParams(new LinearLayout.LayoutParams(MyApplication.WIDTH, LinearLayout.LayoutParams.WRAP_CONTENT));
+        rl_width.setLayoutParams(new LinearLayout.LayoutParams(MyApplication.WIDTH, (MyApplication.Height-108)/6));
         ChinaBean chinaBean = data.get(position);
         key.setTextColor(context.getResources().getColor(R.color.text_red));
         value.setTextColor(context.getResources().getColor(R.color.text_red));

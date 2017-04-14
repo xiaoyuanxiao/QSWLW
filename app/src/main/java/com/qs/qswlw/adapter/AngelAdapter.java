@@ -29,7 +29,7 @@ public class AngelAdapter extends BaseListAdapter<AngelBean> {
         TextView key = (TextView) convertView.findViewById(R.id.tv_item_home_content_left);
         TextView value = (TextView) convertView.findViewById(R.id.tv_item_home_content_value);
         RelativeLayout rl_width = (RelativeLayout) convertView.findViewById(R.id.rl_width);
-        rl_width.setLayoutParams(new LinearLayout.LayoutParams(MyApplication.WIDTH, LinearLayout.LayoutParams.WRAP_CONTENT));
+        rl_width.setLayoutParams(new LinearLayout.LayoutParams(MyApplication.WIDTH,(MyApplication.Height-108)/6));
         AngelBean angelBean = data.get(position);
         key.setText(angelBean.getNickname());
         value.setText(angelBean.getTotal());

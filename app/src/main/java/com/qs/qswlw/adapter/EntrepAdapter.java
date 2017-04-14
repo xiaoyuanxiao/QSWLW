@@ -30,7 +30,7 @@ public class EntrepAdapter extends BaseListAdapter<String> {
         TextView tv_totalnumber_gtv = (TextView) view.findViewById(R.id.tv_totalnumber_gtv);
         TextView tv_llianceMerchant_gtv = (TextView) view.findViewById(R.id.tv_llianceMerchant_gtv);
         LinearLayout ll_entrep_width = (LinearLayout) view.findViewById(R.id.ll_entrep_width);
-        ll_entrep_width.setLayoutParams(new LinearLayout.LayoutParams(MyApplication.WIDTH, LinearLayout.LayoutParams.WRAP_CONTENT));
+        ll_entrep_width.setLayoutParams(new LinearLayout.LayoutParams(MyApplication.WIDTH, MyApplication.Height-MyApplication.ENTREPHEIGHT));
         tv_twentypercent_congtv.setText(data.get(0));
         tv_twentypercent_busgtv.setText(data.get(1));
         tv_yesterdayConsumption_gtv.setText(data.get(2));

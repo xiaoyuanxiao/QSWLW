@@ -3,6 +3,7 @@ package com.qs.qswlw.activity;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.graphics.Color;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.webkit.WebView;
@@ -13,6 +14,7 @@ import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.qs.qswlw.MyApplication;
 import com.qs.qswlw.R;
 import com.qs.qswlw.activity.PersonalCenter.SettingActivity;
 import com.qs.qswlw.adapter.AngelAdapter;
@@ -189,6 +191,8 @@ public class MainActivity extends BaseActivity implements IMainView {
          * 全联盟让利金额排行榜内容填充、头部、尾部
          */
         View benefitHeadview = LayoutInflater.from(this).inflate(R.layout.benefit_homepage_head, null);
+        TextView tv_benefit_head = (TextView) benefitHeadview.findViewById(R.id.tv_benefit_head);
+        tv_benefit_head.setLayoutParams(new LinearLayout.LayoutParams(MyApplication.WIDTH,60));
         belist = new ArrayList<>();
         benefitAdapter = new BenefitAdapter(this, belist);
         benefitList.setAdapter(benefitAdapter);
@@ -198,6 +202,10 @@ public class MainActivity extends BaseActivity implements IMainView {
          */
         View unionHeadview = LayoutInflater.from(this).inflate(R.layout.union_homepage_head, null);
         View unionFootview = LayoutInflater.from(this).inflate(R.layout.union_homepage_foot, null);
+        TextView tv_union_head = (TextView) unionHeadview.findViewById(R.id.tv_union_head);
+        LinearLayout ll_footview = (LinearLayout) unionFootview.findViewById(R.id.ll_footview);
+        ll_footview.setLayoutParams(new LinearLayout.LayoutParams(MyApplication.WIDTH, 45));
+        tv_union_head.setLayoutParams(new LinearLayout.LayoutParams(MyApplication.WIDTH,60));
         unlist = new ArrayList<>();
         unionAdapter = new UnionAdapter(this, unlist);
         unionList.setAdapter(unionAdapter);
@@ -216,6 +224,10 @@ public class MainActivity extends BaseActivity implements IMainView {
          */
 
         View entrepHeadview = LayoutInflater.from(this).inflate(R.layout.entrep_homepage_head, null);
+        final LinearLayout ll_entrep_width = (LinearLayout) entrepHeadview.findViewById(R.id.ll_entrep_width);
+        ll_entrep_width.setLayoutParams(new LinearLayout.LayoutParams(MyApplication.WIDTH, LinearLayout.LayoutParams.WRAP_CONTENT));
+        ll_entrep_width.measure(0,0);
+        MyApplication.ENTREPHEIGHT = ll_entrep_width.getMeasuredHeight();
         enlist = new ArrayList<>();
         entrepAdapter = new EntrepAdapter(this, enlist);
         entrepList.setAdapter(entrepAdapter);
@@ -226,6 +238,10 @@ public class MainActivity extends BaseActivity implements IMainView {
          */
         View unionFootview2 = LayoutInflater.from(this).inflate(R.layout.union_homepage_foot, null);
         View angelHeadview = LayoutInflater.from(this).inflate(R.layout.angel_homepage_head, null);
+        TextView tv_angel_head = (TextView) angelHeadview.findViewById(R.id.tv_angel_head);
+        tv_angel_head.setLayoutParams(new LinearLayout.LayoutParams(MyApplication.WIDTH,60));
+        LinearLayout ll_footview1 = (LinearLayout) unionFootview2.findViewById(R.id.ll_footview);
+        ll_footview1.setLayoutParams(new LinearLayout.LayoutParams(MyApplication.WIDTH, 45));
         anlist = new ArrayList<>();
         angelAdapter = new AngelAdapter(this, anlist);
         angelList.setAdapter(angelAdapter);
@@ -245,6 +261,10 @@ public class MainActivity extends BaseActivity implements IMainView {
          */
         View chinaFootview = LayoutInflater.from(this).inflate(R.layout.china_homepage_foot, null);
         View chinaHeadview = LayoutInflater.from(this).inflate(R.layout.china_homepage_head, null);
+        TextView tv_china_head = (TextView) chinaHeadview.findViewById(R.id.tv_china_head);
+        tv_china_head.setLayoutParams(new LinearLayout.LayoutParams(MyApplication.WIDTH,60));
+        LinearLayout china_footview = (LinearLayout) chinaFootview.findViewById(R.id.china_footview);
+        china_footview.setLayoutParams(new LinearLayout.LayoutParams(MyApplication.WIDTH, 45));
         chlist = new ArrayList<>();
         chinaAdapter = new ChinaAdapter(this, chlist);
         chinaList.setAdapter(chinaAdapter);
@@ -261,6 +281,10 @@ public class MainActivity extends BaseActivity implements IMainView {
          */
         View luckHeadview = LayoutInflater.from(this).inflate(R.layout.luck_homepage_head, null);
         View luckFootview = LayoutInflater.from(this).inflate(R.layout.luck_homepage_foot, null);
+        TextView tv_luck_head = (TextView) luckHeadview.findViewById(R.id.tv_luck_head);
+        tv_luck_head.setLayoutParams(new LinearLayout.LayoutParams(MyApplication.WIDTH,60));
+        LinearLayout luck_footview = (LinearLayout) luckFootview.findViewById(R.id.luck_footview);
+        luck_footview.setLayoutParams(new LinearLayout.LayoutParams(MyApplication.WIDTH, LinearLayout.LayoutParams.WRAP_CONTENT));
         lulist = new ArrayList<>();
         luckAdapter = new LuckAdapter(this, lulist);
         luckList.setAdapter(luckAdapter);
