@@ -1,5 +1,7 @@
 package com.qs.qswlw.activity.PersonalCenter;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.view.View;
 import android.view.ViewGroup;
@@ -48,6 +50,7 @@ public class SettingActivity extends BaseActivity {
     public void setOnclick() {
         gv_setting.setOnItemClickListener(new ItemClickListener());
         rb_main_mall.setOnClickListener(this);
+        rb_main_exit.setOnClickListener(this);
 
     }
 
@@ -109,7 +112,36 @@ public class SettingActivity extends BaseActivity {
             case R.id.rb_main_mall:
                 startActivity(new Intent(SettingActivity.this, MainActivity.class));
                 break;
+            case R.id.rb_main_exit:
+                showDialog();
+                break;
         }
+    }
+
+    /**
+     * 退出登录
+     */
+    private void showDialog() {
+        new AlertDialog.Builder(this).setTitle("确认退出吗？")
+                .setIcon(android.R.drawable.ic_dialog_info)
+                .setPositiveButton("确定", new DialogInterface.OnClickListener() {
+
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        // 点击“确认”后的操作
+                      startActivity(new Intent(SettingActivity.this,MainActivity.class));
+
+                    }
+                })
+                .setNegativeButton("返回", new DialogInterface.OnClickListener() {
+
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        // 点击“返回”后的操作,这里不设置没有任何操作
+                        finish();
+                    }
+                }).show();
+// super.onBackPressed();
     }
 
 
