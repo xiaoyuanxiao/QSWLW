@@ -18,7 +18,7 @@ import com.qs.qswlw.activity.PersonalCenter.SettingActivity;
 import com.qs.qswlw.adapter.AngelAdapter;
 import com.qs.qswlw.adapter.BenefitAdapter;
 import com.qs.qswlw.adapter.ChinaAdapter;
-import com.qs.qswlw.adapter.EntepAdapter;
+import com.qs.qswlw.adapter.EntrepAdapter;
 import com.qs.qswlw.adapter.LuckAdapter;
 import com.qs.qswlw.adapter.MytestAdapter;
 import com.qs.qswlw.adapter.UnionAdapter;
@@ -126,7 +126,7 @@ public class MainActivity extends BaseActivity implements IMainView {
     ArrayList<ChinaBean> listtest;
     ArrayList<String> enlist;
     MytestAdapter myDataAdapter;
-    EntepAdapter entrepAdapter;
+    EntrepAdapter entrepAdapter;
     ChinaAdapter chinaAdapter;
     UnionAdapter unionAdapter;
     BenefitAdapter benefitAdapter;
@@ -193,7 +193,6 @@ public class MainActivity extends BaseActivity implements IMainView {
         benefitAdapter = new BenefitAdapter(this, belist);
         benefitList.setAdapter(benefitAdapter);
         benefitList.addHeaderView(benefitHeadview);
-
         /**
          * 联盟商家排行榜
          */
@@ -218,7 +217,7 @@ public class MainActivity extends BaseActivity implements IMainView {
 
         View entrepHeadview = LayoutInflater.from(this).inflate(R.layout.entrep_homepage_head, null);
         enlist = new ArrayList<>();
-        entrepAdapter = new EntepAdapter(this, enlist);
+        entrepAdapter = new EntrepAdapter(this, enlist);
         entrepList.setAdapter(entrepAdapter);
         entrepList.addHeaderView(entrepHeadview);
 

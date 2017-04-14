@@ -9,6 +9,8 @@ import android.view.ViewConfiguration;
 import android.view.ViewGroup;
 import android.widget.Scroller;
 
+import com.qs.qswlw.MyApplication;
+
 /**
  * 3D图片轮播器主控件。
  *
@@ -102,6 +104,7 @@ public class Image3DSwitchView extends ViewGroup {
             mHeight = getMeasuredHeight();
             // 每张图片的宽度设定为控件宽度的百分之六十
             mImageWidth = (int) (mWidth * 0.7);
+            MyApplication.WIDTH = mImageWidth;
             if (mCurrentImage >= 0 && mCurrentImage < mCount) {
                 mScroller.abortAnimation();
                 setScrollX(0);
