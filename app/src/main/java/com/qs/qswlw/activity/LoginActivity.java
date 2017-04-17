@@ -5,6 +5,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.qs.qswlw.R;
 import com.qs.qswlw.activity.PersonalCenter.BaseInfoActivity;
@@ -77,6 +78,6 @@ public class LoginActivity extends BaseInfoActivity implements ILoginView {
 
     @Override
     public void setLogin(LoginBean logininfo) {
-
+        Toast.makeText(this,"1111",Toast.LENGTH_LONG).show();
     }
 }

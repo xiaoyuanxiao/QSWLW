@@ -15,7 +15,6 @@ import android.widget.Toast;
 
 import com.qs.qswlw.MyApplication;
 import com.qs.qswlw.R;
-import com.qs.qswlw.activity.PersonalCenter.SettingActivity;
 import com.qs.qswlw.adapter.AngelAdapter;
 import com.qs.qswlw.adapter.BenefitAdapter;
 import com.qs.qswlw.adapter.ChinaAdapter;
@@ -272,7 +271,7 @@ public class MainActivity extends BaseActivity implements IMainView {
         chinaFootview.findViewById(R.id.china_footview).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this,SettingActivity.class));
+                startActivity(new Intent(MainActivity.this,ChinaGoodProductActivity.class));
             }
         });
         /**
