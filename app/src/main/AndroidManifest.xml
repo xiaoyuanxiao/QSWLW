@@ -32,12 +32,15 @@
         <activity android:name=".activity.PersonalCenter.city.HarvestAddressListActivity"/>
         <activity android:name=".activity.PersonalCenter.ImproveDocumentationActivity"
             android:windowSoftInputMode="adjustUnspecified|stateHidden"/>
-        <activity android:name=".activity.PersonalCenter.SettingActivity"/>
+        <activity android:name=".activity.PersonalCenter.BusinessSettingActivity"/>
+        <activity android:name=".activity.PersonalCenter.ConsumerSettingActivity"/>
         <activity android:name=".activity.PersonalCenter.ReceivingAddressActivity"/>
         <activity android:name=".activity.PersonalCenter.EntrepreneurialSeedActivity"/>
         <activity android:name=".activity.PersonalCenter.RecommendActivity"/>
         <activity android:name=".activity.PersonalCenter.WithdrawalsActivity"/>
         <activity android:name=".activity.PersonalCenter.BusinessTurnoverActivity"/>
+        <activity android:name=".activity.PersonalCenter.DonationActivity"/>
+        <activity android:name=".activity.PersonalCenter.ConsumeWithdrawalsActivity"/>
         <activity android:name=".activity.PersonalCenter.ConsumerSilverBeanActivity"/>
         <activity android:name=".activity.PersonalCenter.MyGoldenBeanActivity"/>
         <activity android:name=".activity.PersonalCenter.MyProfitActivity"/>
@@ -46,6 +49,9 @@
         <activity android:name=".activity.PersonalCenter.PromotionLuckDrawActivity"/>
         <activity android:name=".activity.PersonalCenter.EntrepreneurialDonationActivity"/>
         <activity android:name=".activity.PersonalCenter.CommodityManagementActivity"/>
+        <activity android:name=".activity.PersonalCenter.MyInvestActivity"/>
+        <activity android:name=".activity.PersonalCenter.MyGoldActivity"/>
+        <activity android:name=".activity.PersonalCenter.MallOrdersActivity"/>
         <activity android:name=".activity.LoginActivity"/>
         <activity android:name=".activity.RankingActivity"/>
         <activity android:name=".activity.ChinaGoodProductActivity"/>

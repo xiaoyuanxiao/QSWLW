@@ -12,7 +12,7 @@
         android:src="@mipmap/left"
         android:layout_centerVertical="true"
         android:layout_alignParentLeft="true"
-        android:layout_marginLeft="5dp"/>
+        android:layout_marginLeft="8dp"/>
 
     
     <TextView
@@ -30,6 +30,7 @@
         android:layout_centerVertical="true"
         android:text=""
         android:textSize="13sp"
+        android:textColor="@color/white"
         android:layout_marginRight="5dp"/>
 
 

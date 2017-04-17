@@ -42,13 +42,15 @@
                         android:layout_centerHorizontal="true"
                         android:text="我的"
                         android:textColor="@color/white"
-                        android:textSize="15sp" />
+                        android:textSize="12sp" />
 
-                    <ImageView
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
-                        android:src="@mipmap/edit" />
+                        android:text="设置"
+                        android:textColor="@color/white"
+                        android:textSize="12sp" />
                 </RelativeLayout>
 
                 <RelativeLayout
@@ -233,7 +235,7 @@
             <GridView
                 android:id="@+id/gv_setting"
                 android:layout_width="match_parent"
-                android:layout_height="580dp"
+                android:layout_height="560dp"
                 android:numColumns="2" />
         </LinearLayout>
 
@@ -250,25 +252,29 @@
             android:id="@+id/rb_main_mall"
             style="@style/tv_iv_setting"
             android:drawableTop="@mipmap/sy_03"
-            android:text="首页" />
+            android:text="首页"
+            android:textSize="9sp"/>
 
         <RadioButton
             android:id="@+id/rb_main_beans"
             style="@style/tv_iv_setting"
             android:drawableTop="@mipmap/jd_03"
-            android:text="创业金豆" />
+            android:text="创业金豆"
+            android:textSize="9sp"/>
 
         <RadioButton
             android:id="@+id/rb_main_funtime"
             style="@style/tv_iv_setting"
             android:drawableTop="@mipmap/hb_03"
-            android:text="我的伙伴" />
+            android:text="我的伙伴"
+            android:textSize="9sp"/>
 
         <RadioButton
             android:id="@+id/rb_main_exit"
             style="@style/tv_iv_setting"
             android:drawableTop="@mipmap/wd_03"
-            android:text="退出" />
+            android:text="退出"
+            android:textSize="9sp"/>
     </RadioGroup>
 
 </LinearLayout>
