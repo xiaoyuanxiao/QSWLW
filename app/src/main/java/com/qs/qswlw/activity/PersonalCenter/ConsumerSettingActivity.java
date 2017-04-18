@@ -51,6 +51,7 @@ public class ConsumerSettingActivity extends BaseActivity implements AdapterView
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
         switch (i){
             case 0:
+                startActivity(new Intent(this,VentureGoldBeansActivity.class));
                 break;
             case 1:
                 break;
@@ -64,6 +65,7 @@ public class ConsumerSettingActivity extends BaseActivity implements AdapterView
                 startActivity(new Intent(this,MyInvestActivity.class));
                 break;
             case 5:
+                startActivity(new Intent(this,ConsumerEntrepreneurialSeedActivity.class));
                 break;
             case 6:
                 startActivity(new Intent(this,RecommendActivity.class));
