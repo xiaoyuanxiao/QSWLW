@@ -6,53 +6,184 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <LinearLayout
-            android:focusable="true"
-            android:focusableInTouchMode="true"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:focusable="true"
+            android:focusableInTouchMode="true">
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="70dp"
-                android:background="@mipmap/zibg2"
+                android:layout_height="wrap_content"
+                android:background="@mipmap/zibg"
+                android:paddingTop="12dp"
+                android:paddingBottom="12dp"
                 android:gravity="center_vertical">
-
                 <com.qs.qswlw.view.CircleImageView
-                    android:id="@+id/iv_consumerslivebean_avater"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_marginLeft="10dp"
-                    android:src="@mipmap/image1"/>
-
-                <TextView
-                    android:id="@+id/tv_consumerslivebean_id"
+                    android:id="@+id/iv_consumer_avater"
+                    android:layout_width="38dp"
+                    android:layout_height="38dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="20dp"
+                    android:src="@mipmap/zc_08"/>
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="9sp"
-                    android:textColor="@color/white"
-                    android:layout_marginLeft="70dp"
-                    android:layout_marginTop="3dp"
-                    android:text="会员ID：52"/>
-                <TextView
-                    android:id="@+id/tv_consumerslivebean_nickname"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="9sp"
-                    android:textColor="@color/white"
-                    android:layout_marginLeft="70dp"
-                    android:layout_marginTop="3dp"
-                    android:layout_below="@+id/tv_consumerslivebean_id"
-                    android:text="昵称：6666"/>
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@+id/iv_consumer_avater"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="10sp"
+                        android:textColor="@color/white"
+                        android:text="会员ID：12345678"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="10sp"
+                        android:textColor="@color/white"
+                        android:layout_marginTop="2dp"
+                        android:text="推荐人：游客1111"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="10sp"
+                        android:textColor="@color/white"
+                        android:layout_marginTop="2dp"
+                        android:text="推荐人：游客1111"/>
+                </LinearLayout>
             </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+                android:background="@mipmap/zibg"
+                android:padding="12dp"
+                android:gravity="center_vertical">
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:orientation="vertical">
+                    <TextView
+                        android:id="@+id/tv_customer_num"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="10sp"
+                        android:textColor="@color/white"
+                        android:text="会员ID：12345678"/>
+                    <TextView
+                        android:id="@+id/tv_customer_Surplus"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="10sp"
+                        android:textColor="@color/white"
+                        android:layout_marginTop="2dp"
+                        android:text="推荐人：游客1111"/>
+                    <TextView
+                        android:id="@+id/tv_customer_seednum"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="10sp"
+                        android:textColor="@color/white"
+                        android:layout_marginTop="2dp"
+                        android:text="推荐人：游客1111"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="58dp"
+                    android:layout_height="58dp"
+                    android:background="@drawable/fillet"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerInParent="true"
+                    android:orientation="vertical"
+                    android:padding="3dp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="转 为"
+                        android:textSize="16sp"
+                        android:layout_marginTop="3dp"
+                        android:textColor="#cdb2b6"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="创业种子"
+                        android:layout_marginTop="4dp"
+                        android:textSize="10sp"
+                        android:textColor="#cdb2b6"
+                        />
+                </LinearLayout>
+            </RelativeLayout>
+            <LinearLayout
+                android:layout_marginTop="4dp"
+                android:layout_marginBottom="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginLeft="12dp"
+                android:layout_marginRight="12dp"
+                android:gravity="center_vertical">
+                <TextView
+                    android:id="@+id/tv_customer_pay"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="待付款"
+                    android:gravity="center"
+                    android:textSize="10sp"
+                    android:paddingTop="6dp"
+                    android:paddingBottom="6dp"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:textColor="@color/white"
+                    android:background="@color/mallorders"/>
+                <TextView
+                    android:id="@+id/tv_customer_use"
+                    android:layout_width="wrap_content"
+                    android:textSize="10sp"
+                    android:textColor="@color/black"
+                    android:layout_height="match_parent"
+                    android:text="已使用"
+                    android:paddingTop="6dp"
+                    android:paddingBottom="6dp"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:gravity="center"/>
+                <TextView
+                    android:id="@+id/tv_customer_alllog"
+                    android:layout_width="wrap_content"
+                    android:textSize="10sp"
+                    android:textColor="@color/black"
+                    android:layout_height="match_parent"
+                    android:text="全部日志"
+                    android:paddingTop="6dp"
+                    android:paddingBottom="6dp"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:gravity="center"/>
+                <TextView
+                    android:id="@+id/tv_customer_seedlog"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:textSize="10sp"
+                    android:textColor="@color/black"
+                    android:layout_height="match_parent"
+                    android:text="创业种子记录"
+                    android:paddingTop="6dp"
+                    android:paddingBottom="6dp"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:gravity="center"/>
+            </LinearLayout>
+
             <com.qs.qswlw.view.MyListView
                 android:id="@+id/lv_consumersliverbean"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:divider="@null">
+                android:layout_height="wrap_content">
+
             </com.qs.qswlw.view.MyListView>
         </LinearLayout>
     </ScrollView>
-
-
 </LinearLayout>

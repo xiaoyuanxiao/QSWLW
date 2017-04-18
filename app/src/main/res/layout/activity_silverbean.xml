@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:background="@mipmap/zibg2"
+                android:gravity="center_vertical">
+
+                <com.qs.qswlw.view.CircleImageView
+                    android:id="@+id/iv_consumerslivebean_avater"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="10dp"
+                    android:src="@mipmap/image1"/>
+
+                <TextView
+                    android:id="@+id/tv_consumerslivebean_id"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="9sp"
+                    android:textColor="@color/white"
+                    android:layout_marginLeft="70dp"
+                    android:layout_marginTop="3dp"
+                    android:text="会员ID：52"/>
+                <TextView
+                    android:id="@+id/tv_consumerslivebean_nickname"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="9sp"
+                    android:textColor="@color/white"
+                    android:layout_marginLeft="70dp"
+                    android:layout_marginTop="3dp"
+                    android:layout_below="@+id/tv_consumerslivebean_id"
+                    android:text="昵称：6666"/>
+            </RelativeLayout>
+            <com.qs.qswlw.view.MyListView
+                android:id="@+id/lv_consumersliverbean"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:divider="@null">
+            </com.qs.qswlw.view.MyListView>
+        </LinearLayout>
+    </ScrollView>
+
+
+</LinearLayout>

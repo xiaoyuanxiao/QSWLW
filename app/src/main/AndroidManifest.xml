@@ -41,7 +41,7 @@
         <activity android:name=".activity.PersonalCenter.BusinessTurnoverActivity"/>
         <activity android:name=".activity.PersonalCenter.DonationActivity"/>
         <activity android:name=".activity.PersonalCenter.ConsumeWithdrawalsActivity"/>
-        <activity android:name=".activity.PersonalCenter.ConsumerSilverBeanActivity"/>
+        <activity android:name=".activity.PersonalCenter.SilverBeanActivity"/>
         <activity android:name=".activity.PersonalCenter.MyGoldenBeanActivity"/>
         <activity android:name=".activity.PersonalCenter.MyProfitActivity"/>
         <activity android:name=".activity.PersonalCenter.ConsumptionRecordActivity"/>
@@ -53,6 +53,7 @@
         <activity android:name=".activity.PersonalCenter.MyInvestActivity"/>
         <activity android:name=".activity.PersonalCenter.MyGoldActivity"/>
         <activity android:name=".activity.PersonalCenter.MallOrdersActivity"/>
+        <activity android:name=".activity.PersonalCenter.ConsumerSilverBeanActivity"/>
         <activity android:name=".activity.LoginActivity"/>
         <activity android:name=".activity.RankingActivity"/>
         <activity android:name=".activity.ChinaGoodProductActivity"/>

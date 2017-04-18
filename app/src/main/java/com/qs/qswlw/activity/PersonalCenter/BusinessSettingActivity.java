@@ -77,7 +77,7 @@ public class BusinessSettingActivity extends BaseActivity {
                     startActivity(new Intent(BusinessSettingActivity.this,RecommendActivity.class));
                     break;
                 case 4:
-                    startActivity(new Intent(BusinessSettingActivity.this,ConsumerSilverBeanActivity.class));
+                    startActivity(new Intent(BusinessSettingActivity.this,SilverBeanActivity.class));
                     break;
                 case 5:
                     startActivity(new Intent(BusinessSettingActivity.this,WithdrawalsActivity.class));
