@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:focusable="true"
+            android:focusableInTouchMode="true">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/red"
+        android:orientation="vertical"
+        android:paddingBottom="5dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="20dp">
+
+            <RelativeLayout
+                android:id="@+id/rl_setting_left"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="25dp">
+
+                <com.qs.qswlw.view.CircleImageView
+                    android:id="@+id/iv_setting_avater"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:src="@mipmap/image1" />
+
+                <TextView
+                    android:id="@+id/tv_setting_id"
+                    style="@style/tv_standard"
+                    android:layout_below="@id/iv_setting_avater"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="3dp"
+                    android:text="ID:MI1654987" />
+
+                <TextView
+                    android:id="@+id/tv_setting_name"
+                    style="@style/tv_standard"
+                    android:layout_below="@id/tv_setting_id"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="3dp"
+                    android:text="刘得华" />
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="5dp"
+                android:layout_toRightOf="@id/rl_setting_left"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        style="@style/tv_standard"
+                        android:text="消费总金额" />
+
+                    <TextView
+                        android:id="@+id/tv_setting_consumptionMoney"
+                        style="@style/tv_standard"
+                        android:layout_alignParentRight="true"
+                        android:text="0" />
+
+                    <View
+                        style="@style/view_standard"
+                        android:layout_below="@id/tv_setting_consumptionMoney" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        style="@style/tv_standard"
+                        android:text="创业种子（激励）" />
+
+                    <TextView
+                        android:id="@+id/tv_setting_encourage"
+                        style="@style/tv_standard"
+                        android:layout_alignParentRight="true"
+                        android:text="0" />
+
+                    <View
+                        style="@style/view_standard"
+                        android:layout_below="@id/tv_setting_encourage" />
+                </RelativeLayout>
+            </LinearLayout>
+        </RelativeLayout>
+    </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="6dp">
+
+                <TextView
+                    android:id="@+id/tv_promotional_join"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:text="参加记录"
+                    android:textColor="@color/black"
+                    android:textSize="10sp" />
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="25dp"
+                    android:background="@color/view" />
+
+                <TextView
+                    android:id="@+id/tv_promotional_win"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:text="中奖纪录"
+                    android:textColor="@color/black"
+                    android:textSize="10sp" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <View
+                    android:id="@+id/view_join"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="1dp"
+                    android:background="@color/red" />
+                <View
+                    android:id="@+id/view_win"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="1dp"
+                    android:background="@color/view" />
+            </LinearLayout>
+
+
+            <com.qs.qswlw.view.MyListView
+                android:id="@+id/lv_promotionallottery"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:divider="@null"
+                android:layout_margin="10dp"
+                android:dividerHeight="10px"></com.qs.qswlw.view.MyListView>
+
+
+        </LinearLayout>
+    </ScrollView>
+
+
+</LinearLayout>

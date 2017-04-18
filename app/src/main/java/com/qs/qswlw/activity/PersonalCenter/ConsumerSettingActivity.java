@@ -80,6 +80,7 @@ public class ConsumerSettingActivity extends BaseActivity implements AdapterView
                 startActivity(new Intent(this,DonationActivity.class));
                 break;
             case 11:
+                startActivity(new Intent(this,PromotionalLotteryActivity.class));
                 break;
             case 12:
                 startActivity(new Intent(this,ReceivingAddressActivity.class));
