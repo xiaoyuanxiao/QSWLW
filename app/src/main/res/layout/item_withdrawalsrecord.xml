@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingTop="5dp"
+    android:paddingBottom="5dp"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp">
+    <TextView
+        style="@style/tv_harvestaddress"
+        android:layout_centerVertical="true"
+        android:text="创业金豆"/>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_centerInParent="true"
+        android:gravity="center_vertical">
+        <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:src="@mipmap/cyjd"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1195"
+            android:layout_marginLeft="3dp"
+            android:textSize="10sp"
+            android:textColor="@color/red" />
+    </LinearLayout>
+
+    <TextView
+        style="@style/tv_harvestaddress"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:text="2017-04-01"/>
+
+
+
+
+
+</RelativeLayout>
