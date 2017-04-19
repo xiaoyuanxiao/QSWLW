@@ -55,12 +55,10 @@
         <activity android:name=".activity.PersonalCenter.MallOrdersActivity"/>
         <activity android:name=".activity.PersonalCenter.ConsumerSilverBeanActivity"/>
         <activity android:name=".activity.PersonalCenter.ConsumerEntrepreneurialSeedActivity"/>
-        <activity android:name=".activity.PersonalCenter.VenturegoldBeansActivity"/>
+        <activity android:name=".activity.PersonalCenter.VentureGoldBeansActivity"/>
         <activity android:name=".activity.PersonalCenter.RecommendedRecordsActivity"/>
         <activity android:name=".activity.PersonalCenter.DonationRecordActivity"/>
-        <activity android:name=".activity.PersonalCenter.ConsumerEntrepreneurialSeedActivity"/>
-        <activity android:name=".activity.PersonalCenter.VenturegoldBeansActivity"/>
-        <activity android:name=".activity.PersonalCenter.RecommendedRecordsActivity"/>
+        <activity android:name=".activity.PersonalCenter.InvestRecordActivity"/>
         <activity android:name=".activity.LoginActivity"/>
         <activity android:name=".activity.RankingActivity"/>
         <activity android:name=".activity.ChinaGoodProductActivity"/>
