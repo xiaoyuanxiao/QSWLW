@@ -28,8 +28,6 @@ public class BenefitAdapter extends BaseListAdapter<BenefitBean> {
         convertView = View.inflate(context, R.layout.item_home_content, null);
         TextView key = (TextView) convertView.findViewById(R.id.tv_item_home_content_left);
         TextView value = (TextView) convertView.findViewById(R.id.tv_item_home_content_value);
-        RelativeLayout rl_width = (RelativeLayout) convertView.findViewById(R.id.rl_width);
-        rl_width.setLayoutParams(new LinearLayout.LayoutParams(MyApplication.WIDTH, LinearLayout.LayoutParams.WRAP_CONTENT));
         BenefitBean benefitBean = data.get(position);
         key.setText(benefitBean.getProvince());
         value.setText(benefitBean.getProvince());

@@ -89,14 +89,15 @@
         android:layout_marginBottom="5dp"
         android:layout_marginTop="5dp"
         android:layout_weight="1">
-      <!--  <com.qs.qswlw.view.Mypager.UltraViewPager
-            android:id="@+id/ultra_viewpager"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:background="@android:color/darker_gray" />-->
 
-        <include layout="@layout/activity_switchview"></include>
+        <!--<include layout="@layout/activity_switchview"></include>-->
+
+
+        <com.qs.qswlw.view.Mypager.UltraViewPager
+            android:id="@+id/main_vlpage"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
     </LinearLayout>
 
     <RadioGroup
@@ -117,11 +118,13 @@
             style="@style/tv_iv_main"
             android:drawableTop="@mipmap/jzhs"
             android:text="见证华商" />
+
         <RadioButton
             android:id="@+id/rb_main_media"
             style="@style/tv_iv_main"
             android:drawableTop="@mipmap/qscm"
             android:text="互动吧" />
+
         <RadioButton
             android:id="@+id/rb_main_Win"
             style="@style/tv_iv_main"

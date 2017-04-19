@@ -3,10 +3,8 @@ package com.qs.qswlw.adapter;
 import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.qs.qswlw.MyApplication;
 import com.qs.qswlw.R;
 
 import java.util.List;
@@ -29,8 +27,6 @@ public class EntrepAdapter extends BaseListAdapter<String> {
         TextView tv_totalEntrepreneurship_gtv = (TextView) view.findViewById(R.id.tv_totalEntrepreneurship_gtv);
         TextView tv_totalnumber_gtv = (TextView) view.findViewById(R.id.tv_totalnumber_gtv);
         TextView tv_llianceMerchant_gtv = (TextView) view.findViewById(R.id.tv_llianceMerchant_gtv);
-        LinearLayout ll_entrep_width = (LinearLayout) view.findViewById(R.id.ll_entrep_width);
-        ll_entrep_width.setLayoutParams(new LinearLayout.LayoutParams(MyApplication.WIDTH, MyApplication.Height-MyApplication.ENTREPHEIGHT));
         tv_twentypercent_congtv.setText(data.get(0));
         tv_twentypercent_busgtv.setText(data.get(1));
         tv_yesterdayConsumption_gtv.setText(data.get(2));

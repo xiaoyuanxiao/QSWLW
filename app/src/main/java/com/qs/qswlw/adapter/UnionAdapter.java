@@ -3,11 +3,8 @@ package com.qs.qswlw.adapter;
 import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.qs.qswlw.MyApplication;
 import com.qs.qswlw.R;
 import com.qs.qswlw.okhttp.Moudle.UnionBean;
 
@@ -29,13 +26,11 @@ public class UnionAdapter extends BaseListAdapter<UnionBean> {
         view = View.inflate(context, R.layout.item_home_content, null);
         TextView tv_item_home_content_left = (TextView) view.findViewById(R.id.tv_item_home_content_left);
         TextView tv_item_home_content_value = (TextView) view.findViewById(R.id.tv_item_home_content_value);
-        RelativeLayout rl_width = (RelativeLayout) view.findViewById(R.id.rl_width);
-        rl_width.setLayoutParams(new LinearLayout.LayoutParams(MyApplication.WIDTH, (MyApplication.Height-108)/6));
         tv_item_home_content_left.setTextColor(context.getResources().getColor(R.color.text_yellow));
         tv_item_home_content_value.setTextColor(context.getResources().getColor(R.color.text_yellow));
         UnionBean unionBean = data.get(i);
         tv_item_home_content_left.setText(unionBean.getStore_name());
-        tv_item_home_content_value.setText(unionBean.getSum_money()+"元");
+        tv_item_home_content_value.setText(unionBean.getSum_money() + "元");
         return view;
     }
 }

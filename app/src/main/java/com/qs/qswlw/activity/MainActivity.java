@@ -13,7 +13,7 @@ import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.qs.qswlw.MyApplication;
+import com.qs.qswlw.Mode.BaseMainViewMoudle;
 import com.qs.qswlw.R;
 import com.qs.qswlw.activity.PersonalCenter.ConsumerSettingActivity;
 import com.qs.qswlw.adapter.AngelAdapter;
@@ -22,6 +22,7 @@ import com.qs.qswlw.adapter.ChinaAdapter;
 import com.qs.qswlw.adapter.EntrepAdapter;
 import com.qs.qswlw.adapter.LuckAdapter;
 import com.qs.qswlw.adapter.MytestAdapter;
+import com.qs.qswlw.adapter.UltraPagerAdapter;
 import com.qs.qswlw.adapter.UnionAdapter;
 import com.qs.qswlw.okhttp.Iview.IMainView;
 import com.qs.qswlw.okhttp.Moudle.AlertBean;
@@ -32,8 +33,8 @@ import com.qs.qswlw.okhttp.Moudle.EntrepBean;
 import com.qs.qswlw.okhttp.Moudle.LuckBean;
 import com.qs.qswlw.okhttp.Moudle.UnionBean;
 import com.qs.qswlw.okhttp.Presenter.MainPresenter;
-import com.qs.qswlw.view.imageswitchview.Image3DSwitchView;
-import com.qs.qswlw.view.imageswitchview.Image3DView;
+import com.qs.qswlw.view.Mypager.UltraViewPager;
+import com.qs.qswlw.view.Mypager.transformer.UltraDepthScaleTransformer;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -42,7 +43,7 @@ import java.util.List;
  * Created by 小羽 on 2017/3/22.
  */
 public class MainActivity extends BaseActivity implements IMainView {
-    private Image3DSwitchView imageSwitchView;
+    // private Image3DSwitchView imageSwitchView;
 
     List<ChinaBean> chlist;
     List<UnionBean> unlist;
@@ -50,14 +51,14 @@ public class MainActivity extends BaseActivity implements IMainView {
     List<AngelBean> anlist;
     List<LuckBean> lulist;
     AlertBean allist;
-    private Image3DView benefitList, unionList, entrepList, angelList, chinaList, luckList;
+    //  private Image3DView benefitList, unionList, entrepList, angelList, chinaList, luckList;
     private TextView tv_dialog_index_title, tv_dialog_index_content, tv_dialog_index_name, tv_dialog_index_time;
     private View alertview;
     private Button btn_dialog;
     private ImageView iv_setting_main;
     private TextView tv_ranking_main;
     private LinearLayout ll_footview_union;
-    private RadioButton rb_main_goodprojects,rb_main_media,rb_main_mall;
+    private RadioButton rb_main_goodprojects, rb_main_media, rb_main_mall;
 
 
     @Override
@@ -138,18 +139,10 @@ public class MainActivity extends BaseActivity implements IMainView {
     @Override
     public void initfindviewByid() {
         iv_setting_main = (ImageView) findViewById(R.id.iv_setting_main);
-        imageSwitchView = (Image3DSwitchView) findViewById(R.id.image_switch_view);
-        benefitList = (Image3DView) findViewById(R.id.benefitList);
-        unionList = (Image3DView) findViewById(R.id.unionList);
-        entrepList = (Image3DView) findViewById(R.id.entrepList);
-        angelList = (Image3DView) findViewById(R.id.angelList);
-        chinaList = (Image3DView) findViewById(R.id.chinaList);
-        luckList = (Image3DView) findViewById(R.id.luckList);
         tv_ranking_main = (TextView) findViewById(R.id.tv_ranking_main);
         rb_main_goodprojects = (RadioButton) findViewById(R.id.rb_main_goodprojects);
         rb_main_media = (RadioButton) findViewById(R.id.rb_main_media);
         rb_main_mall = (RadioButton) findViewById(R.id.rb_main_mall);
-        imageSwitchView.setCurrentImage(1);
         showDilog();
     }
 
@@ -169,6 +162,7 @@ public class MainActivity extends BaseActivity implements IMainView {
             public void onClick(View v) {
                 // TODO Auto-generated method stub
                 dialog.dismiss();
+//                imageSwitchView.invalidate();
                 Toast.makeText(MainActivity.this, "表单填写完成",
                         Toast.LENGTH_SHORT).show();
             }
@@ -180,41 +174,45 @@ public class MainActivity extends BaseActivity implements IMainView {
     @Override
     public void initData() {
         super.initData();
-        benefitList.setBColor(Color.parseColor("#b92340"));
-        unionList.setBColor(Color.parseColor("#de2128"));
-        entrepList.setBColor(Color.parseColor("#f3c68b"));
-        angelList.setBColor(Color.parseColor("#b92340"));
-        chinaList.setBColor(Color.parseColor("#f2989a"));
-        luckList.setBColor(Color.parseColor("#cd2244"));
+
+        ArrayList<BaseMainViewMoudle> baseMainViewMoudles = new ArrayList<>();
         /**
          * 全联盟让利金额排行榜内容填充、头部、尾部
          */
         View benefitHeadview = LayoutInflater.from(this).inflate(R.layout.benefit_homepage_head, null);
-        TextView tv_benefit_head = (TextView) benefitHeadview.findViewById(R.id.tv_benefit_head);
-        tv_benefit_head.setLayoutParams(new LinearLayout.LayoutParams(MyApplication.WIDTH,60));
         belist = new ArrayList<>();
         benefitAdapter = new BenefitAdapter(this, belist);
-        benefitList.setAdapter(benefitAdapter);
-        benefitList.addHeaderView(benefitHeadview);
+        BaseMainViewMoudle baseMainViewMoudle1 = new BaseMainViewMoudle(this, benefitAdapter);
+        baseMainViewMoudle1.addHeardView(benefitHeadview);
+
+        baseMainViewMoudle1.setBackgroundColor(Color.parseColor("#b92340"));
+
+
+        baseMainViewMoudles.add(baseMainViewMoudle1);
+
+
         /**
          * 联盟商家排行榜
          */
         View unionHeadview = LayoutInflater.from(this).inflate(R.layout.union_homepage_head, null);
         View unionFootview = LayoutInflater.from(this).inflate(R.layout.union_homepage_foot, null);
-        TextView tv_union_head = (TextView) unionHeadview.findViewById(R.id.tv_union_head);
-        LinearLayout ll_footview = (LinearLayout) unionFootview.findViewById(R.id.ll_footview);
-        ll_footview.setLayoutParams(new LinearLayout.LayoutParams(MyApplication.WIDTH, 45));
-        tv_union_head.setLayoutParams(new LinearLayout.LayoutParams(MyApplication.WIDTH,60));
         unlist = new ArrayList<>();
         unionAdapter = new UnionAdapter(this, unlist);
-        unionList.setAdapter(unionAdapter);
-        unionList.addHeaderView(unionHeadview);
-        unionList.addFooterView(unionFootview);
+        BaseMainViewMoudle baseMainViewMoudle2 = new BaseMainViewMoudle(this, unionAdapter);
+        baseMainViewMoudle2.addHeardView(unionHeadview);
+        baseMainViewMoudle2.addFootView(unionFootview);
+
+
+        baseMainViewMoudle2.setBackgroundColor(Color.parseColor("#de2128"));
+
+
+        baseMainViewMoudles.add(baseMainViewMoudle2);
+
         unionFootview.findViewById(R.id.ll_footview).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, RankingActivity.class);
-                intent.putExtra("footview","unionranking");
+                intent.putExtra("footview", "unionranking");
                 startActivity(intent);
             }
         });
@@ -223,34 +221,33 @@ public class MainActivity extends BaseActivity implements IMainView {
          */
 
         View entrepHeadview = LayoutInflater.from(this).inflate(R.layout.entrep_homepage_head, null);
-        final LinearLayout ll_entrep_width = (LinearLayout) entrepHeadview.findViewById(R.id.ll_entrep_width);
-        ll_entrep_width.setLayoutParams(new LinearLayout.LayoutParams(MyApplication.WIDTH, LinearLayout.LayoutParams.WRAP_CONTENT));
-        ll_entrep_width.measure(0,0);
-        MyApplication.ENTREPHEIGHT = ll_entrep_width.getMeasuredHeight();
         enlist = new ArrayList<>();
         entrepAdapter = new EntrepAdapter(this, enlist);
-        entrepList.setAdapter(entrepAdapter);
-        entrepList.addHeaderView(entrepHeadview);
 
+        BaseMainViewMoudle baseMainViewMoudle3 = new BaseMainViewMoudle(this, entrepAdapter);
+        baseMainViewMoudle3.addHeardView(entrepHeadview);
+
+        baseMainViewMoudle3.setBackgroundColor(Color.parseColor("#f3c68b"));
+
+
+        baseMainViewMoudles.add(baseMainViewMoudle3);
         /**
          * 创业天使创业排名榜内容填充
          */
         View unionFootview2 = LayoutInflater.from(this).inflate(R.layout.union_homepage_foot, null);
         View angelHeadview = LayoutInflater.from(this).inflate(R.layout.angel_homepage_head, null);
-        TextView tv_angel_head = (TextView) angelHeadview.findViewById(R.id.tv_angel_head);
-        tv_angel_head.setLayoutParams(new LinearLayout.LayoutParams(MyApplication.WIDTH,60));
-        LinearLayout ll_footview1 = (LinearLayout) unionFootview2.findViewById(R.id.ll_footview);
-        ll_footview1.setLayoutParams(new LinearLayout.LayoutParams(MyApplication.WIDTH, 45));
         anlist = new ArrayList<>();
         angelAdapter = new AngelAdapter(this, anlist);
-        angelList.setAdapter(angelAdapter);
-        angelList.addHeaderView(angelHeadview);
-        angelList.addFooterView(unionFootview2);
+        BaseMainViewMoudle baseMainViewMoudle4 = new BaseMainViewMoudle(this, angelAdapter);
+        baseMainViewMoudle4.addHeardView(angelHeadview);
+        baseMainViewMoudle4.addFootView(unionFootview2);
+        baseMainViewMoudle4.setBackgroundColor(Color.parseColor("#b92340"));
+        baseMainViewMoudles.add(baseMainViewMoudle4);
         unionFootview2.findViewById(R.id.ll_footview).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, RankingActivity.class);
-                intent.putExtra("footview","angelranking");
+                intent.putExtra("footview", "angelranking");
                 startActivity(intent);
             }
         });
@@ -260,19 +257,18 @@ public class MainActivity extends BaseActivity implements IMainView {
          */
         View chinaFootview = LayoutInflater.from(this).inflate(R.layout.china_homepage_foot, null);
         View chinaHeadview = LayoutInflater.from(this).inflate(R.layout.china_homepage_head, null);
-        TextView tv_china_head = (TextView) chinaHeadview.findViewById(R.id.tv_china_head);
-        tv_china_head.setLayoutParams(new LinearLayout.LayoutParams(MyApplication.WIDTH,60));
-        LinearLayout china_footview = (LinearLayout) chinaFootview.findViewById(R.id.china_footview);
-        china_footview.setLayoutParams(new LinearLayout.LayoutParams(MyApplication.WIDTH, 45));
         chlist = new ArrayList<>();
         chinaAdapter = new ChinaAdapter(this, chlist);
-        chinaList.setAdapter(chinaAdapter);
-        chinaList.addHeaderView(chinaHeadview);
-        chinaList.addFooterView(chinaFootview);
+        BaseMainViewMoudle baseMainViewMoudle5 = new BaseMainViewMoudle(this, chinaAdapter);
+        baseMainViewMoudle5.addHeardView(chinaHeadview);
+        baseMainViewMoudle5.addFootView(chinaFootview);
+        baseMainViewMoudle5.setBackgroundColor(Color.parseColor("#f2989a"));
+
+        baseMainViewMoudles.add(baseMainViewMoudle5);
         chinaFootview.findViewById(R.id.china_footview).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this,ChinaGoodProductActivity.class));
+                startActivity(new Intent(MainActivity.this, ChinaGoodProductActivity.class));
             }
         });
         /**
@@ -280,15 +276,53 @@ public class MainActivity extends BaseActivity implements IMainView {
          */
         View luckHeadview = LayoutInflater.from(this).inflate(R.layout.luck_homepage_head, null);
         View luckFootview = LayoutInflater.from(this).inflate(R.layout.luck_homepage_foot, null);
-        TextView tv_luck_head = (TextView) luckHeadview.findViewById(R.id.tv_luck_head);
-        tv_luck_head.setLayoutParams(new LinearLayout.LayoutParams(MyApplication.WIDTH,60));
-        LinearLayout luck_footview = (LinearLayout) luckFootview.findViewById(R.id.luck_footview);
-        luck_footview.setLayoutParams(new LinearLayout.LayoutParams(MyApplication.WIDTH, LinearLayout.LayoutParams.WRAP_CONTENT));
         lulist = new ArrayList<>();
         luckAdapter = new LuckAdapter(this, lulist);
-        luckList.setAdapter(luckAdapter);
-        luckList.addHeaderView(luckHeadview);
-        luckList.addFooterView(luckFootview);
+
+        BaseMainViewMoudle baseMainViewMoudle6 = new BaseMainViewMoudle(this, chinaAdapter);
+        baseMainViewMoudle6.addHeardView(luckHeadview);
+        baseMainViewMoudle6.addFootView(luckFootview);
+        baseMainViewMoudle6.setBackgroundColor(Color.parseColor("#cd2244"));
+        baseMainViewMoudles.add(baseMainViewMoudle6);
+
+
+    /*    //00------777---------
+        View luckHeadviewclone = LayoutInflater.from(this).inflate(R.layout.luck_homepage_head, null);
+        View luckFootviewclone = LayoutInflater.from(this).inflate(R.layout.luck_homepage_foot, null);
+        lulist = new ArrayList<>();
+        luckAdapter = new LuckAdapter(this, lulist);
+
+        BaseMainViewMoudle baseMainViewMoudle0 = new BaseMainViewMoudle(this, chinaAdapter);
+        baseMainViewMoudle0.addHeardView(luckHeadviewclone);
+        baseMainViewMoudle0.addFootView(luckFootviewclone);
+        baseMainViewMoudle0.setBackgroundColor(Color.parseColor("#cd2244"));
+        baseMainViewMoudles.add(0, baseMainViewMoudle0);
+
+        View benefitHeadview7 = LayoutInflater.from(this).inflate(R.layout.benefit_homepage_head, null);
+        belist = new ArrayList<>();
+        benefitAdapter = new BenefitAdapter(this, belist);
+        BaseMainViewMoudle baseMainViewMoudle7 = new BaseMainViewMoudle(this, benefitAdapter);
+        baseMainViewMoudle7.addHeardView(benefitHeadview);
+        baseMainViewMoudle7.setBackgroundColor(Color.parseColor("#b92340"));
+        baseMainViewMoudles.add(baseMainViewMoudle7);
+
+
+        //-----------------------*/
+        UltraViewPager ultraViewPager = (UltraViewPager) findViewById(R.id.main_vlpage);
+        ultraViewPager.setScrollMode(UltraViewPager.ScrollMode.HORIZONTAL);
+        UltraPagerAdapter adapter = new UltraPagerAdapter(baseMainViewMoudles);
+        ultraViewPager.setAdapter(adapter);
+        ultraViewPager.setMultiScreen(0.6f);
+//        ultraViewPager.setItemRatio(1.0f);
+//      ultraViewPager.setRatio(2.0f);
+//        ultraViewPager.setMaxHeight(800);
+        ultraViewPager.setAutoMeasureHeight(true);
+        ultraViewPager.setPageTransformer(false, new UltraDepthScaleTransformer());
+
+//        ultraViewPager.setInfiniteLoop(true);
+        //------------------
+
+
         mainPresenter.getdata();
     }
 
@@ -311,10 +345,10 @@ public class MainActivity extends BaseActivity implements IMainView {
                 startActivity(new Intent(MainActivity.this, RankingActivity.class));
                 break;
             case R.id.rb_main_goodprojects:
-                startActivity(new Intent(MainActivity.this,ProjectRecommendationActivity.class));
+                startActivity(new Intent(MainActivity.this, ProjectRecommendationActivity.class));
                 break;
             case R.id.rb_main_media:
-                startActivity(new Intent(MainActivity.this,InteractionActivity.class));
+                startActivity(new Intent(MainActivity.this, InteractionActivity.class));
                 break;
             case R.id.rb_main_mall:
                 //实例化WebView对象
@@ -326,6 +360,7 @@ public class MainActivity extends BaseActivity implements IMainView {
                 break;
         }
     }
+
 
     @Override
     protected void onDestroy() {
