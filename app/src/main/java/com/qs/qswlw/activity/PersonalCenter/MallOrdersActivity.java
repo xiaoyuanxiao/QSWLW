@@ -5,7 +5,9 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.qs.qswlw.R;
-import com.qs.qswlw.adapter.MallOrdersAdapter;
+import com.qs.qswlw.adapter.MallOrdersAllAdapter;
+import com.qs.qswlw.adapter.MallOrdersPayAdapter;
+import com.qs.qswlw.adapter.MallOrdersReceiptAdapter;
 
 /**
  * Created by xiaoyu on 2017/4/17.
@@ -14,7 +16,6 @@ import com.qs.qswlw.adapter.MallOrdersAdapter;
 public class MallOrdersActivity extends BaseInfoActivity {
 
     private ListView lv_mallorders;
-    private MallOrdersAdapter mallOrdersAdapter;
     private TextView tv_mallorder_pendingPayment,tv_mallorder_receivingGoods,tv_mallorder_allOrder;
 
     @Override
@@ -37,8 +38,7 @@ public class MallOrdersActivity extends BaseInfoActivity {
     @Override
     public void initData() {
         super.initData();
-        mallOrdersAdapter = new MallOrdersAdapter(this);
-        lv_mallorders.setAdapter(mallOrdersAdapter);
+        lv_mallorders.setAdapter(new MallOrdersPayAdapter(this));
     }
 
     @Override
@@ -60,6 +60,7 @@ public class MallOrdersActivity extends BaseInfoActivity {
                 tv_mallorder_receivingGoods.setBackgroundColor(getResources().getColor(R.color.white));
                 tv_mallorder_allOrder.setTextColor(getResources().getColor(R.color.black));
                 tv_mallorder_allOrder.setBackgroundColor(getResources().getColor(R.color.white));
+                lv_mallorders.setAdapter(new MallOrdersPayAdapter(this));
                 break;
             case R.id.tv_mallorder_receivingGoods:
                 tv_mallorder_receivingGoods.setTextColor(getResources().getColor(R.color.white));
@@ -68,6 +69,7 @@ public class MallOrdersActivity extends BaseInfoActivity {
                 tv_mallorder_pendingPayment.setBackgroundColor(getResources().getColor(R.color.white));
                 tv_mallorder_allOrder.setTextColor(getResources().getColor(R.color.black));
                 tv_mallorder_allOrder.setBackgroundColor(getResources().getColor(R.color.white));
+                lv_mallorders.setAdapter(new MallOrdersReceiptAdapter(this));
                 break;
             case R.id.tv_mallorder_allOrder:
                 tv_mallorder_allOrder.setTextColor(getResources().getColor(R.color.white));
@@ -76,6 +78,7 @@ public class MallOrdersActivity extends BaseInfoActivity {
                 tv_mallorder_pendingPayment.setBackgroundColor(getResources().getColor(R.color.white));
                 tv_mallorder_receivingGoods.setTextColor(getResources().getColor(R.color.black));
                 tv_mallorder_receivingGoods.setBackgroundColor(getResources().getColor(R.color.white));
+                lv_mallorders.setAdapter(new MallOrdersAllAdapter(this));
                 break;
         }
     }

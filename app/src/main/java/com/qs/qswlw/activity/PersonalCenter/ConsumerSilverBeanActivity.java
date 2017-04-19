@@ -7,7 +7,7 @@ import android.widget.TextView;
 import com.qs.qswlw.R;
 import com.qs.qswlw.adapter.ConsumerSliverBeanSeedlogAdapter;
 import com.qs.qswlw.adapter.ConsumerSliverBeanUsedAdapter;
-import com.qs.qswlw.adapter.MallOrdersAdapter;
+import com.qs.qswlw.adapter.MallOrdersPayAdapter;
 
 /**
  * Created by xiaoyu on 2017/4/18.
@@ -38,7 +38,7 @@ public class ConsumerSilverBeanActivity extends BaseInfoActivity {
     @Override
     public void initData() {
         super.initData();
-        lv_consumersliverbean.setAdapter(new MallOrdersAdapter(this));
+        lv_consumersliverbean.setAdapter(new MallOrdersPayAdapter(this));
     }
 
     @Override
@@ -64,7 +64,7 @@ public class ConsumerSilverBeanActivity extends BaseInfoActivity {
                 tv_customer_use.setTextColor(getResources().getColor(R.color.black));
                 tv_customer_alllog.setTextColor(getResources().getColor(R.color.black));
                 tv_customer_seedlog.setTextColor(getResources().getColor(R.color.black));
-                lv_consumersliverbean.setAdapter(new MallOrdersAdapter(this));
+                lv_consumersliverbean.setAdapter(new MallOrdersPayAdapter(this));
                 break;
             case R.id.tv_customer_use:
                 tv_customer_use.setBackgroundColor(getResources().getColor(R.color.mallorders));

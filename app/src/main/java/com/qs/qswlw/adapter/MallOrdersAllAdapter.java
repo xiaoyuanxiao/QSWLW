@@ -11,22 +11,21 @@ import com.qs.qswlw.R;
  * Created by xiaoyu on 2017/4/17.
  */
 
-public class MallOrdersAdapter extends BaseAdapter {
-    private String[] a = {"121","3232","3241","4334"};
+public class MallOrdersAllAdapter extends BaseAdapter {
     private Context context;
 
-    public MallOrdersAdapter(Context context) {
+    public MallOrdersAllAdapter(Context context) {
         this.context = context;
     }
 
     @Override
     public int getCount() {
-        return a.length;
+        return 9;
     }
 
     @Override
     public Object getItem(int i) {
-        return a[i];
+        return i;
     }
 
     @Override
@@ -36,7 +35,7 @@ public class MallOrdersAdapter extends BaseAdapter {
 
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
-        view =   View.inflate(context, R.layout.item_mallorders,null);
+        view =   View.inflate(context, R.layout.item_mallordersall,null);
         return view;
     }
 }
