@@ -60,6 +60,7 @@
         <activity android:name=".activity.PersonalCenter.DonationRecordActivity"/>
         <activity android:name=".activity.PersonalCenter.InvestRecordActivity"/>
         <activity android:name=".activity.PersonalCenter.WithdrawalsRecordActivity"/>
+        <activity android:name=".activity.PersonalCenter.EntrepreneurialDonationRecordActivity"/>
         <activity android:name=".activity.LoginActivity"/>
         <activity android:name=".activity.RankingActivity"/>
         <activity android:name=".activity.ChinaGoodProductActivity"/>

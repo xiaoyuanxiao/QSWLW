@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:focusable="true"
+            android:focusableInTouchMode="true" >
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="120dp"
+                    android:src="@mipmap/bg_01"
+                    android:scaleType="fitXY"/>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_gravity="center"
+                    android:gravity="center">
+                    <TextView
+                        android:id="@+id/tv_venturegoldbeans_titile"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="18sp"
+                        android:textColor="@color/white"
+                        android:text="累计激励创业金豆"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="18sp"
+                        android:layout_marginTop="8dp"
+                        android:textColor="@color/white"
+                        android:text="18"/>
+                </LinearLayout>
+
+            </FrameLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp">
+                <TextView
+                   style="@style/tv_harvestaddress"
+                    android:text="捐赠日期"/>
+                <TextView
+                    style="@style/tv_harvestaddress"
+                    android:layout_alignParentRight="true"
+                    android:text="捐赠金额(元)"/>
+            </RelativeLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.2dp"
+                android:background="@color/view"/>
+
+            <com.qs.qswlw.view.MyListView
+                android:id="@+id/lv_EntrepreneurialDonationRecord"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"></com.qs.qswlw.view.MyListView>
+            
+            </LinearLayout>
+    </ScrollView>
+</LinearLayout>

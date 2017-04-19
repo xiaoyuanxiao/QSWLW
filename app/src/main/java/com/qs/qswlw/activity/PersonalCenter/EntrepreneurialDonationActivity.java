@@ -1,6 +1,7 @@
 package com.qs.qswlw.activity.PersonalCenter;
 
 import android.app.Dialog;
+import android.content.Intent;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -10,7 +11,6 @@ import android.view.WindowManager;
 import android.widget.TextView;
 
 import com.qs.qswlw.R;
-import com.qs.qswlw.activity.BaseActivity;
 import com.qs.qswlw.view.WheelView;
 
 import java.util.Arrays;
@@ -19,29 +19,37 @@ import java.util.Arrays;
  * Created by xiaoyu on 2017/4/6.
  */
 
-public class EntrepreneurialDonationActivity extends BaseActivity {
+public class EntrepreneurialDonationActivity extends BaseInfoActivity {
 
     private TextView tv_entrepreneurialdonation;
     private static final String[] PLANETS = new String[]{"创业基金", "创新基金"};
+
     @Override
-    public Object initView() {
-        return R.layout.activity_entrepreneurialdonation;
+    public View setConetnView() {
+        View inflate = View.inflate(this, R.layout.activity_entrepreneurialdonation, null);
+        tv_entrepreneurialdonation = (TextView) inflate.findViewById(R.id.tv_entrepreneurialdonation);
+        return inflate;
     }
 
     @Override
     public void initfindviewByid() {
-        tv_entrepreneurialdonation = (TextView) findViewById(R.id.tv_entrepreneurialdonation);
+        super.initfindviewByid();
+        tv_titlebar_center.setText("创业直捐");
+        tv_titlebar_right.setText("直捐记录");
 
     }
 
+
     @Override
     public void setOnclick() {
+        super.setOnclick();
         tv_entrepreneurialdonation.setOnClickListener(this);
     }
 
     @Override
-    public void onClick(View view) {
-        switch (view.getId()){
+    public void onClick(View v) {
+        super.onClick(v);
+        switch (v.getId()) {
             case R.id.tv_entrepreneurialdonation:
                 View outerView = LayoutInflater.from(this).inflate(R.layout.wheel_view, null);
                 WheelView wv = (WheelView) outerView.findViewById(R.id.wheel_view_wv);
@@ -65,7 +73,15 @@ public class EntrepreneurialDonationActivity extends BaseActivity {
                 window.setGravity(Gravity.LEFT | Gravity.BOTTOM);
                 dialog.show();
 
+              break;
+            case R.id.tv_titlebar_right:
+                startActivity(new Intent(this,EntrepreneurialDonationRecordActivity.class));
+
+
                 break;
         }
     }
+
+
+
 }
