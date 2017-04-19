@@ -2,174 +2,184 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/red"
-        android:orientation="vertical"
-        android:paddingBottom="5dp">
 
-        <RelativeLayout
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="30dp"
-            android:layout_marginTop="20dp">
+            android:background="@color/red"
+            android:orientation="vertical"
+            android:paddingBottom="5dp">
 
             <RelativeLayout
-                android:id="@+id/rl_setting_left"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="25dp">
-
-                <com.qs.qswlw.view.CircleImageView
-                    android:id="@+id/iv_setting_avater"
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
-                    android:src="@mipmap/image1" />
-
-                <TextView
-                    android:id="@+id/tv_setting_id"
-                    style="@style/tv_standard"
-                    android:layout_below="@id/iv_setting_avater"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginTop="3dp"
-                    android:text="ID:MI1654987" />
-
-                <TextView
-                    android:id="@+id/tv_setting_name"
-                    style="@style/tv_standard"
-                    android:layout_below="@id/tv_setting_id"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginTop="3dp"
-                    android:text="刘得华" />
-            </RelativeLayout>
-
-            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="5dp"
-                android:layout_toRightOf="@id/rl_setting_left"
-                android:orientation="vertical">
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="20dp">
 
                 <RelativeLayout
+                    android:id="@+id/rl_setting_left"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="25dp">
+
+                    <com.qs.qswlw.view.CircleImageView
+                        android:id="@+id/iv_setting_avater"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:src="@mipmap/image1" />
+
+                    <TextView
+                        android:id="@+id/tv_setting_id"
+                        style="@style/tv_standard"
+                        android:layout_below="@id/iv_setting_avater"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="3dp"
+                        android:text="ID:MI1654987" />
+
+                    <TextView
+                        android:id="@+id/tv_setting_name"
+                        style="@style/tv_standard"
+                        android:layout_below="@id/tv_setting_id"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="3dp"
+                        android:text="刘得华" />
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="5dp"
+                    android:layout_toRightOf="@id/rl_setting_left"
+                    android:orientation="vertical">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            style="@style/tv_standard"
+                            android:text="金币余额" />
+
+                        <TextView
+                            android:id="@+id/tv_setting_consumptionMoney"
+                            style="@style/tv_standard"
+                            android:layout_alignParentRight="true"
+                            android:text="0" />
+
+                        <View
+                            style="@style/view_standard"
+                            android:layout_below="@id/tv_setting_consumptionMoney" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
                     <TextView
                         style="@style/tv_standard"
-                        android:text="消费总金额" />
+                        android:text="购买去向" />
 
                     <TextView
-                        android:id="@+id/tv_setting_consumptionMoney"
+                        android:id="@+id/tv_setting_encourage1"
                         style="@style/tv_standard"
                         android:layout_alignParentRight="true"
                         android:text="0" />
 
                     <View
                         style="@style/view_standard"
-                        android:layout_below="@id/tv_setting_consumptionMoney" />
+                        android:layout_below="@id/tv_setting_encourage1" />
                 </RelativeLayout>
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
 
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                        <TextView
+                            style="@style/tv_standard"
+                            android:text="金币去向" />
 
-                    <TextView
-                        style="@style/tv_standard"
-                        android:text="创业种子（激励）" />
+                        <TextView
+                            android:id="@+id/tv_setting_encourage"
+                            style="@style/tv_standard"
+                            android:layout_alignParentRight="true"
+                            android:text="0" />
 
-                    <TextView
-                        android:id="@+id/tv_setting_encourage"
-                        style="@style/tv_standard"
-                        android:layout_alignParentRight="true"
-                        android:text="0" />
-
-                    <View
-                        style="@style/view_standard"
-                        android:layout_below="@id/tv_setting_encourage" />
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                    <TextView
-                        style="@style/tv_standard"
-                        android:text="我的金币" />
-
-                    <TextView
-                        android:id="@+id/tv_setting_mygold"
-                        style="@style/tv_standard"
-                        android:layout_alignParentRight="true"
-                        android:text="0" />
-
-                    <View
-                        style="@style/view_standard"
-                        android:layout_below="@id/tv_setting_mygold" />
-                </RelativeLayout>
-            </LinearLayout>
-        </RelativeLayout>
-    </LinearLayout>
-
+                        <View
+                            style="@style/view_standard"
+                            android:layout_below="@id/tv_setting_encourage" />
+                    </RelativeLayout>
+                </LinearLayout>
+            </RelativeLayout>
+        </LinearLayout>
     <TextView
+        android:textColor="@color/black"
+        android:textSize="12sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginLeft="15dp"
         android:layout_marginTop="20dp"
-        style="@style/tv_harvestaddress"
         android:text="创业金币金额：0"/>
     <TextView
+        android:textColor="@color/black"
+        android:textSize="12sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginLeft="15dp"
         android:layout_marginTop="15dp"
-        style="@style/tv_harvestaddress"
         android:text="创业金豆余额：0"/>
     <LinearLayout
-        android:layout_marginTop="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_margin="15dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="12sp"
+            android:textColor="@color/black"
+            android:text="购买类型"/>
+        <EditText
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_marginLeft="15dp"
+            android:textSize="12sp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/corner_invest" />
+       </LinearLayout>
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_marginLeft="15dp"
-        android:gravity="center_vertical">
+        android:layout_marginRight="15dp">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="购买类型"
             android:textSize="12sp"
-            android:textColor="@color/black"/>
+            android:textColor="@color/black"
+            android:text="购买金币"/>
         <EditText
             android:layout_width="0dp"
             android:layout_weight="1"
+            android:layout_marginLeft="15dp"
+            android:textSize="12sp"
             android:layout_height="wrap_content"
-            android:background="@drawable/stroke_mygold" />
+            android:background="@drawable/corner_invest" />
     </LinearLayout>
     <LinearLayout
-        android:layout_marginTop="15dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginLeft="15dp"
-        android:gravity="center_vertical">
-        <TextView
+        android:gravity="center_horizontal"
+        android:layout_marginTop="20dp">
+        <Button
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="购买金币"
-            android:textColor="@color/black"
-            android:textSize="12sp"/>
-        <EditText
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-           android:background="@drawable/stroke_mygold" />
+            android:layout_height="30dp"
+            android:paddingLeft="25dp"
+            android:paddingRight="25dp"
+            android:textSize="10sp"
+            android:text="确认投资"
+            android:textColor="@color/white"
+            android:background="@color/red"/>
     </LinearLayout>
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="30dp"
-        android:paddingLeft="25dp"
-        android:paddingRight="25dp"
-        android:textSize="10sp"
-        android:text="确认投资"
-        android:layout_gravity="center_horizontal"
-        android:textColor="@color/white"
-        android:background="@color/red"
-        android:layout_marginTop="35dp"/>
 
 </LinearLayout>

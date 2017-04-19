@@ -17,6 +17,7 @@ public class VentureGoldBeansActivity extends BaseInfoActivity {
 
     private TextView tv_venturegold_left,tv_venturegold_center,tv_venturegold_right;
     private View view_left,view_center,view_right;
+    private TextView tv_venturegoldbeans_titile;
 
     @Override
     public View setConetnView() {
@@ -28,6 +29,7 @@ public class VentureGoldBeansActivity extends BaseInfoActivity {
         view_left = (View) inflate.findViewById(R.id.view_left);
         view_center = (View) inflate.findViewById(R.id.view_center);
         view_right = (View) inflate.findViewById(R.id.view_right);
+        tv_venturegoldbeans_titile = (TextView) inflate.findViewById(R.id.tv_venturegoldbeans_titile);
 
         return inflate;
     }
@@ -60,10 +62,27 @@ public class VentureGoldBeansActivity extends BaseInfoActivity {
                 tv_venturegold_left.setTextColor(getResources().getColor(R.color.red));
                 tv_venturegold_center.setTextColor(getResources().getColor(R.color.black));
                 tv_venturegold_right.setTextColor(getResources().getColor(R.color.black));
+                view_left.setBackgroundColor(getResources().getColor(R.color.red));
+                view_center.setBackgroundColor(getResources().getColor(R.color.view));
+                view_right.setBackgroundColor(getResources().getColor(R.color.view));
                 break;
             case R.id.tv_venturegold_center:
+                tv_venturegold_center.setTextColor(getResources().getColor(R.color.red));
+                tv_venturegold_left.setTextColor(getResources().getColor(R.color.black));
+                tv_venturegold_right.setTextColor(getResources().getColor(R.color.black));
+                view_center.setBackgroundColor(getResources().getColor(R.color.red));
+                view_left.setBackgroundColor(getResources().getColor(R.color.view));
+                view_right.setBackgroundColor(getResources().getColor(R.color.view));
+                tv_venturegoldbeans_titile.setText("累计推荐创业金豆");
                 break;
             case R.id.tv_venturegold_right:
+                tv_venturegold_right.setTextColor(getResources().getColor(R.color.red));
+                tv_venturegold_center.setTextColor(getResources().getColor(R.color.black));
+                tv_venturegold_left.setTextColor(getResources().getColor(R.color.black));
+                view_right.setBackgroundColor(getResources().getColor(R.color.red));
+                view_center.setBackgroundColor(getResources().getColor(R.color.view));
+                view_left.setBackgroundColor(getResources().getColor(R.color.view));
+                tv_venturegoldbeans_titile.setText("累计获赠创业金豆");
                 break;
 
         }

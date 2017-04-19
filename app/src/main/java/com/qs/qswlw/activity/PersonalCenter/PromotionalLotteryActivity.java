@@ -62,7 +62,7 @@ public class PromotionalLotteryActivity extends BaseInfoActivity {
                 break;
             case R.id.tv_promotional_win:
                 tv_promotional_win.setTextColor(getResources().getColor(R.color.red));
-                tv_promotional_join.setTextColor(getResources().getColor(R.color.red));
+                tv_promotional_join.setTextColor(getResources().getColor(R.color.black));
                 view_win.setBackgroundColor(getResources().getColor(R.color.red));
                 view_join.setBackgroundColor(getResources().getColor(R.color.view));
 

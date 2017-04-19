@@ -16,7 +16,7 @@
             android:layout_weight="1"
             android:gravity="center_horizontal"
             android:text="激励创业金豆"
-            android:textColor="@color/black"
+            android:textColor="@color/red"
             android:textSize="10sp" />
 
         <View
