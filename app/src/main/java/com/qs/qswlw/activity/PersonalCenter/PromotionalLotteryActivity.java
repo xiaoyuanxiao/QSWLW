@@ -47,6 +47,7 @@ public class PromotionalLotteryActivity extends BaseInfoActivity {
         super.setOnclick();
         tv_promotional_join.setOnClickListener(this);
         tv_promotional_win.setOnClickListener(this);
+        tv_titlebar_right.setOnClickListener(this);
     }
 
     @Override
@@ -65,7 +66,6 @@ public class PromotionalLotteryActivity extends BaseInfoActivity {
                 tv_promotional_join.setTextColor(getResources().getColor(R.color.black));
                 view_win.setBackgroundColor(getResources().getColor(R.color.red));
                 view_join.setBackgroundColor(getResources().getColor(R.color.view));
-
                 break;
         }
 

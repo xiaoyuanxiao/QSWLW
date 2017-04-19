@@ -1,5 +1,6 @@
 package com.qs.qswlw.activity.PersonalCenter;
 
+import android.content.Intent;
 import android.view.View;
 
 import com.qs.qswlw.R;
@@ -30,10 +31,17 @@ public class DonationActivity extends BaseInfoActivity {
     @Override
     public void setOnclick() {
         super.setOnclick();
+        tv_titlebar_right.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
         super.onClick(v);
+        switch (v.getId()){
+            case R.id.tv_titlebar_right:
+                startActivity(new Intent(this,DonationRecordActivity.class));
+                break;
+        }
+
     }
 }

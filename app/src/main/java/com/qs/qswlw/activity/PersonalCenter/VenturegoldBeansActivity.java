@@ -11,7 +11,7 @@ import com.qs.qswlw.adapter.VentureGoldBeansAdapter;
  * Created by xiaoyu on 2017/4/18.
  */
 
-public class VentureGoldBeansActivity extends BaseInfoActivity {
+public class VenturegoldBeansActivity extends BaseInfoActivity {
 
     private ListView lv_venturegoldbeans;
 
@@ -65,6 +65,7 @@ public class VentureGoldBeansActivity extends BaseInfoActivity {
                 view_left.setBackgroundColor(getResources().getColor(R.color.red));
                 view_center.setBackgroundColor(getResources().getColor(R.color.view));
                 view_right.setBackgroundColor(getResources().getColor(R.color.view));
+                tv_venturegoldbeans_titile.setText("累计激励创业金豆");
                 break;
             case R.id.tv_venturegold_center:
                 tv_venturegold_center.setTextColor(getResources().getColor(R.color.red));
