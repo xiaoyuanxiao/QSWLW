@@ -62,6 +62,8 @@
         <activity android:name=".activity.PersonalCenter.WithdrawalsRecordActivity"/>
         <activity android:name=".activity.PersonalCenter.EntrepreneurialDonationRecordActivity"/>
         <activity android:name=".activity.PersonalCenter.SetModifyActivity"/>
+        <activity android:name=".activity.PersonalCenter.PurchaseDestinationActivity"/>
+        <activity android:name=".activity.PersonalCenter.GoldWhereaboutsActivity"/>
         <activity android:name=".activity.LoginActivity"/>
         <activity android:name=".activity.RankingActivity"/>
         <activity android:name=".activity.ChinaGoodProductActivity"/>
