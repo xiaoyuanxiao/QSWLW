@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
+import android.widget.TextView;
 
 import com.qs.qswlw.R;
 import com.qs.qswlw.activity.BaseActivity;
@@ -16,6 +17,7 @@ import com.qs.qswlw.adapter.ConsumerSettingAdapter;
 
 public class ConsumerSettingActivity extends BaseActivity implements AdapterView.OnItemClickListener {
     private GridView gv_setting;
+    private TextView tv_setting_set;
     private ConsumerSettingAdapter consumerSettingAdapter;
     @Override
     public Object initView() {
@@ -25,8 +27,7 @@ public class ConsumerSettingActivity extends BaseActivity implements AdapterView
     @Override
     public void initfindviewByid() {
         gv_setting = (GridView) findViewById(R.id.gv_setting);
-
-
+        tv_setting_set = (TextView) findViewById(R.id.tv_setting_set);
 
     }
 
@@ -40,11 +41,18 @@ public class ConsumerSettingActivity extends BaseActivity implements AdapterView
     @Override
     public void setOnclick() {
         gv_setting.setOnItemClickListener(this);
+        tv_setting_set.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View view) {
 
+        switch (view.getId()){
+            case R.id.tv_setting_set:
+                startActivity(new Intent(this,SetModifyActivity.class));
+
+                break;
+        }
     }
 
     @Override
