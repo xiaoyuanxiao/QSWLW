@@ -1,13 +1,10 @@
 package com.qs.qswlw.activity.PersonalCenter;
 
-import android.app.Dialog;
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.TextView;
 
 import com.qs.qswlw.R;
@@ -62,22 +59,13 @@ public class EntrepreneurialDonationActivity extends BaseInfoActivity {
                         Log.d("tag", "[Dialog]selectedIndex: " + selectedIndex + ", item: " + item);
                     }
                 });
-                Dialog dialog = new Dialog(this);
-                dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-                dialog.setContentView(outerView);
-                //dialog.setPositiveButton("完成", null);
-                //获得当前窗体
-                Window window = dialog.getWindow();
-                //重新设置
-                WindowManager.LayoutParams lp = window.getAttributes();
-                window.setGravity(Gravity.LEFT | Gravity.BOTTOM);
+                final AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                final AlertDialog dialog = builder.create();
+                dialog.setView(outerView);
                 dialog.show();
-
               break;
             case R.id.tv_titlebar_right:
                 startActivity(new Intent(this,EntrepreneurialDonationRecordActivity.class));
-
-
                 break;
         }
     }

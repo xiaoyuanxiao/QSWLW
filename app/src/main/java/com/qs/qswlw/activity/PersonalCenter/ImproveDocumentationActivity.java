@@ -6,20 +6,18 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
-import android.widget.TimePicker;
-import android.widget.Toast;
+import android.widget.TextView;
 
 import com.qs.qswlw.R;
-import com.qs.qswlw.activity.BaseActivity;
-
-import java.util.Calendar;
+import com.qs.qswlw.view.PickTimeView;
 
 /**
  * Created by xiaoyu on 2017/3/31.
  */
 
-public class ImproveDocumentationActivity extends BaseActivity {
+public class ImproveDocumentationActivity extends BaseInfoActivity {
 
     private Spinner province_spinner;
     private Spinner city_spinner;
@@ -79,54 +77,60 @@ public class ImproveDocumentationActivity extends BaseActivity {
     private int day;
     private int hour;
     private int minute;
-
+    private TextView tv_startTime,tv_endTime;
+    private LinearLayout pvLayout;
+    private PickTimeView pickTime;
 
     @Override
-    public Object initView() {
-        return R.layout.activity_improvedocumentation;
+    public View setConetnView() {
+        View inflate = View.inflate(this, R.layout.activity_improvedocumentation, null);
+        tv_startTime = (TextView) inflate.findViewById(R.id.tv_startTime);
+        tv_endTime = (TextView) inflate.findViewById(R.id.tv_endTime);
+        pvLayout = (LinearLayout) inflate.findViewById(R.id.Main_pvLayout);
+        pickTime = (PickTimeView) inflate.findViewById(R.id.pickTime);
+        return inflate;
     }
 
     @Override
     public void initfindviewByid() {
+        super.initfindviewByid();
+        tv_titlebar_center.setText("完善商家资料");
+    }
 
+    @Override
+    public void initData() {
+        super.initData();
         loadSpinner();
         loadManagementClassificationSpinner();
-        loadTime();
     }
 
-    /**
-     * 加载时间选择
-     */
-    private void loadTime() {
-        TimePicker timePicker = (TimePicker)
-                findViewById(R.id.timePicker);
-        // 获取当前的年、月、日、小时、分钟
-        // 获取当前的年、月、日、小时、分钟
-        Calendar c = Calendar.getInstance();
-        day = c.get(Calendar.DAY_OF_MONTH);
-        hour = c.get(Calendar.HOUR);
-        minute = c.get(Calendar.MINUTE);
-        // 为TimePicker指定监听器
-        timePicker.setOnTimeChangedListener(new TimePicker.OnTimeChangedListener()
-        {
-
-            @Override
-            public void onTimeChanged(TimePicker view
-                    , int hourOfDay, int minute)
-            {
-                ImproveDocumentationActivity.this.hour = hourOfDay;
-                ImproveDocumentationActivity.this.minute = minute;
-                // 显示当前日期、时间
-                //ImproveDocumentationActivity( day, hour, minute);
-                Toast.makeText(ImproveDocumentationActivity.this,"您选择的时间："+hourOfDay+"时  "
-                        +minute+"分", Toast.LENGTH_SHORT).show();
-//
-            }
-        });
-
+    @Override
+    public void setOnclick() {
+        super.setOnclick();
+        tv_startTime.setOnClickListener(this);
+        tv_endTime.setOnClickListener(this);
     }
 
+    @Override
+    public void onClick(View v) {
+        super.onClick(v);
+        switch (v.getId()){
+            case R.id.tv_startTime:
+                pickTime.setVisibility(View.VISIBLE);
+                showView(pickTime);
 
+                break;
+            case R.id.tv_endTime:
+
+                break;
+        }
+    }
+    private void showView(View view) {
+        for (int i = 0; i < pvLayout.getChildCount(); i++) {
+            pvLayout.getChildAt(i).setVisibility(View.GONE);
+        }
+        view.setVisibility(View.VISIBLE);
+    }
     /**
      * 经营分类spinner
      */
@@ -149,15 +153,8 @@ public class ImproveDocumentationActivity extends BaseActivity {
         });
     }
 
-    @Override
-    public void setOnclick() {
 
-    }
 
-    @Override
-    public void onClick(View view) {
-
-    }
     private void loadSpinner()
     {
         province_spinner = (Spinner) findViewById(R.id.province_spinner);

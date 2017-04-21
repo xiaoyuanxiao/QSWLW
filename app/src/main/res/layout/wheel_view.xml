@@ -3,33 +3,6 @@
               android:orientation="vertical"
               android:layout_width="fill_parent"
               android:layout_height="fill_parent">
-    <RelativeLayout
-        android:padding="5dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/text_blue">
-        <ImageView
-            android:id="@+id/iv_top"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="10dp"
-            android:src="@mipmap/down"/>
-        <ImageView
-            android:layout_toRightOf="@+id/iv_top"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="10dp"
-            android:src="@mipmap/down"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_marginRight="10dp"
-            android:text="完成"
-            android:textColor="@color/white"/>
-    </RelativeLayout>
     <com.qs.qswlw.view.WheelView
         android:id="@+id/wheel_view_wv"
         android:layout_width="match_parent"
