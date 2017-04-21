@@ -121,12 +121,14 @@ public class ImproveDocumentationActivity extends BaseInfoActivity {
 
                 break;
             case R.id.tv_endTime:
-
+                pickTime.setVisibility(View.VISIBLE);
+                showView(pickTime);
                 break;
         }
     }
     private void showView(View view) {
         for (int i = 0; i < pvLayout.getChildCount(); i++) {
+
             pvLayout.getChildAt(i).setVisibility(View.GONE);
         }
         view.setVisibility(View.VISIBLE);
