@@ -10,7 +10,6 @@ import com.qs.qswlw.Mode.BaseMode;
 import com.qs.qswlw.Mode.PersonalCenter.TenPercentMode;
 import com.qs.qswlw.Mode.PersonalCenter.TwentyPercentMode;
 import com.qs.qswlw.R;
-import com.qs.qswlw.activity.BaseActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,24 +18,19 @@ import java.util.List;
  * Created by xiaoyu on 2017/4/3.
  */
 
-public class EntrepreneurialSeedActivity extends BaseActivity {
+public class EntrepreneurialSeedActivity extends BaseInfoActivity {
     private List<BaseMode> viewpagedata;
     private RadioGroup fg_EntrepreneurialSeed;
     private View view_EntrepreneurialSeed;
     private ViewPager viewpager;
 
 
-
     @Override
-    public Object initView() {
-        return R.layout.activity_entrepreneurialseed;
-    }
-
-    @Override
-    public void initfindviewByid() {
-        viewpager = (ViewPager) findViewById(R.id.viewpager_entrepreneurialSeed);
-        fg_EntrepreneurialSeed = (RadioGroup) findViewById(R.id.fg_EntrepreneurialSeed);
-        view_EntrepreneurialSeed = (View) findViewById(R.id.view_EntrepreneurialSeed);
+    public View setConetnView() {
+        View inflate = View.inflate(this, R.layout.activity_entrepreneurialseed, null);
+        viewpager = (ViewPager) inflate.findViewById(R.id.viewpager_entrepreneurialSeed);
+        fg_EntrepreneurialSeed = (RadioGroup) inflate.findViewById(R.id.fg_EntrepreneurialSeed);
+        view_EntrepreneurialSeed = (View) inflate.findViewById(R.id.view_EntrepreneurialSeed);
         viewpagedata = new ArrayList<BaseMode>();
 
         viewpagedata.add(new TenPercentMode(this));
@@ -48,11 +42,11 @@ public class EntrepreneurialSeedActivity extends BaseActivity {
         viewpager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-              //  WindowManager manager = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
+                //  WindowManager manager = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
                 /**
                  * 得到红线的宽度
                  */
-                int width = getApplicationContext().getResources().getDisplayMetrics().widthPixels/2;
+                int width = getApplicationContext().getResources().getDisplayMetrics().widthPixels / 2;
                 //int width = view_EntrepreneurialSeed.getWidth();
                 /**
                  * position是划动时左边的页码数，从0开始的，positionOffsetPixels是后一页的页码，  positionOffset是当前页与后一页的划动距离的百分比。（0--0.999999）
@@ -71,6 +65,14 @@ public class EntrepreneurialSeedActivity extends BaseActivity {
 
             }
         });
+        return inflate;
+    }
+
+    @Override
+    public void initfindviewByid() {
+        super.initfindviewByid();
+        tv_titlebar_center.setText("创业种子");
+
     }
 
     class MyOnCheckedChangeListener implements RadioGroup.OnCheckedChangeListener {
@@ -92,31 +94,34 @@ public class EntrepreneurialSeedActivity extends BaseActivity {
 
     @Override
     public void setOnclick() {
+        super.setOnclick();
         //点击radioButton切换到指定页面
         fg_EntrepreneurialSeed.setOnCheckedChangeListener(new MyOnCheckedChangeListener());
     }
 
     @Override
-    public void onClick(View view) {
-
+    public void onClick(View v) {
+        super.onClick(v);
     }
 
 
-    public class MyViewPagerAdapter extends PagerAdapter
-    {
+    public class MyViewPagerAdapter extends PagerAdapter {
         @Override
         public int getCount() {
             return viewpagedata.size();
         }
+
         @Override
         public boolean isViewFromObject(View view, Object object) {
             return view == object;
         }
+
         @Override
         public Object instantiateItem(ViewGroup container, int position) {
             container.addView(viewpagedata.get(position).view);
             return viewpagedata.get(position).view;
         }
+
         @Override
         public void destroyItem(ViewGroup container, int position, Object object) {
             ((ViewPager) container).removeView(viewpagedata.get(position).view);

@@ -11,7 +11,6 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.qs.qswlw.R;
-import com.qs.qswlw.activity.BaseActivity;
 import com.qs.qswlw.view.GenderPopupWindow;
 import com.qs.qswlw.view.WheelView;
 
@@ -21,33 +20,32 @@ import java.util.Arrays;
  * Created by xiaoyu on 2017/4/6.
  */
 
-public class ConsumptionRecordActivity extends BaseActivity {
+public class ConsumptionRecordActivity extends BaseInfoActivity {
 
     private TextView edt_twentypercent;
     private Button btn_selectorfile;
     private static final String[] PLANETS = new String[]{"20%", "10%"};
     private GenderPopupWindow menuWindow;
-    @Override
-    public Object initView() {
-        return R.layout.activity_consumptionrecord;
-    }
 
     @Override
-    public void initfindviewByid() {
-        edt_twentypercent = (TextView) findViewById(R.id.edt_twentypercent_consumptionrecord);
-        btn_selectorfile = (Button) findViewById(R.id.btn_selectorfile);
-
+    public View setConetnView() {
+        View inflate = View.inflate(this, R.layout.activity_consumptionrecord, null);
+        edt_twentypercent = (TextView) inflate.findViewById(R.id.edt_twentypercent_consumptionrecord);
+        btn_selectorfile = (Button) inflate.findViewById(R.id.btn_selectorfile);
+        return inflate;
     }
 
     @Override
     public void setOnclick() {
+        super.setOnclick();
         edt_twentypercent.setOnClickListener(this);
         btn_selectorfile.setOnClickListener(this);
     }
 
     @Override
-    public void onClick(View view) {
-        switch (view.getId()) {
+    public void onClick(View v) {
+        super.onClick(v);
+        switch (v.getId()) {
             case R.id.edt_twentypercent_consumptionrecord:
                 View outerView = LayoutInflater.from(this).inflate(R.layout.wheel_view, null);
                 WheelView wv = (WheelView) outerView.findViewById(R.id.wheel_view_wv);
@@ -79,13 +77,16 @@ public class ConsumptionRecordActivity extends BaseActivity {
                 menuWindow.setMaleName("照片图库");
                 break;
         }
-    } //上传音频文件
+    }
+
+
+    //上传音频文件
     private class MyOnClickListener implements View.OnClickListener {
         @Override
         public void onClick(View v) {
             switch (v.getId()) {
                 case R.id.tv_female:
-                  //  pickPhoto();
+                    //  pickPhoto();
                     break;
                 case R.id.tv_male:
                     //takePhoto();

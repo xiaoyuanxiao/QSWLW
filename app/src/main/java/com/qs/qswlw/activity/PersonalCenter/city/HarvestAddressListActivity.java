@@ -9,46 +9,54 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.qs.qswlw.R;
-import com.qs.qswlw.activity.BaseActivity;
+import com.qs.qswlw.activity.PersonalCenter.BaseInfoActivity;
 
 
 /**
  * Created by xiaoyu on 2017/3/30.
  */
 
-public class HarvestAddressListActivity extends BaseActivity{
+public class HarvestAddressListActivity extends BaseInfoActivity{
 
     private ListView lv_harvestaddresslist;
     private Button btn_activity_harvest;
 
-
     @Override
-    public void onClick(View view) {
-        switch (view.getId()){
-            case R.id.btn_activity_harvest:
-                startActivity(new Intent(HarvestAddressListActivity.this,CitySelectActivity.class));
-                break;
-        }
-    }
+    public View setConetnView() {
+        View inflate = View.inflate(this, R.layout.activity_harvestaddresslist, null);
+        lv_harvestaddresslist = (ListView) inflate.findViewById(R.id.lv_harvestaddresslist);
+        btn_activity_harvest = (Button) inflate.findViewById(R.id.btn_activity_harvest);
 
-    @Override
-    public Object initView() {
-        return R.layout.activity_harvestaddresslist;
+        return inflate;
     }
 
     @Override
     public void initfindviewByid() {
-        lv_harvestaddresslist = (ListView) findViewById(R.id.lv_harvestaddresslist);
-        btn_activity_harvest = (Button) findViewById(R.id.btn_activity_harvest);
+        super.initfindviewByid();
+        tv_titlebar_center.setText("收获地址");
+    }
 
+    @Override
+    public void initData() {
+        super.initData();
         lv_harvestaddresslist.setAdapter(new HarvestAddressListAdapter());
     }
 
     @Override
     public void setOnclick() {
+        super.setOnclick();
         btn_activity_harvest.setOnClickListener(this);
     }
 
+    @Override
+    public void onClick(View v) {
+        super.onClick(v);
+        switch (v.getId()){
+            case R.id.btn_activity_harvest:
+                startActivity(new Intent(HarvestAddressListActivity.this,CitySelectActivity.class));
+                break;
+        }
+    }
 
     private class HarvestAddressListAdapter extends BaseAdapter {
         private String[] names = {"你好","hia","多多","shim","何姑娘","哈杰","玩家"};

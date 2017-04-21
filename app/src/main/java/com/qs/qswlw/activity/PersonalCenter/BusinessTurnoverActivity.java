@@ -9,7 +9,6 @@ import android.widget.RadioGroup;
 import com.qs.qswlw.Mode.BaseMode;
 import com.qs.qswlw.Mode.PersonalCenter.TurnoverTodayMode;
 import com.qs.qswlw.R;
-import com.qs.qswlw.activity.BaseActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,22 +17,18 @@ import java.util.List;
  * Created by xiaoyu on 2017/4/5.
  */
 
-public class BusinessTurnoverActivity extends BaseActivity {
+public class BusinessTurnoverActivity extends BaseInfoActivity {
     private List<BaseMode> viewpagedata;
     private RadioGroup fg_BusinessTurnover;
     private View view_BusinessTurnover;
     private ViewPager viewpager;
 
     @Override
-    public Object initView() {
-        return R.layout.activity_businessturnover;
-    }
-
-    @Override
-    public void initfindviewByid() {
-        viewpager = (ViewPager) findViewById(R.id.viewpager_BusinessTurnover);
-        fg_BusinessTurnover = (RadioGroup) findViewById(R.id.fg_BusinessTurnover);
-        view_BusinessTurnover = (View) findViewById(R.id.view_BusinessTurnover);
+    public View setConetnView() {
+        View inflate = View.inflate(this, R.layout.activity_businessturnover, null);
+        viewpager = (ViewPager) inflate.findViewById(R.id.viewpager_BusinessTurnover);
+        fg_BusinessTurnover = (RadioGroup) inflate.findViewById(R.id.fg_BusinessTurnover);
+        view_BusinessTurnover = (View) inflate.findViewById(R.id.view_BusinessTurnover);
         viewpagedata = new ArrayList<BaseMode>();
 
         viewpagedata.add(new TurnoverTodayMode(this));
@@ -68,14 +63,21 @@ public class BusinessTurnoverActivity extends BaseActivity {
 
             }
         });
+        return inflate;
+    }
+
+    @Override
+    public void initfindviewByid() {
+        super.initfindviewByid();
+        tv_titlebar_center.setText("商家营业额");
     }
 
     @Override
     public void setOnclick() {
-        //点击radioButton切换到指定页面
+        super.setOnclick();
         fg_BusinessTurnover.setOnCheckedChangeListener(new MyOnCheckedChangeListener());
-
     }
+
 
     class MyOnCheckedChangeListener implements RadioGroup.OnCheckedChangeListener {
         @Override
@@ -94,10 +96,6 @@ public class BusinessTurnoverActivity extends BaseActivity {
         }
     }
 
-    @Override
-    public void onClick(View view) {
-
-    }
 
     public class MyViewPagerAdapter extends PagerAdapter {
         @Override

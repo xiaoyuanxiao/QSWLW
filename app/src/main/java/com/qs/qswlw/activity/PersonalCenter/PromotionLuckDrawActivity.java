@@ -10,7 +10,6 @@ import com.qs.qswlw.Mode.BaseMode;
 import com.qs.qswlw.Mode.PersonalCenter.JoinRecordMode;
 import com.qs.qswlw.Mode.PersonalCenter.WinningRecordMode;
 import com.qs.qswlw.R;
-import com.qs.qswlw.activity.BaseActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,22 +18,18 @@ import java.util.List;
  * Created by xiaoyu on 2017/4/5.
  */
 
-public class PromotionLuckDrawActivity extends BaseActivity {
+public class PromotionLuckDrawActivity extends BaseInfoActivity {
     private List<BaseMode> viewpagedata;
     private RadioGroup fg_promotionLuckDraw;
     private View view_promotionLuckDraw;
     private ViewPager viewpager;
 
     @Override
-    public Object initView() {
-        return R.layout.activity_promotionluckdraw;
-    }
-
-    @Override
-    public void initfindviewByid() {
-        viewpager = (ViewPager) findViewById(R.id.viewpager_promotionLuckDraw);
-        fg_promotionLuckDraw = (RadioGroup) findViewById(R.id.fg_promotionLuckDraw);
-        view_promotionLuckDraw = (View) findViewById(R.id.view_promotionLuckDraw);
+    public View setConetnView() {
+        View inflate = View.inflate(this, R.layout.activity_promotionluckdraw, null);
+        viewpager = (ViewPager) inflate.findViewById(R.id.viewpager_promotionLuckDraw);
+        fg_promotionLuckDraw = (RadioGroup) inflate.findViewById(R.id.fg_promotionLuckDraw);
+        view_promotionLuckDraw = (View) inflate.findViewById(R.id.view_promotionLuckDraw);
         viewpagedata = new ArrayList<BaseMode>();
 
         viewpagedata.add(new JoinRecordMode(this));
@@ -69,13 +64,20 @@ public class PromotionLuckDrawActivity extends BaseActivity {
 
             }
         });
+        return inflate;
+    }
+
+    @Override
+    public void initfindviewByid() {
+        super.initfindviewByid();
+        tv_titlebar_center.setText("促销抽奖");
     }
 
     @Override
     public void setOnclick() {
+        super.setOnclick();
         //点击radioButton切换到指定页面
         fg_promotionLuckDraw.setOnCheckedChangeListener(new MyOnCheckedChangeListener());
-
     }
 
     class MyOnCheckedChangeListener implements RadioGroup.OnCheckedChangeListener {
@@ -95,10 +97,6 @@ public class PromotionLuckDrawActivity extends BaseActivity {
         }
     }
 
-    @Override
-    public void onClick(View view) {
-
-    }
 
     public class MyViewPagerAdapter extends PagerAdapter {
         @Override

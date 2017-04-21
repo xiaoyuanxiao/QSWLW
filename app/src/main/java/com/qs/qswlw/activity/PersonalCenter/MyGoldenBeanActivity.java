@@ -11,7 +11,6 @@ import com.qs.qswlw.Mode.PersonalCenter.MyGoldenBeanMode;
 import com.qs.qswlw.Mode.PersonalCenter.ReceiveGoldenBeanMode;
 import com.qs.qswlw.Mode.PersonalCenter.RecommendGoldenBeanMode;
 import com.qs.qswlw.R;
-import com.qs.qswlw.activity.BaseActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,22 +19,18 @@ import java.util.List;
  * Created by xiaoyu on 2017/4/5.
  */
 
-public class MyGoldenBeanActivity extends BaseActivity {
+public class MyGoldenBeanActivity extends BaseInfoActivity {
     private RadioGroup fg_myGoldenBean;
     private View view_EntrepreneurialSeed;
     private ViewPager viewpager;
     private List<BaseMode> viewpagedata;
 
     @Override
-    public Object initView() {
-        return R.layout.activity_mygoldenbean;
-    }
-
-    @Override
-    public void initfindviewByid() {
-        viewpager = (ViewPager) findViewById(R.id.viewpager_entrepreneurialSeed);
-        fg_myGoldenBean = (RadioGroup) findViewById(R.id.fg_myGoldenBean);
-        view_EntrepreneurialSeed = (View) findViewById(R.id.view_EntrepreneurialSeed);
+    public View setConetnView() {
+        View inflate = View.inflate(this, R.layout.activity_mygoldenbean, null);
+        viewpager = (ViewPager) inflate.findViewById(R.id.viewpager_entrepreneurialSeed);
+        fg_myGoldenBean = (RadioGroup) inflate.findViewById(R.id.fg_myGoldenBean);
+        view_EntrepreneurialSeed = (View) inflate.findViewById(R.id.view_EntrepreneurialSeed);
         viewpagedata = new ArrayList<BaseMode>();
 
         viewpagedata.add(new MyGoldenBeanMode(this));
@@ -71,6 +66,13 @@ public class MyGoldenBeanActivity extends BaseActivity {
 
             }
         });
+        return inflate;
+    }
+
+    @Override
+    public void initfindviewByid() {
+        super.initfindviewByid();
+        tv_titlebar_center.setText("我的金豆");
     }
 
     public class MyViewPagerAdapter extends PagerAdapter {
@@ -118,11 +120,7 @@ public class MyGoldenBeanActivity extends BaseActivity {
 
     @Override
     public void setOnclick() {
+        super.setOnclick();
         fg_myGoldenBean.setOnCheckedChangeListener(new MyOnCheckedChangeListener());
-    }
-
-    @Override
-    public void onClick(View view) {
-
     }
 }

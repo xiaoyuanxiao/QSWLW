@@ -10,7 +10,6 @@ import com.qs.qswlw.Mode.BaseMode;
 import com.qs.qswlw.Mode.PersonalCenter.TenPercentSystemMode;
 import com.qs.qswlw.Mode.PersonalCenter.TwentyPercentSystemMode;
 import com.qs.qswlw.R;
-import com.qs.qswlw.activity.BaseActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,22 +18,18 @@ import java.util.List;
  * Created by xiaoyu on 2017/4/5.
  */
 
-public class RecordListActivity extends BaseActivity {
+public class RecordListActivity extends BaseInfoActivity{
     private List<BaseMode> viewpagedata;
     private RadioGroup fg_RecordList;
     private View view_RecordList;
     private ViewPager viewpager;
 
     @Override
-    public Object initView() {
-        return R.layout.activity_recordlist;
-    }
-
-    @Override
-    public void initfindviewByid() {
-        viewpager = (ViewPager) findViewById(R.id.viewpager_RecordList);
-        fg_RecordList = (RadioGroup) findViewById(R.id.fg_RecordList);
-        view_RecordList = (View) findViewById(R.id.view_RecordList);
+    public View setConetnView() {
+        View inflate = View.inflate(this, R.layout.activity_recordlist, null);
+        viewpager = (ViewPager) inflate.findViewById(R.id.viewpager_RecordList);
+        fg_RecordList = (RadioGroup) inflate.findViewById(R.id.fg_RecordList);
+        view_RecordList = (View) inflate.findViewById(R.id.view_RecordList);
         viewpagedata = new ArrayList<BaseMode>();
 
         viewpagedata.add(new TenPercentSystemMode(this));
@@ -69,14 +64,22 @@ public class RecordListActivity extends BaseActivity {
 
             }
         });
+        return inflate;
+    }
+
+    @Override
+    public void initfindviewByid() {
+        super.initfindviewByid();
+        tv_titlebar_center.setText("录单记录");
     }
 
     @Override
     public void setOnclick() {
+        super.setOnclick();
         //点击radioButton切换到指定页面
         fg_RecordList.setOnCheckedChangeListener(new MyOnCheckedChangeListener());
-
     }
+
 
     class MyOnCheckedChangeListener implements RadioGroup.OnCheckedChangeListener {
         @Override
@@ -95,10 +98,6 @@ public class RecordListActivity extends BaseActivity {
         }
     }
 
-    @Override
-    public void onClick(View view) {
-
-    }
 
     public class MyViewPagerAdapter extends PagerAdapter {
         @Override

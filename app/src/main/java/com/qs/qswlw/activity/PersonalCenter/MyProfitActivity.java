@@ -4,35 +4,32 @@ import android.view.View;
 import android.widget.ListView;
 
 import com.qs.qswlw.R;
-import com.qs.qswlw.activity.BaseActivity;
 import com.qs.qswlw.adapter.MyProfitAdapter;
 
 /**
  * Created by xiaoyu on 2017/4/5.
  */
 
-public class MyProfitActivity extends BaseActivity {
+public class MyProfitActivity extends BaseInfoActivity {
 
     private ListView lv_myprofit;
 
     @Override
-    public Object initView() {
-        return R.layout.activity_myprofit;
+    public View setConetnView() {
+        View inflate = View.inflate(this, R.layout.activity_myprofit, null);
+        lv_myprofit = (ListView) inflate.findViewById(R.id.lv_myprofit);
+        return inflate;
     }
 
     @Override
     public void initfindviewByid() {
-        lv_myprofit = (ListView) findViewById(R.id.lv_myprofit);
+        super.initfindviewByid();
+        tv_titlebar_center.setText("我的让利");
+    }
+
+    @Override
+    public void initData() {
+        super.initData();
         lv_myprofit.setAdapter(new MyProfitAdapter(this));
-    }
-
-    @Override
-    public void setOnclick() {
-
-    }
-
-    @Override
-    public void onClick(View view) {
-
     }
 }

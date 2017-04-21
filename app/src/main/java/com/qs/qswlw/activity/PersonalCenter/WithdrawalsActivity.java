@@ -3,32 +3,22 @@ package com.qs.qswlw.activity.PersonalCenter;
 import android.view.View;
 
 import com.qs.qswlw.R;
-import com.qs.qswlw.activity.BaseActivity;
 
 /**
  * Created by xiaoyu on 2017/4/3.
  */
 
-public class WithdrawalsActivity extends BaseActivity {
+public class WithdrawalsActivity extends BaseInfoActivity {
 
     @Override
-    public Object initView() {
-        return R.layout.activity_withdrawals;
+    public View setConetnView() {
+        View inflate = View.inflate(this, R.layout.activity_withdrawals, null);
+        return inflate;
     }
 
     @Override
     public void initfindviewByid() {
-
-
-    }
-
-    @Override
-    public void setOnclick() {
-
-    }
-
-    @Override
-    public void onClick(View view) {
-
+        super.initfindviewByid();
+        tv_titlebar_center.setText("提现");
     }
 }
