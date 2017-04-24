@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="8dp">
+
+    <ImageView
+        android:id="@+id/iv_lv_alliancemall"
+        android:layout_width="120dp"
+        android:layout_height="90dp"
+        android:scaleType="fitXY"
+        android:src="@mipmap/bg_head_02"
+        android:layout_marginRight="10dp"/>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/iv_lv_alliancemall"
+        android:layout_centerVertical="true"
+        android:orientation="vertical">
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="婴皇国际母婴会所"
+            android:textColor="@color/black"
+            android:textSize="11sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="【广州市番禺区桥南龙岐路114号铺】"
+            android:textColor="#8f8f94"
+            android:textSize="10sp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="消费次数：0次"
+            android:textColor="#8f8f94"
+            android:textSize="8sp" />
+    </LinearLayout>
+
+
+</RelativeLayout>

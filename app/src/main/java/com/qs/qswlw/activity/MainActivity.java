@@ -15,7 +15,7 @@ import android.widget.Toast;
 
 import com.qs.qswlw.MyApplication;
 import com.qs.qswlw.R;
-import com.qs.qswlw.activity.PersonalCenter.BusinessSettingActivity;
+import com.qs.qswlw.activity.PersonalCenter.ConsumerSettingActivity;
 import com.qs.qswlw.adapter.AngelAdapter;
 import com.qs.qswlw.adapter.BenefitAdapter;
 import com.qs.qswlw.adapter.ChinaAdapter;
@@ -57,7 +57,7 @@ public class MainActivity extends BaseActivity implements IMainView {
     private ImageView iv_setting_main;
     private TextView tv_ranking_main;
     private LinearLayout ll_footview_union;
-    private RadioButton rb_main_goodprojects,rb_main_media,rb_main_mall;
+    private RadioButton rb_main_goodprojects,rb_main_media,rb_main_mall,rb_main_union;
 
 
     @Override
@@ -149,6 +149,7 @@ public class MainActivity extends BaseActivity implements IMainView {
         rb_main_goodprojects = (RadioButton) findViewById(R.id.rb_main_goodprojects);
         rb_main_media = (RadioButton) findViewById(R.id.rb_main_media);
         rb_main_mall = (RadioButton) findViewById(R.id.rb_main_mall);
+        rb_main_union = (RadioButton) findViewById(R.id.rb_main_union);
         imageSwitchView.setCurrentImage(1);
         showDilog();
     }
@@ -299,22 +300,26 @@ public class MainActivity extends BaseActivity implements IMainView {
         rb_main_goodprojects.setOnClickListener(this);
         rb_main_media.setOnClickListener(this);
         rb_main_mall.setOnClickListener(this);
+        rb_main_union.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.iv_setting_main:
-                startActivity(new Intent(MainActivity.this, BusinessSettingActivity.class));
+                startActivity(new Intent(this, ConsumerSettingActivity.class));
                 break;
             case R.id.tv_ranking_main:
-                startActivity(new Intent(MainActivity.this, RankingActivity.class));
+                startActivity(new Intent(this, RankingActivity.class));
                 break;
             case R.id.rb_main_goodprojects:
-                startActivity(new Intent(MainActivity.this,ProjectRecommendationActivity.class));
+                startActivity(new Intent(this,ProjectRecommendationActivity.class));
                 break;
             case R.id.rb_main_media:
-                startActivity(new Intent(MainActivity.this,InteractionActivity.class));
+                startActivity(new Intent(this,InteractionActivity.class));
+                break;
+            case R.id.rb_main_union:
+                startActivity(new Intent(this,AllianceMallActivity.class));
                 break;
             case R.id.rb_main_mall:
                 //实例化WebView对象

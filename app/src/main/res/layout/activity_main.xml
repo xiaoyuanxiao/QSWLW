@@ -80,7 +80,7 @@
             android:id="@+id/rb_main_rankings"
             style="@style/tv_iv_main"
             android:drawableTop="@mipmap/luckgame"
-            android:text="排名榜" />
+            android:text="促销抽奖" />
     </RadioGroup>
 
     <LinearLayout

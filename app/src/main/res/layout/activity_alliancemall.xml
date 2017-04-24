@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:background="#cd2244">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="12dp"
+            android:layout_marginRight="12dp"
+            android:text="广州"
+            android:textSize="13sp" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/corner_edt_interaction"
+            android:gravity="center_vertical"
+            android:layout_marginRight="30dp"
+            android:layout_marginLeft="20dp">
+
+            <EditText
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:hint="请输入商家、商圈、位置"
+                android:singleLine="true"
+                android:textSize="10sp" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:src="@mipmap/sous" />
+        </LinearLayout>
+    </LinearLayout>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:focusable="true"
+            android:focusableInTouchMode="true">
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/bg_head_02"
+                android:scaleType="fitXY"/>
+            <com.qs.qswlw.view.MyGridView
+                android:id="@+id/gv_alliancemall"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="20dp"
+                android:paddingBottom="20dp"
+                android:verticalSpacing="15dp"
+                android:numColumns="4"></com.qs.qswlw.view.MyGridView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="联盟商家"
+                android:textSize="12sp"
+                android:gravity="center"
+                android:layout_marginTop="6dp"
+                android:padding="10dp"
+                android:textColor="#656565"/>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="@color/red"/>
+            <com.qs.qswlw.view.MyListView
+                android:id="@+id/lv_alliancemall"
+                android:layout_marginTop="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"></com.qs.qswlw.view.MyListView>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="查看更多商家"
+                android:textSize="9sp"
+                android:background="@color/white"
+                android:gravity="center"
+                android:layout_margin="8dp"
+                android:textColor="#a4a2a2"/>
+        </LinearLayout>
+    </ScrollView>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/view"/>
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="2dp">
+
+        <RadioButton
+            android:id="@+id/rb_main_mall"
+            style="@style/tv_iv_setting"
+            android:drawableTop="@mipmap/sy_03"
+            android:text="首页"
+            android:textSize="9sp"/>
+        <RadioButton
+            style="@style/tv_iv_setting"
+            android:drawableTop="@mipmap/footer_02"
+            android:text="钱盛商城"
+            android:textSize="9sp"/>
+        <RadioButton
+            style="@style/tv_iv_setting"
+            android:drawableTop="@mipmap/footer_03"
+            android:text="联盟商城"
+            android:textSize="9sp"/>
+
+        <RadioButton
+            android:id="@+id/rb_main_funtime"
+            style="@style/tv_iv_setting"
+            android:drawableTop="@mipmap/footer_04"
+            android:text="购物车"
+            android:textSize="9sp"/>
+
+        <RadioButton
+            android:id="@+id/rb_main_exit"
+            style="@style/tv_iv_setting"
+            android:drawableTop="@mipmap/footer_05"
+            android:text="我的"
+            android:textSize="9sp"/>
+    </RadioGroup>
+</LinearLayout>
