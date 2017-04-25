@@ -171,11 +171,13 @@ public class MainActivity extends BaseActivity implements IMainView {
         dialog.show();
     }
 
+    ArrayList<BaseMainViewMoudle> baseMainViewMoudles;
+
     @Override
     public void initData() {
         super.initData();
 
-        ArrayList<BaseMainViewMoudle> baseMainViewMoudles = new ArrayList<>();
+        baseMainViewMoudles = new ArrayList<>();
         /**
          * 全联盟让利金额排行榜内容填充、头部、尾部
          */
@@ -286,17 +288,19 @@ public class MainActivity extends BaseActivity implements IMainView {
         baseMainViewMoudles.add(baseMainViewMoudle6);
 
 
-    /*    //00------777---------
-        View luckHeadviewclone = LayoutInflater.from(this).inflate(R.layout.luck_homepage_head, null);
-        View luckFootviewclone = LayoutInflater.from(this).inflate(R.layout.luck_homepage_foot, null);
-        lulist = new ArrayList<>();
-        luckAdapter = new LuckAdapter(this, lulist);
+        //00------777---------
+//        View luckHeadviewclone = LayoutInflater.from(this).inflate(R.layout.luck_homepage_head, null);
+//        View luckFootviewclone = LayoutInflater.from(this).inflate(R.layout.luck_homepage_foot, null);
+//        lulist = new ArrayList<>();
+//        luckAdapter = new LuckAdapter(this, lulist);
+//
+//        BaseMainViewMoudle baseMainViewMoudle0 = new BaseMainViewMoudle(this, chinaAdapter);
+//        baseMainViewMoudle0.addHeardView(luckHeadviewclone);
+//        baseMainViewMoudle0.addFootView(luckFootviewclone);
+//        baseMainViewMoudle0.setBackgroundColor(Color.parseColor("#cd2244"));
+//        baseMainViewMoudles.add(0, baseMainViewMoudle0);
+    /*
 
-        BaseMainViewMoudle baseMainViewMoudle0 = new BaseMainViewMoudle(this, chinaAdapter);
-        baseMainViewMoudle0.addHeardView(luckHeadviewclone);
-        baseMainViewMoudle0.addFootView(luckFootviewclone);
-        baseMainViewMoudle0.setBackgroundColor(Color.parseColor("#cd2244"));
-        baseMainViewMoudles.add(0, baseMainViewMoudle0);
 
         View benefitHeadview7 = LayoutInflater.from(this).inflate(R.layout.benefit_homepage_head, null);
         belist = new ArrayList<>();
@@ -306,9 +310,8 @@ public class MainActivity extends BaseActivity implements IMainView {
         baseMainViewMoudle7.setBackgroundColor(Color.parseColor("#b92340"));
         baseMainViewMoudles.add(baseMainViewMoudle7);
 
-
         //-----------------------*/
-        UltraViewPager ultraViewPager = (UltraViewPager) findViewById(R.id.main_vlpage);
+        ultraViewPager = (UltraViewPager) findViewById(R.id.main_vlpage);
         ultraViewPager.setScrollMode(UltraViewPager.ScrollMode.HORIZONTAL);
         UltraPagerAdapter adapter = new UltraPagerAdapter(baseMainViewMoudles);
         ultraViewPager.setAdapter(adapter);
@@ -318,13 +321,13 @@ public class MainActivity extends BaseActivity implements IMainView {
 //        ultraViewPager.setMaxHeight(800);
         ultraViewPager.setAutoMeasureHeight(true);
         ultraViewPager.setPageTransformer(false, new UltraDepthScaleTransformer());
-
-//        ultraViewPager.setInfiniteLoop(true);
-        //------------------
-
-
+        ultraViewPager.setOffscreenPageLimit(0);
         mainPresenter.getdata();
+        ultraViewPager.setCurrentItem(Integer.MAX_VALUE / 2 + 1);
+
     }
+
+    UltraViewPager ultraViewPager;
 
     @Override
     public void setOnclick() {

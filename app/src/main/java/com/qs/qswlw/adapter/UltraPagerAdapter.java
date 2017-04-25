@@ -27,7 +27,7 @@
 package com.qs.qswlw.adapter;
 
 import android.support.v4.view.PagerAdapter;
-import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
@@ -40,7 +40,7 @@ import java.util.List;
 /**
  * Created by mikeafc on 15/11/26.
  */
-public class UltraPagerAdapter extends PagerAdapter implements ViewPager.OnPageChangeListener {
+public class UltraPagerAdapter extends PagerAdapter {
     List<BaseMainViewMoudle> list = new ArrayList<>();
 
     public UltraPagerAdapter(List<BaseMainViewMoudle> list) {
@@ -49,7 +49,7 @@ public class UltraPagerAdapter extends PagerAdapter implements ViewPager.OnPageC
 
     @Override
     public int getCount() {
-        return list.size();
+        return Integer.MAX_VALUE;
     }
 
     @Override
@@ -59,8 +59,11 @@ public class UltraPagerAdapter extends PagerAdapter implements ViewPager.OnPageC
 
     @Override
     public Object instantiateItem(ViewGroup container, int position) {
-        LinearLayout linearLayout = list.get(position).view;
+        int i = position % list.size();
+        LinearLayout linearLayout = list.get(i).view;
+        Log.d("TAG", "-----------" + i + "position===" + position);
         ViewGroup parent = (ViewGroup) linearLayout.getParent();
+        Log.d("TAG", "--------parent---" + parent);
         if (parent != null) {
             parent.removeView(linearLayout);
         }
@@ -72,20 +75,5 @@ public class UltraPagerAdapter extends PagerAdapter implements ViewPager.OnPageC
     public void destroyItem(ViewGroup container, int position, Object object) {
         LinearLayout view = (LinearLayout) object;
         container.removeView(view);
-    }
-
-    @Override
-    public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-
-    }
-
-    @Override
-    public void onPageSelected(int position) {
-
-    }
-
-    @Override
-    public void onPageScrollStateChanged(int state) {
-
     }
 }

@@ -176,7 +176,9 @@ public class UltraViewPagerView extends ViewPager implements UltraViewPagerAdapt
                 setPageMargin(-difference);
             }
             int offscreen = (int) Math.ceil((float) pageLength / (float) childLength) + 1;
-            setOffscreenPageLimit(offscreen);
+
+            Log.d("TAG", "=====offscreen====" + offscreen);
+            setOffscreenPageLimit(2);
             requestLayout();
         }
     }
