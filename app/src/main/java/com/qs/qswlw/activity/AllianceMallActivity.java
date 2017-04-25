@@ -93,7 +93,7 @@ public class AllianceMallActivity extends BaseActivity {
     private class LVItemClickListener implements AdapterView.OnItemClickListener {
         @Override
         public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-
+            startActivity(new Intent(AllianceMallActivity.this,AllianceMallDetailActivity.class));
         }
     }
 
