@@ -27,7 +27,12 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textColor">@color/black</item>
         <item name="android:textSize">10sp</item>
-
+    </style>
+    <style name="tv_grey">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">#656565</item>
+        <item name="android:textSize">10sp</item>
     </style>
     <style name="view_standard">
         <item name="android:layout_width">match_parent</item>
