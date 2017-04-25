@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp">
+        <View
+            android:id="@+id/view_qsmall"
+            android:layout_width="3dp"
+            android:layout_height="30dp"
+            android:layout_centerVertical="true"
+            android:background="@color/red"/>
+        <TextView
+            android:layout_toRightOf="@+id/view_qsmall"
+            android:layout_marginLeft="10dp"
+            android:layout_centerVertical="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="13sp"
+            android:textColor="#656565"
+            android:text="新品精选"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="10sp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:textColor="#656565"
+            android:text="查看更多"/>
+    </RelativeLayout>
+</LinearLayout>

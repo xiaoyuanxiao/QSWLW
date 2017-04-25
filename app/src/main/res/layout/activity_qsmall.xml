@@ -15,7 +15,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="12dp"
             android:layout_marginRight="12dp"
-            android:text="广州"
+            android:text="钱盛物联网"
             android:textColor="@color/white"
             android:textSize="13sp" />
 
@@ -33,7 +33,7 @@
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:background="@null"
-                android:hint="请输入商家、商圈、位置"
+                android:hint="请输入商品名称"
                 android:singleLine="true"
                 android:textSize="10sp" />
 
@@ -56,11 +56,11 @@
             android:focusableInTouchMode="true">
             <ImageView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="120dp"
                 android:src="@mipmap/bg_head_02"
                 android:scaleType="fitXY"/>
             <com.qs.qswlw.view.MyGridView
-                android:id="@+id/gv_alliancemall"
+                android:id="@+id/gv_qsmall"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingTop="20dp"
@@ -72,32 +72,43 @@
                 android:layout_width="match_parent"
                 android:layout_height="10dp"
                 android:background="#f4f4f4"/>
-            <TextView
+            <include layout="@layout/rl_qsmall"/>
+
+            <com.qs.qswlw.view.MyGridView
+                android:id="@+id/gv_new_qsmall"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="联盟商家"
-                android:textSize="12sp"
-                android:gravity="center"
-                android:layout_marginTop="6dp"
-                android:padding="10dp"
-                android:textColor="#656565"/>
+                android:numColumns="2"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:horizontalSpacing="10dp"
+                android:verticalSpacing="15dp"></com.qs.qswlw.view.MyGridView>
+            <include layout="@layout/rl_qsmall"/>
+            <com.qs.qswlw.view.MyGridView
+                android:id="@+id/gv_hot_qsmall"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:numColumns="3"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:horizontalSpacing="6dp"
+                android:verticalSpacing="15dp"></com.qs.qswlw.view.MyGridView>
             <View
                 android:layout_width="match_parent"
-                android:layout_height="2dp"
-                android:background="@color/red"/>
-            <com.qs.qswlw.view.MyListView
-                android:id="@+id/lv_alliancemall"
-                android:layout_marginTop="5dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"></com.qs.qswlw.view.MyListView>
-            <TextView
+                android:layout_height="10dp"
+                android:background="#f4f4f4"/>
+            <include layout="@layout/rl_qsmall"/>
+
+            <com.qs.qswlw.view.MyGridView
+                android:id="@+id/gv_guess_qsmall"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="查看更多商家"
-                android:textSize="9sp"
-                android:gravity="center"
-                android:layout_margin="8dp"
-                android:textColor="#a4a2a2"/>
+                android:numColumns="2"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:horizontalSpacing="10dp"
+                android:verticalSpacing="15dp"
+                android:layout_marginBottom="30dp"></com.qs.qswlw.view.MyGridView>
         </LinearLayout>
     </ScrollView>
     <View
@@ -111,33 +122,33 @@
         android:padding="2dp">
 
         <RadioButton
-            android:id="@+id/rb_alliancemall_homepage"
+            android:id="@+id/rb_qsmall_homepage"
             style="@style/tv_iv_setting"
             android:drawableTop="@mipmap/sy_03"
             android:text="首页"
             android:textSize="9sp"/>
         <RadioButton
-            android:id="@+id/rb_alliancemall_qs"
+            android:id="@+id/rb_qsmall_qs"
             style="@style/tv_iv_setting"
             android:drawableTop="@mipmap/footer_02"
             android:text="钱盛商城"
             android:textSize="9sp"/>
         <RadioButton
-            android:id="@+id/rb_alliancemall"
+            android:id="@+id/rb_qsmall"
             style="@style/tv_iv_setting"
             android:drawableTop="@mipmap/footer_03"
             android:text="联盟商城"
             android:textSize="9sp"/>
 
         <RadioButton
-            android:id="@+id/rb_alliancemall_ShoppingCart"
+            android:id="@+id/rb_qsmall_ShoppingCart"
             style="@style/tv_iv_setting"
             android:drawableTop="@mipmap/footer_04"
             android:text="购物车"
             android:textSize="9sp"/>
 
         <RadioButton
-            android:id="@+id/rb_alliancemall_mine"
+            android:id="@+id/rb_qsmall_mine"
             style="@style/tv_iv_setting"
             android:drawableTop="@mipmap/footer_05"
             android:text="我的"
