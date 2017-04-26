@@ -115,43 +115,5 @@
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="@color/view"/>
-    <RadioGroup
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:padding="2dp">
-
-        <RadioButton
-            android:id="@+id/rb_qsmall_homepage"
-            style="@style/tv_iv_setting"
-            android:drawableTop="@mipmap/sy_03"
-            android:text="首页"
-            android:textSize="9sp"/>
-        <RadioButton
-            android:id="@+id/rb_qsmall_qs"
-            style="@style/tv_iv_setting"
-            android:drawableTop="@mipmap/footer_02"
-            android:text="钱盛商城"
-            android:textSize="9sp"/>
-        <RadioButton
-            android:id="@+id/rb_qsmall"
-            style="@style/tv_iv_setting"
-            android:drawableTop="@mipmap/footer_03"
-            android:text="联盟商城"
-            android:textSize="9sp"/>
-
-        <RadioButton
-            android:id="@+id/rb_qsmall_ShoppingCart"
-            style="@style/tv_iv_setting"
-            android:drawableTop="@mipmap/footer_04"
-            android:text="购物车"
-            android:textSize="9sp"/>
-
-        <RadioButton
-            android:id="@+id/rb_qsmall_mine"
-            style="@style/tv_iv_setting"
-            android:drawableTop="@mipmap/footer_05"
-            android:text="我的"
-            android:textSize="9sp"/>
-    </RadioGroup>
+   <include layout="@layout/radiogroup_mall"/>
 </LinearLayout>

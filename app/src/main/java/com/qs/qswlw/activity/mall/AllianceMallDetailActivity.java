@@ -1,4 +1,4 @@
-package com.qs.qswlw.activity;
+package com.qs.qswlw.activity.mall;
 
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;

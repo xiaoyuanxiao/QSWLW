@@ -1,9 +1,10 @@
-package com.qs.qswlw.activity;
+package com.qs.qswlw.activity.mall;
 
 import android.view.View;
 import android.widget.ImageView;
 
 import com.qs.qswlw.R;
+import com.qs.qswlw.activity.BaseActivity;
 
 /**
  * Created by xiaoyu on 2017/4/25.

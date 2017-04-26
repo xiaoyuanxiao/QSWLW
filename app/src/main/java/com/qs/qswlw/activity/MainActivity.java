@@ -16,6 +16,7 @@ import android.widget.Toast;
 import com.qs.qswlw.MyApplication;
 import com.qs.qswlw.R;
 import com.qs.qswlw.activity.PersonalCenter.ConsumerSettingActivity;
+import com.qs.qswlw.activity.mall.AllianceMallActivity;
 import com.qs.qswlw.adapter.AngelAdapter;
 import com.qs.qswlw.adapter.BenefitAdapter;
 import com.qs.qswlw.adapter.ChinaAdapter;

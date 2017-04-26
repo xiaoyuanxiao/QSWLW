@@ -1,4 +1,4 @@
-package com.qs.qswlw.activity;
+package com.qs.qswlw.activity.mall;
 
 import android.content.Intent;
 import android.view.View;
@@ -8,6 +8,8 @@ import android.widget.ListView;
 import android.widget.RadioButton;
 
 import com.qs.qswlw.R;
+import com.qs.qswlw.activity.BaseActivity;
+import com.qs.qswlw.activity.MainActivity;
 import com.qs.qswlw.adapter.AllianceMallGVAdapter;
 import com.qs.qswlw.adapter.AllianceMallLVAdapter;
 
@@ -21,7 +23,7 @@ public class AllianceMallActivity extends BaseActivity {
     private AllianceMallGVAdapter allianceMallGVAdapter;
     private ListView lv_alliancemall;
     private AllianceMallLVAdapter allianceMallLVAdapter;
-    private RadioButton rb_alliancemall_homepage,rb_alliancemall_qs,rb_alliancemall,rb_alliancemall_ShoppingCart,rb_alliancemall_mine;
+    private RadioButton rb_homepage,rb_qs,rb_mall,rb_shoppingCart,rb_mine;
 
     @Override
     public Object initView() {
@@ -32,11 +34,11 @@ public class AllianceMallActivity extends BaseActivity {
     public void initfindviewByid() {
         gv_alliancemall = (GridView) findViewById(R.id.gv_alliancemall);
         lv_alliancemall = (ListView) findViewById(R.id.lv_alliancemall);
-        rb_alliancemall_homepage = (RadioButton) findViewById(R.id.rb_alliancemall_homepage);
-        rb_alliancemall_qs = (RadioButton) findViewById(R.id.rb_alliancemall_qs);
-        rb_alliancemall = (RadioButton) findViewById(R.id.rb_alliancemall);
-        rb_alliancemall_ShoppingCart = (RadioButton) findViewById(R.id.rb_alliancemall_ShoppingCart);
-        rb_alliancemall_mine = (RadioButton) findViewById(R.id.rb_alliancemall_mine);
+        rb_homepage = (RadioButton) findViewById(R.id.rb_homepage);
+        rb_qs = (RadioButton) findViewById(R.id.rb_qs);
+        rb_mall = (RadioButton) findViewById(R.id.rb_mall);
+        rb_shoppingCart = (RadioButton) findViewById(R.id.rb_shoppingCart);
+        rb_mine = (RadioButton) findViewById(R.id.rb_mine);
 
 
     }
@@ -52,11 +54,11 @@ public class AllianceMallActivity extends BaseActivity {
 
     @Override
     public void setOnclick() {
-        rb_alliancemall_homepage.setOnClickListener(this);
-        rb_alliancemall_qs.setOnClickListener(this);
-        rb_alliancemall.setOnClickListener(this);
-        rb_alliancemall_ShoppingCart.setOnClickListener(this);
-        rb_alliancemall_mine.setOnClickListener(this);
+        rb_homepage.setOnClickListener(this);
+        rb_qs.setOnClickListener(this);
+        rb_mall.setOnClickListener(this);
+        rb_shoppingCart.setOnClickListener(this);
+        rb_mine.setOnClickListener(this);
         lv_alliancemall.setOnItemClickListener(new LVItemClickListener());
         gv_alliancemall.setOnItemClickListener(new GVItemClickListener());
 
@@ -65,23 +67,23 @@ public class AllianceMallActivity extends BaseActivity {
     @Override
     public void onClick(View view) {
         switch (view.getId()){
-            case R.id.rb_alliancemall_homepage:
+            case R.id.rb_homepage:
                 startActivity(new Intent(this,MainActivity.class));
                 finish();
                 break;
-            case R.id.rb_alliancemall_qs:
+            case R.id.rb_qs:
                 startActivity(new Intent(this,QSMallActivity.class));
                 finish();
                 break;
-            case R.id.rb_alliancemall:
+            case R.id.rb_mall:
                 startActivity(new Intent(this,AllianceMallActivity.class));
                 finish();
                 break;
-            case R.id.rb_alliancemall_ShoppingCart:
+            case R.id.rb_shoppingCart:
                 startActivity(new Intent(this,ShoppingCartActivity.class));
                 finish();
                 break;
-            case R.id.rb_alliancemall_mine:
+            case R.id.rb_mine:
                 break;
         }
 
