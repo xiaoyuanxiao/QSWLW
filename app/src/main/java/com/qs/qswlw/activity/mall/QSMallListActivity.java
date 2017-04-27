@@ -7,6 +7,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -58,20 +59,33 @@ public class QSMallListActivity extends BaseActivity {
     }
 
     private void initTab() {
-        tabLayout.addTab(tabLayout.newTab().setText("最新"));
-        tabLayout.addTab(tabLayout.newTab().setText("销量"));
-        tabLayout.addTab(tabLayout.newTab().setText("评论"));
-        tabLayout.addTab(tabLayout.newTab().setCustomView(tab_icon("价格",R.mipmap.user_icon)));
+        for(int i = 0;i<4;i++){
+            View inflate = LayoutInflater.from(this).inflate(R.layout.tablayout, null);
+            tv = (TextView) inflate.findViewById(R.id.tv_tab);
+            ImageView im = (ImageView)inflate.findViewById(R.id.iv_tab);
+            if(i==0){
+                tv.setText("最新");
+                tv.setTextColor(getResources().getColor(R.color.red));
+            }
+            if(i==1){
+                tv.setText("销量");
+
+            }
+            if(i==2){
+                tv.setText("评论");
+            }
+            if(i==3){
+                tv.setText("价格");
+                im.setVisibility(View.VISIBLE);
+                im.setImageResource(R.mipmap.user_icon);
+            }
+            TabLayout.Tab tab = tabLayout.newTab();
+            tab.setCustomView(inflate);
+            tabLayout.addTab(tab,i==0?true:false);
+        }
+
     }
 
-    private View tab_icon(String name,int iconID){
-        View newtab =  LayoutInflater.from(this).inflate(R.layout.tablayout,null);
-        tv = (TextView) newtab.findViewById(R.id.tv_tab);
-        tv.setText(name);
-        ImageView im = (ImageView)newtab.findViewById(R.id.iv_tab);
-        im.setImageResource(iconID);
-        return newtab;
-    }
 
     /**
      * 初始化所有基fragment
@@ -126,13 +140,9 @@ public class QSMallListActivity extends BaseActivity {
                 int position = tab.getPosition();
 
                 Fragment fragment = (Fragment)myPagerAdapter.instantiateItem(ll_container, position);
-
                 myPagerAdapter.setPrimaryItem(ll_container, position, fragment);
-
-                if(position==2){
-                    tv.setTextColor(getResources().getColor(R.color.red));
-                }
                 myPagerAdapter.finishUpdate(ll_container);
+
             }
 
             @Override
@@ -181,6 +191,16 @@ public class QSMallListActivity extends BaseActivity {
         @Override
         public int getCount() {
             return 4;
+        }
+
+        @Override
+        public long getItemId(int position) {
+            return super.getItemId(position);
+        }
+
+        @Override
+        public void destroyItem(ViewGroup container, int position, Object object) {
+            super.destroyItem(container, position, object);
         }
     }
 }
