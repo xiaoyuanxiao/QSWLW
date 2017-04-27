@@ -4,6 +4,7 @@ import android.view.View;
 import android.widget.GridView;
 
 import com.qs.qswlw.R;
+import com.qs.qswlw.adapter.QSMalListNewAdapter;
 
 /**
  * Created by xiaoyu on 2017/4/26.
@@ -26,6 +27,6 @@ public class QSMalListNewFragment extends BaseFragment {
     @Override
     protected void initData() {
         super.initData();
-     //   gv_qsmalllist.setAdapter(new QSMalListNewAdapter(activity));
+        gv_qsmalllist.setAdapter(new QSMalListNewAdapter(activity));
     }
 }

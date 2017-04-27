@@ -1,23 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#eeeeee"
+    android:orientation="vertical"
+    android:padding="8dp">
+
     <ImageView
         android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:src="@mipmap/bbg_02"/>
+        android:layout_height="140dp"
+        android:scaleType="fitXY"
+        android:src="@mipmap/bbg_02" />
+
     <TextView
         style="@style/tv_harvestaddress"
-        android:text="i释迦佛派遣军佛教期望分红i缺乏和无穷"/>
+        android:text="新品12色口红板 口红盒 唇彩盘 百变妆容" />
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="11sp"
+        android:text="118.00"
         android:textColor="@color/red"
-        android:text="118.00"/>
+        android:textSize="11sp" />
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp">
 
+        <TextView
+            android:id="@+id/tv_minus"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:background="@drawable/stroke_gray_white"
+            android:text="—"
+            android:textColor="@color/red" />
 
+        <EditText
+            android:id="@+id/edt_num"
+            android:layout_width="30dp"
+            android:layout_height="20dp"
+            android:layout_toRightOf="@+id/tv_minus"
+            android:background="@drawable/stroke_gray_white"
+            android:gravity="center"
+            android:hint="1"
+            android:textSize="12sp" />
+
+        <TextView
+             android:layout_toRightOf="@+id/edt_num"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:background="@drawable/stroke_gray_white"
+            android:text="+"
+            android:gravity="center"
+            android:textColor="@color/red" />
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentRight="true"
+            android:src="@mipmap/cart"/>
+
+    </RelativeLayout>
 
 
 </LinearLayout>
