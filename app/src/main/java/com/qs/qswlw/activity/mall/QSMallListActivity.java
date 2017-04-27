@@ -1,15 +1,15 @@
 package com.qs.qswlw.activity.mall;
 
+import android.content.Context;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.qs.qswlw.R;
@@ -26,14 +26,12 @@ import java.util.ArrayList;
  */
 
 public class QSMallListActivity extends BaseActivity {
-
-    private LinearLayout ll_container;
     private FragmentManager fragmentManager;
     private ArrayList<Fragment> fragments;
     private TabLayout tabLayout;
     private MyPagerAdapter myPagerAdapter;
+    private ViewPager viewPager;
     private TextView tv;
-
     @Override
     public Object initView() {
         return R.layout.activity_qsmalllist;
@@ -41,7 +39,6 @@ public class QSMallListActivity extends BaseActivity {
 
     @Override
     public void initfindviewByid() {
-        ll_container = (LinearLayout) findViewById(R.id.ll_container);
         tabLayout = (TabLayout) findViewById(R.id.tabLayout);
 
 
@@ -52,40 +49,18 @@ public class QSMallListActivity extends BaseActivity {
         super.initData();
         fragmentManager = getSupportFragmentManager();
         initFragment();
+
+        myPagerAdapter = new MyPagerAdapter(getSupportFragmentManager(), this);
+        viewPager = (ViewPager) findViewById(R.id.viewpager_qsmalllist);
+        viewPager.setAdapter(myPagerAdapter);
+        tabLayout.setupWithViewPager(viewPager);
         tabLayout.setTabMode(TabLayout.MODE_FIXED);
-        tabLayout.setSelectedTabIndicatorColor(getResources().getColor(R.color.red));
-        myPagerAdapter = new MyPagerAdapter(getSupportFragmentManager());
-        initTab();
-    }
-
-    private void initTab() {
-        for(int i = 0;i<4;i++){
-            View inflate = LayoutInflater.from(this).inflate(R.layout.tablayout, null);
-            tv = (TextView) inflate.findViewById(R.id.tv_tab);
-            ImageView im = (ImageView)inflate.findViewById(R.id.iv_tab);
-            if(i==0){
-                tv.setText("最新");
-                tv.setTextColor(getResources().getColor(R.color.red));
-            }
-            if(i==1){
-                tv.setText("销量");
-
-            }
-            if(i==2){
-                tv.setText("评论");
-            }
-            if(i==3){
-                tv.setText("价格");
-                im.setVisibility(View.VISIBLE);
-                im.setImageResource(R.mipmap.user_icon);
-            }
-            TabLayout.Tab tab = tabLayout.newTab();
-            tab.setCustomView(inflate);
-            tabLayout.addTab(tab,i==0?true:false);
+        for (int i = 0; i < tabLayout.getTabCount(); i++) {
+            TabLayout.Tab tab = tabLayout.getTabAt(i);
+            tab.setCustomView(myPagerAdapter.getTabView(i, false));
         }
 
     }
-
 
     /**
      * 初始化所有基fragment
@@ -99,6 +74,7 @@ public class QSMallListActivity extends BaseActivity {
         showFragment(fragments.get(0));
 
     }
+
     /**
      * 显示fragment
      *
@@ -110,7 +86,7 @@ public class QSMallListActivity extends BaseActivity {
         if (fragment.isAdded()) {
             transaction.show(fragment);
         } else {
-            transaction.add(R.id.ll_container, fragment, fragment.getClass().getName());
+            transaction.add(R.id.viewpager_qsmalllist, fragment, fragment.getClass().getName());
         }
         transaction.commit();
     }
@@ -131,33 +107,6 @@ public class QSMallListActivity extends BaseActivity {
 
     @Override
     public void setOnclick() {
-        tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
-
-            @Override
-
-            public void onTabSelected(TabLayout.Tab tab) {
-
-                int position = tab.getPosition();
-
-                Fragment fragment = (Fragment)myPagerAdapter.instantiateItem(ll_container, position);
-                myPagerAdapter.setPrimaryItem(ll_container, position, fragment);
-                myPagerAdapter.finishUpdate(ll_container);
-
-            }
-
-            @Override
-
-            public void onTabUnselected(TabLayout.Tab tab) {
-
-            }
-
-            @Override
-
-            public void onTabReselected(TabLayout.Tab tab) {
-
-            }
-
-        });
     }
 
     @Override
@@ -168,9 +117,15 @@ public class QSMallListActivity extends BaseActivity {
 
     }
 
-    class MyPagerAdapter extends FragmentPagerAdapter{
-        public MyPagerAdapter(FragmentManager supportFragmentManager) {
-            super(supportFragmentManager);
+    public class MyPagerAdapter extends FragmentPagerAdapter {
+
+        final int PAGE_COUNT = 4;
+        private String tabTitles[] = new String[]{"最新", "销量", "评论","价格"};
+        private Context context;
+
+        public MyPagerAdapter(FragmentManager fm, Context context) {
+            super(fm);
+            this.context = context;
         }
 
         @Override
@@ -190,17 +145,37 @@ public class QSMallListActivity extends BaseActivity {
 
         @Override
         public int getCount() {
-            return 4;
+            return PAGE_COUNT;
         }
 
         @Override
-        public long getItemId(int position) {
-            return super.getItemId(position);
+        public CharSequence getPageTitle(int position) {
+            //第一次的代码
+            //return tabTitles[position];
+            //第二次的代码
+            /**
+             Drawable image = context.getResources().getDrawable(imageResId[position]);
+             image.setBounds(0, 0, image.getIntrinsicWidth(), image.getIntrinsicHeight());
+             SpannableString sb = new SpannableString(" " + tabTitles[position]);
+             ImageSpan imageSpan = new ImageSpan(image, ImageSpan.ALIGN_BOTTOM);
+             sb.setSpan(imageSpan, 0, 1, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+             return sb;*/
+
+
+            return null;
+        }
+        public View getTabView(int position,boolean select){
+            View view = LayoutInflater.from(context).inflate(R.layout.tablayout, null);
+            view.setSelected(select);
+             tv =  (TextView) view.findViewById(R.id.tv_tab);
+            tv.setText(tabTitles[position]);
+            ImageView img = (ImageView) view.findViewById(R.id.iv_tab);
+            if(position==3){
+                img.setVisibility(View.VISIBLE);
+                img.setImageResource(R.mipmap.beans);
+            }
+            return view;
         }
 
-        @Override
-        public void destroyItem(ViewGroup container, int position, Object object) {
-            super.destroyItem(container, position, object);
-        }
     }
 }

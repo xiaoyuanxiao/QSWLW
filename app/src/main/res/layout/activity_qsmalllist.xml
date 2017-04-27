@@ -56,8 +56,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:paddingTop="10dp"
-        android:paddingBottom="10dp"
+        android:paddingTop="6dp"
+        android:paddingBottom="6dp"
         android:gravity="center">
         <android.support.design.widget.TabLayout
             android:id="@+id/tabLayout"
@@ -67,7 +67,7 @@
             android:layout_marginRight="10dp"
             app:tabTextColor="@color/text_grey"
             app:tabSelectedTextColor="@color/red"
-            app:tabTextAppearance="@style/TabLayoutTextStyle"
+            app:tabIndicatorColor="@color/red"
             />
         <ImageView
             android:layout_width="20dp"
@@ -75,12 +75,9 @@
             android:layout_marginRight="15dp"
             android:src="@mipmap/gride"/>
     </LinearLayout>
-    <LinearLayout
+    <android.support.v4.view.ViewPager
+        android:id="@+id/viewpager_qsmalllist"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:orientation="vertical"
-        android:id="@+id/ll_container">
-    </LinearLayout>
+        android:layout_height="wrap_content"/>
 <include layout="@layout/radiogroup_mall"/>
 </LinearLayout>
