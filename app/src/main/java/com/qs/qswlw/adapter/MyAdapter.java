@@ -27,6 +27,8 @@ public class MyAdapter extends BaseAdapter {
             "消费银豆", "我要提现", "我的让利", "商家营业额","消费录单",
             "录单记录","创业直捐","商品管理","促销抽奖记录","收获地址"};
 
+
+
     @Override
     public int getCount() {
         return contents.length;

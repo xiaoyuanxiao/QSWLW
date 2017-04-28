@@ -7,6 +7,7 @@
     android:padding="8dp">
 
     <ImageView
+
         android:layout_width="match_parent"
         android:layout_height="140dp"
         android:scaleType="fitXY"
@@ -44,6 +45,10 @@
             android:background="@drawable/stroke_gray_white"
             android:gravity="center"
             android:hint="1"
+            android:checked="false"
+            android:clickable="false"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
             android:textSize="12sp" />
 
         <TextView

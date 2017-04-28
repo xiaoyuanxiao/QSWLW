@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingLeft="15dp"
+        android:paddingRight="10dp"
+        android:background="#f6f6f6"
+        android:gravity="center_vertical">
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginRight="10dp"
+            android:src="@mipmap/back"/>
+        <android.support.design.widget.TabLayout
+            android:id="@+id/tabLayout_commodity"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="35dp"
+            app:tabTextColor="@color/text_grey"
+            app:tabTextAppearance="@style/TabLayoutTextStyle"
+            app:tabSelectedTextColor="@color/red"
+            app:tabIndicatorColor="@color/red" />
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginLeft="8dp"
+            android:src="@mipmap/cyzz"/>
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginLeft="8dp"
+            android:src="@mipmap/cyzz"/>
+
+    </LinearLayout>
+    <com.qs.qswlw.view.NoScrollViewPager
+        android:id="@+id/continer"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+</LinearLayout>

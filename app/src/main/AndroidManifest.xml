@@ -75,6 +75,7 @@
             android:windowSoftInputMode="adjustUnspecified|stateHidden"/>
         <activity android:name=".activity.mall.AllianceMallActivity"
             android:windowSoftInputMode="adjustUnspecified|stateHidden"/>
+        <activity android:name=".activity.mall.CommodityDetailsActivity"/>
         <activity android:name=".activity.ChinaGoodProductActivity"/>
         <activity android:name=".activity.InteractionActivity"
             android:windowSoftInputMode="adjustUnspecified|stateHidden"/>
