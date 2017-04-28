@@ -205,8 +205,8 @@ public class MainActivity extends BaseActivity implements IMainView {
         View unionFootview = LayoutInflater.from(this).inflate(R.layout.union_homepage_foot, null);
         TextView tv_union_head = (TextView) unionHeadview.findViewById(R.id.tv_union_head);
         LinearLayout ll_footview = (LinearLayout) unionFootview.findViewById(R.id.ll_footview);
-        ll_footview.setLayoutParams(new LinearLayout.LayoutParams(MyApplication.WIDTH, 45));
-        tv_union_head.setLayoutParams(new LinearLayout.LayoutParams(MyApplication.WIDTH,60));
+        ll_footview.setLayoutParams(new LinearLayout.LayoutParams(MyApplication.WIDTH, LinearLayout.LayoutParams.WRAP_CONTENT));
+        tv_union_head.setLayoutParams(new LinearLayout.LayoutParams(MyApplication.WIDTH,LinearLayout.LayoutParams.WRAP_CONTENT));
         unlist = new ArrayList<>();
         unionAdapter = new UnionAdapter(this, unlist);
         unionList.setAdapter(unionAdapter);
@@ -242,7 +242,7 @@ public class MainActivity extends BaseActivity implements IMainView {
         TextView tv_angel_head = (TextView) angelHeadview.findViewById(R.id.tv_angel_head);
         tv_angel_head.setLayoutParams(new LinearLayout.LayoutParams(MyApplication.WIDTH,60));
         LinearLayout ll_footview1 = (LinearLayout) unionFootview2.findViewById(R.id.ll_footview);
-        ll_footview1.setLayoutParams(new LinearLayout.LayoutParams(MyApplication.WIDTH, 45));
+        ll_footview1.setLayoutParams(new LinearLayout.LayoutParams(MyApplication.WIDTH, LinearLayout.LayoutParams.WRAP_CONTENT));
         anlist = new ArrayList<>();
         angelAdapter = new AngelAdapter(this, anlist);
         angelList.setAdapter(angelAdapter);
@@ -265,7 +265,7 @@ public class MainActivity extends BaseActivity implements IMainView {
         TextView tv_china_head = (TextView) chinaHeadview.findViewById(R.id.tv_china_head);
         tv_china_head.setLayoutParams(new LinearLayout.LayoutParams(MyApplication.WIDTH,60));
         LinearLayout china_footview = (LinearLayout) chinaFootview.findViewById(R.id.china_footview);
-        china_footview.setLayoutParams(new LinearLayout.LayoutParams(MyApplication.WIDTH, 45));
+        china_footview.setLayoutParams(new LinearLayout.LayoutParams(MyApplication.WIDTH, LinearLayout.LayoutParams.WRAP_CONTENT));
         chlist = new ArrayList<>();
         chinaAdapter = new ChinaAdapter(this, chlist);
         chinaList.setAdapter(chinaAdapter);
