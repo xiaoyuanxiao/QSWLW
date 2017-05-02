@@ -206,7 +206,7 @@ public class MainActivity extends BaseActivity implements IMainView {
         TextView tv_union_head = (TextView) unionHeadview.findViewById(R.id.tv_union_head);
         LinearLayout ll_footview = (LinearLayout) unionFootview.findViewById(R.id.ll_footview);
         ll_footview.setLayoutParams(new LinearLayout.LayoutParams(MyApplication.WIDTH, LinearLayout.LayoutParams.WRAP_CONTENT));
-        tv_union_head.setLayoutParams(new LinearLayout.LayoutParams(MyApplication.WIDTH,LinearLayout.LayoutParams.WRAP_CONTENT));
+        tv_union_head.setLayoutParams(new LinearLayout.LayoutParams(MyApplication.WIDTH,60));
         unlist = new ArrayList<>();
         unionAdapter = new UnionAdapter(this, unlist);
         unionList.setAdapter(unionAdapter);

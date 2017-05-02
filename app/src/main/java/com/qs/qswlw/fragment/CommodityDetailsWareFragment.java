@@ -1,6 +1,7 @@
 package com.qs.qswlw.fragment;
 
 import android.view.View;
+import android.widget.TextView;
 
 import com.qs.qswlw.R;
 
@@ -9,6 +10,9 @@ import com.qs.qswlw.R;
  */
 
 public class CommodityDetailsWareFragment extends BaseFragment {
+
+    private TextView tv_fg_ware;
+
     public static CommodityDetailsWareFragment newInstance() {
         CommodityDetailsWareFragment fragment = new CommodityDetailsWareFragment();
         return fragment;
@@ -16,7 +20,14 @@ public class CommodityDetailsWareFragment extends BaseFragment {
 
     @Override
     View initView() {
-        View inflate = View.inflate(activity, R.layout.fragment_qsmalllist, null);
+        View inflate = View.inflate(activity, R.layout.fg_commoditydetailsware, null);
+        tv_fg_ware = (TextView) inflate.findViewById(R.id.tv_fg_ware);
         return inflate;
+    }
+
+    @Override
+    protected void initData() {
+        super.initData();
+
     }
 }

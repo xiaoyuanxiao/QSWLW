@@ -15,7 +15,10 @@
 
     <TextView
         style="@style/tv_harvestaddress"
-        android:text="新品12色口红板 口红盒 唇彩盘 百变妆容" />
+        android:text="新品12色口红板 口红盒 唇彩盘 百变妆容好的说法等哈说"
+        android:maxEms="18"
+        android:maxLines="2"
+        android:ellipsize="end"  />
 
     <TextView
         android:layout_width="wrap_content"

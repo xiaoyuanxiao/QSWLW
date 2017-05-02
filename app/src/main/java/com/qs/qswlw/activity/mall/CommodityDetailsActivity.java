@@ -1,12 +1,14 @@
 package com.qs.qswlw.activity.mall;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.app.FragmentTransaction;
 import android.view.View;
+import android.widget.Button;
 
 import com.qs.qswlw.R;
 import com.qs.qswlw.activity.BaseActivity;
@@ -30,6 +32,7 @@ public class CommodityDetailsActivity extends BaseActivity {
     private PageAdapter PageAdapter;
     private FragmentManager fragmentManager;
     private ArrayList<Fragment> fragments;
+    private Button btn_buy;
 
     @Override
     public Object initView() {
@@ -40,6 +43,7 @@ public class CommodityDetailsActivity extends BaseActivity {
     public void initfindviewByid() {
         tabLayout= (TabLayout) findViewById(R.id.tabLayout_commodity);
         viewPager = (NoScrollViewPager) findViewById(continer);
+        btn_buy = (Button) findViewById(R.id.btn_buy);
 
     }
 
@@ -99,11 +103,16 @@ public class CommodityDetailsActivity extends BaseActivity {
 
     @Override
     public void setOnclick() {
+        btn_buy.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View view) {
         switch (view.getId()){
+            case R.id.btn_buy:
+                Intent intent = new Intent(this,ShoppingCartActivity.class);
+                startActivity(intent);
+                break;
 
         }
 

@@ -40,6 +40,7 @@ public class ConsumerSettingActivity extends BaseActivity implements AdapterView
         rb_setting_mall = (RadioButton) findViewById(R.id.rb_main_mall);
 
 
+
     }
 
     @Override
