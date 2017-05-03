@@ -149,37 +149,45 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp">
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="15dp"
+                android:orientation="horizontal" >
 
-            <TextView
-                android:id="@+id/tv_minus"
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:background="@drawable/stroke_gray_white"
-                android:text="—"
-                android:textColor="@color/red" />
+                <TextView
+                    android:id="@+id/tv_minus"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:background="@drawable/text_angle_gray"
+                    android:gravity="center"
+                    android:text="一"
+                    android:textColor="@color/grey_color"
+                    android:textSize="@dimen/txt_12" />
 
-            <EditText
-                android:id="@+id/edt_num"
-                android:layout_width="35dp"
-                android:layout_height="25dp"
-                android:layout_toRightOf="@+id/tv_minus"
-                android:background="@drawable/stroke_gray_white"
-                android:checked="false"
-                android:clickable="false"
-                android:focusable="false"
-                android:focusableInTouchMode="false"
-                android:gravity="center"
-                android:hint="1"
-                android:textSize="12sp" />
+                <EditText
+                    android:id="@+id/edt_num"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:background="@drawable/text_angle"
+                    android:gravity="center"
+                    android:singleLine="true"
+                    android:text="1"
+                    android:focusable="false"
+                    android:textColor="@color/grey_color"
+                    android:textSize="@dimen/txt_12" />
 
-            <TextView
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:layout_toRightOf="@+id/edt_num"
-                android:background="@drawable/stroke_gray_white"
-                android:gravity="center"
-                android:text="+"
-                android:textColor="@color/red" />
+                <TextView
+                    android:id="@+id/tv_add"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:background="@drawable/text_angle_right"
+                    android:gravity="center"
+                    android:text="+"
+                    android:textColor="@color/grey_color"
+                    android:textSize="@dimen/txt_12" />
+            </LinearLayout>
 
             <ImageView
                 android:layout_width="25dp"
