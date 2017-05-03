@@ -2,6 +2,7 @@ package com.qs.qswlw.fragment;
 
 import android.os.Handler;
 import android.os.Message;
+import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.EditText;
@@ -23,7 +24,7 @@ public class CommodityDetailsWareFragment extends BaseFragment implements View.O
     private int number = 0;
     private ImageView iv_top;
     private ScrollView scrollview;
-
+    private ViewPager viewpager_slideview;
     public static CommodityDetailsWareFragment newInstance() {
         CommodityDetailsWareFragment fragment = new CommodityDetailsWareFragment();
         return fragment;
@@ -32,6 +33,7 @@ public class CommodityDetailsWareFragment extends BaseFragment implements View.O
     @Override
     View initView() {
         View inflate = View.inflate(activity, R.layout.fg_commoditydetailsware, null);
+        viewpager_slideview = (ViewPager) inflate.findViewById(R.id.viewpager_slideview);
         tv_minus = (TextView) inflate.findViewById(R.id.tv_minus);
         tv_add = (TextView) inflate.findViewById(R.id.tv_add);
         edt_num = (EditText) inflate.findViewById(R.id.edt_num);
