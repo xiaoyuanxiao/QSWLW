@@ -40,23 +40,12 @@
             android:src="@mipmap/cyzz"/>
 
     </LinearLayout>
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1">
+
     <com.qs.qswlw.view.NoScrollViewPager
         android:id="@+id/continer"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@mipmap/topup"
-        android:layout_gravity="right|bottom"
-        android:layout_marginRight="8dp"
-        android:layout_marginBottom="15dp"
-        android:background="@drawable/corner_round"/>
-    </FrameLayout>
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
     <View
         android:layout_width="match_parent"
         android:layout_height="0.1dp"
