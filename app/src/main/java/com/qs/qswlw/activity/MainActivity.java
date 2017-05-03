@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.WindowManager;
 import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -188,6 +189,8 @@ public class MainActivity extends BaseActivity implements IMainView {
         angelList.setBColor(Color.parseColor("#b92340"));
         chinaList.setBColor(Color.parseColor("#f2989a"));
         luckList.setBColor(Color.parseColor("#cd2244"));
+        WindowManager wm =  this.getWindowManager();
+        MyApplication.WIDTH = (int) (wm.getDefaultDisplay().getWidth()*0.7);
         /**
          * 全联盟让利金额排行榜内容填充、头部、尾部
          */
