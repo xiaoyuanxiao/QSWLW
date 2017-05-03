@@ -3,6 +3,7 @@ package com.qs.qswlw.fragment;
 import android.os.Handler;
 import android.os.Message;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -15,9 +16,10 @@ import com.qs.qswlw.R;
 public class CommodityDetailsWareFragment extends BaseFragment implements View.OnClickListener {
 
     private TextView tv_fg_ware;
-    private TextView tv_minus,tv_add;
+    private TextView tv_minus, tv_add;
     private EditText edt_num;
     private int number = 0;
+
     public static CommodityDetailsWareFragment newInstance() {
         CommodityDetailsWareFragment fragment = new CommodityDetailsWareFragment();
         return fragment;
@@ -32,6 +34,8 @@ public class CommodityDetailsWareFragment extends BaseFragment implements View.O
         tv_fg_ware = (TextView) inflate.findViewById(R.id.tv_fg_ware);
         String str = edt_num.getText().toString();
         number = Integer.valueOf(str);
+        //默认不弹出软键盘
+        activity.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
         tv_minus.setOnClickListener(this);
         tv_add.setOnClickListener(this);
 
@@ -43,6 +47,7 @@ public class CommodityDetailsWareFragment extends BaseFragment implements View.O
         super.initData();
 
     }
+
     private Handler handler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
@@ -55,7 +60,7 @@ public class CommodityDetailsWareFragment extends BaseFragment implements View.O
 
     @Override
     public void onClick(View view) {
-        switch (view.getId()){
+        switch (view.getId()) {
             case R.id.tv_minus:
                 if (number > 1) {
                     number--;
