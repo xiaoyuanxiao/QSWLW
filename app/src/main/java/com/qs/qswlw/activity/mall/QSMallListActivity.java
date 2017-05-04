@@ -32,6 +32,9 @@ public class QSMallListActivity extends BaseActivity {
     private MyPagerAdapter myPagerAdapter;
     private ViewPager viewPager;
     private TextView tv;
+    private ImageView iv_qsmalllist;
+    private boolean ischeck = true;
+
     @Override
     public Object initView() {
         return R.layout.activity_qsmalllist;
@@ -40,6 +43,7 @@ public class QSMallListActivity extends BaseActivity {
     @Override
     public void initfindviewByid() {
         tabLayout = (TabLayout) findViewById(R.id.tabLayout);
+        iv_qsmalllist = (ImageView) findViewById(R.id.iv_qsmalllist);
 
 
     }
@@ -107,11 +111,21 @@ public class QSMallListActivity extends BaseActivity {
 
     @Override
     public void setOnclick() {
+        iv_qsmalllist.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View view) {
         switch (view.getId()){
+            case R.id.iv_qsmalllist:
+                if(ischeck){
+                    ischeck = false;
+                    iv_qsmalllist.setImageResource(R.mipmap.gride);
+                }else{
+                    ischeck = true;
+                    iv_qsmalllist.setImageResource(R.mipmap.list);
+                }
+                break;
 
         }
 
