@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:orientation="vertical"
     android:layout_height="match_parent">
 
     <RelativeLayout
+        android:id="@+id/rl_top"
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:background="#f6f6f6">
@@ -35,9 +35,10 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="#ebeced"
         android:gravity="center_horizontal"
         android:orientation="vertical"
-        android:background="#ebeced">
+        android:visibility="gone">
 
         <ImageView
             android:layout_width="wrap_content"
@@ -66,5 +67,86 @@
             android:textSize="10sp" />
     </LinearLayout>
 
+    <ExpandableListView
+        android:id="@+id/expandableListView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rl_top"
+        android:dividerHeight="0.5dp"
+        android:listSelector="#00000000"
+        android:longClickable="true" />
 
-</LinearLayout>
+    <RelativeLayout
+        android:id="@+id/rlBottomBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@color/white"
+        android:padding="10dp">
+
+        <ImageView
+            android:id="@+id/ivSelectAll"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:background="@mipmap/ic_uncheck" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="5dp"
+            android:layout_toRightOf="@+id/ivSelectAll"
+            android:text="全选"
+            android:textColor="#003333"
+            android:textSize="13sp" />
+
+        <TextView
+            android:id="@+id/tvCountMoney"
+            android:layout_toLeftOf="@+id/btnSettle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/btnSettle"
+            android:layout_marginRight="6dp"
+            android:text="总计：￥1000元"
+            android:textColor="#ff2600"
+            android:textSize="11sp" />
+
+        <LinearLayout
+            android:layout_toLeftOf="@+id/btnSettle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_alignBottom="@+id/btnSettle"
+            android:layout_marginRight="6dp"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/tv_grey"
+                android:text="消费银豆：" />
+
+            <TextView
+                android:id="@+id/tvPostPrice"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="right"
+                android:text="6290"
+                android:textColor="@color/red"
+                android:textSize="10sp" />
+        </LinearLayout>
+
+
+        <TextView
+            android:id="@+id/btnSettle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/corner_orange"
+            android:text="结算（%s)"
+            android:layout_alignParentRight="true"
+            android:textColor="#FFF"
+            android:textSize="12sp" />
+    </RelativeLayout>
+
+
+</RelativeLayout>
