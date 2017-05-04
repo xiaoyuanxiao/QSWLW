@@ -111,39 +111,8 @@ public class Image3DView extends ListView {
         }*/
     }
 
-//	@Override
-//	public void setImageResource(int resId) {
-//		super.setImageResource(resId);
-//		mBitmap = null;
-//		initImageViewBitmap();
-//	}
-//
-//	@Override
-//	public void setImageBitmap(Bitmap bm) {
-//		super.setImageBitmap(bm);
-//		mBitmap = null;
-//		initImageViewBitmap();
-//	}
-//
-//	@Override
-//	public void setImageDrawable(Drawable drawable) {
-//		super.setImageDrawable(drawable);
-//		mBitmap = null;
-//		initImageViewBitmap();
-//	}
-//
-//	@Override
-//	public void setImageURI(Uri uri) {
-//		super.setImageURI(uri);
-//		mBitmap = null;
-//		initImageViewBitmap();
-//	}
 
 
-    @Override
-    protected void onDraw(Canvas canvas) {
-
-    }
 
     final float with = 360f;
     float myx = 0f;

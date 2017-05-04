@@ -1,9 +1,10 @@
 package com.qs.qswlw.activity;
 
-import android.app.AlertDialog;
 import android.content.Intent;
 import android.graphics.Color;
+import android.support.v7.app.AlertDialog;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.webkit.WebView;
@@ -76,6 +77,10 @@ public class MainActivity extends BaseActivity implements IMainView {
         unlist.clear();
         unlist.addAll(list);
         unionAdapter.notifyDataSetChanged();
+        // unionList.invalidate();
+        imageSwitchView.scrollToNext();
+        Log.d("TAG", "-------setUnionList---");
+
     }
 
     @Override
@@ -88,13 +93,14 @@ public class MainActivity extends BaseActivity implements IMainView {
         enlist.add(entrepBaen.getMoney() + "");
         enlist.add(entrepBaen.getModel1() + "");
         entrepAdapter.notifyDataSetChanged();
-
+        Log.d("TAG", "-------setEntrepList---");
     }
 
     @Override
     public void setAngelList(List list) {
         anlist.clear();
         anlist.addAll(list);
+        Log.d("TAG", "-------setAngelList---");
         angelAdapter.notifyDataSetChanged();
     }
 
@@ -102,13 +108,16 @@ public class MainActivity extends BaseActivity implements IMainView {
     public void setChinaList(List<ChinaBean> list) {
         chlist.clear();
         chlist.addAll(list);
+        Log.d("TAG", "-------setChinaList---");
         chinaAdapter.notifyDataSetChanged();
+
     }
 
     @Override
     public void setLuckList(List<LuckBean> list) {
         lulist.clear();
         lulist.addAll(list);
+        Log.d("TAG", "-------setLuckList---");
         luckAdapter.notifyDataSetChanged();
     }
 
@@ -117,6 +126,7 @@ public class MainActivity extends BaseActivity implements IMainView {
         belist.clear();
         belist.addAll(list);
         benefitAdapter.notifyDataSetChanged();
+        Log.d("TAG", "-------setBenefitList---");
     }
 
     MainPresenter mainPresenter = new MainPresenter(this);
@@ -152,7 +162,7 @@ public class MainActivity extends BaseActivity implements IMainView {
         rb_main_media = (RadioButton) findViewById(R.id.rb_main_media);
         rb_main_mall = (RadioButton) findViewById(R.id.rb_main_mall);
         rb_main_union = (RadioButton) findViewById(R.id.rb_main_union);
-        imageSwitchView.setCurrentImage(1);
+        imageSwitchView.setCurrentImage(0);
         showDilog();
     }
 
@@ -212,7 +222,7 @@ public class MainActivity extends BaseActivity implements IMainView {
         TextView tv_union_head = (TextView) unionHeadview.findViewById(R.id.tv_union_head);
         LinearLayout ll_footview = (LinearLayout) unionFootview.findViewById(R.id.ll_footview);
         ll_footview.setLayoutParams(new LinearLayout.LayoutParams(MyApplication.WIDTH, LinearLayout.LayoutParams.WRAP_CONTENT));
-        tv_union_head.setLayoutParams(new LinearLayout.LayoutParams(MyApplication.WIDTH,60));
+        tv_union_head.setLayoutParams(new LinearLayout.LayoutParams(MyApplication.WIDTH, 60));
         unlist = new ArrayList<>();
         unionAdapter = new UnionAdapter(this, unlist);
         unionList.setAdapter(unionAdapter);

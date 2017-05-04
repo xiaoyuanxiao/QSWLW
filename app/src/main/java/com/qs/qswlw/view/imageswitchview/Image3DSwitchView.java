@@ -1,6 +1,7 @@
 package com.qs.qswlw.view.imageswitchview;
 
 import android.content.Context;
+import android.graphics.Canvas;
 import android.os.Handler;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
@@ -83,13 +84,23 @@ public class Image3DSwitchView extends ViewGroup {
     /**
      * 是否强制重新布局
      */
-    private boolean forceToRelayout;
+    private final boolean forceToRelayout = true;
     private int[] mItems;
 
     public Image3DSwitchView(Context context, AttributeSet attrs) {
         super(context, attrs);
         mTouchSlop = ViewConfiguration.get(getContext()).getScaledTouchSlop();
         mScroller = new Scroller(context);
+    }
+
+    @Override
+    public void draw(Canvas canvas) {
+        super.draw(canvas);
+    }
+
+    @Override
+    protected void dispatchDraw(Canvas canvas) {
+        super.dispatchDraw(canvas);
     }
 
     @Override
@@ -125,7 +136,7 @@ public class Image3DSwitchView extends ViewGroup {
                 }
                 refreshImageShowing();
             }
-            forceToRelayout = false;
+            //forceToRelayout = false;
         }
     }
 
@@ -174,9 +185,8 @@ public class Image3DSwitchView extends ViewGroup {
         return true;
     }
 
-    /**
-     * 根据当前的触摸状态来决定是否屏蔽子控件的交互能力。
-     */
+    //***根据当前的触摸状态来决定是否屏蔽子控件的交互能力。*//
+
     @Override
     public boolean onInterceptTouchEvent(MotionEvent ev) {
         int action = ev.getAction();
@@ -293,7 +303,7 @@ public class Image3DSwitchView extends ViewGroup {
             @Override
             public void run() {
                 if (action == SCROLL_NEXT || action == SCROLL_PREVIOUS) {
-                    forceToRelayout = true;
+                  //  forceToRelayout = true;
                     requestLayout();
                 }
             }
@@ -321,7 +331,7 @@ public class Image3DSwitchView extends ViewGroup {
     /**
      * 刷新所有图片的显示状态，包括当前的旋转角度。
      */
-    private void refreshImageShowing() {
+    public void refreshImageShowing() {
         for (int i = 0; i < mItems.length; i++) {
             Image3DView childView = (Image3DView) getChildAt(mItems[i]);
             childView.setRotateData(i, getScrollX());
