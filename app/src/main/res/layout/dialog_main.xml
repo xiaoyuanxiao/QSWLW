@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:textSize="15sp"
         android:textColor="@color/text_yellow"
-        android:text="1111"/>
+        android:text=""/>
     <TextView
         android:layout_marginTop="15dp"
         android:id="@+id/tv_dialog_index_content"
@@ -22,7 +22,7 @@
         android:layout_height="wrap_content"
         android:textSize="10sp"
         android:textColor="@color/text_yellow"
-        android:text="1月7日，“钱盛物联网”与广东省广州市商家代表签订合作协议。这已是新年第一周“钱盛物联网”签下的第七个管理中心。深圳XXX有限公司副总裁、深圳XXX科技有限公司等领导来访企业家共同见证签约仪式。"/>
+        android:text=""/>
     <TextView
         android:id="@+id/tv_dialog_index_name"
         android:layout_width="wrap_content"
@@ -30,7 +30,7 @@
         android:textSize="10sp"
         android:textColor="@color/text_yellow"
         android:layout_gravity="right"
-        android:text="weqwwewr"/>
+        android:text=""/>
     <TextView
         android:id="@+id/tv_dialog_index_time"
         android:layout_width="wrap_content"
@@ -39,7 +39,7 @@
         android:layout_marginTop="5dp"
         android:textColor="@color/text_yellow"
         android:layout_gravity="right"
-        android:text="2017-07-08"/>
+        android:text=""/>
 
     <Button
         android:id="@+id/btn_dialog"

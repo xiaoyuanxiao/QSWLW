@@ -14,26 +14,25 @@
         android:src="@mipmap/bbg_02" />
 
     <TextView
-        style="@style/tv_harvestaddress"
+      android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="10sp"
+        android:textColor="@color/text_grey"
         android:text="新品12色口红板 口红盒 唇彩盘 百变妆容好的说法等哈说"
         android:maxEms="18"
         android:maxLines="2"
         android:ellipsize="end"  />
 
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="118.00"
         android:textColor="@color/red"
         android:textSize="11sp" />
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_centerVertical="true"
-        android:layout_marginRight="15dp"
-        android:orientation="horizontal" >
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
         <TextView
             android:id="@+id/tv_minus"
@@ -46,6 +45,7 @@
             android:textSize="@dimen/txt_12" />
 
         <EditText
+            android:layout_toRightOf="@+id/tv_minus"
             android:id="@+id/edt_num"
             android:layout_width="25dp"
             android:layout_height="25dp"
@@ -58,6 +58,7 @@
             android:textSize="@dimen/txt_12" />
 
         <TextView
+            android:layout_toRightOf="@+id/edt_num"
             android:id="@+id/tv_add"
             android:layout_width="25dp"
             android:layout_height="25dp"
@@ -66,7 +67,12 @@
             android:text="+"
             android:textColor="@color/grey_color"
             android:textSize="@dimen/txt_12" />
-    </LinearLayout>
+        <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_alignParentRight="true"
+            android:src="@mipmap/cart"/>
+    </RelativeLayout>
 
 
 </LinearLayout>
