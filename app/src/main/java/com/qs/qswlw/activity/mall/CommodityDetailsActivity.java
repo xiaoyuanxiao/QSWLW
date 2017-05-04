@@ -1,7 +1,10 @@
 package com.qs.qswlw.activity.mall;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -9,6 +12,8 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.app.FragmentTransaction;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.qs.qswlw.R;
 import com.qs.qswlw.activity.BaseActivity;
@@ -33,6 +38,7 @@ public class CommodityDetailsActivity extends BaseActivity {
     private FragmentManager fragmentManager;
     private ArrayList<Fragment> fragments;
     private Button btn_buy;
+    private LinearLayout ll_customerService,ll_home;
 
     @Override
     public Object initView() {
@@ -44,6 +50,8 @@ public class CommodityDetailsActivity extends BaseActivity {
         tabLayout= (TabLayout) findViewById(R.id.tabLayout_commodity);
         viewPager = (NoScrollViewPager) findViewById(continer);
         btn_buy = (Button) findViewById(R.id.btn_buy);
+        ll_customerService = (LinearLayout) findViewById(R.id.ll_customerService);
+        ll_home = (LinearLayout) findViewById(R.id.ll_home);
 
     }
 
@@ -104,6 +112,8 @@ public class CommodityDetailsActivity extends BaseActivity {
     @Override
     public void setOnclick() {
         btn_buy.setOnClickListener(this);
+        ll_customerService.setOnClickListener(this);
+        ll_home.setOnClickListener(this);
     }
 
     @Override
@@ -113,8 +123,41 @@ public class CommodityDetailsActivity extends BaseActivity {
                 Intent intent = new Intent(this,ShoppingCartActivity.class);
                 startActivity(intent);
                 break;
+            case R.id.ll_customerService:
+                showDialog();
+                break;
+            case R.id.ll_home:
+                startActivity(new Intent(this,QSMallActivity.class));
+                break;
 
         }
+
+    }
+
+    private void showDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("联系电话")    //标题
+                .setCancelable(false)    //不响应back按钮
+                .setMessage("020-29835586")    //对话框显示内容
+                //设置按钮
+                .setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Intent intent = new Intent();
+                        intent.setAction(Intent.ACTION_CALL);
+                        intent.setData(Uri.parse("tel:" + "020-29835586"));
+                        startActivity(intent);
+                    }
+                })
+                .setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Toast.makeText(CommodityDetailsActivity.this, "点击了取消按钮", Toast.LENGTH_SHORT).show();
+                    }
+                });
+        //创建Dialog对象
+        AlertDialog dlg = builder.create();
+        dlg.show();
 
     }
 

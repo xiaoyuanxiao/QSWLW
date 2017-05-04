@@ -46,6 +46,8 @@ public class ShoppingCartActivity extends BaseActivity {
         super.initData();
     }
 
+
+
     @Override
     public void setOnclick() {
         back.setOnClickListener(this);

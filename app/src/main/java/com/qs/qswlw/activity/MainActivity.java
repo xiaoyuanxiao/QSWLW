@@ -61,7 +61,10 @@ public class MainActivity extends BaseActivity implements IMainView {
     private ImageView iv_setting_main;
     private TextView tv_ranking_main;
     private LinearLayout ll_footview_union;
-    private RadioButton rb_main_goodprojects, rb_main_media, rb_main_mall, rb_main_union;
+    private RadioButton rb_main_goodprojects, rb_main_media, rb_main_mall, rb_main_union
+            ,rb_main_WitnessChinaBusiness,rb_main_Win;
+    private WebView webview;
+    private Intent intent;
 
 
     @Override
@@ -163,6 +166,8 @@ public class MainActivity extends BaseActivity implements IMainView {
         rb_main_media = (RadioButton) findViewById(R.id.rb_main_media);
         rb_main_mall = (RadioButton) findViewById(R.id.rb_main_mall);
         rb_main_union = (RadioButton) findViewById(R.id.rb_main_union);
+        rb_main_WitnessChinaBusiness = (RadioButton) findViewById(R.id.rb_main_WitnessChinaBusiness);
+        rb_main_Win = (RadioButton) findViewById(R.id.rb_main_Win);
         imageSwitchView.setCurrentImage(0);
         showDilog();
     }
@@ -321,6 +326,8 @@ public class MainActivity extends BaseActivity implements IMainView {
         rb_main_media.setOnClickListener(this);
         rb_main_mall.setOnClickListener(this);
         rb_main_union.setOnClickListener(this);
+        rb_main_WitnessChinaBusiness.setOnClickListener(this);
+        rb_main_Win.setOnClickListener(this);
     }
 
     @Override
@@ -343,11 +350,21 @@ public class MainActivity extends BaseActivity implements IMainView {
                 break;
             case R.id.rb_main_mall:
                 //实例化WebView对象
-                WebView webview = new WebView(this);
+                webview = new WebView(this);
                 //设置WebView属性，能够执行Javascript脚本
                 webview.getSettings().setJavaScriptEnabled(true);
                 //加载需要显示的网页
                 webview.loadUrl("http://qiansheng.dian7dian.com/index.php?m=Mobile&c=Index&a=index");
+                break;
+            case R.id.rb_main_WitnessChinaBusiness:
+                intent = new Intent(this, WebviewActivity.class);
+                intent.putExtra("WitnessChinaBusiness","http://case.dian7dian.com/qiansheng/jzhs.html");
+                startActivity(intent);
+                break;
+            case R.id.rb_main_Win:
+                intent = new Intent(this, WebviewActivity.class);
+                intent.putExtra("Win","http://case.dian7dian.com/qiansheng/yzqs.html");
+                startActivity(intent);
                 break;
         }
     }
