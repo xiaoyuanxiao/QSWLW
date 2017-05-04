@@ -71,7 +71,7 @@ public class ConsumerSettingActivity extends BaseActivity implements AdapterView
                 showDialog();
                 break;
             case R.id.rb_main_beans:
-                startActivity(new Intent(this,VenturegoldBeansActivity.class));
+                startActivity(new Intent(this,VentureGoldBeansActivity.class));
                 break;
             case R.id.rb_main_funtime:
                 startActivity(new Intent(this,MyPartnerActivity.class));
@@ -110,10 +110,10 @@ public class ConsumerSettingActivity extends BaseActivity implements AdapterView
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
         switch (i){
             case 0:
-                startActivity(new Intent(this,VenturegoldBeansActivity.class));
+                startActivity(new Intent(this,VentureGoldBeansActivity.class));
                 break;
             case 1:
-                startActivity(new Intent(this,VenturegoldBeansActivity.class));
+                startActivity(new Intent(this,VentureGoldBeansActivity.class));
                 break;
             case 2:
                 startActivity(new Intent(this,ConsumerSilverBeanActivity.class));
