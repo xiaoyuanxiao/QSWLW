@@ -10,6 +10,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -157,6 +158,7 @@ public class QSMallListActivity extends BaseActivity {
                     ll_content.setVisibility(View.VISIBLE);
                     ll_souso.setVisibility(View.GONE);
                     tv_screen.setText("筛选");
+                    hintKb();
                 }else{
                     finish();
                 }
@@ -226,5 +228,14 @@ public class QSMallListActivity extends BaseActivity {
             return view;
         }
 
+    }
+    //此方法只是关闭软键盘
+    private void hintKb() {
+        InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+        if(imm.isActive()&&getCurrentFocus()!=null){
+            if (getCurrentFocus().getWindowToken()!=null) {
+                imm.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+            }
+        }
     }
 }
