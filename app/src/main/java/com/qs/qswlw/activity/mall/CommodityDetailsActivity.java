@@ -4,15 +4,21 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.app.FragmentTransaction;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.PopupWindow;
 import android.widget.Toast;
 
 import com.qs.qswlw.R;
@@ -38,7 +44,9 @@ public class CommodityDetailsActivity extends BaseActivity {
     private FragmentManager fragmentManager;
     private ArrayList<Fragment> fragments;
     private Button btn_buy;
-    private LinearLayout ll_customerService,ll_home;
+    private LinearLayout ll_customerService, ll_home;
+    private ImageView iv_setting;
+    private LinearLayout ll_pw_classification;
 
     @Override
     public Object initView() {
@@ -47,11 +55,12 @@ public class CommodityDetailsActivity extends BaseActivity {
 
     @Override
     public void initfindviewByid() {
-        tabLayout= (TabLayout) findViewById(R.id.tabLayout_commodity);
+        tabLayout = (TabLayout) findViewById(R.id.tabLayout_commodity);
         viewPager = (NoScrollViewPager) findViewById(continer);
         btn_buy = (Button) findViewById(R.id.btn_buy);
         ll_customerService = (LinearLayout) findViewById(R.id.ll_customerService);
         ll_home = (LinearLayout) findViewById(R.id.ll_home);
+        iv_setting = (ImageView) findViewById(R.id.iv_setting);
 
     }
 
@@ -79,6 +88,7 @@ public class CommodityDetailsActivity extends BaseActivity {
         showFragment(fragments.get(0));
 
     }
+
     /**
      * 显示fragment
      *
@@ -114,23 +124,50 @@ public class CommodityDetailsActivity extends BaseActivity {
         btn_buy.setOnClickListener(this);
         ll_customerService.setOnClickListener(this);
         ll_home.setOnClickListener(this);
+        iv_setting.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View view) {
-        switch (view.getId()){
+        switch (view.getId()) {
             case R.id.btn_buy:
-                Intent intent = new Intent(this,ShoppingCartActivity.class);
+                Intent intent = new Intent(this, ShoppingCartActivity.class);
                 startActivity(intent);
                 break;
             case R.id.ll_customerService:
                 showDialog();
                 break;
             case R.id.ll_home:
-                startActivity(new Intent(this,QSMallActivity.class));
+                startActivity(new Intent(this, QSMallActivity.class));
+                break;
+            case R.id.iv_setting:
+                showpw(iv_setting);
+                break;
+            case R.id.ll_pw_classification:
+                startActivity(new Intent(this,ClassiFicationActivity.class));
                 break;
 
         }
+
+    }
+
+    private PopupWindow popupWindow;
+
+    private void showpw(ImageView v) {
+        //加载布局
+        LinearLayout layout = (LinearLayout) LayoutInflater.from(this).inflate(
+                R.layout.pw_commoditydetails, null);
+        // 实例化popupWindow
+        popupWindow = new PopupWindow(layout, 150, LinearLayout.LayoutParams.WRAP_CONTENT);
+        ll_pw_classification = (LinearLayout) layout.findViewById(R.id.ll_pw_classification);
+        ll_pw_classification.setOnClickListener(this);
+        //控制键盘是否可以获得焦点
+        popupWindow.setFocusable(true);
+        //设置popupWindow弹出窗体的背景
+        popupWindow.setBackgroundDrawable(new BitmapDrawable(null, ""));
+        WindowManager manager = (WindowManager) getSystemService(Context.WINDOW_SERVICE);
+        //xoff,yoff基于anchor的左下角进行偏移。
+        popupWindow.showAtLocation(v, Gravity.RIGHT|Gravity.TOP,10,100);
 
     }
 
@@ -174,7 +211,7 @@ public class CommodityDetailsActivity extends BaseActivity {
 
         @Override
         public Fragment getItem(int position) {
-            switch (position){
+            switch (position) {
                 case 0:
                     return new CommodityDetailsWareFragment();
                 case 1:
