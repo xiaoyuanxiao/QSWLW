@@ -10,7 +10,9 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.qs.qswlw.R;
@@ -36,6 +38,10 @@ public class QSMallListActivity extends BaseActivity {
     private ImageView iv_qsmalllist;
     private boolean ischeck = true;
     private TextView tv_screen;
+    private EditText edt_qsmalllist;
+    private LinearLayout ll_content;
+    private LinearLayout ll_souso;
+    private ImageView iv_back;
 
     @Override
     public Object initView() {
@@ -47,6 +53,10 @@ public class QSMallListActivity extends BaseActivity {
         tabLayout = (TabLayout) findViewById(R.id.tabLayout);
         iv_qsmalllist = (ImageView) findViewById(R.id.iv_qsmalllist);
         tv_screen = (TextView) findViewById(R.id.tv_screen);
+        edt_qsmalllist = (EditText) findViewById(R.id.edt_qsmalllist);
+        ll_content = (LinearLayout) findViewById(R.id.ll_content);
+        ll_souso = (LinearLayout) findViewById(R.id.ll_souso);
+        iv_back = (ImageView) findViewById(R.id.iv_back);
 
 
     }
@@ -116,6 +126,8 @@ public class QSMallListActivity extends BaseActivity {
     public void setOnclick() {
         iv_qsmalllist.setOnClickListener(this);
         tv_screen.setOnClickListener(this);
+        edt_qsmalllist.setOnClickListener(this);
+        iv_back.setOnClickListener(this);
     }
 
     @Override
@@ -133,6 +145,22 @@ public class QSMallListActivity extends BaseActivity {
             case R.id.tv_screen:
                 Intent intent = new Intent(this, ScreenActivity.class);
                 startActivity(intent);
+                break;
+            case R.id.edt_qsmalllist:
+                edt_qsmalllist.setHint("请输入关键字");
+                tv_screen.setText("搜素");
+                ll_content.setVisibility(View.GONE);
+                ll_souso.setVisibility(View.VISIBLE);
+                break;
+            case R.id.iv_back:
+                if("搜素".equals(tv_screen.getText().toString())){
+                    ll_content.setVisibility(View.VISIBLE);
+                    ll_souso.setVisibility(View.GONE);
+                    tv_screen.setText("筛选");
+                }else{
+                    finish();
+                }
+
                 break;
         }
 

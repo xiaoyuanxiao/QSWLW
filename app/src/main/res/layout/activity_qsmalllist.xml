@@ -15,6 +15,7 @@
         android:paddingBottom="5dp"
         android:gravity="center_vertical">
         <ImageView
+            android:id="@+id/iv_back"
             android:layout_width="20dp"
             android:layout_height="20dp"
             android:src="@mipmap/arrow_left"/>
@@ -32,6 +33,7 @@
                 android:layout_marginLeft="8dp"
                 android:src="@mipmap/search" />
             <EditText
+                android:id="@+id/edt_qsmalllist"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
@@ -52,34 +54,84 @@
         android:layout_width="match_parent"
         android:layout_height="0.1dp"
         android:background="@color/view"/>
-
     <LinearLayout
+        android:id="@+id/ll_souso"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:paddingTop="6dp"
-        android:paddingBottom="6dp"
-        android:gravity="center">
-        <android.support.design.widget.TabLayout
-            android:id="@+id/tabLayout"
-            android:layout_width="0dp"
-            android:layout_weight="1"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:visibility="gone">
+       <LinearLayout
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:orientation="horizontal"
+           android:gravity="center_vertical"
+           android:layout_marginTop="10dp">
+           <ImageView
+               android:layout_width="20dp"
+               android:layout_height="20dp"
+               android:src="@mipmap/souso"/>
+           <TextView
+               style="@style/tv_harvestaddress"
+               android:text="热门搜索"/>
+       </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginRight="10dp"
-            app:tabTextColor="@color/text_grey"
-            app:tabSelectedTextColor="@color/red"
-            app:tabIndicatorColor="@color/red"
-            />
-        <ImageView
-            android:id="@+id/iv_qsmalllist"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:layout_marginRight="15dp"
-            android:src="@mipmap/gride"/>
+            android:orientation="horizontal"
+            android:padding="10dp">
+            <TextView
+                style="@style/text_qsmalllist"
+                android:text="手机"/>
+            <TextView
+                style="@style/text_qsmalllist"
+                android:text="小米"/>
+            <TextView
+                style="@style/text_qsmalllist"
+                android:text="iphone"/>
+            <TextView
+                style="@style/text_qsmalllist"
+                android:text="三星"/>
+            <TextView
+                style="@style/text_qsmalllist"
+                android:text="华为"/>
+        </LinearLayout>
     </LinearLayout>
-    <android.support.v4.view.ViewPager
-        android:id="@+id/viewpager_qsmalllist"
+    <LinearLayout
+        android:id="@+id/ll_content"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-<include layout="@layout/radiogroup_mall"/>
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingTop="6dp"
+            android:paddingBottom="6dp"
+            android:gravity="center">
+            <android.support.design.widget.TabLayout
+                android:id="@+id/tabLayout"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                app:tabTextColor="@color/text_grey"
+                app:tabSelectedTextColor="@color/red"
+                app:tabIndicatorColor="@color/red"
+                />
+            <ImageView
+                android:id="@+id/iv_qsmalllist"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginRight="15dp"
+                android:src="@mipmap/gride"/>
+        </LinearLayout>
+        <android.support.v4.view.ViewPager
+            android:id="@+id/viewpager_qsmalllist"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <include layout="@layout/radiogroup_mall"/>
+    </LinearLayout>
+
+
 </LinearLayout>
