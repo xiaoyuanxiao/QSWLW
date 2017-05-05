@@ -72,6 +72,7 @@
             android:windowSoftInputMode="adjustUnspecified|stateHidden"/>
         <activity android:name=".activity.RankingActivity"/>
         <activity android:name=".activity.mall.ShoppingCartActivity"/>
+        <activity android:name=".activity.mall.ScreenActivity"/>
         <activity android:name=".activity.mall.QSMallActivity"
             android:windowSoftInputMode="adjustUnspecified|stateHidden"/>
         <activity android:name=".activity.mall.AllianceMallActivity"

@@ -1,6 +1,7 @@
 package com.qs.qswlw.activity.mall;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -34,6 +35,7 @@ public class QSMallListActivity extends BaseActivity {
     private TextView tv;
     private ImageView iv_qsmalllist;
     private boolean ischeck = true;
+    private TextView tv_screen;
 
     @Override
     public Object initView() {
@@ -44,6 +46,7 @@ public class QSMallListActivity extends BaseActivity {
     public void initfindviewByid() {
         tabLayout = (TabLayout) findViewById(R.id.tabLayout);
         iv_qsmalllist = (ImageView) findViewById(R.id.iv_qsmalllist);
+        tv_screen = (TextView) findViewById(R.id.tv_screen);
 
 
     }
@@ -112,6 +115,7 @@ public class QSMallListActivity extends BaseActivity {
     @Override
     public void setOnclick() {
         iv_qsmalllist.setOnClickListener(this);
+        tv_screen.setOnClickListener(this);
     }
 
     @Override
@@ -126,7 +130,10 @@ public class QSMallListActivity extends BaseActivity {
                     iv_qsmalllist.setImageResource(R.mipmap.list);
                 }
                 break;
-
+            case R.id.tv_screen:
+                Intent intent = new Intent(this, ScreenActivity.class);
+                startActivity(intent);
+                break;
         }
 
     }
