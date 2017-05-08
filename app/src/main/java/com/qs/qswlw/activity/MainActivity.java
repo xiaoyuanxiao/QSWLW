@@ -372,4 +372,22 @@ public class MainActivity extends BaseActivity implements IMainView {
         super.onDestroy();
         //   imageSwitchView.clear();
     }
+
+    //┏┓　　　┏┓
+    //┏┛┻━━━┛┻┓
+    //┃　　　　　　　┃ 　
+    //┃　　　━　　　┃
+    //┃　┳┛　┗┳　┃
+    //┃　　　　　　　┃
+    //┃　　　┻　　　┃
+    //┃　　　　　　　┃
+    //┗━┓　　　┏━┛
+    //┃　　　┃  神兽保佑　　　　　　　　
+    //┃　　　┃  代码无BUG！
+    //┃　　　┗━━━┓
+    //┃　　　　　　　┣┓
+    //┃　　　　　　　┏┛
+    //┗┓┓┏━┳┓┏┛
+    // ┃┫┫　┃┫┫
+    // ┗┻┛　┗┻┛
 }
