@@ -3,6 +3,7 @@ package com.qs.qswlw.activity.mall;
 import android.view.View;
 import android.widget.ExpandableListView;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -21,7 +22,7 @@ public class ShoppingCartActivity extends BaseActivity {
     TextView btnSettle;
     TextView tvCountMoney;
     TextView tvTitle;
-    RelativeLayout rlShoppingCartEmpty;
+    LinearLayout llShoppingCartEmpty;
     RelativeLayout rlBottomBar;
 
     @Override
@@ -36,7 +37,7 @@ public class ShoppingCartActivity extends BaseActivity {
         ivSelectAll=    $(R.id.ivSelectAll);
         btnSettle=   $(R.id.btnSettle);
         tvCountMoney=  $(R.id.tvCountMoney);
-        rlShoppingCartEmpty=    $(R.id.rlShoppingCartEmpty);
+        llShoppingCartEmpty=    $(R.id.llShoppingCartEmpty);
         rlBottomBar=    $(R.id.rlBottomBar);
 
     }
