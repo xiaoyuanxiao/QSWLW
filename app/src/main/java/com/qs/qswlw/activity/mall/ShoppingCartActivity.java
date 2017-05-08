@@ -47,6 +47,7 @@ public class ShoppingCartActivity extends BaseActivity implements ShopcartExpand
 
     @Override
     public void initfindviewByid() {
+        context = this;
         virtualData();
         exListView = (ExpandableListView) findViewById(R.id.expandableListView);
         cb_check_all = (CheckBox) findViewById(R.id.all_chekbox);

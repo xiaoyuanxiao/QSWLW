@@ -20,6 +20,7 @@ import com.qs.qswlw.MyApplication;
 import com.qs.qswlw.R;
 import com.qs.qswlw.activity.PersonalCenter.ConsumerSettingActivity;
 import com.qs.qswlw.activity.mall.AllianceMallActivity;
+import com.qs.qswlw.activity.mall.QSMallActivity;
 import com.qs.qswlw.adapter.AngelAdapter;
 import com.qs.qswlw.adapter.BenefitAdapter;
 import com.qs.qswlw.adapter.ChinaAdapter;
@@ -346,25 +347,22 @@ public class MainActivity extends BaseActivity implements IMainView {
                 startActivity(new Intent(this, InteractionActivity.class));
                 break;
             case R.id.rb_main_union:
-                startActivity(new Intent(this, AllianceMallActivity.class));
+                intent = new Intent(this, AllianceMallActivity.class);
+                startActivity(intent);
                 break;
             case R.id.rb_main_mall:
-                //实例化WebView对象
-                webview = new WebView(this);
-                //设置WebView属性，能够执行Javascript脚本
-                webview.getSettings().setJavaScriptEnabled(true);
-                //加载需要显示的网页
-                webview.loadUrl("http://qiansheng.dian7dian.com/index.php?m=Mobile&c=Index&a=index");
+                intent = new Intent(this, QSMallActivity.class);
+                startActivity(intent);
                 break;
             case R.id.rb_main_WitnessChinaBusiness:
-                intent = new Intent(this, WebviewActivity.class);
-                intent.putExtra("WitnessChinaBusiness","http://case.dian7dian.com/qiansheng/jzhs.html");
-                startActivity(intent);
+                this.intent = new Intent(this, WebviewActivity.class);
+                this.intent.putExtra("WitnessChinaBusiness","http://case.dian7dian.com/qiansheng/jzhs.html");
+                startActivity(this.intent);
                 break;
             case R.id.rb_main_Win:
-                intent = new Intent(this, WebviewActivity.class);
-                intent.putExtra("Win","http://case.dian7dian.com/qiansheng/yzqs.html");
-                startActivity(intent);
+                this.intent = new Intent(this, WebviewActivity.class);
+                this.intent.putExtra("Win","http://case.dian7dian.com/qiansheng/yzqs.html");
+                startActivity(this.intent);
                 break;
         }
     }
