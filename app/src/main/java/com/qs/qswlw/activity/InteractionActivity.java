@@ -48,22 +48,30 @@ public class InteractionActivity extends BaseInfoActivity {
         lv_interaction.setAdapter(interactionAdapter);
         iv_interaction.setImageDrawable(getResources().getDrawable(images[0]));
         handler = new Handler();
+        showSwitchImg();
+
+
+    }
+
+    /**
+     * 定时切换图片
+     */
+    private void showSwitchImg() {
         final Runnable myRun = new Runnable() {
             @Override
             public void run() {
                 if (true) {  //change to refresh if it is auto mod
                     handler.removeCallbacks(this);
                     handler.postDelayed(this, 4000);
-                     /**
-                      *  这里功能模块代码
-                      */
-                        if(first){
-                            iv_interaction.setImageDrawable(getResources().getDrawable(images[i+1]));
-                            i++;
-                            first = false;
-                        }else{
-                            iv_interaction.setImageDrawable(getResources().getDrawable(images[i]));
-                        }
+
+                     //这里功能模块代码
+                    if(first){
+                        iv_interaction.setImageDrawable(getResources().getDrawable(images[i+1]));
+                        i++;
+                        first = false;
+                    }else{
+                        iv_interaction.setImageDrawable(getResources().getDrawable(images[i]));
+                    }
                     i++;
                     if (i >= images.length) {
                         i = 0;
@@ -73,7 +81,6 @@ public class InteractionActivity extends BaseInfoActivity {
         };
         //使用handler对象来定时启动线程运行
         handler.postDelayed(myRun, 4000);
-
     }
 
     @Override
