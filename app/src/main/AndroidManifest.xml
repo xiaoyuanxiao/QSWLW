@@ -66,6 +66,7 @@
         <activity android:name=".activity.PersonalCenter.GoldWhereaboutsActivity"/>
         <activity android:name=".activity.PersonalCenter.MyPartnerActivity"/>
         <activity android:name=".activity.LoginActivity"/>
+        <activity android:name=".activity.LuckGameActivity"/>
         <activity android:name=".activity.InteractionDetailActivity"/>
         <activity android:name=".activity.WebviewActivity"/>
         <activity android:name=".activity.mall.AllianceMallDetailActivity"/>

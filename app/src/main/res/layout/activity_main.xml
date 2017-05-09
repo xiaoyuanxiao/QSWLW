@@ -77,7 +77,7 @@
             android:text="开心一刻" />
 
         <RadioButton
-            android:id="@+id/rb_main_rankings"
+            android:id="@+id/rb_main_luckgame"
             style="@style/tv_iv_main"
             android:drawableTop="@mipmap/luckgame"
             android:text="促销抽奖" />
