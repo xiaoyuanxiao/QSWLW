@@ -6,6 +6,7 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
@@ -24,6 +25,7 @@ public class InteractionDetailActivity extends BaseInfoActivity {
     private ListView lv_interactiondetail;
     private TextView tv_enroll;
     private PopupWindow popupWindow;
+    private ImageView iv_close;
 
     @Override
     public View setConetnView() {
@@ -65,8 +67,15 @@ public class InteractionDetailActivity extends BaseInfoActivity {
         //加载布局
         RelativeLayout layout = (RelativeLayout) LayoutInflater.from(this).inflate(
                 R.layout.popup_interactiondetail, null);
+        iv_close = (ImageView) layout.findViewById(R.id.iv_close);
+        iv_close.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                popupWindow.dismiss();
+            }
+        });
         // 实例化popupWindow
-        popupWindow = new PopupWindow(layout, RelativeLayout.LayoutParams.MATCH_PARENT, 500);
+        popupWindow = new PopupWindow(layout, RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
         //控制键盘是否可以获得焦点
         popupWindow.setFocusable(true);
         //设置popupWindow弹出窗体的背景
