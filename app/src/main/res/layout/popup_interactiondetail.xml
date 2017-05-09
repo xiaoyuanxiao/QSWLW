@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingBottom="10dp"
+    android:paddingLeft="6dp"
+    android:paddingRight="6dp"
+    android:paddingTop="10dp"
+    android:background="@color/white">
+
+    <ImageView
+        android:id="@+id/iv_close"
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:layout_alignParentRight="true"
+        android:src="@mipmap/close" />
+
+    <TextView
+        android:id="@+id/tv_top"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/iv_close"
+        android:layout_centerHorizontal="true"
+        android:text="填写报名信息"
+        android:textColor="@color/black"
+        android:textSize="12sp" />
+
+    <TextView
+        android:id="@+id/tv_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_top"
+        android:text="姓名"
+        android:textColor="@color/text_grey"
+        android:textSize="12sp" />
+
+    <EditText
+        android:id="@+id/edt_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_name"
+        android:layout_margin="5dp"
+        android:background="@drawable/corner_black" />
+
+    <TextView
+        android:id="@+id/tv_phone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/edt_name"
+        android:text="手机"
+        android:textColor="@color/text_grey"
+        android:textSize="12sp" />
+
+    <EditText
+        android:id="@+id/edt_phone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_phone"
+        android:layout_margin="5dp"
+        android:background="@drawable/corner_black" />
+
+    <Button
+        android:id="@+id/btn_pop"
+        android:layout_below="@+id/edt_phone"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:paddingLeft="50dp"
+        android:paddingRight="50dp"
+        android:text="报名"
+        android:textColor="@color/white"
+        android:textSize="10sp"
+        android:layout_marginTop="25dp"
+        android:background="@drawable/corner_blue"
+        android:layout_centerHorizontal="true"/>
+
+</RelativeLayout>

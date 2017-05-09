@@ -1,7 +1,9 @@
 package com.qs.qswlw.activity;
 
+import android.content.Intent;
 import android.os.Handler;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
 
@@ -13,7 +15,7 @@ import com.qs.qswlw.adapter.InteractionAdapter;
  * Created by xiaoyu on 2017/4/13.
  */
 
-public class InteractionActivity extends BaseInfoActivity {
+public class InteractionActivity extends BaseInfoActivity implements AdapterView.OnItemClickListener {
     private ListView lv_interaction;
     private InteractionAdapter interactionAdapter;
     private ImageView iv_interaction;
@@ -87,6 +89,7 @@ public class InteractionActivity extends BaseInfoActivity {
     public void setOnclick() {
         super.setOnclick();
         iv_interaction.setOnClickListener(this);
+        lv_interaction.setOnItemClickListener(this);
     }
 
     @Override
@@ -97,4 +100,9 @@ public class InteractionActivity extends BaseInfoActivity {
         }
     }
 
+    @Override
+    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+        Intent intent = new Intent(this,InteractionDetailActivity.class);
+        startActivity(intent);
+    }
 }
