@@ -12,7 +12,7 @@
         android:src="@mipmap/left"
         android:layout_centerVertical="true"
         android:layout_alignParentLeft="true"
-        android:layout_marginLeft="8dp"/>
+        android:layout_marginLeft="10dp"/>
 
     
     <TextView

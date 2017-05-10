@@ -63,7 +63,7 @@ public class MainActivity extends BaseActivity implements IMainView {
     private TextView tv_ranking_main;
     private LinearLayout ll_footview_union;
     private RadioButton rb_main_goodprojects, rb_main_media, rb_main_mall, rb_main_union
-            ,rb_main_WitnessChinaBusiness,rb_main_Win,rb_main_luckgame;
+            ,rb_main_WitnessChinaBusiness,rb_main_Win,rb_main_luckgame,rb_main_funtime;
     private WebView webview;
     private Intent intent;
 
@@ -170,6 +170,7 @@ public class MainActivity extends BaseActivity implements IMainView {
         rb_main_WitnessChinaBusiness = (RadioButton) findViewById(R.id.rb_main_WitnessChinaBusiness);
         rb_main_Win = (RadioButton) findViewById(R.id.rb_main_Win);
         rb_main_luckgame = (RadioButton) findViewById(R.id.rb_main_luckgame);
+        rb_main_funtime = (RadioButton) findViewById(R.id.rb_main_funtime);
         imageSwitchView.setCurrentImage(0);
         showDilog();
     }
@@ -368,6 +369,11 @@ public class MainActivity extends BaseActivity implements IMainView {
                 break;
             case R.id.rb_main_luckgame:
                 startActivity(new Intent(this,LuckGameActivity.class));
+                break;
+            case R.id.rb_main_funtime:
+                this.intent = new Intent(this, WebviewActivity.class);
+                this.intent.putExtra("Win","http://case.dian7dian.com/qiansheng/kxyk.html");
+                startActivity(this.intent);
                 break;
         }
     }

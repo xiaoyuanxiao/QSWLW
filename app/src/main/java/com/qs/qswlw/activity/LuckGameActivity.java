@@ -1,5 +1,6 @@
 package com.qs.qswlw.activity;
 
+import android.content.Intent;
 import android.view.View;
 
 import com.qs.qswlw.R;
@@ -32,5 +33,22 @@ public class LuckGameActivity extends BaseInfoActivity {
     public void initData() {
         super.initData();
         gif_luckgame.setMovieResource(R.raw.chouqian);
+    }
+
+    @Override
+    public void setOnclick() {
+        super.setOnclick();
+        tv_titlebar_right.setOnClickListener(this);
+    }
+
+    @Override
+    public void onClick(View v) {
+        super.onClick(v);
+        switch (v.getId()){
+            case R.id.tv_titlebar_right:
+                startActivity(new Intent(this,LuckDrawRecordActivity.class));
+                break;
+
+        }
     }
 }
