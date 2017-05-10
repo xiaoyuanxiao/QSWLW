@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.RadioButton;
+import android.widget.TextView;
 
 import com.qs.qswlw.R;
 import com.qs.qswlw.activity.BaseActivity;
@@ -26,6 +27,7 @@ public class BusinessSettingActivity extends BaseActivity {
     private RadioButton rb_main_funtime;
     private RadioButton rb_main_exit;
     private BusinessSettingAdapter businessSettingAdapter;
+    private TextView tv_setting_set;
 
 
     @Override
@@ -40,6 +42,7 @@ public class BusinessSettingActivity extends BaseActivity {
         rb_main_beans = (RadioButton) findViewById(R.id.rb_main_beans);
         rb_main_funtime = (RadioButton) findViewById(R.id.rb_main_funtime);
         rb_main_exit = (RadioButton) findViewById(R.id.rb_main_exit);
+        tv_setting_set = (TextView) findViewById(R.id.tv_setting_set);
 
 
     }
@@ -56,6 +59,7 @@ public class BusinessSettingActivity extends BaseActivity {
         gv_setting.setOnItemClickListener(new ItemClickListener());
         rb_main_mall.setOnClickListener(this);
         rb_main_exit.setOnClickListener(this);
+        tv_setting_set.setOnClickListener(this);
 
     }
 
@@ -119,6 +123,9 @@ public class BusinessSettingActivity extends BaseActivity {
                 break;
             case R.id.rb_main_exit:
                 showDialog();
+                break;
+            case R.id.tv_setting_set:
+                startActivity(new Intent(this,SetModifyActivity.class));
                 break;
         }
     }

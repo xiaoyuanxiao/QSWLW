@@ -23,5 +23,6 @@
     <!-- 橙色 -->
     <color name="orange_color">#de6838</color>
     <color name="text_grey">#656565</color>
+    <color name="tv_line">#bbbbbd</color>
 
 </resources>

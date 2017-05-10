@@ -65,6 +65,7 @@
         <activity android:name=".activity.PersonalCenter.PurchaseDestinationActivity"/>
         <activity android:name=".activity.PersonalCenter.GoldWhereaboutsActivity"/>
         <activity android:name=".activity.PersonalCenter.MyPartnerActivity"/>
+        <activity android:name=".activity.PersonalCenter.ChangeUserNameActivity"/>
         <activity android:name=".activity.LoginActivity"/>
         <activity android:name=".activity.LuckGameActivity"/>
         <activity android:name=".activity.LuckDrawRecordActivity"/>

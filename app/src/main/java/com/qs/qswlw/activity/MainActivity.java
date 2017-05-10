@@ -18,7 +18,7 @@ import android.widget.Toast;
 
 import com.qs.qswlw.MyApplication;
 import com.qs.qswlw.R;
-import com.qs.qswlw.activity.PersonalCenter.ConsumerSettingActivity;
+import com.qs.qswlw.activity.PersonalCenter.BusinessSettingActivity;
 import com.qs.qswlw.activity.mall.AllianceMallActivity;
 import com.qs.qswlw.activity.mall.QSMallActivity;
 import com.qs.qswlw.adapter.AngelAdapter;
@@ -338,7 +338,7 @@ public class MainActivity extends BaseActivity implements IMainView {
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.iv_setting_main:
-                startActivity(new Intent(this, ConsumerSettingActivity.class));
+                startActivity(new Intent(this, BusinessSettingActivity.class));
                 break;
             case R.id.tv_ranking_main:
                 startActivity(new Intent(this, RankingActivity.class));

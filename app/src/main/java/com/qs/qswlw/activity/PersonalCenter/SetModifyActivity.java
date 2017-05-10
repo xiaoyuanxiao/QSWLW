@@ -17,6 +17,7 @@ import android.view.Gravity;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.qs.qswlw.R;
 import com.qs.qswlw.utils.FileUtil;
@@ -40,12 +41,18 @@ public class SetModifyActivity extends BaseInfoActivity {
     private Bitmap bitmap;
     private Uri imageUri;
     private ImageView iv_set_avater;
+    private RelativeLayout rl_userName;
+    private TextView tv_userName;
+    private Intent intent;
+    private String name;
 
     @Override
     public View setConetnView() {
         View inflate = View.inflate(this, R.layout.activity_setmodify, null);
         rl_set_avater = (RelativeLayout) inflate.findViewById(R.id.rl_set_avater);
         iv_set_avater = (ImageView) inflate.findViewById(R.id.iv_set_avater);
+        rl_userName = (RelativeLayout) inflate.findViewById(R.id.rl_userName);
+        tv_userName = (TextView) inflate.findViewById(R.id.tv_userName);
         return inflate;
     }
 
@@ -64,6 +71,7 @@ public class SetModifyActivity extends BaseInfoActivity {
     public void setOnclick() {
         super.setOnclick();
         rl_set_avater.setOnClickListener(this);
+        rl_userName.setOnClickListener(this);
     }
 
     @Override
@@ -77,7 +85,11 @@ public class SetModifyActivity extends BaseInfoActivity {
                 menuWindow.setTitleName("选择图片来源");
                 menuWindow.setFemaleName("相册");
                 menuWindow.setMaleName("拍照");
-
+                break;
+            case R.id.rl_userName:
+                intent = new Intent(this, ChangeUserNameActivity.class);
+                intent.putExtra("userName", tv_userName.getText().toString());
+                startActivityForResult(intent, 200);
                 break;
         }
 
@@ -144,6 +156,11 @@ public class SetModifyActivity extends BaseInfoActivity {
                     }else {
                         ToastUtils.showToast(this,"请重新选取图片！");
                     }
+                    break;
+                case 200:
+                    name = data.getStringExtra("back");
+                    tv_userName.setText(name);
+                    break;
             }
         }
         switch (requestCode) {
@@ -152,6 +169,7 @@ public class SetModifyActivity extends BaseInfoActivity {
                 String path = f.getPath();
                 new Thread(new SaveThread(path)).start();
                 break;
+
         }
     }
 
