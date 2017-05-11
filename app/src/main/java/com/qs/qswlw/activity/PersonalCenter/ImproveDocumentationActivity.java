@@ -1,17 +1,26 @@
 package com.qs.qswlw.activity.PersonalCenter;
 
+import android.content.Intent;
+import android.net.Uri;
+import android.os.Environment;
+import android.provider.MediaStore;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.qs.qswlw.R;
+import com.qs.qswlw.view.GenderPopupWindow;
 import com.qs.qswlw.view.PickTimeView;
+
+import java.io.File;
 
 /**
  * Created by xiaoyu on 2017/3/31.
@@ -80,7 +89,10 @@ public class ImproveDocumentationActivity extends BaseInfoActivity {
     private TextView tv_startTime,tv_endTime;
     private LinearLayout pvLayout;
     private PickTimeView pickTime;
-
+    private ImageView iv_UploadBusinessLicense,iv_Storefacade;
+    private GenderPopupWindow menuWindow;
+    private static final int CAMERA = 2003;
+    private static final int CHOOSE_PICTURE = 2004;
     @Override
     public View setConetnView() {
         View inflate = View.inflate(this, R.layout.activity_improvedocumentation, null);
@@ -88,6 +100,8 @@ public class ImproveDocumentationActivity extends BaseInfoActivity {
         tv_endTime = (TextView) inflate.findViewById(R.id.tv_endTime);
         pvLayout = (LinearLayout) inflate.findViewById(R.id.Main_pvLayout);
         pickTime = (PickTimeView) inflate.findViewById(R.id.pickTime);
+        iv_UploadBusinessLicense = (ImageView) inflate.findViewById(R.id.iv_UploadBusinessLicense);
+        iv_Storefacade = (ImageView) inflate.findViewById(R.id.iv_Storefacade);
         return inflate;
     }
 
@@ -109,6 +123,8 @@ public class ImproveDocumentationActivity extends BaseInfoActivity {
         super.setOnclick();
         tv_startTime.setOnClickListener(this);
         tv_endTime.setOnClickListener(this);
+        iv_UploadBusinessLicense.setOnClickListener(this);
+        iv_Storefacade.setOnClickListener(this);
     }
 
     @Override
@@ -118,14 +134,52 @@ public class ImproveDocumentationActivity extends BaseInfoActivity {
             case R.id.tv_startTime:
                 pickTime.setVisibility(View.VISIBLE);
                 showView(pickTime);
-
                 break;
             case R.id.tv_endTime:
                 pickTime.setVisibility(View.VISIBLE);
                 showView(pickTime);
                 break;
+            case R.id.iv_UploadBusinessLicense:
+                selectPhoto();
+                break;
+            case R.id.iv_Storefacade:
+                selectPhoto();
+                break;
         }
     }
+
+    /**
+     * 选择拍照或相册
+     */
+    private void selectPhoto(){
+        menuWindow = new GenderPopupWindow(this, new ImproveDocumentationActivity.MyOnClickListener());
+        menuWindow.showAtLocation(this.findViewById(R.id.iv_UploadBusinessLicense), Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL, 0, 0);
+        menuWindow.setTitleName("选择图片来源");
+        menuWindow.setFemaleName("相册");
+        menuWindow.setMaleName("拍照");
+    }
+    //上传图片
+    private class MyOnClickListener implements View.OnClickListener {
+        @Override
+        public void onClick(View v) {
+            switch (v.getId()) {
+                case R.id.tv_female:
+                    //选择图片
+                    Intent picture = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                    startActivityForResult(picture, CHOOSE_PICTURE);
+                    break;
+                case R.id.tv_male:
+                    //选择拍照
+                    Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                    Uri imageUri = Uri.fromFile(new File(Environment.getExternalStorageDirectory(), "userLogo.jpg"));
+                    intent.putExtra(MediaStore.EXTRA_OUTPUT, imageUri);
+                    startActivityForResult(intent, CAMERA);
+                    break;
+            }
+            menuWindow.dismiss();
+        }
+    }
+
     private void showView(View view) {
         for (int i = 0; i < pvLayout.getChildCount(); i++) {
 
