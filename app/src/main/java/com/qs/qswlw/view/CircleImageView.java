@@ -1,9 +1,11 @@
 package com.qs.qswlw.view;
 
 import android.content.Context;
+import android.content.res.TypedArray;
 import android.graphics.Bitmap;
 import android.graphics.BitmapShader;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.RectF;
@@ -13,6 +15,8 @@ import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.widget.ImageView;
+
+import com.qs.qswlw.R;
 
 public class CircleImageView extends ImageView {
 	/**
@@ -28,8 +32,8 @@ public class CircleImageView extends ImageView {
 	/**
 	 * 默认边框的大小和颜色
 	 */
-//	private static final int DEFAULT_BORDER_WIDTH = 0;
-//	private static final int DEFAULT_BORDER_COLOR = Color.WHITE;
+	private static final int DEFAULT_BORDER_WIDTH = 2;
+	private static final int DEFAULT_BORDER_COLOR = Color.YELLOW;
 	/**
 	 * 实际边框的大小和颜色
 	 */
@@ -67,13 +71,13 @@ public class CircleImageView extends ImageView {
 	public CircleImageView(Context context, AttributeSet attrs, int defStyle) {
 		super(context, attrs, defStyle);
 		super.setScaleType(SCALE_TYPE);
-//		TypedArray arr = context.obtainStyledAttributes(attrs,
-//				R.styleable.CircleImageView, defStyle, 0);
-//		mBorderWidth = arr.getDimensionPixelSize(
-//				R.styleable.CircleImageView_border_width, DEFAULT_BORDER_WIDTH);
-//		mBorderColor = arr.getColor(R.styleable.CircleImageView_border_color,
-//				DEFAULT_BORDER_COLOR);
-//		arr.recycle();
+		TypedArray arr = context.obtainStyledAttributes(attrs,
+				R.styleable.CircleImageView, defStyle, 0);
+		mBorderWidth = arr.getDimensionPixelSize(
+				R.styleable.CircleImageView_border_width, DEFAULT_BORDER_WIDTH);
+		mBorderColor = arr.getColor(R.styleable.CircleImageView_border_color,
+				DEFAULT_BORDER_COLOR);
+		arr.recycle();
 		mReady = true;
 		if (mSetupPending) {
 			setup();

@@ -42,4 +42,9 @@
         <attr name="upv_automeasure" format="boolean" />
         <attr name="upv_itemratio" format="float" />
     </declare-styleable>
+
+    <declare-styleable name="CircleImageView">
+        <attr name="border_width" format="dimension" />
+        <attr name="border_color" format="color" />
+    </declare-styleable>
 </resources>

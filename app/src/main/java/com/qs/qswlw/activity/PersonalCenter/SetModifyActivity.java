@@ -15,6 +15,7 @@ import android.provider.MediaStore;
 import android.text.TextUtils;
 import android.view.Gravity;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -45,6 +46,7 @@ public class SetModifyActivity extends BaseInfoActivity {
     private TextView tv_userName;
     private Intent intent;
     private String name;
+    private Button btn_retrievePassword;
 
     @Override
     public View setConetnView() {
@@ -53,6 +55,7 @@ public class SetModifyActivity extends BaseInfoActivity {
         iv_set_avater = (ImageView) inflate.findViewById(R.id.iv_set_avater);
         rl_userName = (RelativeLayout) inflate.findViewById(R.id.rl_userName);
         tv_userName = (TextView) inflate.findViewById(R.id.tv_userName);
+        btn_retrievePassword = (Button) inflate.findViewById(R.id.btn_retrievePassword);
         return inflate;
     }
 
@@ -72,6 +75,7 @@ public class SetModifyActivity extends BaseInfoActivity {
         super.setOnclick();
         rl_set_avater.setOnClickListener(this);
         rl_userName.setOnClickListener(this);
+        btn_retrievePassword.setOnClickListener(this);
     }
 
     @Override
@@ -90,6 +94,10 @@ public class SetModifyActivity extends BaseInfoActivity {
                 intent = new Intent(this, ChangeUserNameActivity.class);
                 intent.putExtra("userName", tv_userName.getText().toString());
                 startActivityForResult(intent, 200);
+                break;
+            case R.id.btn_retrievePassword:
+                intent = new Intent(this,RetrievePasswordActivity.class);
+                startActivity(intent);
                 break;
         }
 
