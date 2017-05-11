@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/tv_line">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+        <com.qs.qswlw.view.NoBorderCircleImageView
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="20dp"
+            android:src="@mipmap/image1" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.2dp"
+            android:background="@color/view" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="8dp">
+
+            <TextView
+                style="@style/tv_harvestaddress"
+                android:text="商品名称和简介：" />
+
+            <EditText
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="80dp"
+                android:layout_weight="1"
+                android:background="@null"
+                android:cursorVisible="false"
+                android:singleLine="true"
+                android:textSize="8sp" />
+        </LinearLayout>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:gravity="top"
+            android:maxLines="3"
+            android:background="@drawable/stroke_gray"
+            android:paddingLeft="5dp"
+            android:hint="请输入商品简介..."
+            android:paddingTop="3dp"
+            android:layout_marginBottom="10dp"
+            android:textSize="12sp"/>
+       <RelativeLayout
+           android:layout_width="match_parent"
+           android:layout_height="match_parent">
+           <TextView
+              style="@style/tv_harvestaddress"
+               android:text="货号"/>
+       </RelativeLayout>
+
+</LinearLayout>
+</RelativeLayout>

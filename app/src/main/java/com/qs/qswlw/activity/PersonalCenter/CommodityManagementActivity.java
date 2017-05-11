@@ -1,13 +1,13 @@
 package com.qs.qswlw.activity.PersonalCenter;
 
+import android.content.Intent;
 import android.view.View;
 import android.widget.ListView;
 import android.widget.RadioButton;
+import android.widget.TextView;
 
 import com.qs.qswlw.R;
 import com.qs.qswlw.adapter.CommodityManagementAdapter;
-
-import static com.qs.qswlw.R.color.view;
 
 /**
  * Created by xiaoyu on 2017/4/7.
@@ -18,6 +18,7 @@ public class CommodityManagementActivity extends BaseInfoActivity {
     private ListView lv_commoditymanagement;
     private RadioButton rb_onSale;
     private RadioButton rb_underTheShelf;
+    private TextView tv_add;
 
     @Override
     public View setConetnView() {
@@ -25,7 +26,9 @@ public class CommodityManagementActivity extends BaseInfoActivity {
         lv_commoditymanagement = (ListView) inflate.findViewById(R.id.lv_commoditymanagement);
         rb_onSale = (RadioButton) inflate.findViewById(R.id.rb_onSale);
         rb_underTheShelf = (RadioButton) inflate.findViewById(R.id.rb_underTheShelf);
-        lv_commoditymanagement.setAdapter(new CommodityManagementAdapter(this));
+        tv_add = (TextView) inflate.findViewById(R.id.tv_add);
+
+
         return inflate;
     }
 
@@ -36,10 +39,17 @@ public class CommodityManagementActivity extends BaseInfoActivity {
     }
 
     @Override
+    public void initData() {
+        super.initData();
+        lv_commoditymanagement.setAdapter(new CommodityManagementAdapter(this));
+    }
+
+    @Override
     public void setOnclick() {
         super.setOnclick();
         rb_onSale.setOnClickListener(this);
         rb_underTheShelf.setOnClickListener(this);
+        tv_add.setOnClickListener(this);
     }
 
     @Override
@@ -52,7 +62,13 @@ public class CommodityManagementActivity extends BaseInfoActivity {
             case R.id.rb_underTheShelf:
                 // lv_commoditymanagement.setAdapter(new CommodityManagementAdapter(this));
                 break;
+            case R.id.tv_add:
+                Intent intent = new Intent(this,AddProductActivity.class);
+                startActivity(intent);
+
+                break;
         }
-        }
+
+    }
 
 }
