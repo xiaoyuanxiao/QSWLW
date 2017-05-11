@@ -110,6 +110,9 @@ public class BusinessSettingActivity extends BaseActivity {
                 case 13:
                     startActivity(new Intent(BusinessSettingActivity.this,HarvestAddressListActivity.class));
                     break;
+                case 14:
+                    startActivity(new Intent(BusinessSettingActivity.this, OldMemberActivity.class));
+                    break;
             }
         }
     }

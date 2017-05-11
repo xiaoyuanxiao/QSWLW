@@ -27,10 +27,10 @@ public class BusinessSettingAdapter extends BaseAdapter {
     public int[] ids = {R.mipmap.bianji, R.mipmap.cyzz, R.mipmap.beans,
             R.mipmap.wytj, R.mipmap.xfyd, R.mipmap.tx, R.mipmap.user_11,
             R.mipmap.yye,R.mipmap.user_09,R.mipmap.jilu,R.mipmap.cyzz,
-            R.mipmap.cpgl,R.mipmap.cj,R.mipmap.user_address};
+            R.mipmap.cpgl,R.mipmap.cj,R.mipmap.user_address,R.mipmap.lan1};
     public String[] contents = {"商家完善资料", "创业种子", "我的金豆", "我要推荐",
             "消费银豆", "我要提现", "我的让利", "商家营业额","消费录单",
-            "录单记录","创业直捐","商品管理","促销抽奖记录","收获地址"};
+            "录单记录","创业直捐","商品管理","促销抽奖记录","收获地址","我是老会员"};
 
     @Override
     public int getCount() {

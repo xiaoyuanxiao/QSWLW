@@ -251,10 +251,10 @@
 
             </LinearLayout>
 
-            <GridView
+            <com.qs.qswlw.view.MyGridView
                 android:id="@+id/gv_setting"
                 android:layout_width="match_parent"
-                android:layout_height="560dp"
+                android:layout_height="wrap_content"
                 android:numColumns="2" />
         </LinearLayout>
 
