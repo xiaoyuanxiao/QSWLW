@@ -76,7 +76,20 @@
         <item>红酒</item>
         <item>鲜花</item>
     </string-array>
-
+    <string-array name="addproduct_classification">
+        <item>选择商品分类</item>
+        <item>生活服务</item>
+        <item>美妆美护</item>
+        <item>珠宝钟表</item>
+        <item>服装箱包</item>
+        <item>美食酒店</item>
+        <item>电子家居</item>
+        <item>酒类</item>
+        <item>鲜蔬花果</item>
+    </string-array>
+    <string-array name="addproduct_mode">
+        <item>20%</item>
+    </string-array>
     <string-array name="consume_item">
         <item>消费者</item>
     </string-array>
