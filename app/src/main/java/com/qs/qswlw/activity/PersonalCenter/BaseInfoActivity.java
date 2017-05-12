@@ -2,6 +2,7 @@ package com.qs.qswlw.activity.PersonalCenter;
 
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -18,6 +19,8 @@ public abstract class BaseInfoActivity extends BaseActivity {
     public ImageView iv_titlebar;
     public TextView tv_titlebar_center;
     public TextView tv_titlebar_right;
+    public ImageView iv_titlebar_right;
+    public LinearLayout ll_titlebar_right;
 
     @Override
     public Object initView() {
@@ -32,6 +35,8 @@ public abstract class BaseInfoActivity extends BaseActivity {
         iv_titlebar = (ImageView) findViewById(R.id.iv_titlebar);
         tv_titlebar_center = (TextView) findViewById(R.id.tv_titlebar_center);
         tv_titlebar_right = (TextView) findViewById(R.id.tv_titlebar_right);
+        iv_titlebar_right = (ImageView) findViewById(R.id.iv_titlebar_right);
+        ll_titlebar_right = (LinearLayout) findViewById(R.id.ll_titlebar_right);
     }
 
     @Override
@@ -39,6 +44,7 @@ public abstract class BaseInfoActivity extends BaseActivity {
         iv_titlebar.setOnClickListener(this);
         tv_titlebar_center.setOnClickListener(this);
         tv_titlebar_right.setOnClickListener(this);
+        ll_titlebar_right.setOnClickListener(this);
     }
 
     @Override
