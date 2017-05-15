@@ -2,6 +2,7 @@ package com.qs.qswlw.activity.PersonalCenter;
 
 import android.content.Intent;
 import android.view.View;
+import android.widget.ImageView;
 
 import com.qs.qswlw.R;
 
@@ -11,9 +12,12 @@ import com.qs.qswlw.R;
 
 public class WithdrawalsActivity extends BaseInfoActivity {
 
+    private ImageView iv_withdrawals_right;
+
     @Override
     public View setConetnView() {
         View inflate = View.inflate(this, R.layout.activity_withdrawals, null);
+        iv_withdrawals_right = (ImageView) inflate.findViewById(R.id.iv_withdrawals_right);
         return inflate;
     }
 
@@ -28,6 +32,7 @@ public class WithdrawalsActivity extends BaseInfoActivity {
     public void setOnclick() {
         super.setOnclick();
         tv_titlebar_right.setOnClickListener(this);
+        iv_withdrawals_right.setOnClickListener(this);
     }
 
     @Override
@@ -36,6 +41,10 @@ public class WithdrawalsActivity extends BaseInfoActivity {
         switch (v.getId()){
             case R.id.tv_titlebar_right:
                 startActivity(new Intent(this,WithdrawalsRecordActivity.class));
+                break;
+            case R.id.iv_withdrawals_right:
+                Intent intent = new Intent(this,WithdrawalsBankActivity.class);
+                startActivity(intent);
                 break;
         }
     }
