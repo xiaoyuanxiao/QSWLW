@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="8dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="产品名称："
+                    android:textColor="@color/black"
+                    android:textSize="12sp" />
+
+                <EditText
+                    style="@style/edit_standred"
+                    android:hint="请输入项目名称" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.2dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:background="@color/view" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="8dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="融资金额："
+                    android:textColor="@color/black"
+                    android:textSize="12sp" />
+
+                <EditText
+                    style="@style/edit_standred"
+                    android:hint="请输入融资金额" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.2dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:background="@color/view" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/iv_releaseproducts"
+                    android:layout_width="100dp"
+                    android:layout_height="80dp"
+                    android:scaleType="fitXY"
+                    android:src="@mipmap/image1" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_gravity="center_vertical"
+                    android:orientation="vertical">
+
+                    <EditText
+                        style="@style/edit_standred"
+                        android:layout_marginBottom="8dp"
+                        android:hint="请输入行业名称" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="0.2dp"
+                        android:layout_marginBottom="8dp"
+                        android:background="@color/view" />
+
+                    <EditText
+                        style="@style/edit_standred"
+                        android:hint="请输入市场占有率百分比" />
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="0.2dp"
+                        android:layout_marginTop="8dp"
+                        android:background="@color/view" />
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="8dp">
+
+                <TextView
+                    style="@style/tv_harvestaddress"
+                    android:text="产品所属：" />
+
+                <RadioButton
+                    style="@style/checkboxTheme"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="公司"
+                    android:textSize="10sp"
+                    android:paddingLeft="5dp"/>
+                <RadioButton
+                    style="@style/checkboxTheme"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:text="个人"
+                    android:textSize="10sp"
+                    android:paddingLeft="5dp"/>
+
+
+            </LinearLayout>
+
+            <TextView
+                style="@style/tv_harvestaddress"
+                android:paddingLeft="8dp"
+                android:text="产品优势：" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="90dp"
+                android:layout_margin="10dp"
+                android:background="@drawable/corner_grey_white"
+                android:gravity="top"
+                android:hint="请输入产品优势"
+                android:maxLines="6"
+                android:textSize="10sp" />
+
+            <TextView
+                style="@style/tv_harvestaddress"
+                android:paddingLeft="8dp"
+                android:text="产品简介：" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="90dp"
+                android:layout_margin="10dp"
+                android:background="@drawable/corner_grey_white"
+                android:gravity="top"
+                android:hint="请输入项目简介"
+                android:maxLines="6"
+                android:textSize="10sp" />
+
+            <TextView
+                style="@style/tv_harvestaddress"
+                android:paddingLeft="8dp"
+                android:text="上传营业执照：" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="120dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_weight="1"
+                    android:src="@mipmap/add_pro" />
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="120dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_weight="1"
+                    android:src="@mipmap/add_pro" />
+            </LinearLayout>
+
+            <TextView
+                style="@style/tv_harvestaddress"
+                android:paddingLeft="8dp"
+                android:text="身份证正面照：" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="120dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_weight="1"
+                    android:src="@mipmap/add_pro" />
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="120dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_weight="1"
+                    android:src="@mipmap/add_pro" />
+            </LinearLayout>
+
+            <TextView
+                style="@style/tv_harvestaddress"
+                android:paddingLeft="8dp"
+                android:text="身份证背面照：" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="120dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_weight="1"
+                    android:src="@mipmap/add_pro" />
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="120dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_weight="1"
+                    android:src="@mipmap/add_pro" />
+            </LinearLayout>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="35dp"
+                android:layout_gravity="center"
+                android:layout_margin="10dp"
+                android:background="@drawable/corner_red_30dp"
+                android:paddingLeft="50dp"
+                android:paddingRight="50dp"
+                android:text="提交"
+                android:textColor="@color/white"
+                android:textSize="10sp" />
+        </LinearLayout>
+    </ScrollView>
+</RelativeLayout>

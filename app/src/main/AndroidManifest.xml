@@ -70,10 +70,13 @@
         <activity android:name=".activity.PersonalCenter.OldMemberActivity"/>
         <activity android:name=".activity.PersonalCenter.AddProductActivity"/>
         <activity android:name=".activity.PersonalCenter.WithdrawalsBankActivity"/>
-        <activity android:name=".activity.PersonalCenter.WithdrawalsAddActivity"/>
+        <activity android:name=".activity.PersonalCenter.WithdrawalsAddActivity"
             android:windowSoftInputMode="adjustUnspecified|stateHidden"/>
         <activity android:name=".activity.LoginActivity"/>
         <activity android:name=".activity.LuckGameActivity"/>
+        <activity android:name=".activity.ReleaseProductsActivity"
+            android:windowSoftInputMode="adjustUnspecified|stateHidden"/>
+        <activity android:name=".activity.MyProductsActivity"/>
         <activity android:name=".activity.LuckDrawRecordActivity"/>
         <activity android:name=".activity.InteractionDetailActivity"/>
         <activity android:name=".activity.WebviewActivity"/>

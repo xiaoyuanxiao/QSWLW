@@ -1,5 +1,6 @@
 package com.qs.qswlw.activity;
 
+import android.content.Intent;
 import android.view.View;
 import android.widget.TextView;
 
@@ -24,6 +25,7 @@ public class ProjectRecommendationActivity extends BaseInfoActivity {
     public void initfindviewByid() {
         super.initfindviewByid();
         tv_titlebar_center.setText("中国好项目");
+        tv_titlebar_right.setText("我的产品");
     }
     @Override
     public void setOnclick() {
@@ -42,6 +44,9 @@ public class ProjectRecommendationActivity extends BaseInfoActivity {
             case R.id.tv_goodProduct:
                 tv_goodProduct.setTextColor(this.getResources().getColor(R.color.red));
                 tv_goodProject.setTextColor(this.getResources().getColor(R.color.black));
+                break;
+            case R.id.tv_titlebar_right:
+                startActivity(new Intent(this,MyProductsActivity.class));
                 break;
         }
     }
