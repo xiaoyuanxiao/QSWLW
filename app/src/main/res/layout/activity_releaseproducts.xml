@@ -68,8 +68,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="8dp"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:padding="8dp">
 
                 <ImageView
                     android:id="@+id/iv_releaseproducts"
@@ -80,11 +80,11 @@
 
                 <LinearLayout
                     android:layout_width="0dp"
-                    android:layout_weight="1"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="5dp"
-                    android:layout_marginLeft="5dp"
                     android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_weight="1"
                     android:orientation="vertical">
 
                     <EditText
@@ -101,6 +101,7 @@
                     <EditText
                         style="@style/edit_standred"
                         android:hint="请输入市场占有率百分比" />
+
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="0.2dp"
@@ -119,25 +120,28 @@
                 <TextView
                     style="@style/tv_harvestaddress"
                     android:text="产品所属：" />
+
                 <RadioGroup
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
+
                     <RadioButton
                         style="@style/checkboxTheme"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:paddingLeft="5dp"
                         android:text="公司"
-                        android:textSize="10sp"
-                        android:paddingLeft="5dp"/>
+                        android:textSize="10sp" />
+
                     <RadioButton
                         style="@style/checkboxTheme"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
+                        android:paddingLeft="5dp"
                         android:text="个人"
-                        android:textSize="10sp"
-                        android:paddingLeft="5dp"/>
+                        android:textSize="10sp" />
                 </RadioGroup>
 
 

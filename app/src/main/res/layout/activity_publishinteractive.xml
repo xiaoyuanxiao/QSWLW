@@ -1,0 +1,365 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="8dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="产品名称："
+                    android:textColor="@color/black"
+                    android:textSize="12sp" />
+
+                <EditText
+                    style="@style/edit_standred"
+                    android:hint="请输入项目名称" />
+            </LinearLayout>
+
+            <View style="@style/view_padding8dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="8dp"
+                android:paddingTop="8dp"
+                android:text="产品名称*"
+                android:textColor="@color/black"
+                android:textSize="12sp" />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:layout_margin="8dp"
+                android:scaleType="fitXY"
+                android:src="@mipmap/image1" />
+
+            <View style="@style/view_padding8dp" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="8dp">
+
+                <TextView
+                    style="@style/tv_harvestaddress"
+                    android:layout_centerVertical="true"
+                    android:text="活动开始时间" />
+
+                <Spinner
+                    android:id="@+id/starttime_spinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"></Spinner>
+            </RelativeLayout>
+
+            <View style="@style/view_padding8dp" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="8dp">
+
+                <TextView
+                    style="@style/tv_harvestaddress"
+                    android:layout_centerVertical="true"
+                    android:text="活动结束时间" />
+
+                <Spinner
+                    android:id="@+id/endtime_spinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"></Spinner>
+            </RelativeLayout>
+
+            <View style="@style/view_padding8dp" />
+
+
+            <Spinner
+                android:id="@+id/privance_spinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="8dp"></Spinner>
+
+            <View style="@style/view_padding8dp" />
+
+            <Spinner
+                android:id="@+id/city_spinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="8dp"></Spinner>
+
+            <View style="@style/view_padding8dp" />
+
+            <Spinner
+                android:id="@+id/region_spinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="8dp"></Spinner>
+
+            <View style="@style/view_padding8dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="8dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="详细地址："
+                    android:textColor="@color/black"
+                    android:textSize="12sp" />
+
+                <EditText
+                    style="@style/edit_standred"
+                    android:singleLine="true" />
+
+                <View style="@style/view_padding8dp" />
+            </LinearLayout>
+
+            <Spinner
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="8dp"></Spinner>
+
+            <View style="@style/view_padding8dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:text="活动详情*"
+                android:textColor="@color/black"
+                android:textSize="12sp" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="90dp"
+                android:layout_margin="10dp"
+                android:background="@drawable/corner_grey_white"
+                android:gravity="top"
+                android:hint="请输入项目简介"
+                android:maxLines="6"
+                android:textSize="10sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:background="@color/view" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:text="报名费用"
+                android:textColor="@color/black"
+                android:textSize="12sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:background="@drawable/corner_grey_white"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/tv_name"
+                        style="@style/tv_harvestaddress"
+                        android:text="费用名称：" />
+
+                    <EditText
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_weight="1"
+                        android:hint="请输入费用名称"
+                        android:textSize="10sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/tv_money"
+                        style="@style/tv_harvestaddress"
+                        android:text="金额：" />
+
+                    <EditText
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_weight="1"
+                        android:hint="免费请填0，有人报名后不能修改"
+                        android:textSize="10sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/tv_num"
+                        style="@style/tv_harvestaddress"
+                        android:text="名额限制：" />
+
+                    <EditText
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_weight="1"
+                        android:hint="默认无限制"
+                        android:textSize="10sp" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:background="@color/view" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:text="报名设置"
+                android:textColor="@color/black"
+                android:textSize="12sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:background="@drawable/corner_grey_white"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/tv_phone"
+                        style="@style/tv_harvestaddress"
+                        android:text="费用名称：" />
+
+                    <EditText
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_weight="1"
+                        android:textSize="10sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        style="@style/tv_harvestaddress"
+                        android:text="活动结束前均可报名：" />
+
+                    <RadioGroup
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <RadioButton
+                            style="@style/checkboxTheme"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingLeft="20dp"
+                            android:text="公司"
+                            android:textSize="10sp" />
+
+                        <RadioButton
+                            style="@style/checkboxTheme"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="20dp"
+                            android:paddingLeft="5dp"
+                            android:text="个人"
+                            android:textSize="10sp" />
+                    </RadioGroup>
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <RadioGroup
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        style="@style/checkboxTheme"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="3dp"
+                        android:text="同意"
+                        android:textSize="10sp" />
+                </RadioGroup>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="《服务协议》"
+                    android:textColor="@color/text_blue"
+                    android:textSize="10sp" />
+            </LinearLayout>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="35dp"
+                android:layout_gravity="center"
+                android:layout_margin="10dp"
+                android:background="@drawable/corner_blue_30dp"
+                android:paddingLeft="50dp"
+                android:paddingRight="50dp"
+                android:text="发布"
+                android:textColor="@color/white"
+                android:textSize="12sp" />
+
+
+        </LinearLayout>
+    </ScrollView>
+</RelativeLayout>

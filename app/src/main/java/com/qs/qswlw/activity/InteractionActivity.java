@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.qs.qswlw.R;
 import com.qs.qswlw.activity.PersonalCenter.BaseInfoActivity;
@@ -19,6 +20,7 @@ public class InteractionActivity extends BaseInfoActivity implements AdapterView
     private ListView lv_interaction;
     private InteractionAdapter interactionAdapter;
     private ImageView iv_interaction;
+    private TextView tv_release;
 
 
     //定义一个访问图片的数组
@@ -34,6 +36,7 @@ public class InteractionActivity extends BaseInfoActivity implements AdapterView
         View inflate = View.inflate(this, R.layout.activity_interaction, null);
         lv_interaction = (ListView) inflate.findViewById(R.id.lv_interaction);
         iv_interaction = (ImageView) inflate.findViewById(R.id.iv_interaction);
+        tv_release = (TextView) inflate.findViewById(R.id.tv_release);
         return inflate;
     }
 
@@ -90,13 +93,16 @@ public class InteractionActivity extends BaseInfoActivity implements AdapterView
         super.setOnclick();
         iv_interaction.setOnClickListener(this);
         lv_interaction.setOnItemClickListener(this);
+        tv_release.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
         super.onClick(v);
         switch (v.getId()) {
-
+            case R.id.tv_release:
+                startActivity(new Intent(this,PublishInteractiveActivity.class));
+                break;
         }
     }
 
