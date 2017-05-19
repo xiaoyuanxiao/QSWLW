@@ -106,6 +106,7 @@ public class InteractionActivity extends BaseInfoActivity implements AdapterView
         }
     }
 
+
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
         Intent intent = new Intent(this,InteractionDetailActivity.class);

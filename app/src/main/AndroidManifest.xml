@@ -73,6 +73,7 @@
         <activity android:name=".activity.PersonalCenter.WithdrawalsAddActivity"
             android:windowSoftInputMode="adjustUnspecified|stateHidden"/>
         <activity android:name=".activity.LoginActivity"/>
+        <activity android:name=".activity.GuessYouLikeActivity"/>
         <activity android:name=".activity.LuckGameActivity"/>
         <activity android:name=".activity.PublishInteractiveActivity"
             android:windowSoftInputMode="adjustUnspecified|stateHidden"/>

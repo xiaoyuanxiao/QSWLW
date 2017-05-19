@@ -1,17 +1,20 @@
 package com.qs.qswlw.activity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.drawable.BitmapDrawable;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.qs.qswlw.GuessYouLikeActivity;
 import com.qs.qswlw.R;
 import com.qs.qswlw.activity.PersonalCenter.BaseInfoActivity;
 import com.qs.qswlw.adapter.InteractionDetailAdapter;
@@ -26,12 +29,16 @@ public class InteractionDetailActivity extends BaseInfoActivity {
     private TextView tv_enroll;
     private PopupWindow popupWindow;
     private ImageView iv_close;
+    private LinearLayout ll_publishInteractive;
+    private TextView tv_chess_more;
 
     @Override
     public View setConetnView() {
         View inflate = View.inflate(this, R.layout.activity_interactiondetail, null);
         lv_interactiondetail = (ListView) inflate.findViewById(R.id.lv_interactiondetail);
         tv_enroll = (TextView) inflate.findViewById(R.id.tv_enroll);
+        ll_publishInteractive = (LinearLayout) inflate.findViewById(R.id.ll_publishInteractive);
+        tv_chess_more = (TextView) inflate.findViewById(R.id.tv_chess_more);
         return inflate;
     }
 
@@ -51,6 +58,8 @@ public class InteractionDetailActivity extends BaseInfoActivity {
     public void setOnclick() {
         super.setOnclick();
         tv_enroll.setOnClickListener(this);
+        ll_publishInteractive.setOnClickListener(this);
+        tv_chess_more.setOnClickListener(this);
     }
 
     @Override
@@ -59,6 +68,12 @@ public class InteractionDetailActivity extends BaseInfoActivity {
         switch(v.getId()){
             case R.id.tv_enroll:
                 showPw(tv_enroll);
+                break;
+            case R.id.ll_publishInteractive:
+                startActivity(new Intent(this,PublishInteractiveActivity.class));
+                break;
+            case R.id.tv_chess_more:
+                startActivity(new Intent(this,GuessYouLikeActivity.class));
                 break;
         }
     }

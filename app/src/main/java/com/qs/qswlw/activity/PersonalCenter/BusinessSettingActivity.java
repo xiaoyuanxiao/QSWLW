@@ -12,6 +12,7 @@ import android.widget.TextView;
 import com.qs.qswlw.R;
 import com.qs.qswlw.activity.BaseActivity;
 import com.qs.qswlw.activity.MainActivity;
+import com.qs.qswlw.activity.MyProductsActivity;
 import com.qs.qswlw.activity.PersonalCenter.city.HarvestAddressListActivity;
 import com.qs.qswlw.adapter.BusinessSettingAdapter;
 
@@ -113,6 +114,9 @@ public class BusinessSettingActivity extends BaseActivity {
                 case 14:
                     startActivity(new Intent(BusinessSettingActivity.this, OldMemberActivity.class));
                     break;
+                case 15:
+                    startActivity(new Intent(BusinessSettingActivity.this, MyProductsActivity.class));
+                    break;
             }
         }
     }
@@ -144,7 +148,7 @@ public class BusinessSettingActivity extends BaseActivity {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         // 点击“确认”后的操作
-                      startActivity(new Intent(BusinessSettingActivity.this,MainActivity.class));
+                         startActivity(new Intent(BusinessSettingActivity.this,MainActivity.class));
 
                     }
                 })
