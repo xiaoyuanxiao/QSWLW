@@ -1,7 +1,15 @@
 package com.qs.qswlw.activity.PersonalCenter;
 
+import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.BitmapDrawable;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.WindowManager;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.PopupWindow;
 
 import com.qs.qswlw.R;
 
@@ -9,11 +17,15 @@ import com.qs.qswlw.R;
  * Created by xiaoyu on 2017/4/3.
  */
 
-public class RecommendActivity extends BaseInfoActivity {
+public class RecommendActivity extends BaseInfoActivity implements View.OnLongClickListener {
+
+    private ImageView iv_qrCode;
+    private PopupWindow popupWindow;
 
     @Override
     public View setConetnView() {
         View inflate = View.inflate(this, R.layout.recommend_activity, null);
+        iv_qrCode = (ImageView) inflate.findViewById(R.id.iv_QRCode);
         return inflate;
     }
 
@@ -28,6 +40,7 @@ public class RecommendActivity extends BaseInfoActivity {
     public void setOnclick() {
         super.setOnclick();
         tv_titlebar_right.setOnClickListener(this);
+        iv_qrCode.setOnLongClickListener(this);
     }
 
     @Override
@@ -39,5 +52,26 @@ public class RecommendActivity extends BaseInfoActivity {
 
                 break;
         }
+    }
+
+    @Override
+    public boolean onLongClick(View view) {
+        showpw(iv_qrCode);
+        return false;
+    }
+    private void showpw(ImageView v) {
+        //加载布局
+        LinearLayout layout = (LinearLayout) LayoutInflater.from(this).inflate(
+                R.layout.pw_recommend, null);
+        // 实例化popupWindow
+        popupWindow = new PopupWindow(layout, LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+        //控制键盘是否可以获得焦点
+        popupWindow.setFocusable(true);
+        //设置popupWindow弹出窗体的背景
+        popupWindow.setBackgroundDrawable(new BitmapDrawable(null, ""));
+        WindowManager manager = (WindowManager) getSystemService(Context.WINDOW_SERVICE);
+        //xoff,yoff基于anchor的左下角进行偏移。
+        popupWindow.showAtLocation(v, Gravity.BOTTOM,0,0);
+
     }
 }

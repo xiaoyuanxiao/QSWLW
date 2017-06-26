@@ -75,6 +75,7 @@ public class RankingActivity extends BaseInfoActivity {
             tv_ranking_right.setVisibility(View.GONE);
             tv_ranking_left.setText("创业天使创业排名榜");
         }
+        //adapter布局 item_ranking
     }
 
 

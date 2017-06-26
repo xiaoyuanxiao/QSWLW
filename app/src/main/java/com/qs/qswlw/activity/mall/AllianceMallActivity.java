@@ -3,7 +3,9 @@ package com.qs.qswlw.activity.mall;
 import android.content.Intent;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.EditText;
 import android.widget.GridView;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RadioButton;
 
@@ -12,8 +14,9 @@ import com.qs.qswlw.activity.BaseActivity;
 import com.qs.qswlw.activity.MainActivity;
 import com.qs.qswlw.adapter.AllianceMallGVAdapter;
 import com.qs.qswlw.adapter.AllianceMallLVAdapter;
+import com.qs.qswlw.utils.ToastUtils;
 
-/**
+                                                           /**
  * Created by xiaoyu on 2017/4/24.
  */
 
@@ -24,6 +27,8 @@ public class AllianceMallActivity extends BaseActivity {
     private ListView lv_alliancemall;
     private AllianceMallLVAdapter allianceMallLVAdapter;
     private RadioButton rb_homepage,rb_qs,rb_mall,rb_shoppingCart,rb_mine;
+    private EditText edt_search;
+    private ImageView iv_search;
 
     @Override
     public Object initView() {
@@ -39,6 +44,8 @@ public class AllianceMallActivity extends BaseActivity {
         rb_mall = (RadioButton) findViewById(R.id.rb_mall);
         rb_shoppingCart = (RadioButton) findViewById(R.id.rb_shoppingCart);
         rb_mine = (RadioButton) findViewById(R.id.rb_mine);
+        edt_search = (EditText) findViewById(R.id.edt_search);
+        iv_search = (ImageView) findViewById(R.id.iv_search);
 
 
     }
@@ -59,6 +66,7 @@ public class AllianceMallActivity extends BaseActivity {
         rb_mall.setOnClickListener(this);
         rb_shoppingCart.setOnClickListener(this);
         rb_mine.setOnClickListener(this);
+        iv_search.setOnClickListener(this);
         lv_alliancemall.setOnItemClickListener(new LVItemClickListener());
         gv_alliancemall.setOnItemClickListener(new GVItemClickListener());
 
@@ -84,6 +92,14 @@ public class AllianceMallActivity extends BaseActivity {
                 finish();
                 break;
             case R.id.rb_mine:
+                break;
+            case R.id.iv_search:
+                String s = edt_search.getText().toString();
+                if(!"".equals(s)){
+                    //调取接口
+                }else                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              {
+                    ToastUtils.showToast(this,"搜索内容不能为空哦");
+                }
                 break;
         }
 

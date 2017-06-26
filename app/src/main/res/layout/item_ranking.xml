@@ -3,12 +3,12 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:padding="10dp">
-    <com.qs.qswlw.view.CircleImageView
+    <com.qs.qswlw.view.NoBorderCircleImageView
         android:id="@+id/iv_item_ranking"
         android:layout_width="35dp"
         android:layout_height="35dp"
         android:src="@mipmap/cj">
-    </com.qs.qswlw.view.CircleImageView>
+    </com.qs.qswlw.view.NoBorderCircleImageView>
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

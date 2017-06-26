@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Handler;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -11,6 +12,7 @@ import android.widget.TextView;
 import com.qs.qswlw.R;
 import com.qs.qswlw.activity.PersonalCenter.BaseInfoActivity;
 import com.qs.qswlw.adapter.InteractionAdapter;
+import com.qs.qswlw.utils.ToastUtils;
 
 /**
  * Created by xiaoyu on 2017/4/13.
@@ -31,12 +33,17 @@ public class InteractionActivity extends BaseInfoActivity implements AdapterView
     int i=0;
     private Handler handler;
     private boolean first = true;
+    private EditText edt_search;
+    private ImageView iv_search;
+
     @Override
     public View setConetnView() {
         View inflate = View.inflate(this, R.layout.activity_interaction, null);
         lv_interaction = (ListView) inflate.findViewById(R.id.lv_interaction);
         iv_interaction = (ImageView) inflate.findViewById(R.id.iv_interaction);
         tv_release = (TextView) inflate.findViewById(R.id.tv_release);
+        edt_search = (EditText) inflate.findViewById(R.id.edt_search);
+        iv_search = (ImageView) inflate.findViewById(R.id.iv_search);
         return inflate;
     }
 
@@ -94,6 +101,7 @@ public class InteractionActivity extends BaseInfoActivity implements AdapterView
         iv_interaction.setOnClickListener(this);
         lv_interaction.setOnItemClickListener(this);
         tv_release.setOnClickListener(this);
+        iv_search.setOnClickListener(this);
     }
 
     @Override
@@ -102,6 +110,15 @@ public class InteractionActivity extends BaseInfoActivity implements AdapterView
         switch (v.getId()) {
             case R.id.tv_release:
                 startActivity(new Intent(this,PublishInteractiveActivity.class));
+                break;
+            case R.id.iv_search:
+                String s = edt_search.getText().toString();
+                if(!"".equals(s)){
+                    //调取接口
+                }else{
+                    ToastUtils.showToast(this,"搜索内容不能为空哦");
+                }
+
                 break;
         }
     }
