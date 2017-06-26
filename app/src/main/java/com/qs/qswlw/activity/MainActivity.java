@@ -171,7 +171,7 @@ public class MainActivity extends BaseActivity implements IMainView {
         rb_main_Win = (RadioButton) findViewById(R.id.rb_main_Win);
         rb_main_luckgame = (RadioButton) findViewById(R.id.rb_main_luckgame);
         rb_main_funtime = (RadioButton) findViewById(R.id.rb_main_funtime);
-        imageSwitchView.setCurrentImage(0);
+        imageSwitchView.setCurrentImage(1);
         showDilog();
     }
 
