@@ -120,6 +120,34 @@
                         android:layout_marginLeft="2dp"
                         android:text="台山十字河" />
 
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:padding="6dp">
+
+                        <com.qs.qswlw.view.CircleImageView
+                            android:layout_width="35dp"
+                            android:layout_height="35dp"
+                            android:src="@mipmap/image1" />
+
+                        <TextView
+                            style="@style/tv_harvestaddress"
+                            android:layout_marginLeft="2dp"
+                            android:text="admin" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+                            android:background="@drawable/corner_red"
+                            android:paddingLeft="5dp"
+                            android:paddingRight="5dp"
+                            android:text="主办方"
+                            android:textColor="@color/white"
+                            android:textSize="10sp" />
+                    </LinearLayout>
+
                 </LinearLayout>
 
                 <View
@@ -175,33 +203,6 @@
                     android:layout_height="0.1dp"
                     android:background="@color/view" />
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center_vertical"
-                    android:padding="6dp">
-
-                    <com.qs.qswlw.view.CircleImageView
-                        android:layout_width="35dp"
-                        android:layout_height="35dp"
-                        android:src="@mipmap/image1" />
-
-                    <TextView
-                        style="@style/tv_harvestaddress"
-                        android:layout_marginLeft="2dp"
-                        android:text="admin" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="5dp"
-                        android:background="@drawable/corner_red"
-                        android:paddingLeft="5dp"
-                        android:paddingRight="5dp"
-                        android:text="主办方"
-                        android:textColor="@color/white"
-                        android:textSize="10sp" />
-                </LinearLayout>
             </LinearLayout>
 
             <LinearLayout
