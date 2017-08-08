@@ -10,7 +10,8 @@
             android:layout_height="wrap_content"
             android:text="创业基金"
             android:padding="15dp"
-            android:layout_marginLeft="15dp" />
+            android:layout_marginLeft="15dp"
+            android:checked="true"/>
         <View
             android:layout_width="match_parent"
             android:layout_height="0.1dp"
