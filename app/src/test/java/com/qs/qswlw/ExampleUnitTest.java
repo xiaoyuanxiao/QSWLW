@@ -34,7 +34,7 @@ public class ExampleUnitTest {
         FormBody.Builder build = new FormBody.Builder();
         build.add("index_data", "alert");
         Request request = new Request.Builder()
-                .url("http://www.qiansheng.com/api/index/index")
+                .url("http://www.qiansheng.com/index.php?m=Mobile&c=AppIndex&a=index")
                 .post(build.build())
                 .build();
         Response execute = client.newCall(request).execute();

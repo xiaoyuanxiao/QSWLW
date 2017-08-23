@@ -1,9 +1,12 @@
 package com.qs.qswlw.okhttp.Moudle;
 
 import com.google.gson.reflect.TypeToken;
+import com.qs.qswlw.bean.MainBean;
+import com.qs.qswlw.bean.Maindatabean;
 import com.qs.qswlw.okhttp.DataCallBack;
 import com.qs.qswlw.okhttp.NetUrl;
 import com.qs.qswlw.okhttp.OKhttptUtils;
+import com.qs.qswlw.okhttp.oncallback.BaseOnlistener;
 import com.qs.qswlw.okhttp.oncallback.MainAlertLisenter;
 import com.qs.qswlw.okhttp.oncallback.MainAngelLisenter;
 import com.qs.qswlw.okhttp.oncallback.MainBenefitLisenter;
@@ -42,11 +45,44 @@ public class BizMain implements IMainBiz {
     private final String china = "china";
     private final String luck = "luck";
     private final String benefit = "benefit";
+    private Maindatabean result;
 
+    private void getALLdata(final BaseOnlistener baseOnlistener) {
+        Type type = new TypeToken<MainBean<Maindatabean>>() {
+        }.getType();
+        OKhttptUtils.httpPost(NetUrl.MAINURL, "",
+                new DataCallBack<MainBean<Maindatabean>>(type) {
+                    @Override
+                    public void onSuccess(MainBean<Maindatabean> data) {
+                        result = data.getResult();
+                        if(baseOnlistener instanceof MainUnionLisenter) {
+                            //联盟商家
+                           // baseOnlistener.onSuccess(result.getShop_ranking());
+                        }else if(baseOnlistener instanceof MainAngelLisenter){
+                            //创业天使
+                        //    baseOnlistener.onSuccess(result.getSalema_ranking());
+                        }else if(baseOnlistener instanceof MainChinaLisenter){
+                            //中国好产品
+                         //   baseOnlistener.onSuccess(result.getGoods_sale_ranking());
+                        }else if(baseOnlistener instanceof MainBenefitLisenter){
+                            //全联盟让利金额
+                           // baseOnlistener.onSuccess(result.getArea_ranking());
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(int code) {
+
+                        /*mainAlertLisenter.onFailure("错误信息" + code);*/
+                    }
+                });
+    }
+
+    //这是弹框
     @Override
     public void getAlert(final MainAlertLisenter mainAlertLisenter) {
         HashMap<String, String> stringStringHashMap = new HashMap<>();
-        stringStringHashMap.put(index_data, alert);
+        stringStringHashMap.put(index_data, alert);//
         Type type = new TypeToken<BaseBean<ResultAlertBean<AlertBean>>>() {
         }.getType();
         OKhttptUtils.httpPost(NetUrl.baseurl, stringStringHashMap,
@@ -73,7 +109,6 @@ public class BizMain implements IMainBiz {
                 });
 
     }
-
     @Override
     public void getunion(final MainUnionLisenter mainUnionLisenter) {
         HashMap<String, String> stringStringHashMap = new HashMap<>();
@@ -87,7 +122,7 @@ public class BizMain implements IMainBiz {
                     public void onSuccess(BaseBean<ResultUnionBean<ArrayList<UnionBean>>> data) {
                         List<UnionBean> result = null;
                         try {
-                            result =  data.getResult().getUnion();
+                            result = data.getResult().getUnion();
                         } catch (Exception e) {
                         }
                         if (result == null)
