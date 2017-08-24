@@ -7,15 +7,8 @@ import com.qs.qswlw.okhttp.Iview.IMainView;
 import com.qs.qswlw.okhttp.Moudle.AlertBean;
 import com.qs.qswlw.okhttp.Moudle.EntrepBean;
 import com.qs.qswlw.okhttp.Moudle.IMainBiz;
-import com.qs.qswlw.okhttp.Moudle.LuckBean;
 import com.qs.qswlw.okhttp.oncallback.MainAlertLisenter;
-import com.qs.qswlw.okhttp.oncallback.MainAngelLisenter;
 import com.qs.qswlw.okhttp.oncallback.MainBaseListener;
-import com.qs.qswlw.okhttp.oncallback.MainBenefitLisenter;
-import com.qs.qswlw.okhttp.oncallback.MainChinaLisenter;
-import com.qs.qswlw.okhttp.oncallback.MainEntrepLisenter;
-import com.qs.qswlw.okhttp.oncallback.MainLuckLisenter;
-import com.qs.qswlw.okhttp.oncallback.MainUnionLisenter;
 
 import java.util.List;
 

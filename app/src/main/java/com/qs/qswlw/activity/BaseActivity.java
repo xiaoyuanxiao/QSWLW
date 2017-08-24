@@ -2,6 +2,7 @@ package com.qs.qswlw.activity;
 
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
+import android.util.Log;
 import android.view.View;
 
 /**
@@ -12,6 +13,7 @@ public abstract class BaseActivity extends FragmentActivity implements View.OnCl
 
     protected void onCreate(Bundle arg0) {
         super.onCreate(arg0);
+        Log.d("Activity", getClass().getName());
         Object initView = initView();
         if (initView instanceof View) {
             setContentView((View) initView);

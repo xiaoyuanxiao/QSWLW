@@ -6,23 +6,15 @@ import com.qs.qswlw.bean.Maindatabean;
 import com.qs.qswlw.mynet.HttpSubCribe;
 import com.qs.qswlw.mynet.MyRetroService;
 import com.qs.qswlw.mynet.ReHttpUtils;
-import com.qs.qswlw.mynet.TestBean;
 import com.qs.qswlw.okhttp.DataCallBack;
 import com.qs.qswlw.okhttp.NetUrl;
 import com.qs.qswlw.okhttp.OKhttptUtils;
 import com.qs.qswlw.okhttp.oncallback.MainAlertLisenter;
-import com.qs.qswlw.okhttp.oncallback.MainAngelLisenter;
 import com.qs.qswlw.okhttp.oncallback.MainBaseListener;
-import com.qs.qswlw.okhttp.oncallback.MainBenefitLisenter;
-import com.qs.qswlw.okhttp.oncallback.MainChinaLisenter;
-import com.qs.qswlw.okhttp.oncallback.MainEntrepLisenter;
-import com.qs.qswlw.okhttp.oncallback.MainLuckLisenter;
-import com.qs.qswlw.okhttp.oncallback.MainUnionLisenter;
+
 
 import java.lang.reflect.Type;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 
 import rx.Observable;
 
