@@ -11,7 +11,7 @@ import com.qs.qswlw.adapter.VentureGoldBeansAdapter;
  * Created by xiaoyu on 2017/4/18.
  */
 
-public class VentureGoldBeansActivity extends BaseInfoActivity {
+public class VenturegoldBeansActivity extends BaseInfoActivity {
 
     private ListView lv_venturegoldbeans;
 

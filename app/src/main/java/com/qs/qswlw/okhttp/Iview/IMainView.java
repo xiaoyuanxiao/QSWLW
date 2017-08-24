@@ -14,7 +14,7 @@ public interface IMainView {
 
     void setAlertList(AlertBean title);
 
-    void setUnionList(List<Maindatabean.Shop>  list);
+    void setUnionList(List<Maindatabean.Shop> list);
 
     void setEntrepList(Maindatabean.Current_sales list);
 

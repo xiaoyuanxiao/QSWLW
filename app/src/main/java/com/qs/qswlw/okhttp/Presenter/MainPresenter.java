@@ -1,5 +1,6 @@
 package com.qs.qswlw.okhttp.Presenter;
 
+import com.qs.qswlw.bean.MainBean;
 import com.qs.qswlw.bean.Maindatabean;
 import com.qs.qswlw.okhttp.Factory.IBizFactory;
 import com.qs.qswlw.okhttp.Iview.IMainView;
@@ -9,6 +10,7 @@ import com.qs.qswlw.okhttp.Moudle.IMainBiz;
 import com.qs.qswlw.okhttp.Moudle.LuckBean;
 import com.qs.qswlw.okhttp.oncallback.MainAlertLisenter;
 import com.qs.qswlw.okhttp.oncallback.MainAngelLisenter;
+import com.qs.qswlw.okhttp.oncallback.MainBaseListener;
 import com.qs.qswlw.okhttp.oncallback.MainBenefitLisenter;
 import com.qs.qswlw.okhttp.oncallback.MainChinaLisenter;
 import com.qs.qswlw.okhttp.oncallback.MainEntrepLisenter;
@@ -33,132 +35,35 @@ public class MainPresenter {
     }
 
     public void getdata() {
-      //  getAlert();
-        getUnion();
-        getEntrep();
-        getChina();
-        getAngel();
-        getLuck();
-        getBenefit();
-    }
+        iMainBiz.getALLdata(new MainBaseListener() {
+            @Override
+            public void onSuccess(MainBean<Maindatabean> list) {
+                Maindatabean result = list.getResult();
+                List<Maindatabean.Area> area_ranking = result.getArea_ranking();
+                Maindatabean.Current_sales current_sales = result.getCurrent_sales();
+                List<Maindatabean.Goods> goods_sale_ranking = result.getGoods_sale_ranking();
+                List<Maindatabean.Salema> salema_ranking = result.getSalema_ranking();
+                List<Maindatabean.Shop> shop_ranking = result.getShop_ranking();
+                iMainView.setBenefitList(area_ranking);
+                iMainView.setAngelList(salema_ranking);
+                iMainView.setChinaList(goods_sale_ranking);
+                iMainView.setEntrepList(current_sales);
+                iMainView.setUnionList(shop_ranking);
+                //iMainView.setLuckList(shop_ranking);
+            }
 
-    public void getAlert() {
+            @Override
+            public void onFailure(String code) {
+            }
+        });
         iMainBiz.getAlert(new MainAlertLisenter() {
             @Override
-            public void onSuccess(final AlertBean e) {
-                iMainView.runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        iMainView.setAlertList(e);
-                    }
-                });
+            public void onSuccess(AlertBean e) {
+                iMainView.setAlertList(e);
             }
 
             @Override
             public void onFailure(String code) {
-
-            }
-        });
-    }
-//联盟商家排行榜
-    public void getUnion() {
-        iMainBiz.getunion(new MainUnionLisenter() {
-            @Override
-            public void onSuccess(final List<Maindatabean.Shop> list) {
-                iMainView.runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        iMainView.setUnionList(list);
-                    }
-                });
-
-            }
-        });
-    }
-    //全联盟创业日值
-    public void getEntrep() {
-        iMainBiz.getentrep(new MainEntrepLisenter() {
-
-
-            @Override
-            public void onSuccess(final Maindatabean.Current_sales list) {
-
-                iMainView.runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        iMainView.setEntrepList(list);
-                    }
-                });
-            }
-        });
-    }
-    //中国好产品排行榜
-    public void getChina() {
-        iMainBiz.getchina(new MainChinaLisenter() {
-
-            @Override
-            public void onSuccess(final List<Maindatabean.Goods> list) {
-                iMainView.runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        iMainView.setChinaList(list);
-                    }
-                });
-            }
-        });
-
-    }
-
-    //创业天使创业排名榜
-    public void getAngel() {
-        iMainBiz.getangel(new MainAngelLisenter() {
-
-
-            @Override
-            public void onSuccess(final List<Maindatabean.Salema> list) {
-                iMainView.runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        iMainView.setAngelList(list);
-                    }
-                });
-            }
-        });
-    }
-
-    public void getLuck() {
-        iMainBiz.getluck(new MainLuckLisenter() {
-            @Override
-            public void onSuccess(final List<LuckBean> e) {
-
-                iMainView.runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        iMainView.setLuckList(e);
-                    }
-                });
-            }
-
-            @Override
-            public void onFailure(String code) {
-
-            }
-        });
-    }
-
-    //全联盟让利金额排名榜
-    public void getBenefit() {
-        iMainBiz.getbenefit(new MainBenefitLisenter() {
-
-
-            @Override
-            public void onSuccess(final List<Maindatabean.Area> list) {
-                iMainView.runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        iMainView.setBenefitList(list);
-                    }
-                });
             }
         });
     }

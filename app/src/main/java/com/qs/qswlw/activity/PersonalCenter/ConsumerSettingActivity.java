@@ -13,6 +13,7 @@ import com.qs.qswlw.R;
 import com.qs.qswlw.activity.BaseActivity;
 import com.qs.qswlw.activity.MainActivity;
 import com.qs.qswlw.adapter.ConsumerSettingAdapter;
+import com.qs.qswlw.adapter.VentureGoldBeansAdapter;
 
 
 /**
@@ -23,7 +24,7 @@ public class ConsumerSettingActivity extends BaseActivity implements AdapterView
     private GridView gv_setting;
     private TextView tv_setting_set;
     private ConsumerSettingAdapter consumerSettingAdapter;
-    private RadioButton rb_setting_exit,rb_setting_partner,rb_setting_beans,rb_setting_mall;
+    private RadioButton rb_setting_exit, rb_setting_partner, rb_setting_beans, rb_setting_mall;
 
     @Override
     public Object initView() {
@@ -38,7 +39,6 @@ public class ConsumerSettingActivity extends BaseActivity implements AdapterView
         rb_setting_partner = (RadioButton) findViewById(R.id.rb_main_funtime);
         rb_setting_beans = (RadioButton) findViewById(R.id.rb_main_beans);
         rb_setting_mall = (RadioButton) findViewById(R.id.rb_main_mall);
-
 
 
     }
@@ -63,24 +63,25 @@ public class ConsumerSettingActivity extends BaseActivity implements AdapterView
     @Override
     public void onClick(View view) {
 
-        switch (view.getId()){
+        switch (view.getId()) {
             case R.id.tv_setting_set:
-                startActivity(new Intent(this,SetModifyActivity.class));
+                startActivity(new Intent(this, SetModifyActivity.class));
                 break;
             case R.id.rb_main_exit:
                 showDialog();
                 break;
             case R.id.rb_main_beans:
-                startActivity(new Intent(this,VentureGoldBeansActivity.class));
+                startActivity(new Intent(this, VenturegoldBeansActivity.class));
                 break;
             case R.id.rb_main_funtime:
-                startActivity(new Intent(this,MyPartnerActivity.class));
+                startActivity(new Intent(this, MyPartnerActivity.class));
                 break;
             case R.id.rb_main_mall:
-                startActivity(new Intent(this,MainActivity.class));
+                startActivity(new Intent(this, MainActivity.class));
                 break;
         }
     }
+
     /**
      * 退出登录
      */
@@ -92,7 +93,7 @@ public class ConsumerSettingActivity extends BaseActivity implements AdapterView
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         // 点击“确认”后的操作
-                        startActivity(new Intent(ConsumerSettingActivity.this,MainActivity.class));
+                        startActivity(new Intent(ConsumerSettingActivity.this, MainActivity.class));
 
                     }
                 })
@@ -106,47 +107,48 @@ public class ConsumerSettingActivity extends BaseActivity implements AdapterView
                 }).show();
 // super.onBackPressed();
     }
+
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-        switch (i){
+        switch (i) {
             case 0:
-                startActivity(new Intent(this,VentureGoldBeansActivity.class));
+                startActivity(new Intent(this, VenturegoldBeansActivity.class));
                 break;
             case 1:
-                startActivity(new Intent(this,VentureGoldBeansActivity.class));
+                startActivity(new Intent(this, VenturegoldBeansActivity.class));
                 break;
             case 2:
-                startActivity(new Intent(this,ConsumerSilverBeanActivity.class));
+                startActivity(new Intent(this, ConsumerSilverBeanActivity.class));
                 break;
             case 3:
-                startActivity(new Intent(this,MyGoldActivity.class));
+                startActivity(new Intent(this, MyGoldActivity.class));
                 break;
             case 4:
-                startActivity(new Intent(this,MyInvestActivity.class));
+                startActivity(new Intent(this, MyInvestActivity.class));
                 break;
             case 5:
-                startActivity(new Intent(this,ConsumerEntrepreneurialSeedActivity.class));
+                startActivity(new Intent(this, ConsumerEntrepreneurialSeedActivity.class));
                 break;
             case 6:
-                startActivity(new Intent(this,RecommendActivity.class));
+                startActivity(new Intent(this, RecommendActivity.class));
                 break;
             case 7:
-                startActivity(new Intent(this,ConsumeWithdrawalsActivity.class));
+                startActivity(new Intent(this, ConsumeWithdrawalsActivity.class));
                 break;
             case 8:
-                startActivity(new Intent(this,MallOrdersActivity.class));
+                startActivity(new Intent(this, MallOrdersActivity.class));
                 break;
             case 9:
-                startActivity(new Intent(this,EntrepreneurialDonationActivity.class));
+                startActivity(new Intent(this, EntrepreneurialDonationActivity.class));
                 break;
             case 10:
-                startActivity(new Intent(this,DonationActivity.class));
+                startActivity(new Intent(this, DonationActivity.class));
                 break;
             case 11:
-                startActivity(new Intent(this,PromotionalLotteryActivity.class));
+                startActivity(new Intent(this, PromotionalLotteryActivity.class));
                 break;
             case 12:
-                startActivity(new Intent(this,ReceivingAddressActivity.class));
+                startActivity(new Intent(this, ReceivingAddressActivity.class));
                 break;
         }
     }

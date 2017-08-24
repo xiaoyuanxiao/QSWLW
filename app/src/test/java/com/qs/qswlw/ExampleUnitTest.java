@@ -2,8 +2,13 @@ package com.qs.qswlw;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import com.qs.qswlw.mynet.HttpSubCribe;
+import com.qs.qswlw.mynet.MyRetroService;
+import com.qs.qswlw.mynet.ReHttpUtils;
+import com.qs.qswlw.mynet.TestBean;
 import com.qs.qswlw.okhttp.Moudle.BaseBean;
 import com.qs.qswlw.okhttp.OKhttptUtils;
+import com.qs.qswlw.utils.StringUtils;
 
 import org.junit.Test;
 
@@ -16,6 +21,7 @@ import okhttp3.FormBody;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
+import rx.Observable;
 
 import static junit.framework.Assert.assertEquals;
 
@@ -26,21 +32,32 @@ public class ExampleUnitTest {
     @Test
     public void addition_isCorrect() throws Exception {
         assertEquals(4, 2 + 2);
-        addtest(new HashMap<Key, BaseBean>());
+        ReHttpUtils.initRetro("http://www.qiansheng.com/");
+        ReHttpUtils.instans().httpRequestMain(new HttpSubCribe<TestBean>() {
+
+            @Override
+            public void onCompleted() {
+                System.out.println("onCompleted============");
+            }
+
+            @Override
+            public void onError(Throwable e) {
+                System.out.println("onError============" + e);
+            }
+
+            @Override
+            public void onNext(TestBean s) {
+                System.out.println("onNext============" + s);
+            }
+
+            @Override
+            public Observable<TestBean> getObservable(MyRetroService retrofit) {
+                return retrofit.getCommissionSummaryDaily("http://www.qiansheng.com/index.php?m=Appapi&c=Index&a=index");
+            }
+        });
+
+
     }
 
-    public <T> void addtest(HashMap<Key, T> a) throws IOException {
-        OkHttpClient client = OKhttptUtils.getClient();
-        FormBody.Builder build = new FormBody.Builder();
-        build.add("index_data", "alert");
-        Request request = new Request.Builder()
-                .url("http://www.qiansheng.com/index.php?m=Mobile&c=AppIndex&a=index")
-                .post(build.build())
-                .build();
-        Response execute = client.newCall(request).execute();
-        String string = execute.body().string();
-        Type type = new TypeToken<T>() {
-        }.getType();
-        T test = new Gson().fromJson(string, type);
-    }
+
 }
