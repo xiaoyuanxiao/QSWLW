@@ -45,6 +45,21 @@ public class Maindatabean {
         this.shop_ranking = shop_ranking;
     }
 
+    public class current_sales{
+        int count;
+        String createtime;
+        String loveval_model1_shop;
+        String loveval_model1_xfz;
+        String loveval_model2_shop;
+        String loveval_model2_xfz;
+        String model1;
+        String model2;
+        int money;
+        double sales_amount;
+        int shop;
+
+    }
+
     //全联盟让利金额排行榜
    public class area{
         String province;
