@@ -58,7 +58,7 @@ public class ChinaGoodProductActivity extends BaseInfoActivity implements IProdu
          */
         ranklist = new ArrayList<>();
         chinaPraiseRateAdapter = new ChinaPraiseRateAdapter(this, ranklist);
-        gv_chinagoodproduct.setAdapter(chinaPraiseRateAdapter);//我用的同一个gridview
+        // gv_chinagoodproduct.setAdapter(chinaPraiseRateAdapter);//我用的同一个gridview
 //        /**
 //         * 中国好产品订单数量
 //         */

@@ -24,7 +24,7 @@ public class ChinaOrderAmountAdapter extends BaseListAdapter<GoodProductBean.Goo
 
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
-        view = View.inflate(context, R.layout.item_chinagoodproduct,null);
+        view = View.inflate(context, R.layout.item_chinagoodproduct, null);
         ImageView iv_goodsRank = (ImageView) view.findViewById(R.id.iv_goodsRank);
         TextView tv_rankStar = (TextView) view.findViewById(R.id.tv_rankStar);
         TextView tv_rankContent = (TextView) view.findViewById(R.id.tv_rankContent);
@@ -32,6 +32,6 @@ public class ChinaOrderAmountAdapter extends BaseListAdapter<GoodProductBean.Goo
         GoodProductBean.GoodsAmonut goodsRank = data.get(i);
         tv_rankStar.setText(goodsRank.getSum_goods_price());
         tv_rankMoney.setText(goodsRank.getShop_price());
-        return null;
+        return view;
     }
 }

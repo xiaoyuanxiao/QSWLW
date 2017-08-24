@@ -1,14 +1,13 @@
 package com.qs.qswlw.okhttp.Moudle;
 
-import com.google.gson.reflect.TypeToken;
 import com.qs.qswlw.bean.GoodProductBean;
 import com.qs.qswlw.bean.MainBean;
-import com.qs.qswlw.okhttp.DataCallBack;
-import com.qs.qswlw.okhttp.NetUrl;
-import com.qs.qswlw.okhttp.OKhttptUtils;
+import com.qs.qswlw.mynet.HttpSubCribe;
+import com.qs.qswlw.mynet.MyRetroService;
+import com.qs.qswlw.mynet.ReHttpUtils;
 import com.qs.qswlw.okhttp.oncallback.ProductBaseListener;
 
-import java.lang.reflect.Type;
+import rx.Observable;
 
 /**
  * Created by xiaoyu on 2017/8/24.
@@ -27,22 +26,22 @@ public class BizGoodProduct implements IProductBiz {
     }
 
     public void getdata(final ProductBaseListener baseOnlistener) {
-        Type type = new TypeToken<MainBean<GoodProductBean>>() {
-        }.getType();
-        OKhttptUtils.httpget(NetUrl.GOODPRODUCT,
-                new DataCallBack<MainBean<GoodProductBean>>(type) {
-                    @Override
-                    public void onSuccess(MainBean<GoodProductBean> data) {
-                        GoodProductBean result = data.getResult();
-                        baseOnlistener.onSuccess(result);
-                    }
+        ReHttpUtils.instans().httpRequest(new HttpSubCribe<MainBean<GoodProductBean>>() {
+            @Override
+            public Observable<MainBean<GoodProductBean>> getObservable(MyRetroService retrofit) {
+                return retrofit.getGoodproductdata();
+            }
 
-                    @Override
-                    public void onFailure(int code) {
-                        baseOnlistener.onFailure(code + "");
-                    }
-                });
+            @Override
+            public void onError(Throwable e) {
+            }
+
+            @Override
+            public void onNext(MainBean<GoodProductBean> data) {
+                GoodProductBean result = data.getResult();
+                baseOnlistener.onSuccess(result);
+            }
+        });
     }
-
 
 }

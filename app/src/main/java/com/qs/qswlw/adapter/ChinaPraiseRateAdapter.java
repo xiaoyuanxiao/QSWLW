@@ -34,6 +34,6 @@ public class ChinaPraiseRateAdapter extends BaseListAdapter<GoodProductBean.Good
         tv_rankStar.setText(goodsRank.getGoods_rank());
         tv_rankMoney.setText(goodsRank.getShop_price());
         Glide.with(context).load(goodsRank.getOriginal_img()).into(iv_goodsRank);
-        return null;
+        return view;
     }
 }

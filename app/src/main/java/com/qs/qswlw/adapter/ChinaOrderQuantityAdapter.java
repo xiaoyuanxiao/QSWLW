@@ -32,6 +32,6 @@ public class ChinaOrderQuantityAdapter  extends BaseListAdapter<GoodProductBean.
         GoodProductBean.GoodsNum goodsRank = data.get(i);
         tv_rankStar.setText(goodsRank.getGoods_num());
         tv_rankMoney.setText(goodsRank.getShop_price());
-        return null;
+        return view;
     }
 }
