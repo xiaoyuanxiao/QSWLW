@@ -1,12 +1,8 @@
 package com.qs.qswlw.okhttp.Iview;
 
+import com.qs.qswlw.bean.Maindatabean;
 import com.qs.qswlw.okhttp.Moudle.AlertBean;
-import com.qs.qswlw.okhttp.Moudle.AngelBean;
-import com.qs.qswlw.okhttp.Moudle.BenefitBean;
-import com.qs.qswlw.okhttp.Moudle.ChinaBean;
-import com.qs.qswlw.okhttp.Moudle.EntrepBean;
 import com.qs.qswlw.okhttp.Moudle.LuckBean;
-import com.qs.qswlw.okhttp.Moudle.UnionBean;
 
 import java.util.List;
 
@@ -18,17 +14,17 @@ public interface IMainView {
 
     void setAlertList(AlertBean title);
 
-    void setUnionList(List<UnionBean> list);
+    void setUnionList(List<Maindatabean.Shop>  list);
 
-    void setEntrepList(EntrepBean list);
+    void setEntrepList(Maindatabean.Current_sales list);
 
-    void setAngelList(List<AngelBean> list);
+    void setAngelList(List<Maindatabean.Salema> list);
 
-    void setChinaList(List<ChinaBean> list);
+    void setChinaList(List<Maindatabean.Goods> list);
 
     void setLuckList(List<LuckBean> list);
 
-    void setBenefitList(List<BenefitBean> list);
+    void setBenefitList(List<Maindatabean.Area> list);
 
     void runOnUiThread(Runnable runnable);
 

@@ -7,7 +7,4 @@ package com.qs.qswlw.okhttp.oncallback;
 public interface
 BaseOnlistener {
     void onFailure(String code);
-
-    //void onSuccess(Objects code);
-
 }

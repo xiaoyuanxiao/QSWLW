@@ -31,12 +31,12 @@ public class EntrepAdapter extends BaseListAdapter<String> {
         TextView tv_llianceMerchant_gtv = (TextView) view.findViewById(R.id.tv_llianceMerchant_gtv);
         LinearLayout ll_entrep_width = (LinearLayout) view.findViewById(R.id.ll_entrep_width);
         ll_entrep_width.setLayoutParams(new LinearLayout.LayoutParams(MyApplication.WIDTH, MyApplication.Height-MyApplication.ENTREPHEIGHT));
-        tv_twentypercent_congtv.setText(data.get(0));
-        tv_twentypercent_busgtv.setText(data.get(1));
-        tv_yesterdayConsumption_gtv.setText(data.get(2));
-        tv_totalEntrepreneurship_gtv.setText(data.get(3));
-        tv_totalnumber_gtv.setText(data.get(4));
-        tv_llianceMerchant_gtv.setText(data.get(5));
+        tv_twentypercent_congtv.setText(data.get(0)+"元");
+        tv_twentypercent_busgtv.setText(data.get(1)+"元");
+        tv_yesterdayConsumption_gtv.setText(data.get(2)+"元");
+        tv_totalEntrepreneurship_gtv.setText(data.get(3)+"元");
+        tv_totalnumber_gtv.setText(data.get(4)+"人");
+        tv_llianceMerchant_gtv.setText(data.get(5)+"家");
         return view;
     }
 

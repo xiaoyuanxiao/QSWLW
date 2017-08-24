@@ -9,7 +9,7 @@ import android.widget.TextView;
 
 import com.qs.qswlw.MyApplication;
 import com.qs.qswlw.R;
-import com.qs.qswlw.okhttp.Moudle.AngelBean;
+import com.qs.qswlw.bean.Maindatabean;
 
 import java.util.List;
 
@@ -17,9 +17,9 @@ import java.util.List;
  * Created by 小猴子 on 2017/4/9.
  */
 
-public class AngelAdapter extends BaseListAdapter<AngelBean> {
+public class AngelAdapter extends BaseListAdapter<Maindatabean.Salema> {
 
-    public AngelAdapter(Context context, List<AngelBean> data) {
+    public AngelAdapter(Context context, List<Maindatabean.Salema> data) {
         super(context, data);
     }
 
@@ -30,9 +30,9 @@ public class AngelAdapter extends BaseListAdapter<AngelBean> {
         TextView value = (TextView) convertView.findViewById(R.id.tv_item_home_content_value);
         RelativeLayout rl_width = (RelativeLayout) convertView.findViewById(R.id.rl_width);
         rl_width.setLayoutParams(new LinearLayout.LayoutParams(MyApplication.WIDTH,(MyApplication.Height-108)/6));
-        AngelBean angelBean = data.get(position);
+        Maindatabean.Salema angelBean = data.get(position);
         key.setText(angelBean.getNickname());
-        value.setText(angelBean.getTotal());
+        value.setText(angelBean.getTotal()+"元");
         return convertView;
 
 

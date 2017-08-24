@@ -20,7 +20,7 @@
         <TextView
             style="@style/tv_entrep"
             android:drawableLeft="@mipmap/xinxin"
-            android:text="消费天使20%系列" />
+            android:text="消费创业值" />
 
         <TextView
             android:id="@+id/tv_twentypercent_congtv"
@@ -42,7 +42,7 @@
         <TextView
             style="@style/tv_entrep"
             android:drawableLeft="@mipmap/xinxin"
-            android:text="商家20%系列" />
+            android:text="商家创新值" />
 
         <TextView
             android:id="@+id/tv_twentypercent_busgtv"

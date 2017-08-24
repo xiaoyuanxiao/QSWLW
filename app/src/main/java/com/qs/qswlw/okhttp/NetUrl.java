@@ -7,5 +7,5 @@ package com.qs.qswlw.okhttp;
 public class NetUrl {
     public static final String baseurl = "http://www.qiansheng.com/api/index/index";
     public static final String LOGINURL = "http://www.qiansheng.com/api/user/login";
-    public static final String MAINURL = "http://www.qiansheng.com/index.php?m=Mobile&c=AppIndex&a=index";
+    public static final String MAINURL = "http://www.qiansheng.com/index.php?m=Appapi&c=Index&a=index";
 }

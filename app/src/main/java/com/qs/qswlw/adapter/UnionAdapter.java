@@ -9,7 +9,7 @@ import android.widget.TextView;
 
 import com.qs.qswlw.MyApplication;
 import com.qs.qswlw.R;
-import com.qs.qswlw.okhttp.Moudle.UnionBean;
+import com.qs.qswlw.bean.Maindatabean;
 
 import java.util.List;
 
@@ -17,10 +17,10 @@ import java.util.List;
  * Created by xiaoyu on 2017/4/11.
  */
 
-public class UnionAdapter extends BaseListAdapter<UnionBean> {
+public class UnionAdapter extends BaseListAdapter<Maindatabean.Shop> {
 
 
-    public UnionAdapter(Context context, List<UnionBean> data) {
+    public UnionAdapter(Context context, List<Maindatabean.Shop> data) {
         super(context, data);
     }
 
@@ -39,8 +39,14 @@ public class UnionAdapter extends BaseListAdapter<UnionBean> {
         tv_item_home_content_left.setTextColor(context.getResources().getColor(R.color.text_yellow));
         tv_item_home_content_value.setTextColor(context.getResources().getColor(R.color.text_yellow));
         try {
-            UnionBean unionBean = data.get(i);
-            tv_item_home_content_left.setText(unionBean.getStore_name());
+            Maindatabean.Shop unionBean = data.get(i);
+            String store_name = unionBean.getStore_name();
+            if (("").equals(store_name)) {
+                tv_item_home_content_left.setText("...");
+            }else{
+                tv_item_home_content_left.setText(store_name);
+            }
+
             tv_item_home_content_value.setText(unionBean.getSum_money() + "元");
         } catch (Exception e) {
 

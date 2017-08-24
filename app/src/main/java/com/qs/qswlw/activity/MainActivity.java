@@ -28,14 +28,11 @@ import com.qs.qswlw.adapter.EntrepAdapter;
 import com.qs.qswlw.adapter.LuckAdapter;
 import com.qs.qswlw.adapter.MytestAdapter;
 import com.qs.qswlw.adapter.UnionAdapter;
+import com.qs.qswlw.bean.Maindatabean;
 import com.qs.qswlw.okhttp.Iview.IMainView;
 import com.qs.qswlw.okhttp.Moudle.AlertBean;
-import com.qs.qswlw.okhttp.Moudle.AngelBean;
-import com.qs.qswlw.okhttp.Moudle.BenefitBean;
 import com.qs.qswlw.okhttp.Moudle.ChinaBean;
-import com.qs.qswlw.okhttp.Moudle.EntrepBean;
 import com.qs.qswlw.okhttp.Moudle.LuckBean;
-import com.qs.qswlw.okhttp.Moudle.UnionBean;
 import com.qs.qswlw.okhttp.Presenter.MainPresenter;
 import com.qs.qswlw.view.imageswitchview.Image3DSwitchView;
 import com.qs.qswlw.view.imageswitchview.Image3DView;
@@ -49,10 +46,10 @@ import java.util.List;
 public class MainActivity extends BaseActivity implements IMainView {
     private Image3DSwitchView imageSwitchView;
 
-    List<ChinaBean> chlist;
-    List<UnionBean> unlist;
-    List<BenefitBean> belist;
-    List<AngelBean> anlist;
+    List<Maindatabean.Goods> chlist;
+    List<Maindatabean.Shop> unlist;
+    List<Maindatabean.Area> belist;
+    List<Maindatabean.Salema> anlist;
     List<LuckBean> lulist;
     AlertBean allist;
     private Image3DView benefitList, unionList, entrepList, angelList, chinaList, luckList;
@@ -62,8 +59,7 @@ public class MainActivity extends BaseActivity implements IMainView {
     private ImageView iv_setting_main;
     private TextView tv_ranking_main;
     private LinearLayout ll_footview_union;
-    private RadioButton rb_main_goodprojects, rb_main_media, rb_main_mall, rb_main_union
-            ,rb_main_WitnessChinaBusiness,rb_main_Win,rb_main_luckgame,rb_main_funtime;
+    private RadioButton rb_main_goodprojects, rb_main_media, rb_main_mall, rb_main_union, rb_main_WitnessChinaBusiness, rb_main_Win, rb_main_luckgame, rb_main_funtime;
     private WebView webview;
     private Intent intent;
 
@@ -78,7 +74,7 @@ public class MainActivity extends BaseActivity implements IMainView {
     }
 
     @Override
-    public void setUnionList(List<UnionBean> list) {
+    public void setUnionList(List<Maindatabean.Shop> list) {
         unlist.clear();
         unlist.addAll(list);
         unionAdapter.notifyDataSetChanged();
@@ -89,20 +85,20 @@ public class MainActivity extends BaseActivity implements IMainView {
     }
 
     @Override
-    public void setEntrepList(EntrepBean entrepBaen) {
+    public void setEntrepList(Maindatabean.Current_sales entrepBaen) {
         enlist.clear();
-        enlist.add(entrepBaen.getModel1() + "");
-        enlist.add(entrepBaen.getModel2() + "");
+        enlist.add(entrepBaen.getLoveval_model2_xfz() + "");
+        enlist.add(entrepBaen.getLoveval_model2_shop());
+        enlist.add(entrepBaen.getSales_amount() + "");
+        enlist.add(entrepBaen.getMoney() + "");
         enlist.add(entrepBaen.getCount() + "");
         enlist.add(entrepBaen.getShop() + "");
-        enlist.add(entrepBaen.getMoney() + "");
-        enlist.add(entrepBaen.getModel1() + "");
         entrepAdapter.notifyDataSetChanged();
         Log.d("TAG", "-------setEntrepList---");
     }
 
     @Override
-    public void setAngelList(List list) {
+    public void setAngelList(List<Maindatabean.Salema> list) {
         anlist.clear();
         anlist.addAll(list);
         Log.d("TAG", "-------setAngelList---");
@@ -110,7 +106,7 @@ public class MainActivity extends BaseActivity implements IMainView {
     }
 
     @Override
-    public void setChinaList(List<ChinaBean> list) {
+    public void setChinaList(List<Maindatabean.Goods> list) {
         chlist.clear();
         chlist.addAll(list);
         Log.d("TAG", "-------setChinaList---");
@@ -127,7 +123,7 @@ public class MainActivity extends BaseActivity implements IMainView {
     }
 
     @Override
-    public void setBenefitList(List list) {
+    public void setBenefitList(List<Maindatabean.Area> list) {
         belist.clear();
         belist.addAll(list);
         benefitAdapter.notifyDataSetChanged();
@@ -211,14 +207,15 @@ public class MainActivity extends BaseActivity implements IMainView {
         angelList.setBColor(Color.parseColor("#b92340"));
         chinaList.setBColor(Color.parseColor("#f2989a"));
         luckList.setBColor(Color.parseColor("#cd2244"));
-        WindowManager wm =  this.getWindowManager();
-        MyApplication.WIDTH = (int) (wm.getDefaultDisplay().getWidth()*0.7);
+        WindowManager wm = this.getWindowManager();
+        MyApplication.WIDTH = (int) (wm.getDefaultDisplay().getWidth() * 0.7);
         /**
          * 全联盟让利金额排行榜内容填充、头部、尾部
          */
         View benefitHeadview = LayoutInflater.from(this).inflate(R.layout.benefit_homepage_head, null);
         TextView tv_benefit_head = (TextView) benefitHeadview.findViewById(R.id.tv_benefit_head);
         tv_benefit_head.setLayoutParams(new LinearLayout.LayoutParams(MyApplication.WIDTH, 60));
+
         belist = new ArrayList<>();
         benefitAdapter = new BenefitAdapter(this, belist);
         benefitList.setAdapter(benefitAdapter);
@@ -359,20 +356,20 @@ public class MainActivity extends BaseActivity implements IMainView {
                 break;
             case R.id.rb_main_WitnessChinaBusiness:
                 this.intent = new Intent(this, WebviewActivity.class);
-                this.intent.putExtra("WitnessChinaBusiness","http://case.dian7dian.com/qiansheng/jzhs.html");
+                this.intent.putExtra("WitnessChinaBusiness", "http://case.dian7dian.com/qiansheng/jzhs.html");
                 startActivity(this.intent);
                 break;
             case R.id.rb_main_Win:
                 this.intent = new Intent(this, WebviewActivity.class);
-                this.intent.putExtra("Win","http://case.dian7dian.com/qiansheng/yzqs.html");
+                this.intent.putExtra("Win", "http://case.dian7dian.com/qiansheng/yzqs.html");
                 startActivity(this.intent);
                 break;
             case R.id.rb_main_luckgame:
-                startActivity(new Intent(this,LuckGameActivity.class));
+                startActivity(new Intent(this, LuckGameActivity.class));
                 break;
             case R.id.rb_main_funtime:
                 this.intent = new Intent(this, WebviewActivity.class);
-                this.intent.putExtra("Win","http://case.dian7dian.com/qiansheng/kxyk.html");
+                this.intent.putExtra("Win", "http://case.dian7dian.com/qiansheng/kxyk.html");
                 startActivity(this.intent);
                 break;
         }

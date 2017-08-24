@@ -6,9 +6,9 @@ import com.qs.qswlw.bean.Maindatabean;
 import com.qs.qswlw.okhttp.DataCallBack;
 import com.qs.qswlw.okhttp.NetUrl;
 import com.qs.qswlw.okhttp.OKhttptUtils;
-import com.qs.qswlw.okhttp.oncallback.BaseOnlistener;
 import com.qs.qswlw.okhttp.oncallback.MainAlertLisenter;
 import com.qs.qswlw.okhttp.oncallback.MainAngelLisenter;
+import com.qs.qswlw.okhttp.oncallback.MainBaseListener;
 import com.qs.qswlw.okhttp.oncallback.MainBenefitLisenter;
 import com.qs.qswlw.okhttp.oncallback.MainChinaLisenter;
 import com.qs.qswlw.okhttp.oncallback.MainEntrepLisenter;
@@ -47,38 +47,41 @@ public class BizMain implements IMainBiz {
     private final String benefit = "benefit";
     private Maindatabean result;
 
-    private void getALLdata(final BaseOnlistener baseOnlistener) {
+    private void getALLdata(final MainBaseListener baseOnlistener) {
         Type type = new TypeToken<MainBean<Maindatabean>>() {
         }.getType();
-        OKhttptUtils.httpPost(NetUrl.MAINURL, "",
+        OKhttptUtils.httpget(NetUrl.MAINURL,
                 new DataCallBack<MainBean<Maindatabean>>(type) {
                     @Override
                     public void onSuccess(MainBean<Maindatabean> data) {
                         result = data.getResult();
-                        if(baseOnlistener instanceof MainUnionLisenter) {
+                        if (baseOnlistener instanceof MainUnionLisenter) {
                             //联盟商家
-                           // baseOnlistener.onSuccess(result.getShop_ranking());
-                        }else if(baseOnlistener instanceof MainAngelLisenter){
+                            baseOnlistener.onSuccess(result.getShop_ranking());
+                        } else if (baseOnlistener instanceof MainAngelLisenter) {
                             //创业天使
-                        //    baseOnlistener.onSuccess(result.getSalema_ranking());
-                        }else if(baseOnlistener instanceof MainChinaLisenter){
+                            baseOnlistener.onSuccess(result.getSalema_ranking());
+                        } else if (baseOnlistener instanceof MainChinaLisenter) {
                             //中国好产品
-                         //   baseOnlistener.onSuccess(result.getGoods_sale_ranking());
-                        }else if(baseOnlistener instanceof MainBenefitLisenter){
+                            baseOnlistener.onSuccess(result.getGoods_sale_ranking());
+                        } else if (baseOnlistener instanceof MainBenefitLisenter) {
                             //全联盟让利金额
-                           // baseOnlistener.onSuccess(result.getArea_ranking());
+                            baseOnlistener.onSuccess(result.getArea_ranking());
+                        } else if (baseOnlistener instanceof MainEntrepLisenter) {
+                            //全联盟创业日值
+                            baseOnlistener.onSuccess(result.getCurrent_sales());
                         }
                     }
 
                     @Override
                     public void onFailure(int code) {
-
+                        baseOnlistener.onFailure(code + "");
                         /*mainAlertLisenter.onFailure("错误信息" + code);*/
                     }
                 });
     }
 
-    //这是弹框
+    //这是弹框,doushuole，这是dialog
     @Override
     public void getAlert(final MainAlertLisenter mainAlertLisenter) {
         HashMap<String, String> stringStringHashMap = new HashMap<>();
@@ -109,121 +112,42 @@ public class BizMain implements IMainBiz {
                 });
 
     }
+
     @Override
-    public void getunion(final MainUnionLisenter mainUnionLisenter) {
-        HashMap<String, String> stringStringHashMap = new HashMap<>();
-        stringStringHashMap.put(index_data, union);
-        Type type = new TypeToken<BaseBean<ResultUnionBean<ArrayList<UnionBean>>>>() {
-        }.getType();
-        OKhttptUtils.httpPost(NetUrl.baseurl, stringStringHashMap,
-                new DataCallBack<BaseBean<ResultUnionBean<ArrayList<UnionBean>>>>(type) {
-
-                    @Override
-                    public void onSuccess(BaseBean<ResultUnionBean<ArrayList<UnionBean>>> data) {
-                        List<UnionBean> result = null;
-                        try {
-                            result = data.getResult().getUnion();
-                        } catch (Exception e) {
-                        }
-                        if (result == null)
-                            mainUnionLisenter.onFailure("错误信息");
-                        else
-                            mainUnionLisenter.onSuccess(result);
-                    }
-
-                    @Override
-                    public void onFailure(int code) {
-                        mainUnionLisenter.onFailure("错误信息" + code);
-                    }
-                });
+    public void getunion(MainUnionLisenter mainUnionLisenter) {
+        if (result != null && result.getShop_ranking() != null) {
+            mainUnionLisenter.onSuccess(result.getShop_ranking());
+            return;
+        }
+        getALLdata(mainUnionLisenter);
     }
 
     @Override
     public void getentrep(final MainEntrepLisenter mainEntepLisenter) {
-        HashMap<String, String> stringStringHashMap = new HashMap<>();
-        stringStringHashMap.put(index_data, entrep);
-
-
-        Type type = new TypeToken<BaseBean<ResultEntrepBean<EntrepBean>>>() {
-        }.getType();
-        OKhttptUtils.httpPost(NetUrl.baseurl, stringStringHashMap,
-                new DataCallBack<BaseBean<ResultEntrepBean<EntrepBean>>>(type) {
-                    @Override
-                    public void onSuccess(BaseBean<ResultEntrepBean<EntrepBean>> data) {
-                        EntrepBean result = null;
-                        try {
-                            result = data.getResult().getEntrep();
-
-                        } catch (Exception e) {
-                        }
-                        if (result == null)
-                            mainEntepLisenter.onFailure("错误信息");
-                        else
-                            mainEntepLisenter.onSuccess(result);
-                    }
-
-                    @Override
-                    public void onFailure(int code) {
-                        mainEntepLisenter.onFailure("错误信息" + code);
-                    }
-                });
+        if (result != null && result.getCurrent_sales() != null) {
+            mainEntepLisenter.onSuccess(result.getCurrent_sales());
+            return;
+        }
+        getALLdata(mainEntepLisenter);
     }
 
     @Override
     public void getangel(final MainAngelLisenter mainAngelLisenter) {
-        HashMap<String, String> stringStringHashMap = new HashMap<>();
-        stringStringHashMap.put(index_data, angel);
-        Type type = new TypeToken<BaseBean<ResultChinaBean<ArrayList<AngelBean>>>>() {
-        }.getType();
-        OKhttptUtils.httpPost(NetUrl.baseurl, stringStringHashMap,
-                new DataCallBack<BaseBean<ResultChinaBean<ArrayList<AngelBean>>>>(type) {
-                    @Override
-                    public void onSuccess(BaseBean<ResultChinaBean<ArrayList<AngelBean>>> data) {
-                        List<AngelBean> result = null;
-                        try {
-                            result = data.getResult().getChina();
-                        } catch (Exception e) {
-                        }
-                        if (result == null)
-                            mainAngelLisenter.onFailure("错误信息");
-                        else
-                            mainAngelLisenter.onSuccess(result);
-                    }
-
-                    @Override
-                    public void onFailure(int code) {
-                        mainAngelLisenter.onFailure("错误信息" + code);
-                    }
-                });
+        if (result != null && result.getSalema_ranking() != null) {
+            mainAngelLisenter.onSuccess(result.getSalema_ranking());
+            return;
+        }
+        getALLdata(mainAngelLisenter);
     }
 
 
     @Override
     public void getchina(final MainChinaLisenter mainChinaLisenter) {
-        HashMap<String, String> stringStringHashMap = new HashMap<>();
-        stringStringHashMap.put(index_data, china);
-        Type type = new TypeToken<BaseBean<ResultChinaBean<ArrayList<ChinaBean>>>>() {
-        }.getType();
-        OKhttptUtils.httpPost(NetUrl.baseurl, stringStringHashMap,
-                new DataCallBack<BaseBean<ResultChinaBean<ArrayList<ChinaBean>>>>(type) {
-                    @Override
-                    public void onSuccess(BaseBean<ResultChinaBean<ArrayList<ChinaBean>>> data) {
-                        List<ChinaBean> result = null;
-                        try {
-                            result = data.getResult().getChina();
-                        } catch (Exception e) {
-                        }
-                        if (result == null)
-                            mainChinaLisenter.onFailure("错误信息");
-                        else
-                            mainChinaLisenter.onSuccess(result);
-                    }
-
-                    @Override
-                    public void onFailure(int code) {
-                        mainChinaLisenter.onFailure("错误信息" + code);
-                    }
-                });
+        if (result != null && result.getGoods_sale_ranking() != null) {
+            mainChinaLisenter.onSuccess(result.getGoods_sale_ranking());
+            return;
+        }
+        getALLdata(mainChinaLisenter);
     }
 
     @Override
@@ -256,29 +180,10 @@ public class BizMain implements IMainBiz {
 
     @Override
     public void getbenefit(final MainBenefitLisenter mainBenefitLisenter) {
-        HashMap<String, String> stringStringHashMap = new HashMap<>();
-        stringStringHashMap.put(index_data, benefit);
-        Type type = new TypeToken<BaseBean<ResultChinaBean<ArrayList<BenefitBean>>>>() {
-        }.getType();
-        OKhttptUtils.httpPost(NetUrl.baseurl, stringStringHashMap,
-                new DataCallBack<BaseBean<ResultChinaBean<ArrayList<BenefitBean>>>>(type) {
-                    @Override
-                    public void onSuccess(BaseBean<ResultChinaBean<ArrayList<BenefitBean>>> data) {
-                        List<BenefitBean> result = null;
-                        try {
-                            result = data.getResult().getChina();
-                        } catch (Exception e) {
-                        }
-                        if (result == null)
-                            mainBenefitLisenter.onFailure("错误信息");
-                        else
-                            mainBenefitLisenter.onSuccess(result);
-                    }
-
-                    @Override
-                    public void onFailure(int code) {
-                        mainBenefitLisenter.onFailure("错误信息" + code);
-                    }
-                });
+        if (result != null && result.getArea_ranking() != null) {
+            mainBenefitLisenter.onSuccess(result.getArea_ranking());
+            return;
+        }
+        getALLdata(mainBenefitLisenter);
     }
 }
