@@ -12,7 +12,7 @@ public class Maindatabean {
     List<Goods> goods_sale_ranking;
     List<Salema> salema_ranking;
     List<Shop> shop_ranking;
-    Current_sales current_sales;//这是新的，对不
+    Current_sales current_sales;
 
     public Current_sales getCurrent_sales() {
         return current_sales;

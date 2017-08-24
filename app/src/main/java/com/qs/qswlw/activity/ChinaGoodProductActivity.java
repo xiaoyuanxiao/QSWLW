@@ -1,5 +1,6 @@
 package com.qs.qswlw.activity;
 
+import android.util.Log;
 import android.view.View;
 import android.widget.GridView;
 import android.widget.TextView;
@@ -9,17 +10,28 @@ import com.qs.qswlw.activity.PersonalCenter.BaseInfoActivity;
 import com.qs.qswlw.adapter.ChinaOrderAmountAdapter;
 import com.qs.qswlw.adapter.ChinaOrderQuantityAdapter;
 import com.qs.qswlw.adapter.ChinaPraiseRateAdapter;
+import com.qs.qswlw.bean.GoodProductBean;
+import com.qs.qswlw.okhttp.Iview.IProductView;
+import com.qs.qswlw.okhttp.Presenter.GoodProductPresenter;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by xiaoyu on 2017/4/17.
  */
 
-public class ChinaGoodProductActivity extends BaseInfoActivity {
+public class ChinaGoodProductActivity extends BaseInfoActivity implements IProductView {
+    List<GoodProductBean.GoodsRank> ranklist;
+    List<GoodProductBean.GoodsNum> numlist;
+    List<GoodProductBean.GoodsAmonut> amountlist;
+
     private ChinaPraiseRateAdapter chinaPraiseRateAdapter;
     private ChinaOrderQuantityAdapter chinaOrderQuantityAdapter;
     private ChinaOrderAmountAdapter chinaOrderAmountAdapter;
     private GridView gv_chinagoodproduct;
-    private TextView tv_china_praiseRate,tv_china_orderQuantity,tv_china_orderAmount;
+    private TextView tv_china_praiseRate, tv_china_orderQuantity, tv_china_orderAmount;
+    GoodProductPresenter goodProductPresenter = new GoodProductPresenter(this);
 
     @Override
     public View setConetnView() {
@@ -40,12 +52,26 @@ public class ChinaGoodProductActivity extends BaseInfoActivity {
     @Override
     public void initData() {
         super.initData();
-        chinaPraiseRateAdapter = new ChinaPraiseRateAdapter(this);
-        chinaOrderQuantityAdapter = new ChinaOrderQuantityAdapter(this);
-        chinaOrderAmountAdapter = new ChinaOrderAmountAdapter(this);
 
-        
-
+        /**
+         * 中国好产品排行榜
+         */
+        ranklist = new ArrayList<>();
+        chinaPraiseRateAdapter = new ChinaPraiseRateAdapter(this, ranklist);
+        gv_chinagoodproduct.setAdapter(chinaPraiseRateAdapter);//我用的同一个gridview
+//        /**
+//         * 中国好产品订单数量
+//         */
+        numlist = new ArrayList<>();
+        chinaOrderQuantityAdapter = new ChinaOrderQuantityAdapter(this, numlist);
+//        gv_chinagoodproduct.setAdapter(chinaOrderQuantityAdapter);
+//        /**
+//         * 中国好产品订单金额
+//         */
+        amountlist = new ArrayList<>();
+        chinaOrderAmountAdapter = new ChinaOrderAmountAdapter(this, amountlist);
+//        gv_chinagoodproduct.setAdapter(chinaOrderAmountAdapter);
+        goodProductPresenter.getdata();
     }
 
     @Override
@@ -59,7 +85,7 @@ public class ChinaGoodProductActivity extends BaseInfoActivity {
     @Override
     public void onClick(View v) {
         super.onClick(v);
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.tv_china_praiseRate:
                 tv_china_praiseRate.setTextColor(getResources().getColor(R.color.red));
                 tv_china_orderQuantity.setTextColor(getResources().getColor(R.color.tv_china));
@@ -89,4 +115,31 @@ public class ChinaGoodProductActivity extends BaseInfoActivity {
                 break;
         }
     }
+
+
+    @Override
+    public void setRankList(List<GoodProductBean.GoodsRank> list) {
+        ranklist.clear();
+        ranklist.addAll(list);
+        Log.d("TAG", "-------setRankList---");
+        gv_chinagoodproduct.setAdapter(chinaPraiseRateAdapter);
+        //  chinaPraiseRateAdapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void setNumList(List<GoodProductBean.GoodsNum> list) {
+        numlist.clear();
+        numlist.addAll(list);
+        Log.d("TAG", "-------setNumList---");
+        //  chinaOrderQuantityAdapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void setAmountList(List<GoodProductBean.GoodsAmonut> list) {
+        amountlist.clear();
+        amountlist.addAll(list);
+        Log.d("TAG", "-------setAmountList---");
+        //  chinaOrderAmountAdapter.notifyDataSetChanged();
+    }
+
 }
