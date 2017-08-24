@@ -41,10 +41,10 @@ public class UnionAdapter extends BaseListAdapter<Maindatabean.Shop> {
         try {
             Maindatabean.Shop unionBean = data.get(i);
             String store_name = unionBean.getStore_name();
-            if (("").equals(store_name)) {
-                tv_item_home_content_left.setText("...");
-            }else{
+            if (store_name!=null) {
                 tv_item_home_content_left.setText(store_name);
+            }else{
+                tv_item_home_content_left.setText("...");
             }
 
             tv_item_home_content_value.setText(unionBean.getSum_money() + "元");

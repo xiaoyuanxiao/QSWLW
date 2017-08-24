@@ -31,8 +31,15 @@ public class BenefitAdapter extends BaseListAdapter<Maindatabean.Area> {
         RelativeLayout rl_width = (RelativeLayout) convertView.findViewById(R.id.rl_width);
         rl_width.setLayoutParams(new LinearLayout.LayoutParams(MyApplication.WIDTH, (MyApplication.Height-108)/6));
         Maindatabean.Area benefitBean = data.get(position);
-        key.setText(benefitBean.getProvince());
-        value.setText(benefitBean.getTotal());
+        String city = benefitBean.getCity();
+        if(city!=null){
+            key.setText(benefitBean.getProvince()+"-"+city);
+        }
+        else{
+            key.setText(benefitBean.getProvince()+"-");
+        }
+
+        value.setText(benefitBean.getTotal()+"元");
         return convertView;
 
 

@@ -162,6 +162,16 @@ public class Maindatabean {
    public class Area{
         String province;
         String total;
+        String user_id;
+        String city;
+
+        public String getCity() {
+            return city;
+        }
+
+        public void setCity(String city) {
+            this.city = city;
+        }
 
         public String getProvince() {
             return province;
@@ -186,8 +196,6 @@ public class Maindatabean {
         public void setUser_id(String user_id) {
             this.user_id = user_id;
         }
-
-        String user_id;
     }
     //中国好产品排行榜
    public class Goods{
