@@ -50,16 +50,19 @@ public class BizMain implements IMainBiz {
         ReHttpUtils.instans().httpRequest(new HttpSubCribe<MainBean<Maindatabean>>() {
             @Override
             public Observable<MainBean<Maindatabean>> getObservable(MyRetroService retrofit) {
+                   System.out.println("=========onError=============="+retrofit.toString());
                 return retrofit.getALLdata();
             }
 
             @Override
             public void onError(Throwable e) {
+                System.out.println("=========onError==============" + e);
             }
 
             @Override
             public void onNext(MainBean<Maindatabean> testBean) {
                 baseOnlistener.onSuccess(testBean);
+                System.out.println("============onNext=================" + testBean.toString());
             }
         });
 

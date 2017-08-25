@@ -15,6 +15,8 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.CHANGE_CONFIGURATION" />
     <uses-permission android:name="android.permission.CALL_PHONE" />
+    <!--在sdcard中创建/删除文件的权限 -->
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"></uses-permission>
     <application
         android:name=".MyApplication"
         android:allowBackup="true"
@@ -87,6 +89,9 @@
         <activity android:name=".activity.mall.QSMallListActivity"
             android:windowSoftInputMode="adjustUnspecified|stateHidden"/>
         <activity android:name=".activity.RankingActivity"/>
+
+        <activity android:name=".activity.UnionRankingActivity"/>
+
         <activity android:name=".activity.mall.ShoppingCartActivity"/>
         <activity android:name=".activity.mall.ClassiFicationActivity"/>
         <activity android:name=".activity.mall.ScreenActivity"/>

@@ -123,7 +123,7 @@ public class ChinaGoodProductActivity extends BaseInfoActivity implements IProdu
         ranklist.addAll(list);
         Log.d("TAG", "-------setRankList---");
         gv_chinagoodproduct.setAdapter(chinaPraiseRateAdapter);
-        //  chinaPraiseRateAdapter.notifyDataSetChanged();
+        //  chinaPraiseRateAdapter.notifyDataSetChanged(); 这里为什么注掉 不刷新了吗  正确  对吧
     }
 
     @Override

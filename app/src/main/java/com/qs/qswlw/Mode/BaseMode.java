@@ -38,6 +38,7 @@ public abstract class BaseMode implements View.OnClickListener {
 //        tv_titlebar.setText("1111");
 
     }
+
     /**
      * 初始化布局
      */
@@ -53,4 +54,6 @@ public abstract class BaseMode implements View.OnClickListener {
     public void onClick(View v) {
 
     }
+
+
 }

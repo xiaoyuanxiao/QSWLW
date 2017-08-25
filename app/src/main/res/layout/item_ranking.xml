@@ -4,7 +4,7 @@
     android:layout_height="wrap_content"
     android:padding="10dp">
     <com.qs.qswlw.view.NoBorderCircleImageView
-        android:id="@+id/iv_item_ranking"
+        android:id="@+id/iv_union_ranking"
         android:layout_width="35dp"
         android:layout_height="35dp"
         android:src="@mipmap/cj">
@@ -13,16 +13,18 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_toRightOf="@+id/iv_item_ranking"
+        android:layout_toRightOf="@+id/iv_union_ranking"
         android:layout_centerVertical="true"
         android:layout_marginLeft="15dp">
         <TextView
+            android:id="@+id/union_ranking_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="#747474"
             android:textSize="11sp"
             android:text="新晟食品"/>
         <TextView
+            android:id="@+id/union_ranking_id"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="#747474"
@@ -46,7 +48,7 @@
                 android:textSize="11sp"
                 android:text="排名:"/>
             <TextView
-                android:id="@+id/tv_test"
+                android:id="@+id/union_ranking"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="#ff9930"
@@ -65,6 +67,7 @@
                 android:textSize="11sp"
                 android:text="销售额："/>
             <TextView
+                android:id="@+id/union_ranking_volume"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="#ff9930"

@@ -239,8 +239,9 @@ public class MainActivity extends BaseActivity implements IMainView {
         unionFootview.findViewById(R.id.ll_footview).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, RankingActivity.class);
-                intent.putExtra("footview", "unionranking");
+//                Intent intent = new Intent(MainActivity.this, RankingActivity.class);
+//                intent.putExtra("footview", "unionranking");
+                Intent intent = new Intent(MainActivity.this,UnionRankingActivity.class);
                 startActivity(intent);
             }
         });

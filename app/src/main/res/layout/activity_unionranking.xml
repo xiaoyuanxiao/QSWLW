@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+        <RadioGroup
+            android:id="@+id/fg_unionranking"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+           android:layout_margin="7dp"
+            android:orientation="horizontal">
+
+            <RelativeLayout
+                android:id="@+id/day_ranking"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="7dp"
+                android:clickable="true"
+                android:layout_marginLeft="10dp"
+                android:background="@color/white">
+
+                <TextView
+                    android:id="@+id/tv_dayranking"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="日排名"
+                    android:textColor="@color/tv_ranking"
+                    android:layout_centerVertical="true"
+                    android:textSize="11sp" />
+
+                <ImageView
+                    android:id="@+id/iv_dayranking"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:background="@mipmap/oo_03"
+                    android:clickable="true"
+                    android:layout_alignParentRight="true"/>
+            </RelativeLayout>
+            <RelativeLayout
+                android:id="@+id/week_ranking"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="7dp"
+                android:layout_marginLeft="10dp"
+                android:clickable="true"
+                android:background="@color/white">
+
+                <TextView
+                    android:id="@+id/tv_weekranking"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="周排名"
+                    android:layout_centerVertical="true"
+                    android:textColor="@color/tv_ranking"
+                    android:textSize="11sp" />
+
+                <ImageView
+                    android:id="@+id/iv_weekranking"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:background="@mipmap/oo_03"
+                    android:layout_alignParentRight="true"/>
+            </RelativeLayout>
+            <RelativeLayout
+                android:id="@+id/month_ranking"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="7dp"
+                android:layout_marginRight="10dp"
+                android:clickable="true"
+                android:background="@color/white">
+
+                <TextView
+                    android:id="@+id/tv_monthranking"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="月排名"
+                    android:layout_centerVertical="true"
+                    android:textColor="@color/tv_ranking"
+                    android:textSize="11sp" />
+
+                <ImageView
+                    android:id="@+id/iv_monthranking"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:background="@mipmap/oo_03"
+                    android:layout_alignParentRight="true" />
+            </RelativeLayout>
+        </RadioGroup>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/viewpager_unionranking"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_gravity="center" >
+    </android.support.v4.view.ViewPager>
+
+
+
+
+</LinearLayout>

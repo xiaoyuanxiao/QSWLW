@@ -2,6 +2,8 @@ package com.qs.qswlw.mynet;
 
 import com.trello.rxlifecycle.LifecycleProvider;
 
+import java.util.concurrent.TimeUnit;
+
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
@@ -21,6 +23,11 @@ import rx.schedulers.Schedulers;
 
 public class ReHttpUtils {
     private static String baseUrl = "http://www.qiansheng.com/";
+
+    public static String getBaseUrl() {
+        return baseUrl;
+    }
+
     private static ReHttpUtils reHttpUtils;
 
     private ReHttpUtils() {
@@ -32,6 +39,11 @@ public class ReHttpUtils {
         return reHttpUtils;
     }
 
+    /**
+     * 也可以这里全局重新指定
+     *
+     * @param baseUrl
+     */
     public static void initRetro(String baseUrl) {
         ReHttpUtils.baseUrl = baseUrl;
     }
@@ -52,6 +64,10 @@ public class ReHttpUtils {
 
     public OkHttpClient getMyclient(Interceptor interceptor) {
         OkHttpClient client = new OkHttpClient.Builder()
+                .connectTimeout(15, TimeUnit.SECONDS)
+                .readTimeout(20, TimeUnit.SECONDS)
+                .writeTimeout(20, TimeUnit.SECONDS)
+                .retryOnConnectionFailure(true)
                 .addInterceptor(interceptor)
                 .build();
         return client;

@@ -11,12 +11,18 @@ import android.widget.TextView;
 import com.qs.qswlw.R;
 import com.qs.qswlw.activity.PersonalCenter.BaseInfoActivity;
 import com.qs.qswlw.adapter.RankingAdapter;
+import com.qs.qswlw.bean.RankingBean;
+import com.qs.qswlw.okhttp.Iview.IRankingView;
+import com.qs.qswlw.okhttp.Presenter.RankingPresenter;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by xiaoyu on 2017/4/12.
  */
 
-public class RankingActivity extends BaseInfoActivity {
+public class RankingActivity extends BaseInfoActivity implements IRankingView {
 
     private RelativeLayout day_ranking, week_ranking, month_ranking;
     private TextView tv_ranking_left, tv_ranking_right;
@@ -28,6 +34,8 @@ public class RankingActivity extends BaseInfoActivity {
     private View view_ranking;
     private String footview;
     private RankingAdapter rankingAdapter;
+    private List<RankingBean.SingleLogBean> data;
+    RankingPresenter rankingPresenter = new RankingPresenter(this);
 
     @Override
     public View setConetnView() {
@@ -64,13 +72,15 @@ public class RankingActivity extends BaseInfoActivity {
     public void initData() {
         super.initData();
         footview = getIntent().getStringExtra("footview");
-        if("unionranking".equals(footview)){
+
+        if ("unionranking".equals(footview)) {
             view_ranking.setVisibility(View.GONE);
             tv_ranking_right.setVisibility(View.GONE);
             tv_ranking_left.setText("联盟商家销售额排名榜");
-            rankingAdapter = new RankingAdapter(this);
+            data = new ArrayList<>();//咦怎么回事。
+            rankingAdapter = new RankingAdapter(this, data);
             lv_ranking.setAdapter(rankingAdapter);
-        }else if("angelranking".equals(footview)){
+        } else if ("angelranking".equals(footview)) {
             view_ranking.setVisibility(View.GONE);
             tv_ranking_right.setVisibility(View.GONE);
             tv_ranking_left.setText("创业天使创业排名榜");
@@ -96,11 +106,11 @@ public class RankingActivity extends BaseInfoActivity {
                 if (flag) {
                     dayRankingChecked();
                 }
-                if("unionranking".equals(footview)){
+                if ("unionranking".equals(footview)) {
 
-                }else if("angelranking".equals(footview)){
+                } else if ("angelranking".equals(footview)) {
 
-                }else{
+                } else {
                     content = "日排名";
                     showDialog(content);
                 }
@@ -111,11 +121,11 @@ public class RankingActivity extends BaseInfoActivity {
                 if (flag) {
                     weekRankingChecked();
                 }
-                if("unionranking".equals(footview)){
+                if ("unionranking".equals(footview)) {
 
-                }else if("angelranking".equals(footview)){
+                } else if ("angelranking".equals(footview)) {
 
-                }else{
+                } else {
                     content = "周排名";
                     showDialog(content);
                 }
@@ -125,14 +135,14 @@ public class RankingActivity extends BaseInfoActivity {
                 if (flag) {
                     monthRankingChecked();
                 }
-                if("unionranking".equals(footview)){
+                if ("unionranking".equals(footview)) {
 
-                }else if("angelranking".equals(footview)){
+                } else if ("angelranking".equals(footview)) {
 
-                }else{
+                } else {
                     content = "月排名";
                     showDialog(content);
-                }
+                }//卧槽 吓死我了 这个是看从哪点进来的 怎么办
 
                 break;
         }
@@ -149,7 +159,7 @@ public class RankingActivity extends BaseInfoActivity {
             public void onClick(DialogInterface dialog, int which) {
 
                 tv_ranking_left.setText(content);
-                tv_ranking_right.setText(sex[which].substring(0,1)+"管理中心");
+                tv_ranking_right.setText(sex[which].substring(0, 1) + "管理中心");
             }
         });
         builder.setPositiveButton("取消", new DialogInterface.OnClickListener() {
@@ -173,6 +183,7 @@ public class RankingActivity extends BaseInfoActivity {
      * 日排行选中
      */
     private void dayRankingChecked() {
+
         day_ranking.setBackgroundColor(this.getResources().getColor(R.color.red));
         iv_dayranking.setImageResource(R.mipmap.oo2_03);
         tv_dayranking.setTextColor(this.getResources().getColor(R.color.white));
@@ -182,6 +193,7 @@ public class RankingActivity extends BaseInfoActivity {
         month_ranking.setBackgroundColor(this.getResources().getColor(R.color.white));
         iv_monthranking.setImageResource(R.mipmap.oo_03);
         tv_monthranking.setTextColor(this.getResources().getColor(R.color.tv_ranking));
+        rankingPresenter.getdata(100);
     }
 
     /**
@@ -197,6 +209,7 @@ public class RankingActivity extends BaseInfoActivity {
         month_ranking.setBackgroundColor(this.getResources().getColor(R.color.white));
         iv_monthranking.setImageResource(R.mipmap.oo_03);
         tv_monthranking.setTextColor(this.getResources().getColor(R.color.tv_ranking));
+        rankingPresenter.getdata(200);
     }
 
     /**
@@ -212,5 +225,15 @@ public class RankingActivity extends BaseInfoActivity {
         week_ranking.setBackgroundColor(this.getResources().getColor(R.color.white));
         iv_weekranking.setImageResource(R.mipmap.oo_03);
         tv_weekranking.setTextColor(this.getResources().getColor(R.color.tv_ranking));
+        rankingPresenter.getdata(300);
+    }
+
+
+    @Override
+    public void setRankMondayWek(List<RankingBean.SingleLogBean> list, int recode) {
+        data.clear();
+        data.addAll(list);
+        rankingAdapter.notifyDataSetChanged();
+
     }
 }
