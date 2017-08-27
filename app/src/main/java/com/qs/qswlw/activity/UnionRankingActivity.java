@@ -37,9 +37,9 @@ public class UnionRankingActivity extends BaseInfoActivity implements IRankingVi
         week_ranking = (RelativeLayout) inflate.findViewById(R.id.week_ranking);
         month_ranking = (RelativeLayout) inflate.findViewById(R.id.month_ranking);
         viewpagedata = new ArrayList<>();
-        viewpagedata.add(new UnionMonthRankingMode(this,100));
-        viewpagedata.add(new UnionMonthRankingMode(this,200));
-        viewpagedata.add(new UnionMonthRankingMode(this,300));
+        viewpagedata.add(new UnionMonthRankingMode(this, 100));
+        viewpagedata.add(new UnionMonthRankingMode(this, 200));
+        viewpagedata.add(new UnionMonthRankingMode(this, 300));
         MyViewPagerAdapter adapter = new MyViewPagerAdapter();
         viewpager_unionranking.setAdapter(adapter);
         viewpagedata.get(0).initData();
@@ -63,6 +63,31 @@ public class UnionRankingActivity extends BaseInfoActivity implements IRankingVi
     public void setOnclick() {
         super.setOnclick();
         fg_unionranking.setOnCheckedChangeListener(new MyOnCheckedChangeListener());
+        day_ranking.setOnClickListener(this);
+        week_ranking.setOnClickListener(this);
+        month_ranking.setOnClickListener(this);
+    }
+
+
+    @Override
+    public void onClick(View v) {
+        super.onClick(v);
+        int position = 0;
+        switch (v.getId()) {
+
+            case R.id.day_ranking:
+                position = 0;
+                break;
+            case R.id.week_ranking:
+                position = 1;
+                break;
+            case R.id.month_ranking:
+                position = 2;
+                break;
+        }
+        viewpager_unionranking.setCurrentItem(position);
+        viewpagedata.get(position).initData();
+
     }
 
     /**
