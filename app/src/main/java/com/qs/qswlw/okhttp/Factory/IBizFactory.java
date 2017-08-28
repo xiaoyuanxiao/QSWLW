@@ -1,9 +1,11 @@
 package com.qs.qswlw.okhttp.Factory;
 
+import com.qs.qswlw.okhttp.Moudle.BizAngelRanking;
 import com.qs.qswlw.okhttp.Moudle.BizGoodProduct;
 import com.qs.qswlw.okhttp.Moudle.BizLogin;
 import com.qs.qswlw.okhttp.Moudle.BizMain;
 import com.qs.qswlw.okhttp.Moudle.BizRanking;
+import com.qs.qswlw.okhttp.Moudle.IAngelRankingBiz;
 import com.qs.qswlw.okhttp.Moudle.ILoginBiz;
 import com.qs.qswlw.okhttp.Moudle.IMainBiz;
 import com.qs.qswlw.okhttp.Moudle.IProductBiz;
@@ -36,6 +38,9 @@ public class IBizFactory {
     }
     public static IRankingBiz getRankingBiz() {
         return BizRanking.getInstans();
+    }
+    public static IAngelRankingBiz getAngelRankingBiz() {
+        return BizAngelRanking.getInstans();
     }
 
 }

@@ -27,6 +27,7 @@ public class RankingPresenter {
         iRankingBiz.getdata(new RankingBaseListener() {
             @Override
             public void onSuccess(List<RankingBean.SingleLogBean> list) {
+
                 iRankingView.setRankMondayWek(list, code);
             }
 

@@ -36,7 +36,7 @@ public class BizRanking implements IRankingBiz {
             @Override
             public Observable<MainBean<RankingBean>> getObservable(MyRetroService retrofit) {
                 //这是什么   这个是复制的 还没改完 你先看着哈 我改这个了
-                // 你可以这样 反正是一样的
+                // 你可以这样 反正是一样的--什么都不用改
                 String vaule = null;
                 if (code == 300)
                     vaule = "yue";

@@ -1,10 +1,13 @@
 package com.qs.qswlw.activity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.drawable.BitmapDrawable;
 import android.support.v7.app.AlertDialog;
 import android.util.DisplayMetrics;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.WindowManager;
@@ -12,7 +15,9 @@ import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.PopupWindow;
 import android.widget.RadioButton;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -57,11 +62,13 @@ public class MainActivity extends BaseActivity implements IMainView {
     private View alertview;
     private Button btn_dialog;
     private ImageView iv_setting_main;
-    private TextView tv_ranking_main;
+    private ImageView iv_ranking_main;
     private LinearLayout ll_footview_union;
     private RadioButton rb_main_goodprojects, rb_main_media, rb_main_mall, rb_main_union, rb_main_WitnessChinaBusiness, rb_main_Win, rb_main_luckgame, rb_main_funtime;
     private WebView webview;
     private Intent intent;
+    private PopupWindow popupWindow;
+    private LinearLayout ll_ranking_popup;
 
 
     @Override
@@ -158,7 +165,7 @@ public class MainActivity extends BaseActivity implements IMainView {
         angelList = (Image3DView) findViewById(R.id.angelList);
         chinaList = (Image3DView) findViewById(R.id.chinaList);
         luckList = (Image3DView) findViewById(R.id.luckList);
-        tv_ranking_main = (TextView) findViewById(R.id.tv_ranking_main);
+        iv_ranking_main = (ImageView) findViewById(R.id.iv_ranking_main);
         rb_main_goodprojects = (RadioButton) findViewById(R.id.rb_main_goodprojects);
         rb_main_media = (RadioButton) findViewById(R.id.rb_main_media);
         rb_main_mall = (RadioButton) findViewById(R.id.rb_main_mall);
@@ -276,8 +283,7 @@ public class MainActivity extends BaseActivity implements IMainView {
         unionFootview2.findViewById(R.id.ll_footview).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, RankingActivity.class);
-                intent.putExtra("footview", "angelranking");
+                Intent intent = new Intent(MainActivity.this, AngelRankingActivity.class);
                 startActivity(intent);
             }
         });
@@ -322,7 +328,7 @@ public class MainActivity extends BaseActivity implements IMainView {
     @Override
     public void setOnclick() {
         iv_setting_main.setOnClickListener(this);
-        tv_ranking_main.setOnClickListener(this);
+        iv_ranking_main.setOnClickListener(this);
         rb_main_goodprojects.setOnClickListener(this);
         rb_main_media.setOnClickListener(this);
         rb_main_mall.setOnClickListener(this);
@@ -338,8 +344,10 @@ public class MainActivity extends BaseActivity implements IMainView {
             case R.id.iv_setting_main:
                 startActivity(new Intent(this, BusinessSettingActivity.class));
                 break;
-            case R.id.tv_ranking_main:
-                startActivity(new Intent(this, RankingActivity.class));
+            case R.id.iv_ranking_main:
+               // startActivity(new Intent(this, RankingActivity.class));
+                showPw(iv_ranking_main);
+
                 break;
             case R.id.rb_main_goodprojects:
                 startActivity(new Intent(this, ProjectRecommendationActivity.class));
@@ -373,7 +381,26 @@ public class MainActivity extends BaseActivity implements IMainView {
                 this.intent.putExtra("Win", "http://case.dian7dian.com/qiansheng/kxyk.html");
                 startActivity(this.intent);
                 break;
+            case R.id.ll_ranking_popup:
+             //   startActivity(new Intent(MainActivity.this,MainRankingActivity.class));
+                break;
         }
+    }
+    private void showPw(ImageView v) {
+        //加载布局
+        LinearLayout layout = (LinearLayout) LayoutInflater.from(this).inflate(
+                R.layout.popup_main, null);
+        // 实例化popupWindow
+        popupWindow = new PopupWindow(layout, RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
+        ll_ranking_popup = (LinearLayout) layout.findViewById(R.id.ll_ranking_popup);
+        //控制键盘是否可以获得焦点
+        popupWindow.setFocusable(true);
+        //设置popupWindow弹出窗体的背景
+        popupWindow.setBackgroundDrawable(new BitmapDrawable(null, ""));
+        WindowManager manager = (WindowManager) getSystemService(Context.WINDOW_SERVICE);
+        //xoff,yoff基于anchor的左下角进行偏移。
+        popupWindow.showAtLocation(v, Gravity.TOP|Gravity.RIGHT,10,120);
+        ll_ranking_popup.setOnClickListener(this);
     }
 
     @Override

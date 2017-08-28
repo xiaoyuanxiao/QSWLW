@@ -91,6 +91,8 @@
         <activity android:name=".activity.RankingActivity"/>
 
         <activity android:name=".activity.UnionRankingActivity"/>
+        <activity android:name=".activity.MainRankingActivity"/>
+        <activity android:name=".activity.AngelRankingActivity"/>
 
         <activity android:name=".activity.mall.ShoppingCartActivity"/>
         <activity android:name=".activity.mall.ClassiFicationActivity"/>

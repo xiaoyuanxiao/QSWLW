@@ -5,7 +5,7 @@ import android.view.View;
 import android.widget.ListView;
 
 import com.qs.qswlw.R;
-import com.qs.qswlw.activity.UnionRankingActivity;
+import com.qs.qswlw.activity.MainRankingActivity;
 import com.qs.qswlw.adapter.RankingAdapter;
 import com.qs.qswlw.bean.RankingBean;
 
@@ -17,12 +17,12 @@ import java.util.List;
  * Created by xiaoyu on 2017/4/5.
  */
 
-public class UnionMonthRankingMode extends BaseMode {
+public class MainRankingMode extends BaseMode {
     private ListView lv_sub_unionmonthranking;
     private int code = 100;
     List<RankingBean.SingleLogBean> data;
 
-    public UnionMonthRankingMode(Context context, int code) {
+    public MainRankingMode(Context context, int code) {
         super(context);
         this.code = code;
 
@@ -44,17 +44,10 @@ public class UnionMonthRankingMode extends BaseMode {
     @Override
     public void initData() {
         super.initData();
-        if (data != null && data.size() != 0 && !isgetall) {
+        if (data != null && data.size() != 0) {
             return;
         }
-        ((UnionRankingActivity) context).rankingPresenter.getdata(code);
-    }
-
-    boolean isgetall = false;
-
-    public void getALL() {
-        isgetall = true;
-        ((UnionRankingActivity) context).rankingPresenter.getdata(0);
+        ((MainRankingActivity) context).rankingPresenter.getdata(code);
     }
 
     public void setdata(List<RankingBean.SingleLogBean> data) {

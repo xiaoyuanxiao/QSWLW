@@ -70,7 +70,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:padding="7dp"
-                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"
                 android:clickable="true"
                 android:background="@color/white">
 
@@ -92,7 +92,21 @@
                     android:layout_alignParentRight="true" />
             </RelativeLayout>
         </RadioGroup>
-
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginLeft="20dp"
+        android:layout_marginBottom="8dp"
+        android:gravity="center_vertical">
+        <TextView
+            android:id="@+id/tv_ranking_left"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:textColor="@color/red"
+            android:text="联盟商家销售额排名榜"/>
+    </LinearLayout>
     <android.support.v4.view.ViewPager
         android:id="@+id/viewpager_unionranking"
         android:layout_width="wrap_content"

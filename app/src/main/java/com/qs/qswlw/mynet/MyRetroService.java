@@ -1,6 +1,7 @@
 package com.qs.qswlw.mynet;
 
 
+import com.qs.qswlw.bean.AngelRankingBean;
 import com.qs.qswlw.bean.GoodProductBean;
 import com.qs.qswlw.bean.MainBean;
 import com.qs.qswlw.bean.Maindatabean;
@@ -34,6 +35,14 @@ public interface MyRetroService {
     //如果有多个参数-就这样
     @POST("index.php?m=Appapi&c=Index&a=ranking_list4")//头去掉 因为写过了，在那些了
     Observable<MainBean<RankingBean>> getRankingData(@Part("time_slot") String a );
+
+    /**
+     * 创业天使创业排名榜
+     * @return
+     */
+    @Multipart
+    @POST("index.php?m=Appapi&c=Index&a=ranking_list3")//头去掉 因为写过了，在那些了
+    Observable<MainBean<AngelRankingBean>> getAngelRankingData(@Part("time_slot") String a );
 
     @POST("index.php?m=Appapi&c=Index&a=good_product")/**括号里面是路径*/
     Observable<MainBean<GoodProductBean>> getGoodproductdata();
