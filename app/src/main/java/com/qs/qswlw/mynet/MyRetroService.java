@@ -3,6 +3,7 @@ package com.qs.qswlw.mynet;
 
 import com.qs.qswlw.bean.AngelRankingBean;
 import com.qs.qswlw.bean.GoodProductBean;
+import com.qs.qswlw.bean.LoginBean;
 import com.qs.qswlw.bean.MainBean;
 import com.qs.qswlw.bean.Maindatabean;
 import com.qs.qswlw.bean.RankingBean;
@@ -76,6 +77,16 @@ public interface MyRetroService {
     Observable<MainBean<RegisterBean>> postRgisterData(@Field("mobile") String mobile, @Field("id") int id, @Field("nickname") String nickname,
                                                        @Field("password") String password, @Field("repassword") String repassword,
                                                        @Field("role") int role, @Field("post_code") String post_code);
+
+    /**
+     * 登录
+     * @param username
+     * @param password
+     * @return
+     */
+    @FormUrlEncoded
+    @POST("index.php?m=Appapi&c=Login&a=do_login")
+    Observable<MainBean<LoginBean>> postLogin(@Field("username") String username,@Field("password") String password);
 
     /**
      * 创业天使创业排名榜

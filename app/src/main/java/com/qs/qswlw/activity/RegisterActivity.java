@@ -1,5 +1,7 @@
 package com.qs.qswlw.activity;
 
+import android.content.Intent;
+import android.os.Looper;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -93,6 +95,7 @@ public class RegisterActivity extends BaseInfoActivity {
         edt_register_myphone.setOnClickListener(this);
         register_getcode.setOnClickListener(this);
         edt_register_name.setFocusable(false);//让EditText失去焦点，然后获取点击事件
+        edt_register_phone.setFocusable(false);//让EditText失去焦点，然后获取点击事件
         edt_register_name.setOnClickListener(this);
         btn_register.setOnClickListener(this);
     }
@@ -110,18 +113,21 @@ public class RegisterActivity extends BaseInfoActivity {
                 PostCheckID(Integer.parseInt(edt_register_id.getText().toString()));
                 break;
             case R.id.btn_register:
-                if (succ != 1) {
-                    ToastUtils.showToast(this, "该联系人无效");
-                } else if (edt_register_myphone.getText().toString().trim().equals("")) {
+                if (edt_register_myphone.getText().toString().trim().equals("")) {
                     ToastUtils.showToast(this, "手机号码不能为空");
                 } else if (edt_register_username.getText().toString().trim().equals("")) {
                     ToastUtils.showToast(this, "用户名不能为空");
-                }else if(!cbx_register.isChecked()){
+                } else if (!cbx_register.isChecked()) {
                     ToastUtils.showToast(this, "请同意钱盛物联网注册协议");
-                }
-                else {
-                    PostRegister(edt_register_phone.getText().toString(), Integer.parseInt(edt_register_id.getText().toString()), edt_register_username.getText().toString(),
-                            edt_register_password.getText().toString(), edt_register_confirmPassword.getText().toString(), Integer.parseInt(role), edt_register_code.getText().toString());
+                } else {
+                    if (succ == 1) {
+                        PostRegister(edt_register_phone.getText().toString(), Integer.parseInt(edt_register_id.getText().toString()), edt_register_username.getText().toString(),
+                                edt_register_password.getText().toString(), edt_register_confirmPassword.getText().toString(), Integer.parseInt(role), edt_register_code.getText().toString());
+
+                    } else {
+                        ToastUtils.showToast(this, "该推荐人无效");
+                    }
+
                 }
                 break;
         }
@@ -187,19 +193,25 @@ public class RegisterActivity extends BaseInfoActivity {
             public void onError(Throwable e) {
                 Log.e("register", e + "");
                 String message = e.getMessage();
-                ToastUtils.showToast(RegisterActivity.this,message);
+                ToastUtils.showToast(RegisterActivity.this, message);
             }
 
             @Override
             public void onNext(MainBean<RegisterBean> regisetbean) {
-                String user_id = regisetbean.getResult().getUser_id();
-                String nickname = regisetbean.getResult().getNickname();
-                String mobile = regisetbean.getResult().getMobile();
-                String role = regisetbean.getResult().getRole();
-                String reg_time = regisetbean.getResult().getReg_time();
-                String token = regisetbean.getResult().getToken();
-                String is_frozen = regisetbean.getResult().getIs_frozen();
-                finish();
+                final String msg = regisetbean.getMsg();
+                if (!msg.equals("注册成功")) {
+                    new Thread(new Runnable() {
+                        @Override
+                        public void run() {
+                            Looper.prepare();
+                            ToastUtils.showToast(RegisterActivity.this, msg);
+                            Looper.loop();
+                        }
+                    }).start();
+
+                } else {
+                    startActivity(new Intent(RegisterActivity.this,LoginActivity.class));
+                }
             }
 
             @Override
@@ -211,7 +223,7 @@ public class RegisterActivity extends BaseInfoActivity {
     }
 
     /**
-     * post联网请求
+     * 获取验证码
      *
      * @param number
      */
@@ -223,15 +235,19 @@ public class RegisterActivity extends BaseInfoActivity {
 
             @Override
             public void onError(Throwable e) {
+                Log.e("RegisterGetCodeBean",e+"");
             }
 
             @Override
             public void onNext(MainBean<RegisterGetCodeBean> registerGetCodeBeanMainBean) {
+                Log.i("TAG",registerGetCodeBeanMainBean.toString());
             }
 
             @Override
             public Observable<MainBean<RegisterGetCodeBean>> getObservable(MyRetroService retrofit) {
-                return retrofit.getCodeData(number);
+                Observable<MainBean<RegisterGetCodeBean>> codeData = retrofit.getCodeData(number);
+                Log.e("Tag",codeData+"");
+                return codeData;
             }
         });
     }

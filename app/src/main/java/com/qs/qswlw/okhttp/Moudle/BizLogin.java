@@ -1,6 +1,8 @@
 package com.qs.qswlw.okhttp.Moudle;
 
 import com.google.gson.reflect.TypeToken;
+import com.qs.qswlw.bean.LoginBean;
+import com.qs.qswlw.bean.MainBean;
 import com.qs.qswlw.okhttp.DataCallBack;
 import com.qs.qswlw.okhttp.NetUrl;
 import com.qs.qswlw.okhttp.OKhttptUtils;
@@ -32,9 +34,9 @@ public class BizLogin implements ILoginBiz {
         Type type = new TypeToken<BaseBean<LoginBean>>() {
         }.getType();
         OKhttptUtils.httpPost(NetUrl.LOGINURL, stringStringHashMap,
-                new DataCallBack<BaseBean<LoginBean>>(type) {
+                new DataCallBack<MainBean<LoginBean>>(type) {
                     @Override
-                    public void onSuccess(BaseBean<LoginBean> data) {
+                    public void onSuccess(MainBean<LoginBean> data) {
                         LoginBean result = null;
                         try {
                             result = data.getResult();

@@ -1,6 +1,6 @@
 package com.qs.qswlw.okhttp.Iview;
 
-import com.qs.qswlw.okhttp.Moudle.LoginBean;
+import com.qs.qswlw.bean.LoginBean;
 
 /**
  * Created by xiaoyu on 2017/4/12.

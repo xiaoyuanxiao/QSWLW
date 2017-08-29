@@ -1,9 +1,9 @@
 package com.qs.qswlw.okhttp.Presenter;
 
+import com.qs.qswlw.bean.LoginBean;
 import com.qs.qswlw.okhttp.Factory.IBizFactory;
 import com.qs.qswlw.okhttp.Iview.ILoginView;
 import com.qs.qswlw.okhttp.Moudle.ILoginBiz;
-import com.qs.qswlw.okhttp.Moudle.LoginBean;
 import com.qs.qswlw.okhttp.oncallback.LoginLisenter;
 
 /**
