@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -15,83 +16,97 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@mipmap/logo_l"/>
+            android:src="@mipmap/logo_l" />
+
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/corner_login"
             android:gravity="center_vertical"
-            android:orientation="horizontal"
-            android:background="@drawable/corner_login">
+            android:orientation="horizontal">
+
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@mipmap/user_l"/>
+                android:src="@mipmap/user_l" />
+
             <EditText
                 android:id="@+id/edt_username"
                 android:layout_width="0dp"
-                android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
+                android:layout_weight="1"
                 android:background="@null"
-                android:textSize="13sp"
-                android:hint="手机号"/>
+                android:hint="手机号"
+                android:textColorHint="@color/view"
+                android:textSize="13sp" />
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center_vertical"
-            android:orientation="horizontal"
             android:layout_marginTop="15dp"
-            android:background="@drawable/corner_login">
+            android:background="@drawable/corner_login"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@mipmap/pwd_l"/>
+                android:src="@mipmap/pwd_l" />
+
             <EditText
                 android:id="@+id/edt_password"
                 android:layout_width="0dp"
-                android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
+                android:layout_weight="1"
                 android:background="@null"
-                android:textSize="13sp"
-                android:hint="密码"/>
+                android:hint="密码"
+                android:textColorHint="@color/view"
+                android:textSize="13sp" />
         </LinearLayout>
+
         <Button
             android:id="@+id/btn_login"
-            android:layout_marginTop="15dp"
             android:layout_width="match_parent"
             android:layout_height="40dp"
-            android:text="登录"
-            android:textSize="12sp"
+            android:layout_marginTop="15dp"
             android:background="@drawable/corner_login_btn"
-            android:textColor="@color/white"/>
+            android:text="登录"
+            android:textColor="@color/white"
+            android:textSize="12sp" />
+
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
             android:layout_marginTop="10dp"
-            android:gravity="center_vertical">
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
             <TextView
                 android:id="@+id/tv_forgetPassword"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="忘记密码"
                 android:textColor="@color/red"
-                android:textSize="9sp"/>
+                android:textSize="9sp" />
+
             <View
                 android:layout_width="0.3dp"
                 android:layout_height="12dp"
-                android:background="@color/view"
                 android:layout_marginLeft="15dp"
-                android:layout_marginRight="12dp"/>
+                android:layout_marginRight="12dp"
+                android:background="@color/view" />
+
             <TextView
                 android:id="@+id/tv_newuser_register"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="新用户注册"
                 android:textColor="@color/text_green"
-                android:textSize="9sp"/>
+                android:textSize="9sp" />
         </LinearLayout>
 
 

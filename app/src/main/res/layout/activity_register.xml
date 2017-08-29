@@ -95,6 +95,7 @@
                 <EditText
                     style="@style/edt_register"
                     android:id="@+id/edt_register_myphone"
+                    android:inputType="phone"
                     android:hint="请输入手机号码"/>
             </LinearLayout>
             <View
@@ -130,6 +131,7 @@
                     android:id="@+id/edt_register_code"
                     android:hint="手机验证信息"/>
                 <Button
+                    android:id="@+id/register_getcode"
                     android:layout_width="wrap_content"
                     android:layout_height="25dp"
                     android:text="获取验证码"
@@ -174,10 +176,10 @@
                 android:background="@color/view" />
             <LinearLayout
                 style="@style/ll_register">
-                <ImageView
+                <CheckBox
+                    android:id="@+id/cbx_register"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@mipmap/pwd_l"/>
+                    android:layout_height="wrap_content"/>
                <TextView
                    android:layout_width="wrap_content"
                    android:layout_height="wrap_content"
@@ -192,6 +194,7 @@
                     android:text="《注册协议》"/>
             </LinearLayout>
             <Button
+                android:id="@+id/btn_register"
                 android:layout_width="match_parent"
                 android:layout_height="35dp"
                 android:background="@drawable/btn_corner"

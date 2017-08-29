@@ -6,7 +6,12 @@ import com.qs.qswlw.bean.GoodProductBean;
 import com.qs.qswlw.bean.MainBean;
 import com.qs.qswlw.bean.Maindatabean;
 import com.qs.qswlw.bean.RankingBean;
+import com.qs.qswlw.bean.RegisterBean;
+import com.qs.qswlw.bean.RegisterCheckIdBean;
+import com.qs.qswlw.bean.RegisterGetCodeBean;
 
+import retrofit2.http.Field;
+import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.Multipart;
 import retrofit2.http.POST;
@@ -35,6 +40,42 @@ public interface MyRetroService {
     //如果有多个参数-就这样
     @POST("index.php?m=Appapi&c=Index&a=ranking_list4")//头去掉 因为写过了，在那些了
     Observable<MainBean<RankingBean>> getRankingData(@Part("time_slot") String a );
+
+    /**
+     * 获取短信验证码
+     * @param a
+     * @return
+     */
+    @FormUrlEncoded
+    @POST("index.php?m=Appapi&c=Login&a=get_register_send")
+    Observable<MainBean<RegisterGetCodeBean>> getCodeData(@Field("mobile") String a);
+
+    /**
+     * 获取推荐人信息
+     * @param a
+     * @return
+     */
+    @FormUrlEncoded
+    @POST("index.php?m=Appapi&c=Login&a=ajaxuser")
+    Observable<MainBean<RegisterCheckIdBean>> getIdData(@Field("uid") int a);
+
+
+    /**
+     * 注册
+     * @param mobile
+     * @param id
+     * @param nickname
+     * @param password
+     * @param repassword
+     * @param role
+     * @param post_code
+     * @return
+     */
+    @FormUrlEncoded
+    @POST("index.php?m=Appapi&c=Login&a=do_register")
+    Observable<MainBean<RegisterBean>> postRgisterData(@Field("mobile") String mobile, @Field("id") int id, @Field("nickname") String nickname,
+                                                       @Field("password") String password, @Field("repassword") String repassword,
+                                                       @Field("role") int role, @Field("post_code") String post_code);
 
     /**
      * 创业天使创业排名榜
