@@ -14,6 +14,8 @@ import android.widget.Spinner;
 
 import com.qs.qswlw.R;
 import com.qs.qswlw.activity.PersonalCenter.BaseInfoActivity;
+import com.qs.qswlw.activity.PersonalCenter.BusinessSettingActivity;
+import com.qs.qswlw.activity.PersonalCenter.ConsumerSettingActivity;
 import com.qs.qswlw.bean.MainBean;
 import com.qs.qswlw.bean.RegisterBean;
 import com.qs.qswlw.bean.RegisterCheckIdBean;
@@ -29,13 +31,19 @@ import rx.Observable;
  * Created by xiaoyu on 2017/4/12.
  */
 
-public class RegisterActivity extends BaseInfoActivity {
+public class RegisterActivity extends BaseInfoActivity{
     private Spinner consume_spinner;
     private ArrayAdapter<CharSequence> consume_adapter;
     private String strConsume;
     private EditText edt_register_code, edt_register_myphone, edt_register_id, edt_register_phone, edt_register_username, edt_register_password, edt_register_name, edt_register_confirmPassword;
     private Button register_getcode, btn_register;
     private TimeCount time;
+
+
+
+   // PersonalSettingBean.CyzxInfoBean cyzxInfoBean;
+   // PersonalSettingBean.ReInfoBean reInfoBean;
+  //  PersonalSettingBean.UserInfoBean userInfoBean;
     /**
      * 返回信息
      *
@@ -46,6 +54,9 @@ public class RegisterActivity extends BaseInfoActivity {
     String mobile;
     int succ;
     private CheckBox cbx_register;
+
+
+
 
     @Override
     public View setConetnView() {
@@ -93,7 +104,8 @@ public class RegisterActivity extends BaseInfoActivity {
     @Override
     public void initData() {
         super.initData();
-        time = new TimeCount(60000,1000);
+        time = new TimeCount(60000, 1000);
+
     }
 
     @Override
@@ -158,9 +170,9 @@ public class RegisterActivity extends BaseInfoActivity {
             @Override
             public void onNext(MainBean<RegisterCheckIdBean> IdBean) {
                 String msg = IdBean.getMsg();
-                if(!msg.equals("获取成功")){
+                if (!msg.equals("获取成功")) {
                     edt_register_name.setText("暂未查到联系人");
-                }else{
+                } else {
                     nickname = IdBean.getResult().getNickname();
                     role = IdBean.getResult().getRole();
                     mobile = IdBean.getResult().getMobile();
@@ -173,7 +185,6 @@ public class RegisterActivity extends BaseInfoActivity {
                         loadSpinner(R.array.consume_item);
                     }
                 }
-
             }
 
             @Override
@@ -182,8 +193,6 @@ public class RegisterActivity extends BaseInfoActivity {
                 return registerIdData;
             }
         });
-
-
     }
 
     /**
@@ -224,7 +233,23 @@ public class RegisterActivity extends BaseInfoActivity {
                     }).start();
 
                 } else {
-                    startActivity(new Intent(RegisterActivity.this,LoginActivity.class));
+                    RegisterBean result = regisetbean.getResult();
+                    String role1 = result.getRole();
+                    String token = result.getToken();
+                    // 0消费天使，10商家，11创业天使，12省代，13市代，14区代，15创业中心，25平台
+                    //请求个人中心接口
+                    Intent intent = new Intent();
+                    intent.putExtra("token",token);
+                    if (role1.equals("0")) {
+                        intent.setClass(RegisterActivity.this,ConsumerSettingActivity.class);
+                        startActivity(intent);
+                    } else if (role1.equals("10")) {
+                        intent.setClass(RegisterActivity.this,BusinessSettingActivity.class);
+                        startActivity(intent);
+                    } else {
+                        //其他页面
+
+                    }
                 }
             }
 
@@ -249,26 +274,27 @@ public class RegisterActivity extends BaseInfoActivity {
 
             @Override
             public void onError(Throwable e) {
-                Log.e("RegisterGetCodeBean",e+"");
+                Log.e("RegisterGetCodeBean", e + "");
             }
 
             @Override
             public void onNext(MainBean<RegisterGetCodeBean> registerGetCodeBeanMainBean) {
                 String message = registerGetCodeBeanMainBean.getMsg();
-                if(!message.equals("成功！")){
-                    ToastUtils.showToast(RegisterActivity.this,message);
+                if (!message.equals("成功！")) {
+                    ToastUtils.showToast(RegisterActivity.this, message);
                 }
-                Log.i("TAG",registerGetCodeBeanMainBean.toString());
+                Log.i("TAG", registerGetCodeBeanMainBean.toString());
             }
 
             @Override
             public Observable<MainBean<RegisterGetCodeBean>> getObservable(MyRetroService retrofit) {
                 Observable<MainBean<RegisterGetCodeBean>> codeData = retrofit.getCodeData(number);
-                Log.e("Tag",codeData+"");
+                Log.e("Tag", codeData + "");
                 return codeData;
             }
         });
     }
+
 
     /**
      * 验证码60秒倒计时
@@ -283,7 +309,7 @@ public class RegisterActivity extends BaseInfoActivity {
         public void onTick(long millisUntilFinished) {
             register_getcode.setBackgroundResource(R.drawable.corner_code_btn_click);
             register_getcode.setClickable(false);
-            register_getcode.setText("("+millisUntilFinished / 1000 +") 秒后可重新发送");
+            register_getcode.setText("(" + millisUntilFinished / 1000 + ") 秒后可重新发送");
         }
 
         @Override
@@ -294,4 +320,5 @@ public class RegisterActivity extends BaseInfoActivity {
 
         }
     }
+
 }

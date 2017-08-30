@@ -6,6 +6,7 @@ import com.qs.qswlw.bean.GoodProductBean;
 import com.qs.qswlw.bean.LoginBean;
 import com.qs.qswlw.bean.MainBean;
 import com.qs.qswlw.bean.Maindatabean;
+import com.qs.qswlw.bean.PersonalSettingBean;
 import com.qs.qswlw.bean.RankingBean;
 import com.qs.qswlw.bean.RegisterBean;
 import com.qs.qswlw.bean.RegisterCheckIdBean;
@@ -60,6 +61,13 @@ public interface MyRetroService {
     @POST("index.php?m=Appapi&c=Login&a=ajaxuser")
     Observable<MainBean<RegisterCheckIdBean>> getIdData(@Field("uid") int a);
 
+
+    /**
+     * 个人中心
+     */
+    @FormUrlEncoded
+    @POST("index.php?m=Appapi&c=User&a=role")
+    Observable<MainBean<PersonalSettingBean>> getPersonalData(@Field("token") String token);
 
     /**
      * 注册

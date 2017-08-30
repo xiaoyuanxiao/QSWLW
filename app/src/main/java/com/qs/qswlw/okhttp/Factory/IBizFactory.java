@@ -4,10 +4,12 @@ import com.qs.qswlw.okhttp.Moudle.BizAngelRanking;
 import com.qs.qswlw.okhttp.Moudle.BizGoodProduct;
 import com.qs.qswlw.okhttp.Moudle.BizLogin;
 import com.qs.qswlw.okhttp.Moudle.BizMain;
+import com.qs.qswlw.okhttp.Moudle.BizPersonalSetting;
 import com.qs.qswlw.okhttp.Moudle.BizRanking;
 import com.qs.qswlw.okhttp.Moudle.IAngelRankingBiz;
 import com.qs.qswlw.okhttp.Moudle.ILoginBiz;
 import com.qs.qswlw.okhttp.Moudle.IMainBiz;
+import com.qs.qswlw.okhttp.Moudle.IPersonalSettingBiz;
 import com.qs.qswlw.okhttp.Moudle.IProductBiz;
 import com.qs.qswlw.okhttp.Moudle.IRankingBiz;
 import com.qs.qswlw.okhttp.Moudle.ITestaBiz;
@@ -41,6 +43,9 @@ public class IBizFactory {
     }
     public static IAngelRankingBiz getAngelRankingBiz() {
         return BizAngelRanking.getInstans();
+    }
+    public static IPersonalSettingBiz getPersonalSettingBiz() {
+        return BizPersonalSetting.getInstans();
     }
 
 }

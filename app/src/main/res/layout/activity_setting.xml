@@ -119,6 +119,7 @@
                             android:layout_height="wrap_content">
 
                             <TextView
+                                android:id="@+id/setting_one"
                                 style="@style/tv_standard"
                                 android:text="消费总金额" />
 
@@ -133,30 +134,14 @@
                                 android:layout_below="@id/tv_setting_consumptionMoney" />
                         </RelativeLayout>
 
-                        <RelativeLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
 
-                            <TextView
-                                style="@style/tv_standard"
-                                android:text="创业种子（激励）" />
-
-                            <TextView
-                                android:id="@+id/tv_setting_encourage"
-                                style="@style/tv_standard"
-                                android:layout_alignParentRight="true"
-                                android:text="0" />
-
-                            <View
-                                style="@style/view_standard"
-                                android:layout_below="@id/tv_setting_encourage" />
-                        </RelativeLayout>
 
                         <RelativeLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content">
 
                             <TextView
+                                android:id="@+id/setting_three"
                                 style="@style/tv_standard"
                                 android:text="消费银豆" />
 
@@ -170,12 +155,31 @@
                                 style="@style/view_standard"
                                 android:layout_below="@id/tv_setting_consumerSilverbeans" />
                         </RelativeLayout>
-
                         <RelativeLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content">
 
                             <TextView
+                                android:id="@+id/setting_otwo"
+                                style="@style/tv_standard"
+                                android:text="创业种子（激励）" />
+
+                            <TextView
+                                android:id="@+id/tv_setting_encourage"
+                                style="@style/tv_standard"
+                                android:layout_alignParentRight="true"
+                                android:text="0" />
+
+                            <View
+                                style="@style/view_standard"
+                                android:layout_below="@id/tv_setting_encourage" />
+                        </RelativeLayout>
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <TextView
+                                android:id="@+id/setting_four"
                                 style="@style/tv_standard"
                                 android:text="创业金豆（提现）" />
 
@@ -195,6 +199,7 @@
                             android:layout_height="wrap_content">
 
                             <TextView
+                                android:id="@+id/setting_five"
                                 style="@style/tv_standard"
                                 android:text="消费金豆（重消）" />
 
@@ -214,8 +219,9 @@
                             android:layout_height="wrap_content">
 
                             <TextView
+                                android:id="@+id/setting_six"
                                 style="@style/tv_standard"
-                                android:text="待纳税创业金豆" />
+                                android:text="上个激励日" />
 
                             <TextView
                                 android:id="@+id/tv_setting_paytaxes"
@@ -233,6 +239,7 @@
                             android:layout_height="wrap_content">
 
                             <TextView
+                                android:id="@+id/setting_serven"
                                 style="@style/tv_standard"
                                 android:text="我的金币" />
 

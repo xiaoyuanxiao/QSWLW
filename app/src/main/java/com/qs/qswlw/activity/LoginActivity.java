@@ -110,12 +110,18 @@ public class LoginActivity extends BaseInfoActivity {
                 LoginBean.UserinfoBean userinfo = loginBeen.getResult().getUserinfo();
                 UserManage.getInstance().saveUserInfo(LoginActivity.this,userinfo);
                 String role = UserManage.getInstance().getUserInfo(LoginActivity.this).getRole();
-                // 0消费天使，10商家，11创业天使，12省代，13市代，14区代，15创业中心，25平台
-                if(role.equals("0")){
-                    startActivity(new Intent(LoginActivity.this, ConsumerSettingActivity.class));
-                }else if(role.equals("10")){
-                    startActivity(new Intent(LoginActivity.this, BusinessSettingActivity.class));
-                }else{
+                String token = userinfo.getToken();
+                //请求个人中心接口
+                Intent intent = new Intent();
+                intent.putExtra("token",token);
+                if (role.equals("0")) {
+                    intent.setClass(LoginActivity.this,ConsumerSettingActivity.class);
+                    startActivity(intent);
+                } else if (role.equals("10")) {
+                    intent.setClass(LoginActivity.this,BusinessSettingActivity.class);
+                    startActivity(intent);
+                } else {
+                    //其他页面
 
                 }
 

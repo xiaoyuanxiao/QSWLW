@@ -16,6 +16,9 @@ import java.util.List;
  * Created by 小猴子 on 2017/4/9.
  */
 
+/**
+ *  Presenter负责逻辑的处理
+ */
 public class MainPresenter {
 
     IMainView iMainView;

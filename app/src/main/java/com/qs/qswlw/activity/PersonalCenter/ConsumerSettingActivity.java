@@ -13,18 +13,37 @@ import com.qs.qswlw.R;
 import com.qs.qswlw.activity.BaseActivity;
 import com.qs.qswlw.activity.MainActivity;
 import com.qs.qswlw.adapter.ConsumerSettingAdapter;
-import com.qs.qswlw.adapter.VentureGoldBeansAdapter;
+import com.qs.qswlw.bean.PersonalSettingBean;
+import com.qs.qswlw.okhttp.Iview.IPersonalSettingView;
+import com.qs.qswlw.okhttp.Presenter.PersonalSettingPresenter;
 
 
 /**
  * Created by xiaoyu on 2017/4/17.
  */
 
-public class ConsumerSettingActivity extends BaseActivity implements AdapterView.OnItemClickListener {
+public class ConsumerSettingActivity extends BaseActivity implements AdapterView.OnItemClickListener, IPersonalSettingView {
     private GridView gv_setting;
     private TextView tv_setting_set;
     private ConsumerSettingAdapter consumerSettingAdapter;
     private RadioButton rb_setting_exit, rb_setting_partner, rb_setting_beans, rb_setting_mall;
+    PersonalSettingPresenter personalSettingPresenter = new PersonalSettingPresenter(this);
+    private TextView tv_setting_consumptionMoney,tv_setting_consumerSilverbeans,tv_setting_encourage,tv_setting_withdrawals,tv_setting_consumerbeans,tv_setting_paytaxes;
+
+
+    /**
+     * 设置数据
+     * @param cyinfoBean
+     * @param reinfoBean
+     * @param userinfoBean
+     */
+    @Override
+    public void setUserInfo(PersonalSettingBean.CyzxInfoBean cyinfoBean, PersonalSettingBean.ReInfoBean reinfoBean, PersonalSettingBean.UserInfoBean userinfoBean) {
+        tv_setting_withdrawals.setText(userinfoBean.getGold_total() + "");
+        tv_setting_consumptionMoney.setText(userinfoBean.getTaxgold_total() + "");
+
+
+    }
 
     @Override
     public Object initView() {
@@ -39,14 +58,23 @@ public class ConsumerSettingActivity extends BaseActivity implements AdapterView
         rb_setting_partner = (RadioButton) findViewById(R.id.rb_main_funtime);
         rb_setting_beans = (RadioButton) findViewById(R.id.rb_main_beans);
         rb_setting_mall = (RadioButton) findViewById(R.id.rb_main_mall);
+        tv_setting_consumptionMoney = (TextView) findViewById(R.id.tv_setting_consumptionMoney);
+
+
+        tv_setting_withdrawals = (TextView) findViewById(R.id.tv_setting_withdrawals);
+        tv_setting_consumptionMoney = (TextView) findViewById(R.id.tv_setting_consumptionMoney);
 
 
     }
 
     @Override
     public void initData() {
-        super.initData();
+        super.initData();// 这些你不用管 是下面gridview的  你不用每个看 能不懂了嘛
         consumerSettingAdapter = new ConsumerSettingAdapter(this);
+        //wuyu
+        Intent intent = getIntent();
+        String token = intent.getStringExtra("token");
+        personalSettingPresenter.getData(token);
         gv_setting.setAdapter(consumerSettingAdapter);
     }
 
@@ -152,4 +180,5 @@ public class ConsumerSettingActivity extends BaseActivity implements AdapterView
                 break;
         }
     }
+
 }
