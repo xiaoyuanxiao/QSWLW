@@ -1,6 +1,7 @@
 package com.qs.qswlw.activity;
 
 import android.content.Intent;
+import android.os.CountDownTimer;
 import android.os.Looper;
 import android.util.Log;
 import android.view.View;
@@ -34,7 +35,7 @@ public class RegisterActivity extends BaseInfoActivity {
     private String strConsume;
     private EditText edt_register_code, edt_register_myphone, edt_register_id, edt_register_phone, edt_register_username, edt_register_password, edt_register_name, edt_register_confirmPassword;
     private Button register_getcode, btn_register;
-
+    private TimeCount time;
     /**
      * 返回信息
      *
@@ -90,6 +91,12 @@ public class RegisterActivity extends BaseInfoActivity {
     }
 
     @Override
+    public void initData() {
+        super.initData();
+        time = new TimeCount(60000,1000);
+    }
+
+    @Override
     public void setOnclick() {
         super.setOnclick();
         edt_register_myphone.setOnClickListener(this);
@@ -107,6 +114,7 @@ public class RegisterActivity extends BaseInfoActivity {
             case R.id.edt_register_myphone:
                 break;
             case R.id.register_getcode:
+                time.start();
                 getCodeData(edt_register_myphone.getText().toString());
                 break;
             case R.id.edt_register_name:
@@ -121,7 +129,7 @@ public class RegisterActivity extends BaseInfoActivity {
                     ToastUtils.showToast(this, "请同意钱盛物联网注册协议");
                 } else {
                     if (succ == 1) {
-                        PostRegister(edt_register_phone.getText().toString(), Integer.parseInt(edt_register_id.getText().toString()), edt_register_username.getText().toString(),
+                        PostRegister(edt_register_myphone.getText().toString(), Integer.parseInt(edt_register_id.getText().toString()), edt_register_username.getText().toString(),
                                 edt_register_password.getText().toString(), edt_register_confirmPassword.getText().toString(), Integer.parseInt(role), edt_register_code.getText().toString());
 
                     } else {
@@ -149,17 +157,23 @@ public class RegisterActivity extends BaseInfoActivity {
 
             @Override
             public void onNext(MainBean<RegisterCheckIdBean> IdBean) {
-                nickname = IdBean.getResult().getNickname();
-                role = IdBean.getResult().getRole();
-                mobile = IdBean.getResult().getMobile();
-                succ = IdBean.getSucc();
-                edt_register_name.setText(nickname);
-                edt_register_phone.setText(mobile);
-                if (Integer.parseInt(role) >= 11) {
-                    loadSpinner(R.array.business_item);
-                } else {
-                    loadSpinner(R.array.consume_item);
+                String msg = IdBean.getMsg();
+                if(!msg.equals("获取成功")){
+                    edt_register_name.setText("暂未查到联系人");
+                }else{
+                    nickname = IdBean.getResult().getNickname();
+                    role = IdBean.getResult().getRole();
+                    mobile = IdBean.getResult().getMobile();
+                    succ = IdBean.getSucc();
+                    edt_register_name.setText(nickname);
+                    edt_register_phone.setText(mobile);
+                    if (Integer.parseInt(role) >= 11) {
+                        loadSpinner(R.array.business_item);
+                    } else {
+                        loadSpinner(R.array.consume_item);
+                    }
                 }
+
             }
 
             @Override
@@ -240,6 +254,10 @@ public class RegisterActivity extends BaseInfoActivity {
 
             @Override
             public void onNext(MainBean<RegisterGetCodeBean> registerGetCodeBeanMainBean) {
+                String message = registerGetCodeBeanMainBean.getMsg();
+                if(!message.equals("成功！")){
+                    ToastUtils.showToast(RegisterActivity.this,message);
+                }
                 Log.i("TAG",registerGetCodeBeanMainBean.toString());
             }
 
@@ -250,5 +268,30 @@ public class RegisterActivity extends BaseInfoActivity {
                 return codeData;
             }
         });
+    }
+
+    /**
+     * 验证码60秒倒计时
+     */
+    class TimeCount extends CountDownTimer {
+
+        public TimeCount(long millisInFuture, long countDownInterval) {
+            super(millisInFuture, countDownInterval);
+        }
+
+        @Override
+        public void onTick(long millisUntilFinished) {
+            register_getcode.setBackgroundResource(R.drawable.corner_code_btn_click);
+            register_getcode.setClickable(false);
+            register_getcode.setText("("+millisUntilFinished / 1000 +") 秒后可重新发送");
+        }
+
+        @Override
+        public void onFinish() {
+            register_getcode.setText("重新获取验证码");
+            register_getcode.setClickable(true);
+            register_getcode.setBackgroundResource(R.drawable.corner_code_btn);
+
+        }
     }
 }
