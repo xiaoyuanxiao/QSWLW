@@ -11,7 +11,7 @@ public interface IPersonalSettingView {
      * 创业中心
      * @param list
      */
-    void setUserInfo(PersonalSettingBean.CyzxInfoBean list,PersonalSettingBean.ReInfoBean list1,PersonalSettingBean.UserInfoBean list2);
+    void setUserInfo(PersonalSettingBean list);
 
     void runOnUiThread(Runnable runnable);
 

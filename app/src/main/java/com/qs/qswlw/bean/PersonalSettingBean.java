@@ -16,9 +16,28 @@ public class PersonalSettingBean {
 
     private String buy_count;
     private int count_commen;
+    private String count_sum;
+    private int none;
     private CyzxInfoBean cyzx_info;
     private ReInfoBean re_info;
     private UserInfoBean user_info;
+    private ShopBean shopBean;
+
+    public String getCount_sum() {
+        return count_sum;
+    }
+
+    public void setCount_sum(String count_sum) {
+        this.count_sum = count_sum;
+    }
+
+    public int getNone() {
+        return none;
+    }
+
+    public void setNone(int none) {
+        this.none = none;
+    }
 
     public String getBuy_count() {
         return buy_count;
@@ -109,6 +128,27 @@ public class PersonalSettingBean {
 
         public void setUser_id(String user_id) {
             this.user_id = user_id;
+        }
+    }
+
+    public static class ShopBean{
+        private String company_name;
+        private String name;
+
+        public String getCompany_name() {
+            return company_name;
+        }
+
+        public void setCompany_name(String company_name) {
+            this.company_name = company_name;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
         }
     }
 

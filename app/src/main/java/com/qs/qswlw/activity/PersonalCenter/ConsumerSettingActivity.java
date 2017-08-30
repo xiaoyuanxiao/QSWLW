@@ -30,20 +30,20 @@ public class ConsumerSettingActivity extends BaseActivity implements AdapterView
     PersonalSettingPresenter personalSettingPresenter = new PersonalSettingPresenter(this);
     private TextView tv_setting_consumptionMoney,tv_setting_consumerSilverbeans,tv_setting_encourage,tv_setting_withdrawals,tv_setting_consumerbeans,tv_setting_paytaxes;
 
-
     /**
      * 设置数据
-     * @param cyinfoBean
-     * @param reinfoBean
-     * @param userinfoBean
+     * @param personalSettingBean
      */
     @Override
-    public void setUserInfo(PersonalSettingBean.CyzxInfoBean cyinfoBean, PersonalSettingBean.ReInfoBean reinfoBean, PersonalSettingBean.UserInfoBean userinfoBean) {
-        tv_setting_withdrawals.setText(userinfoBean.getGold_total() + "");
-        tv_setting_consumptionMoney.setText(userinfoBean.getTaxgold_total() + "");
-
+    public void setUserInfo(PersonalSettingBean personalSettingBean) {
+        tv_setting_consumptionMoney.setText(personalSettingBean.getUser_info().getTaxgold_total()+"");
+        tv_setting_consumerSilverbeans.setText(personalSettingBean.getUser_info().getSilver_total()+"");
+        tv_setting_encourage.setText(personalSettingBean.getUser_info().getLove_total()+"");
+        tv_setting_withdrawals.setText(personalSettingBean.getUser_info().getGold_total()+"");
+        tv_setting_consumerbeans.setText(personalSettingBean.getUser_info().getGold_total()+"");
 
     }
+
 
     @Override
     public Object initView() {
@@ -58,11 +58,14 @@ public class ConsumerSettingActivity extends BaseActivity implements AdapterView
         rb_setting_partner = (RadioButton) findViewById(R.id.rb_main_funtime);
         rb_setting_beans = (RadioButton) findViewById(R.id.rb_main_beans);
         rb_setting_mall = (RadioButton) findViewById(R.id.rb_main_mall);
-        tv_setting_consumptionMoney = (TextView) findViewById(R.id.tv_setting_consumptionMoney);
 
 
         tv_setting_withdrawals = (TextView) findViewById(R.id.tv_setting_withdrawals);
         tv_setting_consumptionMoney = (TextView) findViewById(R.id.tv_setting_consumptionMoney);
+        tv_setting_consumerSilverbeans = (TextView) findViewById(R.id.tv_setting_consumerSilverbeans);
+        tv_setting_encourage = (TextView) findViewById(R.id.tv_setting_encourage);
+        tv_setting_consumerbeans = (TextView) findViewById(R.id.tv_setting_consumerbeans);
+        tv_setting_paytaxes = (TextView) findViewById(R.id.tv_setting_paytaxes);
 
 
     }
@@ -180,5 +183,6 @@ public class ConsumerSettingActivity extends BaseActivity implements AdapterView
                 break;
         }
     }
+
 
 }

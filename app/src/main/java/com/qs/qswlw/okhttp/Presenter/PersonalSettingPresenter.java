@@ -31,19 +31,19 @@ public class PersonalSettingPresenter {
             public void OnSucess(MainBean<PersonalSettingBean> list) {
                 Log.e("====", "PersonalSettingBaseListener=========================="+list);
                 PersonalSettingBean result = list.getResult();
-                String buy_count = result.getBuy_count();
-                int count_commen = result.getCount_commen();
-                //创业中心
-                PersonalSettingBean.CyzxInfoBean cyzx_info = result.getCyzx_info();
-                //推荐人
-                PersonalSettingBean.ReInfoBean re_info = result.getRe_info();
-                //个人中心信息
-                PersonalSettingBean.UserInfoBean user_info = result.getUser_info();
+//                String buy_count = result.getBuy_count();
+//                int count_commen = result.getCount_commen();
+//                //创业中心
+//                PersonalSettingBean.CyzxInfoBean cyzx_info = result.getCyzx_info();
+//                //推荐人
+//                PersonalSettingBean.ReInfoBean re_info = result.getRe_info();
+//                //个人中心信息
+//                PersonalSettingBean.UserInfoBean user_info = result.getUser_info();
 
                 /**
                  * View负责显示
                  */
-                iPersonalSettingView.setUserInfo(cyzx_info,re_info,user_info);
+                iPersonalSettingView.setUserInfo(result);
             }
 
             @Override
