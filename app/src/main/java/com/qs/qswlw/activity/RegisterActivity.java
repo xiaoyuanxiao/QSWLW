@@ -20,6 +20,7 @@ import com.qs.qswlw.bean.MainBean;
 import com.qs.qswlw.bean.RegisterBean;
 import com.qs.qswlw.bean.RegisterCheckIdBean;
 import com.qs.qswlw.bean.RegisterGetCodeBean;
+import com.qs.qswlw.manager.UserManage;
 import com.qs.qswlw.mynet.HttpSubCribe;
 import com.qs.qswlw.mynet.MyRetroService;
 import com.qs.qswlw.mynet.ReHttpUtils;
@@ -261,6 +262,7 @@ public class RegisterActivity extends BaseInfoActivity{
                     String token = result.getToken();
                     // 0消费天使，10商家，11创业天使，12省代，13市代，14区代，15创业中心，25平台
                     //请求个人中心接口
+                    UserManage.getInstance().saveRegisterUser(RegisterActivity.this,result);
                     Intent intent = new Intent();
                     intent.putExtra("token",token);
                     if (role1.equals("0")) {
@@ -273,6 +275,7 @@ public class RegisterActivity extends BaseInfoActivity{
                         //其他页面
 
                     }
+                    finish();
                 }
             }
 

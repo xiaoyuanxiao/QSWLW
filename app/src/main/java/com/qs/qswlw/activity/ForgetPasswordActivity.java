@@ -131,6 +131,7 @@ public class ForgetPasswordActivity extends BaseInfoActivity {
                     ToastUtils.showToast(ForgetPasswordActivity.this, message);
                 if(message.equals("修改成功！")){
                     startActivity(new Intent(ForgetPasswordActivity.this,LoginActivity.class));
+                    finish();
                 }
                 Log.i("TAG", forgetPassWordBeanMainBean.toString());
             }

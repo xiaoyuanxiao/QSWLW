@@ -7,6 +7,7 @@ import android.util.Log;
 
 import com.google.gson.Gson;
 import com.qs.qswlw.bean.LoginBean;
+import com.qs.qswlw.bean.RegisterBean;
 
 /**
  * Created by xiaoyu on 2017/8/29.
@@ -65,5 +66,41 @@ public class UserManage {
         }
         return null;
     }
+
+    /**
+     * 保存注册信息
+      */
+    public void saveRegisterUser(Context context, RegisterBean registerBean){
+        SharedPreferences sp = context.getSharedPreferences("registerUserInfo", Context.MODE_PRIVATE);//Context.MODE_PRIVATE表示SharePrefences的数据只有自己应用程序能访问。
+        SharedPreferences.Editor editor = sp.edit();
+        editor.putString("REGISTERUSER",new Gson().toJson(registerBean));
+        editor.putString("IS_FROZEN",registerBean.getIs_frozen());
+        editor.putString("MOBILE",registerBean.getMobile());
+        editor.putString("NICKNAME",registerBean.getNickname());
+        editor.putString("REG_TIME",registerBean.getReg_time());
+        editor.putString("ROLE",registerBean.getRole());
+        editor.putString("TOKEN",registerBean.getToken());
+        editor.putString("USER_ID",registerBean.getUser_id());
+        editor.commit();
+    }
+
+    /**
+     * 获取注册信息
+     */
+    public RegisterBean getRegisterUserInfo(Context context){
+        SharedPreferences sp = context.getSharedPreferences("registerUserInfo", Context.MODE_PRIVATE);
+        String registeruser = sp.getString("REGISTERUSER", null);
+        if(!TextUtils.isEmpty(registeruser)){
+            RegisterBean registerBean = null;
+            try {
+                registerBean = new Gson().fromJson(registeruser, RegisterBean.class);
+            }catch (Exception e) {
+                Log.e("getRegisterUserInfo",e+"22222");
+            }
+            return registerBean;
+        }
+        return null;
+    }
+
 
 }
