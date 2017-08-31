@@ -54,6 +54,7 @@ public class RegisterActivity extends BaseInfoActivity{
     String mobile;
     int succ;
     private CheckBox cbx_register;
+    private int user_role;
 
 
 
@@ -86,6 +87,29 @@ public class RegisterActivity extends BaseInfoActivity{
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 consume_spinner.getSelectedItemPosition();
                 strConsume = consume_spinner.getSelectedItem().toString();
+                switch (strConsume) {
+                    case "消费天使":
+                        user_role = 0;
+                        break;
+                    case "商家":
+                        user_role = 10;
+                        break;
+                    case "创业天使":
+                        user_role = 11;
+                        break;
+                    case "省代":
+                        user_role = 12;
+                        break;
+                    case "市代":
+                        user_role = 13;
+                        break;
+                    case "区代":
+                        user_role = 14;
+                        break;
+                    case "创业中心":
+                        user_role = 15;
+                        break;
+                }
             }
 
             @Override
@@ -126,7 +150,6 @@ public class RegisterActivity extends BaseInfoActivity{
             case R.id.edt_register_myphone:
                 break;
             case R.id.register_getcode:
-                time.start();
                 getCodeData(edt_register_myphone.getText().toString());
                 break;
             case R.id.edt_register_name:
@@ -142,7 +165,7 @@ public class RegisterActivity extends BaseInfoActivity{
                 } else {
                     if (succ == 1) {
                         PostRegister(edt_register_myphone.getText().toString(), Integer.parseInt(edt_register_id.getText().toString()), edt_register_username.getText().toString(),
-                                edt_register_password.getText().toString(), edt_register_confirmPassword.getText().toString(), Integer.parseInt(role), edt_register_code.getText().toString());
+                                edt_register_password.getText().toString(), edt_register_confirmPassword.getText().toString(), user_role, edt_register_code.getText().toString());
 
                     } else {
                         ToastUtils.showToast(this, "该推荐人无效");
@@ -282,6 +305,8 @@ public class RegisterActivity extends BaseInfoActivity{
                 String message = registerGetCodeBeanMainBean.getMsg();
                 if (!message.equals("成功！")) {
                     ToastUtils.showToast(RegisterActivity.this, message);
+                }else{
+                    time.start();
                 }
                 Log.i("TAG", registerGetCodeBeanMainBean.toString());
             }

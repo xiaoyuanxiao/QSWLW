@@ -22,14 +22,7 @@ public class PersonalSettingBean {
     private ReInfoBean re_info;
     private UserInfoBean user_info;
     private ShopBean shop;
-
-    public ShopBean getShopBean() {
-        return shop;
-    }
-
-    public void setShopBean(ShopBean shop) {
-        this.shop = shop;
-    }
+    private String last_rebate_date;
 
     public String getCount_sum() {
         return count_sum;
@@ -85,6 +78,22 @@ public class PersonalSettingBean {
 
     public void setUser_info(UserInfoBean user_info) {
         this.user_info = user_info;
+    }
+
+    public ShopBean getShop() {
+        return shop;
+    }
+
+    public void setShop(ShopBean shop) {
+        this.shop = shop;
+    }
+
+    public String getLast_rebate_date() {
+        return last_rebate_date;
+    }
+
+    public void setLast_rebate_date(String last_rebate_date) {
+        this.last_rebate_date = last_rebate_date;
     }
 
     public static class CyzxInfoBean {

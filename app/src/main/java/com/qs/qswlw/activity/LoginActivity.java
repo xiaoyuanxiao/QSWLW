@@ -77,6 +77,7 @@ public class LoginActivity extends BaseInfoActivity {
             case R.id.tv_newuser_register:
                 startActivity(new Intent(this,RegisterActivity.class));
                 break;
+
             case R.id.tv_forgetPassword:
                 startActivity(new Intent(this,ForgetPasswordActivity.class));
                 break;

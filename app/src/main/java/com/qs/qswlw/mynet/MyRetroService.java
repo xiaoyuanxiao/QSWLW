@@ -2,6 +2,7 @@ package com.qs.qswlw.mynet;
 
 
 import com.qs.qswlw.bean.AngelRankingBean;
+import com.qs.qswlw.bean.ForgetPassWordBean;
 import com.qs.qswlw.bean.GoodProductBean;
 import com.qs.qswlw.bean.LoginBean;
 import com.qs.qswlw.bean.MainBean;
@@ -51,6 +52,28 @@ public interface MyRetroService {
     @FormUrlEncoded
     @POST("index.php?m=Appapi&c=Login&a=get_register_send")
     Observable<MainBean<RegisterGetCodeBean>> getCodeData(@Field("mobile") String a);
+
+    @FormUrlEncoded
+    @POST("index.php?m=Appapi&c=Login&a=get_register_send")
+    Observable<MainBean<RegisterGetCodeBean>> getForgetPwCodeData(@Field("mobile") String a,@Field("type") int type);
+
+
+    /**
+     * 提交密码重设
+     * @param mobile
+     * @param roles
+     * @param pass
+     * @param repass
+     * @param type
+     * @param mobile_code
+     * @return
+     */
+    @FormUrlEncoded
+    @POST("index.php?m=Appapi&c=Login&a=do_password")
+    Observable<MainBean<ForgetPassWordBean>> postForgetPWData(@Field("mobile") String mobile, @Field("roles") int roles, @Field("pass") String pass,
+                                                             @Field("repass") String repass, @Field("type") String type,
+                                                             @Field("mobile_code") String mobile_code);
+
 
     /**
      * 获取推荐人信息

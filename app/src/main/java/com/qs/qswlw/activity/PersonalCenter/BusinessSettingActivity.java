@@ -41,7 +41,8 @@ public class BusinessSettingActivity extends BaseActivity implements IPersonalSe
         tv_recommender.setText("推荐人:"+personalSettingBean.getRe_info().getNickname());
         tv_setting_id.setText("ID:"+personalSettingBean.getUser_info().getUser_id());
         tv_setting_name.setText("昵称:"+personalSettingBean.getUser_info().getNickname());
-        tv_setting_shopname.setText("店铺名称:"+personalSettingBean.getShopBean().getName());
+        tv_setting_shopname.setText("店铺名称:"+personalSettingBean.getShop().getName());
+        tv_setting_paytaxes.setText(personalSettingBean.getLast_rebate_date()+"");
     }
 
     @Override

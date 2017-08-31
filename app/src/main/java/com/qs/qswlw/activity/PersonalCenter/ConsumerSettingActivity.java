@@ -28,7 +28,8 @@ public class ConsumerSettingActivity extends BaseActivity implements AdapterView
     private ConsumerSettingAdapter consumerSettingAdapter;
     private RadioButton rb_setting_exit, rb_setting_partner, rb_setting_beans, rb_setting_mall;
     PersonalSettingPresenter personalSettingPresenter = new PersonalSettingPresenter(this);
-    private TextView tv_setting_consumptionMoney,tv_setting_consumerSilverbeans,tv_setting_encourage,tv_setting_withdrawals,tv_setting_consumerbeans,tv_setting_paytaxes;
+    private TextView tv_setting_consumptionMoney,tv_setting_consumerSilverbeans,tv_setting_encourage,tv_setting_withdrawals,tv_setting_consumerbeans,tv_setting_paytaxes
+            ;
 
     /**
      * 设置数据
@@ -41,6 +42,7 @@ public class ConsumerSettingActivity extends BaseActivity implements AdapterView
         tv_setting_encourage.setText(personalSettingBean.getUser_info().getLove_total()+"");
         tv_setting_withdrawals.setText(personalSettingBean.getUser_info().getGold_total()+"");
         tv_setting_consumerbeans.setText(personalSettingBean.getUser_info().getGold_total()+"");
+        tv_setting_paytaxes.setText(personalSettingBean.getLast_rebate_date()+"");
 
     }
 
