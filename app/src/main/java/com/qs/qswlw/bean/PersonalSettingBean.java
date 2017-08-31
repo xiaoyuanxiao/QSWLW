@@ -21,7 +21,15 @@ public class PersonalSettingBean {
     private CyzxInfoBean cyzx_info;
     private ReInfoBean re_info;
     private UserInfoBean user_info;
-    private ShopBean shopBean;
+    private ShopBean shop;
+
+    public ShopBean getShopBean() {
+        return shop;
+    }
+
+    public void setShopBean(ShopBean shop) {
+        this.shop = shop;
+    }
 
     public String getCount_sum() {
         return count_sum;

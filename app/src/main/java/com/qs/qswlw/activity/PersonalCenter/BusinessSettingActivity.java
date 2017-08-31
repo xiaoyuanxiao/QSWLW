@@ -15,12 +15,15 @@ import com.qs.qswlw.activity.MainActivity;
 import com.qs.qswlw.activity.MyProductsActivity;
 import com.qs.qswlw.activity.PersonalCenter.city.HarvestAddressListActivity;
 import com.qs.qswlw.adapter.BusinessSettingAdapter;
+import com.qs.qswlw.bean.PersonalSettingBean;
+import com.qs.qswlw.okhttp.Iview.IPersonalSettingView;
+import com.qs.qswlw.okhttp.Presenter.PersonalSettingPresenter;
 
 
 /**
  * Created by 小羽 on 2017/3/24.
  */
-public class BusinessSettingActivity extends BaseActivity {
+public class BusinessSettingActivity extends BaseActivity implements IPersonalSettingView {
 
     private GridView gv_setting;
     private RadioButton rb_main_mall;
@@ -29,7 +32,17 @@ public class BusinessSettingActivity extends BaseActivity {
     private RadioButton rb_main_exit;
     private BusinessSettingAdapter businessSettingAdapter;
     private TextView tv_setting_set;
-
+    PersonalSettingPresenter personalSettingPresenter = new PersonalSettingPresenter(this);
+    private TextView tv_setting_consumptionMoney,tv_setting_consumerSilverbeans,tv_setting_encourage,tv_setting_withdrawals,tv_setting_consumerbeans,tv_setting_paytaxes
+            ,tv_cyzx,tv_recommender,tv_setting_id,tv_setting_name,tv_setting_shopname;
+    @Override
+    public void setUserInfo(PersonalSettingBean personalSettingBean) {
+        tv_cyzx.setText("创业中心:"+personalSettingBean.getCyzx_info().getNickname());
+        tv_recommender.setText("推荐人:"+personalSettingBean.getRe_info().getNickname());
+        tv_setting_id.setText("ID:"+personalSettingBean.getUser_info().getUser_id());
+        tv_setting_name.setText("昵称:"+personalSettingBean.getUser_info().getNickname());
+        tv_setting_shopname.setText("店铺名称:"+personalSettingBean.getShopBean().getName());
+    }
 
     @Override
     public Object initView() {
@@ -46,11 +59,28 @@ public class BusinessSettingActivity extends BaseActivity {
         tv_setting_set = (TextView) findViewById(R.id.tv_setting_set);
 
 
+        tv_setting_withdrawals = (TextView) findViewById(R.id.tv_setting_withdrawals);
+        tv_setting_consumptionMoney = (TextView) findViewById(R.id.tv_setting_consumptionMoney);
+        tv_setting_consumerSilverbeans = (TextView) findViewById(R.id.tv_setting_consumerSilverbeans);
+        tv_setting_encourage = (TextView) findViewById(R.id.tv_setting_encourage);
+        tv_setting_consumerbeans = (TextView) findViewById(R.id.tv_setting_consumerbeans);
+        tv_setting_paytaxes = (TextView) findViewById(R.id.tv_setting_paytaxes);
+        tv_cyzx = (TextView) findViewById(R.id.tv_cyzx);
+        tv_recommender = (TextView) findViewById(R.id.tv_recommender);
+        tv_setting_id = (TextView) findViewById(R.id.tv_setting_id);
+        tv_setting_name = (TextView) findViewById(R.id.tv_setting_name);
+        tv_setting_shopname = (TextView) findViewById(R.id.tv_setting_shopname);
+
+
     }
 
     @Override
     public void initData() {
         super.initData();
+        tv_setting_shopname.setVisibility(View.VISIBLE);
+        Intent intent = getIntent();
+        String token = intent.getStringExtra("token");
+        personalSettingPresenter.getData(token);
         businessSettingAdapter = new BusinessSettingAdapter(this);
         gv_setting.setAdapter(businessSettingAdapter);
     }
@@ -63,6 +93,8 @@ public class BusinessSettingActivity extends BaseActivity {
         tv_setting_set.setOnClickListener(this);
 
     }
+
+
 
     class ItemClickListener implements AdapterView.OnItemClickListener {
 
