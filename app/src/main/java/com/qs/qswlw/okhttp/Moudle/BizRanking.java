@@ -44,6 +44,9 @@ public class BizRanking implements IRankingBiz {
                     vaule = "zhou";
                 else if (code == 100)
                     vaule = "ri";
+                else if(code == 0){
+                    vaule = "";
+                }
                 return retrofit.getRankingData(vaule);
             }
 

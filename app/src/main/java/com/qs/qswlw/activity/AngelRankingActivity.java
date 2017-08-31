@@ -40,12 +40,15 @@ public class AngelRankingActivity extends BaseInfoActivity implements IAngelRank
         week_ranking = (RelativeLayout) inflate.findViewById(R.id.week_ranking);
         month_ranking = (RelativeLayout) inflate.findViewById(R.id.month_ranking);
         viewpagedata = new ArrayList<>();
-        viewpagedata.add(new AngelRankingMode(this, 1));
-        viewpagedata.add(new AngelRankingMode(this, 2));
-        viewpagedata.add(new AngelRankingMode(this, 3));
+        viewpagedata.add(new AngelRankingMode(this, 100));
+        viewpagedata.add(new AngelRankingMode(this, 200));
+        viewpagedata.add(new AngelRankingMode(this, 300));//我对应着改了 为什么又改成这个呢
         MyViewPagerAdapter adapter = new MyViewPagerAdapter();
         viewpager_unionranking.setAdapter(adapter);
-        viewpagedata.get(0).initData();
+        //加载界面
+        //首先呢 会这样----到这-我们先加载一个 0 去请求  然后 呢 请求过程 我们就不看了
+        viewpager_unionranking.setOffscreenPageLimit(0);
+        angelRankingPresenter.getdata(0);
         return inflate;
     }
 
@@ -60,6 +63,7 @@ public class AngelRankingActivity extends BaseInfoActivity implements IAngelRank
         super.initData();
         tv_ranking_left.setText("创业天使创业排名榜");
     }
+
     @Override
     public void setOnclick() {
         super.setOnclick();
@@ -75,7 +79,6 @@ public class AngelRankingActivity extends BaseInfoActivity implements IAngelRank
         super.onClick(v);
         int position = 0;
         switch (v.getId()) {
-
             case R.id.day_ranking:
                 position = 0;
                 break;
@@ -87,7 +90,7 @@ public class AngelRankingActivity extends BaseInfoActivity implements IAngelRank
                 break;
         }
         viewpager_unionranking.setCurrentItem(position);
-        viewpagedata.get(position).initData();
+
 
     }
 
@@ -102,6 +105,7 @@ public class AngelRankingActivity extends BaseInfoActivity implements IAngelRank
             switch (checkedId) {
                 case R.id.day_ranking:
                     position = 0;
+                    viewpagedata.get(0).initData();
                     break;
                 case R.id.week_ranking:
                     position = 1;
@@ -111,7 +115,7 @@ public class AngelRankingActivity extends BaseInfoActivity implements IAngelRank
                     break;
             }
             viewpager_unionranking.setCurrentItem(position);
-            viewpagedata.get(position).initData();
+
         }
     }
 
@@ -130,6 +134,8 @@ public class AngelRankingActivity extends BaseInfoActivity implements IAngelRank
         @Override
         public Object instantiateItem(ViewGroup container, int position) {
             container.addView(viewpagedata.get(position).view);
+            viewpagedata.get(position).initData();
+            //因为加载第一页 的时候 会 100 所以呢
             return viewpagedata.get(position).view;
         }
 
@@ -142,16 +148,18 @@ public class AngelRankingActivity extends BaseInfoActivity implements IAngelRank
 
     @Override
     public void setRankMondayWek(List<AngelRankingBean.SalemanBean> list, int recode) {
-        switch (recode) {
-            case 1:
-                viewpagedata.get(0).setdata(list);
-                break;
-            case 2:
-                viewpagedata.get(1).setdata(list);
-                break;
-            case 3:
-                viewpagedata.get(2).setdata(list);
-                break;
+
+        //返回请求结果  用0请求的   就到这里来了--是这里的回传*/
+        if (recode == 0) {
+            viewpagedata.get(0).setdata(list, recode);
+            return;
+        }
+
+        for (int i = 0; i < viewpagedata.size(); i++) {
+            if (viewpagedata.get(i).getCode() == recode) {
+                viewpagedata.get(i).setdata(list, recode);
+                continue;
+            }
         }
     }
 

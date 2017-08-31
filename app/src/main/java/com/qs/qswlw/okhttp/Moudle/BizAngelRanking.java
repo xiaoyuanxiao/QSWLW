@@ -39,12 +39,13 @@ public class BizAngelRanking implements IAngelRankingBiz {
             public Observable<MainBean<AngelRankingBean>> getObservable(MyRetroService retrofit) {
                 //这是什么   这个是复制的 还没改完 你先看着哈 我改这个了
                 // 你可以这样 反正是一样的--什么都不用改
-                String vaule = null;
-                if (code == 3)
+                String vaule = "";//都说了是一样的  别动了乖
+
+                if (code == 300)
                     vaule = "yue";
-                else if (code == 2)
+                else if (code == 200)
                     vaule = "zhou";
-                else if (code == 1)
+                else if (code == 100)
                     vaule = "ri";
                 return retrofit.getAngelRankingData(vaule);
             }

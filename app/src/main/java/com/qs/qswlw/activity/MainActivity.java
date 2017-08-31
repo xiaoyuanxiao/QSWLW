@@ -32,7 +32,10 @@ import com.qs.qswlw.adapter.EntrepAdapter;
 import com.qs.qswlw.adapter.LuckAdapter;
 import com.qs.qswlw.adapter.MytestAdapter;
 import com.qs.qswlw.adapter.UnionAdapter;
+import com.qs.qswlw.bean.LoginBean;
 import com.qs.qswlw.bean.Maindatabean;
+import com.qs.qswlw.bean.RegisterBean;
+import com.qs.qswlw.manager.UserManage;
 import com.qs.qswlw.okhttp.Iview.IMainView;
 import com.qs.qswlw.okhttp.Moudle.AlertBean;
 import com.qs.qswlw.okhttp.Moudle.ChinaBean;
@@ -61,14 +64,24 @@ public class MainActivity extends BaseActivity implements IMainView {
     private View alertview;
     private Button btn_dialog;
     private ImageView iv_setting_main;
-    private ImageView iv_ranking_main;
+    private ImageView iv_ranking_main,iv_main_avater;
     private LinearLayout ll_footview_union;
     private RadioButton rb_main_goodprojects, rb_main_media, rb_main_mall, rb_main_union, rb_main_WitnessChinaBusiness, rb_main_Win, rb_main_luckgame, rb_main_funtime;
     private WebView webview;
     private Intent intent;
     private PopupWindow popupWindow;
-    private LinearLayout ll_ranking_popup;
+    private LinearLayout ll_ranking_popup,main_ll_avater;
 
+    ArrayList<ChinaBean> listtest;
+    ArrayList<String> enlist;
+    MytestAdapter myDataAdapter;
+    EntrepAdapter entrepAdapter;
+    ChinaAdapter chinaAdapter;
+    UnionAdapter unionAdapter;
+    BenefitAdapter benefitAdapter;
+    AngelAdapter angelAdapter;
+    LuckAdapter luckAdapter;
+    ArrayList<View> pagelist = new ArrayList<>();
 
     @Override
     public void setAlertList(AlertBean title) {
@@ -143,19 +156,12 @@ public class MainActivity extends BaseActivity implements IMainView {
         return R.layout.activity_main;
     }
 
-    ArrayList<ChinaBean> listtest;
-    ArrayList<String> enlist;
-    MytestAdapter myDataAdapter;
-    EntrepAdapter entrepAdapter;
-    ChinaAdapter chinaAdapter;
-    UnionAdapter unionAdapter;
-    BenefitAdapter benefitAdapter;
-    AngelAdapter angelAdapter;
-    LuckAdapter luckAdapter;
-    ArrayList<View> pagelist = new ArrayList<>();
 
     @Override
     public void initfindviewByid() {
+        LoginBean.UserinfoBean userInfo = UserManage.getInstance().getUserInfo(this);
+        RegisterBean registerUserInfo = UserManage.getInstance().getRegisterUserInfo(this);
+
         iv_setting_main = (ImageView) findViewById(R.id.iv_setting_main);
         imageSwitchView = (Image3DSwitchView) findViewById(R.id.image_switch_view);
         benefitList = (Image3DView) findViewById(R.id.benefitList);
@@ -173,8 +179,16 @@ public class MainActivity extends BaseActivity implements IMainView {
         rb_main_Win = (RadioButton) findViewById(R.id.rb_main_Win);
         rb_main_luckgame = (RadioButton) findViewById(R.id.rb_main_luckgame);
         rb_main_funtime = (RadioButton) findViewById(R.id.rb_main_funtime);
+        main_ll_avater = (LinearLayout) findViewById(R.id.main_ll_avater);
+        iv_main_avater = (ImageView) findViewById(R.id.iv_main_avater);
         imageSwitchView.setCurrentImage(0);
         showDilog();
+
+        if(userInfo!=null||registerUserInfo!=null){
+            main_ll_avater.setVisibility(View.VISIBLE);
+            iv_setting_main.setVisibility(View.GONE);
+            //   iv_main_avater.setImageResource();
+        }
     }
 
 
@@ -346,7 +360,6 @@ public class MainActivity extends BaseActivity implements IMainView {
             case R.id.iv_ranking_main:
                // startActivity(new Intent(this, RankingActivity.class));
                 showPw(iv_ranking_main);
-
                 break;
             case R.id.rb_main_goodprojects:
                 startActivity(new Intent(this, ProjectRecommendationActivity.class));

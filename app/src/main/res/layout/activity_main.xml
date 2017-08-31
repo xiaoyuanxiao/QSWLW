@@ -17,6 +17,25 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:src="@mipmap/user_icon" />
+        <LinearLayout
+            android:id="@+id/main_ll_avater"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:visibility="gone"
+            android:layout_centerVertical="true"
+            android:orientation="vertical">
+            <com.qs.qswlw.view.NoBorderCircleImageView
+                android:id="@+id/iv_main_avater"
+                android:layout_width="35dp"
+                android:layout_height="35dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:textSize="9sp"
+                android:text="陆小曼"/>
+        </LinearLayout>
 
         <ImageView
             android:layout_width="wrap_content"
@@ -28,6 +47,8 @@
             android:id="@+id/iv_ranking_main"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:scaleType="fitXY"
+
             android:layout_alignParentRight="true"
             android:src="@mipmap/header_ico1" />
     </RelativeLayout>
