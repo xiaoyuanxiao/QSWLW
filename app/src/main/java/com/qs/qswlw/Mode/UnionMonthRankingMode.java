@@ -28,6 +28,9 @@ public class UnionMonthRankingMode extends BaseMode {
 
     }
 
+    public int getCode(){
+        return code;
+    }
     RankingAdapter rankingAdapter;
 
     @Override
@@ -44,20 +47,18 @@ public class UnionMonthRankingMode extends BaseMode {
     @Override
     public void initData() {
         super.initData();
-        if (data != null && data.size() != 0 && !isgetall) {
+        if (isthis &&data != null && data.size() != 0 ) {
             return;
         }
         ((UnionRankingActivity) context).rankingPresenter.getdata(code);
     }
 
-    boolean isgetall = false;
+    boolean isthis = true;
 
-    public void getALL() {
-        isgetall = true;
-        ((UnionRankingActivity) context).rankingPresenter.getdata(0);
-    }
 
-    public void setdata(List<RankingBean.SingleLogBean> data) {
+
+    public void setdata(List<RankingBean.SingleLogBean> data, int recode) {
+        isthis = (recode == code);
         this.data.clear();
         this.data.addAll(data);
         rankingAdapter.notifyDataSetChanged();

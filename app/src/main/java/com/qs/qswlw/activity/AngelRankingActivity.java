@@ -81,6 +81,7 @@ public class AngelRankingActivity extends BaseInfoActivity implements IAngelRank
         switch (v.getId()) {
             case R.id.day_ranking:
                 position = 0;
+                viewpagedata.get(0).initData();
                 break;
             case R.id.week_ranking:
                 position = 1;

@@ -37,16 +37,13 @@ public class BizRanking implements IRankingBiz {
             public Observable<MainBean<RankingBean>> getObservable(MyRetroService retrofit) {
                 //这是什么   这个是复制的 还没改完 你先看着哈 我改这个了
                 // 你可以这样 反正是一样的--什么都不用改
-                String vaule = null;
+                String vaule = "";
                 if (code == 300)
                     vaule = "yue";
                 else if (code == 200)
                     vaule = "zhou";
                 else if (code == 100)
                     vaule = "ri";
-                else if(code == 0){
-                    vaule = "";
-                }
                 return retrofit.getRankingData(vaule);
             }
 

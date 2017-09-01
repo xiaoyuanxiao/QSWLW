@@ -40,6 +40,8 @@ public class UnionRankingActivity extends BaseInfoActivity implements IRankingVi
         viewpagedata.add(new UnionMonthRankingMode(this, 100));
         viewpagedata.add(new UnionMonthRankingMode(this, 200));
         viewpagedata.add(new UnionMonthRankingMode(this, 300));
+        viewpager_unionranking.setOffscreenPageLimit(0);
+        rankingPresenter.getdata(0);
         return inflate;
     }
 
@@ -71,9 +73,9 @@ public class UnionRankingActivity extends BaseInfoActivity implements IRankingVi
         super.onClick(v);
         int position = 0;
         switch (v.getId()) {
-
             case R.id.day_ranking:
                 position = 0;
+                viewpagedata.get(0).initData();
                 break;
             case R.id.week_ranking:
                 position = 1;
@@ -96,6 +98,7 @@ public class UnionRankingActivity extends BaseInfoActivity implements IRankingVi
             switch (checkedId) {
                 case R.id.day_ranking:
                     position = 0;
+                    viewpagedata.get(0).initData();
                     break;
                 case R.id.week_ranking:
                     position = 1;
@@ -135,19 +138,18 @@ public class UnionRankingActivity extends BaseInfoActivity implements IRankingVi
 
     @Override
     public void setRankMondayWek(List<RankingBean.SingleLogBean> list, int recode) {
-        switch (recode) {
-            case 0:
-                viewpagedata.get(0).setdata(list);
-                break;
-            case 100:
-                viewpagedata.get(0).setdata(list);
-                break;
-            case 200:
-                viewpagedata.get(1).setdata(list);
-                break;
-            case 300:
-                viewpagedata.get(2).setdata(list);
-                break;
+
+        //返回请求结果  用0请求的   就到这里来了--是这里的回传*/
+        if (recode == 0) {
+            viewpagedata.get(0).setdata(list, recode);
+            return;
+        }
+
+        for (int i = 0; i < viewpagedata.size(); i++) {
+            if (viewpagedata.get(i).getCode() == recode) {
+                viewpagedata.get(i).setdata(list, recode);
+                continue;
+            }
         }
 
     }
