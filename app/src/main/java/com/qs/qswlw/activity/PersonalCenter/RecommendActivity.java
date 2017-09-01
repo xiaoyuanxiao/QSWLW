@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,15 +12,12 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import com.google.zxing.BarcodeFormat;
-import com.google.zxing.EncodeHintType;
 import com.google.zxing.WriterException;
-import com.google.zxing.common.BitMatrix;
-import com.google.zxing.qrcode.QRCodeWriter;
 import com.qs.qswlw.R;
-
-import java.util.Hashtable;
+import com.qs.qswlw.activity.RegisterActivity;
+import com.qs.qswlw.zxing.encoding.EncodingHandler;
 
 import static com.qs.qswlw.R.id.iv_QRCode;
 
@@ -34,7 +30,9 @@ public class RecommendActivity extends BaseInfoActivity implements View.OnLongCl
 
     private ImageView iv_qrCode;
     private PopupWindow popupWindow;
-    private TextView tv_recommend_name,tv_recommend_id;
+    private TextView tv_recommend_name, tv_recommend_id;
+    private String userid,role;
+    private String name;
 
 
     @Override
@@ -49,7 +47,26 @@ public class RecommendActivity extends BaseInfoActivity implements View.OnLongCl
     @Override
     public void initfindviewByid() {
         super.initfindviewByid();
-        tv_titlebar_center.setText("推荐注册");
+        Intent intent = getIntent();
+        role = intent.getStringExtra("role");
+        switch (role) {
+            case "0":
+            case "10":
+                name = "消费者";
+                break;
+            case "12":
+            case "13":
+            case "14":
+            case "25":
+                name = "商家";
+                break;
+            case "15":
+                name = "创业天使";
+                break;
+            default:
+        }
+
+        tv_titlebar_center.setText("推荐"+name);
         tv_titlebar_right.setText("推荐记录");
     }
 
@@ -58,58 +75,36 @@ public class RecommendActivity extends BaseInfoActivity implements View.OnLongCl
         super.initData();
         Intent intent = getIntent();
         tv_recommend_name.setText(intent.getStringExtra("nickname"));
-        tv_recommend_id.setText(intent.getStringExtra("userid"));
+        userid = intent.getStringExtra("userid");
+        tv_recommend_id.setText(userid);
 
-        try {
-            Bitmap codeBitmap =   createQRCodeBitmap(intent.getStringExtra("userid"));
-            iv_qrCode.setImageBitmap(codeBitmap);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        createQRCode();
+
     }
 
-    // 生成QR图
-    private Bitmap createQRCodeBitmap(String text) {
-        int QR_WIDTH = 400, QR_HEIGHT = 400;
-        try {
-            // 需要引入core包
-            QRCodeWriter writer = new QRCodeWriter();
+    private void createQRCode() {
+        try
 
-            Log.i("TAG", "生成的文本：" + text);
-            if (text == null || "".equals(text) || text.length() < 1) {
-                return null;
+        {
+
+            //根据输入的文本生成对应的二维码并且显示出来
+            Bitmap mBitmap = EncodingHandler.createQRCode(userid, 500);
+            if (mBitmap != null) {
+                Toast.makeText(this, "二维码生成成功！", Toast.LENGTH_SHORT).show();
+                iv_qrCode.setImageBitmap(mBitmap);
             }
 
-            Hashtable<EncodeHintType, String> hints = new Hashtable<EncodeHintType, String>();
-            hints.put(EncodeHintType.CHARACTER_SET, "utf-8");
-            //比特矩阵
-            BitMatrix bitMatrix = new QRCodeWriter().encode(text,
-                    BarcodeFormat.QR_CODE, QR_WIDTH, QR_HEIGHT, hints);
-            int[] pixels = new int[QR_WIDTH * QR_HEIGHT];
-            //比特矩阵转颜色数组
-            for (int y = 0; y < QR_HEIGHT; y++) {
-                for (int x = 0; x < QR_WIDTH; x++) {
-                    if (bitMatrix.get(x, y)) {
-                        pixels[y * QR_WIDTH + x] = 0xff000000;//黑点
-                    } else {
-                        pixels[y * QR_WIDTH + x] = 0x00ffffff;//透明点,白点为0xffffffff
-                    }
+        } catch (
+                WriterException e
+                )
 
-                }
-            }
-
-            //解析颜色数组,其他的java平台可以选择其他的API
-            Bitmap bitmap = Bitmap.createBitmap(QR_WIDTH, QR_HEIGHT,
-                    Bitmap.Config.ARGB_8888);
-
-            bitmap.setPixels(pixels, 0, QR_WIDTH, 0, 0, QR_WIDTH, QR_HEIGHT);
-            return bitmap;
-
-        } catch (WriterException e) {
+        {
             e.printStackTrace();
-            return null;
         }
+
     }
+
+
 
     @Override
     public void setOnclick() {
@@ -121,10 +116,9 @@ public class RecommendActivity extends BaseInfoActivity implements View.OnLongCl
     @Override
     public void onClick(View v) {
         super.onClick(v);
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.tv_titlebar_right:
-                startActivity(new Intent(this,RecommendedRecordsActivity.class));
-
+                startActivity(new Intent(this, RecommendedRecordsActivity.class));
                 break;
 
         }
@@ -135,13 +129,14 @@ public class RecommendActivity extends BaseInfoActivity implements View.OnLongCl
         showpw(iv_qrCode);
         return false;
     }
+
     private void showpw(ImageView v) {
         //加载布局
         LinearLayout layout = (LinearLayout) LayoutInflater.from(this).inflate(
                 R.layout.pw_recommend, null);
         // 实例化popupWindow
         popupWindow = new PopupWindow(layout, LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-         TextView tv_recommendpw_distinguish = (TextView) layout.findViewById(R.id.tv_recommendpw_distinguish);
+        TextView tv_recommendpw_distinguish = (TextView) layout.findViewById(R.id.tv_recommendpw_distinguish);
 
         //控制键盘是否可以获得焦点
         popupWindow.setFocusable(true);
@@ -149,8 +144,23 @@ public class RecommendActivity extends BaseInfoActivity implements View.OnLongCl
         popupWindow.setBackgroundDrawable(new BitmapDrawable(null, ""));
         WindowManager manager = (WindowManager) getSystemService(Context.WINDOW_SERVICE);
         //xoff,yoff基于anchor的左下角进行偏移。
-        popupWindow.showAtLocation(v, Gravity.BOTTOM,0,0);
-        tv_recommendpw_distinguish.setOnClickListener(this);
+        popupWindow.showAtLocation(v, Gravity.BOTTOM, 0, 0);
+
+        tv_recommendpw_distinguish.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent intent = new Intent(RecommendActivity.this, RegisterActivity.class);
+                intent.putExtra("userid",userid);
+             startActivity(intent);
+
+            }
+
+            
+        });
 
     }
+
+
+
 }

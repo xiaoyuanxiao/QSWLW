@@ -36,11 +36,11 @@ public class BusinessSettingActivity extends BaseActivity implements IPersonalSe
     private TextView tv_setting_consumptionMoney,tv_setting_consumerSilverbeans,tv_setting_encourage,tv_setting_withdrawals,tv_setting_consumerbeans,tv_setting_paytaxes
             ,tv_cyzx,tv_recommender,tv_setting_id,tv_setting_name,tv_setting_shopname,tv_role;
     private TextView setting_one;
-    private String user_id,nickname;
+    private String user_id,nickname,role;
 
     @Override
     public void setUserInfo(PersonalSettingBean personalSettingBean) {
-        tv_cyzx.setText("创业中心:"+personalSettingBean.getCyzx_info().getNickname());
+       // tv_cyzx.setText("创业中心:"+personalSettingBean.getCyzx_info().getNickname());
         tv_recommender.setText("推荐人:"+personalSettingBean.getRe_info().getNickname());
         tv_setting_id.setText("ID:"+personalSettingBean.getUser_info().getUser_id());
         tv_setting_name.setText("昵称:"+personalSettingBean.getUser_info().getNickname());
@@ -54,9 +54,8 @@ public class BusinessSettingActivity extends BaseActivity implements IPersonalSe
         tv_setting_paytaxes.setText(personalSettingBean.getLast_rebate_date()+"");
         user_id = personalSettingBean.getUser_info().getUser_id();
         nickname = personalSettingBean.getUser_info().getNickname();
-
         //会员身份
-        String role = personalSettingBean.getUser_info().getRole();
+         role = personalSettingBean.getUser_info().getRole();
         if(role.equals("0")){
             tv_role.setText("消费天使");
         }else if(role.equals("10")){
@@ -139,6 +138,7 @@ public class BusinessSettingActivity extends BaseActivity implements IPersonalSe
                     Intent intent = new Intent(BusinessSettingActivity.this,RecommendActivity.class);
                     intent.putExtra("userid",user_id);
                     intent.putExtra("nickname",nickname);
+                    intent.putExtra("role",role);
                     startActivity(intent);
                     break;
                 case 4:

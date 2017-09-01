@@ -31,7 +31,7 @@ public class ConsumerSettingActivity extends BaseActivity implements AdapterView
     private TextView tv_setting_consumptionMoney,tv_setting_consumerSilverbeans,tv_setting_encourage,tv_setting_withdrawals,tv_setting_consumerbeans,
             tv_setting_paytaxes,tv_cyzx,tv_recommender,tv_setting_id,tv_setting_name,tv_role;
     private TextView setting_one;
-    private String user_id,nickname;
+    private String user_id,nickname,role;
 
     /**
      * 设置数据
@@ -53,8 +53,7 @@ public class ConsumerSettingActivity extends BaseActivity implements AdapterView
 
         user_id = personalSettingBean.getUser_info().getUser_id();
         nickname = personalSettingBean.getUser_info().getNickname();
-        //会员身份
-        String role = personalSettingBean.getUser_info().getRole();
+        role = personalSettingBean.getUser_info().getRole();
         if(role.equals("0")){
             tv_role.setText("消费天使");
         }else if(role.equals("10")){
@@ -191,6 +190,7 @@ public class ConsumerSettingActivity extends BaseActivity implements AdapterView
                 Intent intent = new Intent(ConsumerSettingActivity.this,RecommendActivity.class);
                 intent.putExtra("userid",user_id);
                 intent.putExtra("nickname",nickname);
+                intent.putExtra("role",role);
                 startActivity(intent);
                 break;
             case 7:

@@ -130,6 +130,12 @@ public class RegisterActivity extends BaseInfoActivity{
     public void initData() {
         super.initData();
         time = new TimeCount(60000, 1000);
+        Intent intent = getIntent();
+        String userid = intent.getStringExtra("userid");
+        if(userid!=null){
+            edt_register_id.setText(userid);
+            PostCheckID(Integer.parseInt(userid));
+        }
 
     }
 
