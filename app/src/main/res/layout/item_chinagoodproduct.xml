@@ -28,7 +28,8 @@
             android:id="@+id/iv_china"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@mipmap/hp"/>
+            android:layout_marginLeft="3dp"
+            android:src="@mipmap/dd"/>
         <TextView
             android:id="@+id/tv_rankStar"
             android:layout_width="wrap_content"
@@ -36,8 +37,9 @@
             android:textColor="@color/red"
             android:textSize="11sp"
             android:gravity="bottom"
-            android:layout_marginLeft="10dp"
+            android:layout_marginLeft="6dp"
             android:text="好评率：0星"/>
+
     </LinearLayout>
     <TextView
         android:id="@+id/tv_rankContent"

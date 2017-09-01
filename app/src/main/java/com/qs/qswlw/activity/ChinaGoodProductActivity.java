@@ -58,19 +58,16 @@ public class ChinaGoodProductActivity extends BaseInfoActivity implements IProdu
          */
         ranklist = new ArrayList<>();
         chinaPraiseRateAdapter = new ChinaPraiseRateAdapter(this, ranklist);
-        // gv_chinagoodproduct.setAdapter(chinaPraiseRateAdapter);//我用的同一个gridview
-//        /**
-//         * 中国好产品订单数量
-//         */
+        /**
+         * 中国好产品订单数量
+         */
         numlist = new ArrayList<>();
         chinaOrderQuantityAdapter = new ChinaOrderQuantityAdapter(this, numlist);
-//        gv_chinagoodproduct.setAdapter(chinaOrderQuantityAdapter);
-//        /**
-//         * 中国好产品订单金额
-//         */
+        /**
+         * 中国好产品订单金额
+         */
         amountlist = new ArrayList<>();
         chinaOrderAmountAdapter = new ChinaOrderAmountAdapter(this, amountlist);
-//        gv_chinagoodproduct.setAdapter(chinaOrderAmountAdapter);
         goodProductPresenter.getdata();
     }
 
@@ -123,7 +120,7 @@ public class ChinaGoodProductActivity extends BaseInfoActivity implements IProdu
         ranklist.addAll(list);
         Log.d("TAG", "-------setRankList---");
         gv_chinagoodproduct.setAdapter(chinaPraiseRateAdapter);
-        //  chinaPraiseRateAdapter.notifyDataSetChanged(); 这里为什么注掉 不刷新了吗  正确  对吧
+        //chinaPraiseRateAdapter.notifyDataSetChanged();
     }
 
     @Override

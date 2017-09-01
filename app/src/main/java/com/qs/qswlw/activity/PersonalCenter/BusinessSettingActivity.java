@@ -34,7 +34,10 @@ public class BusinessSettingActivity extends BaseActivity implements IPersonalSe
     private TextView tv_setting_set;
     PersonalSettingPresenter personalSettingPresenter = new PersonalSettingPresenter(this);
     private TextView tv_setting_consumptionMoney,tv_setting_consumerSilverbeans,tv_setting_encourage,tv_setting_withdrawals,tv_setting_consumerbeans,tv_setting_paytaxes
-            ,tv_cyzx,tv_recommender,tv_setting_id,tv_setting_name,tv_setting_shopname;
+            ,tv_cyzx,tv_recommender,tv_setting_id,tv_setting_name,tv_setting_shopname,tv_role;
+    private TextView setting_one;
+    private String user_id,nickname;
+
     @Override
     public void setUserInfo(PersonalSettingBean personalSettingBean) {
         tv_cyzx.setText("创业中心:"+personalSettingBean.getCyzx_info().getNickname());
@@ -42,7 +45,25 @@ public class BusinessSettingActivity extends BaseActivity implements IPersonalSe
         tv_setting_id.setText("ID:"+personalSettingBean.getUser_info().getUser_id());
         tv_setting_name.setText("昵称:"+personalSettingBean.getUser_info().getNickname());
         tv_setting_shopname.setText("店铺名称:"+personalSettingBean.getShop().getName());
+
+        tv_setting_consumptionMoney.setText(personalSettingBean.getNone()+"");
+        tv_setting_consumerSilverbeans.setText(personalSettingBean.getUser_info().getSilver_total()+"");
+        tv_setting_encourage.setText(personalSettingBean.getUser_info().getLove_total()+"");
+        tv_setting_withdrawals.setText(personalSettingBean.getUser_info().getGold_total()+"");
+        tv_setting_consumerbeans.setText(personalSettingBean.getUser_info().getTaxgold_total()+"");
         tv_setting_paytaxes.setText(personalSettingBean.getLast_rebate_date()+"");
+        user_id = personalSettingBean.getUser_info().getUser_id();
+        nickname = personalSettingBean.getUser_info().getNickname();
+
+        //会员身份
+        String role = personalSettingBean.getUser_info().getRole();
+        if(role.equals("0")){
+            tv_role.setText("消费天使");
+        }else if(role.equals("10")){
+            tv_role.setText("商家");
+        }
+
+
     }
 
     @Override
@@ -71,6 +92,8 @@ public class BusinessSettingActivity extends BaseActivity implements IPersonalSe
         tv_setting_id = (TextView) findViewById(R.id.tv_setting_id);
         tv_setting_name = (TextView) findViewById(R.id.tv_setting_name);
         tv_setting_shopname = (TextView) findViewById(R.id.tv_setting_shopname);
+        tv_role = (TextView) findViewById(R.id.tv_role);
+        setting_one = (TextView) findViewById(R.id.setting_one);
 
 
     }
@@ -84,6 +107,7 @@ public class BusinessSettingActivity extends BaseActivity implements IPersonalSe
         personalSettingPresenter.getData(token);
         businessSettingAdapter = new BusinessSettingAdapter(this);
         gv_setting.setAdapter(businessSettingAdapter);
+        setting_one.setText("代缴让利");
     }
 
     @Override
@@ -112,7 +136,10 @@ public class BusinessSettingActivity extends BaseActivity implements IPersonalSe
                     startActivity(new Intent(BusinessSettingActivity.this,MyGoldenBeanActivity.class));
                     break;
                 case 3:
-                    startActivity(new Intent(BusinessSettingActivity.this,RecommendActivity.class));
+                    Intent intent = new Intent(BusinessSettingActivity.this,RecommendActivity.class);
+                    intent.putExtra("userid",user_id);
+                    intent.putExtra("nickname",nickname);
+                    startActivity(intent);
                     break;
                 case 4:
                     startActivity(new Intent(BusinessSettingActivity.this,SilverBeanActivity.class));

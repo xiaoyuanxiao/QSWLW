@@ -28,8 +28,10 @@ public class ConsumerSettingActivity extends BaseActivity implements AdapterView
     private ConsumerSettingAdapter consumerSettingAdapter;
     private RadioButton rb_setting_exit, rb_setting_partner, rb_setting_beans, rb_setting_mall;
     PersonalSettingPresenter personalSettingPresenter = new PersonalSettingPresenter(this);
-    private TextView tv_setting_consumptionMoney,tv_setting_consumerSilverbeans,tv_setting_encourage,tv_setting_withdrawals,tv_setting_consumerbeans,tv_setting_paytaxes
-            ;
+    private TextView tv_setting_consumptionMoney,tv_setting_consumerSilverbeans,tv_setting_encourage,tv_setting_withdrawals,tv_setting_consumerbeans,
+            tv_setting_paytaxes,tv_cyzx,tv_recommender,tv_setting_id,tv_setting_name,tv_role;
+    private TextView setting_one;
+    private String user_id,nickname;
 
     /**
      * 设置数据
@@ -37,12 +39,27 @@ public class ConsumerSettingActivity extends BaseActivity implements AdapterView
      */
     @Override
     public void setUserInfo(PersonalSettingBean personalSettingBean) {
-        tv_setting_consumptionMoney.setText(personalSettingBean.getUser_info().getTaxgold_total()+"");
+        tv_cyzx.setText("创业中心:"+personalSettingBean.getCyzx_info().getNickname());
+        tv_recommender.setText("推荐人:"+personalSettingBean.getRe_info().getNickname());
+        tv_setting_id.setText("ID:"+personalSettingBean.getUser_info().getUser_id());
+        tv_setting_name.setText("昵称:"+personalSettingBean.getUser_info().getNickname());
+
+        tv_setting_consumptionMoney.setText(personalSettingBean.getNone()+"");
         tv_setting_consumerSilverbeans.setText(personalSettingBean.getUser_info().getSilver_total()+"");
         tv_setting_encourage.setText(personalSettingBean.getUser_info().getLove_total()+"");
         tv_setting_withdrawals.setText(personalSettingBean.getUser_info().getGold_total()+"");
-        tv_setting_consumerbeans.setText(personalSettingBean.getUser_info().getGold_total()+"");
+        tv_setting_consumerbeans.setText(personalSettingBean.getUser_info().getTaxgold_total()+"");
         tv_setting_paytaxes.setText(personalSettingBean.getLast_rebate_date()+"");
+
+        user_id = personalSettingBean.getUser_info().getUser_id();
+        nickname = personalSettingBean.getUser_info().getNickname();
+        //会员身份
+        String role = personalSettingBean.getUser_info().getRole();
+        if(role.equals("0")){
+            tv_role.setText("消费天使");
+        }else if(role.equals("10")){
+            tv_role.setText("商家");
+        }
 
     }
 
@@ -68,6 +85,14 @@ public class ConsumerSettingActivity extends BaseActivity implements AdapterView
         tv_setting_encourage = (TextView) findViewById(R.id.tv_setting_encourage);
         tv_setting_consumerbeans = (TextView) findViewById(R.id.tv_setting_consumerbeans);
         tv_setting_paytaxes = (TextView) findViewById(R.id.tv_setting_paytaxes);
+        setting_one = (TextView) findViewById(R.id.setting_one);
+        tv_role = (TextView) findViewById(R.id.tv_role);
+
+        tv_cyzx = (TextView) findViewById(R.id.tv_cyzx);
+        tv_recommender = (TextView) findViewById(R.id.tv_recommender);
+        tv_setting_id = (TextView) findViewById(R.id.tv_setting_id);
+        tv_setting_name = (TextView) findViewById(R.id.tv_setting_name);
+
 
 
     }
@@ -163,7 +188,10 @@ public class ConsumerSettingActivity extends BaseActivity implements AdapterView
                 startActivity(new Intent(this, ConsumerEntrepreneurialSeedActivity.class));
                 break;
             case 6:
-                startActivity(new Intent(this, RecommendActivity.class));
+                Intent intent = new Intent(ConsumerSettingActivity.this,RecommendActivity.class);
+                intent.putExtra("userid",user_id);
+                intent.putExtra("nickname",nickname);
+                startActivity(intent);
                 break;
             case 7:
                 startActivity(new Intent(this, ConsumeWithdrawalsActivity.class));

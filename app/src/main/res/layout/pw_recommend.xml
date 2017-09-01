@@ -45,6 +45,7 @@
         android:layout_height="0.2dp"
         android:background="@color/view"/>
     <TextView
+        android:id="@+id/tv_recommendpw_distinguish"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textColor="@color/black"

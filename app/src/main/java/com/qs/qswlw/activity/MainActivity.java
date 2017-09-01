@@ -184,11 +184,11 @@ public class MainActivity extends BaseActivity implements IMainView {
         imageSwitchView.setCurrentImage(0);
         showDilog();
 
-        if(userInfo!=null||registerUserInfo!=null){
-            main_ll_avater.setVisibility(View.VISIBLE);
-            iv_setting_main.setVisibility(View.GONE);
-            //   iv_main_avater.setImageResource();
-        }
+//        if(userInfo!=null||registerUserInfo!=null){
+//            main_ll_avater.setVisibility(View.VISIBLE);
+//            iv_setting_main.setVisibility(View.GONE);
+//            //   iv_main_avater.setImageResource();
+//        }
     }
 
 
