@@ -33,4 +33,5 @@
     <color name="result_point_color">#C0FFFF00</color>
     <color name="laser_color">#0F0</color>
     <color name="corner_color">#00FF00</color>
+    <color name="tv_green">#34bea3</color>
 </resources>

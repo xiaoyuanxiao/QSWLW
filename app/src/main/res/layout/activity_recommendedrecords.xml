@@ -2,9 +2,54 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <ListView
-        android:id="@+id/lv_recommendrecords"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"></ListView>
+        android:layout_height="35dp"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            android:textColor="@color/red"
+            android:gravity="center"
+            android:text="推荐消费天使"/>
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:background="@color/tv_green"
+            android:textColor="@color/white"
+            android:gravity="center"
+            android:text="推荐商家"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="8dp">
+        <EditText
+            android:id="@+id/edt_recommendrecord_search"
+            android:layout_width="100dp"
+            android:layout_height="20dp"
+            android:textSize="8sp"
+            android:background="@drawable/corner_black" />
+        <Button
+            android:id="@+id/btn_recommendrecord_search"
+            android:layout_width="40dp"
+            android:layout_height="20dp"
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/corners_black"
+            android:text="查找"
+            android:textSize="8sp" />
+    </LinearLayout>
+    <com.qs.qswlw.view.NoScrollViewPager
+        android:id="@+id/viewpager"
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical"></com.qs.qswlw.view.NoScrollViewPager>
+
 
 </LinearLayout>

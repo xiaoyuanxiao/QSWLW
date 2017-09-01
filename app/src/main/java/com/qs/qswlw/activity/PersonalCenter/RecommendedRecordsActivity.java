@@ -1,21 +1,26 @@
 package com.qs.qswlw.activity.PersonalCenter;
 
+import android.support.v4.view.ViewPager;
 import android.view.View;
-import android.widget.ListView;
 
+import com.qs.qswlw.Mode.PersonalCenter.RecommendRecordMode;
 import com.qs.qswlw.R;
-import com.qs.qswlw.adapter.RecommendedRecordsAdapter;
+
+import java.util.List;
 
 /**
  * Created by xiaoyu on 2017/4/19.
  */
 
 public class RecommendedRecordsActivity extends BaseInfoActivity {
-    private ListView lv_recommendrecords;
+
+    private ViewPager viewpager;
+    private List<RecommendRecordMode> viewpagedata;
+
     @Override
     public View setConetnView() {
         View inflate = View.inflate(this, R.layout.activity_recommendedrecords, null);
-        lv_recommendrecords = (ListView) inflate.findViewById(R.id.lv_recommendrecords);
+        viewpager = (ViewPager) inflate.findViewById(R.id.viewpager);
         return inflate;
     }
 
@@ -28,6 +33,5 @@ public class RecommendedRecordsActivity extends BaseInfoActivity {
     @Override
     public void initData() {
         super.initData();
-        lv_recommendrecords.setAdapter(new RecommendedRecordsAdapter(this));
     }
 }
