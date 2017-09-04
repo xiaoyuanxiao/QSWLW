@@ -9,6 +9,7 @@ import com.qs.qswlw.bean.MainBean;
 import com.qs.qswlw.bean.Maindatabean;
 import com.qs.qswlw.bean.PersonalSettingBean;
 import com.qs.qswlw.bean.RankingBean;
+import com.qs.qswlw.bean.RecommendedRecordsBean;
 import com.qs.qswlw.bean.RegisterBean;
 import com.qs.qswlw.bean.RegisterCheckIdBean;
 import com.qs.qswlw.bean.RegisterGetCodeBean;
@@ -91,6 +92,14 @@ public interface MyRetroService {
     @FormUrlEncoded
     @POST("index.php?m=Appapi&c=User&a=role")
     Observable<MainBean<PersonalSettingBean>> getPersonalData(@Field("token") String token);
+
+
+    /**
+     * 推荐记录
+     */
+    @FormUrlEncoded
+    @POST("index.php?m=Appapi&c=User&a=recommend_list")
+    Observable<MainBean<RecommendedRecordsBean>> getRecommendRecordData(@Field("token") String token,@Field("p") int p,@Field("search_name") String search_name,@Field("tab_name") String tab_name);
 
     /**
      * 注册

@@ -9,6 +9,7 @@ import android.widget.GridView;
 import android.widget.RadioButton;
 import android.widget.TextView;
 
+import com.qs.qswlw.MyApplication;
 import com.qs.qswlw.R;
 import com.qs.qswlw.activity.BaseActivity;
 import com.qs.qswlw.activity.MainActivity;
@@ -103,6 +104,7 @@ public class ConsumerSettingActivity extends BaseActivity implements AdapterView
         //wuyu
         Intent intent = getIntent();
         String token = intent.getStringExtra("token");
+        MyApplication.TOKEN = token;
         personalSettingPresenter.getData(token);
         gv_setting.setAdapter(consumerSettingAdapter);
     }

@@ -13,6 +13,7 @@ public class MyApplication extends Application {
     public static int WIDTH = 240;
     public static int Height = 100;
     public static int ENTREPHEIGHT = 100;
+    public static String TOKEN = "";
 
     @Override
     public void onCreate() {
