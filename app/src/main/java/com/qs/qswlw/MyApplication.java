@@ -14,10 +14,20 @@ public class MyApplication extends Application {
     public static int Height = 100;
     public static int ENTREPHEIGHT = 100;
     public static String TOKEN = "";
+    public static String USERROLE = "";
+    public static String NICKNAME = "";
+    public static String ID = "";
+    private static Application app ;
+    public static Application getApplication()
+
+    {
+        return app;
+    }
 
     @Override
     public void onCreate() {
         super.onCreate();
+        app=this;
         ImageLoaderConfiguration config = new ImageLoaderConfiguration
                 .Builder(this)
                 .build();//开始构建

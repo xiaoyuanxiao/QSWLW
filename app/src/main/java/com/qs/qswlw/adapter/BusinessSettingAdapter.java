@@ -29,7 +29,7 @@ public class BusinessSettingAdapter extends BaseAdapter {
             "我要提现","商家营业额","消费金豆额度","商家完善资料","商品管理","我的金币","我要转赠",
             "创业直捐","获赠记录","我是老会员","促销抽奖记录","收货地址","商家销售审核","我的购物",
             "我的商城","我的商城设置","商城消费金豆专区","线下门店扫码","选送商品记录","消费日值","我的角色","我的消费额度"};
-    public int[] ids = {R.mipmap.wytj, R.mipmap.wx_code, R.mipmap.smsh,
+    public int[] ids = {R.mipmap.wytj, R.mipmap.wytj, R.mipmap.smsh,
             R.mipmap.user_09, R.mipmap.jilu, R.mipmap.user_11, R.mipmap.xfyd,
             R.mipmap.cyzz,R.mipmap.beans,R.mipmap.tx,R.mipmap.yye,
             R.mipmap.edu,R.mipmap.bianji,R.mipmap.spgl,R.mipmap.wdjb,R.mipmap.user08,

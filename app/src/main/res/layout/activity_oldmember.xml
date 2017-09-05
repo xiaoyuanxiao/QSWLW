@@ -8,7 +8,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:background="@color/tv_line"
+        android:background="@color/text_red"
         android:padding="10dp">
         <FrameLayout
             android:id="@+id/fl_setting_avater"
@@ -26,6 +26,7 @@
                 android:scaleType="fitXY"
                 android:layout_gravity="bottom"/>
             <TextView
+                android:id="@+id/tv_oldmember_role"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/red"
@@ -41,12 +42,14 @@
             android:layout_gravity="center_vertical"
             android:layout_marginLeft="20dp">
             <TextView
+                android:id="@+id/tv_oldmember_id"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="@color/white"
                 android:textSize="12sp"
                 android:text="ID:187"/>
             <TextView
+                android:id="@+id/tv_oldmember_nickname"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="@color/white"
@@ -56,21 +59,58 @@
         </LinearLayout>
     </LinearLayout>
     <LinearLayout
+        android:id="@+id/ll_edtOldMember"
+        android:layout_below="@+id/ll_top"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+       android:layout_marginLeft="40dp">
+      <EditText
+          android:id="@+id/edt_oldmember"
+          android:layout_width="150dp"
+          android:layout_height="wrap_content"
+          android:hint="会员编号"
+          android:padding="4dp"
+          android:background="@drawable/corners_black"
+          android:layout_marginTop="20dp"
+          android:textSize="12sp"/>
+        <Spinner
+            android:id="@+id/spinner_oldmember"
+            android:layout_width="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_height="wrap_content">
+        </Spinner>
+        <Button
+            android:id="@+id/btn_oldmember"
+            android:layout_width="200dp"
+            android:layout_height="38dp"
+            android:background="@drawable/corner_login_btn"
+            android:text="立即验证"
+            android:textSize="12sp"
+            android:layout_marginTop="10dp"
+            android:textColor="@color/white"/>
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/ll_oldmember"
+        android:visibility="gone"
         android:layout_below="@+id/ll_top"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_marginLeft="40dp">
         <TextView
+            android:id="@+id/tv_oldmember_userid"
             style="@style/tv_harvestaddress"
             android:text="会员编号：CN44954175"
             android:layout_marginTop="15dp"/>
         <TextView
+            android:id="@+id/tv_oldmember_name"
             style="@style/tv_harvestaddress"
-            android:text="会员编号：CN44954175"/>
+            android:text="会员姓名：王华"/>
         <TextView
+            android:id="@+id/tv_oldmember_type"
             style="@style/tv_harvestaddress"
-            android:text="会员编号：CN44954175"
+            android:text="会员类型：B网会员"
             android:layout_marginTop="10dp"/>
         <TextView
             android:layout_width="wrap_content"
@@ -81,7 +121,6 @@
             android:text="您已经验证，无需重复操作！"
             android:layout_marginTop="15dp"/>
     </LinearLayout>
-
 
 
 </RelativeLayout>

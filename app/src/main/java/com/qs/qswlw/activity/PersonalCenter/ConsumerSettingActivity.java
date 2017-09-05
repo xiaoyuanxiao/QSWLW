@@ -52,13 +52,15 @@ public class ConsumerSettingActivity extends BaseActivity implements AdapterView
         tv_setting_consumerbeans.setText(personalSettingBean.getUser_info().getTaxgold_total()+"");
         tv_setting_paytaxes.setText(personalSettingBean.getLast_rebate_date()+"");
 
-        user_id = personalSettingBean.getUser_info().getUser_id();
-        nickname = personalSettingBean.getUser_info().getNickname();
+        MyApplication.ID =  user_id = personalSettingBean.getUser_info().getUser_id();
+        MyApplication.NICKNAME = nickname = personalSettingBean.getUser_info().getNickname();
         role = personalSettingBean.getUser_info().getRole();
         if(role.equals("0")){
             tv_role.setText("消费天使");
+            MyApplication.USERROLE = "消费天使";
         }else if(role.equals("10")){
             tv_role.setText("商家");
+            MyApplication.USERROLE = "商家";
         }
 
     }

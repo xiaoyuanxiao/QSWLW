@@ -77,15 +77,20 @@
         <item>鲜花</item>
     </string-array>
     <string-array name="addproduct_classification">
-        <item>选择商品分类</item>
-        <item>生活服务</item>
-        <item>美妆美护</item>
-        <item>珠宝钟表</item>
-        <item>服装箱包</item>
-        <item>美食酒店</item>
-        <item>电子家居</item>
-        <item>酒类</item>
-        <item>鲜蔬花果</item>
+    <item>选择商品分类</item>
+    <item>生活服务</item>
+    <item>美妆美护</item>
+    <item>珠宝钟表</item>
+    <item>服装箱包</item>
+    <item>美食酒店</item>
+    <item>电子家居</item>
+    <item>酒类</item>
+    <item>鲜蔬花果</item>
+</string-array>
+    <string-array name="membertypes_oldmember">
+        <item>A网会员</item>
+        <item>《AB 网 B网会员》</item>
+
     </string-array>
     <string-array name="addproduct_mode">
         <item>20%</item>

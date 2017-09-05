@@ -9,6 +9,7 @@ import android.widget.GridView;
 import android.widget.RadioButton;
 import android.widget.TextView;
 
+import com.qs.qswlw.MyApplication;
 import com.qs.qswlw.R;
 import com.qs.qswlw.activity.BaseActivity;
 import com.qs.qswlw.activity.MainActivity;
@@ -52,14 +53,16 @@ public class BusinessSettingActivity extends BaseActivity implements IPersonalSe
         tv_setting_withdrawals.setText(personalSettingBean.getUser_info().getGold_total()+"");
         tv_setting_consumerbeans.setText(personalSettingBean.getUser_info().getTaxgold_total()+"");
         tv_setting_paytaxes.setText(personalSettingBean.getLast_rebate_date()+"");
-        user_id = personalSettingBean.getUser_info().getUser_id();
-        nickname = personalSettingBean.getUser_info().getNickname();
+        MyApplication.ID =  user_id = personalSettingBean.getUser_info().getUser_id();
+        MyApplication.NICKNAME = nickname = personalSettingBean.getUser_info().getNickname();
         //会员身份
          role = personalSettingBean.getUser_info().getRole();
         if(role.equals("0")){
             tv_role.setText("消费天使");
+            MyApplication.USERROLE = "消费天使";
         }else if(role.equals("10")){
             tv_role.setText("商家");
+            MyApplication.USERROLE = "商家";
         }
 
 
@@ -103,6 +106,7 @@ public class BusinessSettingActivity extends BaseActivity implements IPersonalSe
         tv_setting_shopname.setVisibility(View.VISIBLE);
         Intent intent = getIntent();
         String token = intent.getStringExtra("token");
+        MyApplication.TOKEN = token;
         personalSettingPresenter.getData(token);
         businessSettingAdapter = new BusinessSettingAdapter(this);
         gv_setting.setAdapter(businessSettingAdapter);
@@ -126,7 +130,11 @@ public class BusinessSettingActivity extends BaseActivity implements IPersonalSe
         public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
             switch (i){
                 case 0:
-                    startActivity(new Intent(BusinessSettingActivity.this,ImproveDocumentationActivity.class));
+                    Intent intent = new Intent(BusinessSettingActivity.this,RecommendActivity.class);
+                    intent.putExtra("userid",user_id);
+                    intent.putExtra("nickname",nickname);
+                    intent.putExtra("role",role);
+                    startActivity(intent);
                     break;
                 case 1:
                     startActivity(new Intent(BusinessSettingActivity.this,EntrepreneurialSeedActivity.class));
@@ -135,11 +143,7 @@ public class BusinessSettingActivity extends BaseActivity implements IPersonalSe
                     startActivity(new Intent(BusinessSettingActivity.this,MyGoldenBeanActivity.class));
                     break;
                 case 3:
-                    Intent intent = new Intent(BusinessSettingActivity.this,RecommendActivity.class);
-                    intent.putExtra("userid",user_id);
-                    intent.putExtra("nickname",nickname);
-                    intent.putExtra("role",role);
-                    startActivity(intent);
+                    startActivity(new Intent(BusinessSettingActivity.this,ImproveDocumentationActivity.class));
                     break;
                 case 4:
                     startActivity(new Intent(BusinessSettingActivity.this,SilverBeanActivity.class));
@@ -172,10 +176,19 @@ public class BusinessSettingActivity extends BaseActivity implements IPersonalSe
                     startActivity(new Intent(BusinessSettingActivity.this,HarvestAddressListActivity.class));
                     break;
                 case 14:
-                    startActivity(new Intent(BusinessSettingActivity.this, OldMemberActivity.class));
+                    startActivity(new Intent(BusinessSettingActivity.this, HarvestAddressListActivity.class));
                     break;
                 case 15:
                     startActivity(new Intent(BusinessSettingActivity.this, MyProductsActivity.class));
+                    break;
+                case 16:
+                    startActivity(new Intent(BusinessSettingActivity.this,HarvestAddressListActivity.class));
+                    break;
+                case 17:
+                    startActivity(new Intent(BusinessSettingActivity.this, HarvestAddressListActivity.class));
+                    break;
+                case 18:
+                    startActivity(new Intent(BusinessSettingActivity.this, OldMemberActivity.class));
                     break;
             }
         }

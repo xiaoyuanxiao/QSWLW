@@ -7,12 +7,14 @@ import com.qs.qswlw.bean.GoodProductBean;
 import com.qs.qswlw.bean.LoginBean;
 import com.qs.qswlw.bean.MainBean;
 import com.qs.qswlw.bean.Maindatabean;
+import com.qs.qswlw.bean.OldMemberBean;
 import com.qs.qswlw.bean.PersonalSettingBean;
 import com.qs.qswlw.bean.RankingBean;
 import com.qs.qswlw.bean.RecommendedRecordsBean;
 import com.qs.qswlw.bean.RegisterBean;
 import com.qs.qswlw.bean.RegisterCheckIdBean;
 import com.qs.qswlw.bean.RegisterGetCodeBean;
+import com.qs.qswlw.bean.ValidateOldMemberBean;
 
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
@@ -74,7 +76,19 @@ public interface MyRetroService {
     Observable<MainBean<ForgetPassWordBean>> postForgetPWData(@Field("mobile") String mobile, @Field("roles") int roles, @Field("pass") String pass,
                                                              @Field("repass") String repass, @Field("type") String type,
                                                              @Field("mobile_code") String mobile_code);
+    /**
+     * 提交验证老会员信息
+     */
+    @FormUrlEncoded
+    @POST("index.php?m=Appapi&c=User&a=do_check_old_member")
+    Observable<MainBean<OldMemberBean>> postOldMemberData(@Field("token") String token,@Field("member_number") String member_number,@Field("member_type") String member_type);
 
+    /**
+     * 我是老会员
+     */
+    @FormUrlEncoded
+    @POST("index.php?m=Appapi&c=User&a=check_old_member")
+    Observable<MainBean<ValidateOldMemberBean>> getOldMemberData(@Field("token") String token);
 
     /**
      * 获取推荐人信息
