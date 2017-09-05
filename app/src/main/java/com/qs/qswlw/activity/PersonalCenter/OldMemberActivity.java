@@ -72,7 +72,7 @@ public class OldMemberActivity extends BaseInfoActivity implements IOldMemberVie
             ll_edtOldMember.setVisibility(View.GONE);
             tv_oldmember_userid.setText("会员编号："+validateOldMemberBean.getOld_userid());
             tv_oldmember_name.setText("会员姓名："+validateOldMemberBean.getOld_user_name());
-            tv_oldmember_type.setText("会员类型："+validateOldMemberBean.getOld_user_type()+"网会员");
+            tv_oldmember_type.setText("会员类型："+validateOldMemberBean.getOld_user_type().toUpperCase()+"网会员");
         }
 
     }

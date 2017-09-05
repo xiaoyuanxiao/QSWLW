@@ -61,8 +61,9 @@ public class BizMain implements IMainBiz {
 
             @Override
             public void onNext(MainBean<Maindatabean> testBean) {
-                baseOnlistener.onSuccess(testBean);
                 System.out.println("============onNext=================" + testBean.toString());
+                baseOnlistener.onSuccess(testBean);
+
             }
         });
 
