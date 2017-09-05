@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/ll_myrole"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/bg_role"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <com.qs.qswlw.view.NoBorderCircleImageView
+            android:id="@+id/iv_role_avater"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:src="@mipmap/image1" />
+
+        <TextView
+            android:id="@+id/tv_role_companyName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="津津食品"
+            android:textColor="@color/tv_role"
+            android:textSize="12sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_myrole_tv"
+        android:layout_below="@+id/ll_myrole"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/bg_role_bellow"
+        android:paddingTop="10dp"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/tv_standard"
+                android:text="创业中心" />
+
+            <TextView
+                android:id="@+id/tv_role_nickname"
+                style="@style/tv_standard"
+                android:text="无" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="0.2dp"
+            android:layout_height="30dp"
+            android:background="@color/white" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+
+                style="@style/tv_standard"
+                android:text="我的身份" />
+
+            <TextView
+                android:id="@+id/tv_role"
+                style="@style/tv_standard"
+                android:text="商家" />
+        </LinearLayout>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_below="@+id/ll_myrole_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/bg_role_bellow"
+        android:orientation="horizontal"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/tv_standard"
+                android:text="收货地址" />
+
+            <TextView
+                android:id="@+id/tv_role_address"
+                style="@style/tv_standard"
+                android:text="无" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="0.2dp"
+            android:layout_height="30dp"
+            android:background="@color/white" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/tv_standard"
+                android:text="注册时间" />
+
+            <TextView
+                android:id="@+id/tv_role_time"
+                style="@style/tv_standard"
+                android:text="无" />
+        </LinearLayout>
+
+    </LinearLayout>
+</RelativeLayout>

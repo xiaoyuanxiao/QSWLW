@@ -24,6 +24,9 @@
     <color name="orange_color">#de6838</color>
     <color name="text_grey">#656565</color>
     <color name="tv_line">#bbbbbd</color>
+    <color name="bg_role">#d9dde5</color>
+    <color name="tv_role">#6495ed</color>
+    <color name="bg_role_bellow">#b2bdde</color>
 
 
     <!-- QRCode scanner color begin -->

@@ -62,6 +62,7 @@
         <activity android:name=".activity.PersonalCenter.ConsumerSilverBeanActivity"/>
         <activity android:name=".activity.PersonalCenter.ConsumerEntrepreneurialSeedActivity"/>
         <activity android:name=".activity.PersonalCenter.VenturegoldBeansActivity"/>
+        <activity android:name=".activity.PersonalCenter.MyRoleActivity"/>
 
         <activity android:name=".activity.PersonalCenter.RecommendedRecordsActivity"/>
         <activity android:name=".activity.PersonalCenter.DonationRecordActivity"/>

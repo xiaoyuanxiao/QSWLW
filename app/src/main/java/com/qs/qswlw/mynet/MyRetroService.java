@@ -7,6 +7,7 @@ import com.qs.qswlw.bean.GoodProductBean;
 import com.qs.qswlw.bean.LoginBean;
 import com.qs.qswlw.bean.MainBean;
 import com.qs.qswlw.bean.Maindatabean;
+import com.qs.qswlw.bean.MyRoleBean;
 import com.qs.qswlw.bean.OldMemberBean;
 import com.qs.qswlw.bean.PersonalSettingBean;
 import com.qs.qswlw.bean.RankingBean;
@@ -60,6 +61,12 @@ public interface MyRetroService {
     @POST("index.php?m=Appapi&c=Login&a=get_register_send")
     Observable<MainBean<RegisterGetCodeBean>> getForgetPwCodeData(@Field("mobile") String a,@Field("type") int type);
 
+    /**
+     * 我的角色
+     */
+    @FormUrlEncoded
+    @POST("index.php?m=Appapi&c=User&a=my_user")
+    Observable<MainBean<MyRoleBean>> getMyRoleData(@Field("token") String token);
 
     /**
      * 提交密码重设

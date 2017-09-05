@@ -190,6 +190,42 @@ public class BusinessSettingActivity extends BaseActivity implements IPersonalSe
                 case 18:
                     startActivity(new Intent(BusinessSettingActivity.this, OldMemberActivity.class));
                     break;
+                case 19:
+                    startActivity(new Intent(BusinessSettingActivity.this,BusinessTurnoverActivity.class));
+                    break;
+                case 20:
+                    startActivity(new Intent(BusinessSettingActivity.this,ConsumptionRecordActivity.class));
+                    break;
+                case 21:
+                    startActivity(new Intent(BusinessSettingActivity.this,RecordListActivity.class));
+                    break;
+                case 22:
+                    startActivity(new Intent(BusinessSettingActivity.this,EntrepreneurialDonationActivity.class));
+                    break;
+                case 23:
+                    startActivity(new Intent(BusinessSettingActivity.this,CommodityManagementActivity.class));
+                    break;
+                case 24:
+                    startActivity(new Intent(BusinessSettingActivity.this,PromotionLuckDrawActivity.class));
+                    break;
+                case 25:
+                    startActivity(new Intent(BusinessSettingActivity.this,HarvestAddressListActivity.class));
+                    break;
+                case 26:
+                    startActivity(new Intent(BusinessSettingActivity.this, HarvestAddressListActivity.class));
+                    break;
+                case 27:
+                    startActivity(new Intent(BusinessSettingActivity.this, MyProductsActivity.class));
+                    break;
+                case 28:
+                    startActivity(new Intent(BusinessSettingActivity.this,HarvestAddressListActivity.class));
+                    break;
+                case 29:
+                    startActivity(new Intent(BusinessSettingActivity.this, MyRoleActivity.class));
+                    break;
+                case 30:
+                    startActivity(new Intent(BusinessSettingActivity.this, OldMemberActivity.class));
+                    break;
             }
         }
     }

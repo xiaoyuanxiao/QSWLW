@@ -4,6 +4,7 @@ import com.qs.qswlw.okhttp.Moudle.BizAngelRanking;
 import com.qs.qswlw.okhttp.Moudle.BizGoodProduct;
 import com.qs.qswlw.okhttp.Moudle.BizLogin;
 import com.qs.qswlw.okhttp.Moudle.BizMain;
+import com.qs.qswlw.okhttp.Moudle.BizMyRole;
 import com.qs.qswlw.okhttp.Moudle.BizOldMember;
 import com.qs.qswlw.okhttp.Moudle.BizPersonalSetting;
 import com.qs.qswlw.okhttp.Moudle.BizRanking;
@@ -12,6 +13,7 @@ import com.qs.qswlw.okhttp.Moudle.BizValidateOldMember;
 import com.qs.qswlw.okhttp.Moudle.IAngelRankingBiz;
 import com.qs.qswlw.okhttp.Moudle.ILoginBiz;
 import com.qs.qswlw.okhttp.Moudle.IMainBiz;
+import com.qs.qswlw.okhttp.Moudle.IMyRoleBiz;
 import com.qs.qswlw.okhttp.Moudle.IOldMemberBiz;
 import com.qs.qswlw.okhttp.Moudle.IPersonalSettingBiz;
 import com.qs.qswlw.okhttp.Moudle.IProductBiz;
@@ -63,5 +65,7 @@ public class IBizFactory {
     public static IValidateOldMemberBiz getValidateOldMemberBiz(){
         return BizValidateOldMember.getInstans();
     }
-
+    public static IMyRoleBiz getMyRoleBiz(){
+        return BizMyRole.getInstans();
+    }
 }
