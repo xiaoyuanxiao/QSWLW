@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="15dp"
+    android:background="@color/white">
+    <LinearLayout
+        android:id="@+id/ll_item_mysliverbean"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/tv_item_mysliverbean_sliver"
+            android:layout_marginTop="15dp"
+            style="@style/tv_harvestaddress"
+            android:text="变动数量：3168"/>
+        <TextView
+            android:id="@+id/tv_item_mysliverbean_total"
+            style="@style/tv_harvestaddress"
+            android:text="下单时间：2017-03-26"
+            android:layout_marginTop="4dp"/>
+        <TextView
+            android:id="@+id/tv_item_mysliverbean_spname"
+            style="@style/tv_harvestaddress"
+            android:layout_marginTop="4dp"
+            android:text="付款时间：2017-03-26"/>
+        <TextView
+            android:id="@+id/tv_item_mysliverbean_addtime"
+            style="@style/tv_harvestaddress"
+            android:layout_marginTop="4dp"
+            android:text="订单编号：8" />
+        <TextView
+            android:id="@+id/tv_item_mysliverbean_paytime"
+            style="@style/tv_harvestaddress"
+            android:layout_marginTop="4dp"
+            android:text="订单编号：8" />
+
+        <TextView
+            android:id="@+id/tv_item_mysliverbean_singleid"
+            style="@style/tv_harvestaddress"
+            android:layout_marginTop="4dp"
+            android:text="订单编号：8" />
+
+        <TextView
+            android:id="@+id/tv_item_mysliverbean_type"
+            style="@style/tv_harvestaddress"
+            android:layout_marginTop="4dp"
+            android:text="订单编号：8" />
+
+    </LinearLayout>
+    <ImageView
+        android:layout_alignParentRight="true"
+        android:id="@+id/iv_item_mysliverbean"
+        android:layout_width="130dp"
+        android:layout_height="130dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="15dp"
+        android:layout_marginRight="3dp"
+        android:src="@mipmap/sliverbean"/>
+
+    <View
+        android:layout_below="@+id/ll_item_mysliverbean"
+        android:layout_width="match_parent"
+        android:layout_height="0.3dp"
+        android:layout_marginTop="15dp"
+        android:background="@color/view"></View>
+</RelativeLayout>

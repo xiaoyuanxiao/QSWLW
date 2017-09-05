@@ -176,7 +176,7 @@ public class ConsumerSettingActivity extends BaseActivity implements AdapterView
                 startActivity(new Intent(this, VenturegoldBeansActivity.class));
                 break;
             case 1:
-                startActivity(new Intent(this, VenturegoldBeansActivity.class));
+                startActivity(new Intent(this,MySilverBeanActivity.class));
                 break;
             case 2:
                 startActivity(new Intent(this, ConsumerSilverBeanActivity.class));

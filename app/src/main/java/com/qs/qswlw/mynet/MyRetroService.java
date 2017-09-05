@@ -8,6 +8,7 @@ import com.qs.qswlw.bean.LoginBean;
 import com.qs.qswlw.bean.MainBean;
 import com.qs.qswlw.bean.Maindatabean;
 import com.qs.qswlw.bean.MyRoleBean;
+import com.qs.qswlw.bean.MySliverBean;
 import com.qs.qswlw.bean.OldMemberBean;
 import com.qs.qswlw.bean.PersonalSettingBean;
 import com.qs.qswlw.bean.RankingBean;
@@ -60,6 +61,13 @@ public interface MyRetroService {
     @FormUrlEncoded
     @POST("index.php?m=Appapi&c=Login&a=get_register_send")
     Observable<MainBean<RegisterGetCodeBean>> getForgetPwCodeData(@Field("mobile") String a,@Field("type") int type);
+
+    /**
+     * 获得消费银豆记录
+     */
+    @FormUrlEncoded
+    @POST("index.php?m=Appapi&c=UserBonus&a=silver")
+    Observable<MainBean<MySliverBean>> getMySliverBeanData(@Field("token") String token,@Field("p") int p);
 
     /**
      * 我的角色
