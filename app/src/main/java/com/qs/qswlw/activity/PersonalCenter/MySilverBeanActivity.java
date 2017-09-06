@@ -1,6 +1,8 @@
 package com.qs.qswlw.activity.PersonalCenter;
 
+import android.util.Log;
 import android.view.View;
+import android.widget.AbsListView;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -22,7 +24,7 @@ import java.util.List;
 public class MySilverBeanActivity extends BaseInfoActivity implements IMySliverBeanView {
 
     private ImageView iv_mysliverbean_avater;
-    private TextView tv_mysliverbean_id,tv_mysliverbean_nickname,tv_mysliverbean_sliver,tv_mysliverbean_total;
+    private TextView tv_mysliverbean_id, tv_mysliverbean_nickname, tv_mysliverbean_sliver, tv_mysliverbean_total;
     private List<MySliverBean.SingleLogBean> sliverbeanList;
     private ListView lv_mysliverbean;
 
@@ -53,23 +55,46 @@ public class MySilverBeanActivity extends BaseInfoActivity implements IMySliverB
     public void initData() {
         super.initData();
         sliverbeanList = new ArrayList<>();
-        mySliverBeanAdapter = new MySliverBeanAdapter(this,sliverbeanList);
+        mySliverBeanAdapter = new MySliverBeanAdapter(this, sliverbeanList);
         lv_mysliverbean.setAdapter(mySliverBeanAdapter);
-        mySliverBeanPresenter.getdata(MyApplication.TOKEN,1);
+        mySliverBeanPresenter.getdata(MyApplication.TOKEN, 1);
+        lv_mysliverbean.setOnScrollListener(new AbsListView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(AbsListView absListView, int i) {
+                Log.d("OnScrollListener", "============onScrollStateChanged===========" + absListView.getLastVisiblePosition());
+                if (absListView.getLastVisiblePosition() == (absListView.getCount() - 1)) {
+                    Log.d("OnScrollListener", "============absListView.getCount()===========" + absListView.getCount());
+                    getaddList(absListView.getCount());
+                }
+            }
+
+            @Override
+            public void onScroll(AbsListView absListView, int i, int i1, int i2) {
+                Log.d("OnScrollListener", "============onScroll===========" + i + "==================i1=" + i1 + "=======i2=" + i2);
+            }
+        });
+    }
+
+    private void getaddList(int a) {
+        mySliverBeanPresenter.getaddData(a);
     }
 
     @Override
     public void setMySliverBeancountData(MySliverBean.SilverCountBean slivercountbean) {
-        tv_mysliverbean_id.setText("会员ID:"+MyApplication.ID);
-        tv_mysliverbean_nickname.setText("昵称："+MyApplication.NICKNAME);
-        tv_mysliverbean_sliver.setText("获得银豆总额:"+slivercountbean.getSilver());
-        tv_mysliverbean_total.setText("获得消费总额:"+slivercountbean.getTotal());
+        tv_mysliverbean_id.setText("会员ID:" + MyApplication.ID);
+        tv_mysliverbean_nickname.setText("昵称：" + MyApplication.NICKNAME);
+        if (slivercountbean.getSilver() != null) {
+            tv_mysliverbean_sliver.setText("获得银豆总额:" + slivercountbean.getSilver());
+        }
+        if (slivercountbean.getTotal() != null) {
+            tv_mysliverbean_total.setText("获得消费总额:" + slivercountbean.getTotal());
+        }
+
 
     }
 
     @Override
     public void setMySliverBeanListData(List<MySliverBean.SingleLogBean> list) {
-        sliverbeanList.clear();
         sliverbeanList.addAll(list);
         mySliverBeanAdapter.notifyDataSetChanged();
 
