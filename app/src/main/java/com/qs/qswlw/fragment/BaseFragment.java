@@ -22,7 +22,9 @@ public abstract class BaseFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
     }
-    View view ;
+
+    View view;
+
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
@@ -33,12 +35,14 @@ public abstract class BaseFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        super.onCreateView(inflater,container,savedInstanceState);
-        view=initView();
+        super.onCreateView(inflater, container, savedInstanceState);
+        view = initView();
 
         return view;
     }
+
     abstract View initView();
+
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -56,10 +60,13 @@ public abstract class BaseFragment extends Fragment {
     @Override
     public void setMenuVisibility(boolean menuVisible) {
         super.setMenuVisibility(menuVisible);
-        if(this.getView() != null){
-            this.getView().setVisibility(menuVisible?View.VISIBLE:View.GONE);
+        if (this.getView() != null) {
+            this.getView().setVisibility(menuVisible ? View.VISIBLE : View.GONE);
         }
     }
 
+    public void runOnUiThread(Runnable runnable) {
+        getActivity().runOnUiThread(runnable);
+    }
 }
 

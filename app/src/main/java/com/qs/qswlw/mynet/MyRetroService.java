@@ -2,6 +2,7 @@ package com.qs.qswlw.mynet;
 
 
 import com.qs.qswlw.bean.AngelRankingBean;
+import com.qs.qswlw.bean.EntrepreneurialIncentiveBean;
 import com.qs.qswlw.bean.ForgetPassWordBean;
 import com.qs.qswlw.bean.GoodProductBean;
 import com.qs.qswlw.bean.LoginBean;
@@ -61,6 +62,13 @@ public interface MyRetroService {
     @FormUrlEncoded
     @POST("index.php?m=Appapi&c=Login&a=get_register_send")
     Observable<MainBean<RegisterGetCodeBean>> getForgetPwCodeData(@Field("mobile") String a,@Field("type") int type);
+
+    /**
+     * 创业种子
+     */
+    @FormUrlEncoded
+    @POST("index.php?m=Appapi&c=UserBonus&a=love")
+    Observable<MainBean<EntrepreneurialIncentiveBean>> getEntrepreneurialData(@Field("token") String token,@Field("p") int p,@Field("model") String model);
 
     /**
      * 获得消费银豆记录

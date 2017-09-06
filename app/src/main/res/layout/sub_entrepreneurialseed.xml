@@ -33,6 +33,7 @@
                         android:textColor="@color/white"
                         android:text="已激励创业种子"/>
                     <TextView
+                        android:id="@+id/tv_entrepreneurial_model"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="18sp"
@@ -49,22 +50,29 @@
                 android:padding="12dp"
                 android:background="@mipmap/zibg">
                 <TextView
-                    android:id="@+id/tv_ConsumerSilverBean"
+                    android:id="@+id/tv_entrepreneurial_one"
                     style="@style/tv_standard"
                     android:text="消费银豆：95275" />
                 <TextView
-                    android:id="@+id/tv_entrepreneurialseed"
+                    android:id="@+id/tv_entrepreneurial_two"
+                    style="@style/tv_standard"
+                    android:text="可转为创业种子消费银豆：19"
+                    android:layout_marginTop="8dp"
+                    android:layout_below="@+id/tv_entrepreneurial_one"/>
+                <TextView
+                    android:id="@+id/tv_entrepreneurial_three"
                     style="@style/tv_standard"
                     android:text="正在激励创业种子：35"
                     android:layout_marginTop="8dp"
-                    android:layout_below="@+id/tv_ConsumerSilverBean"/>
+                    android:layout_below="@+id/tv_entrepreneurial_two"/>
                 <TextView
-                    android:id="@+id/tv_seedAmount"
+                    android:id="@+id/tv_entrepreneurial_four"
                     style="@style/tv_standard"
                     android:text="可转为创业种子数：19"
                     android:layout_marginTop="8dp"
-                    android:layout_below="@+id/tv_entrepreneurialseed"/>
+                    android:layout_below="@+id/tv_entrepreneurial_three"/>
                 <LinearLayout
+                    android:id="@+id/ll_click"
                     android:layout_width="58dp"
                     android:layout_height="58dp"
                     android:background="@drawable/fillet"

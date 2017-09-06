@@ -1,71 +1,45 @@
 package com.qs.qswlw.activity.PersonalCenter;
 
-import android.support.v4.view.PagerAdapter;
-import android.support.v4.view.ViewPager;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.RadioGroup;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
-import com.qs.qswlw.Mode.BaseMode;
-import com.qs.qswlw.Mode.PersonalCenter.TenPercentMode;
-import com.qs.qswlw.Mode.PersonalCenter.TwentyPercentMode;
 import com.qs.qswlw.R;
+import com.qs.qswlw.fragment.EntrepreneurialIncentiveFragment;
+import com.qs.qswlw.fragment.InnovationIncentiveFragment;
 
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by xiaoyu on 2017/4/3.
  */
 
 public class EntrepreneurialSeedActivity extends BaseInfoActivity {
-    private List<BaseMode> viewpagedata;
-    private RadioGroup fg_EntrepreneurialSeed;
-    private View view_EntrepreneurialSeed;
-    private ViewPager viewpager;
-
+    private LinearLayout ll_EntrepreneurialSeed;
+    private View view_entrepreneurial,view_innovate;
+    private ArrayList<Fragment> fragments;
+    private FragmentManager fragmentManager;
+    private TextView tv_entrepreneurial,tv_innovate;
 
     @Override
     public View setConetnView() {
         View inflate = View.inflate(this, R.layout.activity_entrepreneurialseed, null);
-        viewpager = (ViewPager) inflate.findViewById(R.id.viewpager_entrepreneurialSeed);
-        fg_EntrepreneurialSeed = (RadioGroup) inflate.findViewById(R.id.fg_EntrepreneurialSeed);
-        view_EntrepreneurialSeed = (View) inflate.findViewById(R.id.view_EntrepreneurialSeed);
-        viewpagedata = new ArrayList<BaseMode>();
-
-        viewpagedata.add(new TenPercentMode(this));
-        viewpagedata.add(new TwentyPercentMode(this));
-        MyViewPagerAdapter adapter = new MyViewPagerAdapter();
-        viewpager.setAdapter(adapter);
-        viewpagedata.get(0).initData();
-
-        viewpager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-            @Override
-            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-                //  WindowManager manager = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
-                /**
-                 * 得到红线的宽度
-                 */
-                int width = getApplicationContext().getResources().getDisplayMetrics().widthPixels / 2;
-                //int width = view_EntrepreneurialSeed.getWidth();
-                /**
-                 * position是划动时左边的页码数，从0开始的，positionOffsetPixels是后一页的页码，  positionOffset是当前页与后一页的划动距离的百分比。（0--0.999999）
-                 * setX是view的方法，设置当前view在父布局中距离左边的像素点
-                 * */
-                view_EntrepreneurialSeed.setX(width * (position + positionOffset));
-            }
-
-            @Override
-            public void onPageSelected(int position) {
-
-            }
-
-            @Override
-            public void onPageScrollStateChanged(int state) {
-
-            }
-        });
+        ll_EntrepreneurialSeed = (LinearLayout) inflate.findViewById(R.id.ll_EntrepreneurialSeed);
+        tv_entrepreneurial = (TextView) inflate.findViewById(R.id.tv_entrepreneurial);
+        tv_innovate = (TextView) inflate.findViewById(R.id.tv_innovate);
+        view_entrepreneurial = (View) inflate.findViewById(R.id.view_entrepreneurial);
+        view_innovate = (View) inflate.findViewById(R.id.view_innovate);
         return inflate;
+    }
+
+    @Override
+    public void initData() {
+        super.initData();
+        fragmentManager = getSupportFragmentManager();
+        initFragment();
     }
 
     @Override
@@ -75,56 +49,79 @@ public class EntrepreneurialSeedActivity extends BaseInfoActivity {
 
     }
 
-    class MyOnCheckedChangeListener implements RadioGroup.OnCheckedChangeListener {
-        @Override
-        public void onCheckedChanged(RadioGroup group, int checkedId) {
-            int position = 0;
-            switch (checkedId) {
-                case R.id.rb_tenPercent:
-                    position = 0;
-                    break;
-                case R.id.rb_twentyPercent:
-                    position = 1;
-                    break;
+    /**
+     * 初始化所有基fragment
+     */
+    private void initFragment() {
+        fragments = new ArrayList<Fragment>();
+        fragments.add(EntrepreneurialIncentiveFragment.newInstener());
+        fragments.add(InnovationIncentiveFragment.newInstener());
+        showFragment(fragments.get(1));
+
+    }
+
+
+    /**
+     * 显示fragment
+     *
+     * @param fragment 要显示的fragment
+     */
+    private void showFragment(Fragment fragment) {
+        FragmentTransaction transaction = fragmentManager.beginTransaction();
+        hideFragment(transaction);
+        if (fragment.isAdded()) {
+            transaction.show(fragment);
+        } else {
+            transaction.add(R.id.ll_container, fragment, fragment.getClass().getName());
+        }
+        transaction.commit();
+    }
+
+    /**
+     * 隐藏其他fragment
+     *
+     * @param transaction 控制器
+     */
+    private void hideFragment(FragmentTransaction transaction) {
+        for (int i = 0; fragments.size() > i; i++) {
+            if (fragments.get(i).isVisible()) {
+                transaction.hide(fragments.get(i));
             }
-            viewpager.setCurrentItem(position);
-            viewpagedata.get(position).initData();
         }
     }
+
+
+
 
     @Override
     public void setOnclick() {
         super.setOnclick();
         //点击radioButton切换到指定页面
-        fg_EntrepreneurialSeed.setOnCheckedChangeListener(new MyOnCheckedChangeListener());
+        tv_entrepreneurial.setOnClickListener(this);
+        tv_innovate.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
         super.onClick(v);
-    }
-
-
-    public class MyViewPagerAdapter extends PagerAdapter {
-        @Override
-        public int getCount() {
-            return viewpagedata.size();
-        }
-
-        @Override
-        public boolean isViewFromObject(View view, Object object) {
-            return view == object;
-        }
-
-        @Override
-        public Object instantiateItem(ViewGroup container, int position) {
-            container.addView(viewpagedata.get(position).view);
-            return viewpagedata.get(position).view;
-        }
-
-        @Override
-        public void destroyItem(ViewGroup container, int position, Object object) {
-            ((ViewPager) container).removeView(viewpagedata.get(position).view);
+        switch (v.getId()){
+            case R.id.tv_entrepreneurial:
+                view_entrepreneurial.setVisibility(View.VISIBLE);
+                view_innovate.setVisibility(View.INVISIBLE);
+                tv_entrepreneurial.setTextColor(getResources().getColor(R.color.red));
+                tv_innovate.setTextColor(getResources().getColor(R.color.view));
+                showFragment(fragments.get(0));
+                break;
+            case R.id.tv_innovate:
+                view_entrepreneurial.setVisibility(View.INVISIBLE);
+                view_innovate.setVisibility(View.VISIBLE);
+                tv_entrepreneurial.setTextColor(getResources().getColor(R.color.view));
+                tv_innovate.setTextColor(getResources().getColor(R.color.red));
+                showFragment(fragments.get(1));
+                break;
         }
     }
 }
+
+
+

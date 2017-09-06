@@ -1,8 +1,8 @@
 package com.qs.qswlw.okhttp.Factory;
 
 import com.qs.qswlw.okhttp.Moudle.BizAngelRanking;
+import com.qs.qswlw.okhttp.Moudle.BizEntrepreneurial;
 import com.qs.qswlw.okhttp.Moudle.BizGoodProduct;
-import com.qs.qswlw.okhttp.Moudle.BizLogin;
 import com.qs.qswlw.okhttp.Moudle.BizMain;
 import com.qs.qswlw.okhttp.Moudle.BizMyRole;
 import com.qs.qswlw.okhttp.Moudle.BizMySliverBean;
@@ -12,7 +12,7 @@ import com.qs.qswlw.okhttp.Moudle.BizRanking;
 import com.qs.qswlw.okhttp.Moudle.BizRecommendRecord;
 import com.qs.qswlw.okhttp.Moudle.BizValidateOldMember;
 import com.qs.qswlw.okhttp.Moudle.IAngelRankingBiz;
-import com.qs.qswlw.okhttp.Moudle.ILoginBiz;
+import com.qs.qswlw.okhttp.Moudle.IEntrepreneurialBiz;
 import com.qs.qswlw.okhttp.Moudle.IMainBiz;
 import com.qs.qswlw.okhttp.Moudle.IMyRoleBiz;
 import com.qs.qswlw.okhttp.Moudle.IMySliverBeanBiz;
@@ -42,9 +42,6 @@ public class IBizFactory {
     public static IMainBiz getMainBiz() {
         return BizMain.getInstans();
     }
-    public static ILoginBiz getLoginBiz() {
-        return BizLogin.getInstans();
-    }
     public static IProductBiz getProductBiz() {
         return BizGoodProduct.getInstans();
     }
@@ -72,5 +69,8 @@ public class IBizFactory {
     }
     public static IMySliverBeanBiz getMySliverBeanBiz(){
         return BizMySliverBean.getInstans();
+    }
+    public static IEntrepreneurialBiz getEntrepreneurial(){
+        return BizEntrepreneurial.getInstans();
     }
 }
