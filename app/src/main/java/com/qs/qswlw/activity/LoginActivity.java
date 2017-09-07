@@ -8,9 +8,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.qs.qswlw.R;
-import com.qs.qswlw.activity.PersonalCenter.BaseInfoActivity;
-import com.qs.qswlw.activity.PersonalCenter.BusinessSettingActivity;
-import com.qs.qswlw.activity.PersonalCenter.ConsumerSettingActivity;
+import com.qs.qswlw.activity.PersonalCenter.*;
 import com.qs.qswlw.bean.LoginBean;
 import com.qs.qswlw.bean.MainBean;
 import com.qs.qswlw.manager.UserManage;
@@ -123,7 +121,8 @@ public class LoginActivity extends BaseInfoActivity {
                     startActivity(intent);
                 } else {
                     //其他页面
-
+                    intent.setClass(LoginActivity.this, OtherUserSettingActivity.class);
+                    startActivity(intent);
                 }
 
             }

@@ -39,11 +39,10 @@
                         android:layout_width="40dp"
                         android:layout_height="40dp">
                         <ImageView
-                            android:layout_width="20dp"
-                            android:layout_height="20dp"
+                            android:layout_width="22dp"
+                            android:layout_height="22dp"
                             android:layout_gravity="center"
                             android:layout_marginTop="3dp"
-                            android:layout_marginRight="2dp"
                             android:src="@mipmap/user_12"/>
                         <TextView
                             android:id="@+id/tv_setting_topcount"
@@ -54,6 +53,7 @@
                             android:layout_gravity="right|top"
                             android:gravity="center"
                             android:visibility="gone"
+                            android:textSize="9sp"
                             android:text="37"/>
                     </FrameLayout>
 
@@ -175,6 +175,7 @@
                         android:orientation="vertical">
 
                         <RelativeLayout
+                            android:id="@+id/rl_setting_consumptionMoney"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content">
 
@@ -308,39 +309,54 @@
     </ScrollView>
 
     <View
-       style="@style/view_address"/>
+        android:layout_width="match_parent"
+        android:layout_height="0.3dp"
+        android:background="@color/view"
+        android:layout_marginBottom="4dp"
+        android:layout_marginTop="8dp"/>
     <RadioGroup
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:padding="2dp">
+        android:paddingBottom="4dp">
 
         <RadioButton
-            android:id="@+id/rb_main_mall"
+            android:id="@+id/rb_main_qsmall"
             style="@style/tv_iv_setting"
-            android:drawableTop="@mipmap/sy_03"
-            android:text="首页"
+            android:drawableTop="@mipmap/gouwuche"
+            android:text="钱盛商城"
+            android:drawablePadding="2dp"
             android:textSize="9sp"/>
 
         <RadioButton
-            android:id="@+id/rb_main_beans"
+            android:id="@+id/rb_main_lianmeng"
             style="@style/tv_iv_setting"
-            android:drawableTop="@mipmap/jd_03"
-            android:text="创业金豆"
+            android:drawableTop="@mipmap/gouwudai"
+            android:text="联盟商家"
+            android:drawablePadding="2dp"
             android:textSize="9sp"/>
 
         <RadioButton
             android:id="@+id/rb_main_funtime"
             style="@style/tv_iv_setting"
-            android:drawableTop="@mipmap/hb_03"
-            android:text="我的伙伴"
+            android:drawableTop="@mipmap/happygame01"
+            android:drawablePadding="2dp"
+            android:text="开心一刻"
             android:textSize="9sp"/>
 
         <RadioButton
+            android:id="@+id/rb_main_luck"
+            style="@style/tv_iv_setting"
+            android:drawableTop="@mipmap/luckgame01"
+            android:drawablePadding="2dp"
+            android:text="促销抽奖"
+            android:textSize="9sp"/>
+        <RadioButton
             android:id="@+id/rb_main_exit"
             style="@style/tv_iv_setting"
-            android:drawableTop="@mipmap/wd_03"
-            android:text="退出"
+            android:drawableTop="@mipmap/out"
+            android:drawablePadding="2dp"
+            android:text="推出"
             android:textSize="9sp"/>
     </RadioGroup>
 

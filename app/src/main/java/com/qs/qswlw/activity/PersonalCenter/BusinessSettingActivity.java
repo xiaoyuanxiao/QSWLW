@@ -19,6 +19,7 @@ import com.qs.qswlw.adapter.BusinessSettingAdapter;
 import com.qs.qswlw.bean.PersonalSettingBean;
 import com.qs.qswlw.okhttp.Iview.IPersonalSettingView;
 import com.qs.qswlw.okhttp.Presenter.PersonalSettingPresenter;
+import com.qs.qswlw.utils.RadioButtonImgUtil;
 
 
 /**
@@ -27,10 +28,7 @@ import com.qs.qswlw.okhttp.Presenter.PersonalSettingPresenter;
 public class BusinessSettingActivity extends BaseActivity implements IPersonalSettingView {
 
     private GridView gv_setting;
-    private RadioButton rb_main_mall;
-    private RadioButton rb_main_beans;
-    private RadioButton rb_main_funtime;
-    private RadioButton rb_main_exit;
+    private RadioButton rb_main_qsmall,rb_main_lianmeng,rb_main_funtime,rb_main_luck,rb_main_exit;
     private BusinessSettingAdapter businessSettingAdapter;
     private TextView tv_setting_set;
     PersonalSettingPresenter personalSettingPresenter = new PersonalSettingPresenter(this);
@@ -76,9 +74,10 @@ public class BusinessSettingActivity extends BaseActivity implements IPersonalSe
     @Override
     public void initfindviewByid() {
         gv_setting = (GridView) findViewById(R.id.gv_setting);
-        rb_main_mall = (RadioButton) findViewById(R.id.rb_main_mall);
-        rb_main_beans = (RadioButton) findViewById(R.id.rb_main_beans);
+        rb_main_qsmall = (RadioButton) findViewById(R.id.rb_main_qsmall);
+        rb_main_lianmeng = (RadioButton) findViewById(R.id.rb_main_lianmeng);
         rb_main_funtime = (RadioButton) findViewById(R.id.rb_main_funtime);
+        rb_main_luck = (RadioButton) findViewById(R.id.rb_main_luck);
         rb_main_exit = (RadioButton) findViewById(R.id.rb_main_exit);
         tv_setting_set = (TextView) findViewById(R.id.tv_setting_set);
 
@@ -96,7 +95,7 @@ public class BusinessSettingActivity extends BaseActivity implements IPersonalSe
         tv_setting_shopname = (TextView) findViewById(R.id.tv_setting_shopname);
         tv_role = (TextView) findViewById(R.id.tv_role);
         setting_one = (TextView) findViewById(R.id.setting_one);
-
+        RadioButtonImgUtil.setRadioButtonImg(this,rb_main_qsmall,rb_main_lianmeng,rb_main_funtime,rb_main_luck,rb_main_exit);
 
     }
 
@@ -116,9 +115,7 @@ public class BusinessSettingActivity extends BaseActivity implements IPersonalSe
     @Override
     public void setOnclick() {
         gv_setting.setOnItemClickListener(new ItemClickListener());
-        rb_main_mall.setOnClickListener(this);
-        rb_main_exit.setOnClickListener(this);
-        tv_setting_set.setOnClickListener(this);
+
 
     }
 
@@ -234,15 +231,15 @@ public class BusinessSettingActivity extends BaseActivity implements IPersonalSe
     @Override
     public void onClick(View v) {
         switch (v.getId()){
-            case R.id.rb_main_mall:
-                startActivity(new Intent(BusinessSettingActivity.this, MainActivity.class));
-                break;
-            case R.id.rb_main_exit:
-                showDialog();
-                break;
-            case R.id.tv_setting_set:
-                startActivity(new Intent(this,SetModifyActivity.class));
-                break;
+//            case rb_main_mall:
+//                startActivity(new Intent(BusinessSettingActivity.this, MainActivity.class));
+//                break;
+//            case R.id.rb_main_exit:
+//                showDialog();
+//                break;
+//            case R.id.tv_setting_set:
+//                startActivity(new Intent(this,SetModifyActivity.class));
+//                break;
         }
     }
 

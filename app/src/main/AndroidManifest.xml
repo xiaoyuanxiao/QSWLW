@@ -64,6 +64,7 @@
         <activity android:name=".activity.PersonalCenter.VenturegoldBeansActivity"/>
         <activity android:name=".activity.PersonalCenter.MyRoleActivity"/>
         <activity android:name=".activity.PersonalCenter.MySilverBeanActivity"/>
+        <activity android:name=".activity.PersonalCenter.OtherUserSettingActivity"/>
 
         <activity android:name=".activity.PersonalCenter.RecommendedRecordsActivity"/>
         <activity android:name=".activity.PersonalCenter.DonationRecordActivity"/>

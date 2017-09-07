@@ -17,6 +17,7 @@ import com.qs.qswlw.adapter.ConsumerSettingAdapter;
 import com.qs.qswlw.bean.PersonalSettingBean;
 import com.qs.qswlw.okhttp.Iview.IPersonalSettingView;
 import com.qs.qswlw.okhttp.Presenter.PersonalSettingPresenter;
+import com.qs.qswlw.utils.RadioButtonImgUtil;
 
 
 /**
@@ -27,7 +28,7 @@ public class ConsumerSettingActivity extends BaseActivity implements AdapterView
     private GridView gv_setting;
     private TextView tv_setting_set;
     private ConsumerSettingAdapter consumerSettingAdapter;
-    private RadioButton rb_setting_exit, rb_setting_partner, rb_setting_beans, rb_setting_mall;
+    private RadioButton rb_main_qsmall,rb_main_lianmeng,rb_main_funtime,rb_main_luck,rb_main_exit;
     PersonalSettingPresenter personalSettingPresenter = new PersonalSettingPresenter(this);
     private TextView tv_setting_consumptionMoney,tv_setting_consumerSilverbeans,tv_setting_encourage,tv_setting_withdrawals,tv_setting_consumerbeans,
             tv_setting_paytaxes,tv_cyzx,tv_recommender,tv_setting_id,tv_setting_name,tv_role;
@@ -75,10 +76,11 @@ public class ConsumerSettingActivity extends BaseActivity implements AdapterView
     public void initfindviewByid() {
         gv_setting = (GridView) findViewById(R.id.gv_setting);
         tv_setting_set = (TextView) findViewById(R.id.tv_setting_set);
-        rb_setting_exit = (RadioButton) findViewById(R.id.rb_main_exit);
-        rb_setting_partner = (RadioButton) findViewById(R.id.rb_main_funtime);
-        rb_setting_beans = (RadioButton) findViewById(R.id.rb_main_beans);
-        rb_setting_mall = (RadioButton) findViewById(R.id.rb_main_mall);
+        rb_main_qsmall = (RadioButton) findViewById(R.id.rb_main_qsmall);
+        rb_main_lianmeng = (RadioButton) findViewById(R.id.rb_main_lianmeng);
+        rb_main_funtime = (RadioButton) findViewById(R.id.rb_main_funtime);
+        rb_main_luck = (RadioButton) findViewById(R.id.rb_main_luck);
+        rb_main_exit = (RadioButton) findViewById(R.id.rb_main_exit);
 
 
         tv_setting_withdrawals = (TextView) findViewById(R.id.tv_setting_withdrawals);
@@ -94,7 +96,7 @@ public class ConsumerSettingActivity extends BaseActivity implements AdapterView
         tv_recommender = (TextView) findViewById(R.id.tv_recommender);
         tv_setting_id = (TextView) findViewById(R.id.tv_setting_id);
         tv_setting_name = (TextView) findViewById(R.id.tv_setting_name);
-
+        RadioButtonImgUtil.setRadioButtonImg(this,rb_main_qsmall,rb_main_lianmeng,rb_main_funtime,rb_main_luck,rb_main_exit);
 
 
     }
@@ -115,31 +117,28 @@ public class ConsumerSettingActivity extends BaseActivity implements AdapterView
     public void setOnclick() {
         gv_setting.setOnItemClickListener(this);
         tv_setting_set.setOnClickListener(this);
-        rb_setting_exit.setOnClickListener(this);
-        rb_setting_beans.setOnClickListener(this);
-        rb_setting_partner.setOnClickListener(this);
-        rb_setting_mall.setOnClickListener(this);
+
     }
 
     @Override
     public void onClick(View view) {
 
         switch (view.getId()) {
-            case R.id.tv_setting_set:
-                startActivity(new Intent(this, SetModifyActivity.class));
-                break;
-            case R.id.rb_main_exit:
-                showDialog();
-                break;
-            case R.id.rb_main_beans:
-                startActivity(new Intent(this, VenturegoldBeansActivity.class));
-                break;
-            case R.id.rb_main_funtime:
-                startActivity(new Intent(this, MyPartnerActivity.class));
-                break;
-            case R.id.rb_main_mall:
-                startActivity(new Intent(this, MainActivity.class));
-                break;
+//            case R.id.tv_setting_set:
+//                startActivity(new Intent(this, SetModifyActivity.class));
+//                break;
+//            case R.id.rb_main_exit:
+//                showDialog();
+//                break;
+//            case R.id.rb_main_beans:
+//                startActivity(new Intent(this, VenturegoldBeansActivity.class));
+//                break;
+//            case R.id.rb_main_funtime:
+//                startActivity(new Intent(this, MyPartnerActivity.class));
+//                break;
+//            case R.id.rb_main_mall:
+//                startActivity(new Intent(this, MainActivity.class));
+//                break;
         }
     }
 

@@ -16,6 +16,7 @@ import com.qs.qswlw.R;
 import com.qs.qswlw.activity.PersonalCenter.BaseInfoActivity;
 import com.qs.qswlw.activity.PersonalCenter.BusinessSettingActivity;
 import com.qs.qswlw.activity.PersonalCenter.ConsumerSettingActivity;
+import com.qs.qswlw.activity.PersonalCenter.OtherUserSettingActivity;
 import com.qs.qswlw.bean.MainBean;
 import com.qs.qswlw.bean.RegisterBean;
 import com.qs.qswlw.bean.RegisterCheckIdBean;
@@ -278,7 +279,8 @@ public class RegisterActivity extends BaseInfoActivity{
                         intent.setClass(RegisterActivity.this,BusinessSettingActivity.class);
                         startActivity(intent);
                     } else {
-                        //其他页面
+                        intent.setClass(RegisterActivity.this, OtherUserSettingActivity.class);
+                        startActivity(intent);
 
                     }
                     finish();
