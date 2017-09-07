@@ -34,6 +34,11 @@ public class QSMalListNewFragment extends BaseFragment implements AdapterView.On
         gv_qsmalllist.setAdapter(new QSMalListNewAdapter(activity));
     }
 
+    @Override
+    protected void setOnclick() {
+
+    }
+
 
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
@@ -42,4 +47,8 @@ public class QSMalListNewFragment extends BaseFragment implements AdapterView.On
     }
 
 
+    @Override
+    public void onClick(View view) {
+
+    }
 }

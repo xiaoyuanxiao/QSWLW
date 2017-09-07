@@ -14,7 +14,7 @@ import com.qs.qswlw.activity.BaseActivity;
 /**
  * Created by xiaoyu on 2016/2/24.
  */
-public abstract class BaseFragment extends Fragment {
+public abstract class BaseFragment extends Fragment implements View.OnClickListener{
     protected BaseActivity activity;
 
 
@@ -54,7 +54,10 @@ public abstract class BaseFragment extends Fragment {
      * 初始化数据
      */
     protected void initData() {
+        setOnclick();
     }
+
+    protected abstract void setOnclick();
 
 
     @Override

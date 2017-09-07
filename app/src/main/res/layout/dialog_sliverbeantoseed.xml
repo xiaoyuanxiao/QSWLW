@@ -9,6 +9,7 @@
             android:text="当前银豆："
             android:layout_marginTop="5dp"/>
         <TextView
+            android:id="@+id/tv_dialog_sliverbean"
             android:layout_marginTop="5dp"
             android:layout_toRightOf="@+id/tv_bean"
             android:layout_width="wrap_content"
@@ -29,6 +30,7 @@
         style="@style/tv_harvestaddress"
         android:text="可转换创业种子："/>
     <TextView
+        android:id="@+id/tv_dialog_entrepreneurial"
         android:layout_marginTop="10dp"
         android:layout_below="@+id/tv_bean"
         android:layout_toRightOf="@+id/tv_seed"
@@ -60,6 +62,7 @@
         android:textColor="@color/red"
         android:text="注：银豆888=1创业种子"/>
     <Button
+        android:id="@+id/btn_dialog_determine"
         android:layout_width="match_parent"
         android:layout_height="30dp"
         android:background="@color/red"

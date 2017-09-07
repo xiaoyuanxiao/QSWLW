@@ -28,4 +28,14 @@ public class QSMallListPriceFragment extends BaseFragment {
         super.initData();
         gv_qsmalllist.setAdapter(new QSMalListNewAdapter(activity));
     }
+
+    @Override
+    protected void setOnclick() {
+
+    }
+
+    @Override
+    public void onClick(View view) {
+
+    }
 }

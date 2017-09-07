@@ -18,4 +18,14 @@ public class CommodityDetailsEvaluateFragment extends BaseFragment {
         View inflate = View.inflate(activity, R.layout.fg_commoditydetailsevaluate, null);
         return inflate;
     }
+
+    @Override
+    protected void setOnclick() {
+
+    }
+
+    @Override
+    public void onClick(View view) {
+
+    }
 }

@@ -1,6 +1,7 @@
 package com.qs.qswlw.fragment;
 
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -24,6 +25,7 @@ public class InnovationIncentiveFragment extends BaseFragment implements IEntrep
     private TextView tv_entrepreneurial_one, tv_entrepreneurial_two, tv_entrepreneurial_three, tv_entrepreneurial_four,tv_entrepreneurial_model;
     private List<EntrepreneurialIncentiveBean.ListModel2Bean> innovationList;
     private InnovationAdapter innovationAdapter;
+    private LinearLayout ll_click;
 
     public static InnovationIncentiveFragment newInstener() {
         return new InnovationIncentiveFragment();
@@ -38,6 +40,7 @@ public class InnovationIncentiveFragment extends BaseFragment implements IEntrep
         tv_entrepreneurial_three = (TextView) inflate.findViewById(R.id.tv_entrepreneurial_three);
         tv_entrepreneurial_four = (TextView) inflate.findViewById(R.id.tv_entrepreneurial_four);
         tv_entrepreneurial_model = (TextView) inflate.findViewById(R.id.tv_entrepreneurial_model);
+        ll_click = (LinearLayout) inflate.findViewById(R.id.ll_click);
         return inflate;
     }
 
@@ -48,6 +51,11 @@ public class InnovationIncentiveFragment extends BaseFragment implements IEntrep
         innovationAdapter = new InnovationAdapter(activity, innovationList);
         lv_sub_entrepreneurialseed.setAdapter(innovationAdapter);
         entrepreneurialPresenter.getdata(MyApplication.TOKEN, 1, "model2");
+    }
+
+    @Override
+    protected void setOnclick() {
+        ll_click.setOnClickListener(this);
     }
 
     @Override
@@ -62,5 +70,13 @@ public class InnovationIncentiveFragment extends BaseFragment implements IEntrep
         innovationList.clear();
         innovationList.addAll(entrepreneurialData.getList_model2());
         innovationAdapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()){
+            case R.id.ll_click:
+                break;
+        }
     }
 }

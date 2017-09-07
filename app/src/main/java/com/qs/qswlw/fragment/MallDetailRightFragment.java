@@ -18,4 +18,14 @@ public class MallDetailRightFragment extends BaseFragment {
     protected void initData() {
         super.initData();
     }
+
+    @Override
+    protected void setOnclick() {
+
+    }
+
+    @Override
+    public void onClick(View view) {
+
+    }
 }

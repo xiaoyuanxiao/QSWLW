@@ -58,6 +58,11 @@ public class CommodityDetailsWareFragment extends BaseFragment implements View.O
 
     }
 
+    @Override
+    protected void setOnclick() {
+
+    }
+
     private Handler handler = new Handler() {
         @Override
         public void handleMessage(Message msg) {

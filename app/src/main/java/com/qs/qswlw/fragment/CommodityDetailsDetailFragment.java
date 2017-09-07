@@ -27,6 +27,11 @@ public class CommodityDetailsDetailFragment extends BaseFragment implements View
     }
 
     @Override
+    protected void setOnclick() {
+
+    }
+
+    @Override
     public void onClick(View view) {
         switch (view.getId()){
 

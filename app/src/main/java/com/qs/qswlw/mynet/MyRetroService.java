@@ -2,6 +2,7 @@ package com.qs.qswlw.mynet;
 
 
 import com.qs.qswlw.bean.AngelRankingBean;
+import com.qs.qswlw.bean.EntrepreneurialDialogBean;
 import com.qs.qswlw.bean.EntrepreneurialIncentiveBean;
 import com.qs.qswlw.bean.ForgetPassWordBean;
 import com.qs.qswlw.bean.GoodProductBean;
@@ -76,6 +77,14 @@ public interface MyRetroService {
     @FormUrlEncoded
     @POST("index.php?m=Appapi&c=UserBonus&a=silver")
     Observable<MainBean<MySliverBean>> getMySliverBeanData(@Field("token") String token,@Field("p") int p);
+
+    /**
+     * 兑换创业种子数
+     */
+    @FormUrlEncoded
+    @POST("index.php?m=Appapi&c=UserBonus&a=do_love")
+    Observable<MainBean<EntrepreneurialDialogBean>> postEntrepreneurialDialog(@Field("token") String token,@Field("model") String model,@Field("love") int love);
+
 
     /**
      * 我的角色
