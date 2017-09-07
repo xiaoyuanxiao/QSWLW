@@ -32,17 +32,38 @@
 
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     android:layout_gravity="center_vertical"
                     android:padding="8dp">
+                    <FrameLayout
+                        android:layout_width="40dp"
+                        android:layout_height="40dp">
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="3dp"
+                            android:layout_marginRight="2dp"
+                            android:src="@mipmap/user_12"/>
+                        <TextView
+                            android:id="@+id/tv_setting_topcount"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/red"
+                            android:background="@drawable/setting_corner"
+                            android:layout_gravity="right|top"
+                            android:gravity="center"
+                            android:visibility="gone"
+                            android:text="37"/>
+                    </FrameLayout>
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_centerHorizontal="true"
+                        android:layout_centerInParent="true"
                         android:text="个人中心"
                         android:textColor="@color/white"
-                        android:textSize="12sp" />
+                        android:textSize="13sp" />
 
                     <TextView
                         android:id="@+id/tv_setting_set"
@@ -50,8 +71,9 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
                         android:text="设置"
+                        android:layout_centerVertical="true"
                         android:textColor="@color/white"
-                        android:textSize="12sp" />
+                        android:textSize="13sp" />
                 </RelativeLayout>
 
                 <RelativeLayout
@@ -63,7 +85,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginRight="10dp"
-                        android:layout_marginTop="20dp">
+                        android:layout_marginTop="15dp">
 
                         <TextView
                             android:id="@+id/tv_cyzx"
@@ -149,7 +171,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginRight="5dp"
                         android:layout_toRightOf="@id/rl_setting_left"
-                        android:layout_marginTop="25dp"
+                        android:layout_marginTop="20dp"
                         android:orientation="vertical">
 
                         <RelativeLayout
