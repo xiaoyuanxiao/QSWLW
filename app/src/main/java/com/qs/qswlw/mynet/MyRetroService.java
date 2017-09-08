@@ -9,7 +9,7 @@ import com.qs.qswlw.bean.GoodProductBean;
 import com.qs.qswlw.bean.LoginBean;
 import com.qs.qswlw.bean.MainBean;
 import com.qs.qswlw.bean.Maindatabean;
-import com.qs.qswlw.bean.MyGoldBean;
+import com.qs.qswlw.bean.VenturegoldBean;
 import com.qs.qswlw.bean.MyRoleBean;
 import com.qs.qswlw.bean.MySliverBean;
 import com.qs.qswlw.bean.OldMemberBean;
@@ -147,7 +147,7 @@ public interface MyRetroService {
      */
     @FormUrlEncoded
     @POST("index.php?m=Appapi&c=UserBonus&a=gold")
-    Observable<MainBean<MyGoldBean>> getMyGoldData(@Field("token") String token,@Field("p") int p,@Field("model") String model,@Field("gold_type") String gold_type,@Field("type") String type);
+    Observable<MainBean<VenturegoldBean>> getVentureGoldData(@Field("token") String token, @Field("p") int p, @Field("model") String model, @Field("gold_type") String gold_type, @Field("type") String type);
 
     /**
      * 推荐记录

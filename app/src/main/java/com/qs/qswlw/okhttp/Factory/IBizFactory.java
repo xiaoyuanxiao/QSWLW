@@ -11,6 +11,7 @@ import com.qs.qswlw.okhttp.Moudle.BizPersonalSetting;
 import com.qs.qswlw.okhttp.Moudle.BizRanking;
 import com.qs.qswlw.okhttp.Moudle.BizRecommendRecord;
 import com.qs.qswlw.okhttp.Moudle.BizValidateOldMember;
+import com.qs.qswlw.okhttp.Moudle.BizVentureGold;
 import com.qs.qswlw.okhttp.Moudle.IAngelRankingBiz;
 import com.qs.qswlw.okhttp.Moudle.IEntrepreneurialBiz;
 import com.qs.qswlw.okhttp.Moudle.IMainBiz;
@@ -23,6 +24,7 @@ import com.qs.qswlw.okhttp.Moudle.IRankingBiz;
 import com.qs.qswlw.okhttp.Moudle.IRecommendRecordBiz;
 import com.qs.qswlw.okhttp.Moudle.ITestaBiz;
 import com.qs.qswlw.okhttp.Moudle.IValidateOldMemberBiz;
+import com.qs.qswlw.okhttp.Moudle.IVentureGoldBiz;
 import com.qs.qswlw.okhttp.Moudle.TestaMoudle;
 
 /**
@@ -72,5 +74,8 @@ public class IBizFactory {
     }
     public static IEntrepreneurialBiz getEntrepreneurial(){
         return BizEntrepreneurial.getInstans();
+    }
+    public static IVentureGoldBiz getVentureGold(){
+        return BizVentureGold.getInstans();
     }
 }

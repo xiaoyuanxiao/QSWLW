@@ -63,9 +63,9 @@
                     android:layout_weight="1"
                     android:button="@null"
                     android:gravity="center"
-                    android:text="10%激励"
+                    android:text="创业激励"
                     android:background="@drawable/mygoldenbean_selector"
-                    android:textColor="@color/view"
+                    android:textColor="@drawable/textcolor_red"
                     android:textSize="10sp" />
 
                 <RadioButton
@@ -77,8 +77,8 @@
                     android:checked="true"
                     android:background="@drawable/mygoldenbean_selector"
                     android:gravity="center"
-                    android:text="20%激励"
-                    android:textColor="@color/view"
+                    android:text="创新激励"
+                    android:textColor="@drawable/textcolor_red"
                     android:textSize="10sp" />
             </RadioGroup>
 
@@ -95,6 +95,7 @@
                 android:gravity="center">
 
                 <TextView
+                    android:id="@+id/tv_sub_mygoldenbean_one"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -103,7 +104,7 @@
                     android:textSize="10sp" />
 
                 <TextView
-                    android:id="@+id/tv_outgoingSeed"
+                    android:id="@+id/tv_sub_mygoldenbean_two"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -112,11 +113,20 @@
                     android:textSize="10sp" />
 
                 <TextView
+                    android:id="@+id/tv_sub_mygoldenbean_three"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:gravity="center_horizontal"
-                    android:text="获得金豆"
+                    android:text="消费金豆"
+                    android:textSize="10sp" />
+                <TextView
+                    android:id="@+id/tv_sub_mygoldenbean_four"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:text="创业金豆"
                     android:textSize="10sp" />
 
             </LinearLayout>

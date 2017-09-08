@@ -6,7 +6,7 @@ import java.util.List;
  * Created by xiaoyu on 2017/9/8.
  */
 
-public class MyGoldBean {
+public class VenturegoldBean {
     /**
      * list : [{"logid":"165001","user_id":"187","dellove":"0","total":null,"none":"0.00","loveval_model":"1.87","model":"model2","gold":"6.79","add_time":"2017-06-30","mark":"0","role":"10","sid":"0","temp1":"4.753","temp2":"2.037","give_id":"0","consume_quota":"0.000"}]
      * temp1_count : 40124.660
