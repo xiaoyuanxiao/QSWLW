@@ -26,16 +26,19 @@ public class RecommendedRecordsActivity extends BaseInfoActivity implements IRec
     private ViewPager viewpager;
     private List<RecommendRecordsMode> viewpagedata;
     private RadioGroup rg_recommendrecords;
-    private TextView tv_consumer,tv_business;
+    private TextView tv_consumer, tv_business;
     private RecommendedRecordsPersenter recommendedRecordsPersenter = new RecommendedRecordsPersenter(this);
+
     @Override
-    public void setRecommendRecordList(List<RecommendedRecordsBean.ResultBean> list) {
-        for (int i = 0; i < viewpagedata.size(); i++) {
-            viewpagedata.get(i).setdata(list);
-        }
-
-
+    public void setRecommendRecordList(List<RecommendedRecordsBean> list, String recode) {
+        if (recode.equals(tab_name1))
+            viewpagedata.get(0).setdata(list);
+        else
+            viewpagedata.get(1).setdata(list);
     }
+
+    private String tab_name1 = "jl_d4";
+    private String tab_name2 = "jl_d3";
 
     @Override
     public View setConetnView() {
@@ -49,7 +52,7 @@ public class RecommendedRecordsActivity extends BaseInfoActivity implements IRec
         viewpagedata.add(new RecommendRecordsMode(this));
         MyViewPagerAdapter adapter = new MyViewPagerAdapter();
         viewpager.setAdapter(adapter);
-        recommendedRecordsPersenter.getData(MyApplication.TOKEN,1,"","");
+        recommendedRecordsPersenter.getData(MyApplication.TOKEN, 1, "", tab_name1);
         return inflate;
     }
 
@@ -66,19 +69,30 @@ public class RecommendedRecordsActivity extends BaseInfoActivity implements IRec
         switch (v.getId()) {
             case R.id.tv_consumer:
                 position = 0;
-                viewpagedata.get(0).initData();
+                tv_consumer.setTextColor(getResources().getColor(R.color.white));
+                tv_consumer.setBackgroundColor(getResources().getColor(R.color.tv_green));
+                tv_business.setTextColor(getResources().getColor(R.color.red));
+                tv_business.setBackgroundColor(getResources().getColor(R.color.white));
+                recommendedRecordsPersenter.getData(MyApplication.TOKEN, 1, "", tab_name1);
                 break;
             case R.id.tv_business:
                 position = 1;
+                tv_consumer.setTextColor(getResources().getColor(R.color.red));
+                tv_consumer.setBackgroundColor(getResources().getColor(R.color.white));
+                tv_business.setTextColor(getResources().getColor(R.color.white));
+                tv_business.setBackgroundColor(getResources().getColor(R.color.tv_green));
+                recommendedRecordsPersenter.getData(MyApplication.TOKEN, 1, "", tab_name2);
+
                 break;
         }
         viewpager.setCurrentItem(position);
+        viewpagedata.get(0).initData();
     }
 
     @Override
     public void setOnclick() {
         super.setOnclick();
-        rg_recommendrecords.setOnCheckedChangeListener(new MyOnCheckedChangeListener());
+        //rg_recommendrecords.setOnCheckedChangeListener(new MyOnCheckedChangeListener());
         tv_consumer.setOnClickListener(this);
         tv_business.setOnClickListener(this);
 
@@ -113,20 +127,20 @@ public class RecommendedRecordsActivity extends BaseInfoActivity implements IRec
         }
     }
 
-    private class MyOnCheckedChangeListener implements RadioGroup.OnCheckedChangeListener {
-        @Override
-        public void onCheckedChanged(RadioGroup radioGroup, int i) {
-            int position = 0;
-            switch (i) {
-                case R.id.tv_consumer:
-                    position = 0;
-                    break;
-                case R.id.rb_recommendGoldenBean:
-                    position = 1;
-                    break;
-            }
-            viewpager.setCurrentItem(position);
-            viewpagedata.get(position).initData();
-        }
-    }
+//    private class MyOnCheckedChangeListener implements RadioGroup.OnCheckedChangeListener {
+//        @Override
+//        public void onCheckedChanged(RadioGroup radioGroup, int i) {
+//            int position = 0;
+//            switch (i) {
+//                case R.id.tv_consumer:
+//                    position = 0;
+//                    break;
+//                case R.id.rb_recommendGoldenBean:
+//                    position = 1;
+//                    break;
+//            }
+//            viewpager.setCurrentItem(position);
+//            viewpagedata.get(position).initData();
+//        }
+//    }
 }

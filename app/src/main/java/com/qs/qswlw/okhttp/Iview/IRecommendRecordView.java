@@ -9,6 +9,7 @@ import java.util.List;
  */
 
 public interface IRecommendRecordView {
-    void setRecommendRecordList(List<RecommendedRecordsBean.ResultBean> list);
+    void setRecommendRecordList(List<RecommendedRecordsBean> list, String recode);
+
     void runOnUiThread(Runnable runnable);
 }

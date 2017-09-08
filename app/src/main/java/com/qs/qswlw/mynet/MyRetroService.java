@@ -9,6 +9,7 @@ import com.qs.qswlw.bean.GoodProductBean;
 import com.qs.qswlw.bean.LoginBean;
 import com.qs.qswlw.bean.MainBean;
 import com.qs.qswlw.bean.Maindatabean;
+import com.qs.qswlw.bean.MyGoldBean;
 import com.qs.qswlw.bean.MyRoleBean;
 import com.qs.qswlw.bean.MySliverBean;
 import com.qs.qswlw.bean.OldMemberBean;
@@ -19,6 +20,8 @@ import com.qs.qswlw.bean.RegisterBean;
 import com.qs.qswlw.bean.RegisterCheckIdBean;
 import com.qs.qswlw.bean.RegisterGetCodeBean;
 import com.qs.qswlw.bean.ValidateOldMemberBean;
+
+import java.util.List;
 
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
@@ -139,13 +142,19 @@ public interface MyRetroService {
     @POST("index.php?m=Appapi&c=User&a=role")
     Observable<MainBean<PersonalSettingBean>> getPersonalData(@Field("token") String token);
 
+    /**
+     * 我的金豆
+     */
+    @FormUrlEncoded
+    @POST("index.php?m=Appapi&c=UserBonus&a=gold")
+    Observable<MainBean<MyGoldBean>> getMyGoldData(@Field("token") String token,@Field("p") int p,@Field("model") String model,@Field("gold_type") String gold_type,@Field("type") String type);
 
     /**
      * 推荐记录
      */
     @FormUrlEncoded
     @POST("index.php?m=Appapi&c=User&a=recommend_list")
-    Observable<MainBean<RecommendedRecordsBean>> getRecommendRecordData(@Field("token") String token,@Field("p") int p,@Field("search_name") String search_name,@Field("tab_name") String tab_name);
+    Observable<MainBean<List<RecommendedRecordsBean>>> getRecommendRecordData(@Field("token") String token, @Field("p") int p, @Field("search_name") String search_name, @Field("tab_name") String tab_name);
 
     /**
      * 注册

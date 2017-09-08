@@ -90,7 +90,6 @@ public class RecommendActivity extends BaseInfoActivity implements View.OnLongCl
             //根据输入的文本生成对应的二维码并且显示出来
             Bitmap mBitmap = EncodingHandler.createQRCode(userid, 500);
             if (mBitmap != null) {
-                Toast.makeText(this, "二维码生成成功！", Toast.LENGTH_SHORT).show();
                 iv_qrCode.setImageBitmap(mBitmap);
             }
 

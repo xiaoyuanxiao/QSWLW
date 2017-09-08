@@ -2,6 +2,7 @@ package com.qs.qswlw.activity.PersonalCenter;
 
 import android.content.Intent;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.RadioButton;
 import android.widget.RelativeLayout;
@@ -84,12 +85,72 @@ public class OtherUserSettingActivity  extends BaseActivity implements IPersonal
 
     @Override
     public void setOnclick() {
-
+        gv_setting.setOnItemClickListener(new ItemClickListener());
     }
 
     @Override
     public void onClick(View view) {
 
+    }
+    class ItemClickListener implements AdapterView.OnItemClickListener {
+
+        @Override
+        public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+            switch (i){
+                case 0:
+                    startActivity(new Intent(OtherUserSettingActivity.this,MySilverBeanActivity.class));
+                    break;
+                case 1:
+                    break;
+                case 2:
+                    break;
+                case 3:
+                    break;
+                case 4:
+                    break;
+                case 5:
+                    break;
+                case 6:
+                    Intent intent = new Intent(OtherUserSettingActivity.this,RecommendActivity.class);
+                    intent.putExtra("userid",user_id);
+                    intent.putExtra("nickname",nickname);
+                    intent.putExtra("role",role);
+                    startActivity(intent);
+                    break;
+                case 7:
+                    break;
+                case 8:
+                    break;
+                case 9:
+                    break;
+                case 10:
+                    break;
+                case 11:
+                    break;
+                case 12:
+                    break;
+                case 13:
+                    break;
+                case 14:
+                    break;
+                case 15:
+                    break;
+                case 16:
+                    break;
+                case 17:
+                    break;
+                case 18:
+                    break;
+                case 19:
+                    break;
+                case 20:
+                    break;
+                case 21:
+                    break;
+                case 22:
+                    break;
+            }
+        }
     }
 
     @Override

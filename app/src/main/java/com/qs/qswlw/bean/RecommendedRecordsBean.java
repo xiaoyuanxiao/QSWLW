@@ -1,30 +1,12 @@
 package com.qs.qswlw.bean;
 
-import java.util.List;
-
 /**
  * Created by xiaoyu on 2017/9/4.
  */
 
 public class RecommendedRecordsBean {
 
-    private List<ResultBean> result;
 
-    public List<ResultBean> getResult() {
-        return result;
-    }
-
-    public void setResult(List<ResultBean> result) {
-        this.result = result;
-    }
-
-    public static class ResultBean {
-        /**
-         * nickname : test2
-         * reg_time : 1503642972
-         * role : 0
-         * user_id : 41977
-         */
 
         private String nickname;
         private String reg_time;
@@ -71,5 +53,5 @@ public class RecommendedRecordsBean {
         public void setUser_id(String user_id) {
             this.user_id = user_id;
         }
-    }
+
 }

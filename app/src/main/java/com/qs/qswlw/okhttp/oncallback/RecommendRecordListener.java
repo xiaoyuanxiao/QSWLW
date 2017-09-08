@@ -1,5 +1,6 @@
 package com.qs.qswlw.okhttp.oncallback;
 
+import com.qs.qswlw.bean.MainBean;
 import com.qs.qswlw.bean.RecommendedRecordsBean;
 
 import java.util.List;
@@ -9,5 +10,5 @@ import java.util.List;
  */
 
 public interface RecommendRecordListener extends BaseOnlistener{
-    void onSuccess(List<RecommendedRecordsBean.ResultBean>list);
+    void onSuccess(MainBean<List<RecommendedRecordsBean>> list);
 }

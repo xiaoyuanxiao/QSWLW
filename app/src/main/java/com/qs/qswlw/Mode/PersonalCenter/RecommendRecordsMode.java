@@ -17,26 +17,23 @@ import java.util.List;
  */
 
 public class RecommendRecordsMode extends BaseMode {
-    private List<RecommendedRecordsBean.ResultBean> data;
-
+    private List<RecommendedRecordsBean> data;
     private ListView lv_recommendRecords;
     private RecommendedRecordsAdapter recommendedRecordsAdapter;
-
     public RecommendRecordsMode(Context context) {
         super(context);
     }
-
     @Override
     protected View initView() {
         View inflate = View.inflate(context, R.layout.sub_recommendrecords, null);
         lv_recommendRecords = (ListView) inflate.findViewById(R.id.lv_RecommendRecords);
         data = new ArrayList<>();
-        recommendedRecordsAdapter  =new RecommendedRecordsAdapter(context,data);
-        lv_recommendRecords.setAdapter(new RecommendedRecordsAdapter(context,data));
-
+        recommendedRecordsAdapter = new RecommendedRecordsAdapter(context, data);
+        lv_recommendRecords.setAdapter(recommendedRecordsAdapter);
         return inflate;
     }
-    public void setdata(List<RecommendedRecordsBean.ResultBean> data) {
+
+    public void setdata(List<RecommendedRecordsBean> data) {
         this.data.clear();
         this.data.addAll(data);
         recommendedRecordsAdapter.notifyDataSetChanged();

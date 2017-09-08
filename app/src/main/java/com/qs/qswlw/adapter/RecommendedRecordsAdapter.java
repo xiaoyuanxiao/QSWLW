@@ -16,16 +16,13 @@ import java.util.List;
  * Created by xiaoyu on 2017/4/19.
  */
 
-public class RecommendedRecordsAdapter extends BaseListAdapter<RecommendedRecordsBean.ResultBean> {
-    private Context context;
-
-    public RecommendedRecordsAdapter(Context context, List<RecommendedRecordsBean.ResultBean> data) {
+public class RecommendedRecordsAdapter extends BaseListAdapter<RecommendedRecordsBean> {
+    public RecommendedRecordsAdapter(Context context, List<RecommendedRecordsBean> data) {
         super(context, data);
     }
-
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
-        RecommendedRecordsBean.ResultBean resultBean = data.get(i);
+        RecommendedRecordsBean recommendedRecordsBean=    data.get(i);
         ViewHolder holder;
         if(view == null){
             holder = new ViewHolder();
@@ -39,14 +36,14 @@ public class RecommendedRecordsAdapter extends BaseListAdapter<RecommendedRecord
         }else{
             holder = (ViewHolder) view.getTag();
         }
-        holder.tv_recommendrecord_name.setText(resultBean.getNickname());
-        String role = resultBean.getRole();
+        holder.tv_recommendrecord_name.setText(recommendedRecordsBean.getNickname());
+        String role = recommendedRecordsBean.getRole();
         if(role.equals("0")){
             holder.tv_recommendrecord_role.setText("（消费天使）");
         }else if(role.equals("10")){
-            holder.tv_recommendrecord_role.setText("（s商家）");
+            holder.tv_recommendrecord_role.setText("（商家）");
         }
-        holder.tv_recommendrecord_data.setText(TimeUtils.getStrTime(resultBean.getReg_time()));
+        holder.tv_recommendrecord_data.setText(TimeUtils.getStrTime(recommendedRecordsBean.getReg_time()));
         //Glide.with(context).load(ReHttpUtils.getBaseUrl() + resultBean.get()).into(holder.iv_union_ranking);
         return view;
     }
