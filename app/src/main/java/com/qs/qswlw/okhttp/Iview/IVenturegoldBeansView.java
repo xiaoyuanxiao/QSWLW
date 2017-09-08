@@ -7,6 +7,7 @@ import com.qs.qswlw.bean.VenturegoldBean;
  */
 
 public interface IVenturegoldBeansView {
-    void setVenturegoldBeanData(VenturegoldBean venturegoldBeanData);
+    void setVenturegoldBeanData(VenturegoldBean venturegoldBeanData, String modeltype);
+
     void runOnUiThread(Runnable runnable);
 }

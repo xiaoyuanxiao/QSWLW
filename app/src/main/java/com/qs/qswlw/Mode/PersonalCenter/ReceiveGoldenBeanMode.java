@@ -24,7 +24,6 @@ public class ReceiveGoldenBeanMode extends BaseMode {
     protected View initView() {
         View inflate = View.inflate(context, R.layout.sub_mygoldenbean, null);
         lv_sub_myGoldenBean = (ListView)inflate.findViewById(R.id.lv_sub_myGoldenBean);
-        tv_outgoingSeed = (TextView) inflate.findViewById(R.id.tv_outgoingSeed);
         tv_outgoingSeed.setVisibility(View.GONE);
         lv_sub_myGoldenBean.setAdapter(new MyGoldenBeanAdapter(context,false));
         return inflate;

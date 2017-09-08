@@ -18,13 +18,14 @@ public class VenturegoldBeanPresenter {
         iVentureGoldBiz = IBizFactory.getVentureGold();
         this.iVenturegoldBeansView = iVenturegoldBeansView;
     }
-    public void getData(String token,int p,String model,String gold_type,String type){
+
+    public void getData(String token, int p, final String model, String gold_type, String type) {
         iVentureGoldBiz.getdata(new VenturegoldBeanListener() {
             @Override
             public void onSuccess(VenturegoldBean venturegoldBean) {
-                iVenturegoldBeansView.setVenturegoldBeanData(venturegoldBean);
+                iVenturegoldBeansView.setVenturegoldBeanData(venturegoldBean, model);
             }
-        },token,p,model,gold_type,type);
+        }, token, p, model, gold_type, type);
 
     }
 }

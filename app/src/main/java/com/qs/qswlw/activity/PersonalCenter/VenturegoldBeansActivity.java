@@ -1,18 +1,20 @@
 package com.qs.qswlw.activity.PersonalCenter;
 
-import android.support.v4.app.Fragment;
+import android.content.Context;
+import android.graphics.drawable.BitmapDrawable;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.LinearLayout;
+import android.widget.PopupWindow;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.qs.qswlw.R;
-import com.qs.qswlw.bean.VenturegoldBean;
-import com.qs.qswlw.fragment.GetGoldBeanFragment;
 import com.qs.qswlw.fragment.MyGoldBeanFragment;
-import com.qs.qswlw.fragment.RecommendBeanFragment;
-import com.qs.qswlw.okhttp.Iview.IVenturegoldBeansView;
 
 import java.util.ArrayList;
 
@@ -20,13 +22,15 @@ import java.util.ArrayList;
  * Created by xiaoyu on 2017/4/18.
  */
 
-public class VenturegoldBeansActivity extends BaseInfoActivity implements IVenturegoldBeansView {
+public class VenturegoldBeansActivity extends BaseInfoActivity {
 
     private FragmentManager fragmentManager;
     private TextView tv_venturegold_left, tv_venturegold_center, tv_venturegold_right;
     private View view_left, view_center, view_right;
     private LinearLayout ll_venturegold_container;
-    private ArrayList<Fragment> fragments;
+    private ArrayList<MyGoldBeanFragment> fragments;
+    private boolean isselected = false;
+    private PopupWindow popupWindow;
 
     @Override
     public View setConetnView() {
@@ -44,8 +48,11 @@ public class VenturegoldBeansActivity extends BaseInfoActivity implements IVentu
 
     @Override
     public void initfindviewByid() {
-        super.initfindviewByid();
+        super.initfindviewByid();//我现在写
         tv_titlebar_center.setText("创业金豆");
+        tv_titlebar_right.setText("筛选");
+        iv_titlebar_right.setVisibility(View.VISIBLE);
+        iv_titlebar_right.setImageResource(R.mipmap.down);
     }
 
     @Override
@@ -59,21 +66,21 @@ public class VenturegoldBeansActivity extends BaseInfoActivity implements IVentu
      * 初始化所有基fragment
      */
     private void initFragment() {
-        fragments = new ArrayList<Fragment>();
-        fragments.add(MyGoldBeanFragment.newInstance());
-        fragments.add(RecommendBeanFragment.newInstance());
-        fragments.add(GetGoldBeanFragment.newInstance());
+        fragments = new ArrayList<>();
+        fragments.add(MyGoldBeanFragment.newInstance(""));
+        fragments.add(MyGoldBeanFragment.newInstance(MyGoldBeanFragment.GIVE));
+        fragments.add(MyGoldBeanFragment.newInstance(MyGoldBeanFragment.TJJD));
         showFragment(fragments.get(0));
-
     }
 
+    MyGoldBeanFragment ishowfragment;
 
     /**
      * 显示fragment
      *
      * @param fragment 要显示的fragment
      */
-    private void showFragment(Fragment fragment) {
+    private void showFragment(MyGoldBeanFragment fragment) {
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         hideFragment(transaction);
         if (fragment.isAdded()) {
@@ -82,6 +89,7 @@ public class VenturegoldBeansActivity extends BaseInfoActivity implements IVentu
             transaction.add(R.id.ll_venturegold_container, fragment, fragment.getClass().getName());
         }
         transaction.commit();
+        ishowfragment = fragment;
     }
 
     /**
@@ -103,6 +111,7 @@ public class VenturegoldBeansActivity extends BaseInfoActivity implements IVentu
         tv_venturegold_left.setOnClickListener(this);
         tv_venturegold_center.setOnClickListener(this);
         tv_venturegold_right.setOnClickListener(this);
+        ll_titlebar_right.setOnClickListener(this);
     }
 
     @Override
@@ -110,23 +119,66 @@ public class VenturegoldBeansActivity extends BaseInfoActivity implements IVentu
         super.onClick(v);
         switch (v.getId()) {
             case R.id.tv_venturegold_left:
-                setView(tv_venturegold_left,tv_venturegold_center,tv_venturegold_right,view_left,view_center,view_right);
+                setView(tv_venturegold_left, tv_venturegold_center, tv_venturegold_right, view_left, view_center, view_right);
                 showFragment(fragments.get(0));
                 break;
             case R.id.tv_venturegold_center:
-                setView(tv_venturegold_center,tv_venturegold_left,tv_venturegold_right,view_center,view_left,view_right);
+                setView(tv_venturegold_center, tv_venturegold_left, tv_venturegold_right, view_center, view_left, view_right);
                 showFragment(fragments.get(1));
                 break;
             case R.id.tv_venturegold_right:
-                setView(tv_venturegold_right,tv_venturegold_center,tv_venturegold_left,view_right,view_center,view_left);
+                setView(tv_venturegold_right, tv_venturegold_center, tv_venturegold_left, view_right, view_center, view_left);
                 showFragment(fragments.get(2));
-
                 break;
-
+            case R.id.ll_titlebar_right:
+                int i = isselected ? R.mipmap.down : R.mipmap.top;
+                iv_titlebar_right.setImageResource(i);
+                showPW();
+                break;
+            case R.id.tv_pw_day:
+                setType("today");
+                break;
+            case R.id.tv_pw_week:
+                setType("week");
+                break;
+            case R.id.tv_pw_month:
+                setType("month");
+                break;
         }
     }
 
-    private void setView(TextView tv1,TextView tv2,TextView tv3,View view1,View view2,View view3){
+//    private void showpw() {
+//
+//        PopupWindowUtils.showPW(ll_titlebar_right,popupWindow,this,R.layout.pw_withdrawals, Gravity.TOP|Gravity.RIGHT,10,120);
+//    }
+
+    /**
+     * 筛选弹框
+     */
+    private void showPW() {
+        //加载布局
+        LinearLayout layout = (LinearLayout) LayoutInflater.from(this).inflate(
+                R.layout.pw_withdrawals, null);
+        // 实例化popupWindow
+        popupWindow = new PopupWindow(layout, RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
+        //控制键盘是否可以获得焦点
+        popupWindow.setFocusable(true);
+        //设置popupWindow弹出窗体的背景
+        popupWindow.setBackgroundDrawable(new BitmapDrawable(null, ""));
+        WindowManager manager = (WindowManager) getSystemService(Context.WINDOW_SERVICE);
+        //xoff,yoff基于anchor的左下角进行偏移。
+        popupWindow.showAtLocation(ll_titlebar_right, Gravity.TOP | Gravity.RIGHT, 10, 120);
+        TextView tv_pw_day = (TextView) layout.findViewById(R.id.tv_pw_day);
+        TextView tv_pw_week = (TextView) layout.findViewById(R.id.tv_pw_week);
+        TextView tv_pw_month = (TextView) layout.findViewById(R.id.tv_pw_month);
+        tv_pw_day.setOnClickListener(this);
+        tv_pw_week.setOnClickListener(this);
+        tv_pw_month.setOnClickListener(this);
+
+
+    }
+
+    private void setView(TextView tv1, TextView tv2, TextView tv3, View view1, View view2, View view3) {
         tv1.setTextColor(getResources().getColor(R.color.red));
         tv2.setTextColor(getResources().getColor(R.color.black));
         tv3.setTextColor(getResources().getColor(R.color.black));
@@ -134,8 +186,16 @@ public class VenturegoldBeansActivity extends BaseInfoActivity implements IVentu
         view2.setBackgroundColor(getResources().getColor(R.color.view));
         view3.setBackgroundColor(getResources().getColor(R.color.view));
     }
-    @Override
-    public void setVenturegoldBeanData(VenturegoldBean venturegoldBeanData) {
 
+
+    private String type;
+
+    public void setType(String type) {
+        this.type = type;
+        ishowfragment.refreshlist();
+    }
+
+    public String getType() {
+        return type;
     }
 }

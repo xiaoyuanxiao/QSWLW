@@ -57,25 +57,25 @@
                 android:orientation="horizontal">
 
                 <RadioButton
-                    android:id="@+id/rb_myGoldenBean_tenpercent"
+                    android:id="@+id/rb_myGoldenBean_left"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
+                    android:background="@drawable/mygoldenbean_selector"
                     android:button="@null"
                     android:gravity="center"
                     android:text="创业激励"
-                    android:background="@drawable/mygoldenbean_selector"
                     android:textColor="@drawable/textcolor_red"
                     android:textSize="10sp" />
 
                 <RadioButton
-                    android:id="@+id/rb_myGoldenBean_twentypercent"
+                    android:id="@+id/rb_myGoldenBean_right"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
+                    android:background="@drawable/mygoldenbean_selector"
                     android:button="@null"
                     android:checked="true"
-                    android:background="@drawable/mygoldenbean_selector"
                     android:gravity="center"
                     android:text="创新激励"
                     android:textColor="@drawable/textcolor_red"
@@ -86,21 +86,20 @@
                 android:layout_width="match_parent"
                 android:layout_height="0.3dp"
                 android:background="@color/view" />
-
             <LinearLayout
                 android:id="@+id/ll_mygoldenbean"
                 android:layout_width="match_parent"
                 android:layout_height="35dp"
-                android:orientation="horizontal"
-                android:gravity="center">
+                android:gravity="center"
+                android:orientation="horizontal">
 
                 <TextView
                     android:id="@+id/tv_sub_mygoldenbean_one"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="获奖时间"
                     android:gravity="center_horizontal"
+                    android:text="获奖时间"
                     android:textSize="10sp" />
 
                 <TextView
@@ -120,6 +119,7 @@
                     android:gravity="center_horizontal"
                     android:text="消费金豆"
                     android:textSize="10sp" />
+
                 <TextView
                     android:id="@+id/tv_sub_mygoldenbean_four"
                     android:layout_width="0dp"
@@ -143,6 +143,12 @@
                 android:divider="@color/view"
                 android:dividerHeight="1px"></com.qs.qswlw.view.MyListView>
 
+            <com.qs.qswlw.view.MyListView
+                android:id="@+id/lv_sub_myGoldenBean2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:divider="@color/view"
+                android:dividerHeight="1px"></com.qs.qswlw.view.MyListView>
 
         </LinearLayout>
 

@@ -6,39 +6,33 @@
     android:orientation="vertical">
 
     <TextView
-        style="@style/tv_standard"
+        android:id="@+id/tv_pw_day"
+        style="@style/tv_standard_match"
         android:text="今日"
         android:layout_margin="8dp"
-        android:layout_gravity="center"/>
+        android:gravity="center"/>
 
     <View
         android:layout_width="match_parent"
         android:layout_height="0.2dp"
         android:background="@color/view" />
     <TextView
-        style="@style/tv_standard"
+        android:id="@+id/tv_pw_week"
+        style="@style/tv_standard_match"
         android:text="近一周"
         android:layout_margin="8dp"
-        android:layout_gravity="center"/>
+        android:gravity="center"/>
 
     <View
         android:layout_width="match_parent"
         android:layout_height="0.2dp"
         android:background="@color/view" />
     <TextView
-        style="@style/tv_standard"
+        android:id="@+id/tv_pw_month"
+        style="@style/tv_standard_match"
         android:text="近一个月"
         android:layout_margin="8dp"
-        android:layout_gravity="center"/>
+        android:gravity="center"/>
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="0.2dp"
-        android:background="@color/view" />
-    <TextView
-        style="@style/tv_standard"
-        android:text="近一个季度"
-        android:layout_margin="8dp"
-        android:layout_gravity="center"/>
 
 </LinearLayout>
