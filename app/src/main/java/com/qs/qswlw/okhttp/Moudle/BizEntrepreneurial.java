@@ -1,5 +1,7 @@
 package com.qs.qswlw.okhttp.Moudle;
 
+import android.util.Log;
+
 import com.qs.qswlw.bean.EntrepreneurialIncentiveBean;
 import com.qs.qswlw.bean.MainBean;
 import com.qs.qswlw.mynet.HttpSubCribe;
@@ -32,7 +34,7 @@ public class BizEntrepreneurial implements IEntrepreneurialBiz {
 
             @Override
             public void onError(Throwable e) {
-
+                Log.e("e",e+"");
             }
 
             @Override

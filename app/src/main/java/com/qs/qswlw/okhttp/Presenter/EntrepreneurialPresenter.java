@@ -1,5 +1,7 @@
 package com.qs.qswlw.okhttp.Presenter;
 
+import android.util.Log;
+
 import com.qs.qswlw.bean.EntrepreneurialIncentiveBean;
 import com.qs.qswlw.okhttp.Factory.IBizFactory;
 import com.qs.qswlw.okhttp.Iview.IEntrepreneurialView;
@@ -28,7 +30,7 @@ public class EntrepreneurialPresenter {
 
             @Override
             public void onFailure(String code) {
-
+                Log.e("tag",code+"");
             }
         },token,p,model);
     }

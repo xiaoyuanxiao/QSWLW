@@ -98,7 +98,7 @@ public class OtherUserSettingActivity  extends BaseActivity implements IPersonal
         public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
             switch (i){
                 case 0:
-                    startActivity(new Intent(OtherUserSettingActivity.this,MySilverBeanActivity.class));
+                    startActivity(new Intent(OtherUserSettingActivity.this,VenturegoldBeansActivity.class));
                     break;
                 case 1:
                     break;

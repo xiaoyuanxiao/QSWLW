@@ -68,8 +68,8 @@ public class VenturegoldBeansActivity extends BaseInfoActivity {
     private void initFragment() {
         fragments = new ArrayList<>();
         fragments.add(MyGoldBeanFragment.newInstance(""));
-        fragments.add(MyGoldBeanFragment.newInstance(MyGoldBeanFragment.GIVE));
         fragments.add(MyGoldBeanFragment.newInstance(MyGoldBeanFragment.TJJD));
+        fragments.add(MyGoldBeanFragment.newInstance(MyGoldBeanFragment.GIVE));
         showFragment(fragments.get(0));
     }
 

@@ -27,6 +27,7 @@ import static com.qs.qswlw.R.id.tv_sub_mygoldenbean_two;
 public class MyGoldBeanFragment extends BaseFragment implements IVenturegoldBeansView {
     VenturegoldBeanPresenter venturegoldBeanPresenter = new VenturegoldBeanPresenter(this);
     private RadioButton rb_myGoldenBean_left, rb_myGoldenBean_right;
+    private TextView tv_sub_mygoldenbean_topone,tv_sub_mygoldenbean_toptwo;
 
     public static MyGoldBeanFragment newInstance(String type) {//等下
         MyGoldBeanFragment myGoldBeanFragment = new MyGoldBeanFragment();
@@ -47,6 +48,8 @@ public class MyGoldBeanFragment extends BaseFragment implements IVenturegoldBean
         View inflate = View.inflate(activity, R.layout.sub_mygoldenbean, null);
         rb_myGoldenBean_left = (RadioButton) inflate.findViewById(R.id.rb_myGoldenBean_left);
         rb_myGoldenBean_right = (RadioButton) inflate.findViewById(R.id.rb_myGoldenBean_right);
+        tv_sub_mygoldenbean_topone = (TextView) inflate.findViewById(R.id.tv_sub_mygoldenbean_topone);
+        tv_sub_mygoldenbean_toptwo = (TextView) inflate.findViewById(R.id.tv_sub_mygoldenbean_toptwo);
 
         return inflate;
     }
@@ -71,11 +74,11 @@ public class MyGoldBeanFragment extends BaseFragment implements IVenturegoldBean
         if (Gold_type.equals(TJJD)) {
             rb_myGoldenBean_left.setText("创业激励");
             rb_myGoldenBean_right.setText("创新激励");
-            initListViewtitle("获赠时间");
-        } else if (Gold_type.equals(GIVE)) {
-            rb_myGoldenBean_left.setText("100%激励");
-            rb_myGoldenBean_right.setText("20%激励");
             initListViewtitle("获奖时间");
+        } else if (Gold_type.equals(GIVE)) {
+            rb_myGoldenBean_left.setText("100%激励");//这个翻了？嗯，这个text没饭
+            rb_myGoldenBean_right.setText("20%激励");
+            initListViewtitle("获赠时间");
         } else if (Gold_type.equals("")) {
             rb_myGoldenBean_left.setText("创业激励");
             rb_myGoldenBean_right.setText("创新激励");
@@ -97,7 +100,7 @@ public class MyGoldBeanFragment extends BaseFragment implements IVenturegoldBean
     void initList() {
 
         ventureGoldBeansAdapter = new VentureGoldBeansAdapter(activity, list1, Gold_type);
-        ventureGoldBeansAdapter2 = new VentureGoldBeansAdapter(activity, list1, Gold_type);
+        ventureGoldBeansAdapter2 = new VentureGoldBeansAdapter(activity, list2, Gold_type);
         lv_sub_myGoldenBean = (ListView) view.findViewById(R.id.lv_sub_myGoldenBean);
         lv_sub_myGoldenBean.setAdapter(ventureGoldBeansAdapter);
         lv_sub_myGoldenBean2 = (ListView) view.findViewById(R.id.lv_sub_myGoldenBean2);
@@ -107,7 +110,7 @@ public class MyGoldBeanFragment extends BaseFragment implements IVenturegoldBean
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.rb_myGoldenBean_left://还没初始化-我知道0-00--
+            case R.id.rb_myGoldenBean_left:
                 checklisy(true);
                 break;
             case R.id.rb_myGoldenBean_right:
@@ -136,6 +139,16 @@ public class MyGoldBeanFragment extends BaseFragment implements IVenturegoldBean
     @Override
     public void setVenturegoldBeanData(VenturegoldBean venturegoldBeanData, String modeltype) {
         List<VenturegoldBean.ListBean> list = venturegoldBeanData.getList();
+       if( Gold_type.equals(TJJD)){
+           tv_sub_mygoldenbean_topone.setText("累计创业金豆："+venturegoldBeanData.getTjjd().getGold());
+           tv_sub_mygoldenbean_toptwo.setText("累计消费金豆："+venturegoldBeanData.getTjjd().getTaxgold());
+        } else if (Gold_type.equals(GIVE)) {
+           tv_sub_mygoldenbean_topone.setText("累计创业金豆："+venturegoldBeanData.getGive_gold().getGold());
+           tv_sub_mygoldenbean_toptwo.setText("累计消费金豆："+venturegoldBeanData.getGive_gold().getTaxgold());
+       } else if (Gold_type.equals("")) {
+           tv_sub_mygoldenbean_topone.setText("累计创业金豆："+venturegoldBeanData.getModel().getGold());
+           tv_sub_mygoldenbean_toptwo.setText("累计消费金豆："+venturegoldBeanData.getModel().getTaxgold());
+       }
         ischeckmodel = modeltype;
         if (modeltype.equals("model1")) {
             list1.clear();

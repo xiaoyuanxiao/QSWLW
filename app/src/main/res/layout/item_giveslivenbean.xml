@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:gravity="center_vertical"
+    android:padding="5dp">
+    <TextView
+        android:id="@+id/tv_item_gilversliverbean_one"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:textSize="10sp"
+        android:gravity="center_horizontal"
+        style="@style/tv_harvestaddress"
+        android:text="2017-04-05"/>
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+        <LinearLayout
+            android:id="@+id/ll_item_mygoldenbean"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+            <ImageView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:src="@mipmap/fg"/>
+            <TextView
+                android:id="@+id/tv_item_gilversliverbean_two"
+                style="@style/tv_harvestaddress"
+                android:text="2017-04-05"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+            <ImageView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:src="@mipmap/jd"/>
+            <TextView
+                android:id="@+id/tv_item_gilversliverbean_three"
+                style="@style/tv_harvestaddress"
+                android:text="2017-04-05"/>
+        </LinearLayout>
+    </LinearLayout>
+
+
+
+</LinearLayout>

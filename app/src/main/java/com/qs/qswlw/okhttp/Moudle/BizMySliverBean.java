@@ -1,5 +1,7 @@
 package com.qs.qswlw.okhttp.Moudle;
 
+import android.util.Log;
+
 import com.qs.qswlw.bean.MainBean;
 import com.qs.qswlw.bean.MySliverBean;
 import com.qs.qswlw.mynet.HttpSubCribe;
@@ -31,6 +33,7 @@ public class BizMySliverBean implements IMySliverBeanBiz {
 
             @Override
             public void onError(Throwable e) {
+                Log.e("e",e+"");
 
             }
 

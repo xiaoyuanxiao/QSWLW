@@ -113,22 +113,22 @@ public class VenturegoldBean {
          * taxgold : null
          */
 
-        private Object gold;
-        private Object taxgold;
+        private String gold;
+        private String taxgold;
 
-        public Object getGold() {
+        public String getGold() {
             return gold;
         }
 
-        public void setGold(Object gold) {
+        public void setGold(String gold) {
             this.gold = gold;
         }
 
-        public Object getTaxgold() {
+        public String getTaxgold() {
             return taxgold;
         }
 
-        public void setTaxgold(Object taxgold) {
+        public void setTaxgold(String taxgold) {
             this.taxgold = taxgold;
         }
     }

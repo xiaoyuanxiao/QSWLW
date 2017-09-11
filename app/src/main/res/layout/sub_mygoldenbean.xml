@@ -2,7 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@color/white">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -33,6 +34,7 @@
                     android:orientation="vertical">
 
                     <TextView
+                        android:id="@+id/tv_sub_mygoldenbean_topone"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="累计创业金豆：7197.407"
@@ -40,6 +42,7 @@
                         android:textSize="18sp" />
 
                     <TextView
+                        android:id="@+id/tv_sub_mygoldenbean_toptwo"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
@@ -64,6 +67,7 @@
                     android:background="@drawable/mygoldenbean_selector"
                     android:button="@null"
                     android:gravity="center"
+                    android:checked="true"
                     android:text="创业激励"
                     android:textColor="@drawable/textcolor_red"
                     android:textSize="10sp" />
@@ -75,7 +79,6 @@
                     android:layout_weight="1"
                     android:background="@drawable/mygoldenbean_selector"
                     android:button="@null"
-                    android:checked="true"
                     android:gravity="center"
                     android:text="创新激励"
                     android:textColor="@drawable/textcolor_red"
@@ -133,8 +136,7 @@
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="0.3dp"
-                android:background="@color/view" />
+                android:layout_height="0.3dp"/>
 
             <com.qs.qswlw.view.MyListView
                 android:id="@+id/lv_sub_myGoldenBean"
