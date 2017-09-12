@@ -37,7 +37,7 @@ public class BizConsumptionRecord implements IConsumptionRecordBiz {
             @Override
             public void onNext(MainBean<ConsumptionRecordBean> consumptionRecordBeanMainBean) {
                 ConsumptionRecordBean result = consumptionRecordBeanMainBean.getResult();
-                consumptionRecordListener.onSuccess(result);
+                consumptionRecordListener.onSuccess(consumptionRecordBeanMainBean);
             }
 
             @Override

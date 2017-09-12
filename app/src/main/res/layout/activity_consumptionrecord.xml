@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:id="@+id/rl_consumption">
 
 <ScrollView
     android:layout_width="match_parent"
@@ -30,6 +31,7 @@
                 android:textSize="11sp" />
 
             <EditText
+                android:id="@+id/edt_consumptionrecord_id"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -49,6 +51,7 @@
                 android:textSize="11sp" />
 
             <EditText
+                android:id="@+id/edt_consumptionrecord_nickname"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/corners"
@@ -67,6 +70,7 @@
                 android:textSize="11sp" />
 
             <EditText
+                android:id="@+id/edt_consumptionrecord_one"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/corners"
@@ -86,11 +90,11 @@
                 android:textSize="11sp" />
 
             <TextView
-                android:id="@+id/edt_twentypercent_consumptionrecord"
+                android:id="@+id/edt_consumptionrecord_two"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/corners"
-                android:text="20%(发票)"
+                android:text=""
                 android:textColor="@color/black"
                 android:textSize="11sp" />
         </LinearLayout>
@@ -108,6 +112,7 @@
             android:textSize="11sp" />
 
         <EditText
+            android:id="@+id/edt_consumptionrecord_three"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/corners"
@@ -128,6 +133,7 @@
             android:textSize="11sp" />
 
         <EditText
+            android:id="@+id/edt_consumptionrecord_four"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/corners"
@@ -137,13 +143,14 @@
     </LinearLayout>
 
 
-    <TextView
+    <Spinner
+        android:id="@+id/spinner_consumptionrecord_pos"
         android:layout_width="wrap_content"
         android:gravity="right"
         android:layout_height="wrap_content"
-        android:padding="15dp"
         android:layout_marginLeft="60dp"
         android:text="刷POS机(发票)"
+        android:spinnerMode="dialog"
         android:textColor="@color/black"
         android:textSize="8sp" />
 
@@ -182,6 +189,7 @@
             android:textSize="11sp" />
 
         <EditText
+            android:id="@+id/edt_consumptionrecord_five"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/corners"
@@ -202,6 +210,7 @@
             android:textSize="11sp" />
 
         <EditText
+            android:id="@+id/edt_consumptionrecord_sex"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/corners"
@@ -225,15 +234,23 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/corners"
+            android:gravity="center_vertical"
             android:orientation="horizontal">
 
             <Button
-                android:id="@+id/btn_selectorfile"
+                android:id="@+id/btn_selectorfile1"
                 android:layout_width="60dp"
                 android:layout_height="20dp"
                 android:background="@drawable/corners_black"
                 android:text="选取文件"
                 android:textSize="8sp" />
+            <ImageView
+                android:id="@+id/iv_consumption1"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:visibility="gone"
+                android:scaleType="fitXY"
+                android:layout_marginLeft="4dp"/>
 
             <TextView
                 android:id="@+id/tv_isselect_consumptionrecord"
@@ -270,16 +287,26 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/corners"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
 
             <Button
+                android:id="@+id/btn_selectorfile2"
                 android:layout_width="60dp"
                 android:layout_height="20dp"
                 android:background="@drawable/corners_black"
                 android:text="选取文件"
                 android:textSize="8sp" />
+            <ImageView
+                android:id="@+id/iv_consumption2"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:scaleType="fitXY"
+                android:visibility="gone"
+                android:layout_marginLeft="4dp"/>
 
             <TextView
+                android:id="@+id/tv_isselect_consumptionrecord2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="6dp"
@@ -311,6 +338,7 @@
         android:background="@color/view" />
 
     <Button
+        android:id="@+id/btn_sonsumption_confirm"
         android:layout_width="match_parent"
         android:layout_height="35dp"
         android:layout_margin="10dp"

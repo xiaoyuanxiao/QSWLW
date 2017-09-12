@@ -1,6 +1,7 @@
 package com.qs.qswlw.okhttp.Presenter;
 
 import com.qs.qswlw.bean.ConsumptionRecordBean;
+import com.qs.qswlw.bean.MainBean;
 import com.qs.qswlw.okhttp.Factory.IBizFactory;
 import com.qs.qswlw.okhttp.Iview.IConsumptionRecordView;
 import com.qs.qswlw.okhttp.Moudle.IConsumptionRecordBiz;
@@ -22,7 +23,7 @@ public class ConsumptionRecordPresenter {
     public void getdata(String token){
         iConsumptionRecordBiz.getConsumptionRecordData(new ConsumptionRecordListener() {
             @Override
-            public void onSuccess(ConsumptionRecordBean consumptionRecordBean) {
+            public void onSuccess(MainBean<ConsumptionRecordBean> consumptionRecordBean) {
                 iConsumptionRecordView.setConsumptionRecordData(consumptionRecordBean);
             }
 

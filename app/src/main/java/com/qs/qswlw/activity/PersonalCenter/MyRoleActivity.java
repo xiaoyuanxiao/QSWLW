@@ -9,7 +9,7 @@ import com.qs.qswlw.R;
 import com.qs.qswlw.bean.MyRoleBean;
 import com.qs.qswlw.okhttp.Iview.IMyRoleView;
 import com.qs.qswlw.okhttp.Presenter.MyRolePresenter;
-import com.qs.qswlw.utils.TimeUtils;
+import com.qs.qswlw.utils.DateUtils;
 
 /**
  * Created by xiaoyu on 2017/9/5.
@@ -56,7 +56,7 @@ public class MyRoleActivity extends BaseInfoActivity implements IMyRoleView {
             tv_role.setText("商家");
         }
         tv_role_address.setText(myRoleBean.getCyzx_address().getAddress());
-        tv_role_time.setText(TimeUtils.getStrTime(myRoleBean.getReg_time()));
+        tv_role_time.setText(DateUtils.string2date(myRoleBean.getReg_time(),"yyyy-MM-dd")+"");
 
     }
 }

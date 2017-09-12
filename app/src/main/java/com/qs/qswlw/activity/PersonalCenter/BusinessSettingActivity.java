@@ -20,6 +20,7 @@ import com.qs.qswlw.bean.PersonalSettingBean;
 import com.qs.qswlw.okhttp.Iview.IPersonalSettingView;
 import com.qs.qswlw.okhttp.Presenter.PersonalSettingPresenter;
 import com.qs.qswlw.utils.RadioButtonImgUtil;
+import com.qs.qswlw.utils.ToastUtils;
 
 
 /**
@@ -28,37 +29,36 @@ import com.qs.qswlw.utils.RadioButtonImgUtil;
 public class BusinessSettingActivity extends BaseActivity implements IPersonalSettingView {
 
     private GridView gv_setting;
-    private RadioButton rb_main_qsmall,rb_main_lianmeng,rb_main_funtime,rb_main_luck,rb_main_exit;
+    private RadioButton rb_main_qsmall, rb_main_lianmeng, rb_main_funtime, rb_main_luck, rb_main_exit;
     private BusinessSettingAdapter businessSettingAdapter;
     private TextView tv_setting_set;
     PersonalSettingPresenter personalSettingPresenter = new PersonalSettingPresenter(this);
-    private TextView tv_setting_consumptionMoney,tv_setting_consumerSilverbeans,tv_setting_encourage,tv_setting_withdrawals,tv_setting_consumerbeans,tv_setting_paytaxes
-            ,tv_cyzx,tv_recommender,tv_setting_id,tv_setting_name,tv_setting_shopname,tv_role;
+    private TextView tv_setting_consumptionMoney, tv_setting_consumerSilverbeans, tv_setting_encourage, tv_setting_withdrawals, tv_setting_consumerbeans, tv_setting_paytaxes, tv_cyzx, tv_recommender, tv_setting_id, tv_setting_name, tv_setting_shopname, tv_role;
     private TextView setting_one;
-    private String user_id,nickname,role;
+    private String user_id, nickname, role;
 
     @Override
     public void setUserInfo(PersonalSettingBean personalSettingBean) {
-       // tv_cyzx.setText("创业中心:"+personalSettingBean.getCyzx_info().getNickname());
-        tv_recommender.setText("推荐人:"+personalSettingBean.getRe_info().getNickname());
-        tv_setting_id.setText("ID:"+personalSettingBean.getUser_info().getUser_id());
-        tv_setting_name.setText("昵称:"+personalSettingBean.getUser_info().getNickname());
-        tv_setting_shopname.setText("店铺名称:"+personalSettingBean.getShop().getName());
+        // tv_cyzx.setText("创业中心:"+personalSettingBean.getCyzx_info().getNickname());
+        tv_recommender.setText("推荐人:" + personalSettingBean.getRe_info().getNickname());
+        tv_setting_id.setText("ID:" + personalSettingBean.getUser_info().getUser_id());
+        tv_setting_name.setText("昵称:" + personalSettingBean.getUser_info().getNickname());
+        tv_setting_shopname.setText("店铺名称:" + personalSettingBean.getShop().getName());
 
-        tv_setting_consumptionMoney.setText(personalSettingBean.getNone()+"");
-        tv_setting_consumerSilverbeans.setText(personalSettingBean.getUser_info().getSilver_total()+"");
-        tv_setting_encourage.setText(personalSettingBean.getUser_info().getLove_total()+"");
-        tv_setting_withdrawals.setText(personalSettingBean.getUser_info().getGold_total()+"");
-        tv_setting_consumerbeans.setText(personalSettingBean.getUser_info().getTaxgold_total()+"");
-        tv_setting_paytaxes.setText(personalSettingBean.getLast_rebate_date()+"");
-        MyApplication.ID =  user_id = personalSettingBean.getUser_info().getUser_id();
+        tv_setting_consumptionMoney.setText(personalSettingBean.getNone() + "");
+        tv_setting_consumerSilverbeans.setText(personalSettingBean.getUser_info().getSilver_total() + "");
+        tv_setting_encourage.setText(personalSettingBean.getUser_info().getLove_total() + "");
+        tv_setting_withdrawals.setText(personalSettingBean.getUser_info().getGold_total() + "");
+        tv_setting_consumerbeans.setText(personalSettingBean.getUser_info().getTaxgold_total() + "");
+        tv_setting_paytaxes.setText(personalSettingBean.getLast_rebate_date() + "");
+        MyApplication.ID = user_id = personalSettingBean.getUser_info().getUser_id();
         MyApplication.NICKNAME = nickname = personalSettingBean.getUser_info().getNickname();
         //会员身份
-         role = personalSettingBean.getUser_info().getRole();
-        if(role.equals("0")){
+        role = personalSettingBean.getUser_info().getRole();
+        if (role.equals("0")) {
             tv_role.setText("消费天使");
             MyApplication.USERROLE = "消费天使";
-        }else if(role.equals("10")){
+        } else if (role.equals("10")) {
             tv_role.setText("商家");
             MyApplication.USERROLE = "商家";
         }
@@ -95,7 +95,7 @@ public class BusinessSettingActivity extends BaseActivity implements IPersonalSe
         tv_setting_shopname = (TextView) findViewById(R.id.tv_setting_shopname);
         tv_role = (TextView) findViewById(R.id.tv_role);
         setting_one = (TextView) findViewById(R.id.setting_one);
-        RadioButtonImgUtil.setRadioButtonImg(this,rb_main_qsmall,rb_main_lianmeng,rb_main_funtime,rb_main_luck,rb_main_exit);
+        RadioButtonImgUtil.setRadioButtonImg(this, rb_main_qsmall, rb_main_lianmeng, rb_main_funtime, rb_main_luck, rb_main_exit);
 
     }
 
@@ -120,57 +120,57 @@ public class BusinessSettingActivity extends BaseActivity implements IPersonalSe
     }
 
 
-
     class ItemClickListener implements AdapterView.OnItemClickListener {
 
         @Override
         public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-            switch (i){
+            switch (i) {
                 case 0:
-                    Intent intent = new Intent(BusinessSettingActivity.this,RecommendActivity.class);
-                    intent.putExtra("userid",user_id);
-                    intent.putExtra("nickname",nickname);
-                    intent.putExtra("role",role);
+                    Intent intent = new Intent(BusinessSettingActivity.this, RecommendActivity.class);
+                    intent.putExtra("userid", user_id);
+                    intent.putExtra("nickname", nickname);
+                    intent.putExtra("role", role);
                     startActivity(intent);
                     break;
                 case 1:
-                    startActivity(new Intent(BusinessSettingActivity.this,EntrepreneurialSeedActivity.class));
+                    startActivity(new Intent(BusinessSettingActivity.this, EntrepreneurialSeedActivity.class));
                     break;
                 case 2:
-                    startActivity(new Intent(BusinessSettingActivity.this,MyGoldenBeanActivity.class));
+                    startActivity(new Intent(BusinessSettingActivity.this, MyGoldenBeanActivity.class));
                     break;
                 case 3:
-                    startActivity(new Intent(BusinessSettingActivity.this,ConsumptionRecordActivity.class));
+                    Intent intent1 = new Intent(BusinessSettingActivity.this, ConsumptionRecordActivity.class);
+                    startActivityForResult(intent1, 102);
                     break;
                 case 4:
-                    startActivity(new Intent(BusinessSettingActivity.this,SilverBeanActivity.class));
+                    startActivity(new Intent(BusinessSettingActivity.this, SilverBeanActivity.class));
                     break;
                 case 5:
-                    startActivity(new Intent(BusinessSettingActivity.this,WithdrawalsActivity.class));
+                    startActivity(new Intent(BusinessSettingActivity.this, WithdrawalsActivity.class));
                     break;
                 case 6:
-                    startActivity(new Intent(BusinessSettingActivity.this,MySilverBeanActivity.class));
+                    startActivity(new Intent(BusinessSettingActivity.this, MySilverBeanActivity.class));
                     break;
                 case 7:
-                    startActivity(new Intent(BusinessSettingActivity.this,EntrepreneurialSeedActivity.class));
+                    startActivity(new Intent(BusinessSettingActivity.this, EntrepreneurialSeedActivity.class));
                     break;
                 case 8:
-                    startActivity(new Intent(BusinessSettingActivity.this,VenturegoldBeansActivity.class));
+                    startActivity(new Intent(BusinessSettingActivity.this, VenturegoldBeansActivity.class));
                     break;
                 case 9:
-                    startActivity(new Intent(BusinessSettingActivity.this,RecordListActivity.class));
+                    startActivity(new Intent(BusinessSettingActivity.this, RecordListActivity.class));
                     break;
                 case 10:
-                    startActivity(new Intent(BusinessSettingActivity.this,EntrepreneurialDonationActivity.class));
+                    startActivity(new Intent(BusinessSettingActivity.this, EntrepreneurialDonationActivity.class));
                     break;
                 case 11:
-                    startActivity(new Intent(BusinessSettingActivity.this,CommodityManagementActivity.class));
+                    startActivity(new Intent(BusinessSettingActivity.this, CommodityManagementActivity.class));
                     break;
                 case 12:
-                    startActivity(new Intent(BusinessSettingActivity.this,PromotionLuckDrawActivity.class));
+                    startActivity(new Intent(BusinessSettingActivity.this, PromotionLuckDrawActivity.class));
                     break;
                 case 13:
-                    startActivity(new Intent(BusinessSettingActivity.this,HarvestAddressListActivity.class));
+                    startActivity(new Intent(BusinessSettingActivity.this, HarvestAddressListActivity.class));
                     break;
                 case 14:
                     startActivity(new Intent(BusinessSettingActivity.this, HarvestAddressListActivity.class));
@@ -179,7 +179,7 @@ public class BusinessSettingActivity extends BaseActivity implements IPersonalSe
                     startActivity(new Intent(BusinessSettingActivity.this, MyProductsActivity.class));
                     break;
                 case 16:
-                    startActivity(new Intent(BusinessSettingActivity.this,HarvestAddressListActivity.class));
+                    startActivity(new Intent(BusinessSettingActivity.this, HarvestAddressListActivity.class));
                     break;
                 case 17:
                     startActivity(new Intent(BusinessSettingActivity.this, HarvestAddressListActivity.class));
@@ -188,25 +188,25 @@ public class BusinessSettingActivity extends BaseActivity implements IPersonalSe
                     startActivity(new Intent(BusinessSettingActivity.this, OldMemberActivity.class));
                     break;
                 case 19:
-                    startActivity(new Intent(BusinessSettingActivity.this,BusinessTurnoverActivity.class));
+                    startActivity(new Intent(BusinessSettingActivity.this, BusinessTurnoverActivity.class));
                     break;
                 case 20:
-                    startActivity(new Intent(BusinessSettingActivity.this,ConsumptionRecordActivity.class));
+                    startActivity(new Intent(BusinessSettingActivity.this, ConsumptionRecordActivity.class));
                     break;
                 case 21:
-                    startActivity(new Intent(BusinessSettingActivity.this,RecordListActivity.class));
+                    startActivity(new Intent(BusinessSettingActivity.this, RecordListActivity.class));
                     break;
                 case 22:
-                    startActivity(new Intent(BusinessSettingActivity.this,EntrepreneurialDonationActivity.class));
+                    startActivity(new Intent(BusinessSettingActivity.this, EntrepreneurialDonationActivity.class));
                     break;
                 case 23:
-                    startActivity(new Intent(BusinessSettingActivity.this,CommodityManagementActivity.class));
+                    startActivity(new Intent(BusinessSettingActivity.this, CommodityManagementActivity.class));
                     break;
                 case 24:
-                    startActivity(new Intent(BusinessSettingActivity.this,PromotionLuckDrawActivity.class));
+                    startActivity(new Intent(BusinessSettingActivity.this, PromotionLuckDrawActivity.class));
                     break;
                 case 25:
-                    startActivity(new Intent(BusinessSettingActivity.this,HarvestAddressListActivity.class));
+                    startActivity(new Intent(BusinessSettingActivity.this, HarvestAddressListActivity.class));
                     break;
                 case 26:
                     startActivity(new Intent(BusinessSettingActivity.this, HarvestAddressListActivity.class));
@@ -215,7 +215,7 @@ public class BusinessSettingActivity extends BaseActivity implements IPersonalSe
                     startActivity(new Intent(BusinessSettingActivity.this, MyProductsActivity.class));
                     break;
                 case 28:
-                    startActivity(new Intent(BusinessSettingActivity.this,HarvestAddressListActivity.class));
+                    startActivity(new Intent(BusinessSettingActivity.this, HarvestAddressListActivity.class));
                     break;
                 case 29:
                     startActivity(new Intent(BusinessSettingActivity.this, MyRoleActivity.class));
@@ -230,7 +230,7 @@ public class BusinessSettingActivity extends BaseActivity implements IPersonalSe
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
+        switch (v.getId()) {
 //            case rb_main_mall:
 //                startActivity(new Intent(BusinessSettingActivity.this, MainActivity.class));
 //                break;
@@ -254,7 +254,7 @@ public class BusinessSettingActivity extends BaseActivity implements IPersonalSe
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         // 点击“确认”后的操作
-                         startActivity(new Intent(BusinessSettingActivity.this,MainActivity.class));
+                        startActivity(new Intent(BusinessSettingActivity.this, MainActivity.class));
 
                     }
                 })
@@ -269,4 +269,15 @@ public class BusinessSettingActivity extends BaseActivity implements IPersonalSe
 // super.onBackPressed();
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == 103) {
+            if (requestCode == 102) {
+                String msg = data.getStringExtra("msg");
+                //设置结果显示框的显示数值
+                ToastUtils.showToast(this,msg);
+            }
+        }
+    }
 }

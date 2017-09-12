@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RadioGroup xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:id="@+id/rg_dialog_consumption"
+    android:layout_height="match_parent"
+    android:padding="10dp">
+    <RadioButton
+        android:id="@+id/eb_one"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text=""/>
+    <RadioButton
+        android:id="@+id/eb_two"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text=""/>
+</RadioGroup>

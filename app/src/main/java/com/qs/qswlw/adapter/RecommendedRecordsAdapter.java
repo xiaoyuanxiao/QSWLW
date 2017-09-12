@@ -8,7 +8,7 @@ import android.widget.TextView;
 
 import com.qs.qswlw.R;
 import com.qs.qswlw.bean.RecommendedRecordsBean;
-import com.qs.qswlw.utils.TimeUtils;
+import com.qs.qswlw.utils.DateUtils;
 
 import java.util.List;
 
@@ -43,7 +43,7 @@ public class RecommendedRecordsAdapter extends BaseListAdapter<RecommendedRecord
         }else if(role.equals("10")){
             holder.tv_recommendrecord_role.setText("（商家）");
         }
-        holder.tv_recommendrecord_data.setText(TimeUtils.getStrTime(recommendedRecordsBean.getReg_time()));
+        holder.tv_recommendrecord_data.setText(DateUtils.string2date(recommendedRecordsBean.getReg_time(),"yyyy-MM-dd")+"");
         //Glide.with(context).load(ReHttpUtils.getBaseUrl() + resultBean.get()).into(holder.iv_union_ranking);
         return view;
     }

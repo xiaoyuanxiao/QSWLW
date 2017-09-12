@@ -20,7 +20,7 @@ public class GenderPopupWindow extends PopupWindow {
     private TextView mCancel;
     private TextView mFemale;
     private TextView mMale;
-    private TextView mTitle;
+    public TextView mTitle;
     View mMenView;
     public GenderPopupWindow(Activity context, View.OnClickListener itemOnClick){
         super(context);
