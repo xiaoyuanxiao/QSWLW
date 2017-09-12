@@ -2,6 +2,7 @@ package com.qs.qswlw.mynet;
 
 
 import com.qs.qswlw.bean.AngelRankingBean;
+import com.qs.qswlw.bean.ConsumptionRecordBean;
 import com.qs.qswlw.bean.EntrepreneurialDialogBean;
 import com.qs.qswlw.bean.EntrepreneurialIncentiveBean;
 import com.qs.qswlw.bean.ForgetPassWordBean;
@@ -95,6 +96,13 @@ public interface MyRetroService {
     @FormUrlEncoded
     @POST("index.php?m=Appapi&c=User&a=my_user")
     Observable<MainBean<MyRoleBean>> getMyRoleData(@Field("token") String token);
+
+    /**
+     * 线下消费录单
+     */
+    @FormUrlEncoded
+    @POST("index.php?m=Appapi&c=Single&a=getmoney")
+    Observable<MainBean<ConsumptionRecordBean>> getConsumptionRecordData(@Field("token") String token);
 
     /**
      * 提交密码重设

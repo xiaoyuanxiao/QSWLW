@@ -1,23 +1,109 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+<ScrollView
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
-
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="58dp"
-        android:layout_marginRight="30dp"
-        android:layout_marginTop="15dp"
-        android:gravity="center_vertical"
-        android:orientation="horizontal">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="15dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="8dp"
+                android:text="ID:"
+                android:gravity="right"
+                android:textColor="@color/black"
+                android:textSize="11sp" />
+
+            <EditText
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/corners"
+                android:textSize="11sp" />
+        </LinearLayout>
+
+        <LinearLayout style="@style/ll_consumptionrecord">
+
+            <TextView
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="8dp"
+                android:gravity="right"
+                android:text="昵称:"
+                android:textColor="@color/black"
+                android:textSize="11sp" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/corners"
+                android:textSize="11sp" />
+        </LinearLayout>
+
+        <LinearLayout style="@style/ll_consumptionrecord">
+
+            <TextView
+                android:layout_width="60dp"
+                android:gravity="right"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="8dp"
+                android:text="让利:"
+                android:textColor="@color/black"
+                android:textSize="11sp" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/corners"
+                android:hint="让利金额"
+                android:textSize="11sp" />
+        </LinearLayout>
+
+        <LinearLayout style="@style/ll_consumptionrecord">
+
+            <TextView
+                android:layout_width="60dp"
+                android:gravity="right"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="8dp"
+                android:text="模式:"
+                android:textColor="@color/black"
+                android:textSize="11sp" />
+
+            <TextView
+                android:id="@+id/edt_twentypercent_consumptionrecord"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/corners"
+                android:text="20%(发票)"
+                android:textColor="@color/black"
+                android:textSize="11sp" />
+        </LinearLayout>
+
+    <LinearLayout
+        style="@style/ll_consumptionrecord">
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="60dp"
+            android:gravity="right"
             android:layout_height="wrap_content"
             android:layout_marginRight="8dp"
-            android:text="ID:"
+            android:text="发票金额:"
             android:textColor="@color/black"
             android:textSize="11sp" />
 
@@ -25,94 +111,113 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/corners"
-            android:textSize="11sp" />
-    </LinearLayout>
-
-    <LinearLayout style="@style/ll_consumptionrecord">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="8dp"
-            android:text="昵称:"
-            android:textColor="@color/black"
-            android:textSize="11sp" />
-
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/corners"
-            android:textSize="11sp" />
-    </LinearLayout>
-
-    <LinearLayout style="@style/ll_consumptionrecord">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="8dp"
-            android:text="金额:"
-            android:textColor="@color/black"
-            android:textSize="11sp" />
-
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/corners"
-            android:textSize="11sp" />
-    </LinearLayout>
-
-    <LinearLayout style="@style/ll_consumptionrecord">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="8dp"
-            android:text="模式:"
-            android:textColor="@color/black"
-            android:textSize="11sp" />
-
-        <TextView
-            android:id="@+id/edt_twentypercent_consumptionrecord"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/corners"
-            android:text="20%"
-            android:textSize="11sp" />
-    </LinearLayout>
-
-    <LinearLayout style="@style/ll_consumptionrecord">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="8dp"
-            android:text="让利:"
-            android:textColor="@color/black"
-            android:textSize="11sp" />
-
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/corners"
-            android:hint="让利金额"
+            android:hint="发票金额"
             android:textSize="11sp" />
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="30dp"
-        android:layout_marginTop="15dp"
-        android:gravity="center_vertical"
-        android:orientation="horizontal">
+        style="@style/ll_consumptionrecord">
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="60dp"
+            android:gravity="right"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="8dp"
+            android:text="商品数量:"
+            android:textColor="@color/black"
+            android:textSize="11sp" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/corners"
+            android:hint="今日热销"
+            android:textColor="@color/black"
+            android:textSize="11sp" />
+    </LinearLayout>
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:gravity="right"
+        android:layout_height="wrap_content"
+        android:padding="15dp"
+        android:layout_marginLeft="60dp"
+        android:text="刷POS机(发票)"
+        android:textColor="@color/black"
+        android:textSize="8sp" />
+
+
+    <LinearLayout style="@style/ll_consumptionrecord">
+
+        <TextView
+            android:layout_width="60dp"
+            android:gravity="right"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="8dp"
+            android:text="支付方式:"
+            android:textColor="@color/black"
+            android:textSize="11sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="请准确选择支付方式，如
+若选错，系统将会自动顺
+延审核，如若顺延请自行
+修正，修正准确后重新提交。"
+            android:textColor="@color/red"
+            android:textSize="10sp" />
+    </LinearLayout>
+    <LinearLayout
+        style="@style/ll_consumptionrecord">
+
+        <TextView
+            android:layout_width="60dp"
+            android:gravity="right"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="8dp"
+            android:text="汇款人:"
+            android:textColor="@color/black"
+            android:textSize="11sp" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/corners"
+            android:hint=""
+            android:textColor="@color/black"
+            android:textSize="11sp" />
+    </LinearLayout>
+    <LinearLayout
+        style="@style/ll_consumptionrecord">
+
+        <TextView
+            android:layout_width="60dp"
+            android:gravity="right"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="8dp"
+            android:text="支付时间:"
+            android:textColor="@color/black"
+            android:textSize="11sp" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/corners"
+            android:hint="2017-09-12(YYYY-mm-dd格式)"
+            android:textColor="@color/black"
+            android:textSize="11sp" />
+    </LinearLayout>
+    <LinearLayout
+        style="@style/ll_consumptionrecord">
+
+        <TextView
+            android:layout_width="60dp"
             android:layout_height="wrap_content"
             android:layout_marginRight="8dp"
             android:text="发票凭证:"
+            android:gravity="right"
             android:textColor="@color/black"
             android:textSize="11sp" />
 
@@ -141,15 +246,63 @@
         </LinearLayout>
 
     </LinearLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="60dp"
+            android:layout_marginTop="1dp"
+            android:text="(仅支持图片类型)"
+            android:textColor="@color/black"
+            android:textSize="9sp" />
+    <LinearLayout
+        style="@style/ll_consumptionrecord">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="83dp"
-        android:layout_marginTop="1dp"
-        android:text="(仅支持图片类型)"
-        android:textColor="@color/black"
-        android:textSize="9sp" />
+        <TextView
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="8dp"
+            android:gravity="right"
+            android:text="发票凭证:"
+            android:textColor="@color/black"
+            android:textSize="11sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/corners"
+            android:orientation="horizontal">
+
+            <Button
+                android:layout_width="60dp"
+                android:layout_height="20dp"
+                android:background="@drawable/corners_black"
+                android:text="选取文件"
+                android:textSize="8sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="6dp"
+                android:text="未选择文件"
+                android:textColor="@color/black"
+                android:textSize="8sp" />
+        </LinearLayout>
+    </LinearLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="60dp"
+            android:layout_marginTop="1dp"
+            android:text="(仅支持图片类型)"
+            android:textColor="@color/black"
+            android:textSize="9sp" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="注:若填写录单信息有误，请到录单记录中选择修改并更新！。"
+            android:textColor="@color/red"
+            android:textSize="10sp" />
+
 
     <View
         android:layout_width="match_parent"
@@ -159,11 +312,29 @@
 
     <Button
         android:layout_width="match_parent"
-        android:layout_height="38dp"
+        android:layout_height="35dp"
         android:layout_margin="10dp"
         android:background="@drawable/btn_corner"
-        android:text="提交"
+        android:text="确认"
         android:textColor="@color/white"
         android:textSize="12sp" />
+        <TextView
+            android:id="@+id/consumptionrecord_bottom_one"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="让利款汇款账户："
+            android:textColor="@color/red"
+            android:textSize="9sp" />
+        <TextView
+            android:id="@+id/consumptionrecord_bottom_two"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:layout_marginTop="4dp"
+            android:textColor="@color/red"
+            android:textSize="9sp" />
 
-</LinearLayout>
+    </LinearLayout>
+</ScrollView>
+
+</RelativeLayout>

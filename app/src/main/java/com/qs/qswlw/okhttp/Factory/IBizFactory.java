@@ -1,6 +1,7 @@
 package com.qs.qswlw.okhttp.Factory;
 
 import com.qs.qswlw.okhttp.Moudle.BizAngelRanking;
+import com.qs.qswlw.okhttp.Moudle.BizConsumptionRecord;
 import com.qs.qswlw.okhttp.Moudle.BizEntrepreneurial;
 import com.qs.qswlw.okhttp.Moudle.BizGoodProduct;
 import com.qs.qswlw.okhttp.Moudle.BizMain;
@@ -13,6 +14,7 @@ import com.qs.qswlw.okhttp.Moudle.BizRecommendRecord;
 import com.qs.qswlw.okhttp.Moudle.BizValidateOldMember;
 import com.qs.qswlw.okhttp.Moudle.BizVentureGold;
 import com.qs.qswlw.okhttp.Moudle.IAngelRankingBiz;
+import com.qs.qswlw.okhttp.Moudle.IConsumptionRecordBiz;
 import com.qs.qswlw.okhttp.Moudle.IEntrepreneurialBiz;
 import com.qs.qswlw.okhttp.Moudle.IMainBiz;
 import com.qs.qswlw.okhttp.Moudle.IMyRoleBiz;
@@ -77,5 +79,8 @@ public class IBizFactory {
     }
     public static IVentureGoldBiz getVentureGold(){
         return BizVentureGold.getInstans();
+    }
+    public static IConsumptionRecordBiz getConsumptionRecord(){
+        return BizConsumptionRecord.getInstans();
     }
 }
