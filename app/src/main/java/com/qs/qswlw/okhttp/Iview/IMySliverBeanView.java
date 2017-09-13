@@ -10,6 +10,10 @@ import java.util.List;
 
 public interface IMySliverBeanView {
     void setMySliverBeancountData(MySliverBean.SilverCountBean slivercountbean);
+
     void setMySliverBeanListData(List<MySliverBean.SingleLogBean> list);
+
+    void isgetDataFaile(String meg);
+
     void runOnUiThread(Runnable runnable);
 }

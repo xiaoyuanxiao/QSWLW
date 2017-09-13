@@ -65,12 +65,23 @@
 
     </RelativeLayout>
 
-    <ListView
-        android:id="@+id/lv_mysliverbean"
+    <com.qs.qswlw.view.SwipeRefreshView
+        android:id="@+id/lv_mysliverbean_sw"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
-        android:divider="@null"></ListView>
+        android:layout_weight="1">
 
-
+        <ListView
+            android:id="@+id/lv_mysliverbean"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:divider="@null"></ListView>
+    </com.qs.qswlw.view.SwipeRefreshView>
+    <ProgressBar
+        android:id="@+id/pb_itemforestry"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:indeterminateDrawable="@anim/large_progressbar_animator"
+        android:indeterminateDuration="1000" />
 </LinearLayout>

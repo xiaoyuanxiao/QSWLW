@@ -20,6 +20,7 @@ public class BizMySliverBean implements IMySliverBeanBiz {
 
     public BizMySliverBean() {
     }
+
     public synchronized static BizMySliverBean getInstans() {
         if (testMoudle == null)
             testMoudle = new BizMySliverBean();
@@ -33,20 +34,23 @@ public class BizMySliverBean implements IMySliverBeanBiz {
 
             @Override
             public void onError(Throwable e) {
-                Log.e("e",e+"");
-
+                Log.e("e", e + "");
+                mySliverBeanListener.onFailure(e.toString());
             }
 
             @Override
             public void onNext(MainBean<MySliverBean> mySliverBeanMainBean) {
                 MySliverBean result = mySliverBeanMainBean.getResult();
-                mySliverBeanListener.onSuccess(result);
+                if (result == null || mySliverBeanMainBean.getStatus() == -1)
+                    mySliverBeanListener.onFailure(mySliverBeanMainBean.getMsg());
+                else
+                    mySliverBeanListener.onSuccess(result);
 
             }
 
             @Override
             public Observable<MainBean<MySliverBean>> getObservable(MyRetroService retrofit) {
-                return retrofit.getMySliverBeanData(token,p);
+                return retrofit.getMySliverBeanData(token, p);
             }
         });
     }
