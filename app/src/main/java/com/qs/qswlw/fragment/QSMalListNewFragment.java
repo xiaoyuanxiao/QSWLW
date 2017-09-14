@@ -9,6 +9,7 @@ import com.qs.qswlw.R;
 import com.qs.qswlw.activity.mall.CommodityDetailsActivity;
 import com.qs.qswlw.adapter.QSMalListNewAdapter;
 
+
 /**
  * Created by xiaoyu on 2017/4/26.
  */
@@ -22,7 +23,7 @@ public class QSMalListNewFragment extends BaseFragment implements AdapterView.On
     }
     @Override
     View initView() {
-        View inflate = View.inflate(activity, R.layout.fragment_qsmalllist, null);
+        View inflate = View.inflate(getActivity(), R.layout.fragment_qsmalllist, null);
         gv_qsmalllist = (GridView) inflate.findViewById(R.id.gv_qsmalllist);
         return inflate;
     }
@@ -31,7 +32,7 @@ public class QSMalListNewFragment extends BaseFragment implements AdapterView.On
     protected void initData() {
         super.initData();
         gv_qsmalllist.setOnItemClickListener(this);
-        gv_qsmalllist.setAdapter(new QSMalListNewAdapter(activity));
+        gv_qsmalllist.setAdapter(new QSMalListNewAdapter(getActivity()));
     }
 
     @Override
@@ -42,7 +43,7 @@ public class QSMalListNewFragment extends BaseFragment implements AdapterView.On
 
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-        Intent intent = new Intent(activity, CommodityDetailsActivity.class);
+        Intent intent = new Intent(getActivity(), CommodityDetailsActivity.class);
         startActivity(intent);
     }
 

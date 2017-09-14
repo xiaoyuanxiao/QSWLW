@@ -11,7 +11,7 @@ import com.qs.qswlw.R;
 public class MallDetailRightFragment extends BaseFragment {
     @Override
     View initView() {
-        return View.inflate(activity, R.layout.fg_malldetailright,null);
+        return View.inflate(getActivity(), R.layout.fg_malldetailright,null);
     }
 
     @Override

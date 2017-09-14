@@ -14,7 +14,7 @@ public class RecommendBeanFragment extends BaseFragment {
     }
     @Override
     View initView() {
-       return View.inflate(activity, R.layout.sub_mygoldenbean,null);
+       return View.inflate(getActivity(), R.layout.sub_mygoldenbean,null);
     }
 
     @Override

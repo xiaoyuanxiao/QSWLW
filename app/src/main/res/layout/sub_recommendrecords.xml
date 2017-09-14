@@ -1,26 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:layout_height="match_parent">
 
-    <com.qs.qswlw.view.SwipeRefreshView
-        android:id="@+id/swipeRefreshView_recommend"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
 
-        <ListView
+        <com.qs.qswlw.view.xlistview.XListView
             android:id="@+id/lv_RecommendRecords"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:divider="@null"></ListView>
-    </com.qs.qswlw.view.SwipeRefreshView>
+            android:layout_height="match_parent"
+            android:divider="@null"></com.qs.qswlw.view.xlistview.XListView>
     <ProgressBar
         android:id="@+id/pb_itemforestry"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
+      android:layout_centerInParent="true"
         android:indeterminateDrawable="@anim/large_progressbar_animator"
         android:indeterminateDuration="1000" />
 
-</LinearLayout>
+</RelativeLayout>

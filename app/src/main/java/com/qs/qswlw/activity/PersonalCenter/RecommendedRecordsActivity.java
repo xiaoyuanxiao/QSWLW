@@ -57,7 +57,7 @@ public class RecommendedRecordsActivity extends BaseInfoActivity implements IRec
         } else {
             recommendedRecordsBean = viewpagedata.get(1);
         }
-        recommendedRecordsBean.setLoading(false);
+        recommendedRecordsBean.setLoading();
     }
 
     private String tab_name1 = "jl_d4";

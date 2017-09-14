@@ -17,7 +17,7 @@ public class CommodityDetailsDetailFragment extends BaseFragment implements View
     }
     @Override
     View initView() {
-        View inflate = View.inflate(activity, R.layout.fg_commoditydetailsdetail, null);
+        View inflate = View.inflate(getActivity(), R.layout.fg_commoditydetailsdetail, null);
         return inflate;
     }
 

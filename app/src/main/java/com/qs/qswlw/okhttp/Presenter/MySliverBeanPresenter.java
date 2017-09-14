@@ -38,7 +38,7 @@ public class MySliverBeanPresenter {
 
             @Override
             public void onFailure(String code) {
-                iMySliverBeanView.isgetDataFaile(code);
+            //    iMySliverBeanView.isgetDataFaile(code);
             }
         }, MyApplication.TOKEN, p);
     }

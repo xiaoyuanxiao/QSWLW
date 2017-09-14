@@ -20,6 +20,7 @@ import java.util.List;
 import static com.qs.qswlw.R.id.tv_sub_mygoldenbean_one;
 import static com.qs.qswlw.R.id.tv_sub_mygoldenbean_two;
 
+
 /**
  * Created by xiaoyu on 2017/9/8.
  */
@@ -45,7 +46,7 @@ public class MyGoldBeanFragment extends BaseFragment implements IVenturegoldBean
 
     @Override
     View initView() {
-        View inflate = View.inflate(activity, R.layout.sub_mygoldenbean, null);
+        View inflate = View.inflate(getActivity(), R.layout.sub_mygoldenbean, null);
         rb_myGoldenBean_left = (RadioButton) inflate.findViewById(R.id.rb_myGoldenBean_left);
         rb_myGoldenBean_right = (RadioButton) inflate.findViewById(R.id.rb_myGoldenBean_right);
         tv_sub_mygoldenbean_topone = (TextView) inflate.findViewById(R.id.tv_sub_mygoldenbean_topone);
@@ -99,8 +100,8 @@ public class MyGoldBeanFragment extends BaseFragment implements IVenturegoldBean
 
     void initList() {
 
-        ventureGoldBeansAdapter = new VentureGoldBeansAdapter(activity, list1, Gold_type);
-        ventureGoldBeansAdapter2 = new VentureGoldBeansAdapter(activity, list2, Gold_type);
+        ventureGoldBeansAdapter = new VentureGoldBeansAdapter(getActivity(), list1, Gold_type);
+        ventureGoldBeansAdapter2 = new VentureGoldBeansAdapter(getActivity(), list2, Gold_type);
         lv_sub_myGoldenBean = (ListView) view.findViewById(R.id.lv_sub_myGoldenBean);
         lv_sub_myGoldenBean.setAdapter(ventureGoldBeansAdapter);
         lv_sub_myGoldenBean2 = (ListView) view.findViewById(R.id.lv_sub_myGoldenBean2);

@@ -3,9 +3,9 @@ package com.qs.qswlw.activity.PersonalCenter;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.qs.qswlw.MyApplication;
 import com.qs.qswlw.R;
@@ -13,8 +13,8 @@ import com.qs.qswlw.adapter.MySliverBeanAdapter;
 import com.qs.qswlw.bean.MySliverBean;
 import com.qs.qswlw.okhttp.Iview.IMySliverBeanView;
 import com.qs.qswlw.okhttp.Presenter.MySliverBeanPresenter;
-import com.qs.qswlw.utils.ToastUtils;
-import com.qs.qswlw.view.SwipeRefreshView;
+import com.qs.qswlw.view.xlistview.IXListViewLoadMore;
+import com.qs.qswlw.view.xlistview.XListView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,11 +28,10 @@ public class MySilverBeanActivity extends BaseInfoActivity implements IMySliverB
     private ImageView iv_mysliverbean_avater;
     private TextView tv_mysliverbean_id, tv_mysliverbean_nickname, tv_mysliverbean_sliver, tv_mysliverbean_total;
     private List<MySliverBean.SingleLogBean> sliverbeanList;
-    private ListView lv_mysliverbean;
+    private XListView lv_mysliverbean;
 
     private MySliverBeanAdapter mySliverBeanAdapter;
     private MySliverBeanPresenter mySliverBeanPresenter = new MySliverBeanPresenter(this);
-    SwipeRefreshView swipeRefreshView;
     private ProgressBar pb_itemforestry;
 
     @Override
@@ -43,9 +42,10 @@ public class MySilverBeanActivity extends BaseInfoActivity implements IMySliverB
         tv_mysliverbean_nickname = (TextView) inflate.findViewById(R.id.tv_mysliverbean_nickname);
         tv_mysliverbean_sliver = (TextView) inflate.findViewById(R.id.tv_mysliverbean_sliver);
         tv_mysliverbean_total = (TextView) inflate.findViewById(R.id.tv_mysliverbean_total);
-        lv_mysliverbean = (ListView) inflate.findViewById(R.id.lv_mysliverbean);
-        swipeRefreshView = (SwipeRefreshView) inflate.findViewById(R.id.lv_mysliverbean_sw);
+        lv_mysliverbean = (XListView) inflate.findViewById(R.id.lv_mysliverbean);
         pb_itemforestry = (ProgressBar) inflate.findViewById(R.id.pb_itemforestry);
+        //上拉监听
+        lv_mysliverbean.setPullLoadEnable(mLoadMoreListener);
         return inflate;
     }
 
@@ -56,6 +56,17 @@ public class MySilverBeanActivity extends BaseInfoActivity implements IMySliverB
         tv_titlebar_right.setText("筛选");
 
     }
+    /**
+     *  上拉监听
+     */
+    private IXListViewLoadMore mLoadMoreListener = new IXListViewLoadMore() {
+        @Override
+        public void onLoadMore() {
+            Toast.makeText(MySilverBeanActivity.this, "上拉", Toast.LENGTH_SHORT).show();
+            page++;
+            mySliverBeanPresenter.getdata(page);
+        }
+    };
 
     int page = 1;
 
@@ -66,12 +77,12 @@ public class MySilverBeanActivity extends BaseInfoActivity implements IMySliverB
         mySliverBeanAdapter = new MySliverBeanAdapter(this, sliverbeanList);
         lv_mysliverbean.setAdapter(mySliverBeanAdapter);
         mySliverBeanPresenter.getdata(page);
-        swipeRefreshView.setOnLoadListener(new SwipeRefreshView.OnLoadListener() {
-            @Override
-            public void onLoad() {
-                mySliverBeanPresenter.getdata(page);
-            }
-        });
+//        swipeRefreshView.setOnLoadListener(new SwipeRefreshView.OnLoadListener() {
+//            @Override
+//            public void onLoad() {
+//                mySliverBeanPresenter.getdata(page);
+//            }
+//        });
       /*  lv_mysliverbean.setOnScrollListener(new AbsListView.OnScrollListener() {
             @Override
             public void onScrollStateChanged(AbsListView absListView, int i) {
@@ -109,19 +120,19 @@ public class MySilverBeanActivity extends BaseInfoActivity implements IMySliverB
     public void setMySliverBeanListData(List<MySliverBean.SingleLogBean> list) {
         Log.d("TAG", "===========setMySliverBeanListData===" + list.size());
         pb_itemforestry.setVisibility(View.GONE);//这是什么  就第一次那个旋转圈圈 就加一次的
-        swipeRefreshView.setLoading(false);
+       // swipeRefreshView.setLoading(false);
         if (list == null || list.size() == 0) {
-            ToastUtils.showToast("没有更多数据了");
+            lv_mysliverbean.noMoreForShow();
             return;
         }
         sliverbeanList.addAll(list);
         mySliverBeanAdapter.notifyDataSetChanged();
 
-        page++;
+        lv_mysliverbean.stopLoadMore();
     }
 
-    @Override
-    public void isgetDataFaile(String meg) {
-        swipeRefreshView.setLoading(false);
-    }
+//    @Override
+//    public void isgetDataFaile(String meg) {
+//        swipeRefreshView.setLoading(false);
+//    }
 }

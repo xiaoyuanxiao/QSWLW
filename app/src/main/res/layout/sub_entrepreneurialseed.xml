@@ -3,10 +3,8 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
         <LinearLayout
+            android:id="@+id/ll_top"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
@@ -98,17 +96,27 @@
                         />
                 </LinearLayout>
             </RelativeLayout>
-            <com.qs.qswlw.view.MyListView
-                android:id="@+id/lv_sub_entrepreneurialseed"
+
+      <!--      <com.qs.qswlw.view.SwipeRefreshView
+                android:id="@+id/swipeRefreshView"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:divider="@color/view"
-                android:dividerHeight="1px">
-            </com.qs.qswlw.view.MyListView>
+                android:layout_height="0dp"
+                android:layout_weight="1">
+
+                <com.qs.qswlw.view.MyListView
+                    android:id="@+id/lv_sub_entrepreneurialseed"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:divider="@null"></com.qs.qswlw.view.MyListView>
+            </com.qs.qswlw.view.SwipeRefreshView>-->
 
 
         </LinearLayout>
 
-    </ScrollView>
+    <com.qs.qswlw.view.xlistview.XListView
+        android:id="@+id/lv_sub_entrepreneurialseed"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:divider="@null"></com.qs.qswlw.view.xlistview.XListView>
 
 </LinearLayout>

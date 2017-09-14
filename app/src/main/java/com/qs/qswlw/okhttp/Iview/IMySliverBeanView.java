@@ -13,7 +13,7 @@ public interface IMySliverBeanView {
 
     void setMySliverBeanListData(List<MySliverBean.SingleLogBean> list);
 
-    void isgetDataFaile(String meg);
+  //  void isgetDataFaile(String meg);
 
     void runOnUiThread(Runnable runnable);
 }

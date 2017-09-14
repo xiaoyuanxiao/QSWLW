@@ -14,7 +14,7 @@ public class GetGoldBeanFragment extends BaseFragment {
     }
     @Override
     View initView() {
-        View inflate = View.inflate(activity, R.layout.sub_mygoldenbean, null);
+        View inflate = View.inflate(getActivity(), R.layout.sub_mygoldenbean, null);
         return inflate;
     }
 

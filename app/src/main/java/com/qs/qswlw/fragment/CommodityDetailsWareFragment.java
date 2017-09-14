@@ -32,7 +32,7 @@ public class CommodityDetailsWareFragment extends BaseFragment implements View.O
 
     @Override
     View initView() {
-        View inflate = View.inflate(activity, R.layout.fg_commoditydetailsware, null);
+        View inflate = View.inflate(getActivity(), R.layout.fg_commoditydetailsware, null);
         viewpager_slideview = (ViewPager) inflate.findViewById(R.id.viewpager_slideview);
         tv_minus = (TextView) inflate.findViewById(R.id.tv_minus);
         tv_add = (TextView) inflate.findViewById(R.id.tv_add);
@@ -43,7 +43,7 @@ public class CommodityDetailsWareFragment extends BaseFragment implements View.O
         String str = edt_num.getText().toString();
         number = Integer.valueOf(str);
         //默认不弹出软键盘
-        activity.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
+        getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
         tv_minus.setOnClickListener(this);
         tv_add.setOnClickListener(this);
         iv_top.setOnClickListener(this);

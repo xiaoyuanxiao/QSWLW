@@ -1,7 +1,6 @@
 package com.qs.qswlw.view;
 
 import android.content.Context;
-import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
 import android.util.Log;
@@ -9,6 +8,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewConfiguration;
 import android.widget.AbsListView;
+import android.widget.FrameLayout;
 import android.widget.ListView;
 
 import com.qs.qswlw.R;
@@ -19,7 +19,7 @@ import com.qs.qswlw.R;
  * Created by Pinger on 2016/9/26.
  */
 
-public class SwipeRefreshView extends SwipeRefreshLayout {
+public class SwipeRefreshView extends FrameLayout {
 
     private static final String TAG = SwipeRefreshView.class.getSimpleName();
     private final int mScaledTouchSlop;
@@ -100,16 +100,6 @@ public class SwipeRefreshView extends SwipeRefreshLayout {
         return super.dispatchTouchEvent(ev);
     }
 
-    private boolean isOnload = true;
-
-    /**
-     * 是否开启上拉模式
-     *
-     * @param isOnload
-     */
-    public void setisOnload(boolean isOnload) {
-        this.isOnload = isOnload;
-    }
 
     /**
      * 判断是否满足加载更多条件
@@ -147,7 +137,7 @@ public class SwipeRefreshView extends SwipeRefreshLayout {
         if (condition3) {
             Log.d(TAG, "------->  不是正在加载状态");
         }
-        return condition1 && condition2 && condition3 && isOnload;
+        return condition1 && condition2 && condition3;
     }
 
     public void setItemCount(int itemCount) {

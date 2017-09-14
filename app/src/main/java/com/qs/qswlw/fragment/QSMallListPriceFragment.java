@@ -18,7 +18,7 @@ public class QSMallListPriceFragment extends BaseFragment {
     }
     @Override
     View initView() {
-        View inflate = View.inflate(activity, R.layout.fragment_qsmalllist, null);
+        View inflate = View.inflate(getActivity(), R.layout.fragment_qsmalllist, null);
         gv_qsmalllist = (GridView) inflate.findViewById(R.id.gv_qsmalllist);
         return inflate;
     }
@@ -26,7 +26,7 @@ public class QSMallListPriceFragment extends BaseFragment {
     @Override
     protected void initData() {
         super.initData();
-        gv_qsmalllist.setAdapter(new QSMalListNewAdapter(activity));
+        gv_qsmalllist.setAdapter(new QSMalListNewAdapter(getActivity()));
     }
 
     @Override

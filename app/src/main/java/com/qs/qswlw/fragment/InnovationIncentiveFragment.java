@@ -7,8 +7,8 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
-import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.qs.qswlw.MyApplication;
 import com.qs.qswlw.R;
@@ -22,6 +22,8 @@ import com.qs.qswlw.mynet.ReHttpUtils;
 import com.qs.qswlw.okhttp.Iview.IEntrepreneurialView;
 import com.qs.qswlw.okhttp.Presenter.EntrepreneurialPresenter;
 import com.qs.qswlw.utils.ToastUtils;
+import com.qs.qswlw.view.xlistview.IXListViewLoadMore;
+import com.qs.qswlw.view.xlistview.XListView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,7 +35,7 @@ import rx.Observable;
  */
 
 public class InnovationIncentiveFragment extends BaseFragment implements IEntrepreneurialView {
-    private ListView lv_sub_entrepreneurialseed;
+    private XListView lv_sub_entrepreneurialseed;
     private EntrepreneurialPresenter entrepreneurialPresenter = new EntrepreneurialPresenter(this);
     private TextView tv_entrepreneurial_one, tv_entrepreneurial_two, tv_entrepreneurial_three, tv_entrepreneurial_four,tv_entrepreneurial_model;
     private List<EntrepreneurialIncentiveBean.ListModel2Bean> innovationList;
@@ -43,30 +45,53 @@ public class InnovationIncentiveFragment extends BaseFragment implements IEntrep
     private int silver;
     private String exchange_love;
     int i;
+  //  private SwipeRefreshView swipeRefreshView;
+    int page = 1;
     public static InnovationIncentiveFragment newInstener() {
         return new InnovationIncentiveFragment();
     }
 
     @Override
     View initView() {
-        View inflate = View.inflate(activity, R.layout.sub_entrepreneurialseed, null);
-        lv_sub_entrepreneurialseed = (ListView) inflate.findViewById(R.id.lv_sub_entrepreneurialseed);
+        View inflate = View.inflate(getActivity(), R.layout.sub_entrepreneurialseed, null);
+        lv_sub_entrepreneurialseed = (XListView) inflate.findViewById(R.id.lv_sub_entrepreneurialseed);
         tv_entrepreneurial_one = (TextView) inflate.findViewById(R.id.tv_entrepreneurial_one);
         tv_entrepreneurial_two = (TextView) inflate.findViewById(R.id.tv_entrepreneurial_two);
         tv_entrepreneurial_three = (TextView) inflate.findViewById(R.id.tv_entrepreneurial_three);
         tv_entrepreneurial_four = (TextView) inflate.findViewById(R.id.tv_entrepreneurial_four);
         tv_entrepreneurial_model = (TextView) inflate.findViewById(R.id.tv_entrepreneurial_model);
         ll_click = (LinearLayout) inflate.findViewById(R.id.ll_click);
+        //上拉监听
+        lv_sub_entrepreneurialseed.setPullLoadEnable(mLoadMoreListener);
+        //开始下拉
+//        swipeRefreshView = (SwipeRefreshView) inflate.findViewById(R.id.swipeRefreshView);
+//        swipeRefreshView.setOnLoadListener(new SwipeRefreshView.OnLoadListener() {
+//                @Override
+//                public void onLoad() {
+//                    entrepreneurialPresenter.getdata(MyApplication.TOKEN, page, "model2");
+//                }
+//        });
         return inflate;
     }
+    /**
+     *  上拉监听
+    */
+    private IXListViewLoadMore mLoadMoreListener = new IXListViewLoadMore() {
+        @Override
+        public void onLoadMore() {
+            Toast.makeText(getActivity(), "上拉", Toast.LENGTH_SHORT).show();
+            page++;
+            entrepreneurialPresenter.getdata(MyApplication.TOKEN, page, "model2");
+        }
+    };
 
     @Override
     protected void initData() {
         super.initData();
         innovationList = new ArrayList<>();
-        innovationAdapter = new InnovationAdapter(activity, innovationList);
+        innovationAdapter = new InnovationAdapter(getActivity(), innovationList);
         lv_sub_entrepreneurialseed.setAdapter(innovationAdapter);
-        entrepreneurialPresenter.getdata(MyApplication.TOKEN, 1, "model2");
+        entrepreneurialPresenter.getdata(MyApplication.TOKEN, page, "model2");
     }
 
     @Override
@@ -85,9 +110,16 @@ public class InnovationIncentiveFragment extends BaseFragment implements IEntrep
         tv_entrepreneurial_three.setText("正在激励创业种子："+entrepreneurialData.getLove2()+"");
         tv_entrepreneurial_four.setText("可转为创业种子数："+i + "");
         tv_entrepreneurial_model.setText(entrepreneurialData.getModel2()+"");
-        innovationList.clear();
+      //  swipeRefreshView.setLoading(false);
+        if(entrepreneurialData.getList_model2()==null||entrepreneurialData.getList_model2().size()==0){
+        //    ToastUtils.showToast("没有更多数据了");
+            lv_sub_entrepreneurialseed.noMoreForShow();
+            return;
+        }
         innovationList.addAll(entrepreneurialData.getList_model2());
         innovationAdapter.notifyDataSetChanged();
+        lv_sub_entrepreneurialseed.stopLoadMore();
+       // page++;
     }
 
     @Override
@@ -99,9 +131,9 @@ public class InnovationIncentiveFragment extends BaseFragment implements IEntrep
         }
     }
     private void showDialog() {
-        View view = activity.getLayoutInflater().inflate(R.layout.dialog_sliverbeantoseed, null);
-        //   Dialog dialog = new Dialog(activity, R.style.custom_dialog_style);
-        dialog = new Dialog(activity);
+        View view = getActivity().getLayoutInflater().inflate(R.layout.dialog_sliverbeantoseed, null);
+        //   Dialog dialog = new Dialog(getActivity(), R.style.custom_dialog_style);
+        dialog = new Dialog(getActivity());
         dialog.setContentView(view, new WindowManager.LayoutParams(WindowManager.LayoutParams.WRAP_CONTENT,
                 WindowManager.LayoutParams.WRAP_CONTENT));
         Window window = dialog.getWindow();
@@ -141,7 +173,7 @@ public class InnovationIncentiveFragment extends BaseFragment implements IEntrep
             public void onNext(MainBean<EntrepreneurialDialogBean> entrepreneurialDialogBeanMainBean) {
                 dialog.dismiss();
                 if (1 == entrepreneurialDialogBeanMainBean.getSucc())
-                    entrepreneurialPresenter.getdata(MyApplication.TOKEN, 1, "model2");
+                    entrepreneurialPresenter.getdata(MyApplication.TOKEN, page, "model2");
                 else
                     ToastUtils.showToast(entrepreneurialDialogBeanMainBean.getMsg());
             }
