@@ -1,5 +1,6 @@
 package com.qs.qswlw.activity.PersonalCenter;
 
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -12,6 +13,7 @@ import com.qs.qswlw.adapter.MySliverBeanAdapter;
 import com.qs.qswlw.bean.MySliverBean;
 import com.qs.qswlw.okhttp.Iview.IMySliverBeanView;
 import com.qs.qswlw.okhttp.Presenter.MySliverBeanPresenter;
+import com.qs.qswlw.utils.ToastUtils;
 import com.qs.qswlw.view.SwipeRefreshView;
 
 import java.util.ArrayList;
@@ -105,10 +107,16 @@ public class MySilverBeanActivity extends BaseInfoActivity implements IMySliverB
 
     @Override
     public void setMySliverBeanListData(List<MySliverBean.SingleLogBean> list) {
-        pb_itemforestry.setVisibility(View.GONE);
+        Log.d("TAG", "===========setMySliverBeanListData===" + list.size());
+        pb_itemforestry.setVisibility(View.GONE);//这是什么  就第一次那个旋转圈圈 就加一次的
+        swipeRefreshView.setLoading(false);
+        if (list == null || list.size() == 0) {
+            ToastUtils.showToast("没有更多数据了");
+            return;
+        }
         sliverbeanList.addAll(list);
         mySliverBeanAdapter.notifyDataSetChanged();
-        swipeRefreshView.setLoading(false);
+
         page++;
     }
 
