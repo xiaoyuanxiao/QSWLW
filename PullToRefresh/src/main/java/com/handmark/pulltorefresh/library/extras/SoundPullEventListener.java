@@ -15,10 +15,7 @@
  *******************************************************************************/
 package com.handmark.pulltorefresh.library.extras;
 
-import java.util.HashMap;
-
 import android.content.Context;
-import android.media.MediaPlayer;
 import android.view.View;
 
 import com.handmark.pulltorefresh.library.PullToRefreshBase;

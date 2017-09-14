@@ -26,4 +26,6 @@ public class MyGoldenBeanMode extends BaseMode {
         lv_sub_myGoldenBean.setAdapter(new MyGoldenBeanAdapter(context,true));
         return inflate;
     }
+
+
 }

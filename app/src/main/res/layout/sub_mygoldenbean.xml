@@ -138,22 +138,22 @@
                 android:layout_width="match_parent"
                 android:layout_height="0.3dp"/>
 
-            <com.qs.qswlw.view.MyListView
-                android:id="@+id/lv_sub_myGoldenBean"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:divider="@color/view"
-                android:dividerHeight="1px"></com.qs.qswlw.view.MyListView>
-
-            <com.qs.qswlw.view.MyListView
-                android:id="@+id/lv_sub_myGoldenBean2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:divider="@color/view"
-                android:dividerHeight="1px"></com.qs.qswlw.view.MyListView>
 
         </LinearLayout>
 
     </ScrollView>
 
+    <com.qs.qswlw.view.xlistview.XListView
+        android:id="@+id/lv_sub_myGoldenBean"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:divider="@color/view"
+        android:dividerHeight="1px"></com.qs.qswlw.view.xlistview.XListView>
+
+    <com.qs.qswlw.view.xlistview.XListView
+        android:id="@+id/lv_sub_myGoldenBean2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:divider="@color/view"
+        android:dividerHeight="1px"></com.qs.qswlw.view.xlistview.XListView>
 </LinearLayout>

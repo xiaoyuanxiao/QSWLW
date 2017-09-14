@@ -2,9 +2,9 @@ package com.qs.qswlw.fragment;
 
 import android.view.View;
 import android.widget.BaseAdapter;
-import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.qs.qswlw.MyApplication;
 import com.qs.qswlw.R;
@@ -13,6 +13,8 @@ import com.qs.qswlw.adapter.VentureGoldBeansAdapter;
 import com.qs.qswlw.bean.VenturegoldBean;
 import com.qs.qswlw.okhttp.Iview.IVenturegoldBeansView;
 import com.qs.qswlw.okhttp.Presenter.VenturegoldBeanPresenter;
+import com.qs.qswlw.view.xlistview.IXListViewLoadMore;
+import com.qs.qswlw.view.xlistview.XListView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,7 +31,8 @@ public class MyGoldBeanFragment extends BaseFragment implements IVenturegoldBean
     VenturegoldBeanPresenter venturegoldBeanPresenter = new VenturegoldBeanPresenter(this);
     private RadioButton rb_myGoldenBean_left, rb_myGoldenBean_right;
     private TextView tv_sub_mygoldenbean_topone,tv_sub_mygoldenbean_toptwo;
-
+    XListView lv_sub_myGoldenBean, lv_sub_myGoldenBean2;
+    int page=1;
     public static MyGoldBeanFragment newInstance(String type) {//等下
         MyGoldBeanFragment myGoldBeanFragment = new MyGoldBeanFragment();
         myGoldBeanFragment.setGoldType(type);
@@ -64,11 +67,11 @@ public class MyGoldBeanFragment extends BaseFragment implements IVenturegoldBean
     }
 
     public void refreshlist() {
-        initListdata(ischeckmodel);
+        initListdata(ischeckmodel,page);
     }
 
-    void initListdata(String modetype) {
-        venturegoldBeanPresenter.getData(MyApplication.TOKEN, 1, modetype, Gold_type, ((VenturegoldBeansActivity) getActivity()).getType());
+    void initListdata(String modetype,int page) {
+        venturegoldBeanPresenter.getData(MyApplication.TOKEN, page, modetype, Gold_type, ((VenturegoldBeansActivity) getActivity()).getType());
     }
 
     void initButton() {
@@ -86,7 +89,7 @@ public class MyGoldBeanFragment extends BaseFragment implements IVenturegoldBean
         }
     }
 
-    ListView lv_sub_myGoldenBean, lv_sub_myGoldenBean2;
+
 
     private void initListViewtitle(String nameone ) {
         view.findViewById(R.id.tv_sub_mygoldenbean_three).setVisibility(View.GONE);
@@ -102,12 +105,36 @@ public class MyGoldBeanFragment extends BaseFragment implements IVenturegoldBean
 
         ventureGoldBeansAdapter = new VentureGoldBeansAdapter(getActivity(), list1, Gold_type);
         ventureGoldBeansAdapter2 = new VentureGoldBeansAdapter(getActivity(), list2, Gold_type);
-        lv_sub_myGoldenBean = (ListView) view.findViewById(R.id.lv_sub_myGoldenBean);
+        lv_sub_myGoldenBean = (XListView) view.findViewById(R.id.lv_sub_myGoldenBean);
         lv_sub_myGoldenBean.setAdapter(ventureGoldBeansAdapter);
-        lv_sub_myGoldenBean2 = (ListView) view.findViewById(R.id.lv_sub_myGoldenBean2);
+        lv_sub_myGoldenBean2 = (XListView) view.findViewById(R.id.lv_sub_myGoldenBean2);
         lv_sub_myGoldenBean2.setAdapter(ventureGoldBeansAdapter2);
+        //上拉监听
+        lv_sub_myGoldenBean.setPullLoadEnable(mLoadMoreListener);
+        lv_sub_myGoldenBean2.setPullLoadEnable(mLoadMoreListener1);
     }
-
+    /**
+     *  上拉监听
+     */
+    private IXListViewLoadMore mLoadMoreListener = new IXListViewLoadMore() {
+        @Override
+        public void onLoadMore() {
+            Toast.makeText(getActivity(), "上拉", Toast.LENGTH_SHORT).show();
+            page++;
+            initListdata("model1",page);
+        }
+    };
+    /**
+     *  上拉监听
+     */
+    private IXListViewLoadMore mLoadMoreListener1 = new IXListViewLoadMore() {
+        @Override
+        public void onLoadMore() {
+            Toast.makeText(getActivity(), "上拉", Toast.LENGTH_SHORT).show();
+            page++;
+            initListdata("model2",page);
+        }
+    };
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
@@ -124,13 +151,13 @@ public class MyGoldBeanFragment extends BaseFragment implements IVenturegoldBean
 
     void checklisy(boolean checked) {
         if (checked) {
-            initListdata("model1");
+            initListdata("model1",page);
             lv_sub_myGoldenBean.setVisibility(View.VISIBLE);
             lv_sub_myGoldenBean2.setVisibility(View.GONE);
         } else {
             lv_sub_myGoldenBean.setVisibility(View.GONE);
             lv_sub_myGoldenBean2.setVisibility(View.VISIBLE);
-            initListdata("model2");
+            initListdata("model2",page);
         }
     }
 
@@ -140,6 +167,30 @@ public class MyGoldBeanFragment extends BaseFragment implements IVenturegoldBean
     @Override
     public void setVenturegoldBeanData(VenturegoldBean venturegoldBeanData, String modeltype) {
         List<VenturegoldBean.ListBean> list = venturegoldBeanData.getList();
+        ischeckmodel = modeltype;
+        if (modeltype.equals("model1")) {
+          //  list1.clear();
+
+            if (list == null || list.size() == 0) {
+                // ToastUtils.showToast("没有更多数据了");
+                lv_sub_myGoldenBean.noMoreForShow();
+                return;
+            }
+            list1.addAll(list);
+            ventureGoldBeansAdapter.notifyDataSetChanged();
+            lv_sub_myGoldenBean.stopLoadMore();
+        } else {
+           // list2.clear();
+
+            if (list == null || list.size() == 0) {
+                // ToastUtils.showToast("没有更多数据了");
+                lv_sub_myGoldenBean2.noMoreForShow();
+                return;
+            }
+            list2.addAll(list);
+            ventureGoldBeansAdapter2.notifyDataSetChanged();
+            lv_sub_myGoldenBean2.stopLoadMore();
+        }
        if( Gold_type.equals(TJJD)){
            tv_sub_mygoldenbean_topone.setText("累计创业金豆："+venturegoldBeanData.getTjjd().getGold());
            tv_sub_mygoldenbean_toptwo.setText("累计消费金豆："+venturegoldBeanData.getTjjd().getTaxgold());
@@ -150,15 +201,6 @@ public class MyGoldBeanFragment extends BaseFragment implements IVenturegoldBean
            tv_sub_mygoldenbean_topone.setText("累计创业金豆："+venturegoldBeanData.getModel().getGold());
            tv_sub_mygoldenbean_toptwo.setText("累计消费金豆："+venturegoldBeanData.getModel().getTaxgold());
        }
-        ischeckmodel = modeltype;
-        if (modeltype.equals("model1")) {
-            list1.clear();
-            list1.addAll(list);
-            ventureGoldBeansAdapter.notifyDataSetChanged();
-        } else {
-            list2.clear();
-            list2.addAll(list);
-            ventureGoldBeansAdapter2.notifyDataSetChanged();
-        }
+
     }
 }
