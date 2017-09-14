@@ -1,69 +1,34 @@
 package com.qs.qswlw.activity.PersonalCenter;
 
-import android.support.v4.view.PagerAdapter;
-import android.support.v4.view.ViewPager;
+import android.support.v7.app.AlertDialog;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
-import com.qs.qswlw.Mode.BaseMode;
-import com.qs.qswlw.Mode.PersonalCenter.TenPercentSystemMode;
-import com.qs.qswlw.Mode.PersonalCenter.TwentyPercentSystemMode;
 import com.qs.qswlw.R;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by xiaoyu on 2017/4/5.
  */
 
-public class RecordListActivity extends BaseInfoActivity{
-    private List<BaseMode> viewpagedata;
-    private RadioGroup fg_RecordList;
-    private View view_RecordList;
-    private ViewPager viewpager;
+public class RecordListActivity extends BaseInfoActivity {
+
+
+    private RelativeLayout rl_recordlist_left, rl_recordlist_right;
+    private TextView tv_recordlist_left, tv_recordlist_right;
 
     @Override
     public View setConetnView() {
         View inflate = View.inflate(this, R.layout.activity_recordlist, null);
-        viewpager = (ViewPager) inflate.findViewById(R.id.viewpager_RecordList);
-        fg_RecordList = (RadioGroup) inflate.findViewById(R.id.fg_RecordList);
-        view_RecordList = (View) inflate.findViewById(R.id.view_RecordList);
-        viewpagedata = new ArrayList<BaseMode>();
+        rl_recordlist_left = (RelativeLayout) inflate.findViewById(R.id.rl_recordlist_left);
+        rl_recordlist_right = (RelativeLayout) inflate.findViewById(R.id.rl_recordlist_right);
+        tv_recordlist_left = (TextView) inflate.findViewById(R.id.tv_recordlist_left);
+        tv_recordlist_right = (TextView) inflate.findViewById(R.id.tv_recordlist_right);
 
-        viewpagedata.add(new TenPercentSystemMode(this));
-        viewpagedata.add(new TwentyPercentSystemMode(this));
-        MyViewPagerAdapter adapter = new MyViewPagerAdapter();
-        viewpager.setAdapter(adapter);
-        viewpagedata.get(0).initData();
-
-        viewpager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-            @Override
-            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-                //  WindowManager manager = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
-                /**
-                 * 得到红线的宽度
-                 */
-                int width = getApplicationContext().getResources().getDisplayMetrics().widthPixels / 2;
-                //int width = view_EntrepreneurialSeed.getWidth();
-                /**
-                 * position是划动时左边的页码数，从0开始的，positionOffsetPixels是后一页的页码，  positionOffset是当前页与后一页的划动距离的百分比。（0--0.999999）
-                 * setX是view的方法，设置当前view在父布局中距离左边的像素点
-                 * */
-                view_RecordList.setX(width * (position + positionOffset));
-            }
-
-            @Override
-            public void onPageSelected(int position) {
-
-            }
-
-            @Override
-            public void onPageScrollStateChanged(int state) {
-
-            }
-        });
         return inflate;
     }
 
@@ -77,49 +42,76 @@ public class RecordListActivity extends BaseInfoActivity{
     public void setOnclick() {
         super.setOnclick();
         //点击radioButton切换到指定页面
-        fg_RecordList.setOnCheckedChangeListener(new MyOnCheckedChangeListener());
+        rl_recordlist_left.setOnClickListener(this);
+        rl_recordlist_right.setOnClickListener(this);
     }
 
+    @Override
+    public void onClick(View v) {
+        super.onClick(v);
+        switch (v.getId()) {
+            case R.id.rl_recordlist_left:
+                showDialog("1");
+                break;
+            case R.id.rl_recordlist_right:
+                showDialog("2");
+                break;
+        }
+    }
 
-    class MyOnCheckedChangeListener implements RadioGroup.OnCheckedChangeListener {
-        @Override
-        public void onCheckedChanged(RadioGroup group, int checkedId) {
-            int position = 0;
-            switch (checkedId) {
-                case R.id.rb_tenPercentSystem:
-                    position = 0;
-                    break;
-                case R.id.rb_twentyPercentSystem:
-                    position = 1;
-                    break;
+    String tv_recordlist_Text;
+
+    void showDialog(final String a) {
+        final AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        final AlertDialog dialog = builder.create();
+        final View alertview = LayoutInflater.from(RecordListActivity.this).inflate(R.layout.dialog_recordlist, null);
+        final RadioButton rb_recordlist_one = (RadioButton) alertview.findViewById(R.id.rb_recordlist_one);
+        final RadioButton rb_recordlist_two = (RadioButton) alertview.findViewById(R.id.rb_recordlist_two);
+        final Button btn_recordlist_confirm = (Button) alertview.findViewById(R.id.btn_recordlist_confirm);
+        final Button btn_recordlist_cancel = (Button) alertview.findViewById(R.id.btn_recordlist_cancel);
+        final RadioGroup rg_recordlist_dialog = (RadioGroup) alertview.findViewById(R.id.rg_recordlist_dialog);
+        if ("1".equals(a)) {
+            rb_recordlist_one.setText("创新模式");
+            rb_recordlist_two.setText("创业模式");
+            //   tv_recordlist_left.setText();
+        } else if ("2".equals(a)) {
+            rb_recordlist_one.setText("已审核");
+            rb_recordlist_two.setText("未审核");
+        }
+        rg_recordlist_dialog.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int i) {
+
+                switch (i) {
+                    case R.id.rb_recordlist_one:
+                        tv_recordlist_Text = rb_recordlist_one.getText().toString();
+                        break;
+                    case R.id.rb_recordlist_two:
+                        tv_recordlist_Text = rb_recordlist_two.getText().toString();
+                        break;
+                }
             }
-            viewpager.setCurrentItem(position);
-            viewpagedata.get(position).initData();
-        }
+        });
+        btn_recordlist_confirm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+                if ("1".equals(a)) {
+                    tv_recordlist_left.setText(tv_recordlist_Text);
+                } else if ("2".equals(a)) {
+                    tv_recordlist_right.setText(tv_recordlist_Text);
+                }
+            }
+        });
+        btn_recordlist_cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+        dialog.setView(alertview);
+        dialog.show();
     }
 
-
-    public class MyViewPagerAdapter extends PagerAdapter {
-        @Override
-        public int getCount() {
-            return viewpagedata.size();
-        }
-
-        @Override
-        public boolean isViewFromObject(View view, Object object) {
-            return view == object;
-        }
-
-        @Override
-        public Object instantiateItem(ViewGroup container, int position) {
-            container.addView(viewpagedata.get(position).view);
-            return viewpagedata.get(position).view;
-        }
-
-        @Override
-        public void destroyItem(ViewGroup container, int position, Object object) {
-            ((ViewPager) container).removeView(viewpagedata.get(position).view);
-        }
-    }
 
 }

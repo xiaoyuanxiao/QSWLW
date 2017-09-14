@@ -20,7 +20,6 @@ import com.qs.qswlw.bean.PersonalSettingBean;
 import com.qs.qswlw.okhttp.Iview.IPersonalSettingView;
 import com.qs.qswlw.okhttp.Presenter.PersonalSettingPresenter;
 import com.qs.qswlw.utils.RadioButtonImgUtil;
-import com.qs.qswlw.utils.ToastUtils;
 
 
 /**
@@ -143,10 +142,10 @@ public class BusinessSettingActivity extends BaseActivity implements IPersonalSe
                     startActivityForResult(intent1, 102);
                     break;
                 case 4:
-                    startActivity(new Intent(BusinessSettingActivity.this, SilverBeanActivity.class));
+                    startActivity(new Intent(BusinessSettingActivity.this, RecordListActivity.class));
                     break;
                 case 5:
-                    startActivity(new Intent(BusinessSettingActivity.this, WithdrawalsActivity.class));
+                    startActivity(new Intent(BusinessSettingActivity.this, RecordListActivity.class));
                     break;
                 case 6:
                     startActivity(new Intent(BusinessSettingActivity.this, MySilverBeanActivity.class));
@@ -276,7 +275,11 @@ public class BusinessSettingActivity extends BaseActivity implements IPersonalSe
             if (requestCode == 102) {
                 String msg = data.getStringExtra("msg");
                 //设置结果显示框的显示数值
-                ToastUtils.showToast(this,msg);
+             //   ToastUtils.showToast(this,msg);
+                //进入新界面
+                Intent intent = new Intent(BusinessSettingActivity.this, ConsumptionDialogActivity.class);
+                intent.putExtra("dialog",msg);
+                startActivity(intent);
             }
         }
     }

@@ -244,7 +244,7 @@ public class ConsumptionRecordActivity extends BaseInfoActivity implements ICons
                 String pay_time = edt_consumptionrecord_sex.getText().toString();
                 //  long l = DateUtils.dateToStamp2();
                 String pay_name = edt_consumptionrecord_nickname.getText().toString();
-                return retrofit.PostConsumptionData(MyApplication.TOKEN, uid, money, ratio, none, ratio_key, pay_type, pay_time, pay_name, file, file);
+                return retrofit.PostConsumptionData(MyApplication.TOKEN, uid, money, ratio, none, ratio_key, pay_type, pay_time, pay_name, file1, file2);
                 //  return retrofit.PostConsumptionData(MyApplication.TOKEN,1,20,12,4,"4",pay_type,12345353,"a",file,file);
             }
         });
@@ -338,6 +338,8 @@ public class ConsumptionRecordActivity extends BaseInfoActivity implements ICons
     }
 
     private File file;
+    private File file1;
+    private File file2;
 
     //上传图片
     private class SaveThread implements Runnable {
@@ -373,12 +375,14 @@ public class ConsumptionRecordActivity extends BaseInfoActivity implements ICons
                 try {
                     bitmap = scanBitmap;
                     imageUri = Uri.fromFile(FileUtil.saveBitmap(scanBitmap));
-                    file = new File(ImageTools.uri2File(imageUri, ConsumptionRecordActivity.this));
+
                     Message message = handler.obtainMessage();
                     if ("1".equals(a)) {
                         message.what = 1;
+                        file1 = new File(ImageTools.uri2File(imageUri, ConsumptionRecordActivity.this));
                     } else if ("2".equals(a)) {
                         message.what = 2;
+                        file2 = new File(ImageTools.uri2File(imageUri, ConsumptionRecordActivity.this));
                     }
 
                     handler.sendMessage(message);

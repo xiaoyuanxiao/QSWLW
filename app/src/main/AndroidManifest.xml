@@ -80,6 +80,7 @@
         <activity android:name=".activity.PersonalCenter.OldMemberActivity"/>
         <activity android:name=".activity.PersonalCenter.AddProductActivity"/>
         <activity android:name=".activity.PersonalCenter.WithdrawalsBankActivity"/>
+        <activity android:name=".activity.PersonalCenter.ConsumptionDialogActivity"/>
         <activity android:name=".activity.PersonalCenter.WithdrawalsAddActivity"
             android:windowSoftInputMode="adjustUnspecified|stateHidden"/>
         <activity android:name=".activity.LoginActivity"/>

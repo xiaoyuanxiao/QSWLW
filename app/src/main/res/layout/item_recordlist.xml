@@ -6,7 +6,22 @@
     android:paddingRight="5dp"
     android:paddingTop="15dp"
     android:paddingBottom="15dp">
-
+    <TextView
+        android:layout_above="@+id/tv_data_recordlist"
+        android:id="@+id/tv_role_recordlist"
+        style="@style/tv_harvestaddress"
+        android:layout_marginBottom="5dp"
+        android:layout_centerVertical="true"
+        android:text="消费会员"/>
+    <TextView
+        android:layout_above="@+id/tv_data_recordlist"
+        android:id="@+id/tv_id_recordlist"
+        style="@style/tv_harvestaddress"
+        android:layout_toRightOf="@+id/tv_role_recordlist"
+        android:layout_marginLeft="10dp"
+        android:layout_marginBottom="5dp"
+        android:layout_centerVertical="true"
+        android:text="187"/>
     <TextView
         android:id="@+id/tv_data_recordlist"
         style="@style/tv_harvestaddress"

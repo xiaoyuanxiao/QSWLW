@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <RadioGroup
+        android:id="@+id/rg_recordlist_dialog"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp">
+        <RadioButton
+            android:id="@+id/rb_recordlist_one"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""/>
+        <RadioButton
+            android:id="@+id/rb_recordlist_two"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""/>
+    </RadioGroup>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.1dp"
+        android:layout_marginTop="12dp"
+        android:background="@color/view"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:layout_margin="8dp"
+        android:orientation="horizontal">
+        <Button
+            android:id="@+id/btn_recordlist_confirm"
+            android:layout_width="60dp"
+            android:layout_height="30dp"
+            android:text="确定"
+            android:background="@drawable/corner_gray_10dp"
+            android:textSize="10sp"/>
+        <Button
+            android:id="@+id/btn_recordlist_cancel"
+            android:layout_width="60dp"
+            android:layout_height="30dp"
+            android:text="取消"
+            android:layout_marginLeft="8dp"
+            android:background="@drawable/corner_gray_10dp"
+            android:textSize="10sp"/>
+    </LinearLayout>
+
+</LinearLayout>
