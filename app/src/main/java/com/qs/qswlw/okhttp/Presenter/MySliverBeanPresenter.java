@@ -1,5 +1,7 @@
 package com.qs.qswlw.okhttp.Presenter;
 
+import android.util.Log;
+
 import com.qs.qswlw.MyApplication;
 import com.qs.qswlw.bean.MySliverBean;
 import com.qs.qswlw.okhttp.Factory.IBizFactory;
@@ -30,6 +32,7 @@ public class MySliverBeanPresenter {
             public void onSuccess(MySliverBean mySliverBean) {
                 iMySliverBeanView.setMySliverBeancountData(mySliverBean.getSilver_count());
                 single_log = mySliverBean.getSingle_log();
+                Log.d("TAG", "===========MySliverBeanListener===" + mySliverBean.getSingle_log().size());
                 iMySliverBeanView.setMySliverBeanListData(single_log);
             }
 
