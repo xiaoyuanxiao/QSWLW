@@ -5,6 +5,7 @@ import com.qs.qswlw.okhttp.Moudle.BizConsumptionRecord;
 import com.qs.qswlw.okhttp.Moudle.BizEntrepreneurial;
 import com.qs.qswlw.okhttp.Moudle.BizGoodProduct;
 import com.qs.qswlw.okhttp.Moudle.BizMain;
+import com.qs.qswlw.okhttp.Moudle.BizMyProfit;
 import com.qs.qswlw.okhttp.Moudle.BizMyRole;
 import com.qs.qswlw.okhttp.Moudle.BizMySliverBean;
 import com.qs.qswlw.okhttp.Moudle.BizOldMember;
@@ -18,6 +19,7 @@ import com.qs.qswlw.okhttp.Moudle.IAngelRankingBiz;
 import com.qs.qswlw.okhttp.Moudle.IConsumptionRecordBiz;
 import com.qs.qswlw.okhttp.Moudle.IEntrepreneurialBiz;
 import com.qs.qswlw.okhttp.Moudle.IMainBiz;
+import com.qs.qswlw.okhttp.Moudle.IMyProfitBiz;
 import com.qs.qswlw.okhttp.Moudle.IMyRoleBiz;
 import com.qs.qswlw.okhttp.Moudle.IMySliverBeanBiz;
 import com.qs.qswlw.okhttp.Moudle.IOldMemberBiz;
@@ -87,5 +89,8 @@ public class IBizFactory {
     }
     public static IRecordListBiz getRecordList(){
         return BizRecordList.getInstans();
+    }
+    public static IMyProfitBiz getMyProfitList(){
+        return BizMyProfit.getInstans();
     }
 }

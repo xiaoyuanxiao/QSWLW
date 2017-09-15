@@ -7,16 +7,41 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="#f7ebeb"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
-        android:paddingTop="40dp"
-        android:paddingBottom="40dp"
-        android:gravity="center">
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:paddingTop="15dp"
+        android:paddingBottom="15dp"
+        android:orientation="vertical">
         <TextView
+            android:id="@+id/tv_item_myprofit_uid"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/red"
             android:textSize="10sp"
+            android:text="用户ID:100"/>
+        <TextView
+            android:id="@+id/tv_item_myprofit_nickname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/red"
+            android:textSize="10sp"
+            android:layout_marginTop="4dp"
+            android:text="消费天使：admin"/>
+        <TextView
+            android:id="@+id/tv_item_myprofit_model"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/red"
+            android:textSize="10sp"
+            android:layout_marginTop="4dp"
+            android:text="模式一"/>
+        <TextView
+            android:id="@+id/tv_item_myprofit_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/red"
+            android:textSize="10sp"
+            android:layout_marginTop="4dp"
             android:text="2017-04-04"/>
     </LinearLayout>
     <RelativeLayout
@@ -25,7 +50,7 @@
         android:layout_height="match_parent"
         android:layout_marginLeft="3dp">
         <LinearLayout
-            android:layout_toLeftOf="@+id/tv_isprofit"
+            android:layout_toLeftOf="@+id/tv_item_myprofit_isgo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
@@ -38,6 +63,7 @@
                     style="@style/tv_harvestaddress"
                     android:text="销售额:"/>
                 <TextView
+                    android:id="@+id/tv_item_myprofit_money"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="10sp"
@@ -60,6 +86,7 @@
                     style="@style/tv_harvestaddress"
                     android:text="让利额:"/>
                 <TextView
+                    android:id="@+id/tv_item_myprofit_none"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="10sp"
@@ -82,6 +109,7 @@
                     style="@style/tv_harvestaddress"
                     android:text="已让利金额:"/>
                 <TextView
+                    android:id="@+id/tv_item_myprofit_isnone"
                     android:layout_marginLeft="8dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -93,7 +121,7 @@
 
 
         <TextView
-            android:id="@+id/tv_isprofit"
+            android:id="@+id/tv_item_myprofit_isgo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="已让利"
