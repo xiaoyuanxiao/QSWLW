@@ -16,7 +16,7 @@ import com.qs.qswlw.bean.OldMemberBean;
 import com.qs.qswlw.bean.PersonalSettingBean;
 import com.qs.qswlw.bean.RankingBean;
 import com.qs.qswlw.bean.RecommendedRecordsBean;
-import com.qs.qswlw.bean.RecordListBean;
+import com.qs.qswlw.bean.RecordListBaseBean;
 import com.qs.qswlw.bean.RegisterBean;
 import com.qs.qswlw.bean.RegisterCheckIdBean;
 import com.qs.qswlw.bean.RegisterGetCodeBean;
@@ -32,6 +32,7 @@ import retrofit2.http.GET;
 import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 import retrofit2.http.Part;
+import retrofit2.http.Query;
 import retrofit2.http.Url;
 import rx.Observable;
 
@@ -42,11 +43,13 @@ import rx.Observable;
 public interface MyRetroService {
     @GET("index.php?m=Appapi&c=Index&a=index")
     Observable<TestBean> getCommissionSummaryDaily();
+
     @GET
     Observable<TestBean> getCommissionSummaryDaily(@Url String url);
 
     /**
      * 给上注释
+     *
      * @return
      */
     @POST("index.php?m=Appapi&c=Index&a=index")
@@ -54,11 +57,13 @@ public interface MyRetroService {
 
     @Multipart//这是什么--标注 参数格式 prat 括号里对应的是KEY 后面对应的是 v 那不应该写成这个吗 嗯就是这样，value不用该 到时候传就是是吧 对
     //如果有多个参数-就这样
-    @POST("index.php?m=Appapi&c=Index&a=ranking_list4")//头去掉 因为写过了，在那些了
-    Observable<MainBean<RankingBean>> getRankingData(@Part("time_slot") String a );
+    @POST("index.php?m=Appapi&c=Index&a=ranking_list4")
+//头去掉 因为写过了，在那些了
+    Observable<MainBean<RankingBean>> getRankingData(@Part("time_slot") String a);
 
     /**
      * 获取短信验证码
+     *
      * @param a
      * @return
      */
@@ -68,35 +73,35 @@ public interface MyRetroService {
 
     @FormUrlEncoded
     @POST("index.php?m=Appapi&c=Login&a=get_register_send")
-    Observable<MainBean<RegisterGetCodeBean>> getForgetPwCodeData(@Field("mobile") String a,@Field("type") int type);
+    Observable<MainBean<RegisterGetCodeBean>> getForgetPwCodeData(@Field("mobile") String a, @Field("type") int type);
 
     /**
      * 创业种子
      */
     @FormUrlEncoded
     @POST("index.php?m=Appapi&c=UserBonus&a=love")
-    Observable<MainBean<EntrepreneurialIncentiveBean>> getEntrepreneurialData(@Field("token") String token,@Field("p") int p,@Field("model") String model);
+    Observable<MainBean<EntrepreneurialIncentiveBean>> getEntrepreneurialData(@Field("token") String token, @Field("p") int p, @Field("model") String model);
 
     /**
      * 录单记录
      */
 
     @GET("index.php?m=Appapi&c=Single&a=formlist")
-    Observable<MainBean<List<RecordListBean>>> getRecordListData(@Field("token") String token,@Field("p") int p,@Field("type") String type,@Field("is_go") String is_go);
+    Observable<MainBean<RecordListBaseBean>> getRecordListData(@Query("token") String token, @Query("p") int p, @Query("type") String type, @Query("is_go") String is_go);
 
     /**
      * 获得消费银豆记录
      */
     @FormUrlEncoded
     @POST("index.php?m=Appapi&c=UserBonus&a=silver")
-    Observable<MainBean<MySliverBean>> getMySliverBeanData(@Field("token") String token,@Field("p") int p);
+    Observable<MainBean<MySliverBean>> getMySliverBeanData(@Field("token") String token, @Field("p") int p);
 
     /**
      * 兑换创业种子数
      */
     @FormUrlEncoded
     @POST("index.php?m=Appapi&c=UserBonus&a=do_love")
-    Observable<MainBean<EntrepreneurialDialogBean>> postEntrepreneurialDialog(@Field("token") String token,@Field("model") String model,@Field("love") int love);
+    Observable<MainBean<EntrepreneurialDialogBean>> postEntrepreneurialDialog(@Field("token") String token, @Field("model") String model, @Field("love") int love);
 
 
     /**
@@ -124,6 +129,7 @@ public interface MyRetroService {
 
     /**
      * 提交密码重设
+     *
      * @param mobile
      * @param roles
      * @param pass
@@ -135,14 +141,15 @@ public interface MyRetroService {
     @FormUrlEncoded
     @POST("index.php?m=Appapi&c=Login&a=do_password")
     Observable<MainBean<ForgetPassWordBean>> postForgetPWData(@Field("mobile") String mobile, @Field("roles") int roles, @Field("pass") String pass,
-                                                             @Field("repass") String repass, @Field("type") String type,
-                                                             @Field("mobile_code") String mobile_code);
+                                                              @Field("repass") String repass, @Field("type") String type,
+                                                              @Field("mobile_code") String mobile_code);
+
     /**
      * 提交验证老会员信息
      */
     @FormUrlEncoded
     @POST("index.php?m=Appapi&c=User&a=do_check_old_member")
-    Observable<MainBean<OldMemberBean>> postOldMemberData(@Field("token") String token,@Field("member_number") String member_number,@Field("member_type") String member_type);
+    Observable<MainBean<OldMemberBean>> postOldMemberData(@Field("token") String token, @Field("member_number") String member_number, @Field("member_type") String member_type);
 
     /**
      * 我是老会员
@@ -153,6 +160,7 @@ public interface MyRetroService {
 
     /**
      * 获取推荐人信息
+     *
      * @param a
      * @return
      */
@@ -184,6 +192,7 @@ public interface MyRetroService {
 
     /**
      * 注册
+     *
      * @param mobile
      * @param id
      * @param nickname
@@ -201,23 +210,27 @@ public interface MyRetroService {
 
     /**
      * 登录
+     *
      * @param username
      * @param password
      * @return
      */
     @FormUrlEncoded
     @POST("index.php?m=Appapi&c=Login&a=do_login")
-    Observable<MainBean<LoginBean>> postLogin(@Field("username") String username,@Field("password") String password);
+    Observable<MainBean<LoginBean>> postLogin(@Field("username") String username, @Field("password") String password);
 
     /**
      * 创业天使创业排名榜
+     *
      * @return
      */
     @Multipart
-    @POST("index.php?m=Appapi&c=Index&a=ranking_list3")//头去掉 因为写过了，在那些了
-    Observable<MainBean<AngelRankingBean>> getAngelRankingData(@Part("time_slot") String a );
+    @POST("index.php?m=Appapi&c=Index&a=ranking_list3")
+//头去掉 因为写过了，在那些了
+    Observable<MainBean<AngelRankingBean>> getAngelRankingData(@Part("time_slot") String a);
 
-    @POST("index.php?m=Appapi&c=Index&a=good_product")/**括号里面是路径*/
+    @POST("index.php?m=Appapi&c=Index&a=good_product")
+/**括号里面是路径*/
     Observable<MainBean<GoodProductBean>> getGoodproductdata();
 
 

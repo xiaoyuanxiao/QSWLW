@@ -1,6 +1,9 @@
 package com.qs.qswlw.okhttp.Moudle;
 
+import android.util.Log;
+
 import com.qs.qswlw.bean.MainBean;
+import com.qs.qswlw.bean.RecordListBaseBean;
 import com.qs.qswlw.bean.RecordListBean;
 import com.qs.qswlw.mynet.HttpSubCribe;
 import com.qs.qswlw.mynet.MyRetroService;
@@ -15,7 +18,7 @@ import rx.Observable;
  * Created by xiaoyu on 2017/9/15.
  */
 
-public class BizRecordList implements IRecordListBiz{
+public class BizRecordList implements IRecordListBiz {
     private static BizRecordList testMoudle;
 
     public synchronized static BizRecordList getInstans() {
@@ -26,25 +29,23 @@ public class BizRecordList implements IRecordListBiz{
 
     @Override
     public void getdata(final RecordListListener recordListListener, final String token, final int p, final String type, final String is_go) {
-        ReHttpUtils.instans().httpRequest(new HttpSubCribe<MainBean<List<RecordListBean>>>() {
+        ReHttpUtils.instans().httpRequest(new HttpSubCribe<MainBean<RecordListBaseBean>>() {
 
             @Override
             public void onError(Throwable e) {
+                Log.e("TAG", e + "");
 
             }
 
             @Override
-            public void onNext(MainBean<List<RecordListBean>> recordListBean) {
-                List<RecordListBean> result = recordListBean.getResult();
-                if (result == null || recordListBean.getStatus() == -1)
-                    recordListListener.onFailure(recordListBean.getMsg());
-                else
-                    recordListListener.onSuccess(result);
+            public void onNext(MainBean<RecordListBaseBean> recordListBean) {
+                List<RecordListBean> lists = recordListBean.getResult().getLists();
+                recordListListener.onSuccess(lists);
             }
 
             @Override
-            public Observable<MainBean<List<RecordListBean>>> getObservable(MyRetroService retrofit) {
-                return retrofit.getRecordListData(token,p,type,is_go);
+            public Observable<MainBean<RecordListBaseBean>> getObservable(MyRetroService retrofit) {
+                return retrofit.getRecordListData(token, p, type, is_go);
             }
         });
     }

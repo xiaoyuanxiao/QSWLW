@@ -10,4 +10,5 @@ import java.util.List;
 
 public interface IRecordListView {
     void setRecordList(List<RecordListBean> recordListBeen);
+    void setRecordListRefresh(List<RecordListBean> recordListBeen);
 }

@@ -59,7 +59,7 @@ public class RecordListActivity extends BaseInfoActivity implements IRecordListV
         public void onLoadMore() {
             Toast.makeText(RecordListActivity.this, "上拉", Toast.LENGTH_SHORT).show();
             page++;
-            recordListPresenter.getData(MyApplication.TOKEN,page,type,is_go);
+            recordListPresenter.getDataRefresh(MyApplication.TOKEN,page,type,is_go);
         }
     };
 
@@ -168,13 +168,20 @@ public class RecordListActivity extends BaseInfoActivity implements IRecordListV
 
     @Override
     public void setRecordList(List<RecordListBean> list) {
+        recordListBeanList.clear();
+        if (list!=null) {
+            recordListBeanList.addAll(list);
+        }
+        recordListAdapter.notifyDataSetChanged();
+    }
+    @Override
+    public void setRecordListRefresh(List<RecordListBean> list) {
         if (list == null || list.size() == 0) {
             lv_recordlist.noMoreForShow();
             return;
         }
         recordListBeanList.addAll(list);
         recordListAdapter.notifyDataSetChanged();
-
         lv_recordlist.stopLoadMore();
     }
 }

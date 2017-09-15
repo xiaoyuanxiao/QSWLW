@@ -1,5 +1,7 @@
 package com.qs.qswlw.okhttp.Presenter;
 
+import android.util.Log;
+
 import com.qs.qswlw.bean.RecordListBean;
 import com.qs.qswlw.okhttp.Factory.IBizFactory;
 import com.qs.qswlw.okhttp.Iview.IRecordListView;
@@ -30,6 +32,21 @@ public class RecordListPresenter {
 
             @Override
             public void onFailure(String code) {
+                Log.e("Tag",code+"");
+
+            }
+        },token,p,type,is_go);
+    }
+    public void getDataRefresh(String token,int p,String type,String is_go){
+        iRecordListBiz.getdata(new RecordListListener() {
+            @Override
+            public void onSuccess(List<RecordListBean> list) {
+                iRecordListView.setRecordListRefresh(list);
+            }
+
+            @Override
+            public void onFailure(String code) {
+                Log.e("Tag",code+"");
 
             }
         },token,p,type,is_go);

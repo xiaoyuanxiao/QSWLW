@@ -6,6 +6,7 @@ package com.qs.qswlw.bean;
 
 public class RecordListBean {
 
+
     /**
      * id : 6711
      * user_id : 187
@@ -80,3 +81,4 @@ public class RecordListBean {
         this.is_go = is_go;
     }
 }
+
