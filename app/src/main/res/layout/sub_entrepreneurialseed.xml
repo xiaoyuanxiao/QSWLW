@@ -116,7 +116,7 @@
     <com.qs.qswlw.view.xlistview.XListView
         android:id="@+id/lv_sub_entrepreneurialseed"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:divider="@null"></com.qs.qswlw.view.xlistview.XListView>
 
 </LinearLayout>

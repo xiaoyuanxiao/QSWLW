@@ -1,57 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
     <RadioGroup
         android:id="@+id/fg_unionranking"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="7dp"
+        android:background="@color/bg_role"
         android:orientation="horizontal"
-        android:background="@color/bg_role">
+        android:padding="7dp">
 
         <RelativeLayout
             android:id="@+id/rl_recordlist_left"
             android:layout_width="90dp"
             android:layout_height="wrap_content"
-            android:padding="7dp"
-            android:clickable="true"
             android:layout_marginLeft="10dp"
-            android:background="@color/white">
+            android:background="@color/white"
+            android:clickable="true"
+            android:padding="7dp">
 
             <TextView
                 android:id="@+id/tv_recordlist_left"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
                 android:text="创新模式"
                 android:textColor="@color/tv_ranking"
-                android:layout_centerVertical="true"
                 android:textSize="11sp" />
 
             <ImageView
                 android:id="@+id/iv_dayranking"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
                 android:background="@mipmap/oo_03"
-                android:clickable="true"
-                android:layout_alignParentRight="true"/>
+                android:clickable="true" />
         </RelativeLayout>
+
         <RelativeLayout
             android:id="@+id/rl_recordlist_right"
             android:layout_width="90dp"
             android:layout_height="wrap_content"
-            android:padding="7dp"
             android:layout_marginLeft="10dp"
+            android:background="@color/white"
             android:clickable="true"
-            android:background="@color/white">
+            android:padding="7dp">
 
             <TextView
                 android:id="@+id/tv_recordlist_right"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="已审核"
                 android:layout_centerVertical="true"
+                android:text="未审核"
                 android:textColor="@color/tv_ranking"
                 android:textSize="11sp" />
 
@@ -59,41 +62,49 @@
                 android:id="@+id/iv_weekranking"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
-                android:background="@mipmap/oo_03"
-                android:layout_alignParentRight="true"/>
+                android:background="@mipmap/oo_03" />
         </RelativeLayout>
 
     </RadioGroup>
-<LinearLayout
-    android:layout_below="@+id/fg_unionranking"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:padding="5dp"
-    android:orientation="horizontal">
-    <TextView
-       style="@style/tv_harvestaddress_weight"
-        android:text="日期"/>
-    <TextView
-        style="@style/tv_harvestaddress_weight"
-        android:text="让利金额"/>
-    <TextView
-        style="@style/tv_harvestaddress_weight"
-        android:text="发票金额"/>
-    <TextView
-        style="@style/tv_harvestaddress_weight"
-        android:text="状态"/>
-    <TextView
-        style="@style/tv_harvestaddress_weight"
-        android:text="操作"/>
-</LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_recordlist"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/fg_unionranking"
+        android:orientation="horizontal"
+        android:padding="5dp">
+
+        <TextView
+            style="@style/tv_harvestaddress_weight"
+            android:text="日期" />
+
+        <TextView
+            style="@style/tv_harvestaddress_weight"
+            android:text="让利金额" />
+
+        <TextView
+            style="@style/tv_harvestaddress_weight"
+            android:text="发票金额" />
+
+        <TextView
+            style="@style/tv_harvestaddress_weight"
+            android:text="状态" />
+
+        <TextView
+            style="@style/tv_harvestaddress_weight"
+            android:text="操作" />
+    </LinearLayout>
 
     <com.qs.qswlw.view.xlistview.XListView
         android:id="@+id/lv_recordlist"
+        android:layout_below="@+id/ll_recordlist"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:divider="@null"></com.qs.qswlw.view.xlistview.XListView>
+        android:layout_height="match_parent"
 
+        android:divider="@null"></com.qs.qswlw.view.xlistview.XListView>
 
 
 </RelativeLayout>

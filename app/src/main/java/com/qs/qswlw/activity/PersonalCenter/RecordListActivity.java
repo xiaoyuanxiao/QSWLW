@@ -8,18 +8,36 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.qs.qswlw.MyApplication;
 import com.qs.qswlw.R;
+import com.qs.qswlw.adapter.RecordListAdapter;
+import com.qs.qswlw.bean.RecordListBean;
+import com.qs.qswlw.okhttp.Iview.IRecordListView;
+import com.qs.qswlw.okhttp.Presenter.RecordListPresenter;
+import com.qs.qswlw.view.xlistview.IXListViewLoadMore;
+import com.qs.qswlw.view.xlistview.XListView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by xiaoyu on 2017/4/5.
  */
 
-public class RecordListActivity extends BaseInfoActivity {
+public class RecordListActivity extends BaseInfoActivity implements IRecordListView {
 
 
     private RelativeLayout rl_recordlist_left, rl_recordlist_right;
     private TextView tv_recordlist_left, tv_recordlist_right;
+    private RecordListPresenter recordListPresenter = new RecordListPresenter(this);
+    private XListView lv_recordlist;
+    int page = 1;
+    private String type="model2";
+    private String is_go="1";
+    private RecordListAdapter recordListAdapter;
+    private  List<RecordListBean> recordListBeanList;
 
     @Override
     public View setConetnView() {
@@ -28,8 +46,30 @@ public class RecordListActivity extends BaseInfoActivity {
         rl_recordlist_right = (RelativeLayout) inflate.findViewById(R.id.rl_recordlist_right);
         tv_recordlist_left = (TextView) inflate.findViewById(R.id.tv_recordlist_left);
         tv_recordlist_right = (TextView) inflate.findViewById(R.id.tv_recordlist_right);
-
+        lv_recordlist = (XListView) inflate.findViewById(R.id.lv_recordlist);
+        //上拉监听
+        lv_recordlist.setPullLoadEnable(mLoadMoreListener);
         return inflate;
+    }
+    /**
+     *  上拉监听
+     */
+    private IXListViewLoadMore mLoadMoreListener = new IXListViewLoadMore() {
+        @Override
+        public void onLoadMore() {
+            Toast.makeText(RecordListActivity.this, "上拉", Toast.LENGTH_SHORT).show();
+            page++;
+            recordListPresenter.getData(MyApplication.TOKEN,page,type,is_go);
+        }
+    };
+
+    @Override
+    public void initData() {
+        super.initData();
+        recordListBeanList = new ArrayList<>();
+        recordListAdapter = new RecordListAdapter(RecordListActivity.this,recordListBeanList);
+        lv_recordlist.setAdapter(recordListAdapter);
+        recordListPresenter.getData(MyApplication.TOKEN,page,type,is_go);
     }
 
     @Override
@@ -71,12 +111,12 @@ public class RecordListActivity extends BaseInfoActivity {
         final Button btn_recordlist_cancel = (Button) alertview.findViewById(R.id.btn_recordlist_cancel);
         final RadioGroup rg_recordlist_dialog = (RadioGroup) alertview.findViewById(R.id.rg_recordlist_dialog);
         if ("1".equals(a)) {
-            rb_recordlist_one.setText("创新模式");
-            rb_recordlist_two.setText("创业模式");
+            rb_recordlist_one.setText("创业模式");
+            rb_recordlist_two.setText("创新模式");
             //   tv_recordlist_left.setText();
         } else if ("2".equals(a)) {
-            rb_recordlist_one.setText("已审核");
-            rb_recordlist_two.setText("未审核");
+            rb_recordlist_one.setText("未审核");
+            rb_recordlist_two.setText("已审核");
         }
         rg_recordlist_dialog.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
@@ -98,9 +138,21 @@ public class RecordListActivity extends BaseInfoActivity {
                 dialog.dismiss();
                 if ("1".equals(a)) {
                     tv_recordlist_left.setText(tv_recordlist_Text);
+                    if(tv_recordlist_left.getText().toString().equals("创业模式")){
+                        type = "model1";
+                    }else if(tv_recordlist_left.getText().toString().equals("创新模式")){
+                        type = "model2";
+                    }
                 } else if ("2".equals(a)) {
                     tv_recordlist_right.setText(tv_recordlist_Text);
+                    if(tv_recordlist_right.getText().toString().equals("未审核")){
+                        is_go = "1";
+                    }else if(tv_recordlist_right.getText().toString().equals("已审核")){
+                        is_go = "2";
+                    }
                 }
+
+                recordListPresenter.getData(MyApplication.TOKEN,page,type,is_go);
             }
         });
         btn_recordlist_cancel.setOnClickListener(new View.OnClickListener() {
@@ -114,4 +166,15 @@ public class RecordListActivity extends BaseInfoActivity {
     }
 
 
+    @Override
+    public void setRecordList(List<RecordListBean> list) {
+        if (list == null || list.size() == 0) {
+            lv_recordlist.noMoreForShow();
+            return;
+        }
+        recordListBeanList.addAll(list);
+        recordListAdapter.notifyDataSetChanged();
+
+        lv_recordlist.stopLoadMore();
+    }
 }

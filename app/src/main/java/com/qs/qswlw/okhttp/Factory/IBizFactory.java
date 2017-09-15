@@ -11,6 +11,7 @@ import com.qs.qswlw.okhttp.Moudle.BizOldMember;
 import com.qs.qswlw.okhttp.Moudle.BizPersonalSetting;
 import com.qs.qswlw.okhttp.Moudle.BizRanking;
 import com.qs.qswlw.okhttp.Moudle.BizRecommendRecord;
+import com.qs.qswlw.okhttp.Moudle.BizRecordList;
 import com.qs.qswlw.okhttp.Moudle.BizValidateOldMember;
 import com.qs.qswlw.okhttp.Moudle.BizVentureGold;
 import com.qs.qswlw.okhttp.Moudle.IAngelRankingBiz;
@@ -24,6 +25,7 @@ import com.qs.qswlw.okhttp.Moudle.IPersonalSettingBiz;
 import com.qs.qswlw.okhttp.Moudle.IProductBiz;
 import com.qs.qswlw.okhttp.Moudle.IRankingBiz;
 import com.qs.qswlw.okhttp.Moudle.IRecommendRecordBiz;
+import com.qs.qswlw.okhttp.Moudle.IRecordListBiz;
 import com.qs.qswlw.okhttp.Moudle.ITestaBiz;
 import com.qs.qswlw.okhttp.Moudle.IValidateOldMemberBiz;
 import com.qs.qswlw.okhttp.Moudle.IVentureGoldBiz;
@@ -82,5 +84,8 @@ public class IBizFactory {
     }
     public static IConsumptionRecordBiz getConsumptionRecord(){
         return BizConsumptionRecord.getInstans();
+    }
+    public static IRecordListBiz getRecordList(){
+        return BizRecordList.getInstans();
     }
 }

@@ -7,15 +7,15 @@
     android:paddingTop="15dp"
     android:paddingBottom="15dp">
     <TextView
-        android:layout_above="@+id/tv_data_recordlist"
         android:id="@+id/tv_role_recordlist"
+        android:layout_above="@+id/tv_data_recordlist"
         style="@style/tv_harvestaddress"
         android:layout_marginBottom="5dp"
         android:layout_centerVertical="true"
         android:text="消费会员"/>
     <TextView
-        android:layout_above="@+id/tv_data_recordlist"
         android:id="@+id/tv_id_recordlist"
+        android:layout_above="@+id/tv_data_recordlist"
         style="@style/tv_harvestaddress"
         android:layout_toRightOf="@+id/tv_role_recordlist"
         android:layout_marginLeft="10dp"
@@ -28,12 +28,14 @@
         android:layout_centerVertical="true"
         android:text="2017-03-26"/>
     <TextView
+        android:id="@+id/tv_none_recordlist"
         android:layout_toRightOf="@+id/tv_data_recordlist"
         style="@style/tv_harvestaddress"
         android:layout_centerVertical="true"
         android:layout_marginLeft="30dp"
         android:text="23"/>
     <TextView
+        android:id="@+id/tv_money_recordlist"
         android:layout_toLeftOf="@+id/btn_ischecked_recordlist"
         style="@style/tv_harvestaddress"
         android:layout_centerVertical="true"

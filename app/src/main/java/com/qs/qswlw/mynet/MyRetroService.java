@@ -16,6 +16,7 @@ import com.qs.qswlw.bean.OldMemberBean;
 import com.qs.qswlw.bean.PersonalSettingBean;
 import com.qs.qswlw.bean.RankingBean;
 import com.qs.qswlw.bean.RecommendedRecordsBean;
+import com.qs.qswlw.bean.RecordListBean;
 import com.qs.qswlw.bean.RegisterBean;
 import com.qs.qswlw.bean.RegisterCheckIdBean;
 import com.qs.qswlw.bean.RegisterGetCodeBean;
@@ -75,6 +76,13 @@ public interface MyRetroService {
     @FormUrlEncoded
     @POST("index.php?m=Appapi&c=UserBonus&a=love")
     Observable<MainBean<EntrepreneurialIncentiveBean>> getEntrepreneurialData(@Field("token") String token,@Field("p") int p,@Field("model") String model);
+
+    /**
+     * 录单记录
+     */
+
+    @GET("index.php?m=Appapi&c=Single&a=formlist")
+    Observable<MainBean<List<RecordListBean>>> getRecordListData(@Field("token") String token,@Field("p") int p,@Field("type") String type,@Field("is_go") String is_go);
 
     /**
      * 获得消费银豆记录
