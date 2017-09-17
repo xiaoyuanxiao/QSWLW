@@ -24,6 +24,7 @@ public class MyProfitAdapter extends BaseListAdapter<MyProfitBean.ListBean> {
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
        ViewHolder holder;
+        MyProfitBean.ListBean listBean = data.get(i);
         if(view==null){
             holder = new ViewHolder();
             view = View.inflate(context, R.layout.item_myprofit,null);
@@ -38,6 +39,19 @@ public class MyProfitAdapter extends BaseListAdapter<MyProfitBean.ListBean> {
             view.setTag(holder);
         }else{
             holder = (ViewHolder) view.getTag();
+        }
+        holder.tv_item_myprofit_uid.setText("用户ID:"+listBean.getUid());
+        holder.tv_item_myprofit_nickname.setText("消费天使:"+listBean.getNickname());
+       // holder.tv_item_myprofit_model.setText(listBean.getUid());
+        holder.tv_item_myprofit_time.setText(listBean.getAdd_time());
+        holder.tv_item_myprofit_money.setText(listBean.getMoney());
+        holder.tv_item_myprofit_none.setText(listBean.getNone());
+        holder.tv_item_myprofit_isnone.setText(listBean.getUid());
+        String is_go = listBean.getIs_go();
+        if ("1".equals(is_go)) {
+            holder.tv_item_myprofit_isgo.setText("已让利");
+        }else {
+            holder.tv_item_myprofit_isgo.setText("未让利");
         }
 
         return view;
