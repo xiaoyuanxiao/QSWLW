@@ -10,6 +10,7 @@ import com.qs.qswlw.bean.GoodProductBean;
 import com.qs.qswlw.bean.LoginBean;
 import com.qs.qswlw.bean.MainBean;
 import com.qs.qswlw.bean.Maindatabean;
+import com.qs.qswlw.bean.MerchantAuditBean;
 import com.qs.qswlw.bean.MyProfitBean;
 import com.qs.qswlw.bean.MyRoleBean;
 import com.qs.qswlw.bean.MySliverBean;
@@ -96,6 +97,13 @@ public interface MyRetroService {
     @FormUrlEncoded
     @POST("index.php?m=Appapi&c=UserBonus&a=silver")
     Observable<MainBean<MySliverBean>> getMySliverBeanData(@Field("token") String token, @Field("p") int p);
+
+    /**
+     * 商家审核
+     */
+    @FormUrlEncoded
+    @POST("index.php?m=Appapi&c=Single&a=shop_review")
+    Observable<MainBean<MerchantAuditBean>> getMerchantAuditData(@Field("token") String token, @Field("p") int p,@Field("is_ok") int is_ok);
 
     /**
      * 我的管理费

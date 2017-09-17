@@ -146,9 +146,9 @@ public class RecordListActivity extends BaseInfoActivity implements IRecordListV
                 } else if ("2".equals(a)) {
                     tv_recordlist_right.setText(tv_recordlist_Text);
                     if(tv_recordlist_right.getText().toString().equals("未审核")){
-                        is_go = "1";
+                        is_go = "0";
                     }else if(tv_recordlist_right.getText().toString().equals("已审核")){
-                        is_go = "2";
+                        is_go = "1";
                     }
                 }
 
