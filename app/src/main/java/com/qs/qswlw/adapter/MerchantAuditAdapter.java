@@ -38,9 +38,9 @@ public class MerchantAuditAdapter extends BaseListAdapter<MerchantAuditBean.List
         }
         String is_go = listBean.getIs_ok();
         if ("0".equals(is_go)) {
-            holder.tv_item_merchantaudit_is_ok.setText("未审核");
+            holder.tv_item_merchantaudit_is_ok.setText("审核");
         } else if ("1".equals(is_go)) {
-            holder.tv_item_merchantaudit_is_ok.setText("已审核");
+            holder.tv_item_merchantaudit_is_ok.setText("");
         }
         holder.tv_item_merchantaudit_uid.setText(listBean.getUser_id());
         //    holder.union_ranking.setText(singleLogBean.get());
