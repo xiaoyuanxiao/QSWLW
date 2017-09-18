@@ -15,6 +15,7 @@ import com.qs.qswlw.okhttp.Moudle.BizPersonalSetting;
 import com.qs.qswlw.okhttp.Moudle.BizRanking;
 import com.qs.qswlw.okhttp.Moudle.BizRecommendRecord;
 import com.qs.qswlw.okhttp.Moudle.BizRecordList;
+import com.qs.qswlw.okhttp.Moudle.BizScanCodeRecord;
 import com.qs.qswlw.okhttp.Moudle.BizValidateOldMember;
 import com.qs.qswlw.okhttp.Moudle.BizVentureGold;
 import com.qs.qswlw.okhttp.Moudle.IAngelRankingBiz;
@@ -32,6 +33,7 @@ import com.qs.qswlw.okhttp.Moudle.IProductBiz;
 import com.qs.qswlw.okhttp.Moudle.IRankingBiz;
 import com.qs.qswlw.okhttp.Moudle.IRecommendRecordBiz;
 import com.qs.qswlw.okhttp.Moudle.IRecordListBiz;
+import com.qs.qswlw.okhttp.Moudle.IScanCodeRecordBiz;
 import com.qs.qswlw.okhttp.Moudle.ITestaBiz;
 import com.qs.qswlw.okhttp.Moudle.IValidateOldMemberBiz;
 import com.qs.qswlw.okhttp.Moudle.IVentureGoldBiz;
@@ -102,5 +104,8 @@ public class IBizFactory {
     }
     public static IMerchantAuditClickBiz getMerchantAuditClickList(){
         return BizMerchantAuditClick.getInstans();
+    }
+    public static IScanCodeRecordBiz getScanCodeRecordList(){
+        return BizScanCodeRecord.getInstans();
     }
 }

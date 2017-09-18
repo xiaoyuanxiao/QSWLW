@@ -66,12 +66,18 @@
     </RelativeLayout>
 
 
+    <com.qs.qswlw.view.SwipeRefreshView
+        android:id="@+id/lv_mysliverbean_sw"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-        <com.qs.qswlw.view.xlistview.XListView
+        <ListView
             android:id="@+id/lv_mysliverbean"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:divider="@null"></com.qs.qswlw.view.xlistview.XListView>
+            android:divider="@null"></ListView>
+    </com.qs.qswlw.view.SwipeRefreshView>
+
     <ProgressBar
         android:id="@+id/pb_itemforestry"
         android:layout_width="wrap_content"

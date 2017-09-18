@@ -4,11 +4,11 @@ import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.qs.qswlw.MyApplication;
 import com.qs.qswlw.R;
@@ -16,8 +16,8 @@ import com.qs.qswlw.adapter.RecordListAdapter;
 import com.qs.qswlw.bean.RecordListBean;
 import com.qs.qswlw.okhttp.Iview.IRecordListView;
 import com.qs.qswlw.okhttp.Presenter.RecordListPresenter;
-import com.qs.qswlw.view.xlistview.IXListViewLoadMore;
-import com.qs.qswlw.view.xlistview.XListView;
+import com.qs.qswlw.utils.ToastUtils;
+import com.qs.qswlw.view.SwipeRefreshView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,13 +32,13 @@ public class RecordListActivity extends BaseInfoActivity implements IRecordListV
     private RelativeLayout rl_recordlist_left, rl_recordlist_right;
     private TextView tv_recordlist_left, tv_recordlist_right;
     private RecordListPresenter recordListPresenter = new RecordListPresenter(this);
-    private XListView lv_recordlist;
+    private ListView lv_recordlist;
     int page = 1;
     private String type="model2";
     private String is_go="1";
     private RecordListAdapter recordListAdapter;
     private  List<RecordListBean> recordListBeanList;
-
+    SwipeRefreshView swipeRefreshView;
     @Override
     public View setConetnView() {
         View inflate = View.inflate(this, R.layout.activity_recordlist, null);
@@ -46,22 +46,23 @@ public class RecordListActivity extends BaseInfoActivity implements IRecordListV
         rl_recordlist_right = (RelativeLayout) inflate.findViewById(R.id.rl_recordlist_right);
         tv_recordlist_left = (TextView) inflate.findViewById(R.id.tv_recordlist_left);
         tv_recordlist_right = (TextView) inflate.findViewById(R.id.tv_recordlist_right);
-        lv_recordlist = (XListView) inflate.findViewById(R.id.lv_recordlist);
-        //上拉监听
-        lv_recordlist.setPullLoadEnable(mLoadMoreListener);
+        lv_recordlist = (ListView) inflate.findViewById(R.id.lv_recordlist);
+        swipeRefreshView = (SwipeRefreshView) inflate.findViewById(R.id.lv_recordlist_sw);
+//        //上拉监听
+//        lv_recordlist.setPullLoadEnable(mLoadMoreListener);
         return inflate;
     }
-    /**
-     *  上拉监听
-     */
-    private IXListViewLoadMore mLoadMoreListener = new IXListViewLoadMore() {
-        @Override
-        public void onLoadMore() {
-            Toast.makeText(RecordListActivity.this, "上拉", Toast.LENGTH_SHORT).show();
-            page++;
-            recordListPresenter.getDataRefresh(MyApplication.TOKEN,page,type,is_go);
-        }
-    };
+//    /**
+//     *  上拉监听
+//     */
+//    private IXListViewLoadMore mLoadMoreListener = new IXListViewLoadMore() {
+//        @Override
+//        public void onLoadMore() {
+//            Toast.makeText(RecordListActivity.this, "上拉", Toast.LENGTH_SHORT).show();
+//            page++;
+//            recordListPresenter.getDataRefresh(MyApplication.TOKEN,page,type,is_go);
+//        }
+//    };
 
     @Override
     public void initData() {
@@ -70,6 +71,12 @@ public class RecordListActivity extends BaseInfoActivity implements IRecordListV
         recordListAdapter = new RecordListAdapter(RecordListActivity.this,recordListBeanList);
         lv_recordlist.setAdapter(recordListAdapter);
         recordListPresenter.getData(MyApplication.TOKEN,page,type,is_go);
+        swipeRefreshView.setOnLoadListener(new SwipeRefreshView.OnLoadListener() {
+            @Override
+            public void onLoad() {
+                recordListPresenter.getDataRefresh(MyApplication.TOKEN,page,type,is_go);
+            }
+        });
     }
 
     @Override
@@ -176,12 +183,13 @@ public class RecordListActivity extends BaseInfoActivity implements IRecordListV
     }
     @Override
     public void setRecordListRefresh(List<RecordListBean> list) {
+        swipeRefreshView.setLoading(false);
         if (list == null || list.size() == 0) {
-            lv_recordlist.noMoreForShow();
+            ToastUtils.showToast("没有更多数据了");
             return;
         }
         recordListBeanList.addAll(list);
         recordListAdapter.notifyDataSetChanged();
-        lv_recordlist.stopLoadMore();
+        page++;
     }
 }

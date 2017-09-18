@@ -23,6 +23,7 @@ import com.qs.qswlw.bean.RecordListBaseBean;
 import com.qs.qswlw.bean.RegisterBean;
 import com.qs.qswlw.bean.RegisterCheckIdBean;
 import com.qs.qswlw.bean.RegisterGetCodeBean;
+import com.qs.qswlw.bean.ScanCodeRecordBean;
 import com.qs.qswlw.bean.ValidateOldMemberBean;
 import com.qs.qswlw.bean.VenturegoldBean;
 
@@ -160,6 +161,13 @@ public interface MyRetroService {
                                               @Field("money") float money, @Field("ratio") float ratio, @Field("none") float none, @Field("ratio_key") String ratio_key,
                                               @Field("pay_type") String pay_type,@Field("pay_name") String pay_name,@Field("pay_time") String pay_time,@Field("msales_su") int msales_su,
                                               @Field("proof") File proof, @Field("remittance") File remittance);
+
+    /**
+     * 线下门店扫码
+     */
+    @FormUrlEncoded
+    @POST("index.php?m=Appapi&c=Single&a=user_review")
+    Observable<MainBean<ScanCodeRecordBean>> getScanCodeRecordData(@Field("token") String token, @Field("p") int p, @Field("is_ok") int is_ok);
 
     /**
      * 提交密码重设

@@ -68,6 +68,7 @@
         <activity android:name=".activity.PersonalCenter.MerchantAuditActivity"/>
 
         <activity android:name=".activity.PersonalCenter.RecommendedRecordsActivity"/>
+        <activity android:name=".activity.PersonalCenter.ScanCodeRecordActivity"/>
         <activity android:name=".activity.PersonalCenter.DonationRecordActivity"/>
         <activity android:name=".activity.PersonalCenter.InvestRecordActivity"/>
         <activity android:name=".activity.PersonalCenter.WithdrawalsRecordActivity"/>

@@ -208,7 +208,7 @@ public class BusinessSettingActivity extends BaseActivity implements IPersonalSe
                     startActivity(new Intent(BusinessSettingActivity.this, HarvestAddressListActivity.class));
                     break;
                 case 26:
-                    startActivity(new Intent(BusinessSettingActivity.this, HarvestAddressListActivity.class));
+                    startActivity(new Intent(BusinessSettingActivity.this, ScanCodeRecordActivity.class));
                     break;
                 case 27:
                     startActivity(new Intent(BusinessSettingActivity.this, MyProductsActivity.class));
