@@ -36,7 +36,7 @@ public class BusinessTurnoverAdapter extends BaseListAdapter<BusinessTurnoverBea
         } else {
             holder = (ViewHolder) view.getTag();
         }
-
+        holder.tv_item_merchantaudit_is_ok.setVisibility(View.GONE);
         holder.tv_item_merchantaudit_uid.setText(listBean.getUser_id());
         holder.tv_item_merchantaudit_time.setText(listBean.getAdd_time());
         holder.tv_item_merchantaudit_none.setText(listBean.getNone());
