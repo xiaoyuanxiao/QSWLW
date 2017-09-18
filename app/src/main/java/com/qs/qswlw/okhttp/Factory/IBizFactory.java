@@ -1,6 +1,7 @@
 package com.qs.qswlw.okhttp.Factory;
 
 import com.qs.qswlw.okhttp.Moudle.BizAngelRanking;
+import com.qs.qswlw.okhttp.Moudle.BizBusinessTurnover;
 import com.qs.qswlw.okhttp.Moudle.BizConsumptionRecord;
 import com.qs.qswlw.okhttp.Moudle.BizEntrepreneurial;
 import com.qs.qswlw.okhttp.Moudle.BizGoodProduct;
@@ -20,6 +21,7 @@ import com.qs.qswlw.okhttp.Moudle.BizScanCodeRecord;
 import com.qs.qswlw.okhttp.Moudle.BizValidateOldMember;
 import com.qs.qswlw.okhttp.Moudle.BizVentureGold;
 import com.qs.qswlw.okhttp.Moudle.IAngelRankingBiz;
+import com.qs.qswlw.okhttp.Moudle.IBusinessTurnoverBiz;
 import com.qs.qswlw.okhttp.Moudle.IConsumptionRecordBiz;
 import com.qs.qswlw.okhttp.Moudle.IEntrepreneurialBiz;
 import com.qs.qswlw.okhttp.Moudle.IImproveDocumentationBiz;
@@ -112,5 +114,8 @@ public class IBizFactory {
     }
     public static IImproveDocumentationBiz getImproveDocumentationList(){
         return BizImproveDocumentation.getInstans();
+    }
+    public static IBusinessTurnoverBiz getBusinessTurnoveList(){
+        return BizBusinessTurnover.getInstans();
     }
 }

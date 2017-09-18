@@ -2,6 +2,7 @@ package com.qs.qswlw.mynet;
 
 
 import com.qs.qswlw.bean.AngelRankingBean;
+import com.qs.qswlw.bean.BusinessTurnoverBean;
 import com.qs.qswlw.bean.ConsumptionRecordBean;
 import com.qs.qswlw.bean.EntrepreneurialDialogBean;
 import com.qs.qswlw.bean.EntrepreneurialIncentiveBean;
@@ -98,6 +99,14 @@ public interface MyRetroService {
      */
     @GET("index.php?m=Appapi&c=Single&a=shop_review_edit")
     Observable<MainBean<MerchantAuditClickBean>> getMerchantAuditClickData(@Query("token") String token,@Query("id") int id);
+
+    /**
+     * 商家营业额
+     */
+    @FormUrlEncoded
+    @POST("index.php?m=Appapi&c=Shop&a=turnover")
+    Observable<MainBean<BusinessTurnoverBean>> getBusinessTurnoverData(@Field("token") String token,@Field("p") int p,@Field("is_history") int is_history);
+
 
 
     /**
