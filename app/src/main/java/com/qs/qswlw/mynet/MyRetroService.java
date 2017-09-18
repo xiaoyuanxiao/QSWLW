@@ -11,6 +11,7 @@ import com.qs.qswlw.bean.LoginBean;
 import com.qs.qswlw.bean.MainBean;
 import com.qs.qswlw.bean.Maindatabean;
 import com.qs.qswlw.bean.MerchantAuditBean;
+import com.qs.qswlw.bean.MerchantAuditClickBean;
 import com.qs.qswlw.bean.MyProfitBean;
 import com.qs.qswlw.bean.MyRoleBean;
 import com.qs.qswlw.bean.MySliverBean;
@@ -90,6 +91,12 @@ public interface MyRetroService {
 
     @GET("index.php?m=Appapi&c=Single&a=formlist")
     Observable<MainBean<RecordListBaseBean>> getRecordListData(@Query("token") String token, @Query("p") int p, @Query("type") String type, @Query("is_go") String is_go);
+    /**
+     * 商家审核消费录单
+     */
+    @GET("index.php?m=Appapi&c=Single&a=shop_review_edit")
+    Observable<MainBean<MerchantAuditClickBean>> getMerchantAuditClickData(@Query("token") String token,@Query("id") int id);
+
 
     /**
      * 获得消费银豆记录
@@ -97,6 +104,8 @@ public interface MyRetroService {
     @FormUrlEncoded
     @POST("index.php?m=Appapi&c=UserBonus&a=silver")
     Observable<MainBean<MySliverBean>> getMySliverBeanData(@Field("token") String token, @Field("p") int p);
+
+
 
     /**
      * 商家审核
@@ -142,6 +151,15 @@ public interface MyRetroService {
     Observable<MainBean> PostConsumptionData(@Field("token") String token, @Field("uid") int uid, @Field("money") float money, @Field("ratio") float ratio,
                                              @Field("none") float none, @Field("ratio_key") String ratio_key, @Field("pay_type") String pay_type, @Field("pay_time") String pay_time,
                                              @Field("pay_name") String pay_name, @Field("proof") File proof, @Field("remittance") File remittance);
+    /**
+     *商家审核提交消费录单
+     */
+    @FormUrlEncoded
+    @POST("index.php?m=Appapi&c=Single&a=shop_review_audited")
+    Observable<MainBean> PostConsumptionData1(@Field("token") String token, @Field("id") int id, @Field("goods_id") int goods_id, @Field("uid") int uid,
+                                              @Field("money") float money, @Field("ratio") float ratio, @Field("none") float none, @Field("ratio_key") String ratio_key,
+                                              @Field("pay_type") String pay_type,@Field("pay_name") String pay_name,@Field("pay_time") String pay_time,@Field("msales_su") int msales_su,
+                                              @Field("proof") File proof, @Field("remittance") File remittance);
 
     /**
      * 提交密码重设

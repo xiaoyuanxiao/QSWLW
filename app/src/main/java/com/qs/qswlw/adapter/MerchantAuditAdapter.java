@@ -1,11 +1,13 @@
 package com.qs.qswlw.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.qs.qswlw.R;
+import com.qs.qswlw.activity.PersonalCenter.ConsumptionRecordActivity;
 import com.qs.qswlw.bean.MerchantAuditBean;
 
 import java.util.List;
@@ -22,7 +24,7 @@ public class MerchantAuditAdapter extends BaseListAdapter<MerchantAuditBean.List
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
 
-        MerchantAuditBean.ListBean listBean = data.get(i);
+        final MerchantAuditBean.ListBean listBean = data.get(i);
         ViewHolder holder;
         if (view == null) {//咦
             holder = new ViewHolder();
@@ -40,13 +42,22 @@ public class MerchantAuditAdapter extends BaseListAdapter<MerchantAuditBean.List
         if ("0".equals(is_go)) {
             holder.tv_item_merchantaudit_is_ok.setText("审核");
         } else if ("1".equals(is_go)) {
-            holder.tv_item_merchantaudit_is_ok.setText("");
+            holder.tv_item_merchantaudit_is_ok.setText("已审核");
         }
         holder.tv_item_merchantaudit_uid.setText(listBean.getUser_id());
-        //    holder.union_ranking.setText(singleLogBean.get());
         holder.tv_item_merchantaudit_time.setText(listBean.getAdd_time());
         holder.tv_item_merchantaudit_none.setText(listBean.getNone());
         holder.tv_item_merchantaudit_money.setText(listBean.getMoney());
+        final String id = listBean.getId();//订单id
+        holder.tv_item_merchantaudit_is_ok.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(context, ConsumptionRecordActivity.class);
+                intent.putExtra("merchantaudit","merchantaudit");
+                intent.putExtra("listBean",listBean);
+                context.startActivity(intent);
+            }
+        });
         return view;
     }
 

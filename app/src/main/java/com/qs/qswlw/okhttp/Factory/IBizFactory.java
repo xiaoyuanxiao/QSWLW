@@ -6,6 +6,7 @@ import com.qs.qswlw.okhttp.Moudle.BizEntrepreneurial;
 import com.qs.qswlw.okhttp.Moudle.BizGoodProduct;
 import com.qs.qswlw.okhttp.Moudle.BizMain;
 import com.qs.qswlw.okhttp.Moudle.BizMerchantAudit;
+import com.qs.qswlw.okhttp.Moudle.BizMerchantAuditClick;
 import com.qs.qswlw.okhttp.Moudle.BizMyProfit;
 import com.qs.qswlw.okhttp.Moudle.BizMyRole;
 import com.qs.qswlw.okhttp.Moudle.BizMySliverBean;
@@ -21,6 +22,7 @@ import com.qs.qswlw.okhttp.Moudle.IConsumptionRecordBiz;
 import com.qs.qswlw.okhttp.Moudle.IEntrepreneurialBiz;
 import com.qs.qswlw.okhttp.Moudle.IMainBiz;
 import com.qs.qswlw.okhttp.Moudle.IMerchantAuditBiz;
+import com.qs.qswlw.okhttp.Moudle.IMerchantAuditClickBiz;
 import com.qs.qswlw.okhttp.Moudle.IMyProfitBiz;
 import com.qs.qswlw.okhttp.Moudle.IMyRoleBiz;
 import com.qs.qswlw.okhttp.Moudle.IMySliverBeanBiz;
@@ -97,5 +99,8 @@ public class IBizFactory {
     }
     public static IMerchantAuditBiz getMerchantAuditList(){
         return BizMerchantAudit.getInstans();
+    }
+    public static IMerchantAuditClickBiz getMerchantAuditClickList(){
+        return BizMerchantAuditClick.getInstans();
     }
 }

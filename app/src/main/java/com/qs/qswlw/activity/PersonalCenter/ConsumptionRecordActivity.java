@@ -7,6 +7,7 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.support.v7.app.AlertDialog;
 import android.text.Html;
 import android.util.Log;
 import android.view.Gravity;
@@ -28,12 +29,15 @@ import com.qs.qswlw.MyApplication;
 import com.qs.qswlw.R;
 import com.qs.qswlw.bean.ConsumptionRecordBean;
 import com.qs.qswlw.bean.MainBean;
+import com.qs.qswlw.bean.MerchantAuditBean;
+import com.qs.qswlw.bean.MerchantAuditClickBean;
 import com.qs.qswlw.mynet.HttpSubCribe;
 import com.qs.qswlw.mynet.MyRetroService;
 import com.qs.qswlw.mynet.ReHttpUtils;
 import com.qs.qswlw.okhttp.Iview.IConsumptionRecordView;
+import com.qs.qswlw.okhttp.Iview.IMerchantAuditClickView;
 import com.qs.qswlw.okhttp.Presenter.ConsumptionRecordPresenter;
-import com.qs.qswlw.utils.DialogUtils;
+import com.qs.qswlw.okhttp.Presenter.MerchantAuditClickPersenter;
 import com.qs.qswlw.utils.ImageTools;
 import com.qs.qswlw.utils.ToastUtils;
 import com.qs.qswlw.view.GenderPopupWindow;
@@ -48,9 +52,8 @@ import static com.qs.qswlw.R.id.spinner_consumptionrecord_pos;
  * Created by xiaoyu on 2017/4/6.
  */
 
-public class ConsumptionRecordActivity extends BaseInfoActivity implements IConsumptionRecordView {
+public class ConsumptionRecordActivity extends BaseInfoActivity implements IConsumptionRecordView, IMerchantAuditClickView {
 
-    //   private static final String[] PLANETS = new String[]{"20%", "10%"};
     private ConsumptionRecordPresenter consumptionRecordPresenter = new ConsumptionRecordPresenter(this);
     private TextView consumptionrecord_bottom_one, consumptionrecord_bottom_two, consumptionrecord_bottom_three, consumptionrecord_bottom_four;
     private TextView edt_consumptionrecord_two;
@@ -77,6 +80,12 @@ public class ConsumptionRecordActivity extends BaseInfoActivity implements ICons
     private String get1;
     private String get2;
     private RelativeLayout rl_consumption;
+    private MerchantAuditClickPersenter merchantAuditClickPersenter = new MerchantAuditClickPersenter(this);
+    private int type;
+    private String get;
+    private String get3;
+    private MerchantAuditBean.ListBean listBean;
+    private String goods_id;
 
     @Override
     public View setConetnView() {
@@ -107,26 +116,16 @@ public class ConsumptionRecordActivity extends BaseInfoActivity implements ICons
     @Override
     public void initData() {
         super.initData();
-        consumptionRecordPresenter.getdata(MyApplication.TOKEN);
-        inflate = LayoutInflater.from(this).inflate(R.layout.dialog_consumption_percent, null);
-        eb_one = (RadioButton) inflate.findViewById(R.id.eb_one);
-        eb_two = (RadioButton) inflate.findViewById(R.id.eb_two);
-        rg_dialog_consumption = (RadioGroup) inflate.findViewById(R.id.rg_dialog_consumption);
-        rg_dialog_consumption.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup radioGroup, int i) {
-                switch (i) {
-                    case 1:
-                        ratio_key = "model1";
-                        ratio = Float.parseFloat(get1);
-                        break;
-                    case 2:
-                        ratio_key = "model2";
-                        ratio = Float.parseFloat(get2);
-                        break;
-                }
-            }
-        });
+        Intent intent = getIntent();
+        String merchantaudit = intent.getStringExtra("merchantaudit");
+        listBean = (MerchantAuditBean.ListBean) intent.getSerializableExtra("listBean");
+        if ("merchantaudit".equals(merchantaudit)) {
+            merchantAuditClickPersenter.getdata(MyApplication.TOKEN, Integer.parseInt(listBean.getId()));
+        } else {
+            consumptionRecordPresenter.getdata(MyApplication.TOKEN);
+        }
+
+
         initSpinner();
     }
 
@@ -155,6 +154,8 @@ public class ConsumptionRecordActivity extends BaseInfoActivity implements ICons
         btn_selectorfile2.setOnClickListener(this);
         edt_consumptionrecord_two.setOnClickListener(this);
         btn_sonsumption_confirm.setOnClickListener(this);
+//        eb_one.setOnClickListener(this);
+//        eb_two.setOnClickListener(this);
     }
 
 
@@ -163,36 +164,52 @@ public class ConsumptionRecordActivity extends BaseInfoActivity implements ICons
         super.onClick(v);
         switch (v.getId()) {
             case R.id.edt_consumptionrecord_two:
+                final AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                final AlertDialog dialog = builder.create();
+                View alertview = LayoutInflater.from(this).inflate(R.layout.dialog_consumption_percent, null);
+                eb_one = (RadioButton) alertview.findViewById(R.id.eb_one);
+                eb_two = (RadioButton) alertview.findViewById(R.id.eb_two);
+                if (1==type) {
+                    eb_one.setText(get3);
+                    eb_two.setText(get);
+                } else if (2==type) {
+                    eb_one.setText(get2 + "%(发票)");
+                    eb_two.setText(get1 + "%(B网)");
+                }
 
-                DialogUtils.showDialog(this, inflate);
+                rg_dialog_consumption = (RadioGroup) alertview.findViewById(R.id.rg_dialog_consumption);
 
-
-                /**
-                 * ArrayAdapter<String> accountTypesAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, array_type);
-                 * accountTypesAdapter.setDropDownViewResource(R.layout.drop_down_item);
-                 * spinner.setAdapter(accountTypesAdapter);
-                 */
-//                View outerView = LayoutInflater.from(this).inflate(R.layout.wheel_view, null);
-//                WheelView wv = (WheelView) outerView.findViewById(R.id.wheel_view_wv);
-//                //  wv.setOffset(1);
-//                wv.setItems(Arrays.asList(PLANETS));
-//                wv.setSeletion(0);
-//                wv.setOnWheelViewListener(new WheelView.OnWheelViewListener() {
-//                    @Override
-//                    public void onSelected(int selectedIndex, String item) {
-//                        Log.d("tag", "[Dialog]selectedIndex: " + selectedIndex + ", item: " + item);
-//                    }
-//                });
-//                Dialog dialog = new Dialog(this);
-//                dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-//                dialog.setContentView(outerView);
-//                //dialog.setPositiveButton("完成", null);
-//                //获得当前窗体
-//                Window window = dialog.getWindow();
-//                //重新设置
-//                WindowManager.LayoutParams lp = window.getAttributes();
-//                window.setGravity(Gravity.LEFT | Gravity.BOTTOM);
-//                dialog.show();
+                rg_dialog_consumption.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+                    @Override
+                    public void onCheckedChanged(RadioGroup radioGroup, int i) {
+                        switch (i) {
+                            case R.id.eb_one:
+                                ratio_key = "model1";
+                                if (1==type) {
+                                    ratio = Float.parseFloat(get3);
+                                }
+                                if (2==type) {
+                                    ratio = Float.parseFloat(get2);
+                                }
+                                dialog.dismiss();
+                                edt_consumptionrecord_two.setText(ratio + "%(发票)");
+                                break;
+                            case R.id.eb_two:
+                                ratio_key = "model2";
+                                if (1==type) {
+                                    ratio = Float.parseFloat(get);
+                                }
+                                if (2==type) {
+                                    ratio = Float.parseFloat(get1);
+                                }
+                                dialog.dismiss();
+                                edt_consumptionrecord_two.setText(ratio + "%(B网)");
+                                break;
+                        }
+                    }
+                });
+                dialog.setView(alertview);
+                dialog.show();
                 break;
             case spinner_consumptionrecord_pos:
                 break;
@@ -203,11 +220,52 @@ public class ConsumptionRecordActivity extends BaseInfoActivity implements ICons
                 showPW("2");
                 break;
             case R.id.btn_sonsumption_confirm:
-                postData();
+                if(1==type){//商家审核进入的
+                    postMerchantAuditData();
+                }else if(2==type){//消费录单进入的，为嘛写两个接口-_-
+                    postData();
+                }
+
                 break;
         }
     }
 
+
+    private String pay_name;
+    private String pay_time;
+    private String pay_type;
+    private float none;
+    private float money;
+    private int uid;
+
+    /**
+     * 提交录单信息
+     */
+    private void postMerchantAuditData() {
+
+        ReHttpUtils.instans().httpRequest(new HttpSubCribe<MainBean>() {
+
+
+            @Override
+            public void onError(Throwable e) {
+                ToastUtils.showToast(e+"");
+                Log.e("TAG", e + "");
+            }
+
+            @Override
+            public void onNext(MainBean mainBean) {
+                 ToastUtils.showToast(mainBean.getMsg());
+                Log.e("TAG", mainBean + "");
+            }
+
+            @Override
+            public Observable<MainBean> getObservable(MyRetroService retrofit) {
+
+                return retrofit.PostConsumptionData1(MyApplication.TOKEN, Integer.parseInt(listBean.getId()), Integer.parseInt(goods_id), uid, money, ratio, none, ratio_key, pay_type,pay_name,pay_time, Integer.parseInt(edt_consumptionrecord_four.getText().toString()) ,file1, file2);
+            }
+        });
+
+    }
     /**
      * 提交录单信息
      */
@@ -229,14 +287,14 @@ public class ConsumptionRecordActivity extends BaseInfoActivity implements ICons
 
             @Override
             public Observable<MainBean> getObservable(MyRetroService retrofit) {
-                int uid = Integer.parseInt(edt_consumptionrecord_id.getText().toString());
-                float money = Float.parseFloat(edt_consumptionrecord_three.getText().toString());
+                uid = Integer.parseInt(edt_consumptionrecord_id.getText().toString());
+                money = Float.parseFloat(edt_consumptionrecord_three.getText().toString());
                 //   ratio = Float.parseFloat(edt_consumptionrecord_two.getText().toString());
-                float none = Float.parseFloat(edt_consumptionrecord_one.getText().toString());
-                String pay_type = strClassification;
-                String pay_time = edt_consumptionrecord_sex.getText().toString();
+                none = Float.parseFloat(edt_consumptionrecord_one.getText().toString());
+                pay_type = strClassification;
+                pay_time = edt_consumptionrecord_sex.getText().toString();
                 //  long l = DateUtils.dateToStamp2();
-                String pay_name = edt_consumptionrecord_nickname.getText().toString();
+                pay_name = edt_consumptionrecord_nickname.getText().toString();
                 return retrofit.PostConsumptionData(MyApplication.TOKEN, uid, money, ratio, none, ratio_key, pay_type, pay_time, pay_name, file1, file2);
                 //  return retrofit.PostConsumptionData(MyApplication.TOKEN,1,20,12,4,"4",pay_type,12345353,"a",file,file);
             }
@@ -252,6 +310,7 @@ public class ConsumptionRecordActivity extends BaseInfoActivity implements ICons
         menuWindow.setMaleName("拍照或录像");
         menuWindow.setFemaleName("照片图库");
     }
+
 
     //上传图片
     private class MyOnClickListener implements View.OnClickListener {
@@ -313,6 +372,7 @@ public class ConsumptionRecordActivity extends BaseInfoActivity implements ICons
 
     @Override
     public void setConsumptionRecordData(MainBean<ConsumptionRecordBean> consumptionRecordBean) {
+        type = 2;
         if (consumptionRecordBean.getSucc() != 1) {
             Intent intent = getIntent();
             String msg = consumptionRecordBean.getMsg();
@@ -324,16 +384,36 @@ public class ConsumptionRecordActivity extends BaseInfoActivity implements ICons
             String content = result.getContent();
             String replace = content.replace("&lt;", "<").replace("&gt;", ">").replace("&quot;", "”").replace("&amp;", "&");
             consumptionrecord_bottom_two.setText(Html.fromHtml(replace));
-            edt_consumptionrecord_two.setText(result.getRebate_config().getModel2().getGet() + "(发票)");
+            edt_consumptionrecord_two.setText(result.getRebate_config().getModel2().getGet() + "%(发票)");
             get2 = result.getRebate_config().getModel2().getGet();
             get1 = result.getRebate_config().getModel1().getGet();
             ratio = Float.parseFloat(get2);
             eb_one.setText(get2 + "%(发票)");
             eb_two.setText(get1 + "%(B网)");
         }
-
-
     }
 
+    @Override
+    public void setData(MerchantAuditClickBean merchantAuditClickBean) {
+        type = 1;
+        MerchantAuditClickBean.OldListBean old_list = merchantAuditClickBean.getOld_list();
+        MerchantAuditClickBean.UserInfoBean user_info = merchantAuditClickBean.getUser_info();
+        MerchantAuditClickBean.ModelBean model = merchantAuditClickBean.getModel();
+        MerchantAuditClickBean.ModelBean.Model1Bean model1 = merchantAuditClickBean.getModel().getModel1();
+        MerchantAuditClickBean.ModelBean.Model2Bean model2 = merchantAuditClickBean.getModel().getModel2();
+        goods_id = merchantAuditClickBean.getGoods_id();
+        //模式
+        get = model1.getGet();
+        get3 = model2.getGet();
+        edt_consumptionrecord_id.setText(old_list.getId());
+        edt_consumptionrecord_nickname.setText(user_info.getNickname());
+        edt_consumptionrecord_one.setText(old_list.getNone());  //让利金额
+        edt_consumptionrecord_three.setText(old_list.getMoney());   //发票金额
+        edt_consumptionrecord_two.setText(merchantAuditClickBean.getModel().getModel2().getGet() + "%(发票)");
+        edt_consumptionrecord_four.setText(old_list.getGoods_num() + "");  //商品数量
+        edt_consumptionrecord_five.setText(old_list.getPay_name());  //汇款人
+        edt_consumptionrecord_sex.setText(old_list.getAdd_time());   //时间
+        
+    }
 
 }

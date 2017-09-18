@@ -1,5 +1,6 @@
 package com.qs.qswlw.bean;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -94,7 +95,7 @@ public class MerchantAuditBean {
         }
     }
 
-    public static class ListBean {
+    public static class ListBean  implements Serializable {
         /**
          * id : 7964
          * user_id : 187
