@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:layout_height="match_parent">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -38,16 +37,18 @@
                 <ImageView
                     android:id="@+id/iv_UploadBusinessLicense"
                     android:layout_width="0dp"
-                    android:layout_height="120dp"
-                    android:layout_marginRight="10dp"
+                    android:layout_height="110dp"
                     android:layout_weight="1"
+                    android:scaleType="fitXY"
+                    android:layout_marginRight="10dp"
                     android:src="@mipmap/add_pro" />
 
                 <ImageView
                     android:id="@+id/pic_UploadBusinessLicense"
                     android:layout_width="0dp"
-                    android:layout_height="120dp"
+                    android:layout_height="110dp"
                     android:layout_weight="1"
+                    android:scaleType="fitXY"
                     android:src="@mipmap/add_pro" />
             </LinearLayout>
 
@@ -67,16 +68,18 @@
                 <ImageView
                     android:id="@+id/iv_Storefacade"
                     android:layout_width="0dp"
-                    android:layout_height="120dp"
-                    android:layout_marginRight="10dp"
+                    android:layout_height="110dp"
                     android:layout_weight="1"
+                    android:layout_marginRight="10dp"
+                    android:scaleType="fitXY"
                     android:src="@mipmap/add_pro" />
 
                 <ImageView
                     android:id="@+id/pic_Storefacade"
                     android:layout_width="0dp"
-                    android:layout_height="120dp"
+                    android:layout_height="110dp"
                     android:layout_weight="1"
+                    android:scaleType="fitXY"
                     android:src="@mipmap/add_pro" />
             </LinearLayout>
 
@@ -88,21 +91,48 @@
                 android:textColor="@color/text_blue" />
 
             <EditText
+                android:id="@+id/edt_improve_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
                 android:background="@drawable/corner_name_improve"
                 android:text="葡萄牙酒庄联盟"
                 android:textSize="11sp" />
-
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
-                android:text="4、填写店铺联系电话"
+                android:text="4、店铺商号"
+                android:textColor="@color/text_blue" />
+            <EditText
+                android:id="@+id/edt_improve_companyname"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:background="@drawable/corner_name_improve"
+                android:text="葡萄牙酒庄联盟"
+                android:textSize="11sp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/red"
+                android:textSize="10sp"
+                android:text="店铺简称或企业字号，长度不超过四个字！"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/red"
+                android:textSize="10sp"
+                android:text="如“广州市四申九物联网有限公司”填写为“四申九”"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:text="5、填写店铺联系电话"
                 android:textColor="@color/text_blue" />
 
             <EditText
+                android:id="@+id/edt_improve_mobile"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
@@ -114,13 +144,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
-                android:text="5、请选择店铺所在地"
+                android:text="6、请选择店铺所在地"
                 android:textColor="@color/text_blue" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-               android:layout_marginLeft="10dp"
+                android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:focusableInTouchMode="false"
                 android:orientation="horizontal">
@@ -150,49 +180,55 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
-                android:text="6、填写店铺地址"
+                android:text="7、填写店铺地址"
                 android:textColor="@color/text_blue" />
 
             <EditText
+                android:id="@+id/edt_improve_address"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
                 android:background="@drawable/corner_name_improve"
                 android:text="1678911"
                 android:textSize="11sp" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
-                android:text="7、选择经营分类"
+                android:text="8、选择经营分类"
                 android:textColor="@color/text_blue" />
+
             <Spinner
                 android:id="@+id/classification_spinner"
                 android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_height="wrap_content"></Spinner>
+                android:layout_marginRight="10dp"></Spinner>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
-                android:text="8、填写店铺主营业务"
+                android:text="9、填写店铺主营业务"
                 android:textColor="@color/text_blue" />
 
             <EditText
+                android:id="@+id/edt_improve_catagory"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
                 android:background="@drawable/corner_name_improve"
                 android:text="红酒123"
                 android:textSize="11sp" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
                 android:text="9、店铺经营时间"
                 android:textColor="@color/text_blue" />
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -202,42 +238,48 @@
                 <TextView
                     android:id="@+id/tv_startTime"
                     android:layout_width="0dp"
-                    android:gravity="center"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="开始时间"/>
+                    android:gravity="center"
+                    android:text="开始时间" />
+
                 <View
                     android:layout_width="30dp"
                     android:layout_height="1dp"
-                    android:background="@color/view"
-                    android:layout_gravity="center_vertical"/>
+                    android:layout_gravity="center_vertical"
+                    android:background="@color/view" />
 
 
                 <TextView
                     android:id="@+id/tv_endTime"
                     android:layout_width="0dp"
-                    android:gravity="center"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="结束时间"/>
+                    android:gravity="center"
+                    android:text="结束时间" />
             </LinearLayout>
-        <LinearLayout
-            android:id="@+id/Main_pvLayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:orientation="vertical">
-
-            <com.qs.qswlw.view.PickTimeView
-                android:id="@+id/pickTime"
-                android:layout_width="match_parent"
+            <TextView
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:visibility="gone"/>
-            </LinearLayout>
+                android:textColor="@color/red"
+                android:textSize="10sp"
+                android:text="已经通过审核的资料请勿再次修改，否则系统将重新审核，在审核期间将不能录单让利，请谨慎操作！"/>
+
+
+            <Button
+                android:id="@+id/btn_improved"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/corner_btn_red"
+                android:text="提交"
+                android:textColor="@color/white"
+                android:layout_marginBottom="15dp"
+                android:textSize="12sp" />
 
         </LinearLayout>
 
     </ScrollView>
 
 
-</LinearLayout>
+</RelativeLayout>

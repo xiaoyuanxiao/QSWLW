@@ -7,6 +7,7 @@ import com.qs.qswlw.bean.EntrepreneurialDialogBean;
 import com.qs.qswlw.bean.EntrepreneurialIncentiveBean;
 import com.qs.qswlw.bean.ForgetPassWordBean;
 import com.qs.qswlw.bean.GoodProductBean;
+import com.qs.qswlw.bean.ImproveDocumentationBean;
 import com.qs.qswlw.bean.LoginBean;
 import com.qs.qswlw.bean.MainBean;
 import com.qs.qswlw.bean.Maindatabean;
@@ -185,6 +186,13 @@ public interface MyRetroService {
     Observable<MainBean<ForgetPassWordBean>> postForgetPWData(@Field("mobile") String mobile, @Field("roles") int roles, @Field("pass") String pass,
                                                               @Field("repass") String repass, @Field("type") String type,
                                                               @Field("mobile_code") String mobile_code);
+    /**
+     * 商家完善资料
+     */
+    @FormUrlEncoded
+    @POST("index.php?m=Appapi&c=Shop&a=shopadd")
+    Observable<MainBean<ImproveDocumentationBean>> getImproveDocumentationData(@Field("token") String token);
+
 
     /**
      * 提交验证老会员信息

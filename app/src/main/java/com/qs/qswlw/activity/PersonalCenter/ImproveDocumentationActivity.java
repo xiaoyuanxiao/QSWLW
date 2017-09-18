@@ -1,18 +1,13 @@
 package com.qs.qswlw.activity.PersonalCenter;
 
 import android.annotation.TargetApi;
+import android.app.TimePickerDialog;
 import android.content.Intent;
-import android.database.Cursor;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Environment;
-import android.os.Handler;
-import android.os.Message;
-import android.provider.DocumentsContract;
 import android.provider.MediaStore;
-import android.text.TextUtils;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
@@ -21,24 +16,33 @@ import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.TimePicker;
 
+import com.bumptech.glide.Glide;
+import com.qs.qswlw.MyApplication;
 import com.qs.qswlw.R;
-import com.qs.qswlw.utils.FileUtil;
+import com.qs.qswlw.bean.ImproveDocumentationBean;
+import com.qs.qswlw.mynet.ReHttpUtils;
+import com.qs.qswlw.okhttp.Iview.IImproveDocumentationView;
+import com.qs.qswlw.okhttp.Presenter.ImproveDocumentationPersenter;
 import com.qs.qswlw.utils.ImageTools;
 import com.qs.qswlw.utils.ToastUtils;
 import com.qs.qswlw.view.GenderPopupWindow;
-import com.qs.qswlw.view.PickTimeView;
 
 import java.io.File;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
+import static com.qs.qswlw.R.id.pic_UploadBusinessLicense;
+
 
 /**
  * Created by xiaoyu on 2017/3/31.
  */
 
-public class ImproveDocumentationActivity extends BaseInfoActivity {
+public class ImproveDocumentationActivity extends BaseInfoActivity implements IImproveDocumentationView {
 
     private Spinner province_spinner;
     private Spinner city_spinner;
@@ -99,8 +103,6 @@ public class ImproveDocumentationActivity extends BaseInfoActivity {
     private int hour;
     private int minute;
     private TextView tv_startTime,tv_endTime;
-    private LinearLayout pvLayout;
-    private PickTimeView pickTime;
     private ImageView iv_UploadBusinessLicense,iv_Storefacade;
     private GenderPopupWindow menuWindow;
     private static final int CAMERA = 2003;
@@ -110,17 +112,25 @@ public class ImproveDocumentationActivity extends BaseInfoActivity {
     private Uri imageUri;
     private ImageView pic_uploadBusinessLicense,pic_Storefacade;
 
+    private Calendar mCalendar;
+    private String a;
+    private ImproveDocumentationPersenter improveDocumentationPersenter = new ImproveDocumentationPersenter(this);
+    private EditText edt_improve_name,edt_improve_companyname,edt_improve_mobile,edt_improve_address,edt_improve_catagory;
+
     @Override
     public View setConetnView() {
         View inflate = View.inflate(this, R.layout.activity_improvedocumentation, null);
         tv_startTime = (TextView) inflate.findViewById(R.id.tv_startTime);
         tv_endTime = (TextView) inflate.findViewById(R.id.tv_endTime);
-        pvLayout = (LinearLayout) inflate.findViewById(R.id.Main_pvLayout);
-        pickTime = (PickTimeView) inflate.findViewById(R.id.pickTime);
         iv_UploadBusinessLicense = (ImageView) inflate.findViewById(R.id.iv_UploadBusinessLicense);
         iv_Storefacade = (ImageView) inflate.findViewById(R.id.iv_Storefacade);
-        pic_uploadBusinessLicense = (ImageView) inflate.findViewById(R.id.pic_UploadBusinessLicense);
+        pic_uploadBusinessLicense = (ImageView) inflate.findViewById(pic_UploadBusinessLicense);
         pic_Storefacade = (ImageView) inflate.findViewById(R.id.pic_Storefacade);
+        edt_improve_name = (EditText) inflate.findViewById(R.id.edt_improve_name);
+        edt_improve_companyname = (EditText) inflate.findViewById(R.id.edt_improve_companyname);
+        edt_improve_mobile = (EditText) inflate.findViewById(R.id.edt_improve_mobile);
+        edt_improve_address = (EditText) inflate.findViewById(R.id.edt_improve_address);
+        edt_improve_catagory = (EditText) inflate.findViewById(R.id.edt_improve_catagory);
         return inflate;
     }
 
@@ -135,14 +145,18 @@ public class ImproveDocumentationActivity extends BaseInfoActivity {
         super.initData();
         loadSpinner();
         loadManagementClassificationSpinner();
+        improveDocumentationPersenter.getdata(MyApplication.TOKEN);
+
     }
 
-    @Override
+
+
+        @Override
     public void setOnclick() {
         super.setOnclick();
         tv_startTime.setOnClickListener(this);
         tv_endTime.setOnClickListener(this);
-        iv_UploadBusinessLicense.setOnClickListener(this);
+       iv_UploadBusinessLicense.setOnClickListener(this);
         iv_Storefacade.setOnClickListener(this);
     }
 
@@ -151,32 +165,47 @@ public class ImproveDocumentationActivity extends BaseInfoActivity {
         super.onClick(v);
         switch (v.getId()){
             case R.id.tv_startTime:
-                pickTime.setVisibility(View.VISIBLE);
-                showView(pickTime);
+                showTimePickerDialog(tv_startTime);
                 break;
             case R.id.tv_endTime:
-                pickTime.setVisibility(View.VISIBLE);
-                showView(pickTime);
+                showTimePickerDialog(tv_endTime);
                 break;
             case R.id.iv_UploadBusinessLicense:
-                selectPhoto();
+                showPW("1");
                 break;
             case R.id.iv_Storefacade:
-                selectPhoto();
+                showPW("2");
                 break;
         }
     }
 
-    /**
-     * 选择拍照或相册
-     */
-    private void selectPhoto(){
-        menuWindow = new GenderPopupWindow(this, new ImproveDocumentationActivity.MyOnClickListener());
+    private void showTimePickerDialog(final TextView tv) {
+        mCalendar = Calendar.getInstance();
+        TimePickerDialog dialog = new TimePickerDialog(ImproveDocumentationActivity.this, new TimePickerDialog.OnTimeSetListener() {
+            @Override
+            public void onTimeSet(TimePicker timePicker, int i, int i1) {
+                mCalendar.set(Calendar.HOUR, i);
+                mCalendar.set(Calendar.MINUTE, i1);
+                SimpleDateFormat format = new SimpleDateFormat("HH:mm");
+                tv.setText(""+format.format(mCalendar.getTime()));
+
+            }
+        }, mCalendar.get(Calendar.HOUR), mCalendar.get(Calendar.MINUTE), true);
+        dialog.show();
+
+    }
+
+    private void showPW(String s) {
+        a = s;
+        menuWindow = new GenderPopupWindow(this, new MyOnClickListener());
         menuWindow.showAtLocation(this.findViewById(R.id.iv_UploadBusinessLicense), Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL, 0, 0);
         menuWindow.setTitleName("选择图片来源");
-        menuWindow.setFemaleName("相册");
-        menuWindow.setMaleName("拍照");
+        menuWindow.setMaleName("拍照或录像");
+        menuWindow.setFemaleName("照片图库");
     }
+
+
+
     //上传图片
     private class MyOnClickListener implements View.OnClickListener {
         @Override
@@ -190,7 +219,7 @@ public class ImproveDocumentationActivity extends BaseInfoActivity {
                 case R.id.tv_male:
                     //选择拍照
                     Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                    Uri imageUri = Uri.fromFile(new File(Environment.getExternalStorageDirectory(), "userLogo.jpg"));
+                    imageUri = Uri.fromFile(new File(Environment.getExternalStorageDirectory(), System.currentTimeMillis() / 1000 + "userLogo.jpg"));
                     intent.putExtra(MediaStore.EXTRA_OUTPUT, imageUri);
                     startActivityForResult(intent, CAMERA);
                     break;
@@ -198,158 +227,42 @@ public class ImproveDocumentationActivity extends BaseInfoActivity {
             menuWindow.dismiss();
         }
     }
+    private File file1;
+    private File file2;
 
     @TargetApi(Build.VERSION_CODES.KITKAT)
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (data != null) {
-            switch (requestCode) {
-                //选择照片
-                case CHOOSE_PICTURE:
-                    String photo_path = null;
-                    if (isKitKat && DocumentsContract.isDocumentUri(this, data.getData())) {
-                        String wholeID = DocumentsContract.getDocumentId(data.getData());
-                        String id = wholeID.split(":")[1];
-                        String[] column = {MediaStore.Images.Media.DATA};
-                        String sel = MediaStore.Images.Media._ID + "=?";
-                        Cursor cursor = getContentResolver().query(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, column,
-                                sel, new String[]{id}, null);
-                        int columnIndex = cursor.getColumnIndex(column[0]);
-                        if (cursor.moveToFirst()) {
-                            photo_path = cursor.getString(columnIndex);
-                        }
-                        cursor.close();
-                    } else {
-                        String[] projection = {MediaStore.Images.Media.DATA};
-                        Cursor cursor = getContentResolver().query(data.getData(), projection, null, null, null);
-                        try{
-                            int column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
-                            cursor.moveToFirst();
-                            photo_path = cursor.getString(column_index);
-                        }catch (Exception e){
-                            e.printStackTrace();
-                            ToastUtils.showToast(this,"选取的图片异常！");
-                        }
-                    }
-                    if (photo_path!=null){
-                        //上传图片到服务器
-                        new Thread(new ImproveDocumentationActivity.SaveThread(photo_path)).start();
-                    }else {
-                        ToastUtils.showToast(this,"请重新选取图片！");
-                    }
-                    break;
-            }
-        }
+        String photo_path = null;
         switch (requestCode) {
-            case CAMERA:
-                File f = new File(Environment.getExternalStorageDirectory(), "userLogo.jpg");
-                String path = f.getPath();
-                new Thread(new ImproveDocumentationActivity.SaveThread(path)).start();
-                break;
-
-        }
-    }
-
-    //上传图片
-    private class SaveThread implements Runnable {
-        private String path;
-
-        public SaveThread(String path) {
-            this.path = path;
-        }
-
-        @Override
-        public void run() {
-            //获取选中图片的路径
-            if (TextUtils.isEmpty(path)) {
-                return;
-            }
-            BitmapFactory.Options options = new BitmapFactory.Options();
-            options.inJustDecodeBounds = true; // 先获取原大小
-            Bitmap scanBitmap = BitmapFactory.decodeFile(path, options);
-            options.inJustDecodeBounds = false; // 获取新的大小
-            int sampleSize = (int) (options.outHeight / (float) 200);
-            if (sampleSize <= 0)
-                sampleSize = 1;
-            options.inSampleSize = sampleSize;
-            scanBitmap = BitmapFactory.decodeFile(path, options);
-            try{
-                scanBitmap.getByteCount();
-            }catch (Exception e){
-                e.printStackTrace();
-                ToastUtils.showToast(ImproveDocumentationActivity.this,"图片处理异常！");
-            }
-            if (scanBitmap != null) {//如果图片存在的话
-                try {
-                    bitmap = scanBitmap;
-                    imageUri = Uri.fromFile(FileUtil.saveBitmap(scanBitmap));
-                    File file = new File(ImageTools.uri2File(imageUri,ImproveDocumentationActivity.this));
-                    Message message = handler.obtainMessage();
-                    message.what = 1;
-                    handler.sendMessage(message);
-
-//                    Map<String, Object> map = new HashMap<>();
-//                    // map.put("userId", ServerApi.USER_ID);
-//                    map.put("userId", ServerApi.USER_ID);
-//                    String data = GsonUtils.toJson(map);
-//                    String sign = dataDealWith(data);
-//                    String fileName = "";
-//                        fileName = "userAvatar";
-//                    } else if (ServerApi.USER_TYPE.equals("1")) {
-//                        fileName = "staffAvatar";
-//                    }
-//                    String url = "";
-//                    if (ServerApi.USER_TYPE.equals("0")) {
-//                        url = ServerApi.returnUrl(ServerApi.Api.CUSTOMER_USER_AVATER, new GETParams().put("data", data).put("partner", Constant.PARTNER).put("sign", sign));
-//                    } else if (ServerApi.USER_TYPE.equals("1")) {
-//                        url = ServerApi.returnUrl(ServerApi.Api.CUSTOMER_CUSTOMER_AVATER, new GETParams().put("data", data).put("partner", Constant.PARTNER).put("sign", sign));
-//                    }
-//                    BitmapFactory.Options opt = new BitmapFactory.Options();
-//                    opt.inJustDecodeBounds = true;
-//                    BitmapFactory.decodeFile(file.getAbsolutePath(), opt);
-//                    mNetworkRequester.multipartRequest(new MultipartJsonRequest(url, fileName, file,
-//                            new NetworkRequester.ResponseListener() {
-//                                @Override
-//                                public void onSuccessful(JSONObject json) {
-//                                    user_picture_set.setImageBitmap(bitmap);//上传成功更改ImageV上的图片
-//                                    ToastUtils.showToast(CustomerInformationActivity.this, json.optString("message"));
-//                                }
-//
-//                                @Override
-//                                public void onFailed(String msg) {
-//                                    ToastUtils.showToast(CustomerInformationActivity.this, msg);
-//                                }
-//                            }));
-                } catch (Exception e) {
-                    e.printStackTrace();
+            //选择照片
+            case CHOOSE_PICTURE:
+                if (data != null) {
+                    imageUri = data.getData();
+                    photo_path = ImageTools.uri2File(imageUri, this);
                 }
-            }
+                break;
+            case CAMERA:
+                photo_path = imageUri.getPath();
+                break;
+        }
+        if (photo_path != null) {
+            //图片处理\
+            boolean equals = a.equals("1");
+            Glide.with(this).load(photo_path).into(equals ? pic_uploadBusinessLicense : pic_Storefacade);
 
+            if (equals) {
+                file1 = new File(photo_path);
+            } else {
+                file2 = new File(photo_path);
+            }
+        } else {
+            ToastUtils.showToast(this, "请重新选取图片！");
         }
     }
 
-    private Handler handler = new Handler() {
 
-        @Override
-        public void handleMessage(Message msg) {
-            super.handleMessage(msg);
-
-            switch (msg.what) {
-                case 1:
-                    pic_uploadBusinessLicense.setImageBitmap(bitmap);
-                    break;
-            }
-        }
-
-    };
-    private void showView(View view) {
-        for (int i = 0; i < pvLayout.getChildCount(); i++) {
-
-            pvLayout.getChildAt(i).setVisibility(View.GONE);
-        }
-        view.setVisibility(View.VISIBLE);
-    }
     /**
      * 经营分类spinner
      */
@@ -565,4 +478,26 @@ public class ImproveDocumentationActivity extends BaseInfoActivity {
         spin.setAdapter(adapter);
         //spin.setSelection(0,true);
     }
+
+    /**
+     * 接口回调
+     * @param improveDocumentationBean
+     */
+    @Override
+    public void setData(ImproveDocumentationBean improveDocumentationBean) {
+        ImproveDocumentationBean.InfoBean info = improveDocumentationBean.getInfo();
+        Glide.with(this).load(ReHttpUtils.getBaseUrl()+info.getPhoto()).into(pic_Storefacade);//店铺门店照
+        Glide.with(this).load(ReHttpUtils.getBaseUrl()+info.getLicense()).into(pic_uploadBusinessLicense);//营业执照
+        edt_improve_name.setText(info.getName());//店铺名称
+        edt_improve_companyname.setText(info.getCompany_name());//店铺商号
+        edt_improve_mobile.setText(info.getMobile());//电话
+        edt_improve_address.setText(info.getAddress());//地址
+        edt_improve_catagory.setText(info.getCategory());//地址
+        tv_startTime.setText(info.getStarttime());//开始时间
+        tv_endTime.setText(info.getEndtime());//结束时间
+
+
+
+    }
+
 }
