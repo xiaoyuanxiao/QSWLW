@@ -13,6 +13,7 @@ public abstract class BaseActivity extends FragmentActivity implements View.OnCl
 
     protected void onCreate(Bundle arg0) {
         super.onCreate(arg0);
+        Log.d("ACTIVITY", "====================" + getClass().getName());
         Log.d("Activity", getClass().getName());
         Object initView = initView();
         if (initView instanceof View) {
