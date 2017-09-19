@@ -20,6 +20,7 @@ import com.qs.qswlw.okhttp.Moudle.BizRecordList;
 import com.qs.qswlw.okhttp.Moudle.BizScanCodeRecord;
 import com.qs.qswlw.okhttp.Moudle.BizValidateOldMember;
 import com.qs.qswlw.okhttp.Moudle.BizVentureGold;
+import com.qs.qswlw.okhttp.Moudle.BizWithdrawals;
 import com.qs.qswlw.okhttp.Moudle.IAngelRankingBiz;
 import com.qs.qswlw.okhttp.Moudle.IBusinessTurnoverBiz;
 import com.qs.qswlw.okhttp.Moudle.IConsumptionRecordBiz;
@@ -41,6 +42,7 @@ import com.qs.qswlw.okhttp.Moudle.IScanCodeRecordBiz;
 import com.qs.qswlw.okhttp.Moudle.ITestaBiz;
 import com.qs.qswlw.okhttp.Moudle.IValidateOldMemberBiz;
 import com.qs.qswlw.okhttp.Moudle.IVentureGoldBiz;
+import com.qs.qswlw.okhttp.Moudle.IWithdrawalsBiz;
 import com.qs.qswlw.okhttp.Moudle.TestaMoudle;
 
 /**
@@ -117,5 +119,8 @@ public class IBizFactory {
     }
     public static IBusinessTurnoverBiz getBusinessTurnoveList(){
         return BizBusinessTurnover.getInstans();
+    }
+    public static IWithdrawalsBiz getWithdrawalsList(){
+        return BizWithdrawals.getInstans();
     }
 }
