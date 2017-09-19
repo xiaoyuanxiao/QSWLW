@@ -249,6 +249,7 @@
             android:textSize="12sp" />
 
         <EditText
+            android:id="@+id/edt_withdrawals_password"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
@@ -266,6 +267,7 @@
         android:background="@color/view" />
 
     <Button
+        android:id="@+id/btn_withdrawals_confirm"
         android:layout_width="match_parent"
         android:layout_height="35dp"
         android:layout_margin="6dp"
