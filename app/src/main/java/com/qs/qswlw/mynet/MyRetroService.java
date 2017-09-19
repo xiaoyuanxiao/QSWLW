@@ -28,6 +28,7 @@ import com.qs.qswlw.bean.RegisterGetCodeBean;
 import com.qs.qswlw.bean.ScanCodeRecordBean;
 import com.qs.qswlw.bean.ValidateOldMemberBean;
 import com.qs.qswlw.bean.VenturegoldBean;
+import com.qs.qswlw.bean.WithdrawalsBean;
 
 import java.io.File;
 import java.util.List;
@@ -94,11 +95,27 @@ public interface MyRetroService {
 
     @GET("index.php?m=Appapi&c=Single&a=formlist")
     Observable<MainBean<RecordListBaseBean>> getRecordListData(@Query("token") String token, @Query("p") int p, @Query("type") String type, @Query("is_go") String is_go);
+
+    /**
+     * 我要提现
+     */
+    @FormUrlEncoded
+    @POST("index.php?m=Appapi&c=Bankroll&a=cash")
+    Observable<MainBean<WithdrawalsBean>> getWithDrawalsData(@Field("token") String token);
+
+    /**
+     * 提现申请
+     */
+    @FormUrlEncoded
+    @POST("index.php?m=Appapi&c=Bankroll&a=cash")
+    Observable<MainBean> PostWithDrawalsData(@Field("token") String token,@Field("amoney") float amoney,@Field("pass") String pass,@Field("gold_model") String gold_model);
+
     /**
      * 商家审核消费录单
      */
     @GET("index.php?m=Appapi&c=Single&a=shop_review_edit")
     Observable<MainBean<MerchantAuditClickBean>> getMerchantAuditClickData(@Query("token") String token,@Query("id") int id);
+
 
     /**
      * 商家营业额

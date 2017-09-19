@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+<LinearLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+   >
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -11,35 +15,20 @@
         android:padding="10dp">
 
         <TextView
+            android:id="@+id/tv_html"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="1.回购请选择工商银行，建设银行，中国银行，农业银行。"
+            android:text=""
             android:textColor="@color/black"
             android:textSize="12sp" />
+
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="6dp"
-            android:text="2.每笔回购扣除谁续费5颗创业金豆。"
-            android:textColor="@color/black"
-            android:textSize="12sp" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="6dp"
-            android:text="3.回购金豆手续费0.6%。"
-            android:textColor="@color/black"
-            android:textSize="12sp" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:layout_marginTop="6dp"
-            android:text="咨询电话：4008055806或020-36672987。"
-            android:textColor="@color/black"
+            android:layout_gravity="right"
+            android:text="一颗创业金豆=一元人民币"
+            android:textColor="@color/red"
             android:textSize="12sp" />
     </LinearLayout>
 
@@ -65,7 +54,7 @@
             android:src="@mipmap/yinghang" />
 
         <TextView
-            android:id="@+id/tv_bank"
+            android:id="@+id/tv_withdrawals_bank"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="80dp"
@@ -73,9 +62,10 @@
             android:textSize="10sp" />
 
         <TextView
+            android:id="@+id/tv_withdrawals_banknumber"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/tv_bank"
+            android:layout_below="@+id/tv_withdrawals_bank"
             android:layout_marginLeft="80dp"
             android:text="6214578365412782862"
             android:textSize="10sp" />
@@ -107,18 +97,63 @@
         android:padding="8dp">
 
         <TextView
+            android:id="@+id/tv_withdrawals_one_left"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="剩余创业金豆"
+            android:text="创新模式"
+            android:textColor="@color/black"
+            android:textSize="12sp" />
+        <TextView
+            android:id="@+id/tv_withdrawals_one_center"
+            android:layout_toRightOf="@+id/tv_withdrawals_one_left"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="(二)"
+            android:textColor="@color/red"
+            android:textSize="12sp" />
+        <TextView
+            android:layout_toRightOf="@+id/tv_withdrawals_one_center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="可提现创业金豆："
             android:textColor="@color/black"
             android:textSize="12sp" />
 
         <TextView
+            android:id="@+id/tv_withdrawals_one_right"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:text="7193.707颗"
             android:textColor="@color/black"
+            android:textSize="12sp" />
+
+    </RelativeLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_marginTop="6dp"
+        android:background="@color/view" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="8dp">
+
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="可提现总金额"
+            android:textColor="@color/black"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/tv_withdrawals_two"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:text="7193"
+            android:textColor="@color/red"
             android:textSize="12sp" />
 
     </RelativeLayout>
@@ -128,34 +163,78 @@
         android:layout_height="0.5dp"
         android:layout_marginTop="6dp"
         android:background="@color/view" />
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
         android:padding="8dp">
 
         <TextView
+            android:id="@+id/tv_withdrawals_three_left"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="创业金豆"
+            android:text="选择提现类型"
             android:textColor="@color/black"
             android:textSize="12sp" />
 
-        <EditText
+        <TextView
+            android:id="@+id/tv_withdrawals_three"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:hint="请输入10的整数倍"
-            android:textColor="@color/black"
-            android:layout_marginLeft="10dp"
-            android:textSize="12sp"
-            android:background="@null"/>
-    </LinearLayout>
+            android:layout_toRightOf="@+id/tv_withdrawals_three_left"
+            android:layout_marginLeft="20dp"
+            android:text="创新模式(二)"
+            android:textColor="@color/red"
+            android:textSize="12sp" />
+
+    </RelativeLayout>
     <View
         android:layout_width="match_parent"
         android:layout_height="0.5dp"
         android:layout_marginTop="6dp"
         android:background="@color/view" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        android:focusable="true"
+        android:focusableInTouchMode="true">
+
+        <TextView
+            android:id="@+id/tv_withdrawals_four_left"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="创业模式"
+            android:textColor="@color/black"
+            android:textSize="12sp" />
+        <TextView
+            android:id="@+id/tv_withdrawals_four_center"
+            android:layout_toRightOf="@+id/tv_withdrawals_four_left"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="(二)"
+            android:textColor="@color/red"
+            android:textSize="12sp" />
+
+
+        <EditText
+            android:layout_toRightOf="@+id/tv_withdrawals_four_center"
+            android:id="@+id/tv_withdrawals_four_right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:background="@null"
+            android:hint="最高提现1000，最低提现100"
+            android:textColor="@color/red"
+            android:textColorHint="@color/text_blue"
+            android:textSize="12sp" />
+    </RelativeLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_marginTop="6dp"
+        android:background="@color/view" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -165,20 +244,22 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="创业金豆"
+            android:text="二级密码"
             android:textColor="@color/black"
             android:textSize="12sp" />
 
         <EditText
+            android:id="@+id/edt_withdrawals_password"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
+            android:layout_marginLeft="10dp"
+            android:background="@null"
             android:hint="请输入二级密码"
             android:textColor="@color/black"
-            android:layout_marginLeft="10dp"
-            android:textSize="12sp"
-            android:background="@null"/>
+            android:textSize="12sp" />
     </LinearLayout>
+
     <View
         android:layout_width="match_parent"
         android:layout_height="0.5dp"
@@ -186,11 +267,14 @@
         android:background="@color/view" />
 
     <Button
+        android:id="@+id/btn_withdrawals_confirm"
         android:layout_width="match_parent"
         android:layout_height="35dp"
         android:layout_margin="6dp"
-        android:textColor="@color/white"
-        android:textSize="12sp"
+        android:background="@drawable/btn_corner"
         android:text="确定"
-        android:background="@drawable/btn_corner"/>
+        android:textColor="@color/white"
+        android:layout_marginBottom="10dp"
+        android:textSize="12sp" />
 </LinearLayout>
+</ScrollView>

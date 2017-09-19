@@ -43,8 +43,8 @@ public class BusinessTurnoverActivity extends BaseInfoActivity implements IBusin
         view_turnover_right = inflate.findViewById(R.id.view_turnover_right);
         swipeRefreshView = (SwipeRefreshView) inflate.findViewById(R.id.lv_turnover_sw);
         lv_turnover = (ListView) inflate.findViewById(R.id.lv_turnover);
-
-
+        View inflate1 = View.inflate(this, R.layout.item_headview, null);
+        lv_turnover.addHeaderView(inflate1);
         return inflate;
     }
 
@@ -103,6 +103,7 @@ public class BusinessTurnoverActivity extends BaseInfoActivity implements IBusin
     @Override
     public void getdata(BusinessTurnoverBean businessTurnoverBean) {
         List<BusinessTurnoverBean.ListBean> list = businessTurnoverBean.getList();
+        swipeRefreshView.setLoading(false);
         listBeen.clear();
         if (list!=null) {
             listBeen.addAll(list);
