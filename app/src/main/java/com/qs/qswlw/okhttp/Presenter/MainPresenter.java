@@ -17,7 +17,7 @@ import java.util.List;
  */
 
 /**
- *  Presenter负责逻辑的处理
+ * Presenter负责逻辑的处理
  */
 public class MainPresenter {
 
@@ -54,8 +54,13 @@ public class MainPresenter {
         });
         iMainBiz.getAlert(new MainAlertLisenter() {
             @Override
-            public void onSuccess(AlertBean e) {
-                iMainView.setAlertList(e);
+            public void onSuccess(final AlertBean e) {
+                iMainView.runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        iMainView.setAlertList(e);
+                    }
+                });
             }
 
             @Override
