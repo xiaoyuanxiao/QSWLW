@@ -315,4 +315,9 @@ public interface MyRetroService {
      * 还有
      */
     //Observable<MainBean<GoodProductBean>> getGoodproductdata(@Url String url);//传进来全部的  哦哦
+
+    @POST("index.php?m=Appapi&c=Index&a=good_product")
+/**括号里面是路径*/
+    Observable<MainBean<GoodProductBean>> getCity();
+
 }

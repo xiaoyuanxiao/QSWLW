@@ -37,9 +37,8 @@ public class ExampleUnitTest {
             public void onNext(MainBean<Maindatabean> s) {
                 System.out.println("onNext============" + s);
             }
-
             @Override
-            public Observable<MainBean<Maindatabean>> getObservable(MyRetroService retrofit) {
+            public Observable getObservable(MyRetroService retrofit) {
                 /**
                  * 要测试哪个接口 这里就 改成对应的方法
                  * 跟你正常使用是一模一样的 使用
