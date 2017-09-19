@@ -2,7 +2,6 @@ package com.qs.qswlw.activity.PersonalCenter;
 
 import android.view.View;
 import android.widget.ListView;
-import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import com.qs.qswlw.MyApplication;
@@ -23,7 +22,6 @@ import java.util.List;
 
 public class BusinessTurnoverActivity extends BaseInfoActivity implements IBusinessTurnoverView {
 
-    private RadioGroup fg_BusinessTurnover;
     private TextView tv_businessturnover_left, tv_businessturnover_right;
     private View view_turnover_left, view_turnover_right;
     private SwipeRefreshView swipeRefreshView;
@@ -39,7 +37,6 @@ public class BusinessTurnoverActivity extends BaseInfoActivity implements IBusin
     @Override
     public View setConetnView() {
         View inflate = View.inflate(this, R.layout.activity_businessturnover, null);
-        fg_BusinessTurnover = (RadioGroup) inflate.findViewById(R.id.fg_BusinessTurnover);
         tv_businessturnover_left = (TextView) inflate.findViewById(R.id.tv_businessturnover_left);
         tv_businessturnover_right = (TextView) inflate.findViewById(R.id.tv_businessturnover_right);
         view_turnover_left = inflate.findViewById(R.id.view_turnover_left);
@@ -85,18 +82,22 @@ public class BusinessTurnoverActivity extends BaseInfoActivity implements IBusin
         switch (v.getId()) {
             case R.id.tv_businessturnover_left:
                 setTopColor(tv_businessturnover_left, tv_businessturnover_right, view_turnover_left, view_turnover_right);
+                is_history = 0;
+                businessTurnoverPersenter.getdata(MyApplication.TOKEN,page,is_history);
                 break;
             case R.id.tv_businessturnover_right:
                 setTopColor(tv_businessturnover_right, tv_businessturnover_left, view_turnover_right, view_turnover_left);
+                is_history = 1;
+                businessTurnoverPersenter.getdata(MyApplication.TOKEN,page,is_history);
                 break;
         }
     }
 
     private void setTopColor(TextView tv, TextView tv1, View view, View view1) {
         tv.setTextColor(this.getResources().getColor(R.color.red));
-        tv1.setBackgroundColor(this.getResources().getColor(R.color.white));
+        tv1.setTextColor(this.getResources().getColor(R.color.view));
         view.setBackgroundColor(this.getResources().getColor(R.color.red));
-        view1.setBackgroundColor(this.getResources().getColor(R.color.white));
+        view1.setBackgroundColor(this.getResources().getColor(R.color.view));
     }
 
     @Override

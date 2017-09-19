@@ -7,7 +7,7 @@
 
     <TextView
         android:id="@+id/tv_item_merchantaudit_time"
-        style="@style/tv_harvestaddress"
+        style="@style/tv_harvestaddress_weight"
         android:gravity="center" />
 
     <TextView
