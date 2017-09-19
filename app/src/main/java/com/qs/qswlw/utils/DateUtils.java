@@ -214,16 +214,10 @@ public class DateUtils {
      * 将时间转换为时间戳 为什么你要系额两个逸雅阁的
      * 我说了格式不同啊 SimpleDateFormat("yyyy-MM-dd") 这里面的
      */
-    public static long dateToStamp2(String s) {
+    public static String dateToStamp2(long s) {
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        Date date = null;
-        try {
-            date = simpleDateFormat.parse(s);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-        long ts = date.getTime();
-        return ts;
+        Date date = new Date(s);
+        return simpleDateFormat.format(date);
     }
 
     /*

@@ -356,6 +356,7 @@ public class MainActivity extends BaseActivity implements IMainView {
         switch (v.getId()) {
             case R.id.iv_setting_main:
                 startActivity(new Intent(this, LoginActivity.class));
+                finish();
                 break;
             case R.id.iv_ranking_main:
                // startActivity(new Intent(this, RankingActivity.class));

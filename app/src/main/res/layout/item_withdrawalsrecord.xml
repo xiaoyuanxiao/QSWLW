@@ -21,6 +21,7 @@
             android:layout_height="25dp"
             android:src="@mipmap/cyjd"/>
         <TextView
+            android:id="@+id/tv_item_withdrawalsrecord_money"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="1195"
@@ -30,10 +31,21 @@
     </LinearLayout>
 
     <TextView
+        android:id="@+id/tv_item_withdrawalsrecord_time"
         style="@style/tv_harvestaddress"
         android:layout_alignParentRight="true"
         android:layout_centerVertical="true"
         android:text="2017-04-01"/>
+    <TextView
+        android:layout_below="@+id/tv_item_withdrawalsrecord_time"
+        android:layout_alignParentRight="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="修改信息"
+        android:textSize="9sp"
+        android:layout_marginTop="20dp"
+        android:gravity="center_vertical"
+        android:drawableLeft="@mipmap/goods_edit"/>
 
 
 

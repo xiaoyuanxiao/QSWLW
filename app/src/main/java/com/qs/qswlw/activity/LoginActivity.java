@@ -124,6 +124,7 @@ public class LoginActivity extends BaseInfoActivity {
                     intent.setClass(LoginActivity.this, OtherUserSettingActivity.class);
                     startActivity(intent);
                 }
+                finish();
 
             }
 

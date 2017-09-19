@@ -1,64 +1,100 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="8dp">
+
+        <TextView
+            android:id="@+id/tv_withdrawalsrecord_one"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="提现申请中"
+            android:textColor="@color/text_blue"
+            android:textSize="10sp" />
+
+        <TextView
+            android:id="@+id/tv_withdrawalsrecord_two"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="处理中"
+            android:textColor="@color/text_blue"
+            android:textSize="10sp" />
+
+        <TextView
+            android:id="@+id/tv_withdrawalsrecord_three"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="提现申请中"
+            android:textColor="@color/red"
+            android:textSize="10sp" />
+
+        <TextView
+            android:id="@+id/tv_withdrawalsrecord_four"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="提现申请中"
+            android:textColor="@color/text_blue"
+            android:textSize="10sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <View
+            android:id="@+id/view_withdrawalsrecord_one"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_weight="1"
+            android:background="@color/view" />
+
+        <View
+            android:id="@+id/view_withdrawalsrecord_two"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_weight="1"
+            android:background="@color/view" />
+
+        <View
+            android:id="@+id/view_withdrawalsrecord_three"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_weight="1"
+            android:background="@color/red" />
+
+        <View
+            android:id="@+id/view_withdrawalsrecord_four"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_weight="1"
+            android:background="@color/view" />
+    </LinearLayout>
+
+    <com.qs.qswlw.view.SwipeRefreshView
+        android:id="@+id/lv_withdrawalsrecord_sw"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-        <LinearLayout
+
+        <ListView
+            android:id="@+id/lv_withdrawalsrecord"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:focusable="true"
-            android:focusableInTouchMode="true">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <TextView
-                    android:id="@+id/tv_withdrawalsed"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/red"
-                    android:textSize="10sp"
-                    android:padding="8dp"
-                    android:gravity="center"
-                    android:text="提现完成"/>
-
-                <TextView
-                    android:id="@+id/tv_withdrawalsing"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/black"
-                    android:padding="8dp"
-                    android:gravity="center"
-                    android:textSize="10sp"
-                    android:text="提现申请中"/>
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <View
-                    android:id="@+id/view_left"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="1dp"
-                    android:background="@color/red"/>
-                <View
-                    android:id="@+id/view_right"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="1dp"/>
-            </LinearLayout>
-            <com.qs.qswlw.view.MyListView
-                android:id="@+id/lv_withdrawalsrecord"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"></com.qs.qswlw.view.MyListView>
-            </LinearLayout>
-    </ScrollView>
+            android:layout_height="wrap_content"
+            android:divider="@null"></ListView>
+    </com.qs.qswlw.view.SwipeRefreshView>
 
 </LinearLayout>

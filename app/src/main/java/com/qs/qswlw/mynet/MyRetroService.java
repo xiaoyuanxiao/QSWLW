@@ -28,6 +28,7 @@ import com.qs.qswlw.bean.RegisterGetCodeBean;
 import com.qs.qswlw.bean.ScanCodeRecordBean;
 import com.qs.qswlw.bean.ValidateOldMemberBean;
 import com.qs.qswlw.bean.VenturegoldBean;
+import com.qs.qswlw.bean.WithDrawalsRecordBean;
 import com.qs.qswlw.bean.WithdrawalsBean;
 
 import java.io.File;
@@ -107,8 +108,15 @@ public interface MyRetroService {
      * 提现申请
      */
     @FormUrlEncoded
-    @POST("index.php?m=Appapi&c=Bankroll&a=cash")
+    @POST("index.php?m=Appapi&c=Bankroll&a=docash")
     Observable<MainBean> PostWithDrawalsData(@Field("token") String token,@Field("amoney") float amoney,@Field("pass") String pass,@Field("gold_model") String gold_model);
+
+    /**
+     * 提现记录
+     */
+    @FormUrlEncoded
+    @POST("index.php?m=Appapi&c=Bankroll&a=cashlist")
+    Observable<MainBean<WithDrawalsRecordBean>> getWithDrawalsRecordData(@Field("token") String token,@Field("p") int p,@Field("status") String status);
 
     /**
      * 商家审核消费录单
