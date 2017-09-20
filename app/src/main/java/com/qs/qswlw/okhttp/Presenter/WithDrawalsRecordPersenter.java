@@ -18,31 +18,16 @@ public class WithDrawalsRecordPersenter {
         iWithDrawalsRecordBiz = IBizFactory.getWithdrawalsRecordList();
         this.iWithDrawalsRecordView = iWithDrawalsRecordView;
     }
-
-    public void getdata(String token,int p,String status){
+    public void getdata(String token, int p, String status) {
         iWithDrawalsRecordBiz.getdata(new WithDrawalsRecordListener() {
             @Override
             public void onSuccess(WithDrawalsRecordBean withDrawalsRecordBean) {
                 iWithDrawalsRecordView.setdata(withDrawalsRecordBean);
             }
-
             @Override
             public void onFailure(String code) {
                 iWithDrawalsRecordView.isgetDataFaile(code);
             }
-        },token,p,status);
-    }
-    public void getdataRefresh(String token,int p,String status){
-        iWithDrawalsRecordBiz.getdata(new WithDrawalsRecordListener() {
-            @Override
-            public void onSuccess(WithDrawalsRecordBean withDrawalsRecordBean) {
-                iWithDrawalsRecordView.setdataRefresh(withDrawalsRecordBean);
-            }
-
-            @Override
-            public void onFailure(String code) {
-
-            }
-        },token,p,status);
+        }, token, p, status);
     }
 }

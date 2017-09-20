@@ -8,6 +8,5 @@ import com.qs.qswlw.bean.WithDrawalsRecordBean;
 
 public interface IWithDrawalsRecordView {
     void setdata(WithDrawalsRecordBean withDrawalsRecordBean);
-    void setdataRefresh(WithDrawalsRecordBean withDrawalsRecordBean);
     void isgetDataFaile(String meg);
 }
