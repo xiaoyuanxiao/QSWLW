@@ -19,18 +19,18 @@ public class ImproveCityPersenter {
         this.iImproveCityView = iImproveCityView;
     }
 
-    public void getdata(String token,int pid){
+    public void getdata(String token, int pid, final int code) {
         iImproveCityBiz.getdata(new ImproveCityListener() {
             @Override
             public void onSuccess(ImproveCityBean improveCityBean) {
-                iImproveCityView.setSelecteddata(improveCityBean);
+                iImproveCityView.setSelecteddata(improveCityBean, code);
             }
 
             @Override
             public void onFailure(String code) {
 
             }
-        },token,pid);
+        }, token, pid);
     }
 
 }

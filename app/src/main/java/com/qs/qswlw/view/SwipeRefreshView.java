@@ -46,6 +46,23 @@ public class SwipeRefreshView extends FrameLayout {
                     mListView = (ListView) getChildAt(0);
                     mListView.addFooterView(mFooterView);
                     mFooterView.setPadding(0, -mFooterView.getMeasuredHeight(), 0, 0);
+                    mListView.setOnTouchListener(new OnTouchListener() {
+                        @Override
+                        public boolean onTouch(View v, MotionEvent ev) {
+                            switch (ev.getAction()) {
+                                case MotionEvent.ACTION_MOVE:
+                                    if (islast())
+                                        mFooterView.setPadding(0, 0, 0, 0);
+                                    break;
+                                case MotionEvent.ACTION_UP:
+                                    if (canLoadMore()) {
+                                        loadData();
+                                    }
+                                    break;
+                            }
+                            return false;
+                        }
+                    });
                 }
             }
         }
@@ -58,7 +75,7 @@ public class SwipeRefreshView extends FrameLayout {
 
     @Override
     public boolean dispatchTouchEvent(MotionEvent ev) {
-        switch (ev.getAction()) {
+     /*   switch (ev.getAction()) {
             case MotionEvent.ACTION_MOVE:
                 if (islast())
                     mFooterView.setPadding(0, 0, 0, 0);
@@ -68,7 +85,7 @@ public class SwipeRefreshView extends FrameLayout {
                     loadData();
                 }
                 break;
-        }
+        }*/
         return super.dispatchTouchEvent(ev);
     }
 

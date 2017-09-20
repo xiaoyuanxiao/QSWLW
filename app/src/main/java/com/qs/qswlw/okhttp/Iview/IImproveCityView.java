@@ -7,5 +7,5 @@ import com.qs.qswlw.bean.ImproveCityBean;
  */
 
 public interface IImproveCityView {
-    void setSelecteddata(ImproveCityBean improveCityBean);
+    void setSelecteddata(ImproveCityBean improveCityBean, int code);
 }
