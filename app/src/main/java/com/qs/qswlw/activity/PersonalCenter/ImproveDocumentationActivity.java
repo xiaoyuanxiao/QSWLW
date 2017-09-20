@@ -315,6 +315,7 @@ public class ImproveDocumentationActivity extends BaseInfoActivity implements II
                         return;
                     id = improveDocumentationBeanclist.get(arg2).getId();
                     selectCode = CITYCODE;
+                    isfrist++;
                     break;
                 case R.id.city_spinner:
                     if (city_list_selected == null || city_list_selected.size() == 0)
@@ -367,6 +368,8 @@ public class ImproveDocumentationActivity extends BaseInfoActivity implements II
         spin.setOnItemSelectedListener(onItemSelectedListener);
     }
 
+    String cityID;
+    String districtID;
 
     /**
      * 接口回调
@@ -385,11 +388,20 @@ public class ImproveDocumentationActivity extends BaseInfoActivity implements II
         edt_improve_catagory.setText(info.getCategory());//地址
         tv_startTime.setText(info.getStarttime());//开始时间
         tv_endTime.setText(info.getEndtime());//结束时间
+        String province = improveDocumentationBean.getInfo().getProvince();//省ID
+        cityID = improveDocumentationBean.getInfo().getCity();//市ID
+        districtID = improveDocumentationBean.getInfo().getDistrict();// 区ID
         improveDocumentationBeanclist = improveDocumentationBean.getClist();//省级列表
         for (ImproveDocumentationBean.ClistBean clistBean : improveDocumentationBeanclist) {
             provincelist.add(clistBean.getName());
         }
         province_adapter.notifyDataSetChanged();
+        for (int i = 0; i < improveDocumentationBeanclist.size(); i++) {
+            if (improveDocumentationBeanclist.get(i).getId().equals(province)) {
+                province_spinner.setSelection(i);
+                break;
+            }
+        }
         String cat_id = improveDocumentationBean.getInfo().getCat_id();
         thems = improveDocumentationBean.getThems();
         classification.add("选择经营分类");
@@ -404,25 +416,43 @@ public class ImproveDocumentationActivity extends BaseInfoActivity implements II
         classification_adapter.notifyDataSetChanged();
     }
 
+    private void selectxxx() {
+
+    }
+
     int CITYCODE = 0x8600;
     int COUNTYCODE = 0x8611;
+    int isfrist = 0;
 
     @Override
     public void setSelecteddata(ImproveCityBean improveCityBean, int code) {
         if (code == CITYCODE) {
             citylist.clear();
+            citylist.add("请选择市");
+            int k = 0;
             city_list_selected = improveCityBean.getRegion_list();
-            for (ImproveCityBean.RegionListBean regionListBean : city_list_selected) {
+            for (int i = 0; i < city_list_selected.size(); i++) {
+                ImproveCityBean.RegionListBean regionListBean = city_list_selected.get(i);
                 citylist.add(regionListBean.getName());
+                if (regionListBean.getId().equals(cityID) && isfrist == 1)
+                    k = i + 1;
             }
             city_adapter.notifyDataSetChanged();
+            city_spinner.setSelection(k);
+
         } else if (code == COUNTYCODE) {
             countylist.clear();
+            countylist.add("请选择区");
             county_list_selected = improveCityBean.getRegion_list();
-            for (ImproveCityBean.RegionListBean regionListBean : county_list_selected) {
+            int k = 0;
+            for (int i = 0; i < county_list_selected.size(); i++) {
+                ImproveCityBean.RegionListBean regionListBean = county_list_selected.get(i);
                 countylist.add(regionListBean.getName());
+                if (regionListBean.getId().equals(districtID) && isfrist == 1)
+                    k = i + 1;
             }
             county_adapter.notifyDataSetChanged();
+            county_spinner.setSelection(k);
         }
     }
 
