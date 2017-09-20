@@ -5,6 +5,7 @@ import com.qs.qswlw.okhttp.Moudle.BizBusinessTurnover;
 import com.qs.qswlw.okhttp.Moudle.BizConsumptionRecord;
 import com.qs.qswlw.okhttp.Moudle.BizEntrepreneurial;
 import com.qs.qswlw.okhttp.Moudle.BizGoodProduct;
+import com.qs.qswlw.okhttp.Moudle.BizImproveCity;
 import com.qs.qswlw.okhttp.Moudle.BizImproveDocumentation;
 import com.qs.qswlw.okhttp.Moudle.BizMain;
 import com.qs.qswlw.okhttp.Moudle.BizMerchantAudit;
@@ -26,6 +27,7 @@ import com.qs.qswlw.okhttp.Moudle.IAngelRankingBiz;
 import com.qs.qswlw.okhttp.Moudle.IBusinessTurnoverBiz;
 import com.qs.qswlw.okhttp.Moudle.IConsumptionRecordBiz;
 import com.qs.qswlw.okhttp.Moudle.IEntrepreneurialBiz;
+import com.qs.qswlw.okhttp.Moudle.IImproveCityBiz;
 import com.qs.qswlw.okhttp.Moudle.IImproveDocumentationBiz;
 import com.qs.qswlw.okhttp.Moudle.IMainBiz;
 import com.qs.qswlw.okhttp.Moudle.IMerchantAuditBiz;
@@ -127,5 +129,8 @@ public class IBizFactory {
     }
     public static IWithDrawalsRecordBiz getWithdrawalsRecordList(){
         return BizWithDrawalsRecord.getInstans();
+    }
+    public static IImproveCityBiz getImproveCityList(){
+        return BizImproveCity.getInstans();
     }
 }

@@ -22,9 +22,12 @@ import android.widget.TimePicker;
 import com.bumptech.glide.Glide;
 import com.qs.qswlw.MyApplication;
 import com.qs.qswlw.R;
+import com.qs.qswlw.bean.ImproveCityBean;
 import com.qs.qswlw.bean.ImproveDocumentationBean;
 import com.qs.qswlw.mynet.ReHttpUtils;
+import com.qs.qswlw.okhttp.Iview.IImproveCityView;
 import com.qs.qswlw.okhttp.Iview.IImproveDocumentationView;
+import com.qs.qswlw.okhttp.Presenter.ImproveCityPersenter;
 import com.qs.qswlw.okhttp.Presenter.ImproveDocumentationPersenter;
 import com.qs.qswlw.utils.ImageTools;
 import com.qs.qswlw.utils.ToastUtils;
@@ -43,7 +46,7 @@ import static com.qs.qswlw.R.id.pic_UploadBusinessLicense;
  * Created by xiaoyu on 2017/3/31.
  */
 
-public class ImproveDocumentationActivity extends BaseInfoActivity implements IImproveDocumentationView {
+public class ImproveDocumentationActivity extends BaseInfoActivity implements IImproveDocumentationView,IImproveCityView {
 
     private Spinner province_spinner, city_spinner, county_spinner;
     private ArrayAdapter<String> province_adapter;
@@ -66,6 +69,18 @@ public class ImproveDocumentationActivity extends BaseInfoActivity implements II
     private String a;
     private ImproveDocumentationPersenter improveDocumentationPersenter = new ImproveDocumentationPersenter(this);
     private EditText edt_improve_name, edt_improve_companyname, edt_improve_mobile, edt_improve_address, edt_improve_catagory;
+    private List<ImproveDocumentationBean.CityListBean> city_list;
+    private List<ImproveDocumentationBean.DistrictListBean> district_list;
+    ArrayList<String> provincelist = new ArrayList();
+    ArrayList<String> citylist = new ArrayList();
+    ArrayList<String> countylist = new ArrayList();
+    List<ImproveDocumentationBean.ClistBean> improveDocumentationBeanclist;
+    ArrayList<String> classification = new ArrayList();
+    private File file1;
+    private File file2;
+    private List<ImproveDocumentationBean.ThemsBean> thems;
+    private List<ImproveCityBean.RegionListBean> city_list_selected;
+    private ImproveCityPersenter improveCityPersenter = new ImproveCityPersenter(this);
 
     @Override
     public View setConetnView() {
@@ -152,6 +167,7 @@ public class ImproveDocumentationActivity extends BaseInfoActivity implements II
     }
 
 
+
     //上传图片
     private class MyOnClickListener implements View.OnClickListener {
         @Override
@@ -174,8 +190,6 @@ public class ImproveDocumentationActivity extends BaseInfoActivity implements II
         }
     }
 
-    private File file1;
-    private File file2;
 
     @TargetApi(Build.VERSION_CODES.KITKAT)
     @Override
@@ -209,7 +223,7 @@ public class ImproveDocumentationActivity extends BaseInfoActivity implements II
         }
     }
 
-    ArrayList<String> classification = new ArrayList();
+
 
     /**
      * 经营分类spinner
@@ -218,9 +232,9 @@ public class ImproveDocumentationActivity extends BaseInfoActivity implements II
         classification_spinner = (Spinner) findViewById(R.id.classification_spinner);
         classification_adapter = getSpinerAdapter(classification);
         select(classification_spinner, classification_adapter);
-        // classification_adapter = ArrayAdapter.createFromResource(this, R.array.classification_item, android.R.layout.simple_spinner_item);
         classification_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         classification_spinner.setAdapter(classification_adapter);
+
         classification_spinner.setOnItemSelectedListener(new OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
@@ -245,6 +259,7 @@ public class ImproveDocumentationActivity extends BaseInfoActivity implements II
 
                     //网络请求市--根据省ID 其他类似
                     String id = improveDocumentationBeanclist.get(arg2).getId();
+                    improveCityPersenter.getdata(MyApplication.TOKEN, Integer.parseInt(id));
                     break;
                 case R.id.city_spinner:
                     break;
@@ -258,9 +273,7 @@ public class ImproveDocumentationActivity extends BaseInfoActivity implements II
 
         }
     };
-    ArrayList<String> provincelist = new ArrayList();
-    ArrayList<String> citylist = new ArrayList();
-    ArrayList<String> countylist = new ArrayList();
+
 
     private void loadSpinner() {
         province_spinner = (Spinner) findViewById(R.id.province_spinner);
@@ -272,6 +285,7 @@ public class ImproveDocumentationActivity extends BaseInfoActivity implements II
         select(province_spinner, province_adapter);
         select(county_spinner, county_adapter);
         select(city_spinner, city_adapter);
+
     }
 
     private void nothiChangAdapter(ArrayAdapter adapter) {
@@ -292,7 +306,6 @@ public class ImproveDocumentationActivity extends BaseInfoActivity implements II
         spin.setOnItemSelectedListener(onItemSelectedListener);
     }
 
-    List<ImproveDocumentationBean.ClistBean> improveDocumentationBeanclist;
 
     /**
      * 接口回调
@@ -312,17 +325,56 @@ public class ImproveDocumentationActivity extends BaseInfoActivity implements II
         tv_startTime.setText(info.getStarttime());//开始时间
         tv_endTime.setText(info.getEndtime());//结束时间
 
-        improveDocumentationBeanclist = improveDocumentationBean.getClist();
+        improveDocumentationBeanclist = improveDocumentationBean.getClist();//省级列表
+        city_list = improveDocumentationBean.getCity_list(); //市级列表
+
+        district_list = improveDocumentationBean.getDistrict_list(); //区级列表
+        provincelist.add("请选择省份");
+        String province = improveDocumentationBean.getInfo().getProvince();//省份id
         for (ImproveDocumentationBean.ClistBean clistBean : improveDocumentationBeanclist) {
+            String id = clistBean.getId();
+            String name1 = clistBean.getName();
+
+            if(province.equals(id)){
+
+            }
             provincelist.add(clistBean.getName());
 
         }
-
+        citylist.add("请选择城市");
+        for(ImproveDocumentationBean.CityListBean cityListBean:city_list){
+            citylist.add(cityListBean.getName());
+        }
+        if(district_list!=null){
+            countylist.add("请选择城区");
+            for(ImproveDocumentationBean.DistrictListBean districtListBean:district_list){
+                countylist.add(districtListBean.getName());
+            }
+        }
         province_adapter.notifyDataSetChanged();
-        List<ImproveDocumentationBean.ThemsBean> thems = improveDocumentationBean.getThems();
+        String cat_id = improveDocumentationBean.getInfo().getCat_id();
+        thems = improveDocumentationBean.getThems();
+        classification.add("选择经营分类");
         for (ImproveDocumentationBean.ThemsBean themsBean : thems) {
+            String id = themsBean.getId();
+            if(cat_id.equals(id)){
+                classification_spinner.setSelection(Integer.parseInt(cat_id)-1);
+            }
+
             classification.add(themsBean.getName());
         }
         classification_adapter.notifyDataSetChanged();
     }
+
+    @Override
+    public void setSelecteddata(ImproveCityBean improveCityBean) {
+        citylist.clear();
+        city_list_selected = improveCityBean.getRegion_list();
+        citylist.add("请选择城市");
+        for(ImproveCityBean.RegionListBean regionListBean:city_list_selected){
+            citylist.add(regionListBean.getName());
+        }
+    }
+
+
 }

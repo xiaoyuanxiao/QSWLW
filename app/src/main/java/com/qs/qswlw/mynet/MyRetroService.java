@@ -8,6 +8,7 @@ import com.qs.qswlw.bean.EntrepreneurialDialogBean;
 import com.qs.qswlw.bean.EntrepreneurialIncentiveBean;
 import com.qs.qswlw.bean.ForgetPassWordBean;
 import com.qs.qswlw.bean.GoodProductBean;
+import com.qs.qswlw.bean.ImproveCityBean;
 import com.qs.qswlw.bean.ImproveDocumentationBean;
 import com.qs.qswlw.bean.LoginBean;
 import com.qs.qswlw.bean.MainBean;
@@ -157,6 +158,7 @@ public interface MyRetroService {
     @POST("index.php?m=Appapi&c=Single&a=my_none")
     Observable<MainBean<MyProfitBean>> getMyProfitData(@Field("token") String token,@Field("p") int p);
 
+
     /**
      * 兑换创业种子数
      */
@@ -227,7 +229,12 @@ public interface MyRetroService {
     @POST("index.php?m=Appapi&c=Shop&a=shopadd")
     Observable<MainBean<ImproveDocumentationBean>> getImproveDocumentationData(@Field("token") String token);
 
-
+    /**
+     * 省市区选择
+     */
+    @FormUrlEncoded
+    @POST("index.php?m=Appapi&c=Shop&a=ajaxcheckp")
+    Observable<MainBean<ImproveCityBean>> getImproveCityData(@Field("token") String token,@Field("pid") int pid);
     /**
      * 提交验证老会员信息
      */
