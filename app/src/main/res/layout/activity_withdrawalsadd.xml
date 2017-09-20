@@ -19,8 +19,9 @@
             android:textSize="12sp" />
 
         <EditText
+            android:id="@+id/edt_withdrawalsadd_name"
             style="@style/edit_standred"
-            android:hint="请输入二级密码" />
+            android:hint="" />
     </LinearLayout>
 
     <View
@@ -43,11 +44,13 @@
             android:textColor="@color/black"
             android:textSize="12sp" />
 
-        <EditText
-            style="@style/edit_standred"
-            android:hint="请输入转入银行" />
-    </LinearLayout>
 
+        <Spinner
+            android:id="@+id/spinner_withdrawalsadd_bank"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"></Spinner>
+    </LinearLayout>
     <View
         android:layout_width="match_parent"
         android:layout_height="0.5dp"
@@ -70,11 +73,12 @@
 
 
         <Spinner
-            android:id="@+id/province_spinner"
+            android:id="@+id/spinner_withdrawalsadd_province"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"></Spinner>
     </LinearLayout>
+
 
     <View
         android:layout_width="match_parent"
@@ -96,7 +100,7 @@
             android:textColor="@color/black"
             android:textSize="12sp" />
         <Spinner
-            android:id="@+id/city_spinner"
+            android:id="@+id/spinner_withdrawalsadd_city"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"></Spinner>
@@ -122,6 +126,7 @@
             android:textSize="12sp" />
 
         <EditText
+            android:id="@+id/edt_withdrawalsadd_card"
             style="@style/edit_standred"
             android:hint="请输入开户行支行" />
     </LinearLayout>
@@ -146,6 +151,7 @@
             android:textSize="12sp" />
 
         <EditText
+            android:id="@+id/edt_withdrawalsadd_number"
             style="@style/edit_standred"
             android:hint="请输入银行卡号" />
     </LinearLayout>

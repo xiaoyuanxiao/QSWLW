@@ -10,6 +10,7 @@ import com.qs.qswlw.okhttp.Moudle.BizImproveDocumentation;
 import com.qs.qswlw.okhttp.Moudle.BizMain;
 import com.qs.qswlw.okhttp.Moudle.BizMerchantAudit;
 import com.qs.qswlw.okhttp.Moudle.BizMerchantAuditClick;
+import com.qs.qswlw.okhttp.Moudle.BizMyBankList;
 import com.qs.qswlw.okhttp.Moudle.BizMyProfit;
 import com.qs.qswlw.okhttp.Moudle.BizMyRole;
 import com.qs.qswlw.okhttp.Moudle.BizMySliverBean;
@@ -23,6 +24,7 @@ import com.qs.qswlw.okhttp.Moudle.BizValidateOldMember;
 import com.qs.qswlw.okhttp.Moudle.BizVentureGold;
 import com.qs.qswlw.okhttp.Moudle.BizWithDrawalsRecord;
 import com.qs.qswlw.okhttp.Moudle.BizWithdrawals;
+import com.qs.qswlw.okhttp.Moudle.BizWithdrawalsAdd;
 import com.qs.qswlw.okhttp.Moudle.IAngelRankingBiz;
 import com.qs.qswlw.okhttp.Moudle.IBusinessTurnoverBiz;
 import com.qs.qswlw.okhttp.Moudle.IConsumptionRecordBiz;
@@ -32,6 +34,7 @@ import com.qs.qswlw.okhttp.Moudle.IImproveDocumentationBiz;
 import com.qs.qswlw.okhttp.Moudle.IMainBiz;
 import com.qs.qswlw.okhttp.Moudle.IMerchantAuditBiz;
 import com.qs.qswlw.okhttp.Moudle.IMerchantAuditClickBiz;
+import com.qs.qswlw.okhttp.Moudle.IMyBankListBiz;
 import com.qs.qswlw.okhttp.Moudle.IMyProfitBiz;
 import com.qs.qswlw.okhttp.Moudle.IMyRoleBiz;
 import com.qs.qswlw.okhttp.Moudle.IMySliverBeanBiz;
@@ -46,6 +49,7 @@ import com.qs.qswlw.okhttp.Moudle.ITestaBiz;
 import com.qs.qswlw.okhttp.Moudle.IValidateOldMemberBiz;
 import com.qs.qswlw.okhttp.Moudle.IVentureGoldBiz;
 import com.qs.qswlw.okhttp.Moudle.IWithDrawalsRecordBiz;
+import com.qs.qswlw.okhttp.Moudle.IWithdrawalsAddBiz;
 import com.qs.qswlw.okhttp.Moudle.IWithdrawalsBiz;
 import com.qs.qswlw.okhttp.Moudle.TestaMoudle;
 
@@ -133,4 +137,11 @@ public class IBizFactory {
     public static IImproveCityBiz getImproveCityList(){
         return BizImproveCity.getInstans();
     }
+    public static IMyBankListBiz getMyBankList(){
+        return BizMyBankList.getInstans();
+    }
+    public static IWithdrawalsAddBiz getWithdrawalsAddList(){
+        return BizWithdrawalsAdd.getInstans();
+    }
+
 }

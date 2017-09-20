@@ -18,6 +18,7 @@ public class MyApplication extends Application {
     public static String NICKNAME = "";
     public static String ID = "";
     private static Application app ;
+    public static int POSITION = 0 ;
     public static Application getApplication()
 
     {
