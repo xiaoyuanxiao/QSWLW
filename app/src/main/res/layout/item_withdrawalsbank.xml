@@ -11,35 +11,36 @@
         android:src="@mipmap/bank_bg"
         android:layout_marginRight="15dp"/>
     <TextView
+        android:id="@+id/tv_item_mybanklist_name"
         android:layout_toRightOf="@+id/iv_bank"
-        android:id="@+id/tv_name"
         style="@style/tv_harvestaddress"
         android:text="钱盛分行"
         android:layout_marginBottom="10dp"/>
     <TextView
-        android:id="@+id/tv_number"
+        android:id="@+id/tv_item_mybanklist_number"
         android:layout_toRightOf="@+id/iv_bank"
-        android:layout_below="@+id/tv_name"
+        android:layout_below="@+id/tv_item_mybanklist_name"
         style="@style/tv_harvestaddress"
         android:text="4173643721091843"/>
     <ImageView
-        android:id="@+id/iv_del"
+        android:id="@+id/iv_item_mybanklist_del"
         android:layout_width="15dp"
         android:layout_height="15dp"
         android:src="@mipmap/del"
-        android:layout_alignTop="@+id/tv_number"
+        android:layout_alignTop="@+id/tv_item_mybanklist_number"
         android:layout_marginLeft="8dp"
-        android:layout_toRightOf="@+id/tv_number"/>
+        android:layout_toRightOf="@+id/tv_item_mybanklist_number"/>
 
     <ImageView
-        android:id="@+id/iv_edit"
+        android:id="@+id/tv_item_mybanklist_edit"
         android:layout_width="15dp"
         android:layout_height="15dp"
         android:src="@mipmap/edit"
-        android:layout_alignTop="@+id/tv_number"
+        android:layout_alignTop="@+id/tv_item_mybanklist_number"
         android:layout_marginLeft="8dp"
-        android:layout_toRightOf="@+id/iv_del"/>
+        android:layout_toRightOf="@+id/iv_item_mybanklist_del"/>
     <ImageView
+        android:id="@+id/iv_item_mybanklist_right"
         android:layout_width="25dp"
         android:layout_height="25dp"
         android:src="@mipmap/lv"

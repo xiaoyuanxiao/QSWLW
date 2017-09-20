@@ -15,6 +15,7 @@ import com.qs.qswlw.bean.MainBean;
 import com.qs.qswlw.bean.Maindatabean;
 import com.qs.qswlw.bean.MerchantAuditBean;
 import com.qs.qswlw.bean.MerchantAuditClickBean;
+import com.qs.qswlw.bean.MyBankListBean;
 import com.qs.qswlw.bean.MyProfitBean;
 import com.qs.qswlw.bean.MyRoleBean;
 import com.qs.qswlw.bean.MySliverBean;
@@ -30,6 +31,7 @@ import com.qs.qswlw.bean.ScanCodeRecordBean;
 import com.qs.qswlw.bean.ValidateOldMemberBean;
 import com.qs.qswlw.bean.VenturegoldBean;
 import com.qs.qswlw.bean.WithDrawalsRecordBean;
+import com.qs.qswlw.bean.WithdrawalsAddBean;
 import com.qs.qswlw.bean.WithdrawalsBean;
 
 import java.io.File;
@@ -118,6 +120,21 @@ public interface MyRetroService {
     @FormUrlEncoded
     @POST("index.php?m=Appapi&c=Bankroll&a=cashlist")
     Observable<MainBean<WithDrawalsRecordBean>> getWithDrawalsRecordData(@Field("token") String token,@Field("p") int p,@Field("status") String status);
+
+    /**
+     * 我的银行卡列表
+     */
+    @FormUrlEncoded
+    @POST("index.php?m=Appapi&c=Bankroll&a=card")
+    Observable<MainBean<MyBankListBean>> getMyBankListData(@Field("token") String token);
+
+    /**
+     * 添加或编辑银行卡
+     */
+
+    @FormUrlEncoded
+    @POST("index.php?m=Appapi&c=Bankroll&a=add_bank")
+    Observable<MainBean<WithdrawalsAddBean>> getWithdrawalsAddData(@Field("token") String token,@Field("id") int id);
 
     /**
      * 商家审核消费录单
