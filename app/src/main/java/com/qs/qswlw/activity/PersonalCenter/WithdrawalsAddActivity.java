@@ -160,8 +160,6 @@ public class WithdrawalsAddActivity extends BaseInfoActivity implements IWithdra
 
         spinner_bank.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 
-
-
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 spinner_bank.getSelectedItemPosition();
