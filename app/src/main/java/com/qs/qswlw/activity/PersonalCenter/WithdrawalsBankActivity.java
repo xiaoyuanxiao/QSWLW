@@ -42,9 +42,9 @@ public class WithdrawalsBankActivity extends BaseInfoActivity implements IMyBank
     public void initfindviewByid() {
         super.initfindviewByid();
         tv_titlebar_center.setText("我的银行卡");
-        tv_titlebar_right.setText("添加");
-        iv_titlebar_right.setVisibility(View.VISIBLE);
-        iv_titlebar_right.setImageResource(R.mipmap.goods_add);
+        tv_titlebar_right.setText("添加+");
+
+
 
     }
 
@@ -73,13 +73,14 @@ public class WithdrawalsBankActivity extends BaseInfoActivity implements IMyBank
     @Override
     public void setOnclick() {
         super.setOnclick();
+        tv_titlebar_right.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
         super.onClick(v);
         switch (v.getId()){
-            case R.id.ll_titlebar_right:
+            case R.id.tv_titlebar_right:
                 startActivity(new Intent(this,WithdrawalsAddActivity.class));
                 break;
         }

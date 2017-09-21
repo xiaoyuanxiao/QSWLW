@@ -33,6 +33,7 @@ import com.qs.qswlw.bean.VenturegoldBean;
 import com.qs.qswlw.bean.WithDrawalsRecordBean;
 import com.qs.qswlw.bean.WithdrawalsAddBean;
 import com.qs.qswlw.bean.WithdrawalsBean;
+import com.qs.qswlw.bean.WithdrawalsCityBean;
 
 import java.io.File;
 import java.util.List;
@@ -67,9 +68,9 @@ public interface MyRetroService {
     Observable<MainBean<Maindatabean>> getALLdata();
 
     /**
-     * @Multipart对应from-data
      * @param a
      * @return
+     * @Multipart对应from-data
      */
     @Multipart//这是什么--标注 参数格式 prat 括号里对应的是KEY 后面对应的是 v 那不应该写成这个吗 嗯就是这样，value不用该 到时候传就是是吧 对
     //如果有多个参数-就这样
@@ -116,7 +117,7 @@ public interface MyRetroService {
      */
     @FormUrlEncoded
     @POST("index.php?m=Appapi&c=Bankroll&a=docash")
-    Observable<MainBean> PostWithDrawalsData(@Field("token") String token,@Field("amoney") float amoney,@Field("pass") String pass,@Field("gold_model") String gold_model);
+    Observable<MainBean> PostWithDrawalsData(@Field("token") String token, @Field("amoney") float amoney, @Field("pass") String pass, @Field("gold_model") String gold_model);
 
 
     /**
@@ -124,14 +125,14 @@ public interface MyRetroService {
      */
     @FormUrlEncoded
     @POST("index.php?m=Appapi&c=Bankroll&a=cashlist")
-    Observable<MainBean<WithDrawalsRecordBean>> getWithDrawalsRecordData(@Field("token") String token,@Field("p") int p,@Field("status") String status);
+    Observable<MainBean<WithDrawalsRecordBean>> getWithDrawalsRecordData(@Field("token") String token, @Field("p") int p, @Field("status") String status);
 
     /**
      * 撤销提现
      */
     @FormUrlEncoded
     @POST("index.php?m=Appapi&c=Bankroll&a=del_cash_info")
-    Observable<MainBean> PostWithdrawaslRecall(@Field("token") String token,@Field("id") int id);
+    Observable<MainBean> PostWithdrawaslRecall(@Field("token") String token, @Field("id") int id);
 
     /**
      * 我的银行卡列表
@@ -146,13 +147,27 @@ public interface MyRetroService {
 
     @FormUrlEncoded
     @POST("index.php?m=Appapi&c=Bankroll&a=add_bank")
-    Observable<MainBean<WithdrawalsAddBean>> getWithdrawalsAddData(@Field("token") String token,@Field("id") int id);
+    Observable<MainBean<WithdrawalsAddBean>> getWithdrawalsAddData(@Field("token") String token, @Field("id") int id);
 
+    /**
+     * 获取市列表信息
+     */
+    @FormUrlEncoded
+    @POST("index.php?m=Appapi&c=Bankroll&a=ajaxcheckc_new")
+    Observable<MainBean<WithdrawalsCityBean>> getWithdrawalsCityData(@Field("token") String token, @Field("pid") int pid);
+
+    /**
+     * 添加处理银行卡信息
+     */
+    @FormUrlEncoded
+    @POST("index.php?m=Appapi&c=Bankroll&a=do_bank")
+    Observable<MainBean> PostWithdrawalsAddData(@Field("token") String token, @Field("id") int id,@Field("cname") String cname, @Field("card") String card,
+                                                @Field("pcity") int pcity, @Field("ccity") int ccity,@Field("account") String account, @Field("cardnumber") String cardnumber);
     /**
      * 商家审核消费录单
      */
     @GET("index.php?m=Appapi&c=Single&a=shop_review_edit")
-    Observable<MainBean<MerchantAuditClickBean>> getMerchantAuditClickData(@Query("token") String token,@Query("id") int id);
+    Observable<MainBean<MerchantAuditClickBean>> getMerchantAuditClickData(@Query("token") String token, @Query("id") int id);
 
 
     /**
@@ -160,7 +175,7 @@ public interface MyRetroService {
      */
     @FormUrlEncoded
     @POST("index.php?m=Appapi&c=Shop&a=turnover")
-    Observable<MainBean<BusinessTurnoverBean>> getBusinessTurnoverData(@Field("token") String token,@Field("p") int p,@Field("is_history") int is_history);
+    Observable<MainBean<BusinessTurnoverBean>> getBusinessTurnoverData(@Field("token") String token, @Field("p") int p, @Field("is_history") int is_history);
 
     /**
      * 获得消费银豆记录
@@ -170,20 +185,19 @@ public interface MyRetroService {
     Observable<MainBean<MySliverBean>> getMySliverBeanData(@Field("token") String token, @Field("p") int p);
 
 
-
     /**
      * 商家审核
      */
     @FormUrlEncoded
     @POST("index.php?m=Appapi&c=Single&a=shop_review")
-    Observable<MainBean<MerchantAuditBean>> getMerchantAuditData(@Field("token") String token, @Field("p") int p,@Field("is_ok") int is_ok);
+    Observable<MainBean<MerchantAuditBean>> getMerchantAuditData(@Field("token") String token, @Field("p") int p, @Field("is_ok") int is_ok);
 
     /**
      * 我的管理费
      */
     @FormUrlEncoded
     @POST("index.php?m=Appapi&c=Single&a=my_none")
-    Observable<MainBean<MyProfitBean>> getMyProfitData(@Field("token") String token,@Field("p") int p);
+    Observable<MainBean<MyProfitBean>> getMyProfitData(@Field("token") String token, @Field("p") int p);
 
 
     /**
@@ -216,14 +230,15 @@ public interface MyRetroService {
     Observable<MainBean> PostConsumptionData(@Field("token") String token, @Field("uid") int uid, @Field("money") float money, @Field("ratio") float ratio,
                                              @Field("none") float none, @Field("ratio_key") String ratio_key, @Field("pay_type") String pay_type, @Field("pay_time") String pay_time,
                                              @Field("pay_name") String pay_name, @Field("proof") File proof, @Field("remittance") File remittance);
+
     /**
-     *商家审核提交消费录单
+     * 商家审核提交消费录单
      */
     @FormUrlEncoded
     @POST("index.php?m=Appapi&c=Single&a=shop_review_audited")
     Observable<MainBean> PostConsumptionData1(@Field("token") String token, @Field("id") int id, @Field("goods_id") int goods_id, @Field("uid") int uid,
                                               @Field("money") float money, @Field("ratio") float ratio, @Field("none") float none, @Field("ratio_key") String ratio_key,
-                                              @Field("pay_type") String pay_type,@Field("pay_name") String pay_name,@Field("pay_time") String pay_time,@Field("msales_su") int msales_su,
+                                              @Field("pay_type") String pay_type, @Field("pay_name") String pay_name, @Field("pay_time") String pay_time, @Field("msales_su") int msales_su,
                                               @Field("proof") File proof, @Field("remittance") File remittance);
 
     /**
@@ -249,6 +264,7 @@ public interface MyRetroService {
     Observable<MainBean<ForgetPassWordBean>> postForgetPWData(@Field("mobile") String mobile, @Field("roles") int roles, @Field("pass") String pass,
                                                               @Field("repass") String repass, @Field("type") String type,
                                                               @Field("mobile_code") String mobile_code);
+
     /**
      * 商家完善资料
      */
@@ -261,7 +277,7 @@ public interface MyRetroService {
      */
     @FormUrlEncoded
     @POST("index.php?m=Appapi&c=Shop&a=ajaxcheckp")
-    Observable<MainBean<ImproveCityBean>> getImproveCityData(@Field("token") String token,@Field("pid") int pid);
+    Observable<MainBean<ImproveCityBean>> getImproveCityData(@Field("token") String token, @Field("pid") int pid);
 
     /**
      * 提交商家资料
@@ -269,12 +285,12 @@ public interface MyRetroService {
     @FormUrlEncoded
     @POST("index.php?m=Appapi&c=Shop&a=doshop")
     Observable<MainBean> postImproveCommit(@Field("token") String token, @Field("id") int id, @Field("license") File license,
-                                          @Field("photo") File photo, @Field("shop_name") String shop_name, @Field("company_name") String company_name,
-                                          @Field("shop_tel") String shop_tel, @Field("province") int province, @Field("city") int city,
-                                          @Field("district") int district, @Field("address") String address, @Field("cat_id") int cat_id,
-                                          @Field("category") String category, @Field("start") String start, @Field("end") String end,
-                                          @Field("starttime") String starttime, @Field("endtime") String endtime, @Field("add_time") String add_time,
-                                          @Field("name") String name, @Field("mobile") String mobile, @Field("business_id") int business_id);
+                                           @Field("photo") File photo, @Field("shop_name") String shop_name, @Field("company_name") String company_name,
+                                           @Field("shop_tel") String shop_tel, @Field("province") int province, @Field("city") int city,
+                                           @Field("district") int district, @Field("address") String address, @Field("cat_id") int cat_id,
+                                           @Field("category") String category, @Field("start") String start, @Field("end") String end,
+                                           @Field("starttime") String starttime, @Field("endtime") String endtime, @Field("add_time") String add_time,
+                                           @Field("name") String name, @Field("mobile") String mobile, @Field("business_id") int business_id);
 
 
     /**
@@ -372,7 +388,6 @@ public interface MyRetroService {
      * 还有
      */
     //Observable<MainBean<GoodProductBean>> getGoodproductdata(@Url String url);//传进来全部的  哦哦
-
     @POST("index.php?m=Appapi&c=Index&a=good_product")
 /**括号里面是路径*/
     Observable<MainBean<GoodProductBean>> getCity();
