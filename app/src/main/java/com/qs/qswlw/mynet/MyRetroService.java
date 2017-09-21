@@ -127,6 +127,13 @@ public interface MyRetroService {
     Observable<MainBean<WithDrawalsRecordBean>> getWithDrawalsRecordData(@Field("token") String token,@Field("p") int p,@Field("status") String status);
 
     /**
+     * 撤销提现
+     */
+    @FormUrlEncoded
+    @POST("index.php?m=Appapi&c=Bankroll&a=del_cash_info")
+    Observable<MainBean> PostWithdrawaslRecall(@Field("token") String token,@Field("id") int id);
+
+    /**
      * 我的银行卡列表
      */
     @FormUrlEncoded

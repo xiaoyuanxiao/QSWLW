@@ -30,8 +30,6 @@ public class WithdrawalsRecordActivity extends BaseInfoActivity {
     private View view_one, view_two, view_three, view_four;
     private PopupWindow popupWindow;
 
-    public static String COMPLETED = "";
-    public static String PROCESSING = "pre";
 
     private ArrayList<Fragment> fragments;
     private FragmentManager fragmentManager;
@@ -67,18 +65,6 @@ public class WithdrawalsRecordActivity extends BaseInfoActivity {
         super.initData();
         fragmentManager = getSupportFragmentManager();
         initFragment();
-
-
-//        listBeen = new ArrayList<>();
-//        withdrawalsRecordAdapter = new WithdrawalsRecordAdapter(this, listBeen);
-//        lv_withdrawalsrecord.setAdapter(withdrawalsRecordAdapter);
-//        withDrawalsRecordPersenter.getdata(MyApplication.TOKEN, page, status);
-//        swipeRefreshView.setOnLoadListener(new SwipeRefreshView.OnLoadListener() {
-//            @Override
-//            public void onLoad() {
-//                withDrawalsRecordPersenter.getdata(MyApplication.TOKEN, page, status);
-//            }
-//        });
     }
 
     /**
@@ -142,26 +128,21 @@ public class WithdrawalsRecordActivity extends BaseInfoActivity {
             case R.id.tv_withdrawalsrecord_one:
                 setTopColor(tv_one, tv_two, tv_three, tv_four, view_one, view_two, view_three, view_four);
                 showFragment(fragments.get(0));
-//                status = "audit";
-//                withDrawalsRecordPersenter.getdata(MyApplication.TOKEN, page, status);
+
                 break;
             case R.id.tv_withdrawalsrecord_two:
                 setTopColor(tv_two, tv_one, tv_three, tv_four, view_two, view_one, view_three, view_four);
                 showFragment(fragments.get(1));
-//                status = "pre";
-//                withDrawalsRecordPersenter.getdata(MyApplication.TOKEN, page, status);
                 break;
             case R.id.tv_withdrawalsrecord_three:
                 setTopColor(tv_three, tv_two, tv_one, tv_four, view_three, view_two, view_one, view_four);
                 showFragment(fragments.get(2));
-//                status = "";
-//                withDrawalsRecordPersenter.getdata(MyApplication.TOKEN, page, status);
+
                 break;
             case R.id.tv_withdrawalsrecord_four:
                 setTopColor(tv_four, tv_two, tv_three, tv_one, view_four, view_two, view_three, view_one);
                 showFragment(fragments.get(3));
-//                status = "fail";
-//                withDrawalsRecordPersenter.getdata(MyApplication.TOKEN, page, status);
+
                 break;
             case R.id.ll_titlebar_right:
                 showpw(ll_titlebar_right);
@@ -198,28 +179,4 @@ public class WithdrawalsRecordActivity extends BaseInfoActivity {
         popupWindow.showAtLocation(v, Gravity.RIGHT | Gravity.TOP, 0, 100);
 
     }
-
-//    /**
-//     * 切换提现状态的回调
-//     *
-//     * @param withDrawalsRecordBean
-//     */
-//    @Override
-//    public void setdata(WithDrawalsRecordBean withDrawalsRecordBean) {
-//        List<WithDrawalsRecordBean.ListBean> list = withDrawalsRecordBean.getList();
-//        swipeRefreshView.setLoading(false);//需要吗，没有刷新的时候
-//        if (page == 1)
-//            listBeen.clear();
-//        if (list == null || list.size() == 0) {
-//            return;
-//        }
-//        listBeen.addAll(list);
-//        withdrawalsRecordAdapter.notifyDataSetChanged();
-//        page++;
-//    }
-//
-//    @Override
-//    public void isgetDataFaile(String meg) {
-//        swipeRefreshView.setLoading(false);
-//    }
 }
