@@ -1,54 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:paddingTop="5dp"
+    android:orientation="vertical"
     android:paddingBottom="5dp"
     android:paddingLeft="10dp"
-    android:paddingRight="10dp">
-    <TextView
-        style="@style/tv_harvestaddress"
-        android:layout_centerVertical="true"
-        android:text="创业金豆"/>
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_centerInParent="true"
-        android:gravity="center_vertical">
-        <ImageView
-            android:layout_width="25dp"
-            android:layout_height="25dp"
-            android:src="@mipmap/cyjd"/>
+    android:paddingRight="10dp"
+    android:paddingTop="5dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
         <TextView
-            android:id="@+id/tv_item_withdrawalsrecord_money"
+            android:id="@+id/tv_top"
+            style="@style/tv_harvestaddress"
+            android:layout_centerVertical="true"
+            android:text="创业金豆" />
+
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="1195"
-            android:layout_marginLeft="3dp"
-            android:textSize="10sp"
-            android:textColor="@color/red" />
-    </LinearLayout>
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:orientation="horizontal">
 
-    <TextView
-        android:id="@+id/tv_item_withdrawalsrecord_time"
-        style="@style/tv_harvestaddress"
-        android:layout_alignParentRight="true"
-        android:layout_centerVertical="true"
-        android:text="2017-04-01"/>
-    <TextView
-        android:layout_below="@+id/tv_item_withdrawalsrecord_time"
-        android:layout_alignParentRight="true"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="修改信息"
-        android:textSize="9sp"
-        android:layout_marginTop="20dp"
-        android:gravity="center_vertical"
-        android:drawableLeft="@mipmap/goods_edit"/>
+            <ImageView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:src="@mipmap/cyjd" />
+
+            <TextView
+                android:id="@+id/tv_item_withdrawalsrecord_money"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="3dp"
+                android:text="1195"
+                android:textColor="@color/red"
+                android:textSize="10sp" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_item_withdrawalsrecord_recall"
+            style="@style/tv_harvestaddress"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:text="撤回提现" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tv_item_withdrawalsrecord_time"
+            style="@style/tv_harvestaddress"
+            android:layout_centerVertical="true"
+            android:text="2017-04-01" />
+
+        <TextView
+            android:id="@+id/tv_item_withdrawalsrecord_modify"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerInParent="true"
+            android:visibility="gone"
+            android:drawableLeft="@mipmap/goods_edit"
+            android:gravity="center_vertical"
+            android:text="修改信息"
+            android:textSize="9sp" />
+
+    </RelativeLayout>
 
 
-
-
-
-</RelativeLayout>
+</LinearLayout>

@@ -15,9 +15,9 @@ import java.util.List;
  * Created by xiaoyu on 2017/4/19.
  */
 
-public class WithdrawalsRecordAdapter extends BaseListAdapter<WithDrawalsRecordBean.ListBean> {
+public class WithdrawalsRecordCompletedAdapter extends BaseListAdapter<WithDrawalsRecordBean.ListBean> {
 
-    public WithdrawalsRecordAdapter(Context context, List<WithDrawalsRecordBean.ListBean> data) {
+    public WithdrawalsRecordCompletedAdapter(Context context, List<WithDrawalsRecordBean.ListBean> data) {
         super(context, data);
     }
 
@@ -30,23 +30,20 @@ public class WithdrawalsRecordAdapter extends BaseListAdapter<WithDrawalsRecordB
             view = View.inflate(context, R.layout.item_withdrawalsrecord,null);
             holder.tv_item_withdrawalsrecord_money = (TextView) view.findViewById(R.id.tv_item_withdrawalsrecord_money);
             holder.tv_item_withdrawalsrecord_time = (TextView) view.findViewById(R.id.tv_item_withdrawalsrecord_time);
-            holder.tv_item_withdrawalsrecord_modify = (TextView) view.findViewById(R.id.tv_item_withdrawalsrecord_modify);
             holder.tv_item_withdrawalsrecord_recall = (TextView) view.findViewById(R.id.tv_item_withdrawalsrecord_recall);
             view.setTag(holder);
         }else{
             holder = (ViewHolder) view.getTag();
         }
         holder.tv_item_withdrawalsrecord_money.setText(listBean.getMoney());
-        holder.tv_item_withdrawalsrecord_modify.setVisibility(View.VISIBLE);
-        holder.tv_item_withdrawalsrecord_time.setVisibility(View.GONE);
         String create_time = listBean.getCreate_time();
         holder.tv_item_withdrawalsrecord_recall.setText(DateUtils.date2date(Long.parseLong(create_time)*1000L));
+        holder.tv_item_withdrawalsrecord_time.setVisibility(View.GONE);
         return view;
     }
     class ViewHolder{
         TextView tv_item_withdrawalsrecord_money;
         TextView tv_item_withdrawalsrecord_time;
-        TextView tv_item_withdrawalsrecord_modify;
         TextView tv_item_withdrawalsrecord_recall;
     }
 }
