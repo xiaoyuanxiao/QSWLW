@@ -66,10 +66,14 @@ public interface MyRetroService {
     @POST("index.php?m=Appapi&c=Index&a=index")
     Observable<MainBean<Maindatabean>> getALLdata();
 
+    /**
+     * @Multipart对应from-data
+     * @param a
+     * @return
+     */
     @Multipart//这是什么--标注 参数格式 prat 括号里对应的是KEY 后面对应的是 v 那不应该写成这个吗 嗯就是这样，value不用该 到时候传就是是吧 对
     //如果有多个参数-就这样
     @POST("index.php?m=Appapi&c=Index&a=ranking_list4")
-//头去掉 因为写过了，在那些了
     Observable<MainBean<RankingBean>> getRankingData(@Part("time_slot") String a);
 
     /**
@@ -101,7 +105,7 @@ public interface MyRetroService {
     Observable<MainBean<RecordListBaseBean>> getRecordListData(@Query("token") String token, @Query("p") int p, @Query("type") String type, @Query("is_go") String is_go);
 
     /**
-     * 我要提现
+     * 我要提现,对应x-www-form-urlencoded
      */
     @FormUrlEncoded
     @POST("index.php?m=Appapi&c=Bankroll&a=cash")
@@ -113,6 +117,7 @@ public interface MyRetroService {
     @FormUrlEncoded
     @POST("index.php?m=Appapi&c=Bankroll&a=docash")
     Observable<MainBean> PostWithDrawalsData(@Field("token") String token,@Field("amoney") float amoney,@Field("pass") String pass,@Field("gold_model") String gold_model);
+
 
     /**
      * 提现记录

@@ -122,6 +122,7 @@ public class WithdrawalsActivity extends BaseInfoActivity implements IWithdrawal
             public void onNext(MainBean mainBean) {
                 String msg = mainBean.getMsg();
                 ToastUtils.showToast(msg);
+
             }
 
             @Override
