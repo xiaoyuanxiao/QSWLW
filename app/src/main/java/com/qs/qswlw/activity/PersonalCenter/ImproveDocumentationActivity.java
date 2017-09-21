@@ -13,6 +13,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
@@ -20,11 +21,13 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 
 import com.bumptech.glide.Glide;
-import com.google.android.gms.common.api.GoogleApiClient;
 import com.qs.qswlw.MyApplication;
 import com.qs.qswlw.R;
 import com.qs.qswlw.bean.ImproveCityBean;
 import com.qs.qswlw.bean.ImproveDocumentationBean;
+import com.qs.qswlw.bean.MainBean;
+import com.qs.qswlw.mynet.HttpSubCribe;
+import com.qs.qswlw.mynet.MyRetroService;
 import com.qs.qswlw.mynet.ReHttpUtils;
 import com.qs.qswlw.okhttp.Iview.IImproveCityView;
 import com.qs.qswlw.okhttp.Iview.IImproveDocumentationView;
@@ -39,6 +42,8 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
+
+import rx.Observable;
 
 import static com.qs.qswlw.R.id.pic_UploadBusinessLicense;
 
@@ -82,11 +87,8 @@ public class ImproveDocumentationActivity extends BaseInfoActivity implements II
     private List<ImproveCityBean.RegionListBean> city_list_selected;
     private List<ImproveCityBean.RegionListBean> county_list_selected;
     private ImproveCityPersenter improveCityPersenter = new ImproveCityPersenter(this);
-    /**
-     * ATTENTION: This was auto-generated to implement the App Indexing API.
-     * See https://g.co/AppIndexing/AndroidStudio for more information.
-     */
-    private GoogleApiClient client;
+    private Button btn_improved;
+    private String id1;
 
     @Override
     public View setConetnView() {
@@ -102,6 +104,7 @@ public class ImproveDocumentationActivity extends BaseInfoActivity implements II
         edt_improve_mobile = (EditText) inflate.findViewById(R.id.edt_improve_mobile);
         edt_improve_address = (EditText) inflate.findViewById(R.id.edt_improve_address);
         edt_improve_catagory = (EditText) inflate.findViewById(R.id.edt_improve_catagory);
+        btn_improved = (Button) inflate.findViewById(R.id.btn_improved);
         return inflate;
     }
 
@@ -126,6 +129,7 @@ public class ImproveDocumentationActivity extends BaseInfoActivity implements II
         tv_endTime.setOnClickListener(this);
         iv_UploadBusinessLicense.setOnClickListener(this);
         iv_Storefacade.setOnClickListener(this);
+        btn_improved.setOnClickListener(this);
     }
 
     @Override
@@ -144,16 +148,61 @@ public class ImproveDocumentationActivity extends BaseInfoActivity implements II
             case R.id.iv_Storefacade:
                 showPW("2");
                 break;
+            case R.id.btn_improved:
+
+                String shop_name = edt_improve_name.getText().toString();
+                String company_name = edt_improve_companyname.getText().toString();
+                String shop_tel = edt_improve_mobile.getText().toString();
+                String address = edt_improve_address.getText().toString();
+                String category = edt_improve_catagory.getText().toString();
+                String starttime = tv_startTime.getText().toString();
+                String endtime = tv_endTime.getText().toString();
+                String timetype = "yyyy-MM";
+                List<String> spinerIds = getSpinerIds();
+                if (spinerIds.size() < 4)
+                    ToastUtils.showToast("没有选择完全");
+//                postData(MyApplication.TOKEN, id1, file1, file2, shop_name, company_name, shop_tel,spinerIds.get(0) , spinerIds.get(1), spinerIds.get(2),
+//                        address,spinerIds.get(3),category, timetype,timetype,timetype);
+                break;
         }
+    }
+
+    private void postData(final String token, final int id, final File file1, final File file2, final String shop_name, final String company_name,
+                          final String shop_tel, final int province, final int city, final int district, final String address, final int cat_id, final String category,
+                          final String start, final String end, final String starttime, final String endtime, final String add_time, final String name, final String mobile,
+                          final int business_id) {
+        ReHttpUtils.instans().httpRequest(new HttpSubCribe<MainBean>() {
+
+            @Override
+            public void onError(Throwable e) {
+
+            }
+
+            @Override
+            public void onNext(MainBean mainBean) {
+                ToastUtils.showToast(mainBean.getMsg());
+            }
+
+            @Override
+            public Observable<MainBean> getObservable(MyRetroService retrofit) {
+                return retrofit.postImproveCommit(token, id, file1, file2, shop_name, company_name, shop_tel, province, city, district, address, cat_id,
+                        category, start, end, starttime, endtime, add_time, name, mobile, business_id);
+            }
+        });
+
+
     }
 
     private void showTimePickerDialog(final TextView tv) {
         mCalendar = Calendar.getInstance();
         TimePickerDialog dialog = new TimePickerDialog(ImproveDocumentationActivity.this, new TimePickerDialog.OnTimeSetListener() {
+
+
             @Override
             public void onTimeSet(TimePicker timePicker, int i, int i1) {
                 mCalendar.set(Calendar.HOUR, i);
                 mCalendar.set(Calendar.MINUTE, i1);
+                timePicker.setIs24HourView(true);
                 SimpleDateFormat format = new SimpleDateFormat("HH:mm");
                 tv.setText("" + format.format(mCalendar.getTime()));
 
@@ -238,19 +287,6 @@ public class ImproveDocumentationActivity extends BaseInfoActivity implements II
         select(classification_spinner, classification_adapter);
         classification_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         classification_spinner.setAdapter(classification_adapter);
-
-        classification_spinner.setOnItemSelectedListener(new OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                classification_spinner.getSelectedItemPosition();
-
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
-
-            }
-        });
     }
 
     OnItemSelectedListener onItemSelectedListener = new OnItemSelectedListener() {
@@ -269,16 +305,17 @@ public class ImproveDocumentationActivity extends BaseInfoActivity implements II
                     isfrist++;
                     break;
                 case R.id.city_spinner:
-                    if (city_list_selected == null || city_list_selected.size() == 0)
+                    if (city_list_selected == null || city_list_selected.size() == 0 || arg2 == 0)
                         return;
-                    id = city_list_selected.get(arg2).getId();
+                    id = city_list_selected.get(arg2 - 1).getId();
                     selectCode = COUNTYCODE;
                     break;
                 case R.id.county_spinner:
-                    //   id = district_list.get(arg2 + 1).getId();
+
                     return;
             }
-            improveCityPersenter.getdata(MyApplication.TOKEN, Integer.parseInt(id), selectCode);
+            if (id != null)
+                improveCityPersenter.getdata(MyApplication.TOKEN, Integer.parseInt(id), selectCode);
         }
 
         @Override
@@ -287,6 +324,26 @@ public class ImproveDocumentationActivity extends BaseInfoActivity implements II
         }
     };
 
+    private List<String> getSpinerIds() {
+        ArrayList<String> strings = new ArrayList<>();
+        int selectedItemPosition = province_spinner.getSelectedItemPosition();
+        String id = improveDocumentationBeanclist.get(selectedItemPosition).getId();
+        strings.add(id);
+        int cityselectedItemPosition = city_spinner.getSelectedItemPosition();
+        if (cityselectedItemPosition != 0) {
+            String id2 = city_list_selected.get(cityselectedItemPosition - 1).getId();
+            strings.add(id2);
+        }
+        int countyselectedItemPosition = county_spinner.getSelectedItemPosition();
+        if (countyselectedItemPosition != 0) {
+            String id3 = county_list_selected.get(countyselectedItemPosition - 1).getId();
+            strings.add(id3);
+        }
+        int classselectedItemPosition = classification_spinner.getSelectedItemPosition();
+        String id4 = thems.get(classselectedItemPosition).getId();
+        strings.add(id4);
+        return strings;
+    }
 
     private void loadSpinner() {
         province_spinner = (Spinner) findViewById(R.id.province_spinner);
@@ -319,6 +376,7 @@ public class ImproveDocumentationActivity extends BaseInfoActivity implements II
         spin.setOnItemSelectedListener(onItemSelectedListener);
     }
 
+
     String cityID;
     String districtID;
 
@@ -339,6 +397,7 @@ public class ImproveDocumentationActivity extends BaseInfoActivity implements II
         edt_improve_catagory.setText(info.getCategory());//地址
         tv_startTime.setText(info.getStarttime());//开始时间
         tv_endTime.setText(info.getEndtime());//结束时间
+        id1 = info.getId();//id
         String province = improveDocumentationBean.getInfo().getProvince();//省ID
         cityID = improveDocumentationBean.getInfo().getCity();//市ID
         districtID = improveDocumentationBean.getInfo().getDistrict();// 区ID
@@ -355,11 +414,10 @@ public class ImproveDocumentationActivity extends BaseInfoActivity implements II
         }
         String cat_id = improveDocumentationBean.getInfo().getCat_id();
         thems = improveDocumentationBean.getThems();
-        classification.add("选择经营分类");
         for (ImproveDocumentationBean.ThemsBean themsBean : thems) {
             String id = themsBean.getId();
             if (cat_id.equals(id)) {
-                classification_spinner.setSelection(Integer.parseInt(cat_id) - 1);
+                classification_spinner.setSelection(Integer.parseInt(cat_id));
             }
 
             classification.add(themsBean.getName());

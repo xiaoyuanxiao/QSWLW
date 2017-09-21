@@ -150,8 +150,6 @@ public interface MyRetroService {
     @POST("index.php?m=Appapi&c=Shop&a=turnover")
     Observable<MainBean<BusinessTurnoverBean>> getBusinessTurnoverData(@Field("token") String token,@Field("p") int p,@Field("is_history") int is_history);
 
-
-
     /**
      * 获得消费银豆记录
      */
@@ -252,6 +250,21 @@ public interface MyRetroService {
     @FormUrlEncoded
     @POST("index.php?m=Appapi&c=Shop&a=ajaxcheckp")
     Observable<MainBean<ImproveCityBean>> getImproveCityData(@Field("token") String token,@Field("pid") int pid);
+
+    /**
+     * 提交商家资料
+     */
+    @FormUrlEncoded
+    @POST("index.php?m=Appapi&c=Shop&a=doshop")
+    Observable<MainBean> postImproveCommit(@Field("token") String token, @Field("id") int id, @Field("license") File license,
+                                          @Field("photo") File photo, @Field("shop_name") String shop_name, @Field("company_name") String company_name,
+                                          @Field("shop_tel") String shop_tel, @Field("province") int province, @Field("city") int city,
+                                          @Field("district") int district, @Field("address") String address, @Field("cat_id") int cat_id,
+                                          @Field("category") String category, @Field("start") String start, @Field("end") String end,
+                                          @Field("starttime") String starttime, @Field("endtime") String endtime, @Field("add_time") String add_time,
+                                          @Field("name") String name, @Field("mobile") String mobile, @Field("business_id") int business_id);
+
+
     /**
      * 提交验证老会员信息
      */
