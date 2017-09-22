@@ -9,7 +9,6 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.SpinnerAdapter;
 
 import com.qs.qswlw.MyApplication;
 import com.qs.qswlw.R;
@@ -29,6 +28,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import rx.Observable;
+
+import static com.qs.qswlw.R.id.spinner_withdrawalsadd_province;
 
 /**
  * Created by xiaoyu on 2017/5/15.
@@ -103,7 +104,7 @@ public class WithdrawalsAddActivity extends BaseInfoActivity implements IWithdra
                 String cname = edt_withdrawalsadd_name.getText().toString();
                 String account = edt_withdrawalsadd_card.getText().toString();
                 String cardnumber = edt_withdrawalsadd_number.getText().toString();
-                postData(MyApplication.TOKEN, id1, cname, card, Integer.parseInt(getSpinerIds().get(0)), Integer.parseInt(getSpinerIds().get(1)), account, cardnumber);
+                postData(MyApplication.TOKEN, id1, cname, getSpinerIds().get(0), Integer.parseInt(getSpinerIds().get(1)), Integer.parseInt(getSpinerIds().get(2)), account, cardnumber);
                 break;
         }
     }
@@ -132,6 +133,9 @@ public class WithdrawalsAddActivity extends BaseInfoActivity implements IWithdra
             public void onNext(MainBean mainBean) {
                 String msg = mainBean.getMsg();
                 ToastUtils.showToast(msg);
+                if(mainBean.getSucc()==1){
+                    finish();
+                }
 
             }
 
@@ -144,11 +148,9 @@ public class WithdrawalsAddActivity extends BaseInfoActivity implements IWithdra
 
     }
 
-    private String card;
 
     private void loadBankSpinner() {
         spinner_bank = (Spinner) findViewById(R.id.spinner_withdrawalsadd_bank);
-        //这是写死的，就这几个
         banklist.add("请选择转入的银行");
         banklist.add("中国工商银行");
         banklist.add("招商银行");
@@ -162,27 +164,8 @@ public class WithdrawalsAddActivity extends BaseInfoActivity implements IWithdra
 
     }
 
-    /**
-     * 根据id值, 设置spinner默认选中:
-     *
-     * @param spinner
-     * @param value
-     */
-    public static void setSpinnerItemSelectedByValue(Spinner spinner, String value) {
-
-        SpinnerAdapter apsAdapter = spinner.getAdapter(); //得到SpinnerAdapter对象
-        int k = apsAdapter.getCount();
-        for (int i = 0; i < k; i++) {
-            if (value.equals(apsAdapter.getItem(i).toString())) {
-                spinner.setSelection(i, true);// 默认选中项
-                break;
-            }
-        }
-    }
-
-
     private void loadSpinner() {
-        spinner_province = (Spinner) findViewById(R.id.spinner_withdrawalsadd_province);
+        spinner_province = (Spinner) findViewById(spinner_withdrawalsadd_province);
         spinner_city = (Spinner) findViewById(R.id.spinner_withdrawalsadd_city);
         province_adapter = getSpinerAdapter(provincelist);
         city_adapter = getSpinerAdapter(citylist);
@@ -220,14 +203,22 @@ public class WithdrawalsAddActivity extends BaseInfoActivity implements IWithdra
 
     private List<String> getSpinerIds() {
         ArrayList<String> strings = new ArrayList<>();
+        int bankselectedItemPosition = spinner_bank.getSelectedItemPosition();
+        String card = banklist.get(bankselectedItemPosition);
+        strings.add(card);
+
         int selectedItemPosition = spinner_province.getSelectedItemPosition();
-        String id = clist.get(selectedItemPosition).getId();
-        strings.add(id);
+        if(selectedItemPosition!=0){
+            String id = clist.get(selectedItemPosition-1).getId();
+            strings.add(id);
+        }
         int cityselectedItemPosition = spinner_city.getSelectedItemPosition();
         if (cityselectedItemPosition != 0) {
             String id2 = city_list_selected.get(cityselectedItemPosition - 1).getId();
             strings.add(id2);
         }
+
+
 
         return strings;
     }
