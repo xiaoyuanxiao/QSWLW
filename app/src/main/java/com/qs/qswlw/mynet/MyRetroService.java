@@ -34,6 +34,7 @@ import com.qs.qswlw.bean.WithDrawalsRecordBean;
 import com.qs.qswlw.bean.WithdrawalsAddBean;
 import com.qs.qswlw.bean.WithdrawalsBean;
 import com.qs.qswlw.bean.WithdrawalsCityBean;
+import com.qs.qswlw.bean.WithdrawalsFailedModifyBean;
 
 import java.io.File;
 import java.util.List;
@@ -133,6 +134,21 @@ public interface MyRetroService {
     @FormUrlEncoded
     @POST("index.php?m=Appapi&c=Bankroll&a=del_cash_info")
     Observable<MainBean> PostWithdrawaslRecall(@Field("token") String token, @Field("id") int id);
+
+    /**
+     * 提现失败修改
+     */
+    @FormUrlEncoded
+    @POST("index.php?m=Appapi&c=Bankroll&a=cashlist_edit")
+    Observable<MainBean<WithdrawalsFailedModifyBean>> getWithdrawalsFailedModify(@Field("token") String token,@Field("id") int id);
+
+    /**
+     * 处理修改提现信息
+     */
+    @FormUrlEncoded
+    @POST("index.php?m=Appapi&c=Bankroll&a=do_cashlist_edit")
+    Observable<MainBean> PostWithdrawalsFailedModify(@Field("token") String token,@Field("id") int id,@Field("cardholder") String cardholder,@Field("to_bank") String to_bank,
+                                                     @Field("region") int region,@Field("city") int city,@Field("branch") String branch,@Field("bank_card") String bank_card);
 
     /**
      * 我的银行卡列表

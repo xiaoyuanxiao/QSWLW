@@ -15,6 +15,7 @@ import com.qs.qswlw.manager.UserManage;
 import com.qs.qswlw.mynet.HttpSubCribe;
 import com.qs.qswlw.mynet.MyRetroService;
 import com.qs.qswlw.mynet.ReHttpUtils;
+import com.qs.qswlw.utils.ToastUtils;
 
 import rx.Observable;
 
@@ -103,6 +104,9 @@ public class LoginActivity extends BaseInfoActivity {
 
             @Override
             public void onNext(MainBean<LoginBean> loginBeen) {
+                if(loginBeen.getSucc()!=1){
+                    ToastUtils.showToast(loginBeen.getMsg());
+                }
                 /**
                  * 保存用户登录信息
                  */

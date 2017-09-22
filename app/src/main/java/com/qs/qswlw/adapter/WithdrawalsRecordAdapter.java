@@ -1,11 +1,13 @@
 package com.qs.qswlw.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.qs.qswlw.R;
+import com.qs.qswlw.activity.PersonalCenter.WithdrawalsAddActivity;
 import com.qs.qswlw.bean.WithDrawalsRecordBean;
 import com.qs.qswlw.utils.DateUtils;
 
@@ -23,7 +25,7 @@ public class WithdrawalsRecordAdapter extends BaseListAdapter<WithDrawalsRecordB
 
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
-        WithDrawalsRecordBean.ListBean listBean = data.get(i);
+        final WithDrawalsRecordBean.ListBean listBean = data.get(i);
         ViewHolder holder;
         if (view == null) {
             holder = new ViewHolder();
@@ -41,6 +43,15 @@ public class WithdrawalsRecordAdapter extends BaseListAdapter<WithDrawalsRecordB
         holder.tv_item_withdrawalsrecord_time.setVisibility(View.GONE);
         String create_time = listBean.getCreate_time();
         holder.tv_item_withdrawalsrecord_recall.setText(DateUtils.date2date(Long.parseLong(create_time)*1000L));
+        holder.tv_item_withdrawalsrecord_modify.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(context, WithdrawalsAddActivity.class);
+                intent.putExtra("failId",listBean.getId());
+                intent.putExtra("modify","modify");
+                context.startActivity(intent);
+            }
+        });
         return view;
     }
     class ViewHolder{

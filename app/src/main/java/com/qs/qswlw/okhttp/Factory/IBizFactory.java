@@ -26,6 +26,7 @@ import com.qs.qswlw.okhttp.Moudle.BizWithDrawalsRecord;
 import com.qs.qswlw.okhttp.Moudle.BizWithdrawals;
 import com.qs.qswlw.okhttp.Moudle.BizWithdrawalsAdd;
 import com.qs.qswlw.okhttp.Moudle.BizWithdrawalsCity;
+import com.qs.qswlw.okhttp.Moudle.BizWithdrawalsFailedModify;
 import com.qs.qswlw.okhttp.Moudle.IAngelRankingBiz;
 import com.qs.qswlw.okhttp.Moudle.IBusinessTurnoverBiz;
 import com.qs.qswlw.okhttp.Moudle.IConsumptionRecordBiz;
@@ -53,6 +54,7 @@ import com.qs.qswlw.okhttp.Moudle.IWithDrawalsRecordBiz;
 import com.qs.qswlw.okhttp.Moudle.IWithdrawalsAddBiz;
 import com.qs.qswlw.okhttp.Moudle.IWithdrawalsBiz;
 import com.qs.qswlw.okhttp.Moudle.IWithdrawalsCityBiz;
+import com.qs.qswlw.okhttp.Moudle.IWithdrawalsFailedModifyBiz;
 import com.qs.qswlw.okhttp.Moudle.TestaMoudle;
 
 /**
@@ -147,5 +149,8 @@ public class IBizFactory {
     }
     public static IWithdrawalsCityBiz getWithdrawalsCityList(){
         return BizWithdrawalsCity.getInstans();
+    }
+    public static IWithdrawalsFailedModifyBiz getWithdrawalsFailedModifyList(){
+        return BizWithdrawalsFailedModify.getInstans();
     }
 }
