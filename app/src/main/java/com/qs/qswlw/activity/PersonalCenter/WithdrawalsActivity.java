@@ -80,7 +80,6 @@ public class WithdrawalsActivity extends BaseInfoActivity implements IWithdrawal
         tv_withdrawals_three.setOnClickListener(this);
         btn_withdrawals_confirm.setOnClickListener(this);
     }
-
     @Override
     public void onClick(View v) {
         super.onClick(v);
@@ -90,7 +89,7 @@ public class WithdrawalsActivity extends BaseInfoActivity implements IWithdrawal
                 break;
             case R.id.iv_withdrawals_right:
                 Intent intent = new Intent(this,WithdrawalsBankActivity.class);
-                startActivity(intent);
+                startActivityForResult(intent,1);
                 break;
             case R.id.tv_withdrawals_three:
                 showDialog();
@@ -169,5 +168,15 @@ public class WithdrawalsActivity extends BaseInfoActivity implements IWithdrawal
         tv_withdrawals_banknumber.setText(withdrawalsBean.getBank().getNumber());
         tv_withdrawals_one_right.setText(withdrawalsBean.getUser().getGold2()+"颗");
         tv_withdrawals_two.setText(withdrawalsBean.getTotal_count_cash());
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode ==1){
+            if(resultCode==4){
+                withdrawalsPersenter.getdata(MyApplication.TOKEN);
+            }
+        }
     }
 }

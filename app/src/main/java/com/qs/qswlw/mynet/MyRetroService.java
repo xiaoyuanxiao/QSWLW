@@ -180,6 +180,13 @@ public interface MyRetroService {
     Observable<MainBean> PostWithdrawalsAddData(@Field("token") String token, @Field("id") int id,@Field("cname") String cname, @Field("card") String card,
                                                 @Field("pcity") int pcity, @Field("ccity") int ccity,@Field("account") String account, @Field("cardnumber") String cardnumber);
     /**
+     * 设置默认提现银行卡
+     */
+    @FormUrlEncoded
+    @POST("index.php?m=Appapi&c=Bankroll&a=steup_card")
+    Observable<MainBean> PostWithdrawalsDefault(@Field("token") String token, @Field("id") int id);
+
+    /**
      * 商家审核消费录单
      */
     @GET("index.php?m=Appapi&c=Single&a=shop_review_edit")
