@@ -187,6 +187,12 @@ public interface MyRetroService {
     Observable<MainBean> PostWithdrawalsDefault(@Field("token") String token, @Field("id") int id);
 
     /**
+     * 删除银行卡
+     */
+    @FormUrlEncoded
+    @POST("index.php?m=Appapi&c=Bankroll&a=steup_card")
+    Observable<MainBean> PostWithdrawalsDel(@Field("token") String token, @Field("id") int id);
+    /**
      * 商家审核消费录单
      */
     @GET("index.php?m=Appapi&c=Single&a=shop_review_edit")

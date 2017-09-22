@@ -10,9 +10,16 @@ import android.widget.TextView;
 import com.qs.qswlw.MyApplication;
 import com.qs.qswlw.R;
 import com.qs.qswlw.activity.PersonalCenter.WithdrawalsAddActivity;
+import com.qs.qswlw.bean.MainBean;
 import com.qs.qswlw.bean.MyBankListBean;
+import com.qs.qswlw.mynet.HttpSubCribe;
+import com.qs.qswlw.mynet.MyRetroService;
+import com.qs.qswlw.mynet.ReHttpUtils;
+import com.qs.qswlw.utils.ToastUtils;
 
 import java.util.List;
+
+import rx.Observable;
 
 /**
  * Created by xiaoyu on 2017/5/15.
@@ -20,14 +27,14 @@ import java.util.List;
 
 public class WithdrawalsBankAdapter extends BaseListAdapter<MyBankListBean.CardListBean> {
 
-
+    private int position;
 
     public WithdrawalsBankAdapter(Context context, List<MyBankListBean.CardListBean> data) {
         super(context, data);
     }
 
     @Override
-    public View getView(int i, View view, ViewGroup viewGroup) {
+    public View getView(final int i, View view, ViewGroup viewGroup) {
         final MyBankListBean.CardListBean cardListBean = data.get(i);
         ViewHolder holder;
         if (view == null) {
@@ -57,7 +64,46 @@ public class WithdrawalsBankAdapter extends BaseListAdapter<MyBankListBean.CardL
                 context.startActivity(intent);
             }
         });
+        holder.iv_item_mybanklist_del.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                position = i;
+                PostDelData(MyApplication.TOKEN,Integer.parseInt(cardListBean.getId()));
+            }
+
+
+        });
         return view;
+    }
+
+    /**
+     * 删除数据
+     * @param token
+     * @param i
+     */
+    private void PostDelData(final String token, final int id) {
+        ReHttpUtils.instans().httpRequest(new HttpSubCribe<MainBean>() {
+
+            @Override
+            public void onError(Throwable e) {
+
+            }
+
+            @Override
+            public void onNext(MainBean mainBean) {
+                ToastUtils.showToast(mainBean.getMsg());
+                if(mainBean.getSucc()==1){
+                    data.remove(position);
+                    notifyDataSetChanged();
+                }
+
+            }
+
+            @Override
+            public Observable<MainBean> getObservable(MyRetroService retrofit) {
+                return retrofit.PostWithdrawalsDel(token,id);
+            }
+        });
     }
 
     class ViewHolder {
