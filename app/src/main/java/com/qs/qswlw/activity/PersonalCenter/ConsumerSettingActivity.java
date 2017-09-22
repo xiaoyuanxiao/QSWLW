@@ -33,7 +33,7 @@ public class ConsumerSettingActivity extends BaseActivity implements AdapterView
     private TextView tv_setting_consumptionMoney,tv_setting_consumerSilverbeans,tv_setting_encourage,tv_setting_withdrawals,tv_setting_consumerbeans,
             tv_setting_paytaxes,tv_cyzx,tv_recommender,tv_setting_id,tv_setting_name,tv_role;
     private TextView setting_one;
-    private String user_id,nickname,role;
+    private String user_id,nickname,role,mobile;
 
     /**
      * 设置数据
@@ -55,6 +55,7 @@ public class ConsumerSettingActivity extends BaseActivity implements AdapterView
 
         MyApplication.ID =  user_id = personalSettingBean.getUser_info().getUser_id();
         MyApplication.NICKNAME = nickname = personalSettingBean.getUser_info().getNickname();
+        MyApplication.MOBILE =  mobile = personalSettingBean.getUser_info().getMobile();
         role = personalSettingBean.getUser_info().getRole();
         if(role.equals("0")){
             tv_role.setText("消费天使");

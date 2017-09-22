@@ -8,6 +8,7 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.AdapterView;
@@ -89,6 +90,7 @@ public class ImproveDocumentationActivity extends BaseInfoActivity implements II
     private ImproveCityPersenter improveCityPersenter = new ImproveCityPersenter(this);
     private Button btn_improved;
     private String id1;
+    private String add_time;
 
     @Override
     public View setConetnView() {
@@ -161,8 +163,9 @@ public class ImproveDocumentationActivity extends BaseInfoActivity implements II
                 List<String> spinerIds = getSpinerIds();
                 if (spinerIds.size() < 4)
                     ToastUtils.showToast("没有选择完全");
-//                postData(MyApplication.TOKEN, id1, file1, file2, shop_name, company_name, shop_tel,spinerIds.get(0) , spinerIds.get(1), spinerIds.get(2),
-//                        address,spinerIds.get(3),category, timetype,timetype,timetype);
+                postData(MyApplication.TOKEN,Integer.parseInt(id1), file1, file2, shop_name, company_name, shop_tel,Integer.parseInt(spinerIds.get(0))
+                        , Integer.parseInt(spinerIds.get(1)), Integer.parseInt(spinerIds.get(2)), address,Integer.parseInt(spinerIds.get(3)),category,
+                        timetype,timetype,starttime,endtime,add_time,MyApplication.NICKNAME,MyApplication.MOBILE,Integer.parseInt(MyApplication.ID));
                 break;
         }
     }
@@ -175,7 +178,7 @@ public class ImproveDocumentationActivity extends BaseInfoActivity implements II
 
             @Override
             public void onError(Throwable e) {
-
+                Log.e("postData",e+"");
             }
 
             @Override
@@ -192,8 +195,9 @@ public class ImproveDocumentationActivity extends BaseInfoActivity implements II
 
 
     }
-
     private void showTimePickerDialog(final TextView tv) {
+        //是否使用24小时制
+
         mCalendar = Calendar.getInstance();
         TimePickerDialog dialog = new TimePickerDialog(ImproveDocumentationActivity.this, new TimePickerDialog.OnTimeSetListener() {
 
@@ -202,14 +206,12 @@ public class ImproveDocumentationActivity extends BaseInfoActivity implements II
             public void onTimeSet(TimePicker timePicker, int i, int i1) {
                 mCalendar.set(Calendar.HOUR, i);
                 mCalendar.set(Calendar.MINUTE, i1);
-                timePicker.setIs24HourView(true);
                 SimpleDateFormat format = new SimpleDateFormat("HH:mm");
                 tv.setText("" + format.format(mCalendar.getTime()));
 
             }
         }, mCalendar.get(Calendar.HOUR), mCalendar.get(Calendar.MINUTE), true);
         dialog.show();
-
     }
 
     private void showPW(String s) {
@@ -398,6 +400,7 @@ public class ImproveDocumentationActivity extends BaseInfoActivity implements II
         tv_startTime.setText(info.getStarttime());//开始时间
         tv_endTime.setText(info.getEndtime());//结束时间
         id1 = info.getId();//id
+        add_time = info.getAdd_time();
         String province = improveDocumentationBean.getInfo().getProvince();//省ID
         cityID = improveDocumentationBean.getInfo().getCity();//市ID
         districtID = improveDocumentationBean.getInfo().getDistrict();// 区ID

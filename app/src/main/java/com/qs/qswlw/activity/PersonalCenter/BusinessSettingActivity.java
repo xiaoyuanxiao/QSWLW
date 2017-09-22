@@ -35,6 +35,7 @@ public class BusinessSettingActivity extends BaseActivity implements IPersonalSe
     private TextView tv_setting_consumptionMoney, tv_setting_consumerSilverbeans, tv_setting_encourage, tv_setting_withdrawals, tv_setting_consumerbeans, tv_setting_paytaxes, tv_cyzx, tv_recommender, tv_setting_id, tv_setting_name, tv_setting_shopname, tv_role;
     private TextView setting_one;
     private String user_id, nickname, role;
+    private String mobile;
 
     @Override
     public void setUserInfo(PersonalSettingBean personalSettingBean) {
@@ -50,6 +51,7 @@ public class BusinessSettingActivity extends BaseActivity implements IPersonalSe
         tv_setting_withdrawals.setText(personalSettingBean.getUser_info().getGold_total() + "");
         tv_setting_consumerbeans.setText(personalSettingBean.getUser_info().getTaxgold_total() + "");
         tv_setting_paytaxes.setText(personalSettingBean.getLast_rebate_date() + "");
+         MyApplication.MOBILE =  mobile = personalSettingBean.getUser_info().getMobile();
         MyApplication.ID = user_id = personalSettingBean.getUser_info().getUser_id();
         MyApplication.NICKNAME = nickname = personalSettingBean.getUser_info().getNickname();
         //会员身份

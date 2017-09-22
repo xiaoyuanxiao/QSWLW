@@ -35,6 +35,7 @@ public class WithdrawalsBankActivity extends BaseInfoActivity implements IMyBank
         lv_mybanklist =  (ListView) inflate.findViewById(R.id.lv_mybanklist);
         swipeRefreshView = (SwipeRefreshView) inflate.findViewById(R.id.lv_mybanklist_sw);
         btn_mybanklist_confirm = (Button) inflate.findViewById(R.id.btn_mybanklist_confirm);
+
         return inflate;
     }
 
@@ -43,8 +44,6 @@ public class WithdrawalsBankActivity extends BaseInfoActivity implements IMyBank
         super.initfindviewByid();
         tv_titlebar_center.setText("我的银行卡");
         tv_titlebar_right.setText("添加+");
-
-
 
     }
 
@@ -74,6 +73,7 @@ public class WithdrawalsBankActivity extends BaseInfoActivity implements IMyBank
     public void setOnclick() {
         super.setOnclick();
         tv_titlebar_right.setOnClickListener(this);
+        btn_mybanklist_confirm.setOnClickListener(this);
     }
 
     @Override
@@ -82,6 +82,9 @@ public class WithdrawalsBankActivity extends BaseInfoActivity implements IMyBank
         switch (v.getId()){
             case R.id.tv_titlebar_right:
                 startActivity(new Intent(this,WithdrawalsAddActivity.class));
+                break;
+            case R.id.btn_mybanklist_confirm:
+
                 break;
         }
     }
