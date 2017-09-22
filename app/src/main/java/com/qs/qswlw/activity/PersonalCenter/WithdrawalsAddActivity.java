@@ -43,13 +43,12 @@ public class WithdrawalsAddActivity extends BaseInfoActivity implements IWithdra
     private ArrayAdapter<String> province_adapter;
     private ArrayAdapter<String> city_adapter;
     private ArrayAdapter<String> bank_adapter;
-    List<WithdrawalsAddBean.ClistBean> clistprovince;
+    //    List<WithdrawalsAddBean.ClistBean> clistprovince;
     private List<WithdrawalsCityBean.ClistBean> city_list_selected;
 
     private WithdrawalsAddPersenter withdrawalsAddPersenter = new WithdrawalsAddPersenter(this);
     private EditText edt_withdrawalsadd_name, edt_withdrawalsadd_card, edt_withdrawalsadd_number;
     private List<WithdrawalsAddBean.ClistBean> clist;
-    private List<WithdrawalsAddBean.ShiListBean> shi_list;
     private String cardxy;
     private String region;
     private String city;
@@ -79,13 +78,13 @@ public class WithdrawalsAddActivity extends BaseInfoActivity implements IWithdra
         loadSpinner();
         loadBankSpinner();
         Intent intent = getIntent();
-        String id =  intent.getStringExtra("id");
+        String id = intent.getStringExtra("id");
         if (id != null) {
             id1 = Integer.parseInt(id);
-            withdrawalsAddPersenter.getdata(MyApplication.TOKEN,id1 );
+            withdrawalsAddPersenter.getdata(MyApplication.TOKEN, id1);
         } else {
             id1 = 0;
-          // withdrawalsAddPersenter.getdata(MyApplication.TOKEN, 0);
+            // withdrawalsAddPersenter.getdata(MyApplication.TOKEN, 0);
         }
 
     }
@@ -99,18 +98,19 @@ public class WithdrawalsAddActivity extends BaseInfoActivity implements IWithdra
     @Override
     public void onClick(View v) {
         super.onClick(v);
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.btn_withdrawalsadd_add:
                 String cname = edt_withdrawalsadd_name.getText().toString();
                 String account = edt_withdrawalsadd_card.getText().toString();
                 String cardnumber = edt_withdrawalsadd_number.getText().toString();
-                postData(MyApplication.TOKEN,id1,cname,card,Integer.parseInt(getSpinerIds().get(0)),Integer.parseInt(getSpinerIds().get(1)),account,cardnumber);
+                postData(MyApplication.TOKEN, id1, cname, card, Integer.parseInt(getSpinerIds().get(0)), Integer.parseInt(getSpinerIds().get(1)), account, cardnumber);
                 break;
         }
     }
 
     /**
      * 处理->添加或修改银行卡信息
+     *
      * @param token
      * @param id
      * @param cname
@@ -121,31 +121,34 @@ public class WithdrawalsAddActivity extends BaseInfoActivity implements IWithdra
      * @param cardnumber
      */
     private void postData(final String token, final int id, final String cname, final String card, final int pcity, final int ccity, final String account, final String cardnumber) {
-            ReHttpUtils.instans().httpRequest(new HttpSubCribe<MainBean>() {
+        ReHttpUtils.instans().httpRequest(new HttpSubCribe<MainBean>() {
 
-                @Override
-                public void onError(Throwable e) {
-                    Log.e("RecallWithdrawals",e+"");
-                }
+            @Override
+            public void onError(Throwable e) {
+                Log.e("RecallWithdrawals", e + "");
+            }
 
-                @Override
-                public void onNext(MainBean mainBean) {
-                    String msg = mainBean.getMsg();
-                    ToastUtils.showToast(msg);
+            @Override
+            public void onNext(MainBean mainBean) {
+                String msg = mainBean.getMsg();
+                ToastUtils.showToast(msg);
 
-                }
+            }
 
-                @Override
-                public Observable<MainBean> getObservable(MyRetroService retrofit) {
-                    return retrofit.PostWithdrawalsAddData(token,id,cname,card,pcity,ccity,account,cardnumber);
-                }
-            });
+            @Override
+            public Observable<MainBean> getObservable(MyRetroService retrofit) {
+                return retrofit.PostWithdrawalsAddData(token, id, cname, card, pcity, ccity, account, cardnumber);
+            }
+        });
 
 
     }
+
     private String card;
+
     private void loadBankSpinner() {
         spinner_bank = (Spinner) findViewById(R.id.spinner_withdrawalsadd_bank);
+        //这是写死的，就这几个
         banklist.add("请选择转入的银行");
         banklist.add("中国工商银行");
         banklist.add("招商银行");
@@ -155,23 +158,8 @@ public class WithdrawalsAddActivity extends BaseInfoActivity implements IWithdra
         banklist.add("农村商业银行");
         bank_adapter = getSpinerAdapter(banklist);
         select(spinner_bank, bank_adapter);
-        bank_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner_bank.setAdapter(bank_adapter);
 
-        spinner_bank.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 
-            @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                spinner_bank.getSelectedItemPosition();
-                card = spinner_bank.getSelectedItem().toString();
-                setSpinnerItemSelectedByValue(spinner_bank, cardxy);
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
-
-            }
-        });
     }
 
     /**
@@ -212,20 +200,15 @@ public class WithdrawalsAddActivity extends BaseInfoActivity implements IWithdra
         @Override
         public void onItemSelected(AdapterView<?> arg0, View arg1,
                                    int arg2, long arg3) {
-            String id = null;
             if (arg2 == 0)
                 return;
             switch (arg0.getId()) {
-                case R.id.spinner_withdrawalsadd_province:
-                    //网络请求市--根据省ID 其他类似
-                    if (city_list_selected == null || city_list_selected.size() == 0)
+                case R.id.spinner_withdrawalsadd_province://只需要请求市的
+                    if (clist == null || clist.size() == 0)
                         return;
-                    id = city_list_selected.get(arg2).getId();
-                    isfrist++;
+                    withdrawalsCityPersenter.getdata(MyApplication.TOKEN, Integer.parseInt(clist.get(arg2 - 1).getId()));
                     break;
             }
-            if (id != null)
-                withdrawalsCityPersenter.getdata(MyApplication.TOKEN, Integer.parseInt(id));
         }
 
         @Override
@@ -269,18 +252,19 @@ public class WithdrawalsAddActivity extends BaseInfoActivity implements IWithdra
         //省级列表
         clist = withdrawalsAddBean.getClist();
         provincelist.add("请选择开户行所在省");
-        for (WithdrawalsAddBean.ClistBean clistBean : clist) {
-            provincelist.add(clistBean.getName());
-        }
-//        //级列表
-//        shi_list = withdrawalsAddBean.getShi_list();
-//        citylist.add("请选择开户行所在市");
-//        for (WithdrawalsAddBean.ShiListBean shiListBean : shi_list) {
-//            citylist.add(shiListBean.getName());
-//        }
-        cardxy = info.getCardxy();
         region = info.getRegion();//省得id
         cityID = info.getCity();//市的id
+        cardxy = info.getCardxy();
+        int k = 0;
+        for (int i = 0; i < clist.size(); i++) {
+            provincelist.add(clist.get(i).getName());
+            if (clist.get(i).getId().equals(region))
+                k = i + 1;
+        }
+        province_adapter.notifyDataSetChanged();
+        spinner_province.setSelection(k);
+        int i = banklist.indexOf(cardxy);
+        spinner_bank.setSelection(i >= 0 ? i : 0);
     }
 
     String cityID;
@@ -288,6 +272,7 @@ public class WithdrawalsAddActivity extends BaseInfoActivity implements IWithdra
 
     @Override
     public void setCitydata(WithdrawalsCityBean withdrawalsCityBean) {
+
         citylist.clear();
         citylist.add("请选择市");
         int k = 0;
@@ -295,10 +280,11 @@ public class WithdrawalsAddActivity extends BaseInfoActivity implements IWithdra
         for (int i = 0; i < city_list_selected.size(); i++) {
             WithdrawalsCityBean.ClistBean regionListBean = city_list_selected.get(i);
             citylist.add(regionListBean.getName());
-            if (regionListBean.getId().equals(cityID) && isfrist == 1)
+            if (regionListBean.getId().equals(cityID) && isfrist == 0)
                 k = i + 1;
         }
         city_adapter.notifyDataSetChanged();
         spinner_city.setSelection(k);
+        isfrist++;
     }
 }
