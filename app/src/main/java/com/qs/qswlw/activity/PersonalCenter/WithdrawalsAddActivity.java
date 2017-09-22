@@ -104,8 +104,7 @@ public class WithdrawalsAddActivity extends BaseInfoActivity implements IWithdra
             id1 = Integer.parseInt(id);
             withdrawalsAddPersenter.getdata(MyApplication.TOKEN, id1);
         } else {
-            id1 = 0;
-            // withdrawalsAddPersenter.getdata(MyApplication.TOKEN, 0);
+             withdrawalsAddPersenter.getdata(MyApplication.TOKEN, 0);
         }
 
     }
@@ -311,15 +310,17 @@ public class WithdrawalsAddActivity extends BaseInfoActivity implements IWithdra
     @Override
     public void setdata(WithdrawalsAddBean withdrawalsAddBean) {
         WithdrawalsAddBean.InfoBean info = withdrawalsAddBean.getInfo();
-        edt_withdrawalsadd_name.setText(info.getName());
-        edt_withdrawalsadd_card.setText(info.getCard());
-        edt_withdrawalsadd_number.setText(info.getNumber());
+        if(info!=null){
+            edt_withdrawalsadd_name.setText(info.getName());
+            edt_withdrawalsadd_card.setText(info.getCard());
+            edt_withdrawalsadd_number.setText(info.getNumber());
+            region = info.getRegion();//省得id
+            cityID = info.getCity();//市的id
+            cardxy = info.getCardxy();
+        }
         //省级列表
         clist = withdrawalsAddBean.getClist();
         provincelist.add("请选择开户行所在省");
-        region = info.getRegion();//省得id
-        cityID = info.getCity();//市的id
-        cardxy = info.getCardxy();
         int k = 0;
         for (int i = 0; i < clist.size(); i++) {
             provincelist.add(clist.get(i).getName());
