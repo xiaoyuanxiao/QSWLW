@@ -35,6 +35,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".activity.PersonalCenter.city.CitySelectActivity"/>
+        <activity android:name=".activity.SplashActivity"/>
         <activity android:name=".activity.PersonalCenter.city.HarvestAddressListActivity"/>
         <activity android:name=".activity.PersonalCenter.ImproveDocumentationActivity"
             android:windowSoftInputMode="adjustUnspecified|stateHidden"/>

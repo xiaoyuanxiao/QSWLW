@@ -46,6 +46,7 @@ import com.qs.qswlw.view.imageswitchview.Image3DView;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Observable;
 
 /**
  * Created by 小羽 on 2017/3/22.
@@ -64,13 +65,13 @@ public class MainActivity extends BaseActivity implements IMainView {
     private View alertview;
     private Button btn_dialog;
     private ImageView iv_setting_main;
-    private ImageView iv_ranking_main,iv_main_avater;
+    private ImageView iv_ranking_main, iv_main_avater;
     private LinearLayout ll_footview_union;
     private RadioButton rb_main_goodprojects, rb_main_media, rb_main_mall, rb_main_union, rb_main_WitnessChinaBusiness, rb_main_Win, rb_main_luckgame, rb_main_funtime;
     private WebView webview;
     private Intent intent;
     private PopupWindow popupWindow;
-    private LinearLayout ll_ranking_popup,main_ll_avater;
+    private LinearLayout ll_ranking_popup, main_ll_avater;
 
     ArrayList<ChinaBean> listtest;
     ArrayList<String> enlist;
@@ -82,6 +83,7 @@ public class MainActivity extends BaseActivity implements IMainView {
     AngelAdapter angelAdapter;
     LuckAdapter luckAdapter;
     ArrayList<View> pagelist = new ArrayList<>();
+    public static Observable observable = new Observable();
 
     @Override
     public void setAlertList(AlertBean title) {
@@ -100,7 +102,7 @@ public class MainActivity extends BaseActivity implements IMainView {
         // unionList.invalidate();
         imageSwitchView.scrollToNext();
         Log.d("TAG", "-------setUnionList---");
-
+       // observable.notifyObservers();
     }
 
     @Override
@@ -153,6 +155,8 @@ public class MainActivity extends BaseActivity implements IMainView {
 
     @Override
     public Integer initView() {
+//        Intent intent = new Intent(this, SplashActivity.class);
+//        startActivity(intent);
         return R.layout.activity_main;
     }
 
@@ -161,7 +165,6 @@ public class MainActivity extends BaseActivity implements IMainView {
     public void initfindviewByid() {
         LoginBean.UserinfoBean userInfo = UserManage.getInstance().getUserInfo(this);
         RegisterBean registerUserInfo = UserManage.getInstance().getRegisterUserInfo(this);
-
         iv_setting_main = (ImageView) findViewById(R.id.iv_setting_main);
         imageSwitchView = (Image3DSwitchView) findViewById(R.id.image_switch_view);
         benefitList = (Image3DView) findViewById(R.id.benefitList);
@@ -261,7 +264,7 @@ public class MainActivity extends BaseActivity implements IMainView {
             public void onClick(View view) {
 //                Intent intent = new Intent(MainActivity.this, RankingActivity.class);
 //                intent.putExtra("footview", "unionranking");
-                Intent intent = new Intent(MainActivity.this,UnionRankingActivity.class);
+                Intent intent = new Intent(MainActivity.this, UnionRankingActivity.class);
                 startActivity(intent);
             }
         });
@@ -359,7 +362,7 @@ public class MainActivity extends BaseActivity implements IMainView {
                 finish();
                 break;
             case R.id.iv_ranking_main:
-               // startActivity(new Intent(this, RankingActivity.class));
+                // startActivity(new Intent(this, RankingActivity.class));
                 showPw(iv_ranking_main);
                 break;
             case R.id.rb_main_goodprojects:
@@ -395,10 +398,11 @@ public class MainActivity extends BaseActivity implements IMainView {
                 startActivity(this.intent);
                 break;
             case R.id.ll_ranking_popup:
-             //   startActivity(new Intent(MainActivity.this,MainRankingActivity.class));
+                //   startActivity(new Intent(MainActivity.this,MainRankingActivity.class));
                 break;
         }
     }
+
     private void showPw(ImageView v) {
         //加载布局
         LinearLayout layout = (LinearLayout) LayoutInflater.from(this).inflate(
@@ -412,7 +416,7 @@ public class MainActivity extends BaseActivity implements IMainView {
         popupWindow.setBackgroundDrawable(new BitmapDrawable(null, ""));
         WindowManager manager = (WindowManager) getSystemService(Context.WINDOW_SERVICE);
         //xoff,yoff基于anchor的左下角进行偏移。
-        popupWindow.showAtLocation(v, Gravity.TOP|Gravity.RIGHT,10,120);
+        popupWindow.showAtLocation(v, Gravity.TOP | Gravity.RIGHT, 10, 120);
         ll_ranking_popup.setOnClickListener(this);
     }
 
