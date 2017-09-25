@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/ll_top"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:orientation="vertical">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:scaleType="fitXY"
+                android:src="@mipmap/bg_01" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="(消费金豆)总额度"
+                    android:textColor="@color/white"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/tv_consumptionlimit_tagold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="18"
+                    android:textColor="@color/white"
+                    android:textSize="18sp" />
+            </LinearLayout>
+
+        </FrameLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@mipmap/zibg"
+            android:padding="12dp">
+
+            <TextView
+                android:id="@+id/tv_consumptionlimit_one"
+                style="@style/tv_standard"
+                android:text="剩余消费金豆额度：15" />
+
+            <TextView
+                android:id="@+id/tv_consumptionlimit_two"
+                style="@style/tv_standard"
+                android:layout_below="@+id/tv_consumptionlimit_one"
+                android:layout_marginTop="8dp"
+                android:text="已用消费金豆额度：19" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_below="@+id/tv_consumptionlimit_two"
+                android:orientation="horizontal">
+                <TextView
+                    style="@style/tv_standard"
+                    android:text="消费金豆额度明细：" />
+
+                <TextView
+                    android:id="@+id/tv_consumptionlimit_three"
+                    style="@style/tv_standard"
+                    android:background="@drawable/corner_gray"
+                    android:text="类型" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_click"
+                android:layout_width="58dp"
+                android:layout_height="58dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerInParent="true"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/fillet"
+                android:orientation="vertical"
+                android:padding="3dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="3dp"
+                    android:text="充 值"
+                    android:textColor="#cdb2b6"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="消费金豆"
+                    android:textColor="#cdb2b6"
+                    android:textSize="10sp" />
+            </LinearLayout>
+        </RelativeLayout>
+        <LinearLayout
+            android:id="@+id/ll_recordlist"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/fg_unionranking"
+            android:orientation="horizontal"
+            android:padding="5dp">
+
+            <TextView
+                style="@style/tv_harvestaddress_weight"
+                android:text="日期" />
+
+            <TextView
+                style="@style/tv_harvestaddress_weight"
+                android:text="充值金额" />
+
+            <TextView
+                style="@style/tv_harvestaddress_weight"
+                android:text="获得额度" />
+
+            <TextView
+                style="@style/tv_harvestaddress_weight"
+                android:text="收到消费豆" />
+
+            <TextView
+                style="@style/tv_harvestaddress_weight"
+                android:text="余额" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <com.qs.qswlw.view.SwipeRefreshView
+        android:id="@+id/lv_consumptionlimit_sw"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ListView
+            android:id="@+id/lv_consumptionlimit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:divider="@null"></ListView>
+    </com.qs.qswlw.view.SwipeRefreshView>
+
+</LinearLayout>

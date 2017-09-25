@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:padding="6dp">
+
+    <TextView
+        android:id="@+id/tv_item_consumptionlimit_one"
+        style="@style/tv_harvestaddress_weight"
+        android:text="1017-09-08 14:05:03"/>
+    <TextView
+        android:id="@+id/tv_item_consumptionlimit_two"
+        style="@style/tv_harvestaddress_weight"
+        android:text="0"/>
+    <TextView
+        android:id="@+id/tv_item_consumptionlimit_three"
+        style="@style/tv_harvestaddress_weight"
+        android:text="0"/>
+    <TextView
+        android:id="@+id/tv_item_consumptionlimit_four"
+        style="@style/tv_harvestaddress_weight"
+        android:text="30"/>
+    <TextView
+        android:id="@+id/tv_item_consumptionlimit_five"
+        style="@style/tv_harvestaddress_weight"
+        android:text="6500.00"/>
+</LinearLayout>

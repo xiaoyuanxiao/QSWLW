@@ -3,6 +3,7 @@ package com.qs.qswlw.mynet;
 
 import com.qs.qswlw.bean.AngelRankingBean;
 import com.qs.qswlw.bean.BusinessTurnoverBean;
+import com.qs.qswlw.bean.ConsumptionLimitBean;
 import com.qs.qswlw.bean.ConsumptionRecordBean;
 import com.qs.qswlw.bean.EntrepreneurialDialogBean;
 import com.qs.qswlw.bean.EntrepreneurialIncentiveBean;
@@ -204,7 +205,12 @@ public interface MyRetroService {
     @GET("index.php?m=Appapi&c=Single&a=shop_review_edit")
     Observable<MainBean<MerchantAuditClickBean>> getMerchantAuditClickData(@Query("token") String token, @Query("id") int id);
 
-
+    /**
+     * 消费金豆额度
+     */
+    @FormUrlEncoded
+    @POST("index.php?m=Appapi&c=Taxgold&a=my_taxgold")
+    Observable<MainBean<ConsumptionLimitBean>> getConsumptionLimitData(@Field("token") String token,@Field("p") int p);
     /**
      * 商家营业额
      */

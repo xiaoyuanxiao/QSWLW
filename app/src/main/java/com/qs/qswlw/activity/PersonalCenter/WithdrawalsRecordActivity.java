@@ -196,4 +196,8 @@ public class WithdrawalsRecordActivity extends BaseInfoActivity {
         popupWindow.showAtLocation(v, Gravity.RIGHT | Gravity.TOP, 0, 100);
 
     }
+
+    public void setFragmentdata(int i) {
+        showFragment(fragments.get(i));
+    }
 }

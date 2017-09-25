@@ -14,6 +14,7 @@ import android.widget.TextView;
 import com.qs.qswlw.MyApplication;
 import com.qs.qswlw.R;
 import com.qs.qswlw.activity.PersonalCenter.WithdrawalsAddActivity;
+import com.qs.qswlw.activity.PersonalCenter.WithdrawalsRecordActivity;
 import com.qs.qswlw.bean.MainBean;
 import com.qs.qswlw.bean.WithDrawalsRecordBean;
 import com.qs.qswlw.mynet.HttpSubCribe;
@@ -165,15 +166,22 @@ public class WithdrawalsRecordAdapter extends BaseListAdapter<WithDrawalsRecordB
                 String msg = mainBean.getMsg();
                 ToastUtils.showToast(msg);
                 if (mainBean.getSucc() == 1) {
-                    data.remove(position);
-                    notifyDataSetChanged();
+                    if (context instanceof WithdrawalsRecordActivity)
+                    {
+                        ((WithdrawalsRecordActivity)context).setFragmentdata(0);
+                    }
+//                    Intent intent = new Intent(context, WithdrawalsRecordActivity.class);
+//                    ((Activity) context).startActivityForResult(intent,100);
+                    //这里不刷新自己的数据了，直接去另一个fragment里面刷新数据，去WithDrawalsRecordApplyingFragment
+//                    data.remove(position);
+//                    notifyDataSetChanged();
                 }
 
             }
 
             @Override
             public Observable<MainBean> getObservable(MyRetroService retrofit) {
-                return retrofit.PostWithdrawaslRecall(token, wid);
+                return retrofit.PostPostWithdrawalsFailedResubmit(token, wid);
             }
         });
 

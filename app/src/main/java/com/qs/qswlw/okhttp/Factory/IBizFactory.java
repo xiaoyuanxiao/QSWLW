@@ -2,6 +2,7 @@ package com.qs.qswlw.okhttp.Factory;
 
 import com.qs.qswlw.okhttp.Moudle.BizAngelRanking;
 import com.qs.qswlw.okhttp.Moudle.BizBusinessTurnover;
+import com.qs.qswlw.okhttp.Moudle.BizConsumptionLimit;
 import com.qs.qswlw.okhttp.Moudle.BizConsumptionRecord;
 import com.qs.qswlw.okhttp.Moudle.BizEntrepreneurial;
 import com.qs.qswlw.okhttp.Moudle.BizGoodProduct;
@@ -29,6 +30,7 @@ import com.qs.qswlw.okhttp.Moudle.BizWithdrawalsCity;
 import com.qs.qswlw.okhttp.Moudle.BizWithdrawalsFailedModify;
 import com.qs.qswlw.okhttp.Moudle.IAngelRankingBiz;
 import com.qs.qswlw.okhttp.Moudle.IBusinessTurnoverBiz;
+import com.qs.qswlw.okhttp.Moudle.IConsumptionLimitBiz;
 import com.qs.qswlw.okhttp.Moudle.IConsumptionRecordBiz;
 import com.qs.qswlw.okhttp.Moudle.IEntrepreneurialBiz;
 import com.qs.qswlw.okhttp.Moudle.IImproveCityBiz;
@@ -152,5 +154,8 @@ public class IBizFactory {
     }
     public static IWithdrawalsFailedModifyBiz getWithdrawalsFailedModifyList(){
         return BizWithdrawalsFailedModify.getInstans();
+    }
+    public static IConsumptionLimitBiz getConsumptionLimitList(){
+        return BizConsumptionLimit.getInstans();
     }
 }
