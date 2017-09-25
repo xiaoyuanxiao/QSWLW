@@ -221,6 +221,14 @@ public interface MyRetroService {
     Observable<MainBean<ConsumptionLimitRechargeBean>> getConsumptionLimitRechargeData(@Field("token") String token,@Field("recharge_type") String recharge_type);
 
     /**
+     * 消费金豆额度充值提交
+     */
+    @FormUrlEncoded
+    @POST("index.php?m=Appapi&c=Taxgold&a=do_get_money")
+    Observable<MainBean> PostConsumptionLimitRecharge(@Field("token") String token,@Field("ratio") String ratio,@Field("none") String none,@Field("money") String money,
+                                                      @Field("recharge_type") String recharge_type,@Field("remittance") File remittance);
+
+    /**
      * 商家营业额
      */
     @FormUrlEncoded

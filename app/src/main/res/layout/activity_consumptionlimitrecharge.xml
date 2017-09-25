@@ -88,7 +88,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="left"
-                    android:text="汇入"
+                    android:text="汇入银行"
                     android:background="@drawable/corners"
                     android:textColor="@color/black"
                     android:textSize="11sp" />
@@ -166,7 +166,7 @@
                 android:background="@color/view" />
 
             <Button
-                android:id="@+id/btn_sonsumption_confirm"
+                android:id="@+id/btn_onsumptionlimitrecharge_confirm"
                 android:layout_width="match_parent"
                 android:layout_height="35dp"
                 android:layout_margin="10dp"

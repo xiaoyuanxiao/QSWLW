@@ -1,6 +1,8 @@
 package com.qs.qswlw.activity.PersonalCenter;
 
 import android.annotation.TargetApi;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Build;
@@ -9,12 +11,17 @@ import android.provider.MediaStore;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.qs.qswlw.MyApplication;
 import com.qs.qswlw.R;
 import com.qs.qswlw.bean.ConsumptionLimitRechargeBean;
+import com.qs.qswlw.bean.MainBean;
+import com.qs.qswlw.mynet.HttpSubCribe;
+import com.qs.qswlw.mynet.MyRetroService;
 import com.qs.qswlw.mynet.ReHttpUtils;
 import com.qs.qswlw.okhttp.Iview.IConsumptionLimitRechargeView;
 import com.qs.qswlw.okhttp.Presenter.ConsumptionLimitRechargePresenter;
@@ -25,6 +32,8 @@ import com.qs.qswlw.view.GenderPopupWindow;
 import java.io.File;
 import java.util.List;
 
+import rx.Observable;
+
 /**
  * Created by xiaoyu on 2017/9/25.
  */
@@ -32,13 +41,16 @@ import java.util.List;
 public class ConsumptionLimitRechargeActivity extends BaseInfoActivity implements IConsumptionLimitRechargeView {
     private ConsumptionLimitRechargePresenter consumptionLimitRechargePresenter = new ConsumptionLimitRechargePresenter(this);
     private ImageView iv_consumptionlimitrecharge_one, iv_consumptionlimitrecharge_two, iv_consumptionlimitrecharge_three;
-    private Button btn_selectorfile;
+    private Button btn_selectorfile,btn_confirm;
     private GenderPopupWindow menuWindow;
     private static final int CAMERA = 2003;
     private static final int CHOOSE_PICTURE = 2004;
     private Uri imageUri;
     private File file;
     private ImageView iv_consumption;
+    private TextView tv_consumptionlimitrecharge_style;
+    private EditText edt_consumptionlimitrecharge_one,edt_consumptionlimitrecharge_two;
+    private String recharge_type;
 
     @Override
     public View setConetnView() {
@@ -47,7 +59,11 @@ public class ConsumptionLimitRechargeActivity extends BaseInfoActivity implement
         iv_consumptionlimitrecharge_two = (ImageView) inflate.findViewById(R.id.iv_consumptionlimitrecharge_two);
         iv_consumptionlimitrecharge_three = (ImageView) inflate.findViewById(R.id.iv_consumptionlimitrecharge_three);
         btn_selectorfile = (Button) inflate.findViewById(R.id.btn_selectorfile);
+        btn_confirm = (Button) inflate.findViewById(R.id.btn_onsumptionlimitrecharge_confirm);
         iv_consumption = (ImageView) inflate.findViewById(R.id.iv_consumption);
+        tv_consumptionlimitrecharge_style = (TextView) inflate.findViewById(R.id.tv_consumptionlimitrecharge_style);
+        edt_consumptionlimitrecharge_one = (EditText) inflate.findViewById(R.id.edt_consumptionlimitrecharge_one);
+        edt_consumptionlimitrecharge_two = (EditText) inflate.findViewById(R.id.edt_consumptionlimitrecharge_two);
         return inflate;
     }
 
@@ -67,7 +83,12 @@ public class ConsumptionLimitRechargeActivity extends BaseInfoActivity implement
     public void setOnclick() {
         super.setOnclick();
         btn_selectorfile.setOnClickListener(this);
+        btn_confirm.setOnClickListener(this);
+        tv_consumptionlimitrecharge_style.setOnClickListener(this);
     }
+
+
+
 
     @Override
     public void onClick(View v) {
@@ -76,8 +97,60 @@ public class ConsumptionLimitRechargeActivity extends BaseInfoActivity implement
             case R.id.btn_selectorfile:
                 showPW();
                 break;
+            case R.id.btn_onsumptionlimitrecharge_confirm:
+                String ratio = tv_consumptionlimitrecharge_style.getText().toString();
+                String none = edt_consumptionlimitrecharge_one.getText().toString();
+                String money = edt_consumptionlimitrecharge_two.getText().toString();
+                postData(MyApplication.TOKEN,ratio,none,money,recharge_type,file);
+                break;
+            case R.id.tv_consumptionlimitrecharge_style:
+                showDialog();
+                break;
         }
     }
+
+    private void showDialog() {
+         /*
+         * 设置单选items
+         * */
+        final String[] items = {"汇入招行","汇入其他银行","刷POS机"};
+        final AlertDialog.Builder builder = new AlertDialog.Builder(this);//内部使用构建者的设计模式
+
+        builder.setSingleChoiceItems(items, -1,new DialogInterface.OnClickListener() {//第二个参数是设置默认选中哪一项-1代表默认都不选
+
+
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                tv_consumptionlimitrecharge_style.setText(items[which]);
+                dialog.dismiss();
+            }
+        });
+
+        builder.setCancelable(false);//设置dialog只能通过点击Dialog上的按钮退出，不能通过回退按钮退出关闭Dialog
+        builder.create().show();//创建对象
+    }
+
+    private void postData(final String token, final String ratio, final String none, final String money, final String recharge_type, final File remittance) {
+        ReHttpUtils.instans().httpRequest(new HttpSubCribe<MainBean>() {
+
+            @Override
+            public void onError(Throwable e) {
+            }
+
+            @Override
+            public void onNext(MainBean mainBean) {
+                ToastUtils.showToast(mainBean.getMsg());
+
+            }
+
+            @Override
+            public Observable<MainBean> getObservable(MyRetroService retrofit) {
+                return retrofit.PostConsumptionLimitRecharge(token,ratio,none,money,recharge_type,remittance);
+            }
+        });
+
+    }
+
 
     private void showPW() {
         menuWindow = new GenderPopupWindow(this, new MyOnClickListener());
@@ -138,7 +211,7 @@ public class ConsumptionLimitRechargeActivity extends BaseInfoActivity implement
 
     @Override
     public void setdata(ConsumptionLimitRechargeBean consumptionLimitRechargeBean) {
-
+        recharge_type = consumptionLimitRechargeBean.getRecharge_type();
         List<ConsumptionLimitRechargeBean.GoodsNumBean> goods_num = consumptionLimitRechargeBean.getGoods_num();
         Glide.with(this).load(ReHttpUtils.getBaseUrl() + goods_num.get(0).getOriginal_img()).into(iv_consumptionlimitrecharge_one);
         Glide.with(this).load(ReHttpUtils.getBaseUrl() + goods_num.get(1).getOriginal_img()).into(iv_consumptionlimitrecharge_two);
