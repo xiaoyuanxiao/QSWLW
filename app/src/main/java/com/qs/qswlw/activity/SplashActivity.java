@@ -5,15 +5,18 @@ import android.widget.ImageView;
 
 import com.qs.qswlw.R;
 
+import java.util.Observer;
+
 /**
  * Created by xiaoyu on 2016/4/1.
  */
-public class SplashActivity extends BaseActivity {
+public class SplashActivity extends BaseActivity implements Observer {
     private ImageView iv_splash;
 
     @Override
     public Object initView() {
-      //  MainActivity.observable.addObserver(this);
+        MainActivity.observable.addObserver(this);
+        System.out.println("=================SplashActivity===");
         View inflate = View.inflate(this, R.layout.activity_splash, null);
         iv_splash = (ImageView) inflate.findViewById(R.id.iv_splash);
         return inflate;
@@ -21,7 +24,7 @@ public class SplashActivity extends BaseActivity {
 
     @Override
     protected void onDestroy() {
-      //  MainActivity.observable.deleteObserver(this);
+        MainActivity.observable.deleteObserver(this);
         super.onDestroy();
     }
 
@@ -40,8 +43,9 @@ public class SplashActivity extends BaseActivity {
 
     }
 
-//    @Override
-//    public void update(Observable observable, Object o) {
-//        finish();
-//    }
+    @Override
+    public void update(java.util.Observable observable, Object o) {
+        System.out.println("=================update===");
+        finish();
+    }
 }

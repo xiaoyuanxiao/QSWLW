@@ -52,14 +52,25 @@ import java.util.Observable;
  * Created by 小羽 on 2017/3/22.
  */
 public class MainActivity extends BaseActivity implements IMainView {
-    private Image3DSwitchView imageSwitchView;
-
+    public static Observable observable = new Observable();
     List<Maindatabean.Goods> chlist;
     List<Maindatabean.Shop> unlist;
     List<Maindatabean.Area> belist;
     List<Maindatabean.Salema> anlist;
     List<LuckBean> lulist;
     AlertBean allist;
+    ArrayList<ChinaBean> listtest;
+    ArrayList<String> enlist;
+    MytestAdapter myDataAdapter;
+    EntrepAdapter entrepAdapter;
+    ChinaAdapter chinaAdapter;
+    UnionAdapter unionAdapter;
+    BenefitAdapter benefitAdapter;
+    AngelAdapter angelAdapter;
+    LuckAdapter luckAdapter;
+    ArrayList<View> pagelist = new ArrayList<>();
+    MainPresenter mainPresenter = new MainPresenter(this);
+    private Image3DSwitchView imageSwitchView;
     private Image3DView benefitList, unionList, entrepList, angelList, chinaList, luckList;
     private TextView tv_dialog_index_title, tv_dialog_index_content, tv_dialog_index_name, tv_dialog_index_time;
     private View alertview;
@@ -72,18 +83,6 @@ public class MainActivity extends BaseActivity implements IMainView {
     private Intent intent;
     private PopupWindow popupWindow;
     private LinearLayout ll_ranking_popup, main_ll_avater;
-
-    ArrayList<ChinaBean> listtest;
-    ArrayList<String> enlist;
-    MytestAdapter myDataAdapter;
-    EntrepAdapter entrepAdapter;
-    ChinaAdapter chinaAdapter;
-    UnionAdapter unionAdapter;
-    BenefitAdapter benefitAdapter;
-    AngelAdapter angelAdapter;
-    LuckAdapter luckAdapter;
-    ArrayList<View> pagelist = new ArrayList<>();
-    public static Observable observable = new Observable();
 
     @Override
     public void setAlertList(AlertBean title) {
@@ -102,7 +101,8 @@ public class MainActivity extends BaseActivity implements IMainView {
         // unionList.invalidate();
         imageSwitchView.scrollToNext();
         Log.d("TAG", "-------setUnionList---");
-       // observable.notifyObservers();
+        observable.notifyObservers("这不重要");
+//        observable.notifyAll();
     }
 
     @Override
@@ -151,12 +151,10 @@ public class MainActivity extends BaseActivity implements IMainView {
         Log.d("TAG", "-------setBenefitList---");
     }
 
-    MainPresenter mainPresenter = new MainPresenter(this);
-
     @Override
     public Integer initView() {
-//        Intent intent = new Intent(this, SplashActivity.class);
-//        startActivity(intent);
+        Intent intent = new Intent(this, SplashActivity.class);
+        startActivity(intent);
         return R.layout.activity_main;
     }
 
