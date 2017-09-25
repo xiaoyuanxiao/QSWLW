@@ -151,6 +151,12 @@ public interface MyRetroService {
                                                      @Field("region") int region,@Field("city") int city,@Field("branch") String branch,@Field("bank_card") String bank_card);
 
     /**
+     * 重新提交提现
+     */
+    @FormUrlEncoded
+    @POST("index.php?m=Appapi&c=Bankroll&a=cash_fail_again_sub")
+    Observable<MainBean> PostPostWithdrawalsFailedResubmit(@Field("token") String token,@Field("wid") int wid);
+    /**
      * 我的银行卡列表
      */
     @FormUrlEncoded

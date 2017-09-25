@@ -57,6 +57,40 @@
             style="@style/tv_harvestaddress"
             android:layout_centerVertical="true"
             android:text="2017-04-01" />
+        <LinearLayout
+            android:id="@+id/ll_item_withdrawals"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:visibility="gone"
+            android:layout_alignParentRight="true">
+            <TextView
+                android:id="@+id/tv_itemll_withdrawalsrecord_modify"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@mipmap/goods_edit"
+                android:gravity="center_vertical"
+                android:text="修改信息"
+                android:textSize="9sp" />
+            <TextView
+                android:id="@+id/tv_itemll_withdrawalsrecord_resubmit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:drawableLeft="@mipmap/cj_c"
+                android:gravity="center_vertical"
+                android:text="重新提交"
+                android:textSize="9sp" />
+            <TextView
+                android:id="@+id/tv_itemll_withdrawalsrecord_recall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:drawableLeft="@mipmap/goods_del"
+                android:gravity="center_vertical"
+                android:text="撤回提现"
+                android:textSize="9sp" />
+        </LinearLayout>
 
         <TextView
             android:id="@+id/tv_item_withdrawalsrecord_modify"
@@ -64,8 +98,8 @@
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_centerInParent="true"
-            android:visibility="gone"
             android:drawableLeft="@mipmap/goods_edit"
+            android:visibility="gone"
             android:gravity="center_vertical"
             android:text="修改信息"
             android:textSize="9sp" />

@@ -51,8 +51,11 @@ public class SwipeRefreshView extends FrameLayout {
                         public boolean onTouch(View v, MotionEvent ev) {
                             switch (ev.getAction()) {
                                 case MotionEvent.ACTION_MOVE:
-                                    if (islast())
+                                    if (islast()) {
+                                        mFooterView.setVisibility(View.VISIBLE);
                                         mFooterView.setPadding(0, 0, 0, 0);
+                                    }
+
                                     break;
                                 case MotionEvent.ACTION_UP:
                                     if (canLoadMore()) {
@@ -132,12 +135,10 @@ public class SwipeRefreshView extends FrameLayout {
             return;
         isLoading = loading;
         if (isLoading) {
-            // 显示布局
-            //  mListView.addFooterView(mFooterView);
+
         } else {
             mFooterView.setPadding(0, -mFooterView.getMeasuredHeight(), 0, 0);
-            // 重置滑动的坐标
-
+            mFooterView.setVisibility(View.GONE);
         }
     }
 

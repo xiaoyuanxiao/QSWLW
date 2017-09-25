@@ -97,14 +97,14 @@ public class WithdrawalsAddActivity extends BaseInfoActivity implements IWithdra
         loadBankSpinner();
         if (modify != null) {
             int failId = Integer.parseInt(intent.getStringExtra("failId"));
-            withdrawalsFailedModifyPersenter.getdata(MyApplication.TOKEN,failId);
+            withdrawalsFailedModifyPersenter.getdata(MyApplication.TOKEN, failId);
             btn_withdrawalsadd_add.setText("确认信息");
         }
         if (id != null) {
             id1 = Integer.parseInt(id);
             withdrawalsAddPersenter.getdata(MyApplication.TOKEN, id1);
         } else {
-             withdrawalsAddPersenter.getdata(MyApplication.TOKEN, 0);
+            withdrawalsAddPersenter.getdata(MyApplication.TOKEN, 0);
         }
 
     }
@@ -124,7 +124,7 @@ public class WithdrawalsAddActivity extends BaseInfoActivity implements IWithdra
                 String account = edt_withdrawalsadd_card.getText().toString();
                 String cardnumber = edt_withdrawalsadd_number.getText().toString();
                 if (modify != null) {
-                    postModifyData(MyApplication.TOKEN, Integer.parseInt(modifyid),cname, getSpinerIds().get(0), Integer.parseInt(getSpinerIds().get(1)),
+                    postModifyData(MyApplication.TOKEN, Integer.parseInt(modifyid), cname, getSpinerIds().get(0), Integer.parseInt(getSpinerIds().get(1)),
                             Integer.parseInt(getSpinerIds().get(2)), account, cardnumber);
                 } else {
                     postData(MyApplication.TOKEN, id1, cname, getSpinerIds().get(0), Integer.parseInt(getSpinerIds().get(1)),
@@ -134,8 +134,19 @@ public class WithdrawalsAddActivity extends BaseInfoActivity implements IWithdra
         }
     }
 
-
-    private void postModifyData(final String token,final int id, final String cardholder, final String to_bank, final int region, final int city, final String branch,
+    /**
+     * 提现失败修改
+     *
+     * @param token
+     * @param id
+     * @param cardholder
+     * @param to_bank
+     * @param region
+     * @param city
+     * @param branch
+     * @param bank_card
+     */
+    private void postModifyData(final String token, final int id, final String cardholder, final String to_bank, final int region, final int city, final String branch,
                                 final String bank_card) {
         ReHttpUtils.instans().httpRequest(new HttpSubCribe<MainBean>() {
             @Override
@@ -145,16 +156,22 @@ public class WithdrawalsAddActivity extends BaseInfoActivity implements IWithdra
 
             @Override
             public void onNext(MainBean mainBean) {
+                System.out.println("=========================" + mainBean);
                 String msg = mainBean.getMsg();
                 ToastUtils.showToast(msg);
                 if (mainBean.getSucc() == 1) {
+                  Intent intent = new Intent();
+                    intent.putExtra("isok", true);
+                    intent.putExtra("id", id);
+                    setResult(200, intent);
+                    //这里才是失败修改调的接口
                     finish();
                 }
             }
 
             @Override
             public Observable<MainBean> getObservable(MyRetroService retrofit) {
-                return retrofit.PostWithdrawalsFailedModify(token,id, cardholder, to_bank, region, city, branch, bank_card);
+                return retrofit.PostWithdrawalsFailedModify(token, id, cardholder, to_bank, region, city, branch, bank_card);
             }
         });
 
@@ -184,8 +201,13 @@ public class WithdrawalsAddActivity extends BaseInfoActivity implements IWithdra
             @Override
             public void onNext(MainBean mainBean) {
                 String msg = mainBean.getMsg();
+                System.out.println("===========postData==============" + mainBean);
                 ToastUtils.showToast(msg);
                 if (mainBean.getSucc() == 1) {
+                    Intent intent = new Intent();
+                 /*   intent.putExtra("isok", true);
+                    intent.putExtra("id", id);*/
+                    setResult(200, intent);//不是在这 这是处理银行卡信息
                     finish();
                 }
             }
@@ -310,7 +332,7 @@ public class WithdrawalsAddActivity extends BaseInfoActivity implements IWithdra
     @Override
     public void setdata(WithdrawalsAddBean withdrawalsAddBean) {
         WithdrawalsAddBean.InfoBean info = withdrawalsAddBean.getInfo();
-        if(info!=null){
+        if (info != null) {
             edt_withdrawalsadd_name.setText(info.getName());
             edt_withdrawalsadd_card.setText(info.getCard());
             edt_withdrawalsadd_number.setText(info.getNumber());

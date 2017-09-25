@@ -36,8 +36,9 @@ public class WithDrawalsRecordCompletedFragment extends BaseFragment implements 
 
 
     public static WithDrawalsRecordCompletedFragment newInstance() {
-        return  new WithDrawalsRecordCompletedFragment();
+        return new WithDrawalsRecordCompletedFragment();
     }
+
     public static WithDrawalsRecordCompletedFragment newInstance(String type) {//等下
         WithDrawalsRecordCompletedFragment withDrawalsRecordCompletedFragment = new WithDrawalsRecordCompletedFragment();
         withDrawalsRecordCompletedFragment.setType(type);
@@ -48,6 +49,11 @@ public class WithDrawalsRecordCompletedFragment extends BaseFragment implements 
         this.Gold_type = Gold_type;
     }
 
+    public void adapterNoty() {
+        System.out.println("==========adapterNoty=========" + Gold_type);
+        page = 1;
+        withDrawalsRecordPersenter.getdata(MyApplication.TOKEN, page, Gold_type);//不设置Gold_type怎么知道是哪个h,因为你设置了这个啊
+    }
 
     @Override
     View initView() {
@@ -68,13 +74,13 @@ public class WithDrawalsRecordCompletedFragment extends BaseFragment implements 
             tv_item_withdrawals_headview.setText("提现总金额：1000.00");
             withdrawalsRecordCompletedAdapter = new WithdrawalsRecordCompletedAdapter(getActivity(), listBeen);
             lv_withdrawalsrecord.setAdapter(withdrawalsRecordCompletedAdapter);
-        }else if(Gold_type.equals(PROCESSING)){
+        } else if (Gold_type.equals(PROCESSING)) {
             tv_item_withdrawals_headview.setText("提现总金额：尚未有提现完成记录");
             withdrawalsRecordCompletedAdapter = new WithdrawalsRecordCompletedAdapter(getActivity(), listBeen);
             lv_withdrawalsrecord.setAdapter(withdrawalsRecordCompletedAdapter);
-        }else if(Gold_type.equals(FAILED)){
+        } else if (Gold_type.equals(FAILED)) {
             tv_item_withdrawals_headview.setText("提现失败总金额：2000.00");
-            withdrawalsRecordAdapter = new WithdrawalsRecordAdapter(getActivity(),listBeen);
+            withdrawalsRecordAdapter = new WithdrawalsRecordAdapter(getActivity(), listBeen);
             lv_withdrawalsrecord.setAdapter(withdrawalsRecordAdapter);
 
         }
@@ -88,6 +94,7 @@ public class WithDrawalsRecordCompletedFragment extends BaseFragment implements 
         });
     }
 
+
     @Override
     protected void setOnclick() {
 
@@ -100,20 +107,27 @@ public class WithDrawalsRecordCompletedFragment extends BaseFragment implements 
 
     @Override
     public void setdata(WithDrawalsRecordBean withDrawalsRecordBean) {
+
         List<WithDrawalsRecordBean.ListBean> list = withDrawalsRecordBean.getList();
         swipeRefreshView.setLoading(false);
         if (list == null || list.size() == 0) {
             return;
         }
+        System.out.println("==========setdata=========" + Gold_type + "====page==="
+                + page + "====withDrawalsRecordBean=" + list.size());
+        for (WithDrawalsRecordBean.ListBean bean : list) {
+            System.out.println("==========getUser_up_fail_info=========" + bean.getUser_up_fail_info());
+        }
+        if (page == 1)
+            listBeen.clear();
         listBeen.addAll(list);
         if (Gold_type.equals(COMPLETED)) {
             withdrawalsRecordCompletedAdapter.notifyDataSetChanged();
-        }else if(Gold_type.equals(PROCESSING)){
+        } else if (Gold_type.equals(PROCESSING)) {
             withdrawalsRecordCompletedAdapter.notifyDataSetChanged();
-        }else if(Gold_type.equals(FAILED)){
+        } else if (Gold_type.equals(FAILED)) {
             withdrawalsRecordAdapter.notifyDataSetChanged();
         }
-
         page++;
     }
 

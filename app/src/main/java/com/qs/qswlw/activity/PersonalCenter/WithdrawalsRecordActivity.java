@@ -1,6 +1,7 @@
 package com.qs.qswlw.activity.PersonalCenter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.drawable.BitmapDrawable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -18,6 +19,7 @@ import com.qs.qswlw.fragment.WithDrawalsRecordApplyingFragment;
 import com.qs.qswlw.fragment.WithDrawalsRecordCompletedFragment;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 
 /**
@@ -80,6 +82,22 @@ public class WithdrawalsRecordActivity extends BaseInfoActivity {
 
     }
 
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        System.out.println("===========onActivityResult=======" + data);
+        if (data == null || !data.getBooleanExtra("isok", false))
+            return;
+        int id = data.getIntExtra("id", 0);
+        Iterator<Fragment> iterator = fragments.iterator();
+        while (iterator.hasNext()) {
+            Fragment next = iterator.next();
+            if (next.isVisible()) {
+                ((WithDrawalsRecordCompletedFragment) next).adapterNoty();
+
+            }
+        }
+    }
 
     /**
      * 显示fragment
@@ -109,7 +127,6 @@ public class WithdrawalsRecordActivity extends BaseInfoActivity {
             }
         }
     }
-
 
 
     @Override
