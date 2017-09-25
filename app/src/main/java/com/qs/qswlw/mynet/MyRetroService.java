@@ -4,6 +4,7 @@ package com.qs.qswlw.mynet;
 import com.qs.qswlw.bean.AngelRankingBean;
 import com.qs.qswlw.bean.BusinessTurnoverBean;
 import com.qs.qswlw.bean.ConsumptionLimitBean;
+import com.qs.qswlw.bean.ConsumptionLimitRechargeBean;
 import com.qs.qswlw.bean.ConsumptionRecordBean;
 import com.qs.qswlw.bean.EntrepreneurialDialogBean;
 import com.qs.qswlw.bean.EntrepreneurialIncentiveBean;
@@ -211,6 +212,14 @@ public interface MyRetroService {
     @FormUrlEncoded
     @POST("index.php?m=Appapi&c=Taxgold&a=my_taxgold")
     Observable<MainBean<ConsumptionLimitBean>> getConsumptionLimitData(@Field("token") String token,@Field("p") int p);
+
+    /**
+     * 消费金豆额度充值
+     */
+    @FormUrlEncoded
+    @POST("index.php?m=Appapi&c=Taxgold&a=get_money")
+    Observable<MainBean<ConsumptionLimitRechargeBean>> getConsumptionLimitRechargeData(@Field("token") String token,@Field("recharge_type") String recharge_type);
+
     /**
      * 商家营业额
      */

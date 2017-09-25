@@ -46,8 +46,6 @@ import java.util.List;
 
 import rx.Observable;
 
-import static com.qs.qswlw.R.id.pic_UploadBusinessLicense;
-
 
 /**
  * Created by xiaoyu on 2017/3/31.
@@ -99,7 +97,7 @@ public class ImproveDocumentationActivity extends BaseInfoActivity implements II
         tv_endTime = (TextView) inflate.findViewById(R.id.tv_endTime);
         iv_UploadBusinessLicense = (ImageView) inflate.findViewById(R.id.iv_UploadBusinessLicense);
         iv_Storefacade = (ImageView) inflate.findViewById(R.id.iv_Storefacade);
-        pic_uploadBusinessLicense = (ImageView) inflate.findViewById(pic_UploadBusinessLicense);
+        pic_uploadBusinessLicense = (ImageView) inflate.findViewById(R.id.pic_UploadBusinessLicense);
         pic_Storefacade = (ImageView) inflate.findViewById(R.id.pic_Storefacade);
         edt_improve_name = (EditText) inflate.findViewById(R.id.edt_improve_name);
         edt_improve_companyname = (EditText) inflate.findViewById(R.id.edt_improve_companyname);

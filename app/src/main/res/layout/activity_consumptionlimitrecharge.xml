@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rl_consumption"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/text_blue"
+                android:layout_gravity="center"
+                android:textSize="12sp"
+                android:layout_margin="8dp"
+                android:text="让产业智能形成片，让供应系统形成链"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/text_blue"
+                android:textSize="12sp"
+                android:layout_gravity="center"
+                android:text="资源共享，同舟共济！"/>
+            <LinearLayout style="@style/ll_consumptionrecord">
+
+                <TextView
+                    android:layout_width="60dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="8dp"
+                    android:gravity="right"
+                    android:text="充值金额："
+                    android:textColor="@color/black"
+                    android:textSize="11sp" />
+
+                <EditText
+                    android:id="@+id/edt_consumptionlimitrecharge_one"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/corners"
+                    android:hint="充值金额"
+                    android:textSize="11sp" />
+            </LinearLayout>
+
+            <LinearLayout style="@style/ll_consumptionrecord">
+
+                <TextView
+                    android:layout_width="60dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="8dp"
+                    android:gravity="right"
+                    android:text="获得额度:"
+                    android:textColor="@color/black"
+                    android:textSize="11sp" />
+
+                <EditText
+                    android:id="@+id/edt_consumptionlimitrecharge_two"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/corners"
+                    android:hint="获得额度"
+                    android:textColor="@color/black"
+                    android:textSize="11sp" />
+            </LinearLayout>
+
+            <LinearLayout style="@style/ll_consumptionrecord">
+
+                <TextView
+                    android:layout_width="60dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="8dp"
+                    android:gravity="right"
+                    android:text="汇款人:"
+                    android:textColor="@color/black"
+                    android:textSize="11sp" />
+
+                <TextView
+                    android:id="@+id/tv_consumptionlimitrecharge_style"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="left"
+                    android:text="汇入"
+                    android:background="@drawable/corners"
+                    android:textColor="@color/black"
+                    android:textSize="11sp" />
+            </LinearLayout>
+
+            <LinearLayout style="@style/ll_consumptionrecord">
+
+                <TextView
+                    android:layout_width="60dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="8dp"
+                    android:gravity="right"
+                    android:text="发票凭证:"
+                    android:textColor="@color/black"
+                    android:textSize="11sp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/corners"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/btn_selectorfile"
+                        android:layout_width="60dp"
+                        android:layout_height="20dp"
+                        android:background="@drawable/corners_black"
+                        android:text="选取文件"
+                        android:textSize="8sp" />
+
+                    <ImageView
+                        android:id="@+id/iv_consumption"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginLeft="4dp"
+                        android:scaleType="fitXY"
+                        android:visibility="gone" />
+
+                    <TextView
+                        android:id="@+id/tv_isselect_consumptionrecord"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="6dp"
+                        android:text="未选择文件"
+                        android:textColor="@color/black"
+                        android:textSize="8sp" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="60dp"
+                android:layout_marginTop="1dp"
+                android:text="(仅支持图片类型)"
+                android:textColor="@color/black"
+                android:textSize="9sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="3dp"
+                android:layout_marginTop="15dp"
+                android:gravity="center_horizontal"
+                android:text="您将获得：消费金豆额度"
+                android:textColor="@color/black"
+                android:textSize="10sp" />
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="@color/view" />
+
+            <Button
+                android:id="@+id/btn_sonsumption_confirm"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:layout_margin="10dp"
+                android:background="@drawable/btn_corner"
+                android:text="提交"
+                android:textColor="@color/white"
+                android:textSize="12sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0.1dp"
+                    android:layout_weight="1"
+                    android:background="@color/view" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:text="中国好产品"
+                    android:textColor="#686868"
+                    android:textSize="10sp" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0.1dp"
+                    android:layout_weight="1"
+                    android:background="@color/view" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@color/view"
+                android:orientation="vertical"
+                android:layout_marginBottom="20dp"
+                android:padding="10dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/iv_consumptionlimitrecharge_one"
+                        android:layout_width="80dp"
+                        android:layout_height="120dp"
+                        android:scaleType="fitXY" />
+
+                    <ImageView
+                        android:id="@+id/iv_consumptionlimitrecharge_two"
+                        android:layout_width="80dp"
+                        android:layout_height="120dp"
+                        android:layout_marginLeft="8dp"
+                        android:scaleType="fitXY" />
+
+                    <ImageView
+                        android:id="@+id/iv_consumptionlimitrecharge_three"
+                        android:layout_width="80dp"
+                        android:layout_height="120dp"
+                        android:layout_marginLeft="8dp"
+                        android:scaleType="fitXY" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="5dp"
+                    android:text="热门产品，正在促销，火爆进行中"
+                    android:textColor="@color/red"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+</RelativeLayout>

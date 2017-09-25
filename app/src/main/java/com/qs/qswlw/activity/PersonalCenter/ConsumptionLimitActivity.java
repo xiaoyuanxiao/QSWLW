@@ -2,7 +2,9 @@ package com.qs.qswlw.activity.PersonalCenter;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -31,6 +33,7 @@ public class ConsumptionLimitActivity extends BaseInfoActivity implements IConsu
     private ConsumptionLimitAdapter consumptionLimitAdapter;
     private List<ConsumptionLimitBean.ListBean> listBeen;
     private ConsumptionLimitPersenter consumptionLimitPersenter = new ConsumptionLimitPersenter(this);
+    private LinearLayout ll_click;
 
     @Override
     public View setConetnView() {
@@ -38,6 +41,7 @@ public class ConsumptionLimitActivity extends BaseInfoActivity implements IConsu
         tv_consumptionlimit_three = (TextView) inflate.findViewById(R.id.tv_consumptionlimit_three);
         lv_consumptionlimit = (ListView) inflate.findViewById(R.id.lv_consumptionlimit);
         swipeRefreshView = (SwipeRefreshView) inflate.findViewById(R.id.lv_consumptionlimit_sw);
+        ll_click = (LinearLayout) inflate.findViewById(R.id.ll_click);
         return inflate;
     }
 
@@ -66,6 +70,7 @@ public class ConsumptionLimitActivity extends BaseInfoActivity implements IConsu
     public void setOnclick() {
         super.setOnclick();
         tv_consumptionlimit_three.setOnClickListener(this);
+        ll_click.setOnClickListener(this);
     }
 
     @Override
@@ -74,6 +79,10 @@ public class ConsumptionLimitActivity extends BaseInfoActivity implements IConsu
         switch (v.getId()){
             case R.id.tv_consumptionlimit_three:
                 showDidlog();
+                break;
+            case R.id.ll_click:
+                Intent intent = new Intent(this, ConsumptionLimitRechargeActivity.class);
+                startActivity(intent);
                 break;
         }
     }
