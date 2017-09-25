@@ -18,7 +18,7 @@ public class InvestRecordActivity extends BaseInfoActivity {
     public View setConetnView() {
         View inflate = View.inflate(this, R.layout.activity_investrecord, null);
         lv_investrecord = (ListView) inflate.findViewById(R.id.lv_investrecord);
-        return inflate;
+         return inflate;
     }
 
     @Override

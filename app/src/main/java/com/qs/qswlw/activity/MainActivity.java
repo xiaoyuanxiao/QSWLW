@@ -52,7 +52,13 @@ import java.util.Observable;
  * Created by 小羽 on 2017/3/22.
  */
 public class MainActivity extends BaseActivity implements IMainView {
-    public static Observable observable = new Observable();
+    static class MyObservable extends Observable {
+        public void setChanged() {
+            super.setChanged();
+        }
+    }
+
+    public static MyObservable observable = new MyObservable();
     List<Maindatabean.Goods> chlist;
     List<Maindatabean.Shop> unlist;
     List<Maindatabean.Area> belist;
@@ -101,8 +107,8 @@ public class MainActivity extends BaseActivity implements IMainView {
         // unionList.invalidate();
         imageSwitchView.scrollToNext();
         Log.d("TAG", "-------setUnionList---");
+        observable.setChanged();
         observable.notifyObservers("这不重要");
-//        observable.notifyAll();
     }
 
     @Override
