@@ -26,10 +26,10 @@ import java.util.List;
 
 public class ConsumptionLimitActivity extends BaseInfoActivity implements IConsumptionLimitView {
 
-    private TextView tv_consumptionlimit_three;
     SwipeRefreshView swipeRefreshView;
-    private ListView lv_consumptionlimit;
     int page = 1;
+    private TextView tv_consumptionlimit_three,tv_consumptionlimit_tagold;
+    private ListView lv_consumptionlimit;
     private ConsumptionLimitAdapter consumptionLimitAdapter;
     private List<ConsumptionLimitBean.ListBean> listBeen;
     private ConsumptionLimitPersenter consumptionLimitPersenter = new ConsumptionLimitPersenter(this);
@@ -38,10 +38,13 @@ public class ConsumptionLimitActivity extends BaseInfoActivity implements IConsu
     @Override
     public View setConetnView() {
         View inflate = View.inflate(this, R.layout.activity_consumptionlimit, null);
-        tv_consumptionlimit_three = (TextView) inflate.findViewById(R.id.tv_consumptionlimit_three);
         lv_consumptionlimit = (ListView) inflate.findViewById(R.id.lv_consumptionlimit);
+        View inflate1 = View.inflate(this, R.layout.item_head_consumptionlimit, null);
+        lv_consumptionlimit.addHeaderView(inflate1);
         swipeRefreshView = (SwipeRefreshView) inflate.findViewById(R.id.lv_consumptionlimit_sw);
         ll_click = (LinearLayout) inflate.findViewById(R.id.ll_click);
+        tv_consumptionlimit_three = (TextView) inflate1.findViewById(R.id.tv_consumptionlimit_three);
+        tv_consumptionlimit_tagold = (TextView) inflate1.findViewById(R.id.tv_consumptionlimit_tagold);
         return inflate;
     }
 
@@ -114,7 +117,9 @@ public class ConsumptionLimitActivity extends BaseInfoActivity implements IConsu
     @Override
     public void setdata(ConsumptionLimitBean consumptionLimitBean) {
         List<ConsumptionLimitBean.ListBean> list = consumptionLimitBean.getList();
+        ConsumptionLimitBean.ShopBean shop = consumptionLimitBean.getShop();
         swipeRefreshView.setLoading(false);
+        tv_consumptionlimit_tagold.setText(shop.getTagold());
         if (list == null || list.size() == 0) {
             ToastUtils.showToast("没有更多数据了");
             return;

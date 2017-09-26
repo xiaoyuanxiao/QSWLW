@@ -52,12 +52,6 @@ import java.util.Observable;
  * Created by 小羽 on 2017/3/22.
  */
 public class MainActivity extends BaseActivity implements IMainView {
-    static class MyObservable extends Observable {
-        public void setChanged() {
-            super.setChanged();
-        }
-    }
-
     public static MyObservable observable = new MyObservable();
     List<Maindatabean.Goods> chlist;
     List<Maindatabean.Shop> unlist;
@@ -164,7 +158,6 @@ public class MainActivity extends BaseActivity implements IMainView {
         return R.layout.activity_main;
     }
 
-
     @Override
     public void initfindviewByid() {
         LoginBean.UserinfoBean userInfo = UserManage.getInstance().getUserInfo(this);
@@ -189,7 +182,7 @@ public class MainActivity extends BaseActivity implements IMainView {
         main_ll_avater = (LinearLayout) findViewById(R.id.main_ll_avater);
         iv_main_avater = (ImageView) findViewById(R.id.iv_main_avater);
         imageSwitchView.setCurrentImage(0);
-        showDilog();
+   //     showDilog();
 
 //        if(userInfo!=null||registerUserInfo!=null){
 //            main_ll_avater.setVisibility(View.VISIBLE);
@@ -197,7 +190,6 @@ public class MainActivity extends BaseActivity implements IMainView {
 //            //   iv_main_avater.setImageResource();
 //        }
     }
-
 
     private void showDilog() {
         allist = new AlertBean();
@@ -428,6 +420,12 @@ public class MainActivity extends BaseActivity implements IMainView {
     protected void onDestroy() {
         super.onDestroy();
         //   imageSwitchView.clear();
+    }
+
+    static class MyObservable extends Observable {
+        public void setChanged() {
+            super.setChanged();
+        }
     }
 
     //┏┓　　　┏┓
