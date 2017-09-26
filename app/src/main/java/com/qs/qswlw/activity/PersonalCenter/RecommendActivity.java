@@ -12,7 +12,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.zxing.WriterException;
 import com.qs.qswlw.R;
@@ -117,7 +116,7 @@ public class RecommendActivity extends BaseInfoActivity implements View.OnLongCl
         super.onClick(v);
         switch (v.getId()) {
             case R.id.tv_titlebar_right:
-                startActivity(new Intent(this, RecommendedRecordsActivity.class));
+                startActivity(new Intent(this, RecommendedRecords1Activity.class));
                 break;
 
         }
