@@ -29,16 +29,29 @@ import java.util.List;
 public class RecordListActivity extends BaseInfoActivity implements IRecordListView {
 
 
+    int page = 1;
+    SwipeRefreshView swipeRefreshView;
+    String tv_recordlist_Text;
     private RelativeLayout rl_recordlist_left, rl_recordlist_right;
     private TextView tv_recordlist_left, tv_recordlist_right;
     private RecordListPresenter recordListPresenter = new RecordListPresenter(this);
     private ListView lv_recordlist;
-    int page = 1;
     private String type="model2";
-    private String is_go="1";
+    private String is_go="0";
     private RecordListAdapter recordListAdapter;
     private  List<RecordListBean> recordListBeanList;
-    SwipeRefreshView swipeRefreshView;
+//    /**
+//     *  上拉监听
+//     */
+//    private IXListViewLoadMore mLoadMoreListener = new IXListViewLoadMore() {
+//        @Override
+//        public void onLoadMore() {
+//            Toast.makeText(RecordListActivity.this, "上拉", Toast.LENGTH_SHORT).show();
+//            page++;
+//            recordListPresenter.getDataRefresh(MyApplication.TOKEN,page,type,is_go);
+//        }
+//    };
+
     @Override
     public View setConetnView() {
         View inflate = View.inflate(this, R.layout.activity_recordlist, null);
@@ -52,17 +65,6 @@ public class RecordListActivity extends BaseInfoActivity implements IRecordListV
 //        lv_recordlist.setPullLoadEnable(mLoadMoreListener);
         return inflate;
     }
-//    /**
-//     *  上拉监听
-//     */
-//    private IXListViewLoadMore mLoadMoreListener = new IXListViewLoadMore() {
-//        @Override
-//        public void onLoadMore() {
-//            Toast.makeText(RecordListActivity.this, "上拉", Toast.LENGTH_SHORT).show();
-//            page++;
-//            recordListPresenter.getDataRefresh(MyApplication.TOKEN,page,type,is_go);
-//        }
-//    };
 
     @Override
     public void initData() {
@@ -105,8 +107,6 @@ public class RecordListActivity extends BaseInfoActivity implements IRecordListV
                 break;
         }
     }
-
-    String tv_recordlist_Text;
 
     void showDialog(final String a) {
         final AlertDialog.Builder builder = new AlertDialog.Builder(this);

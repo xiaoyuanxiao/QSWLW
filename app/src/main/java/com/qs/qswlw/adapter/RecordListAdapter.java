@@ -42,9 +42,9 @@ public class RecordListAdapter extends BaseListAdapter<RecordListBean> {
             holder = (ViewHolder) view.getTag();
         }
         String is_go = recordListBean.getIs_go();
-        if ("1".equals(is_go)) {
+        if ("0".equals(is_go)) {
             holder.btn_ischecked_recordlist.setText("未审核");
-        } else if ("2".equals(is_go)) {
+        } else if ("1".equals(is_go)) {
             holder.btn_ischecked_recordlist.setText("已审核");
         }
         holder.tv_role_recordlist.setText("消费会员");

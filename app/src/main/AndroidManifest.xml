@@ -52,6 +52,8 @@
         <activity android:name=".activity.PersonalCenter.MyGoldenBeanActivity"/>
         <activity android:name=".activity.PersonalCenter.MyProfitActivity"/>
         <activity android:name=".activity.PersonalCenter.ConsumptionRecordActivity"/>
+        <activity android:name=".activity.PersonalCenter.RecommendedRecords1Activity"
+            android:windowSoftInputMode="adjustUnspecified|stateHidden"/>
         <activity android:name=".activity.PersonalCenter.RecordListActivity"/>
         <activity android:name=".activity.PersonalCenter.PromotionLuckDrawActivity"/>
         <activity android:name=".activity.PersonalCenter.EntrepreneurialDonationActivity"/>

@@ -6,8 +6,10 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.qs.qswlw.R;
 import com.qs.qswlw.bean.RecommendedRecordsBean;
+import com.qs.qswlw.mynet.ReHttpUtils;
 import com.qs.qswlw.utils.DateUtils;
 
 import java.util.List;
@@ -43,8 +45,10 @@ public class RecommendedRecordsAdapter extends BaseListAdapter<RecommendedRecord
         }else if(role.equals("10")){
             holder.tv_recommendrecord_role.setText("（商家）");
         }
-        holder.tv_recommendrecord_data.setText(DateUtils.string2date(recommendedRecordsBean.getReg_time(),"yyyy-MM-dd")+"");
-        //Glide.with(context).load(ReHttpUtils.getBaseUrl() + resultBean.get()).into(holder.iv_union_ranking);
+        if(recommendedRecordsBean.getHead_pic()!=null){
+            Glide.with(context).load(ReHttpUtils.getBaseUrl() + recommendedRecordsBean.getHead_pic()).into(holder.iv_recommendrecord_avater);
+        }
+        holder.tv_recommendrecord_data.setText(DateUtils.date2date(Long.parseLong(recommendedRecordsBean.getReg_time())*1000L));
         return view;
     }
 

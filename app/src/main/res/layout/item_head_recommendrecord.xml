@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/page_backgroup"
+        android:gravity="center"
+        android:padding="8dp">
+        <EditText
+            android:id="@+id/edt_recommendrecord_search"
+            android:layout_width="100dp"
+            android:layout_height="20dp"
+            android:background="@drawable/corner_black"
+            android:textSize="8sp" />
+        <Button
+            android:id="@+id/btn_recommendrecord_search"
+            android:layout_width="40dp"
+            android:layout_height="20dp"
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/corners_black"
+            android:text="查找"
+            android:textSize="8sp" />
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.1dp"
+        android:background="@color/view"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="10dp">
+        <TextView
+            style="@style/tv_harvestaddress_weight"
+            android:gravity="center_horizontal"
+            android:text="头像"/>
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+            <TextView
+                style="@style/tv_harvestaddress"
+                android:layout_gravity="center_horizontal"
+                android:text="会员昵称"/>
+            <TextView
+                style="@style/tv_harvestaddress"
+                android:layout_gravity="center_horizontal"
+                android:text="(类型)"/>
+        </LinearLayout>
+        <TextView
+            style="@style/tv_harvestaddress_weight"
+            android:gravity="center_horizontal"
+            android:text="推荐时间"/>
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.1dp"
+        android:background="@color/view"/>
+
+</LinearLayout>
