@@ -1,12 +1,8 @@
 package com.qs.qswlw.activity.PersonalCenter;
 
-import android.support.v7.app.AlertDialog;
-import android.view.LayoutInflater;
+import android.content.DialogInterface;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ListView;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -40,17 +36,8 @@ public class RecordListActivity extends BaseInfoActivity implements IRecordListV
     private String is_go="0";
     private RecordListAdapter recordListAdapter;
     private  List<RecordListBean> recordListBeanList;
-//    /**
-//     *  上拉监听
-//     */
-//    private IXListViewLoadMore mLoadMoreListener = new IXListViewLoadMore() {
-//        @Override
-//        public void onLoadMore() {
-//            Toast.makeText(RecordListActivity.this, "上拉", Toast.LENGTH_SHORT).show();
-//            page++;
-//            recordListPresenter.getDataRefresh(MyApplication.TOKEN,page,type,is_go);
-//        }
-//    };
+    private String[] items;
+    private String item;
 
     @Override
     public View setConetnView() {
@@ -61,8 +48,6 @@ public class RecordListActivity extends BaseInfoActivity implements IRecordListV
         tv_recordlist_right = (TextView) inflate.findViewById(R.id.tv_recordlist_right);
         lv_recordlist = (ListView) inflate.findViewById(R.id.lv_recordlist);
         swipeRefreshView = (SwipeRefreshView) inflate.findViewById(R.id.lv_recordlist_sw);
-//        //上拉监听
-//        lv_recordlist.setPullLoadEnable(mLoadMoreListener);
         return inflate;
     }
 
@@ -76,6 +61,7 @@ public class RecordListActivity extends BaseInfoActivity implements IRecordListV
         swipeRefreshView.setOnLoadListener(new SwipeRefreshView.OnLoadListener() {
             @Override
             public void onLoad() {
+                page++;
                 recordListPresenter.getDataRefresh(MyApplication.TOKEN,page,type,is_go);
             }
         });
@@ -109,72 +95,130 @@ public class RecordListActivity extends BaseInfoActivity implements IRecordListV
     }
 
     void showDialog(final String a) {
-        final AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        final AlertDialog dialog = builder.create();
-        final View alertview = LayoutInflater.from(RecordListActivity.this).inflate(R.layout.dialog_recordlist, null);
-        final RadioButton rb_recordlist_one = (RadioButton) alertview.findViewById(R.id.rb_recordlist_one);
-        final RadioButton rb_recordlist_two = (RadioButton) alertview.findViewById(R.id.rb_recordlist_two);
-        final Button btn_recordlist_confirm = (Button) alertview.findViewById(R.id.btn_recordlist_confirm);
-        final Button btn_recordlist_cancel = (Button) alertview.findViewById(R.id.btn_recordlist_cancel);
-        final RadioGroup rg_recordlist_dialog = (RadioGroup) alertview.findViewById(R.id.rg_recordlist_dialog);
+         /*
+         * 设置单选items
+         * */
         if ("1".equals(a)) {
-            rb_recordlist_one.setText("创业模式");
-            rb_recordlist_two.setText("创新模式");
-            //   tv_recordlist_left.setText();
+            items = new String[]{"创业模式","创新模式"};
         } else if ("2".equals(a)) {
-            rb_recordlist_one.setText("未审核");
-            rb_recordlist_two.setText("已审核");
+            items = new String[]{"未审核","已审核"};
         }
-        rg_recordlist_dialog.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup radioGroup, int i) {
 
-                switch (i) {
-                    case R.id.rb_recordlist_one:
-                        tv_recordlist_Text = rb_recordlist_one.getText().toString();
-                        break;
-                    case R.id.rb_recordlist_two:
-                        tv_recordlist_Text = rb_recordlist_two.getText().toString();
-                        break;
-                }
-            }
-        });
-        btn_recordlist_confirm.setOnClickListener(new View.OnClickListener() {
+        final android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(this);//内部使用构建者的设计模式
+        builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+
             @Override
-            public void onClick(View v) {
+            public void onClick(DialogInterface dialog, int which) {
                 dialog.dismiss();
                 if ("1".equals(a)) {
-                    tv_recordlist_left.setText(tv_recordlist_Text);
-                    if(tv_recordlist_left.getText().toString().equals("创业模式")){
+                    tv_recordlist_left.setText(item);
+                    if(item.equals("创业模式")){
                         type = "model1";
-                    }else if(tv_recordlist_left.getText().toString().equals("创新模式")){
+                    }else if(item.equals("创新模式")){
                         type = "model2";
                     }
                 } else if ("2".equals(a)) {
-                    tv_recordlist_right.setText(tv_recordlist_Text);
-                    if(tv_recordlist_right.getText().toString().equals("未审核")){
+                    tv_recordlist_right.setText(item);
+                    if(item.equals("未审核")){
                         is_go = "0";
-                    }else if(tv_recordlist_right.getText().toString().equals("已审核")){
+                    }else if(item.equals("已审核")){
                         is_go = "1";
                     }
                 }
-
+                page = 1;
                 recordListPresenter.getData(MyApplication.TOKEN,page,type,is_go);
+
             }
         });
-        btn_recordlist_cancel.setOnClickListener(new View.OnClickListener() {
+        builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+
             @Override
-            public void onClick(View v) {
+            public void onClick(DialogInterface dialog, int which) {
                 dialog.dismiss();
+
             }
         });
-        dialog.setView(alertview);
-        dialog.show();
+        builder.setSingleChoiceItems(items, -1,new DialogInterface.OnClickListener() {
+
+
+
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                item = items[which];
+            }
+        });
+        builder.setCancelable(false);//设置dialog只能通过点击Dialog上的按钮退出，不能通过回退按钮退出关闭Dialog
+        builder.create().show();//创建对象
+
     }
 
+//    void showDialog(final String a) {
+//        final AlertDialog.Builder builder = new AlertDialog.Builder(this);
+//        final AlertDialog dialog = builder.create();
+//        final View alertview = LayoutInflater.from(RecordListActivity.this).inflate(R.layout.dialog_recordlist, null);
+//        final RadioButton rb_recordlist_one = (RadioButton) alertview.findViewById(rb_recordlist_one);
+//        final RadioButton rb_recordlist_two = (RadioButton) alertview.findViewById(rb_recordlist_two);
+//        final Button btn_recordlist_confirm = (Button) alertview.findViewById(R.id.btn_recordlist_confirm);
+//        final Button btn_recordlist_cancel = (Button) alertview.findViewById(R.id.btn_recordlist_cancel);
+//        final RadioGroup rg_recordlist_dialog = (RadioGroup) alertview.findViewById(R.id.rg_recordlist_dialog);
+//        if ("1".equals(a)) {
+//            rb_recordlist_one.setText("创业模式");
+//            rb_recordlist_two.setText("创新模式");
+//            //   tv_recordlist_left.setText();
+//        } else if ("2".equals(a)) {
+//            rb_recordlist_one.setText("未审核");
+//            rb_recordlist_two.setText("已审核");
+//        }
+//        rg_recordlist_dialog.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+//            @Override
+//            public void onCheckedChanged(RadioGroup radioGroup, int i) {
+//
+//                switch (i) {
+//                    case rb_recordlist_one:
+//                        tv_recordlist_Text = rb_recordlist_one.getText().toString();
+//                        break;
+//                    case rb_recordlist_two:
+//                        tv_recordlist_Text = rb_recordlist_two.getText().toString();
+//                        break;
+//                }
+//            }
+//        });
+//        btn_recordlist_confirm.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                dialog.dismiss();
+//                if ("1".equals(a)) {
+//                    tv_recordlist_left.setText(tv_recordlist_Text);
+//                    if(tv_recordlist_left.getText().toString().equals("创业模式")){
+//                        type = "model1";
+//                    }else if(tv_recordlist_left.getText().toString().equals("创新模式")){
+//                        type = "model2";
+//                    }
+//                } else if ("2".equals(a)) {
+//                    tv_recordlist_right.setText(tv_recordlist_Text);
+//                    if(tv_recordlist_right.getText().toString().equals("未审核")){
+//                        is_go = "0";
+//                    }else if(tv_recordlist_right.getText().toString().equals("已审核")){
+//                        is_go = "1";
+//                    }
+//                }
+//
+//                recordListPresenter.getData(MyApplication.TOKEN,page,type,is_go);
+//            }
+//        });
+//        btn_recordlist_cancel.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                dialog.dismiss();
+//            }
+//        });
+//        dialog.setView(alertview);
+//        dialog.show();
+//    }
 
     @Override
     public void setRecordList(List<RecordListBean> list) {
+        swipeRefreshView.setLoading(false);
         recordListBeanList.clear();
         if (list!=null) {
             recordListBeanList.addAll(list);
@@ -190,6 +234,9 @@ public class RecordListActivity extends BaseInfoActivity implements IRecordListV
         }
         recordListBeanList.addAll(list);
         recordListAdapter.notifyDataSetChanged();
-        page++;
+    }
+    @Override
+    public void isgetDataFaile(String meg) {
+        swipeRefreshView.setLoading(false);
     }
 }

@@ -5,15 +5,14 @@
     android:orientation="vertical">
 
     <com.qs.qswlw.view.SwipeRefreshView
-        android:id="@+id/lv_consumptionlimit_sw"
+        android:id="@+id/lv_myspendinglimit_sw"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <ListView
-            android:id="@+id/lv_consumptionlimit"
+            android:id="@+id/lv_myspendinglimit"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:divider="@null"></ListView>
+            android:layout_height="wrap_content"></ListView>
     </com.qs.qswlw.view.SwipeRefreshView>
 
 </LinearLayout>

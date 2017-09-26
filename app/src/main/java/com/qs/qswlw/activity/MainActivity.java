@@ -86,11 +86,11 @@ public class MainActivity extends BaseActivity implements IMainView {
 
     @Override
     public void setAlertList(AlertBean title) {
-        tv_dialog_index_title.setText(title.getIndex_title());
-        //   tv_dialog_index_content.setText(allist.getIndex_content());
-        tv_dialog_index_content.setText(title.getIndex_content());
-        tv_dialog_index_name.setText(title.getIndex_name());
-        tv_dialog_index_time.setText(title.getIndex_time());
+//        tv_dialog_index_title.setText(title.getIndex_title());
+//        //   tv_dialog_index_content.setText(allist.getIndex_content());
+//        tv_dialog_index_content.setText(title.getIndex_content());
+//        tv_dialog_index_name.setText(title.getIndex_name());
+//        tv_dialog_index_time.setText(title.getIndex_time());
     }
 
     @Override

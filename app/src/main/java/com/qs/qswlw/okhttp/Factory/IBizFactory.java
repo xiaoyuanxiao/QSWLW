@@ -16,6 +16,7 @@ import com.qs.qswlw.okhttp.Moudle.BizMyBankList;
 import com.qs.qswlw.okhttp.Moudle.BizMyProfit;
 import com.qs.qswlw.okhttp.Moudle.BizMyRole;
 import com.qs.qswlw.okhttp.Moudle.BizMySliverBean;
+import com.qs.qswlw.okhttp.Moudle.BizMySpendingLimit;
 import com.qs.qswlw.okhttp.Moudle.BizOldMember;
 import com.qs.qswlw.okhttp.Moudle.BizPersonalSetting;
 import com.qs.qswlw.okhttp.Moudle.BizRanking;
@@ -44,6 +45,7 @@ import com.qs.qswlw.okhttp.Moudle.IMyBankListBiz;
 import com.qs.qswlw.okhttp.Moudle.IMyProfitBiz;
 import com.qs.qswlw.okhttp.Moudle.IMyRoleBiz;
 import com.qs.qswlw.okhttp.Moudle.IMySliverBeanBiz;
+import com.qs.qswlw.okhttp.Moudle.IMySpendingLimitBiz;
 import com.qs.qswlw.okhttp.Moudle.IOldMemberBiz;
 import com.qs.qswlw.okhttp.Moudle.IPersonalSettingBiz;
 import com.qs.qswlw.okhttp.Moudle.IProductBiz;
@@ -162,5 +164,8 @@ public class IBizFactory {
     }
     public static IConsumptionLimitRechargeBiz getConsumptionLimitRechargeList(){
         return BizConsumptionLimitRecharge.getInstans();
+    }
+    public static IMySpendingLimitBiz getMySpendingLimitList(){
+        return BizMySpendingLimit.getInstans();
     }
 }

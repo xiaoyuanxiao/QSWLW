@@ -27,11 +27,11 @@ import com.qs.qswlw.utils.RadioButtonImgUtil;
  */
 public class BusinessSettingActivity extends BaseActivity implements IPersonalSettingView {
 
+    PersonalSettingPresenter personalSettingPresenter = new PersonalSettingPresenter(this);
     private GridView gv_setting;
     private RadioButton rb_main_qsmall, rb_main_lianmeng, rb_main_funtime, rb_main_luck, rb_main_exit;
     private BusinessSettingAdapter businessSettingAdapter;
     private TextView tv_setting_set;
-    PersonalSettingPresenter personalSettingPresenter = new PersonalSettingPresenter(this);
     private TextView tv_setting_consumptionMoney, tv_setting_consumerSilverbeans, tv_setting_encourage, tv_setting_withdrawals, tv_setting_consumerbeans, tv_setting_paytaxes, tv_cyzx, tv_recommender, tv_setting_id, tv_setting_name, tv_setting_shopname, tv_role;
     private TextView setting_one;
     private String user_id, nickname, role;
@@ -120,6 +120,62 @@ public class BusinessSettingActivity extends BaseActivity implements IPersonalSe
 
     }
 
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+//            case rb_main_mall:
+//                startActivity(new Intent(BusinessSettingActivity.this, MainActivity.class));
+//                break;
+//            case R.id.rb_main_exit:
+//                showDialog();
+//                break;
+//            case R.id.tv_setting_set:
+//                startActivity(new Intent(this,SetModifyActivity.class));
+//                break;
+        }
+    }
+
+    /**
+     * 退出登录
+     */
+    private void showDialog() {
+        new AlertDialog.Builder(this).setTitle("确认退出吗？")
+                .setIcon(android.R.drawable.ic_dialog_info)
+                .setPositiveButton("确定", new DialogInterface.OnClickListener() {
+
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        // 点击“确认”后的操作
+                        startActivity(new Intent(BusinessSettingActivity.this, MainActivity.class));
+
+                    }
+                })
+                .setNegativeButton("返回", new DialogInterface.OnClickListener() {
+
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        // 点击“返回”后的操作,这里不设置没有任何操作
+                        finish();
+                    }
+                }).show();
+// super.onBackPressed();
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == 103) {
+            if (requestCode == 102) {
+                String msg = data.getStringExtra("msg");
+                //设置结果显示框的显示数值
+             //   ToastUtils.showToast(this,msg);
+                //进入新界面
+                Intent intent = new Intent(BusinessSettingActivity.this, ConsumptionDialogActivity.class);
+                intent.putExtra("dialog",msg);
+                startActivity(intent);
+            }
+        }
+    }
 
     class ItemClickListener implements AdapterView.OnItemClickListener {
 
@@ -222,66 +278,8 @@ public class BusinessSettingActivity extends BaseActivity implements IPersonalSe
                     startActivity(new Intent(BusinessSettingActivity.this, MyRoleActivity.class));
                     break;
                 case 30:
-                    startActivity(new Intent(BusinessSettingActivity.this, OldMemberActivity.class));
+                    startActivity(new Intent(BusinessSettingActivity.this, MySpendingLimitActivity.class));
                     break;
-            }
-        }
-    }
-
-
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()) {
-//            case rb_main_mall:
-//                startActivity(new Intent(BusinessSettingActivity.this, MainActivity.class));
-//                break;
-//            case R.id.rb_main_exit:
-//                showDialog();
-//                break;
-//            case R.id.tv_setting_set:
-//                startActivity(new Intent(this,SetModifyActivity.class));
-//                break;
-        }
-    }
-
-    /**
-     * 退出登录
-     */
-    private void showDialog() {
-        new AlertDialog.Builder(this).setTitle("确认退出吗？")
-                .setIcon(android.R.drawable.ic_dialog_info)
-                .setPositiveButton("确定", new DialogInterface.OnClickListener() {
-
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        // 点击“确认”后的操作
-                        startActivity(new Intent(BusinessSettingActivity.this, MainActivity.class));
-
-                    }
-                })
-                .setNegativeButton("返回", new DialogInterface.OnClickListener() {
-
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        // 点击“返回”后的操作,这里不设置没有任何操作
-                        finish();
-                    }
-                }).show();
-// super.onBackPressed();
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (resultCode == 103) {
-            if (requestCode == 102) {
-                String msg = data.getStringExtra("msg");
-                //设置结果显示框的显示数值
-             //   ToastUtils.showToast(this,msg);
-                //进入新界面
-                Intent intent = new Intent(BusinessSettingActivity.this, ConsumptionDialogActivity.class);
-                intent.putExtra("dialog",msg);
-                startActivity(intent);
             }
         }
     }

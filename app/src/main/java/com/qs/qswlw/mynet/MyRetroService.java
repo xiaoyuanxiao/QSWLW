@@ -21,6 +21,7 @@ import com.qs.qswlw.bean.MyBankListBean;
 import com.qs.qswlw.bean.MyProfitBean;
 import com.qs.qswlw.bean.MyRoleBean;
 import com.qs.qswlw.bean.MySliverBean;
+import com.qs.qswlw.bean.MySpendingLimitBean;
 import com.qs.qswlw.bean.OldMemberBean;
 import com.qs.qswlw.bean.PersonalSettingBean;
 import com.qs.qswlw.bean.RankingBean;
@@ -142,22 +143,23 @@ public interface MyRetroService {
      */
     @FormUrlEncoded
     @POST("index.php?m=Appapi&c=Bankroll&a=cashlist_edit")
-    Observable<MainBean<WithdrawalsFailedModifyBean>> getWithdrawalsFailedModify(@Field("token") String token,@Field("id") int id);
+    Observable<MainBean<WithdrawalsFailedModifyBean>> getWithdrawalsFailedModify(@Field("token") String token, @Field("id") int id);
 
     /**
      * 处理修改提现信息
      */
     @FormUrlEncoded
     @POST("index.php?m=Appapi&c=Bankroll&a=do_cashlist_edit")
-    Observable<MainBean> PostWithdrawalsFailedModify(@Field("token") String token,@Field("id") int id,@Field("cardholder") String cardholder,@Field("to_bank") String to_bank,
-                                                     @Field("region") int region,@Field("city") int city,@Field("branch") String branch,@Field("bank_card") String bank_card);
+    Observable<MainBean> PostWithdrawalsFailedModify(@Field("token") String token, @Field("id") int id, @Field("cardholder") String cardholder, @Field("to_bank") String to_bank,
+                                                     @Field("region") int region, @Field("city") int city, @Field("branch") String branch, @Field("bank_card") String bank_card);
 
     /**
      * 重新提交提现
      */
     @FormUrlEncoded
     @POST("index.php?m=Appapi&c=Bankroll&a=cash_fail_again_sub")
-    Observable<MainBean> PostPostWithdrawalsFailedResubmit(@Field("token") String token,@Field("wid") int wid);
+    Observable<MainBean> PostPostWithdrawalsFailedResubmit(@Field("token") String token, @Field("wid") int wid);
+
     /**
      * 我的银行卡列表
      */
@@ -185,8 +187,9 @@ public interface MyRetroService {
      */
     @FormUrlEncoded
     @POST("index.php?m=Appapi&c=Bankroll&a=do_bank")
-    Observable<MainBean> PostWithdrawalsAddData(@Field("token") String token, @Field("id") int id,@Field("cname") String cname, @Field("card") String card,
-                                                @Field("pcity") int pcity, @Field("ccity") int ccity,@Field("account") String account, @Field("cardnumber") String cardnumber);
+    Observable<MainBean> PostWithdrawalsAddData(@Field("token") String token, @Field("id") int id, @Field("cname") String cname, @Field("card") String card,
+                                                @Field("pcity") int pcity, @Field("ccity") int ccity, @Field("account") String account, @Field("cardnumber") String cardnumber);
+
     /**
      * 设置默认提现银行卡
      */
@@ -200,6 +203,7 @@ public interface MyRetroService {
     @FormUrlEncoded
     @POST("index.php?m=Appapi&c=Bankroll&a=steup_card")
     Observable<MainBean> PostWithdrawalsDel(@Field("token") String token, @Field("id") int id);
+
     /**
      * 商家审核消费录单
      */
@@ -211,22 +215,22 @@ public interface MyRetroService {
      */
     @FormUrlEncoded
     @POST("index.php?m=Appapi&c=Taxgold&a=my_taxgold")
-    Observable<MainBean<ConsumptionLimitBean>> getConsumptionLimitData(@Field("token") String token,@Field("p") int p);
+    Observable<MainBean<ConsumptionLimitBean>> getConsumptionLimitData(@Field("token") String token, @Field("p") int p);
 
     /**
      * 消费金豆额度充值
      */
     @FormUrlEncoded
     @POST("index.php?m=Appapi&c=Taxgold&a=get_money")
-    Observable<MainBean<ConsumptionLimitRechargeBean>> getConsumptionLimitRechargeData(@Field("token") String token,@Field("recharge_type") String recharge_type);
+    Observable<MainBean<ConsumptionLimitRechargeBean>> getConsumptionLimitRechargeData(@Field("token") String token, @Field("recharge_type") String recharge_type);
 
     /**
      * 消费金豆额度充值提交
      */
     @FormUrlEncoded
     @POST("index.php?m=Appapi&c=Taxgold&a=do_get_money")
-    Observable<MainBean> PostConsumptionLimitRecharge(@Field("token") String token,@Field("ratio") String ratio,@Field("none") String none,@Field("money") String money,
-                                                      @Field("recharge_type") String recharge_type,@Field("remittance") File remittance);
+    Observable<MainBean> PostConsumptionLimitRecharge(@Field("token") String token, @Field("ratio") String ratio, @Field("none") String none, @Field("money") String money,
+                                                      @Field("recharge_type") String recharge_type, @Field("remittance") File remittance);
 
     /**
      * 商家营业额
@@ -274,10 +278,19 @@ public interface MyRetroService {
     Observable<MainBean<MyRoleBean>> getMyRoleData(@Field("token") String token);
 
     /**
+     *我的消费额度
+     */
+    @FormUrlEncoded
+    @POST("index.php?m=Appapi&c=ConsumeQuota&a=index")
+    Observable<MainBean<MySpendingLimitBean>> getMySpendingLimitData(@Field("token") String token,@Field("p") int p,@Field("tab_status") int tab_status);
+
+
+    /**
      * 线下消费录单
      */
     @FormUrlEncoded
     @POST("index.php?m=Appapi&c=Single&a=getmoney")
+
     Observable<MainBean<ConsumptionRecordBean>> getConsumptionRecordData(@Field("token") String token);
 
     /**
