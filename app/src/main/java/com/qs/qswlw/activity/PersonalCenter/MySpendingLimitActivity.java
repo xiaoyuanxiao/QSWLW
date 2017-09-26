@@ -98,12 +98,12 @@ public class MySpendingLimitActivity extends BaseInfoActivity{
         super.onClick(v);
         switch (v.getId()){
             case R.id.tv_myspendinglimit_left:
-                setTopColor(tv_myspendinglimit_right,tv_myspendinglimit_left);
+                setTopColor(tv_myspendinglimit_left,tv_myspendinglimit_right);
                 showFragment(fragments.get(0));
 
                 break;
             case R.id.tv_myspendinglimit_right:
-                setTopColor(tv_myspendinglimit_left,tv_myspendinglimit_right);
+                setTopColor(tv_myspendinglimit_right,tv_myspendinglimit_left);
                 showFragment(fragments.get(1));
                 break;
         }
