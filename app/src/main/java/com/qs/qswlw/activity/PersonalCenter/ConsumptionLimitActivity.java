@@ -92,10 +92,6 @@ public class ConsumptionLimitActivity extends BaseInfoActivity implements IConsu
 
     private void showDidlog() {
 
-
-         /*
-         * 设置单选items
-         * */
         final String[] items = {"类型","消费","充值"};
         final AlertDialog.Builder builder = new AlertDialog.Builder(this);//内部使用构建者的设计模式
 
@@ -108,8 +104,8 @@ public class ConsumptionLimitActivity extends BaseInfoActivity implements IConsu
                 dialog.dismiss();
             }
         });
-
-        builder.setCancelable(false);//设置dialog只能通过点击Dialog上的按钮退出，不能通过回退按钮退出关闭Dialog
+        builder.create().setCanceledOnTouchOutside(true);
+        builder.setCancelable(true);//设置dialog只能通过点击Dialog上的按钮退出，不能通过回退按钮退出关闭Dialog
         builder.create().show();//创建对象
     }
 
