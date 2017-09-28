@@ -9,4 +9,5 @@ import com.qs.qswlw.bean.EntrepreneurialIncentiveBean;
 public interface IEntrepreneurialView {
     void setEntrepreneurialData(EntrepreneurialIncentiveBean entrepreneurialData);
     void runOnUiThread(Runnable runnable);
+    void isgetDataFaile(String meg);
 }

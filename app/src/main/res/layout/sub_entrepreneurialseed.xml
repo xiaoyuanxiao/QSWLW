@@ -1,122 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-        <LinearLayout
-            android:id="@+id/ll_top"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:focusable="true"
-            android:focusableInTouchMode="true" >
-            <FrameLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="120dp"
-                    android:src="@mipmap/bg_01"
-                    android:scaleType="fitXY"/>
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_gravity="center"
-                    android:gravity="center">
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textSize="18sp"
-                        android:textColor="@color/white"
-                        android:text="已激励创业种子"/>
-                    <TextView
-                        android:id="@+id/tv_entrepreneurial_model"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textSize="18sp"
-                        android:layout_marginTop="8dp"
-                        android:textColor="@color/white"
-                        android:text="18"/>
-                </LinearLayout>
-
-            </FrameLayout>
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="12dp"
-                android:background="@mipmap/zibg">
-                <TextView
-                    android:id="@+id/tv_entrepreneurial_one"
-                    style="@style/tv_standard"
-                    android:text="消费银豆：95275" />
-                <TextView
-                    android:id="@+id/tv_entrepreneurial_two"
-                    style="@style/tv_standard"
-                    android:text="可转为创业种子消费银豆：19"
-                    android:layout_marginTop="8dp"
-                    android:layout_below="@+id/tv_entrepreneurial_one"/>
-                <TextView
-                    android:id="@+id/tv_entrepreneurial_three"
-                    style="@style/tv_standard"
-                    android:text="正在激励创业种子：35"
-                    android:layout_marginTop="8dp"
-                    android:layout_below="@+id/tv_entrepreneurial_two"/>
-                <TextView
-                    android:id="@+id/tv_entrepreneurial_four"
-                    style="@style/tv_standard"
-                    android:text="可转为创业种子数：19"
-                    android:layout_marginTop="8dp"
-                    android:layout_below="@+id/tv_entrepreneurial_three"/>
-                <LinearLayout
-                    android:id="@+id/ll_click"
-                    android:layout_width="58dp"
-                    android:layout_height="58dp"
-                    android:background="@drawable/fillet"
-                    android:layout_alignParentRight="true"
-                    android:layout_centerInParent="true"
-                    android:orientation="vertical"
-                    android:padding="3dp"
-                    android:layout_marginRight="10dp">
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="转 为"
-                        android:textSize="16sp"
-                        android:layout_marginTop="3dp"
-                        android:textColor="#cdb2b6"/>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="创业种子"
-                        android:layout_marginTop="4dp"
-                        android:textSize="10sp"
-                        android:textColor="#cdb2b6"
-                        />
-                </LinearLayout>
-            </RelativeLayout>
-
-      <!--      <com.qs.qswlw.view.SwipeRefreshView
-                android:id="@+id/swipeRefreshView"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1">
-
-                <com.qs.qswlw.view.MyListView
-                    android:id="@+id/lv_sub_entrepreneurialseed"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:divider="@null"></com.qs.qswlw.view.MyListView>
-            </com.qs.qswlw.view.SwipeRefreshView>-->
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:orientation="vertical">
 
 
-        </LinearLayout>
 
-    <com.qs.qswlw.view.xlistview.XListView
-        android:id="@+id/lv_sub_entrepreneurialseed"
+    <com.qs.qswlw.view.SwipeRefreshView
+        android:id="@+id/lv_sub_entrepreneurialseed_sw"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:divider="@null"></com.qs.qswlw.view.xlistview.XListView>
+        android:layout_height="match_parent">
+
+        <ListView
+            android:id="@+id/lv_sub_entrepreneurialseed"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"></ListView>
+    </com.qs.qswlw.view.SwipeRefreshView>
+
 
 </LinearLayout>

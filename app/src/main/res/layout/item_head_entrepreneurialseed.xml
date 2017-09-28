@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:orientation="vertical">
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:scaleType="fitXY"
+                android:src="@mipmap/bg_01"/>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="已激励创业种子"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"/>
+                <TextView
+                    android:id="@+id/tv_entrepreneurial_model"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="18"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"/>
+            </LinearLayout>
+
+        </FrameLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@mipmap/zibg"
+            android:padding="12dp">
+            <TextView
+                android:id="@+id/tv_entrepreneurial_one"
+                style="@style/tv_standard"
+                android:text="消费银豆：95275" />
+            <TextView
+                android:id="@+id/tv_entrepreneurial_two"
+                style="@style/tv_standard"
+                android:layout_below="@+id/tv_entrepreneurial_one"
+                android:layout_marginTop="8dp"
+                android:text="可转为创业种子消费银豆：19"/>
+            <TextView
+                android:id="@+id/tv_entrepreneurial_three"
+                style="@style/tv_standard"
+                android:layout_below="@+id/tv_entrepreneurial_two"
+                android:layout_marginTop="8dp"
+                android:text="正在激励创业种子：35"/>
+            <TextView
+                android:id="@+id/tv_entrepreneurial_four"
+                style="@style/tv_standard"
+                android:layout_below="@+id/tv_entrepreneurial_three"
+                android:layout_marginTop="8dp"
+                android:text="可转为创业种子数：19"/>
+            <LinearLayout
+                android:id="@+id/ll_click"
+                android:layout_width="58dp"
+                android:layout_height="58dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerInParent="true"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/fillet"
+                android:orientation="vertical"
+                android:padding="3dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="3dp"
+                    android:text="转 为"
+                    android:textColor="#cdb2b6"
+                    android:textSize="16sp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="创业种子"
+                    android:textColor="#cdb2b6"
+                    android:textSize="10sp"
+                    />
+            </LinearLayout>
+        </RelativeLayout>
+
+</LinearLayout>

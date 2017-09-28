@@ -7,8 +7,8 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.qs.qswlw.MyApplication;
 import com.qs.qswlw.R;
@@ -22,8 +22,7 @@ import com.qs.qswlw.mynet.ReHttpUtils;
 import com.qs.qswlw.okhttp.Iview.IEntrepreneurialView;
 import com.qs.qswlw.okhttp.Presenter.EntrepreneurialPresenter;
 import com.qs.qswlw.utils.ToastUtils;
-import com.qs.qswlw.view.xlistview.IXListViewLoadMore;
-import com.qs.qswlw.view.xlistview.XListView;
+import com.qs.qswlw.view.SwipeRefreshView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,7 +34,9 @@ import rx.Observable;
  */
 
 public class InnovationIncentiveFragment extends BaseFragment implements IEntrepreneurialView {
-    private XListView lv_sub_entrepreneurialseed;
+    int i;
+    int page = 1;
+    private ListView lv_sub_entrepreneurialseed;
     private EntrepreneurialPresenter entrepreneurialPresenter = new EntrepreneurialPresenter(this);
     private TextView tv_entrepreneurial_one, tv_entrepreneurial_two, tv_entrepreneurial_three, tv_entrepreneurial_four,tv_entrepreneurial_model;
     private List<EntrepreneurialIncentiveBean.ListModel2Bean> innovationList;
@@ -44,9 +45,8 @@ public class InnovationIncentiveFragment extends BaseFragment implements IEntrep
     private Dialog dialog;
     private int silver;
     private String exchange_love;
-    int i;
-  //  private SwipeRefreshView swipeRefreshView;
-    int page = 1;
+    private SwipeRefreshView swipeRefreshView;
+
     public static InnovationIncentiveFragment newInstener() {
         return new InnovationIncentiveFragment();
     }
@@ -54,36 +54,21 @@ public class InnovationIncentiveFragment extends BaseFragment implements IEntrep
     @Override
     View initView() {
         View inflate = View.inflate(getActivity(), R.layout.sub_entrepreneurialseed, null);
-        lv_sub_entrepreneurialseed = (XListView) inflate.findViewById(R.id.lv_sub_entrepreneurialseed);
-        tv_entrepreneurial_one = (TextView) inflate.findViewById(R.id.tv_entrepreneurial_one);
-        tv_entrepreneurial_two = (TextView) inflate.findViewById(R.id.tv_entrepreneurial_two);
-        tv_entrepreneurial_three = (TextView) inflate.findViewById(R.id.tv_entrepreneurial_three);
-        tv_entrepreneurial_four = (TextView) inflate.findViewById(R.id.tv_entrepreneurial_four);
-        tv_entrepreneurial_model = (TextView) inflate.findViewById(R.id.tv_entrepreneurial_model);
-        ll_click = (LinearLayout) inflate.findViewById(R.id.ll_click);
-        //上拉监听
-        lv_sub_entrepreneurialseed.setPullLoadEnable(mLoadMoreListener);
-        //开始下拉
-//        swipeRefreshView = (SwipeRefreshView) inflate.findViewById(R.id.swipeRefreshView);
-//        swipeRefreshView.setOnLoadListener(new SwipeRefreshView.OnLoadListener() {
-//                @Override
-//                public void onLoad() {
-//                    entrepreneurialPresenter.getdata(MyApplication.TOKEN, page, "model2");
-//                }
-//        });
+        View inflate1 = View.inflate(getActivity(), R.layout.item_head_entrepreneurialseed, null);
+
+        lv_sub_entrepreneurialseed = (ListView) inflate.findViewById(R.id.lv_sub_entrepreneurialseed);
+        lv_sub_entrepreneurialseed.addHeaderView(inflate1);
+        tv_entrepreneurial_one = (TextView) inflate1.findViewById(R.id.tv_entrepreneurial_one);
+        tv_entrepreneurial_two = (TextView) inflate1.findViewById(R.id.tv_entrepreneurial_two);
+        tv_entrepreneurial_three = (TextView) inflate1.findViewById(R.id.tv_entrepreneurial_three);
+        tv_entrepreneurial_four = (TextView) inflate1.findViewById(R.id.tv_entrepreneurial_four);
+        tv_entrepreneurial_model = (TextView) inflate1.findViewById(R.id.tv_entrepreneurial_model);
+        ll_click = (LinearLayout) inflate1.findViewById(R.id.ll_click);
+        swipeRefreshView = (SwipeRefreshView) inflate.findViewById(R.id.lv_sub_entrepreneurialseed_sw);
+
         return inflate;
     }
-    /**
-     *  上拉监听
-    */
-    private IXListViewLoadMore mLoadMoreListener = new IXListViewLoadMore() {
-        @Override
-        public void onLoadMore() {
-            Toast.makeText(getActivity(), "上拉", Toast.LENGTH_SHORT).show();
-            page++;
-            entrepreneurialPresenter.getdata(MyApplication.TOKEN, page, "model2");
-        }
-    };
+
 
     @Override
     protected void initData() {
@@ -92,6 +77,12 @@ public class InnovationIncentiveFragment extends BaseFragment implements IEntrep
         innovationAdapter = new InnovationAdapter(getActivity(), innovationList);
         lv_sub_entrepreneurialseed.setAdapter(innovationAdapter);
         entrepreneurialPresenter.getdata(MyApplication.TOKEN, page, "model2");
+        swipeRefreshView.setOnLoadListener(new SwipeRefreshView.OnLoadListener() {
+            @Override
+            public void onLoad() {
+                entrepreneurialPresenter.getdata(MyApplication.TOKEN, page, "model2");
+            }
+        });
     }
 
     @Override
@@ -101,6 +92,7 @@ public class InnovationIncentiveFragment extends BaseFragment implements IEntrep
 
     @Override
     public void setEntrepreneurialData(EntrepreneurialIncentiveBean entrepreneurialData) {
+        swipeRefreshView.setLoading(false);
         String allow_silver = entrepreneurialData.getAllow_silver_model2();
         silver = entrepreneurialData.getSilver2();
         tv_entrepreneurial_one.setText("消费银豆："+silver);
@@ -110,16 +102,19 @@ public class InnovationIncentiveFragment extends BaseFragment implements IEntrep
         tv_entrepreneurial_three.setText("正在激励创业种子："+entrepreneurialData.getLove2()+"");
         tv_entrepreneurial_four.setText("可转为创业种子数："+i + "");
         tv_entrepreneurial_model.setText(entrepreneurialData.getModel2()+"");
-      //  swipeRefreshView.setLoading(false);
         if(entrepreneurialData.getList_model2()==null||entrepreneurialData.getList_model2().size()==0){
-        //    ToastUtils.showToast("没有更多数据了");
-            lv_sub_entrepreneurialseed.noMoreForShow();
+            ToastUtils.showToast("没有更多数据了");
             return;
         }
         innovationList.addAll(entrepreneurialData.getList_model2());
         innovationAdapter.notifyDataSetChanged();
-        lv_sub_entrepreneurialseed.stopLoadMore();
-       // page++;
+
+       page++;
+    }
+
+    @Override
+    public void isgetDataFaile(String meg) {
+        swipeRefreshView.setLoading(false);
     }
 
     @Override

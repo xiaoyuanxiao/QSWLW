@@ -28,6 +28,7 @@
     <color name="tv_role">#6495ed</color>
     <color name="bg_role_bellow">#b2bdde</color>
     <color name="transparent">#e0000000</color>
+    <color name="oldmem">#de2175</color>
 
 
     <!-- QRCode scanner color begin -->
