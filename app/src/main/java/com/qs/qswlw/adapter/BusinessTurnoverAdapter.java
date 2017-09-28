@@ -15,6 +15,7 @@ import java.util.List;
  */
 
 public class BusinessTurnoverAdapter extends BaseListAdapter<BusinessTurnoverBean.ListBean> {
+
     public BusinessTurnoverAdapter(Context context, List<BusinessTurnoverBean.ListBean> data) {
         super(context, data);
     }
@@ -24,7 +25,7 @@ public class BusinessTurnoverAdapter extends BaseListAdapter<BusinessTurnoverBea
 
         final BusinessTurnoverBean.ListBean listBean = data.get(i);
         ViewHolder holder;
-        if (view == null) {//咦
+        if (view == null) {
             holder = new ViewHolder();
             view = View.inflate(context, R.layout.item_merchantsudit, null);
             holder.tv_item_merchantaudit_time = (TextView) view.findViewById(R.id.tv_item_merchantaudit_time);

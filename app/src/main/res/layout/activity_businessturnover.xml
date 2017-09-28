@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:orientation="vertical">
     <RadioGroup
         android:id="@+id/rg_recommendrecords"
         android:layout_width="match_parent"
         android:layout_height="30dp"
-        android:orientation="horizontal"
-        android:layout_marginTop="3dp">
+        android:layout_marginTop="3dp"
+        android:orientation="horizontal">
         <TextView
             android:id="@+id/tv_businessturnover_left"
             android:layout_width="0dp"
-            android:layout_weight="1"
             android:layout_height="match_parent"
-            android:textColor="@color/red"
+            android:layout_weight="1"
             android:gravity="center"
-            android:textSize="12sp"
-            android:text="今日营业额"/>
+            android:text="今日营业额"
+            android:textColor="@color/red"
+            android:textSize="12sp"/>
         <View
             android:layout_width="0.1dp"
             android:layout_height="match_parent"
@@ -24,12 +24,12 @@
         <TextView
             android:id="@+id/tv_businessturnover_right"
             android:layout_width="0dp"
-            android:layout_weight="1"
             android:layout_height="match_parent"
-            android:textColor="@color/view"
+            android:layout_weight="1"
             android:gravity="center"
-            android:textSize="12sp"
-            android:text="历史营业额"/>
+            android:text="历史营业额"
+            android:textColor="@color/view"
+            android:textSize="12sp"/>
     </RadioGroup>
     <LinearLayout
         android:layout_width="match_parent"
@@ -44,8 +44,8 @@
         <View
             android:id="@+id/view_turnover_right"
             android:layout_width="0dp"
-            android:layout_weight="1"
             android:layout_height="0.1dp"
+            android:layout_weight="1"
             android:background="@color/view"/>
     </LinearLayout>
 
@@ -56,39 +56,34 @@
         android:padding="6dp">
         <TextView
             style="@style/tv_harvestaddress_weight"
-            android:text="时间"
-            android:gravity="center"/>
+            android:gravity="center"
+            android:text="时间"/>
         <TextView
             style="@style/tv_harvestaddress_weight"
-            android:text="用户ID"
-            android:gravity="center"/>
+            android:gravity="center"
+            android:text="用户ID"/>
         <TextView
             style="@style/tv_harvestaddress_weight"
-            android:text="用户名称"
-            android:gravity="center"/>
+            android:gravity="center"
+            android:text="用户名称"/>
         <TextView
             style="@style/tv_harvestaddress_weight"
-            android:text="金额"
-            android:gravity="center"/>
+            android:gravity="center"
+            android:text="金额"/>
         <TextView
             style="@style/tv_harvestaddress_weight"
-            android:text="让利额"
-            android:gravity="center"/>
+            android:gravity="center"
+            android:text="让利额"/>
     </LinearLayout>
     <View
         android:layout_width="match_parent"
         android:layout_height="0.1dp"
         android:background="@color/view"/>
 
-    <com.qs.qswlw.view.SwipeRefreshView
-        android:id="@+id/lv_turnover_sw"
+    <LinearLayout
+        android:id="@+id/ll_container"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <ListView
-            android:id="@+id/lv_turnover"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:divider="@null"></ListView>
-    </com.qs.qswlw.view.SwipeRefreshView>
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical"></LinearLayout>
 </LinearLayout>

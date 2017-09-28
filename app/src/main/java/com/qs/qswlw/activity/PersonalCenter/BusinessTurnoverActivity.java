@@ -1,38 +1,29 @@
 package com.qs.qswlw.activity.PersonalCenter;
 
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.view.View;
-import android.widget.ListView;
 import android.widget.TextView;
 
-import com.qs.qswlw.MyApplication;
 import com.qs.qswlw.R;
-import com.qs.qswlw.adapter.BusinessTurnoverAdapter;
-import com.qs.qswlw.bean.BusinessTurnoverBean;
-import com.qs.qswlw.okhttp.Iview.IBusinessTurnoverView;
-import com.qs.qswlw.okhttp.Presenter.BusinessTurnoverPersenter;
-import com.qs.qswlw.utils.ToastUtils;
-import com.qs.qswlw.view.SwipeRefreshView;
+import com.qs.qswlw.fragment.BusinessTurnoverFragment;
 
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by xiaoyu on 2017/4/5.
  */
 
-public class BusinessTurnoverActivity extends BaseInfoActivity implements IBusinessTurnoverView {
+public class BusinessTurnoverActivity extends BaseInfoActivity {
+
 
     private TextView tv_businessturnover_left, tv_businessturnover_right;
     private View view_turnover_left, view_turnover_right;
-    private SwipeRefreshView swipeRefreshView;
-    private ListView lv_turnover;
-    private BusinessTurnoverAdapter businessTurnoverAdapter;
-    private List<BusinessTurnoverBean.ListBean> listBeen;
+    private ArrayList<Fragment> fragments;
+    private FragmentManager fragmentManager;
 
-    private BusinessTurnoverPersenter businessTurnoverPersenter = new BusinessTurnoverPersenter(this);
 
-    int page = 1;
-    int is_history = 0;
 
     @Override
     public View setConetnView() {
@@ -41,10 +32,7 @@ public class BusinessTurnoverActivity extends BaseInfoActivity implements IBusin
         tv_businessturnover_right = (TextView) inflate.findViewById(R.id.tv_businessturnover_right);
         view_turnover_left = inflate.findViewById(R.id.view_turnover_left);
         view_turnover_right = inflate.findViewById(R.id.view_turnover_right);
-        swipeRefreshView = (SwipeRefreshView) inflate.findViewById(R.id.lv_turnover_sw);
-        lv_turnover = (ListView) inflate.findViewById(R.id.lv_turnover);
-        View inflate1 = View.inflate(this, R.layout.item_headview, null);
-        lv_turnover.addHeaderView(inflate1);
+
         return inflate;
     }
 
@@ -57,17 +45,50 @@ public class BusinessTurnoverActivity extends BaseInfoActivity implements IBusin
     @Override
     public void initData() {
         super.initData();
-        listBeen = new ArrayList<>();
-        businessTurnoverAdapter = new BusinessTurnoverAdapter(this, listBeen);
-        lv_turnover.setAdapter(businessTurnoverAdapter);
-        businessTurnoverPersenter.getdata(MyApplication.TOKEN,page,is_history);
-        swipeRefreshView.setOnLoadListener(new SwipeRefreshView.OnLoadListener() {
-            @Override
-            public void onLoad() {
-                businessTurnoverPersenter.getdataRefresh(MyApplication.TOKEN,page,is_history);
-            }
-        });
+        fragmentManager = getSupportFragmentManager();
+        initFragment();
     }
+
+    /**
+     * 初始化所有基fragment
+     */
+    private void initFragment() {
+        fragments = new ArrayList<Fragment>();
+        fragments.add(BusinessTurnoverFragment.newInstance(BusinessTurnoverFragment.ISHISTORY));
+        fragments.add(BusinessTurnoverFragment.newInstance(BusinessTurnoverFragment.HISTORY));
+        showFragment(fragments.get(0));
+
+    }
+
+    /**
+     * 显示fragment
+     *
+     * @param fragment 要显示的fragment
+     */
+    private void showFragment(Fragment fragment) {
+        FragmentTransaction transaction = fragmentManager.beginTransaction();
+        hideFragment(transaction);
+        if (fragment.isAdded()) {
+            transaction.show(fragment);
+        } else {
+            transaction.add(R.id.ll_container, fragment, fragment.getClass().getName());
+        }
+        transaction.commit();
+    }
+
+    /**
+     * 隐藏其他fragment
+     *
+     * @param transaction 控制器
+     */
+    private void hideFragment(FragmentTransaction transaction) {
+        for (int i = 0; fragments.size() > i; i++) {
+            if (fragments.get(i).isVisible()) {
+                transaction.hide(fragments.get(i));
+            }
+        }
+    }
+
 
     @Override
     public void setOnclick() {
@@ -82,13 +103,11 @@ public class BusinessTurnoverActivity extends BaseInfoActivity implements IBusin
         switch (v.getId()) {
             case R.id.tv_businessturnover_left:
                 setTopColor(tv_businessturnover_left, tv_businessturnover_right, view_turnover_left, view_turnover_right);
-                is_history = 0;
-                businessTurnoverPersenter.getdata(MyApplication.TOKEN,page,is_history);
+                showFragment(fragments.get(0));
                 break;
             case R.id.tv_businessturnover_right:
                 setTopColor(tv_businessturnover_right, tv_businessturnover_left, view_turnover_right, view_turnover_left);
-                is_history = 1;
-                businessTurnoverPersenter.getdata(MyApplication.TOKEN,page,is_history);
+                showFragment(fragments.get(1));
                 break;
         }
     }
@@ -100,27 +119,5 @@ public class BusinessTurnoverActivity extends BaseInfoActivity implements IBusin
         view1.setBackgroundColor(this.getResources().getColor(R.color.view));
     }
 
-    @Override
-    public void getdata(BusinessTurnoverBean businessTurnoverBean) {
-        List<BusinessTurnoverBean.ListBean> list = businessTurnoverBean.getList();
-        swipeRefreshView.setLoading(false);
-        listBeen.clear();
-        if (list!=null) {
-            listBeen.addAll(list);
-        }
-        businessTurnoverAdapter.notifyDataSetChanged();
-    }
 
-    @Override
-    public void getdataRefresh(BusinessTurnoverBean businessTurnoverBean) {
-        List<BusinessTurnoverBean.ListBean> list = businessTurnoverBean.getList();
-        swipeRefreshView.setLoading(false);
-        if (list == null || list.size() == 0) {
-            ToastUtils.showToast("没有更多数据了");
-            return;
-        }
-        listBeen.addAll(list);
-        businessTurnoverAdapter.notifyDataSetChanged();
-        page++;
-    }
 }

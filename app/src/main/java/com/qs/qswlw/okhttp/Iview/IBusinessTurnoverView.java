@@ -8,5 +8,4 @@ import com.qs.qswlw.bean.BusinessTurnoverBean;
 
 public interface IBusinessTurnoverView {
     void getdata(BusinessTurnoverBean businessTurnoverBean);
-    void getdataRefresh(BusinessTurnoverBean businessTurnoverBean);
 }

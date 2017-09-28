@@ -32,17 +32,4 @@ public class BusinessTurnoverPersenter {
             }
         },token,p,is_history);
     }
-    public void getdataRefresh(String token,int p,int is_history){
-        iBusinessTurnoverBiz.getdata(new BusinessTurnoverListener() {
-            @Override
-            public void onSuccess(BusinessTurnoverBean businessTurnoverBean) {
-                iBusinessTurnoverView.getdataRefresh(businessTurnoverBean);
-            }
-
-            @Override
-            public void onFailure(String code) {
-
-            }
-        },token,p,is_history);
-    }
 }
