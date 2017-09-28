@@ -24,6 +24,7 @@ import java.util.ArrayList;
 
 public class VenturegoldBeansActivity extends BaseInfoActivity {
 
+    MyGoldBeanFragment ishowfragment;
     private FragmentManager fragmentManager;
     private TextView tv_venturegold_left, tv_venturegold_center, tv_venturegold_right;
     private View view_left, view_center, view_right;
@@ -31,6 +32,7 @@ public class VenturegoldBeansActivity extends BaseInfoActivity {
     private ArrayList<MyGoldBeanFragment> fragments;
     private boolean isselected = false;
     private PopupWindow popupWindow;
+    private String type;
 
     @Override
     public View setConetnView() {
@@ -48,8 +50,8 @@ public class VenturegoldBeansActivity extends BaseInfoActivity {
 
     @Override
     public void initfindviewByid() {
-        super.initfindviewByid();//我现在写
-        tv_titlebar_center.setText("创业金豆");
+        super.initfindviewByid();
+        tv_titlebar_center.setText("我的金豆");
         tv_titlebar_right.setText("筛选");
         iv_titlebar_right.setVisibility(View.VISIBLE);
         iv_titlebar_right.setImageResource(R.mipmap.down);
@@ -72,8 +74,6 @@ public class VenturegoldBeansActivity extends BaseInfoActivity {
         fragments.add(MyGoldBeanFragment.newInstance(MyGoldBeanFragment.GIVE));
         showFragment(fragments.get(0));
     }
-
-    MyGoldBeanFragment ishowfragment;
 
     /**
      * 显示fragment
@@ -147,11 +147,6 @@ public class VenturegoldBeansActivity extends BaseInfoActivity {
         }
     }
 
-//    private void showpw() {
-//
-//        PopupWindowUtils.showPW(ll_titlebar_right,popupWindow,this,R.layout.pw_withdrawals, Gravity.TOP|Gravity.RIGHT,10,120);
-//    }
-
     /**
      * 筛选弹框
      */
@@ -187,15 +182,12 @@ public class VenturegoldBeansActivity extends BaseInfoActivity {
         view3.setBackgroundColor(getResources().getColor(R.color.view));
     }
 
-
-    private String type;
+    public String getType() {
+        return type;
+    }
 
     public void setType(String type) {
         this.type = type;
         ishowfragment.refreshlist();
-    }
-
-    public String getType() {
-        return type;
     }
 }
