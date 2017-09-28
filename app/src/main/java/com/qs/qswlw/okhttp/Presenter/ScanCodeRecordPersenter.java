@@ -32,17 +32,4 @@ public class ScanCodeRecordPersenter {
         },token,p,is_ok);
     }
 
-    public void getdataRefresh(String token,int p,int is_ok){
-        iScanCodeRecordBiz.getData(new ScanCodeRecordListener() {
-            @Override
-            public void onSuccess(ScanCodeRecordBean scanCodeRecordBean) {
-                iScanCodeRecordView.setDataRefresh(scanCodeRecordBean);
-            }
-
-            @Override
-            public void onFailure(String code) {
-
-            }
-        },token,p,is_ok);
-    }
 }

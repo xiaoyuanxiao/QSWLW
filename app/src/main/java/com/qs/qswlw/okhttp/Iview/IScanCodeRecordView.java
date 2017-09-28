@@ -8,5 +8,4 @@ import com.qs.qswlw.bean.ScanCodeRecordBean;
 
 public interface IScanCodeRecordView {
     void setData(ScanCodeRecordBean scanCodeRecordBean);
-    void setDataRefresh(ScanCodeRecordBean scanCodeRecordBean);
 }

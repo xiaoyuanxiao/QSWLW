@@ -1,90 +1,96 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
+
     <TextView
         android:id="@+id/tv_scancoderecord_top"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="10sp"
+        android:text="扫码录单48小时之内，商家如未审核此单将自行清除，为保障您的激励顺利进行。请及时与商家保持联系"
         android:textColor="@color/text_blue"
-        android:text="扫码录单48小时之内，商家如未审核此单将自行清除，为保障您的激励顺利进行。请及时与商家保持联系"/>
+        android:textSize="10sp" />
+
     <RadioGroup
-        android:layout_below="@+id/tv_scancoderecord_top"
         android:id="@+id/rg_recommendrecords"
         android:layout_width="match_parent"
         android:layout_height="35dp"
-        android:orientation="horizontal"
-        android:layout_marginTop="3dp">
+        android:layout_below="@+id/tv_scancoderecord_top"
+        android:layout_marginTop="3dp"
+        android:orientation="horizontal">
+
         <TextView
             android:id="@+id/tv_scancoderecord_left"
             android:layout_width="0dp"
-            android:layout_weight="1"
             android:layout_height="match_parent"
+            android:layout_weight="1"
             android:background="@color/white"
-            android:textColor="@color/red"
             android:gravity="center"
-            android:textSize="12sp"
-            android:text="商家已审核"/>
+            android:text="商家已审核"
+            android:textColor="@color/red"
+            android:textSize="12sp" />
+
         <TextView
             android:id="@+id/tv_scancoderecord_right"
             android:layout_width="0dp"
-            android:layout_weight="1"
             android:layout_height="match_parent"
+            android:layout_weight="1"
             android:background="@color/red"
-            android:textColor="@color/white"
             android:gravity="center"
-            android:textSize="12sp"
-            android:text="未审核"/>
+            android:text="未审核"
+            android:textColor="@color/white"
+            android:textSize="12sp" />
     </RadioGroup>
+
     <View
-        android:layout_below="@+id/rg_recommendrecords"
         android:id="@+id/view_scancoderecord"
         android:layout_width="match_parent"
         android:layout_height="0.1dp"
-        android:background="@color/view"/>
+        android:layout_below="@+id/rg_recommendrecords"
+        android:background="@color/view" />
+
     <LinearLayout
-        android:layout_below="@+id/view_scancoderecord"
         android:id="@+id/ll_scancoderecord"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/view_scancoderecord"
         android:orientation="horizontal"
         android:padding="6dp">
-        <TextView
-           style="@style/tv_harvestaddress_weight"
-            android:text="日期"
-            android:gravity="center"/>
+
         <TextView
             style="@style/tv_harvestaddress_weight"
-            android:text="消费金额"
-            android:gravity="center"/>
+            android:gravity="center"
+            android:text="日期" />
+
         <TextView
             style="@style/tv_harvestaddress_weight"
-            android:text="让利金额"
-            android:gravity="center"/>
+            android:gravity="center"
+            android:text="消费金额" />
+
         <TextView
             style="@style/tv_harvestaddress_weight"
-            android:text="获得消费银豆"
-            android:gravity="center"/>
+            android:gravity="center"
+            android:text="让利金额" />
+
+        <TextView
+            style="@style/tv_harvestaddress_weight"
+            android:gravity="center"
+            android:text="获得消费银豆" />
     </LinearLayout>
+
     <View
-        android:layout_below="@+id/ll_scancoderecord"
         android:id="@+id/view1_scancoderecord"
         android:layout_width="match_parent"
         android:layout_height="0.1dp"
-        android:background="@color/view"/>
+        android:layout_below="@+id/ll_scancoderecord"
+        android:background="@color/view" />
 
-    <com.qs.qswlw.view.SwipeRefreshView
-        android:layout_below="@+id/view1_scancoderecord"
-        android:id="@+id/lv_scancoderecord_sw"
+    <LinearLayout
+        android:id="@+id/ll_container"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <ListView
-            android:id="@+id/lv_scancoderecord"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:divider="@null"></ListView>
-    </com.qs.qswlw.view.SwipeRefreshView>
+        android:layout_height="match_parent"
+        android:layout_below="@+id/view1_scancoderecord"
+        android:orientation="vertical"></LinearLayout>
 
 
 </RelativeLayout>
