@@ -3,6 +3,7 @@ package com.qs.qswlw.mynet;
 
 import com.qs.qswlw.bean.AngelRankingBean;
 import com.qs.qswlw.bean.BusinessTurnoverBean;
+import com.qs.qswlw.bean.ComplimentaryMerchandiseRecordBean;
 import com.qs.qswlw.bean.ConsumptionLimitBean;
 import com.qs.qswlw.bean.ConsumptionLimitRechargeBean;
 import com.qs.qswlw.bean.ConsumptionRecordBean;
@@ -253,6 +254,13 @@ public interface MyRetroService {
     @FormUrlEncoded
     @POST("index.php?m=Appapi&c=Single&a=shop_review")
     Observable<MainBean<MerchantAuditBean>> getMerchantAuditData(@Field("token") String token, @Field("p") int p, @Field("is_ok") int is_ok);
+
+    /**
+     * 选送商品记录
+     */
+    @FormUrlEncoded
+    @POST("index.php?m=Appapi&c=HappyGame&a=send_goods_record")
+    Observable<MainBean<ComplimentaryMerchandiseRecordBean>> getComplimentaryMerchandiseData(@Field("token") String token, @Field("p") int p, @Field("is_review") int is_review);
 
     /**
      * 我的管理费

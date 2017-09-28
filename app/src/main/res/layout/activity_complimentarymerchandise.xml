@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/page_backgroup"
+    android:orientation="vertical">
+
+    <RadioGroup
+        android:id="@+id/fg_commoditymanagement"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="horizontal"
+        android:paddingBottom="10dp"
+        android:paddingLeft="35dp"
+        android:paddingRight="35dp"
+        android:paddingTop="10dp">
+
+        <RadioButton
+            android:id="@+id/rb_complimentarymerchandise_left"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:background="@drawable/mygoldenbean_selector"
+            android:button="@null"
+            android:checked="true"
+            android:gravity="center"
+            android:text="已审核"
+            android:textColor="@drawable/textcolor_selector"
+            android:textSize="11sp" />
+
+        <RadioButton
+            android:id="@+id/rb_complimentarymerchandise_right"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:background="@drawable/mygoldenbean_selector"
+            android:button="@null"
+            android:gravity="center"
+            android:text="未审核"
+            android:textColor="@drawable/textcolor_selector"
+            android:textSize="11sp" />
+    </RadioGroup>
+
+    <LinearLayout
+        android:id="@+id/ll_container"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="10dp"
+        android:layout_weight="1"
+        android:orientation="vertical"></LinearLayout>
+
+</LinearLayout>

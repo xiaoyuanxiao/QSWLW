@@ -2,6 +2,7 @@ package com.qs.qswlw.okhttp.Factory;
 
 import com.qs.qswlw.okhttp.Moudle.BizAngelRanking;
 import com.qs.qswlw.okhttp.Moudle.BizBusinessTurnover;
+import com.qs.qswlw.okhttp.Moudle.BizComplimentaryMerchandiseRecord;
 import com.qs.qswlw.okhttp.Moudle.BizConsumptionLimit;
 import com.qs.qswlw.okhttp.Moudle.BizConsumptionLimitRecharge;
 import com.qs.qswlw.okhttp.Moudle.BizConsumptionRecord;
@@ -32,6 +33,7 @@ import com.qs.qswlw.okhttp.Moudle.BizWithdrawalsCity;
 import com.qs.qswlw.okhttp.Moudle.BizWithdrawalsFailedModify;
 import com.qs.qswlw.okhttp.Moudle.IAngelRankingBiz;
 import com.qs.qswlw.okhttp.Moudle.IBusinessTurnoverBiz;
+import com.qs.qswlw.okhttp.Moudle.IComplimentaryMerchandiseRecordBiz;
 import com.qs.qswlw.okhttp.Moudle.IConsumptionLimitBiz;
 import com.qs.qswlw.okhttp.Moudle.IConsumptionLimitRechargeBiz;
 import com.qs.qswlw.okhttp.Moudle.IConsumptionRecordBiz;
@@ -167,5 +169,8 @@ public class IBizFactory {
     }
     public static IMySpendingLimitBiz getMySpendingLimitList(){
         return BizMySpendingLimit.getInstans();
+    }
+    public static IComplimentaryMerchandiseRecordBiz getComplimentaryMerchandiseRecordList(){
+        return BizComplimentaryMerchandiseRecord.getInstans();
     }
 }
