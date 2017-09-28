@@ -8,5 +8,4 @@ import com.qs.qswlw.bean.MerchantAuditBean;
 
 public interface IMerchantAuditView {
     void setData(MerchantAuditBean merchantAuditBean);
-    void setDataRefresh(MerchantAuditBean merchantAuditBean);
 }

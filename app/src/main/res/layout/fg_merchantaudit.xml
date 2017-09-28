@@ -1,26 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_width="match_parent" android:layout_height="match_parent"
     android:orientation="vertical">
-
     <com.qs.qswlw.view.SwipeRefreshView
-        android:id="@+id/lv_mysliverbean_sw"
+        android:id="@+id/lv_merchantaudit_sw"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <ListView
-            android:id="@+id/lv_mysliverbean"
+            android:id="@+id/lv_merchantaudit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:divider="@null"></ListView>
     </com.qs.qswlw.view.SwipeRefreshView>
-
-    <ProgressBar
-        android:id="@+id/pb_itemforestry"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:indeterminateDrawable="@anim/large_progressbar_animator"
-        android:indeterminateDuration="1000" />
 </LinearLayout>

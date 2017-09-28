@@ -26,7 +26,7 @@ public class MerchantAuditAdapter extends BaseListAdapter<MerchantAuditBean.List
 
         final MerchantAuditBean.ListBean listBean = data.get(i);
         ViewHolder holder;
-        if (view == null) {//咦
+        if (view == null) {
             holder = new ViewHolder();
             view = View.inflate(context, R.layout.item_merchantsudit, null);
             holder.tv_item_merchantaudit_time = (TextView) view.findViewById(R.id.tv_item_merchantaudit_time);

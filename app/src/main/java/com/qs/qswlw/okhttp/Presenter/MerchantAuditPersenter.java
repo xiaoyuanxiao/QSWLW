@@ -33,17 +33,4 @@ public class MerchantAuditPersenter {
         },token,p,is_ok);
     }
 
-    public void getdataRefresh(String token,int p,int is_ok){
-        iMerchantAuditBiz.getdata(new MerchantAuditListener() {
-            @Override
-            public void onSuccess(MerchantAuditBean merchantAuditBean) {
-                iMerchantAuditView.setDataRefresh(merchantAuditBean);
-            }
-
-            @Override
-            public void onFailure(String code) {
-
-            }
-        },token,p,is_ok);
-    }
 }
