@@ -4,41 +4,16 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-        <LinearLayout
-            android:focusable="true"
-            android:focusableInTouchMode="true"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-            <TextView
-                android:id="@+id/tv_myprofit_one"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="10sp"
-                android:textColor="@color/black"
-                android:layout_marginTop="10dp"
-                android:text="应让利合计：119679.00"/>
-            <TextView
-                android:id="@+id/tv_myprofit_two"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="10sp"
-                android:textColor="@color/black"
-                android:layout_marginTop="3dp"
-                android:text="已让利合计：27806.20"/>
-            <View
-              android:layout_width="match_parent"
-                android:layout_height="0.3dp"
-                android:background="@color/view"
-                android:layout_marginTop="10dp"/>
-            <com.qs.qswlw.view.xlistview.XListView
-                android:id="@+id/lv_myprofit"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:divider="@color/view"
-                android:dividerHeight="1px">
-            </com.qs.qswlw.view.xlistview.XListView>
+    <com.qs.qswlw.view.SwipeRefreshView
+        android:id="@+id/lv_myprofit_sw"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-        </LinearLayout>
+        <ListView
+            android:id="@+id/lv_myprofit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"></ListView>
+    </com.qs.qswlw.view.SwipeRefreshView>
+
 
 </LinearLayout>

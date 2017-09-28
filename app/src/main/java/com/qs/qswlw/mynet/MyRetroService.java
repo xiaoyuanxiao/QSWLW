@@ -107,8 +107,9 @@ public interface MyRetroService {
      * 录单记录
      */
 
-    @GET("index.php?m=Appapi&c=Single&a=formlist")
-    Observable<MainBean<RecordListBaseBean>> getRecordListData(@Query("token") String token, @Query("p") int p, @Query("type") String type, @Query("is_go") String is_go);
+    @FormUrlEncoded
+    @POST("index.php?m=Appapi&c=Single&a=formlist")
+    Observable<MainBean<RecordListBaseBean>> getRecordListData(@Field("token") String token, @Field("p") int p, @Field("type") String type, @Field("is_go") String is_go);
 
     /**
      * 我要提现,对应x-www-form-urlencoded

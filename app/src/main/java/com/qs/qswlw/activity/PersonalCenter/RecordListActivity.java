@@ -32,10 +32,10 @@ public class RecordListActivity extends BaseInfoActivity implements IRecordListV
     private TextView tv_recordlist_left, tv_recordlist_right;
     private RecordListPresenter recordListPresenter = new RecordListPresenter(this);
     private ListView lv_recordlist;
-    private String type="model2";
-    private String is_go="0";
+    private String type = "model2";
+    private String is_go = "0";
     private RecordListAdapter recordListAdapter;
-    private  List<RecordListBean> recordListBeanList;
+    private List<RecordListBean> recordListBeanList;
     private String[] items;
     private String item;
 
@@ -55,14 +55,13 @@ public class RecordListActivity extends BaseInfoActivity implements IRecordListV
     public void initData() {
         super.initData();
         recordListBeanList = new ArrayList<>();
-        recordListAdapter = new RecordListAdapter(RecordListActivity.this,recordListBeanList);
+        recordListAdapter = new RecordListAdapter(RecordListActivity.this, recordListBeanList);
         lv_recordlist.setAdapter(recordListAdapter);
-        recordListPresenter.getData(MyApplication.TOKEN,page,type,is_go);
+        recordListPresenter.getData(MyApplication.TOKEN, page, type, is_go);
         swipeRefreshView.setOnLoadListener(new SwipeRefreshView.OnLoadListener() {
             @Override
             public void onLoad() {
-                page++;
-                recordListPresenter.getDataRefresh(MyApplication.TOKEN,page,type,is_go);
+                recordListPresenter.getDataRefresh(MyApplication.TOKEN, page, type, is_go);
             }
         });
     }
@@ -76,7 +75,6 @@ public class RecordListActivity extends BaseInfoActivity implements IRecordListV
     @Override
     public void setOnclick() {
         super.setOnclick();
-        //点击radioButton切换到指定页面
         rl_recordlist_left.setOnClickListener(this);
         rl_recordlist_right.setOnClickListener(this);
     }
@@ -99,9 +97,9 @@ public class RecordListActivity extends BaseInfoActivity implements IRecordListV
          * 设置单选items
          * */
         if ("1".equals(a)) {
-            items = new String[]{"创业模式","创新模式"};
+            items = new String[]{"创业模式", "创新模式"};
         } else if ("2".equals(a)) {
-            items = new String[]{"未审核","已审核"};
+            items = new String[]{"未审核", "已审核"};
         }
 
         final android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(this);//内部使用构建者的设计模式
@@ -112,21 +110,21 @@ public class RecordListActivity extends BaseInfoActivity implements IRecordListV
                 dialog.dismiss();
                 if ("1".equals(a)) {
                     tv_recordlist_left.setText(item);
-                    if(item.equals("创业模式")){
+                    if (item.equals("创业模式")) {
                         type = "model1";
-                    }else if(item.equals("创新模式")){
+                    } else if (item.equals("创新模式")) {
                         type = "model2";
                     }
                 } else if ("2".equals(a)) {
                     tv_recordlist_right.setText(item);
-                    if(item.equals("未审核")){
+                    if (item.equals("未审核")) {
                         is_go = "0";
-                    }else if(item.equals("已审核")){
+                    } else if (item.equals("已审核")) {
                         is_go = "1";
                     }
                 }
                 page = 1;
-                recordListPresenter.getData(MyApplication.TOKEN,page,type,is_go);
+                recordListPresenter.getData(MyApplication.TOKEN, page, type, is_go);
 
             }
         });
@@ -138,8 +136,7 @@ public class RecordListActivity extends BaseInfoActivity implements IRecordListV
 
             }
         });
-        builder.setSingleChoiceItems(items, -1,new DialogInterface.OnClickListener() {
-
+        builder.setSingleChoiceItems(items, -1, new DialogInterface.OnClickListener() {
 
 
             @Override
@@ -147,84 +144,22 @@ public class RecordListActivity extends BaseInfoActivity implements IRecordListV
                 item = items[which];
             }
         });
-        builder.setCancelable(false);//设置dialog只能通过点击Dialog上的按钮退出，不能通过回退按钮退出关闭Dialog
+        builder.create().setCanceledOnTouchOutside(true);
+        builder.setCancelable(true);//设置dialog只能通过点击Dialog上的按钮退出，不能通过回退按钮退出关闭Dialog
         builder.create().show();//创建对象
 
     }
-
-//    void showDialog(final String a) {
-//        final AlertDialog.Builder builder = new AlertDialog.Builder(this);
-//        final AlertDialog dialog = builder.create();
-//        final View alertview = LayoutInflater.from(RecordListActivity.this).inflate(R.layout.dialog_recordlist, null);
-//        final RadioButton rb_recordlist_one = (RadioButton) alertview.findViewById(rb_recordlist_one);
-//        final RadioButton rb_recordlist_two = (RadioButton) alertview.findViewById(rb_recordlist_two);
-//        final Button btn_recordlist_confirm = (Button) alertview.findViewById(R.id.btn_recordlist_confirm);
-//        final Button btn_recordlist_cancel = (Button) alertview.findViewById(R.id.btn_recordlist_cancel);
-//        final RadioGroup rg_recordlist_dialog = (RadioGroup) alertview.findViewById(R.id.rg_recordlist_dialog);
-//        if ("1".equals(a)) {
-//            rb_recordlist_one.setText("创业模式");
-//            rb_recordlist_two.setText("创新模式");
-//            //   tv_recordlist_left.setText();
-//        } else if ("2".equals(a)) {
-//            rb_recordlist_one.setText("未审核");
-//            rb_recordlist_two.setText("已审核");
-//        }
-//        rg_recordlist_dialog.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-//            @Override
-//            public void onCheckedChanged(RadioGroup radioGroup, int i) {
-//
-//                switch (i) {
-//                    case rb_recordlist_one:
-//                        tv_recordlist_Text = rb_recordlist_one.getText().toString();
-//                        break;
-//                    case rb_recordlist_two:
-//                        tv_recordlist_Text = rb_recordlist_two.getText().toString();
-//                        break;
-//                }
-//            }
-//        });
-//        btn_recordlist_confirm.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                dialog.dismiss();
-//                if ("1".equals(a)) {
-//                    tv_recordlist_left.setText(tv_recordlist_Text);
-//                    if(tv_recordlist_left.getText().toString().equals("创业模式")){
-//                        type = "model1";
-//                    }else if(tv_recordlist_left.getText().toString().equals("创新模式")){
-//                        type = "model2";
-//                    }
-//                } else if ("2".equals(a)) {
-//                    tv_recordlist_right.setText(tv_recordlist_Text);
-//                    if(tv_recordlist_right.getText().toString().equals("未审核")){
-//                        is_go = "0";
-//                    }else if(tv_recordlist_right.getText().toString().equals("已审核")){
-//                        is_go = "1";
-//                    }
-//                }
-//
-//                recordListPresenter.getData(MyApplication.TOKEN,page,type,is_go);
-//            }
-//        });
-//        btn_recordlist_cancel.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                dialog.dismiss();
-//            }
-//        });
-//        dialog.setView(alertview);
-//        dialog.show();
-//    }
 
     @Override
     public void setRecordList(List<RecordListBean> list) {
         swipeRefreshView.setLoading(false);
         recordListBeanList.clear();
-        if (list!=null) {
+        if (list != null) {
             recordListBeanList.addAll(list);
         }
         recordListAdapter.notifyDataSetChanged();
     }
+
     @Override
     public void setRecordListRefresh(List<RecordListBean> list) {
         swipeRefreshView.setLoading(false);
@@ -234,7 +169,9 @@ public class RecordListActivity extends BaseInfoActivity implements IRecordListV
         }
         recordListBeanList.addAll(list);
         recordListAdapter.notifyDataSetChanged();
+        page++;
     }
+
     @Override
     public void isgetDataFaile(String meg) {
         swipeRefreshView.setLoading(false);

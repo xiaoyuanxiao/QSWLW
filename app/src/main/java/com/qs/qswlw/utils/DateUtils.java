@@ -25,7 +25,7 @@ public class DateUtils {
      * @return
      * @创建日期 2012-7-13
      * @创建时间 下午12:22:40
-     * @描述 —— 格式化日期对象
+     * @描述 —— 转为时间
      */
     public static String date2date(long str) {
         SimpleDateFormat sdf = new SimpleDateFormat(YYYY_MM_DD);
