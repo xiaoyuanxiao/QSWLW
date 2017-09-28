@@ -1,17 +1,16 @@
 package com.qs.qswlw.activity.PersonalCenter;
 
 import android.annotation.TargetApi;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Environment;
 import android.provider.MediaStore;
-import android.support.v7.app.AlertDialog;
 import android.text.Html;
 import android.util.Log;
 import android.view.Gravity;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -54,6 +53,9 @@ import static com.qs.qswlw.R.id.spinner_consumptionrecord_pos;
 
 public class ConsumptionRecordActivity extends BaseInfoActivity implements IConsumptionRecordView, IMerchantAuditClickView {
 
+    private static final int CAMERA = 2003;
+    private static final int CHOOSE_PICTURE = 2004;
+    final boolean isKitKat = Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT;
     private ConsumptionRecordPresenter consumptionRecordPresenter = new ConsumptionRecordPresenter(this);
     private TextView consumptionrecord_bottom_one, consumptionrecord_bottom_two, consumptionrecord_bottom_three, consumptionrecord_bottom_four;
     private TextView edt_consumptionrecord_two;
@@ -65,9 +67,6 @@ public class ConsumptionRecordActivity extends BaseInfoActivity implements ICons
     private String strClassification;
     private Button btn_selectorfile1, btn_selectorfile2;
     private GenderPopupWindow menuWindow;
-    private static final int CAMERA = 2003;
-    private static final int CHOOSE_PICTURE = 2004;
-    final boolean isKitKat = Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT;
     private ImageView iv_consumption1, iv_consumption2;
     private String a;
     private Bitmap bitmap;
@@ -86,6 +85,15 @@ public class ConsumptionRecordActivity extends BaseInfoActivity implements ICons
     private String get3;
     private MerchantAuditBean.ListBean listBean;
     private String goods_id;
+    private String[] items;
+    private String pay_name;
+    private String pay_time;
+    private String pay_type;
+    private float none;
+    private float money;
+    private int uid;
+    private File file1;
+    private File file2;
 
     @Override
     public View setConetnView() {
@@ -158,32 +166,22 @@ public class ConsumptionRecordActivity extends BaseInfoActivity implements ICons
 //        eb_two.setOnClickListener(this);
     }
 
-
     @Override
     public void onClick(View v) {
         super.onClick(v);
         switch (v.getId()) {
             case R.id.edt_consumptionrecord_two:
-                final AlertDialog.Builder builder = new AlertDialog.Builder(this);
-                final AlertDialog dialog = builder.create();
-                View alertview = LayoutInflater.from(this).inflate(R.layout.dialog_consumption_percent, null);
-                eb_one = (RadioButton) alertview.findViewById(R.id.eb_one);
-                eb_two = (RadioButton) alertview.findViewById(R.id.eb_two);
-                if (1==type) {
-                    eb_one.setText(get3);
-                    eb_two.setText(get);
-                } else if (2==type) {
-                    eb_one.setText(get2 + "%(发票)");
-                    eb_two.setText(get1 + "%(B网)");
+                if (1 == type) {
+                    items = new String[]{get3, get};
+                } else if (2 == type) {
+                    items = new String[]{get2 + "%(发票)", get1 + "%(B网)"};
                 }
-
-                rg_dialog_consumption = (RadioGroup) alertview.findViewById(R.id.rg_dialog_consumption);
-
-                rg_dialog_consumption.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+                final android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(this);//内部使用构建者的设计模式
+                builder.setSingleChoiceItems(items, -1, new DialogInterface.OnClickListener() {//第二个参数是设置默认选中哪一项-1代表默认都不选
                     @Override
-                    public void onCheckedChanged(RadioGroup radioGroup, int i) {
-                        switch (i) {
-                            case R.id.eb_one:
+                    public void onClick(DialogInterface dialog, int which) {
+                        switch (which){
+                            case 0:
                                 ratio_key = "model1";
                                 if (1==type) {
                                     ratio = Float.parseFloat(get3);
@@ -194,7 +192,7 @@ public class ConsumptionRecordActivity extends BaseInfoActivity implements ICons
                                 dialog.dismiss();
                                 edt_consumptionrecord_two.setText(ratio + "%(发票)");
                                 break;
-                            case R.id.eb_two:
+                            case 1:
                                 ratio_key = "model2";
                                 if (1==type) {
                                     ratio = Float.parseFloat(get);
@@ -206,10 +204,13 @@ public class ConsumptionRecordActivity extends BaseInfoActivity implements ICons
                                 edt_consumptionrecord_two.setText(ratio + "%(B网)");
                                 break;
                         }
+                        dialog.dismiss();
                     }
                 });
-                dialog.setView(alertview);
-                dialog.show();
+                builder.create().setCanceledOnTouchOutside(true);
+                builder.setCancelable(true);//设置dialog只能通过点击Dialog上的按钮退出，不能通过回退按钮退出关闭Dialog
+                builder.create().show();//创建对象
+
                 break;
             case spinner_consumptionrecord_pos:
                 break;
@@ -220,23 +221,15 @@ public class ConsumptionRecordActivity extends BaseInfoActivity implements ICons
                 showPW("2");
                 break;
             case R.id.btn_sonsumption_confirm:
-                if(1==type){//商家审核进入的
+                if (1 == type) {//商家审核进入的
                     postMerchantAuditData();
-                }else if(2==type){//消费录单进入的，为嘛写两个接口-_-
+                } else if (2 == type) {//消费录单进入的，为嘛写两个接口-_-
                     postData();
                 }
 
                 break;
         }
     }
-
-
-    private String pay_name;
-    private String pay_time;
-    private String pay_type;
-    private float none;
-    private float money;
-    private int uid;
 
     /**
      * 提交录单信息
@@ -248,24 +241,25 @@ public class ConsumptionRecordActivity extends BaseInfoActivity implements ICons
 
             @Override
             public void onError(Throwable e) {
-                ToastUtils.showToast(e+"");
+                ToastUtils.showToast(e + "");
                 Log.e("TAG", e + "");
             }
 
             @Override
             public void onNext(MainBean mainBean) {
-                 ToastUtils.showToast(mainBean.getMsg());
+                ToastUtils.showToast(mainBean.getMsg());
                 Log.e("TAG", mainBean + "");
             }
 
             @Override
             public Observable<MainBean> getObservable(MyRetroService retrofit) {
 
-                return retrofit.PostConsumptionData1(MyApplication.TOKEN, Integer.parseInt(listBean.getId()), Integer.parseInt(goods_id), uid, money, ratio, none, ratio_key, pay_type,pay_name,pay_time, Integer.parseInt(edt_consumptionrecord_four.getText().toString()) ,file1, file2);
+                return retrofit.PostConsumptionData1(MyApplication.TOKEN, Integer.parseInt(listBean.getId()), Integer.parseInt(goods_id), uid, money, ratio, none, ratio_key, pay_type, pay_name, pay_time, Integer.parseInt(edt_consumptionrecord_four.getText().toString()), file1, file2);
             }
         });
 
     }
+
     /**
      * 提交录单信息
      */
@@ -311,29 +305,6 @@ public class ConsumptionRecordActivity extends BaseInfoActivity implements ICons
         menuWindow.setFemaleName("照片图库");
     }
 
-
-    //上传图片
-    private class MyOnClickListener implements View.OnClickListener {
-        @Override
-        public void onClick(View v) {
-            switch (v.getId()) {
-                case R.id.tv_female:
-                    //选择图片
-                    Intent picture = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-                    startActivityForResult(picture, CHOOSE_PICTURE);
-                    break;
-                case R.id.tv_male:
-                    //选择拍照
-                    Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                    imageUri = Uri.fromFile(new File(Environment.getExternalStorageDirectory(), System.currentTimeMillis() / 1000 + "userLogo.jpg"));
-                    intent.putExtra(MediaStore.EXTRA_OUTPUT, imageUri);
-                    startActivityForResult(intent, CAMERA);
-                    break;
-            }
-            menuWindow.dismiss();
-        }
-    }
-
     @TargetApi(Build.VERSION_CODES.KITKAT)
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -366,9 +337,6 @@ public class ConsumptionRecordActivity extends BaseInfoActivity implements ICons
             ToastUtils.showToast(this, "请重新选取图片！");
         }
     }
-
-    private File file1;
-    private File file2;
 
     @Override
     public void setConsumptionRecordData(MainBean<ConsumptionRecordBean> consumptionRecordBean) {
@@ -413,7 +381,29 @@ public class ConsumptionRecordActivity extends BaseInfoActivity implements ICons
         edt_consumptionrecord_four.setText(old_list.getGoods_num() + "");  //商品数量
         edt_consumptionrecord_five.setText(old_list.getPay_name());  //汇款人
         edt_consumptionrecord_sex.setText(old_list.getAdd_time());   //时间
-        
+
+    }
+
+    //上传图片
+    private class MyOnClickListener implements View.OnClickListener {
+        @Override
+        public void onClick(View v) {
+            switch (v.getId()) {
+                case R.id.tv_female:
+                    //选择图片
+                    Intent picture = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                    startActivityForResult(picture, CHOOSE_PICTURE);
+                    break;
+                case R.id.tv_male:
+                    //选择拍照
+                    Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                    imageUri = Uri.fromFile(new File(Environment.getExternalStorageDirectory(), System.currentTimeMillis() / 1000 + "userLogo.jpg"));
+                    intent.putExtra(MediaStore.EXTRA_OUTPUT, imageUri);
+                    startActivityForResult(intent, CAMERA);
+                    break;
+            }
+            menuWindow.dismiss();
+        }
     }
 
 }
