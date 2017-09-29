@@ -39,7 +39,6 @@ import com.qs.qswlw.utils.ToastUtils;
 import com.qs.qswlw.view.GenderPopupWindow;
 
 import java.io.File;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -193,7 +192,7 @@ public class ImproveDocumentationActivity extends BaseInfoActivity implements II
                 String category = edt_improve_catagory.getText().toString();
                 String starttime = tv_startTime.getText().toString();
                 String endtime = tv_endTime.getText().toString();
-                String timetype = "yyyy-MM";
+                String timetype = "MM:dd";
                 List<String> spinerIds = getSpinerIds();
                 if (spinerIds.size() < 4)
                     ToastUtils.showToast("没有选择完全");
@@ -231,19 +230,20 @@ public class ImproveDocumentationActivity extends BaseInfoActivity implements II
     }
 
     private void showTimePickerDialog(final TextView tv) {
-        //是否使用24小时制
-
         mCalendar = Calendar.getInstance();
+
         TimePickerDialog dialog = new TimePickerDialog(ImproveDocumentationActivity.this, new TimePickerDialog.OnTimeSetListener() {
 
-
+            int mHour;
+            int mMinute;
             @Override
-            public void onTimeSet(TimePicker timePicker, int i, int i1) {
-                mCalendar.set(Calendar.HOUR, i);
-                mCalendar.set(Calendar.MINUTE, i1);
-                SimpleDateFormat format = new SimpleDateFormat("HH:mm");
-                tv.setText("" + format.format(mCalendar.getTime()));
-
+            public void onTimeSet(TimePicker timePicker, int hourOfDay, int minute) {
+                mHour = hourOfDay;
+                mMinute = minute;
+                //更新EditText控件时间 小于10加0
+                tv.setText(new StringBuilder()
+                        .append(mHour < 10 ? "0" + mHour : mHour).append(":")
+                        .append(mMinute < 10 ? "0" + mMinute : mMinute) );
             }
         }, mCalendar.get(Calendar.HOUR), mCalendar.get(Calendar.MINUTE), true);
         dialog.show();
@@ -368,8 +368,8 @@ public class ImproveDocumentationActivity extends BaseInfoActivity implements II
         edt_improve_mobile.setText(info.getMobile());//电话
         edt_improve_address.setText(info.getAddress());//地址
         edt_improve_catagory.setText(info.getCategory());//地址
-        tv_startTime.setText(info.getStarttime());//开始时间
-        tv_endTime.setText(info.getEndtime());//结束时间
+        tv_startTime.setText("08:00");//开始时间
+        tv_endTime.setText("20:00");//结束时间
         id1 = info.getId();//id
         add_time = info.getAdd_time();
         String province = improveDocumentationBean.getInfo().getProvince();//省ID
