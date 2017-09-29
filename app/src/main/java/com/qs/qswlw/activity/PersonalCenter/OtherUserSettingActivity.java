@@ -3,6 +3,7 @@ package com.qs.qswlw.activity.PersonalCenter;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.Handler;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
@@ -21,6 +22,7 @@ import com.qs.qswlw.manager.UserManage;
 import com.qs.qswlw.okhttp.Iview.IPersonalSettingView;
 import com.qs.qswlw.okhttp.Presenter.PersonalSettingPresenter;
 import com.qs.qswlw.utils.RadioButtonImgUtil;
+import com.qs.qswlw.utils.ToastUtils;
 
 /**
  * Created by xiaoyu on 2017/9/7.
@@ -29,6 +31,13 @@ import com.qs.qswlw.utils.RadioButtonImgUtil;
 public class OtherUserSettingActivity  extends BaseActivity implements IPersonalSettingView {
 
     PersonalSettingPresenter personalSettingPresenter = new PersonalSettingPresenter(this);
+    Runnable runnable = new Runnable() {
+        @Override
+        public void run() {
+            startActivity(new Intent(OtherUserSettingActivity.this,LoginActivity.class));
+            finish();
+        }
+    };
     private GridView gv_setting;
     private RadioButton rb_main_qsmall,rb_main_lianmeng,rb_main_funtime,rb_main_luck,rb_main_exit;
     private OtherUserSettingAdapter otherUserSettingAdapter;
@@ -72,8 +81,6 @@ public class OtherUserSettingActivity  extends BaseActivity implements IPersonal
 
         RadioButtonImgUtil.setRadioButtonImg(this,rb_main_qsmall,rb_main_lianmeng,rb_main_funtime,rb_main_luck,rb_main_exit);
     }
-
-
 
     @Override
     public void initData() {
@@ -137,7 +144,7 @@ public class OtherUserSettingActivity  extends BaseActivity implements IPersonal
 
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        finish();
+                        dialog.dismiss();
                     }
                 }).show();
     }
@@ -185,6 +192,12 @@ public class OtherUserSettingActivity  extends BaseActivity implements IPersonal
         }
 
 
+    }
+
+    @Override
+    public void setTokenFail() {
+        ToastUtils.showToast("token失效请重新登录");
+        new Handler().postDelayed(runnable, 2000);
     }
 
     class ItemClickListener implements AdapterView.OnItemClickListener {

@@ -39,8 +39,12 @@ public class PersonalSettingPresenter {
             }
 
             @Override
-            public void onFailure(String code) {
+            public void onTokenFail() {
+                iPersonalSettingView.setTokenFail();
+            }
 
+            @Override
+            public void onFailure(String code) {
                 Log.e("PersonalSettingBaseListener",code);
             }
         },token);

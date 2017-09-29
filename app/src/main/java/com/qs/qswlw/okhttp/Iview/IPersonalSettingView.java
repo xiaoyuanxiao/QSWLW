@@ -9,10 +9,12 @@ import com.qs.qswlw.bean.PersonalSettingBean;
 public interface IPersonalSettingView {
     /**
      * 创业中心
+     *
      * @param list
      */
     void setUserInfo(PersonalSettingBean list);
 
-    void runOnUiThread(Runnable runnable);
+    void setTokenFail();
 
+    void runOnUiThread(Runnable runnable);
 }

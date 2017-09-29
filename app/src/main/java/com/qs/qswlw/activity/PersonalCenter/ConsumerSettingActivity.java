@@ -3,6 +3,7 @@ package com.qs.qswlw.activity.PersonalCenter;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.Handler;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
@@ -20,6 +21,7 @@ import com.qs.qswlw.manager.UserManage;
 import com.qs.qswlw.okhttp.Iview.IPersonalSettingView;
 import com.qs.qswlw.okhttp.Presenter.PersonalSettingPresenter;
 import com.qs.qswlw.utils.RadioButtonImgUtil;
+import com.qs.qswlw.utils.ToastUtils;
 
 
 /**
@@ -28,6 +30,13 @@ import com.qs.qswlw.utils.RadioButtonImgUtil;
 
 public class ConsumerSettingActivity extends BaseActivity implements AdapterView.OnItemClickListener, IPersonalSettingView {
     PersonalSettingPresenter personalSettingPresenter = new PersonalSettingPresenter(this);
+    Runnable runnable = new Runnable() {
+        @Override
+        public void run() {
+            startActivity(new Intent(ConsumerSettingActivity.this,LoginActivity.class));
+            finish();
+        }
+    };
     private GridView gv_setting;
     private TextView tv_setting_set;
     private ConsumerSettingAdapter consumerSettingAdapter;
@@ -69,6 +78,11 @@ public class ConsumerSettingActivity extends BaseActivity implements AdapterView
 
     }
 
+    @Override
+    public void setTokenFail() {
+        ToastUtils.showToast("token失效请重新登录");
+        new Handler().postDelayed(runnable, 2000);
+    }
 
     @Override
     public Object initView() {
@@ -168,7 +182,7 @@ public class ConsumerSettingActivity extends BaseActivity implements AdapterView
 
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        finish();
+                        dialog.dismiss();
                     }
                 }).show();
     }

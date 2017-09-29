@@ -9,4 +9,6 @@ import com.qs.qswlw.bean.PersonalSettingBean;
 
 public interface PersonalSettingBaseListener extends BaseOnlistener {
     void OnSucess(MainBean<PersonalSettingBean> list);
+
+    void onTokenFail();
 }

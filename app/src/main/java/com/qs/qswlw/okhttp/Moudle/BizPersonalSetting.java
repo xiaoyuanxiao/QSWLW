@@ -16,15 +16,14 @@ import rx.Observable;
 public class BizPersonalSetting implements IPersonalSettingBiz {
     private static BizPersonalSetting testMoudle;
 
+    public BizPersonalSetting() {
+    }
+
     public synchronized static BizPersonalSetting getInstans() {
         if (testMoudle == null)
             testMoudle = new BizPersonalSetting();
         return testMoudle;
     }
-
-    public BizPersonalSetting() {
-    }
-
 
     /**
      * 得到数据
@@ -42,7 +41,11 @@ public class BizPersonalSetting implements IPersonalSettingBiz {
 
             @Override
             public void onNext(MainBean<PersonalSettingBean> personalSettingBeanMainBean) {
-                if (personalSettingBeanMainBean.getResult() == null||personalSettingBeanMainBean.getSucc()!=1) {
+                int status = personalSettingBeanMainBean.getStatus();
+                if (status == -4||status == -3) {
+                    personalSettingBaseListener.onTokenFail();
+                }
+                if (personalSettingBeanMainBean.getResult() == null || personalSettingBeanMainBean.getSucc() != 1) {
                     personalSettingBaseListener.onFailure("错误代码" + personalSettingBeanMainBean.getStatus() + "错误提示" + personalSettingBeanMainBean.getMsg());
                     return;
                 }
