@@ -24,7 +24,6 @@ import rx.Observable;
  */
 
 public class LoginActivity extends BaseInfoActivity {
-   // LoginPresenter loginPresenter = new LoginPresenter(this);
     private Button btn_login;
     private EditText edt_username,edt_password;
     private TextView tv_newuser_register,tv_forgetPassword;
@@ -70,7 +69,6 @@ public class LoginActivity extends BaseInfoActivity {
             case R.id.btn_login:
                 String username = edt_username.getText().toString();
                 String password = edt_password.getText().toString();
-              //  loginPresenter.getLogin(username,password);
                 getLogin(username,password);
                 break;
             case R.id.tv_newuser_register:
@@ -116,7 +114,7 @@ public class LoginActivity extends BaseInfoActivity {
                 String token = userinfo.getToken();
                 //请求个人中心接口
                 Intent intent = new Intent();
-                intent.putExtra("token",token);
+            //    intent.putExtra("token",token);
                 if (role.equals("0")) {
                     intent.setClass(LoginActivity.this,ConsumerSettingActivity.class);
                     startActivity(intent);

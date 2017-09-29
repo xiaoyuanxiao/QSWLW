@@ -13,6 +13,7 @@ import com.qs.qswlw.R;
 import com.qs.qswlw.activity.BaseActivity;
 import com.qs.qswlw.adapter.OtherUserSettingAdapter;
 import com.qs.qswlw.bean.PersonalSettingBean;
+import com.qs.qswlw.manager.UserManage;
 import com.qs.qswlw.okhttp.Iview.IPersonalSettingView;
 import com.qs.qswlw.okhttp.Presenter.PersonalSettingPresenter;
 import com.qs.qswlw.utils.RadioButtonImgUtil;
@@ -23,11 +24,11 @@ import com.qs.qswlw.utils.RadioButtonImgUtil;
 
 public class OtherUserSettingActivity  extends BaseActivity implements IPersonalSettingView {
 
+    PersonalSettingPresenter personalSettingPresenter = new PersonalSettingPresenter(this);
     private GridView gv_setting;
     private RadioButton rb_main_qsmall,rb_main_lianmeng,rb_main_funtime,rb_main_luck,rb_main_exit;
     private OtherUserSettingAdapter otherUserSettingAdapter;
     private TextView tv_setting_set;
-    PersonalSettingPresenter personalSettingPresenter = new PersonalSettingPresenter(this);
     private TextView tv_setting_consumerSilverbeans,tv_setting_encourage,tv_setting_withdrawals,tv_setting_consumerbeans,tv_setting_paytaxes
             ,tv_cyzx,tv_recommender,tv_setting_id,tv_setting_name,tv_role;
     private TextView setting_one,tv_setting_topcount;
@@ -75,8 +76,7 @@ public class OtherUserSettingActivity  extends BaseActivity implements IPersonal
         super.initData();
         rl_setting_consumptionMoney.setVisibility(View.GONE);
         tv_setting_topcount.setVisibility(View.VISIBLE);
-        Intent intent = getIntent();
-        String token = intent.getStringExtra("token");
+        String token = UserManage.getInstance().getUserInfo(OtherUserSettingActivity.this).getToken();
         MyApplication.TOKEN = token;
         personalSettingPresenter.getData(token);
         otherUserSettingAdapter = new OtherUserSettingAdapter(this);
@@ -92,6 +92,52 @@ public class OtherUserSettingActivity  extends BaseActivity implements IPersonal
     public void onClick(View view) {
 
     }
+
+    @Override
+    public void setUserInfo(PersonalSettingBean personalSettingBean) {
+        tv_cyzx.setText("创业中心:"+personalSettingBean.getCyzx_info().getNickname());
+        tv_recommender.setText("推荐人:"+personalSettingBean.getRe_info().getNickname());
+        tv_setting_id.setText("ID:"+personalSettingBean.getUser_info().getUser_id());
+        tv_setting_name.setText("昵称:"+personalSettingBean.getUser_info().getNickname());
+
+        tv_setting_consumerSilverbeans.setText(personalSettingBean.getUser_info().getSilver_total()+"");
+        tv_setting_encourage.setText(personalSettingBean.getUser_info().getLove_total()+"");
+        tv_setting_withdrawals.setText(personalSettingBean.getUser_info().getGold_total()+"");
+        tv_setting_consumerbeans.setText(personalSettingBean.getUser_info().getTaxgold_total()+"");
+        tv_setting_paytaxes.setText(personalSettingBean.getLast_rebate_date()+"");
+        MyApplication.ID =  user_id = personalSettingBean.getUser_info().getUser_id();
+        MyApplication.NICKNAME = nickname = personalSettingBean.getUser_info().getNickname();
+        //会员身份
+        role = personalSettingBean.getUser_info().getRole();
+        if(role.equals("0")){
+            tv_role.setText("消费天使");
+            MyApplication.USERROLE = "消费天使";
+        }else if(role.equals("10")){
+            tv_role.setText("商家");
+            MyApplication.USERROLE = "商家";
+        }else if(role.equals("11")){
+            tv_role.setText("创业天使");
+            MyApplication.USERROLE = "创业天使";
+        }else if(role.equals("12")){
+            tv_role.setText("省代");
+            MyApplication.USERROLE = "省代";
+        }else if(role.equals("13")){
+            tv_role.setText("市代");
+            MyApplication.USERROLE = "市代";
+        }else if(role.equals("14")){
+            tv_role.setText("区代");
+            MyApplication.USERROLE = "区代";
+        }else if(role.equals("15")){
+            tv_role.setText("创业中心");
+            MyApplication.USERROLE = "创业中心";
+        }else if(role.equals("25")){
+            tv_role.setText("平台");
+            MyApplication.USERROLE = "平台";
+        }
+
+
+    }
+
     class ItemClickListener implements AdapterView.OnItemClickListener {
 
         @Override
@@ -151,50 +197,5 @@ public class OtherUserSettingActivity  extends BaseActivity implements IPersonal
                     break;
             }
         }
-    }
-
-    @Override
-    public void setUserInfo(PersonalSettingBean personalSettingBean) {
-        tv_cyzx.setText("创业中心:"+personalSettingBean.getCyzx_info().getNickname());
-        tv_recommender.setText("推荐人:"+personalSettingBean.getRe_info().getNickname());
-        tv_setting_id.setText("ID:"+personalSettingBean.getUser_info().getUser_id());
-        tv_setting_name.setText("昵称:"+personalSettingBean.getUser_info().getNickname());
-
-        tv_setting_consumerSilverbeans.setText(personalSettingBean.getUser_info().getSilver_total()+"");
-        tv_setting_encourage.setText(personalSettingBean.getUser_info().getLove_total()+"");
-        tv_setting_withdrawals.setText(personalSettingBean.getUser_info().getGold_total()+"");
-        tv_setting_consumerbeans.setText(personalSettingBean.getUser_info().getTaxgold_total()+"");
-        tv_setting_paytaxes.setText(personalSettingBean.getLast_rebate_date()+"");
-        MyApplication.ID =  user_id = personalSettingBean.getUser_info().getUser_id();
-        MyApplication.NICKNAME = nickname = personalSettingBean.getUser_info().getNickname();
-        //会员身份
-        role = personalSettingBean.getUser_info().getRole();
-        if(role.equals("0")){
-            tv_role.setText("消费天使");
-            MyApplication.USERROLE = "消费天使";
-        }else if(role.equals("10")){
-            tv_role.setText("商家");
-            MyApplication.USERROLE = "商家";
-        }else if(role.equals("11")){
-            tv_role.setText("创业天使");
-            MyApplication.USERROLE = "创业天使";
-        }else if(role.equals("12")){
-            tv_role.setText("省代");
-            MyApplication.USERROLE = "省代";
-        }else if(role.equals("13")){
-            tv_role.setText("市代");
-            MyApplication.USERROLE = "市代";
-        }else if(role.equals("14")){
-            tv_role.setText("区代");
-            MyApplication.USERROLE = "区代";
-        }else if(role.equals("15")){
-            tv_role.setText("创业中心");
-            MyApplication.USERROLE = "创业中心";
-        }else if(role.equals("25")){
-            tv_role.setText("平台");
-            MyApplication.USERROLE = "平台";
-        }
-
-
     }
 }

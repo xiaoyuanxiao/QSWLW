@@ -23,6 +23,9 @@ import android.widget.Toast;
 
 import com.qs.qswlw.MyApplication;
 import com.qs.qswlw.R;
+import com.qs.qswlw.activity.PersonalCenter.BusinessSettingActivity;
+import com.qs.qswlw.activity.PersonalCenter.ConsumerSettingActivity;
+import com.qs.qswlw.activity.PersonalCenter.OtherUserSettingActivity;
 import com.qs.qswlw.activity.mall.AllianceMallActivity;
 import com.qs.qswlw.activity.mall.QSMallActivity;
 import com.qs.qswlw.adapter.AngelAdapter;
@@ -350,11 +353,26 @@ public class MainActivity extends BaseActivity implements IMainView {
         rb_main_luckgame.setOnClickListener(this);
     }
 
+
+
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.iv_setting_main:
-                startActivity(new Intent(this, LoginActivity.class));
+                String role = UserManage.getInstance().getUserInfo(MainActivity.this).getRole();
+                if(role==null){
+                    startActivity(new Intent(MainActivity.this,LoginActivity.class));
+                }else{
+                    if (role.equals("0")) {
+                        startActivity(new Intent(MainActivity.this,ConsumerSettingActivity.class));
+                    } else if (role.equals("10")) {
+                        startActivity(new Intent(MainActivity.this,BusinessSettingActivity.class));
+                    } else {
+                        //其他页面
+                        startActivity(new Intent(MainActivity.this,OtherUserSettingActivity.class));
+                    }
+                }
+
                 finish();
                 break;
             case R.id.iv_ranking_main:
@@ -421,6 +439,7 @@ public class MainActivity extends BaseActivity implements IMainView {
         super.onDestroy();
         //   imageSwitchView.clear();
     }
+
 
     static class MyObservable extends Observable {
         public void setChanged() {

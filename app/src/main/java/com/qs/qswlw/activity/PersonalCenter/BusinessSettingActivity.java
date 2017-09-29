@@ -17,6 +17,7 @@ import com.qs.qswlw.activity.MyProductsActivity;
 import com.qs.qswlw.activity.PersonalCenter.city.HarvestAddressListActivity;
 import com.qs.qswlw.adapter.BusinessSettingAdapter;
 import com.qs.qswlw.bean.PersonalSettingBean;
+import com.qs.qswlw.manager.UserManage;
 import com.qs.qswlw.okhttp.Iview.IPersonalSettingView;
 import com.qs.qswlw.okhttp.Presenter.PersonalSettingPresenter;
 import com.qs.qswlw.utils.RadioButtonImgUtil;
@@ -104,8 +105,7 @@ public class BusinessSettingActivity extends BaseActivity implements IPersonalSe
     public void initData() {
         super.initData();
         tv_setting_shopname.setVisibility(View.VISIBLE);
-        Intent intent = getIntent();
-        String token = intent.getStringExtra("token");
+        String token = UserManage.getInstance().getUserInfo(BusinessSettingActivity.this).getToken();
         MyApplication.TOKEN = token;
         personalSettingPresenter.getData(token);
         businessSettingAdapter = new BusinessSettingAdapter(this);

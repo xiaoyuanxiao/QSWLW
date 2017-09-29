@@ -15,6 +15,7 @@ import com.qs.qswlw.activity.BaseActivity;
 import com.qs.qswlw.activity.MainActivity;
 import com.qs.qswlw.adapter.ConsumerSettingAdapter;
 import com.qs.qswlw.bean.PersonalSettingBean;
+import com.qs.qswlw.manager.UserManage;
 import com.qs.qswlw.okhttp.Iview.IPersonalSettingView;
 import com.qs.qswlw.okhttp.Presenter.PersonalSettingPresenter;
 import com.qs.qswlw.utils.RadioButtonImgUtil;
@@ -25,11 +26,11 @@ import com.qs.qswlw.utils.RadioButtonImgUtil;
  */
 
 public class ConsumerSettingActivity extends BaseActivity implements AdapterView.OnItemClickListener, IPersonalSettingView {
+    PersonalSettingPresenter personalSettingPresenter = new PersonalSettingPresenter(this);
     private GridView gv_setting;
     private TextView tv_setting_set;
     private ConsumerSettingAdapter consumerSettingAdapter;
     private RadioButton rb_main_qsmall,rb_main_lianmeng,rb_main_funtime,rb_main_luck,rb_main_exit;
-    PersonalSettingPresenter personalSettingPresenter = new PersonalSettingPresenter(this);
     private TextView tv_setting_consumptionMoney,tv_setting_consumerSilverbeans,tv_setting_encourage,tv_setting_withdrawals,tv_setting_consumerbeans,
             tv_setting_paytaxes,tv_cyzx,tv_recommender,tv_setting_id,tv_setting_name,tv_role;
     private TextView setting_one;
@@ -106,9 +107,7 @@ public class ConsumerSettingActivity extends BaseActivity implements AdapterView
     public void initData() {
         super.initData();// 这些你不用管 是下面gridview的  你不用每个看 能不懂了嘛
         consumerSettingAdapter = new ConsumerSettingAdapter(this);
-        //wuyu
-        Intent intent = getIntent();
-        String token = intent.getStringExtra("token");
+        String token = UserManage.getInstance().getUserInfo(ConsumerSettingActivity.this).getToken();
         MyApplication.TOKEN = token;
         personalSettingPresenter.getData(token);
         gv_setting.setAdapter(consumerSettingAdapter);
