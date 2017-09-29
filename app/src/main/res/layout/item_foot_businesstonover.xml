@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ll_businesstornover" android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="6dp">
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="2"
+        android:gravity="center"
+        android:textColor="@color/black"
+        android:textSize="10sp"/>
+    <TextView
+      style="@style/tv_harvestaddress_weight"
+        android:text="总数"/>
+    <TextView
+        android:id="@+id/tv_businesstonover_one"
+        style="@style/tv_harvestaddress_weight"
+        android:text=""/>
+    <TextView
+        android:id="@+id/tv_businesstonover_two"
+        style="@style/tv_harvestaddress_weight"
+        android:text=""/>
+</LinearLayout>

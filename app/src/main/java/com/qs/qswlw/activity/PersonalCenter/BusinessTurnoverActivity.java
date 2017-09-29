@@ -24,7 +24,6 @@ public class BusinessTurnoverActivity extends BaseInfoActivity {
     private FragmentManager fragmentManager;
 
 
-
     @Override
     public View setConetnView() {
         View inflate = View.inflate(this, R.layout.activity_businessturnover, null);

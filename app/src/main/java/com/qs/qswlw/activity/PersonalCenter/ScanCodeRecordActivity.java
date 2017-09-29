@@ -111,34 +111,4 @@ public class ScanCodeRecordActivity extends BaseInfoActivity {
         tv1.setTextColor(this.getResources().getColor(R.color.red));
         tv1.setBackgroundColor(this.getResources().getColor(R.color.white));
     }
-//    @Override
-//    public void setData(ScanCodeRecordBean scanCodeRecordBean) {
-//        List<ScanCodeRecordBean.ListBean> list = scanCodeRecordBean.getList();
-//        swipeRefreshView.setLoading(false);
-//        listBeen.clear();
-//        if (list == null || list.size() == 0) {
-//            return;
-//        }
-//        listBeen.addAll(list);
-//        scanCodeRecordAdapter.notifyDataSetChanged();
-//
-//
-//    }
-
-//    @Override
-//    public void setDataRefresh(ScanCodeRecordBean scanCodeRecordBean) {
-//        List<ScanCodeRecordBean.ListBean> list = scanCodeRecordBean.getList();
-//        swipeRefreshView.setLoading(false);
-//        if(page==1){
-//            listBeen.clear();
-//        }
-//        if (list == null || list.size() == 0) {
-//            ToastUtils.showToast("没有更多数据了");
-//            return;
-//        }
-//        listBeen.addAll(list);
-//        scanCodeRecordAdapter.notifyDataSetChanged();
-//
-//        page++;
-//    }
 }

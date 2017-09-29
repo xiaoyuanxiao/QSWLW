@@ -11,8 +11,7 @@
         <ListView
             android:id="@+id/lv_scancoderecord"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:divider="@null"></ListView>
+            android:layout_height="wrap_content"></ListView>
     </com.qs.qswlw.view.SwipeRefreshView>
 
 </LinearLayout>

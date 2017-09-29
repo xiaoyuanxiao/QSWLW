@@ -1,7 +1,9 @@
 package com.qs.qswlw.fragment;
 
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.qs.qswlw.MyApplication;
 import com.qs.qswlw.R;
@@ -28,8 +30,10 @@ public class BusinessTurnoverFragment extends BaseFragment implements IBusinessT
     private BusinessTurnoverAdapter businessTurnoverAdapter;
     private List<BusinessTurnoverBean.ListBean> listBeen;
     private BusinessTurnoverPersenter businessTurnoverPersenter = new BusinessTurnoverPersenter(this);
+    private TextView tv_businesstonover_one,tv_businesstonover_two;
+    private LinearLayout ll_businesstornover;
 
-    public static BusinessTurnoverFragment newInstance(int type) {//等下
+    public static BusinessTurnoverFragment newInstance(int type) {
         BusinessTurnoverFragment businessTurnoverFragment = new BusinessTurnoverFragment();
         businessTurnoverFragment.setType(type);
         return businessTurnoverFragment;
@@ -43,6 +47,12 @@ public class BusinessTurnoverFragment extends BaseFragment implements IBusinessT
         View inflate = View.inflate(getActivity(), R.layout.fg_businessturnover, null);
         swipeRefreshView = (SwipeRefreshView) inflate.findViewById(R.id.lv_turnover_sw);
         lv_turnover = (ListView) inflate.findViewById(R.id.lv_turnover);
+        View inflate1 = View.inflate(getActivity(), R.layout.item_foot_businesstonover, null);
+        tv_businesstonover_one = (TextView) inflate1.findViewById(R.id.tv_businesstonover_one);
+        tv_businesstonover_two = (TextView) inflate1.findViewById(R.id.tv_businesstonover_two);
+        ll_businesstornover = (LinearLayout) inflate1.findViewById(R.id.ll_businesstornover);
+        lv_turnover.addFooterView(inflate1);
+
         return inflate;
     }
 
@@ -73,7 +83,13 @@ public class BusinessTurnoverFragment extends BaseFragment implements IBusinessT
 
     @Override
     public void getdata(BusinessTurnoverBean businessTurnoverBean) {
+
+        tv_businesstonover_one.setText(businessTurnoverBean.getCount_money());
+        tv_businesstonover_two.setText(businessTurnoverBean.getCount_none());
         List<BusinessTurnoverBean.ListBean> list = businessTurnoverBean.getList();
+        if(page==1&&(list == null || list.size() == 0)){
+            ll_businesstornover.setVisibility(View.GONE);
+        }
         swipeRefreshView.setLoading(false);
         if (list == null || list.size() == 0) {
             return;

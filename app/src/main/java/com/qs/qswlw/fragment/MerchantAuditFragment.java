@@ -29,7 +29,8 @@ public class MerchantAuditFragment extends BaseFragment implements IMerchantAudi
     private List<MerchantAuditBean.ListBean> listBeen;
     private MerchantAuditPersenter merchantAuditPersenter = new MerchantAuditPersenter(this);
 
-    public static MerchantAuditFragment newInstance(int type) {//等下
+
+    public static MerchantAuditFragment newInstance(int type) {
         MerchantAuditFragment merchantAuditFragment = new MerchantAuditFragment();
         merchantAuditFragment.setType(type);
         return merchantAuditFragment;
@@ -44,6 +45,8 @@ public class MerchantAuditFragment extends BaseFragment implements IMerchantAudi
         View inflate = View.inflate(getActivity(), R.layout.fg_merchantaudit, null);
         swipeRefreshView = (SwipeRefreshView) inflate.findViewById(R.id.lv_merchantaudit_sw);
         lv_merchantaudit = (ListView) inflate.findViewById(R.id.lv_merchantaudit);
+        View inflate1 = View.inflate(getActivity(), R.layout.item_foot_merchantaudit, null);
+        lv_merchantaudit.addFooterView(inflate1);
         return inflate;
     }
 
