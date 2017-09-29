@@ -116,6 +116,12 @@ public class BusinessSettingActivity extends BaseActivity implements IPersonalSe
     @Override
     public void setOnclick() {
         gv_setting.setOnItemClickListener(new ItemClickListener());
+        rb_main_qsmall.setOnClickListener(this);
+        rb_main_lianmeng.setOnClickListener(this);
+        rb_main_funtime.setOnClickListener(this);
+        rb_main_luck.setOnClickListener(this);
+        rb_main_exit.setOnClickListener(this);
+
 
 
     }
@@ -123,15 +129,21 @@ public class BusinessSettingActivity extends BaseActivity implements IPersonalSe
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-//            case rb_main_mall:
-//                startActivity(new Intent(BusinessSettingActivity.this, MainActivity.class));
-//                break;
-//            case R.id.rb_main_exit:
-//                showDialog();
-//                break;
-//            case R.id.tv_setting_set:
-//                startActivity(new Intent(this,SetModifyActivity.class));
-//                break;
+            case R.id.rb_main_qsmall:
+                startActivity(new Intent(BusinessSettingActivity.this, MainActivity.class));
+                break;
+            case R.id.rb_main_lianmeng:
+                showDialog();
+                break;
+            case R.id.rb_main_funtime:
+                startActivity(new Intent(this,SetModifyActivity.class));
+                break;
+            case R.id.rb_main_luck:
+                showDialog();
+                break;
+            case R.id.rb_main_exit:
+                startActivity(new Intent(this,SetModifyActivity.class));
+                break;
         }
     }
 
