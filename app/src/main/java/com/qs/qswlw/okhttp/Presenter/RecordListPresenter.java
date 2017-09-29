@@ -32,7 +32,7 @@ public class RecordListPresenter {
 
             @Override
             public void onFailure(String code) {
-                Log.e("Tag",code+"");
+                iRecordListView.isgetDataFaile(code);
 
             }
         },token,p,type,is_go);

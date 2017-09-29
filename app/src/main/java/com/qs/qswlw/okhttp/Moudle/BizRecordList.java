@@ -39,8 +39,14 @@ public class BizRecordList implements IRecordListBiz {
 
             @Override
             public void onNext(MainBean<RecordListBaseBean> recordListBean) {
-                List<RecordListBean> lists = recordListBean.getResult().getLists();
-                recordListListener.onSuccess(lists);
+                RecordListBaseBean result = recordListBean.getResult();
+                if(result==null){
+                    recordListListener.onFailure(result+"");
+                }else{
+                    List<RecordListBean> lists = result.getLists();
+                    recordListListener.onSuccess(lists);
+                }
+
             }
 
             @Override
