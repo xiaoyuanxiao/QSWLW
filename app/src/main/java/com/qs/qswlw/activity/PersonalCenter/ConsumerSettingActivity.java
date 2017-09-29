@@ -12,6 +12,7 @@ import android.widget.TextView;
 import com.qs.qswlw.MyApplication;
 import com.qs.qswlw.R;
 import com.qs.qswlw.activity.BaseActivity;
+import com.qs.qswlw.activity.LoginActivity;
 import com.qs.qswlw.activity.MainActivity;
 import com.qs.qswlw.adapter.ConsumerSettingAdapter;
 import com.qs.qswlw.bean.PersonalSettingBean;
@@ -117,6 +118,12 @@ public class ConsumerSettingActivity extends BaseActivity implements AdapterView
     public void setOnclick() {
         gv_setting.setOnItemClickListener(this);
         tv_setting_set.setOnClickListener(this);
+        rb_main_qsmall.setOnClickListener(this);
+        rb_main_lianmeng.setOnClickListener(this);
+        rb_main_funtime.setOnClickListener(this);
+        rb_main_luck.setOnClickListener(this);
+        rb_main_exit.setOnClickListener(this);
+
 
     }
 
@@ -124,21 +131,21 @@ public class ConsumerSettingActivity extends BaseActivity implements AdapterView
     public void onClick(View view) {
 
         switch (view.getId()) {
-//            case R.id.tv_setting_set:
-//                startActivity(new Intent(this, SetModifyActivity.class));
-//                break;
-//            case R.id.rb_main_exit:
-//                showDialog();
-//                break;
-//            case R.id.rb_main_beans:
-//                startActivity(new Intent(this, VenturegoldBeansActivity.class));
-//                break;
-//            case R.id.rb_main_funtime:
-//                startActivity(new Intent(this, MyPartnerActivity.class));
-//                break;
-//            case R.id.rb_main_mall:
-//                startActivity(new Intent(this, MainActivity.class));
-//                break;
+            case R.id.rb_main_qsmall:
+                startActivity(new Intent(ConsumerSettingActivity.this, MainActivity.class));
+                break;
+            case R.id.rb_main_lianmeng:
+                showDialog();
+                break;
+            case R.id.rb_main_funtime:
+                startActivity(new Intent(this,SetModifyActivity.class));
+                break;
+            case R.id.rb_main_luck:
+                showDialog();
+                break;
+            case R.id.rb_main_exit:
+                showDialog();
+                break;
         }
     }
 
@@ -147,13 +154,13 @@ public class ConsumerSettingActivity extends BaseActivity implements AdapterView
      */
     private void showDialog() {
         new AlertDialog.Builder(this).setTitle("确认退出吗？")
-                .setIcon(android.R.drawable.ic_dialog_info)
                 .setPositiveButton("确定", new DialogInterface.OnClickListener() {
 
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        // 点击“确认”后的操作
-                        startActivity(new Intent(ConsumerSettingActivity.this, MainActivity.class));
+                        UserManage.getInstance().clearUserInfo(ConsumerSettingActivity.this);
+                        startActivity(new Intent(ConsumerSettingActivity.this, LoginActivity.class));
+                        finish();
 
                     }
                 })
@@ -161,11 +168,9 @@ public class ConsumerSettingActivity extends BaseActivity implements AdapterView
 
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        // 点击“返回”后的操作,这里不设置没有任何操作
                         finish();
                     }
                 }).show();
-// super.onBackPressed();
     }
 
     @Override

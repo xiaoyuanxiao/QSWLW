@@ -44,6 +44,15 @@ public class UserManage {
         editor.commit();
     }
 
+    /**
+     * 清除登录信息
+     */
+    public void clearUserInfo(Context context){
+        SharedPreferences sp = context.getSharedPreferences("userInfo", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sp.edit();
+        editor.clear();
+        editor.commit();
+    }
 
     /**
      * 获取用户信息model

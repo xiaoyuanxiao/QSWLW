@@ -12,6 +12,7 @@ import android.widget.TextView;
 import com.qs.qswlw.MyApplication;
 import com.qs.qswlw.R;
 import com.qs.qswlw.activity.BaseActivity;
+import com.qs.qswlw.activity.LoginActivity;
 import com.qs.qswlw.activity.MainActivity;
 import com.qs.qswlw.activity.MyProductsActivity;
 import com.qs.qswlw.activity.PersonalCenter.city.HarvestAddressListActivity;
@@ -142,7 +143,7 @@ public class BusinessSettingActivity extends BaseActivity implements IPersonalSe
                 showDialog();
                 break;
             case R.id.rb_main_exit:
-                startActivity(new Intent(this,SetModifyActivity.class));
+                showDialog();
                 break;
         }
     }
@@ -152,13 +153,13 @@ public class BusinessSettingActivity extends BaseActivity implements IPersonalSe
      */
     private void showDialog() {
         new AlertDialog.Builder(this).setTitle("确认退出吗？")
-                .setIcon(android.R.drawable.ic_dialog_info)
                 .setPositiveButton("确定", new DialogInterface.OnClickListener() {
 
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        // 点击“确认”后的操作
-                        startActivity(new Intent(BusinessSettingActivity.this, MainActivity.class));
+                        UserManage.getInstance().clearUserInfo(BusinessSettingActivity.this);
+                        startActivity(new Intent(BusinessSettingActivity.this, LoginActivity.class));
+                        finish();
 
                     }
                 })
@@ -166,11 +167,9 @@ public class BusinessSettingActivity extends BaseActivity implements IPersonalSe
 
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        // 点击“返回”后的操作,这里不设置没有任何操作
                         finish();
                     }
                 }).show();
-// super.onBackPressed();
     }
 
     @Override

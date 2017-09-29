@@ -1,5 +1,7 @@
 package com.qs.qswlw.activity.PersonalCenter;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.view.View;
 import android.widget.AdapterView;
@@ -11,6 +13,8 @@ import android.widget.TextView;
 import com.qs.qswlw.MyApplication;
 import com.qs.qswlw.R;
 import com.qs.qswlw.activity.BaseActivity;
+import com.qs.qswlw.activity.LoginActivity;
+import com.qs.qswlw.activity.MainActivity;
 import com.qs.qswlw.adapter.OtherUserSettingAdapter;
 import com.qs.qswlw.bean.PersonalSettingBean;
 import com.qs.qswlw.manager.UserManage;
@@ -86,11 +90,56 @@ public class OtherUserSettingActivity  extends BaseActivity implements IPersonal
     @Override
     public void setOnclick() {
         gv_setting.setOnItemClickListener(new ItemClickListener());
+        rb_main_qsmall.setOnClickListener(this);
+        rb_main_lianmeng.setOnClickListener(this);
+        rb_main_funtime.setOnClickListener(this);
+        rb_main_luck.setOnClickListener(this);
+        rb_main_exit.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.rb_main_qsmall:
+                startActivity(new Intent(OtherUserSettingActivity.this, MainActivity.class));
+                break;
+            case R.id.rb_main_lianmeng:
+                showDialog();
+                break;
+            case R.id.rb_main_funtime:
+                startActivity(new Intent(this,SetModifyActivity.class));
+                break;
+            case R.id.rb_main_luck:
+                showDialog();
+                break;
+            case R.id.rb_main_exit:
+                showDialog();
+                break;
+        }
+    }
 
+    /**
+     * 退出登录
+     */
+    private void showDialog() {
+        new AlertDialog.Builder(this).setTitle("确认退出吗？")
+                .setPositiveButton("确定", new DialogInterface.OnClickListener() {
+
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        UserManage.getInstance().clearUserInfo(OtherUserSettingActivity.this);
+                        startActivity(new Intent(OtherUserSettingActivity.this, LoginActivity.class));
+                        finish();
+
+                    }
+                })
+                .setNegativeButton("返回", new DialogInterface.OnClickListener() {
+
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        finish();
+                    }
+                }).show();
     }
 
     @Override
