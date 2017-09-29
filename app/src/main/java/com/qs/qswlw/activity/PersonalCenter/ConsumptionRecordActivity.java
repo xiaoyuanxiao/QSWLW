@@ -138,7 +138,7 @@ public class ConsumptionRecordActivity extends BaseInfoActivity implements ICons
     }
 
     private void initSpinner() {
-        classification_adapter = ArrayAdapter.createFromResource(this, R.array.dialog_item, android.R.layout.simple_spinner_item);
+        classification_adapter = ArrayAdapter.createFromResource(this, R.array.dialog_item, R.layout.simple_spinner_item1);
         classification_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(classification_adapter);
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {

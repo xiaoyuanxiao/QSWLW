@@ -53,39 +53,75 @@ import rx.Observable;
 
 public class ImproveDocumentationActivity extends BaseInfoActivity implements IImproveDocumentationView, IImproveCityView {
 
+    private static final int CAMERA = 2003;
+    private static final int CHOOSE_PICTURE = 2004;
+    final boolean isKitKat = Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT;
+    ArrayList<String> provincelist = new ArrayList();
+    ArrayList<String> citylist = new ArrayList();
+    ArrayList<String> countylist = new ArrayList();
+    List<ImproveDocumentationBean.ClistBean> improveDocumentationBeanclist;
+    ArrayList<String> classification = new ArrayList();
+    String cityID;
+    String districtID;
+    int CITYCODE = 0x8600;
+    int COUNTYCODE = 0x8611;
+    int isfrist = 0;
     private Spinner province_spinner, city_spinner, county_spinner;
     private ArrayAdapter<String> province_adapter;
     private ArrayAdapter<String> city_adapter;
     private ArrayAdapter<String> county_adapter;
-
     private Spinner classification_spinner;
     private ArrayAdapter<String> classification_adapter;
     private TextView tv_startTime, tv_endTime;
     private ImageView iv_UploadBusinessLicense, iv_Storefacade;
     private GenderPopupWindow menuWindow;
-    private static final int CAMERA = 2003;
-    private static final int CHOOSE_PICTURE = 2004;
-    final boolean isKitKat = Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT;
     private Bitmap bitmap;
     private Uri imageUri;
     private ImageView pic_uploadBusinessLicense, pic_Storefacade;
-
     private Calendar mCalendar;
     private String a;
     private ImproveDocumentationPersenter improveDocumentationPersenter = new ImproveDocumentationPersenter(this);
     private EditText edt_improve_name, edt_improve_companyname, edt_improve_mobile, edt_improve_address, edt_improve_catagory;
-    ArrayList<String> provincelist = new ArrayList();
-    ArrayList<String> citylist = new ArrayList();
-    ArrayList<String> countylist = new ArrayList();
-
-    List<ImproveDocumentationBean.ClistBean> improveDocumentationBeanclist;
-    ArrayList<String> classification = new ArrayList();
     private File file1;
     private File file2;
     private List<ImproveDocumentationBean.ThemsBean> thems;
     private List<ImproveCityBean.RegionListBean> city_list_selected;
     private List<ImproveCityBean.RegionListBean> county_list_selected;
     private ImproveCityPersenter improveCityPersenter = new ImproveCityPersenter(this);
+    OnItemSelectedListener onItemSelectedListener = new OnItemSelectedListener() {
+        @Override
+        public void onItemSelected(AdapterView<?> arg0, View arg1,
+                                   int arg2, long arg3) {
+            String id = null;
+            int selectCode = 0;
+            switch (arg0.getId()) {
+                case R.id.province_spinner:
+                    //网络请求市--根据省ID 其他类似
+                    if (improveDocumentationBeanclist == null || improveDocumentationBeanclist.size() == 0)
+                        return;
+                    id = improveDocumentationBeanclist.get(arg2).getId();
+                    selectCode = CITYCODE;
+                    isfrist++;
+                    break;
+                case R.id.city_spinner:
+                    if (city_list_selected == null || city_list_selected.size() == 0 || arg2 == 0)
+                        return;
+                    id = city_list_selected.get(arg2 - 1).getId();
+                    selectCode = COUNTYCODE;
+                    break;
+                case R.id.county_spinner:
+
+                    return;
+            }
+            if (id != null)
+                improveCityPersenter.getdata(MyApplication.TOKEN, Integer.parseInt(id), selectCode);
+        }
+
+        @Override
+        public void onNothingSelected(AdapterView<?> arg0) {
+
+        }
+    };
     private Button btn_improved;
     private String id1;
     private String add_time;
@@ -193,6 +229,7 @@ public class ImproveDocumentationActivity extends BaseInfoActivity implements II
 
 
     }
+
     private void showTimePickerDialog(final TextView tv) {
         //是否使用24小时制
 
@@ -220,30 +257,6 @@ public class ImproveDocumentationActivity extends BaseInfoActivity implements II
         menuWindow.setMaleName("拍照或录像");
         menuWindow.setFemaleName("照片图库");
     }
-
-
-    //上传图片
-    private class MyOnClickListener implements View.OnClickListener {
-        @Override
-        public void onClick(View v) {
-            switch (v.getId()) {
-                case R.id.tv_female:
-                    //选择图片
-                    Intent picture = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-                    startActivityForResult(picture, CHOOSE_PICTURE);
-                    break;
-                case R.id.tv_male:
-                    //选择拍照
-                    Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                    imageUri = Uri.fromFile(new File(Environment.getExternalStorageDirectory(), System.currentTimeMillis() / 1000 + "userLogo.jpg"));
-                    intent.putExtra(MediaStore.EXTRA_OUTPUT, imageUri);
-                    startActivityForResult(intent, CAMERA);
-                    break;
-            }
-            menuWindow.dismiss();
-        }
-    }
-
 
     @TargetApi(Build.VERSION_CODES.KITKAT)
     @Override
@@ -277,7 +290,6 @@ public class ImproveDocumentationActivity extends BaseInfoActivity implements II
         }
     }
 
-
     /**
      * 经营分类spinner
      */
@@ -288,41 +300,6 @@ public class ImproveDocumentationActivity extends BaseInfoActivity implements II
         classification_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         classification_spinner.setAdapter(classification_adapter);
     }
-
-    OnItemSelectedListener onItemSelectedListener = new OnItemSelectedListener() {
-        @Override
-        public void onItemSelected(AdapterView<?> arg0, View arg1,
-                                   int arg2, long arg3) {
-            String id = null;
-            int selectCode = 0;
-            switch (arg0.getId()) {
-                case R.id.province_spinner:
-                    //网络请求市--根据省ID 其他类似
-                    if (improveDocumentationBeanclist == null || improveDocumentationBeanclist.size() == 0)
-                        return;
-                    id = improveDocumentationBeanclist.get(arg2).getId();
-                    selectCode = CITYCODE;
-                    isfrist++;
-                    break;
-                case R.id.city_spinner:
-                    if (city_list_selected == null || city_list_selected.size() == 0 || arg2 == 0)
-                        return;
-                    id = city_list_selected.get(arg2 - 1).getId();
-                    selectCode = COUNTYCODE;
-                    break;
-                case R.id.county_spinner:
-
-                    return;
-            }
-            if (id != null)
-                improveCityPersenter.getdata(MyApplication.TOKEN, Integer.parseInt(id), selectCode);
-        }
-
-        @Override
-        public void onNothingSelected(AdapterView<?> arg0) {
-
-        }
-    };
 
     private List<String> getSpinerIds() {
         ArrayList<String> strings = new ArrayList<>();
@@ -363,11 +340,11 @@ public class ImproveDocumentationActivity extends BaseInfoActivity implements II
     }
 
     private ArrayAdapter getSpinerAdapter(ArrayList<String> args) {
-        return new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, args);
+        return new ArrayAdapter<>(this, R.layout.simple_spinner_item1, args);
     }
 
     private ArrayAdapter getSpinerAdapter(String[] args) {
-        return new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, args);
+        return new ArrayAdapter<>(this, R.layout.simple_spinner_item1, args);
     }
 
     private void select(Spinner spin, ArrayAdapter<String> adapter) {
@@ -375,10 +352,6 @@ public class ImproveDocumentationActivity extends BaseInfoActivity implements II
         spin.setAdapter(adapter);
         spin.setOnItemSelectedListener(onItemSelectedListener);
     }
-
-
-    String cityID;
-    String districtID;
 
     /**
      * 接口回调
@@ -430,10 +403,6 @@ public class ImproveDocumentationActivity extends BaseInfoActivity implements II
 
     }
 
-    int CITYCODE = 0x8600;
-    int COUNTYCODE = 0x8611;
-    int isfrist = 0;
-
     @Override
     public void setSelecteddata(ImproveCityBean improveCityBean, int code) {
         if (code == CITYCODE) {
@@ -463,6 +432,28 @@ public class ImproveDocumentationActivity extends BaseInfoActivity implements II
             }
             county_adapter.notifyDataSetChanged();
             county_spinner.setSelection(k);
+        }
+    }
+
+    //上传图片
+    private class MyOnClickListener implements View.OnClickListener {
+        @Override
+        public void onClick(View v) {
+            switch (v.getId()) {
+                case R.id.tv_female:
+                    //选择图片
+                    Intent picture = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                    startActivityForResult(picture, CHOOSE_PICTURE);
+                    break;
+                case R.id.tv_male:
+                    //选择拍照
+                    Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                    imageUri = Uri.fromFile(new File(Environment.getExternalStorageDirectory(), System.currentTimeMillis() / 1000 + "userLogo.jpg"));
+                    intent.putExtra(MediaStore.EXTRA_OUTPUT, imageUri);
+                    startActivityForResult(intent, CAMERA);
+                    break;
+            }
+            menuWindow.dismiss();
         }
     }
 
