@@ -5,7 +5,6 @@ import android.widget.BaseAdapter;
 import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.qs.qswlw.MyApplication;
 import com.qs.qswlw.R;
@@ -16,7 +15,6 @@ import com.qs.qswlw.okhttp.Iview.IVenturegoldBeansView;
 import com.qs.qswlw.okhttp.Presenter.VenturegoldBeanPresenter;
 import com.qs.qswlw.utils.ToastUtils;
 import com.qs.qswlw.view.SwipeRefreshView;
-import com.qs.qswlw.view.xlistview.IXListViewLoadMore;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -43,30 +41,8 @@ public class MyGoldBeanFragment extends BaseFragment implements IVenturegoldBean
     private TextView tv_sub_mygoldenbean_topone,tv_sub_mygoldenbean_toptwo;
     private SwipeRefreshView swipeRefreshView,swipeRefreshView1;
     private String Gold_type = "";
-    /**
-     *  上拉监听
-     */
-    private IXListViewLoadMore mLoadMoreListener = new IXListViewLoadMore() {
-        @Override
-        public void onLoadMore() {
-            Toast.makeText(getActivity(), "上拉", Toast.LENGTH_SHORT).show();
-            page++;
-            initListdata("model1",page);
-        }
-    };
-    /**
-     *  上拉监听
-     */
-    private IXListViewLoadMore mLoadMoreListener1 = new IXListViewLoadMore() {
-        @Override
-        public void onLoadMore() {
-            Toast.makeText(getActivity(), "上拉", Toast.LENGTH_SHORT).show();
-            page++;
-            initListdata("model2",page);
-        }
-    };
 
-    public static MyGoldBeanFragment newInstance(String type) {//等下
+    public static MyGoldBeanFragment newInstance(String type) {
         MyGoldBeanFragment myGoldBeanFragment = new MyGoldBeanFragment();
         myGoldBeanFragment.setGoldType(type);
         return myGoldBeanFragment;
@@ -130,11 +106,14 @@ public class MyGoldBeanFragment extends BaseFragment implements IVenturegoldBean
 
         ventureGoldBeansAdapter = new VentureGoldBeansAdapter(getActivity(), list1, Gold_type);
         ventureGoldBeansAdapter2 = new VentureGoldBeansAdapter(getActivity(), list2, Gold_type);
+        View inflate = View.inflate(getActivity(), R.layout.item_foot_businesstonover, null);
         lv_sub_myGoldenBean = (ListView) view.findViewById(R.id.lv_sub_myGoldenBean);
         swipeRefreshView = (SwipeRefreshView) view.findViewById(R.id.lv_sub_myGoldenBean_sw);
         swipeRefreshView1 = (SwipeRefreshView) view.findViewById(R.id.lv_sub_myGoldenBean_sw1);
         lv_sub_myGoldenBean.setAdapter(ventureGoldBeansAdapter);
         lv_sub_myGoldenBean2 = (ListView) view.findViewById(R.id.lv_sub_myGoldenBean1);
+        lv_sub_myGoldenBean.addFooterView(inflate);
+        lv_sub_myGoldenBean2.addFooterView(inflate);
         lv_sub_myGoldenBean2.setAdapter(ventureGoldBeansAdapter2);
         //上拉监听
 
@@ -187,7 +166,8 @@ public class MyGoldBeanFragment extends BaseFragment implements IVenturegoldBean
         List<VenturegoldBean.ListBean> list = venturegoldBeanData.getList();
         ischeckmodel = modeltype;
         if (modeltype.equals("model1")) {
-
+            if(page==1&&(list == null || list.size() == 0)){
+            }
             if (list == null || list.size() == 0) {
                  ToastUtils.showToast("没有更多数据了");
                 return;

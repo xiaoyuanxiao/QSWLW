@@ -87,6 +87,20 @@ public class MainActivity extends BaseActivity implements IMainView {
     private PopupWindow popupWindow;
     private LinearLayout ll_ranking_popup, main_ll_avater;
 
+
+//    private volatile static MainActivity singleton;
+//    private MainActivity (){}
+//    public static MainActivity getSingleton() {
+//        if (singleton == null) {
+//            synchronized (MainActivity.class) {
+//                if (singleton == null) {
+//                    singleton = new MainActivity();
+//                }
+//            }
+//        }
+//        return singleton;
+//    }
+
     @Override
     public void setAlertList(AlertBean title) {
 //        tv_dialog_index_title.setText(title.getIndex_title());
@@ -156,8 +170,12 @@ public class MainActivity extends BaseActivity implements IMainView {
 
     @Override
     public Integer initView() {
-        Intent intent = new Intent(this, SplashActivity.class);
-        startActivity(intent);
+        Intent intent1 = getIntent();
+        String setting = intent1.getStringExtra("setting");
+        if(!"setting".equals(setting)){
+            Intent intent = new Intent(this, SplashActivity.class);
+            startActivity(intent);
+        }
         return R.layout.activity_main;
     }
 
@@ -379,7 +397,7 @@ public class MainActivity extends BaseActivity implements IMainView {
 
                 }
 
-                finish();
+               // finish();
                 break;
             case R.id.iv_ranking_main:
                 // startActivity(new Intent(this, RankingActivity.class));

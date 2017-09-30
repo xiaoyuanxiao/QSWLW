@@ -50,6 +50,7 @@ public class BusinessSettingActivity extends BaseActivity implements IPersonalSe
 
     @Override
     public void setUserInfo(PersonalSettingBean personalSettingBean) {
+        ToastUtils.showToast("您已登录，无需再次登录");
         // tv_cyzx.setText("创业中心:"+personalSettingBean.getCyzx_info().getNickname());
         tv_recommender.setText("推荐人:" + personalSettingBean.getRe_info().getNickname());
         tv_setting_id.setText("ID:" + personalSettingBean.getUser_info().getUser_id());
@@ -146,7 +147,10 @@ public class BusinessSettingActivity extends BaseActivity implements IPersonalSe
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.rb_main_qsmall:
-                startActivity(new Intent(BusinessSettingActivity.this, MainActivity.class));
+                Intent intent = new Intent(BusinessSettingActivity.this, MainActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP) ;
+                intent.putExtra("setting","setting");
+                startActivity(intent);
                 break;
             case R.id.rb_main_lianmeng:
                 showDialog();
