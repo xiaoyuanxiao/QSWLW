@@ -45,6 +45,7 @@ public class ConsumerSettingActivity extends BaseActivity implements AdapterView
             tv_setting_paytaxes,tv_cyzx,tv_recommender,tv_setting_id,tv_setting_name,tv_role;
     private TextView setting_one;
     private String user_id,nickname,role,mobile;
+    private Intent intent;
 
     /**
      * 设置数据
@@ -191,46 +192,75 @@ public class ConsumerSettingActivity extends BaseActivity implements AdapterView
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
         switch (i) {
             case 0:
-                startActivity(new Intent(this, VenturegoldBeansActivity.class));
-                break;
-            case 1:
-                startActivity(new Intent(this,MySilverBeanActivity.class));
-                break;
-            case 2:
-                break;
-            case 3:
-                startActivity(new Intent(this, MyGoldActivity.class));
-                break;
-            case 4:
-                startActivity(new Intent(this, MyInvestActivity.class));
-                break;
-            case 5:
-                startActivity(new Intent(this, ConsumerEntrepreneurialSeedActivity.class));
-                break;
-            case 6:
-                Intent intent = new Intent(ConsumerSettingActivity.this,RecommendActivity.class);
+                intent = new Intent(this,RecommendActivity.class);
                 intent.putExtra("userid",user_id);
                 intent.putExtra("nickname",nickname);
                 intent.putExtra("role",role);
                 startActivity(intent);
                 break;
+            case 1:
+
+                break;
+            case 2:
+                break;
+            case 3:
+
+                break;
+            case 4:
+                startActivity(new Intent(this,ScanCodeRecordActivity.class));
+                break;
+            case 5:
+
+                break;
+            case 6:
+                startActivity(new Intent(this,MySpendingLimitActivity.class));
+                break;
             case 7:
-                startActivity(new Intent(this, ConsumeWithdrawalsActivity.class));
+
                 break;
             case 8:
-                startActivity(new Intent(this, MallOrdersActivity.class));
                 break;
             case 9:
-                startActivity(new Intent(this, EntrepreneurialDonationActivity.class));
                 break;
             case 10:
-                startActivity(new Intent(this, DonationActivity.class));
                 break;
             case 11:
-                startActivity(new Intent(this, PromotionalLotteryActivity.class));
                 break;
             case 12:
-                startActivity(new Intent(this, ReceivingAddressActivity.class));
+                break;
+            case 13:
+
+                break;
+            case 14:
+                startActivity(new Intent(this,MySilverBeanActivity.class));
+                break;
+            case 15:
+                startActivity(new Intent(this,EntrepreneurialSeedActivity.class));
+                break;
+            case 16:
+                startActivity(new Intent(this,VenturegoldBeansActivity.class));
+                break;
+            case 17:
+                startActivity(new Intent(this,WithdrawalsActivity.class));
+                break;
+            case 18:
+
+                break;
+            case 19:
+
+                break;
+            case 20:
+
+                break;
+            case 21:
+                break;
+            case 22:
+                break;
+            case 23:
+                startActivity(new Intent(this,OldMemberActivity.class));
+                break;
+            case 24:
+                startActivity(new Intent(this,MyRoleActivity.class));
                 break;
         }
     }

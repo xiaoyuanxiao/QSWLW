@@ -47,16 +47,21 @@ public class MyRoleActivity extends BaseInfoActivity implements IMyRoleView {
 
     @Override
     public void setMyRoleViewList(MyRoleBean myRoleBean) {
-        tv_role_companyName.setText(myRoleBean.getShop().getCompany_name());
+        tv_role_companyName.setText(myRoleBean.getNickname());
         tv_role_nickname.setText(myRoleBean.getCyzx_name().getNickname());
         String role = myRoleBean.getRole();
+        String is_cyzx = myRoleBean.getIs_cyzx();
+        if("0".equals(is_cyzx) ){
+            tv_role.setText("创业中心");
+        }
         if(("0").equals(role)){
             tv_role.setText("消费天使");
         }else if(("10".equals(role))){
             tv_role.setText("商家");
         }
         tv_role_address.setText(myRoleBean.getCyzx_address().getAddress());
-        tv_role_time.setText(DateUtils.string2date(myRoleBean.getReg_time(),"yyyy-MM-dd")+"");
+        tv_role_time.setText(DateUtils.long2date(Integer.parseInt(myRoleBean.getReg_time()) * 1000L));
+       // tv_role_time.setText(DateUtils.stampToDate(Integer.parseInt(myRoleBean.getReg_time()) * 1000L));
 
     }
 }
