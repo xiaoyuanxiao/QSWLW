@@ -51,7 +51,7 @@ public class MyRoleActivity extends BaseInfoActivity implements IMyRoleView {
         tv_role_nickname.setText(myRoleBean.getCyzx_name().getNickname());
         String role = myRoleBean.getRole();
         String is_cyzx = myRoleBean.getIs_cyzx();
-        if("0".equals(is_cyzx) ){
+        if("1".equals(is_cyzx) ){
             tv_role.setText("创业中心");
         }
         if(("0").equals(role)){

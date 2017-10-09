@@ -25,7 +25,6 @@ import com.qs.qswlw.MyApplication;
 import com.qs.qswlw.R;
 import com.qs.qswlw.activity.PersonalCenter.BusinessSettingActivity;
 import com.qs.qswlw.activity.PersonalCenter.ConsumerSettingActivity;
-import com.qs.qswlw.activity.PersonalCenter.OtherUserSettingActivity;
 import com.qs.qswlw.activity.mall.AllianceMallActivity;
 import com.qs.qswlw.activity.mall.QSMallActivity;
 import com.qs.qswlw.adapter.AngelAdapter;
@@ -391,7 +390,7 @@ public class MainActivity extends BaseActivity implements IMainView {
                             startActivity(new Intent(MainActivity.this,BusinessSettingActivity.class));
                         } else {
                             //其他页面
-                            startActivity(new Intent(MainActivity.this,OtherUserSettingActivity.class));
+                            startActivity(new Intent(MainActivity.this,ConsumerSettingActivity.class));
                         }
                     }
 

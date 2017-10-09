@@ -123,7 +123,7 @@ public class LoginActivity extends BaseInfoActivity {
                     startActivity(intent);
                 } else {
                     //其他页面
-                    intent.setClass(LoginActivity.this, OtherUserSettingActivity.class);
+                    intent.setClass(LoginActivity.this, ConsumerSettingActivity.class);
                     startActivity(intent);
                 }
                 finish();

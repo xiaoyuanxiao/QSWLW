@@ -75,6 +75,24 @@ public class ConsumerSettingActivity extends BaseActivity implements AdapterView
         }else if(role.equals("10")){
             tv_role.setText("商家");
             MyApplication.USERROLE = "商家";
+        }else if(role.equals("11")){
+            tv_role.setText("创业天使");
+            MyApplication.USERROLE = "创业天使";
+        }else if(role.equals("12")){
+            tv_role.setText("省代");
+            MyApplication.USERROLE = "省代";
+        }else if(role.equals("13")){
+            tv_role.setText("市代");
+            MyApplication.USERROLE = "市代";
+        }else if(role.equals("14")){
+            tv_role.setText("区代");
+            MyApplication.USERROLE = "区代";
+        }else if(role.equals("15")){
+            tv_role.setText("创业中心");
+            MyApplication.USERROLE = "创业中心";
+        }else if(role.equals("25")){
+            tv_role.setText("平台");
+            MyApplication.USERROLE = "平台";
         }
 
     }
