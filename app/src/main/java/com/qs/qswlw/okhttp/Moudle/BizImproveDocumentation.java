@@ -1,5 +1,7 @@
 package com.qs.qswlw.okhttp.Moudle;
 
+import android.util.Log;
+
 import com.qs.qswlw.bean.ImproveDocumentationBean;
 import com.qs.qswlw.bean.MainBean;
 import com.qs.qswlw.mynet.HttpSubCribe;
@@ -27,7 +29,7 @@ public class BizImproveDocumentation implements IImproveDocumentationBiz{
 
             @Override
             public void onError(Throwable e) {
-
+                Log.e("ImproveDocumentationListener",e+"");
             }
 
             @Override

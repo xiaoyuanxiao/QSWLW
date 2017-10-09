@@ -2,24 +2,40 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
+    android:background="@drawable/setting_item_bg"
     android:gravity="center"
-    android:padding="13dp"
-    android:background="@drawable/setting_item_bg">
+    android:orientation="vertical"
+    android:padding="13dp">
+    <FrameLayout
+        android:layout_width="48dp"
+        android:layout_height="40dp">
 
-    <ImageView
-        android:id="@+id/iv_item_setting"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:src="@mipmap/cyjd"/>
-
+        <ImageView
+            android:id="@+id/iv_item_setting"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="3dp"
+            android:src="@mipmap/jilu"/>
+        <TextView
+            android:id="@+id/tv_item_setting_top"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right|top"
+            android:background="@drawable/setting_red"
+            android:gravity="center"
+            android:text="37"
+            android:textColor="@color/white"
+            android:textSize="11sp"
+            android:visibility="gone"/>
+    </FrameLayout>
     <TextView
         android:id="@+id/tv_item_setting"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@color/black"
-        android:textSize="10sp"
         android:layout_marginTop="3dp"
-        android:text="创业金豆"/>
+        android:text="创业金豆"
+        android:textColor="@color/black"
+        android:textSize="10sp"/>
 
 </LinearLayout>

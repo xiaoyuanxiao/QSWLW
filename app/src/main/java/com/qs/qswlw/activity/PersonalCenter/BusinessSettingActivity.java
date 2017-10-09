@@ -15,8 +15,6 @@ import com.qs.qswlw.R;
 import com.qs.qswlw.activity.BaseActivity;
 import com.qs.qswlw.activity.LoginActivity;
 import com.qs.qswlw.activity.MainActivity;
-import com.qs.qswlw.activity.MyProductsActivity;
-import com.qs.qswlw.activity.PersonalCenter.city.HarvestAddressListActivity;
 import com.qs.qswlw.adapter.BusinessSettingAdapter;
 import com.qs.qswlw.bean.PersonalSettingBean;
 import com.qs.qswlw.manager.UserManage;
@@ -50,7 +48,6 @@ public class BusinessSettingActivity extends BaseActivity implements IPersonalSe
 
     @Override
     public void setUserInfo(PersonalSettingBean personalSettingBean) {
-        ToastUtils.showToast("您已登录，无需再次登录");
         // tv_cyzx.setText("创业中心:"+personalSettingBean.getCyzx_info().getNickname());
         tv_recommender.setText("推荐人:" + personalSettingBean.getRe_info().getNickname());
         tv_setting_id.setText("ID:" + personalSettingBean.getUser_info().getUser_id());
@@ -213,102 +210,113 @@ public class BusinessSettingActivity extends BaseActivity implements IPersonalSe
         public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
             switch (i) {
                 case 0:
-                    Intent intent = new Intent(BusinessSettingActivity.this, RecommendActivity.class);
-                    intent.putExtra("userid", user_id);
-                    intent.putExtra("nickname", nickname);
-                    intent.putExtra("role", role);
-                    startActivity(intent);
                     break;
                 case 1:
-                    startActivity(new Intent(BusinessSettingActivity.this, EntrepreneurialSeedActivity.class));
+                    startActivity(new Intent(BusinessSettingActivity.this, ScanCodeRecordActivity.class));
                     break;
                 case 2:
                     startActivity(new Intent(BusinessSettingActivity.this, MerchantAuditActivity.class));
                     break;
                 case 3:
+
+                    break;
+                case 4:
+                    Intent intent = new Intent(BusinessSettingActivity.this, RecommendActivity.class);
+                    intent.putExtra("userid", user_id);
+                    intent.putExtra("nickname", nickname);
+                    intent.putExtra("role", role);
+                    startActivity(intent);
+
+                    break;
+                case 5:
+
                     Intent intent1 = new Intent(BusinessSettingActivity.this, ConsumptionRecordActivity.class);
                     startActivityForResult(intent1, 102);
                     break;
-                case 4:
-                    startActivity(new Intent(BusinessSettingActivity.this, RecordListActivity.class));
-                    break;
-                case 5:
-                    startActivity(new Intent(BusinessSettingActivity.this, MyProfitActivity.class));
-                    break;
                 case 6:
-                    startActivity(new Intent(BusinessSettingActivity.this, MySilverBeanActivity.class));
+                    startActivity(new Intent(BusinessSettingActivity.this, RecordListActivity.class));
                     break;
                 case 7:
-                    startActivity(new Intent(BusinessSettingActivity.this, EntrepreneurialSeedActivity.class));
+                    startActivity(new Intent(BusinessSettingActivity.this, MyProfitActivity.class));
                     break;
                 case 8:
-                    startActivity(new Intent(BusinessSettingActivity.this, VenturegoldBeansActivity.class));
+                    startActivity(new Intent(BusinessSettingActivity.this, ImproveDocumentationActivity .class));
+                   // startActivity(new Intent(BusinessSettingActivity.this, VenturegoldBeansActivity.class));
                     break;
                 case 9:
-                    startActivity(new Intent(BusinessSettingActivity.this, WithdrawalsActivity.class));
+                  //  startActivity(new Intent(BusinessSettingActivity.this, WithdrawalsActivity.class));
                     break;
                 case 10:
-                    startActivity(new Intent(BusinessSettingActivity.this, BusinessTurnoverActivity.class));
-                    break;
-                case 11:
                     startActivity(new Intent(BusinessSettingActivity.this, ConsumptionLimitActivity.class));
                     break;
+                case 11:
+                   // startActivity(new Intent(BusinessSettingActivity.this, ConsumptionLimitActivity.class));
+                    break;
                 case 12:
-                    startActivity(new Intent(BusinessSettingActivity.this, ImproveDocumentationActivity .class));
-                    break;
-                case 13:
-                    startActivity(new Intent(BusinessSettingActivity.this, HarvestAddressListActivity.class));
-                    break;
-                case 14:
-                    startActivity(new Intent(BusinessSettingActivity.this, HarvestAddressListActivity.class));
-                    break;
-                case 15:
-                    startActivity(new Intent(BusinessSettingActivity.this, MyProductsActivity.class));
-                    break;
-                case 16:
-                    startActivity(new Intent(BusinessSettingActivity.this, HarvestAddressListActivity.class));
-                    break;
-                case 17:
-                    startActivity(new Intent(BusinessSettingActivity.this, HarvestAddressListActivity.class));
-                    break;
-                case 18:
-                    startActivity(new Intent(BusinessSettingActivity.this, OldMemberActivity.class));
-                    break;
-                case 19:
                     startActivity(new Intent(BusinessSettingActivity.this, BusinessTurnoverActivity.class));
                     break;
-                case 20:
-                    startActivity(new Intent(BusinessSettingActivity.this, ConsumptionRecordActivity.class));
-                    break;
-                case 21:
-                    startActivity(new Intent(BusinessSettingActivity.this, RecordListActivity.class));
-                    break;
-                case 22:
-                    startActivity(new Intent(BusinessSettingActivity.this, EntrepreneurialDonationActivity.class));
-                    break;
-                case 23:
-                    startActivity(new Intent(BusinessSettingActivity.this, CommodityManagementActivity.class));
-                    break;
-                case 24:
-                    startActivity(new Intent(BusinessSettingActivity.this, PromotionLuckDrawActivity.class));
-                    break;
-                case 25:
-                    startActivity(new Intent(BusinessSettingActivity.this, HarvestAddressListActivity.class));
-                    break;
-                case 26:
-                    startActivity(new Intent(BusinessSettingActivity.this, ScanCodeRecordActivity.class));
-                    break;
-                case 27:
+                case 13:
                     startActivity(new Intent(BusinessSettingActivity.this, ComplimentaryMerchandiseRecordActivity.class));
                     break;
+                case 14:
+                    startActivity(new Intent(BusinessSettingActivity.this, MySilverBeanActivity.class));
+                    break;
+                case 15:
+                    startActivity(new Intent(BusinessSettingActivity.this, EntrepreneurialSeedActivity.class));
+                    break;
+                case 16:
+                    startActivity(new Intent(BusinessSettingActivity.this, VenturegoldBeansActivity.class));
+                    break;
+                case 17:
+                    startActivity(new Intent(BusinessSettingActivity.this, WithdrawalsActivity.class));
+                    break;
+                case 18:
+                    //startActivity(new Intent(BusinessSettingActivity.this, OldMemberActivity.class));
+                    break;
+                case 19:
+                 //   startActivity(new Intent(BusinessSettingActivity.this, BusinessTurnoverActivity.class));
+                    break;
+                case 20:
+                  //  startActivity(new Intent(BusinessSettingActivity.this, ConsumptionRecordActivity.class));
+                    break;
+                case 21:
+                 //   startActivity(new Intent(BusinessSettingActivity.this, RecordListActivity.class));
+                    break;
+                case 22:
+                    startActivity(new Intent(BusinessSettingActivity.this, MySpendingLimitActivity.class));
+                    break;
+                case 23:
+                   // startActivity(new Intent(BusinessSettingActivity.this, CommodityManagementActivity.class));
+                    break;
+                case 24:
+                  //  startActivity(new Intent(BusinessSettingActivity.this, PromotionLuckDrawActivity.class));
+                    break;
+                case 25:
+                   // startActivity(new Intent(BusinessSettingActivity.this, HarvestAddressListActivity.class));
+                    break;
+                case 26:
+                   // startActivity(new Intent(BusinessSettingActivity.this, ScanCodeRecordActivity.class));
+                    break;
+                case 27:
+               //     startActivity(new Intent(BusinessSettingActivity.this, ComplimentaryMerchandiseRecordActivity.class));
+                    break;
                 case 28:
-                    startActivity(new Intent(BusinessSettingActivity.this, HarvestAddressListActivity.class));
+                    startActivity(new Intent(BusinessSettingActivity.this, OldMemberActivity.class));
                     break;
                 case 29:
                     startActivity(new Intent(BusinessSettingActivity.this, MyRoleActivity.class));
                     break;
                 case 30:
-                    startActivity(new Intent(BusinessSettingActivity.this, MySpendingLimitActivity.class));
+                //    startActivity(new Intent(BusinessSettingActivity.this, MySpendingLimitActivity.class));
+                    break;
+                case 31:
+                    //    startActivity(new Intent(BusinessSettingActivity.this, MySpendingLimitActivity.class));
+                    break;
+                case 32:
+                    //    startActivity(new Intent(BusinessSettingActivity.this, MySpendingLimitActivity.class));
+                    break;
+                case 33:
+                    //    startActivity(new Intent(BusinessSettingActivity.this, MySpendingLimitActivity.class));
                     break;
             }
         }

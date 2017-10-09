@@ -1,5 +1,7 @@
 package com.qs.qswlw.okhttp.Presenter;
 
+import android.util.Log;
+
 import com.qs.qswlw.bean.ConsumptionLimitBean;
 import com.qs.qswlw.okhttp.Factory.IBizFactory;
 import com.qs.qswlw.okhttp.Iview.IConsumptionLimitView;
@@ -27,7 +29,7 @@ public class ConsumptionLimitPersenter {
 
             @Override
             public void onFailure(String code) {
-
+                Log.e("e",code+"");
             }
         },token,p);
     }
