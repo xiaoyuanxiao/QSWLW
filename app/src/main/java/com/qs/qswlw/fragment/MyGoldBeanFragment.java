@@ -13,7 +13,6 @@ import com.qs.qswlw.adapter.VentureGoldBeansAdapter;
 import com.qs.qswlw.bean.VenturegoldBean;
 import com.qs.qswlw.okhttp.Iview.IVenturegoldBeansView;
 import com.qs.qswlw.okhttp.Presenter.VenturegoldBeanPresenter;
-import com.qs.qswlw.utils.ToastUtils;
 import com.qs.qswlw.view.SwipeRefreshView;
 
 import java.util.ArrayList;
@@ -112,8 +111,8 @@ public class MyGoldBeanFragment extends BaseFragment implements IVenturegoldBean
         swipeRefreshView1 = (SwipeRefreshView) view.findViewById(R.id.lv_sub_myGoldenBean_sw1);
         lv_sub_myGoldenBean.setAdapter(ventureGoldBeansAdapter);
         lv_sub_myGoldenBean2 = (ListView) view.findViewById(R.id.lv_sub_myGoldenBean1);
-        lv_sub_myGoldenBean.addFooterView(inflate);
-        lv_sub_myGoldenBean2.addFooterView(inflate);
+//        lv_sub_myGoldenBean.addFooterView(inflate);
+//        lv_sub_myGoldenBean2.addFooterView(inflate);
         lv_sub_myGoldenBean2.setAdapter(ventureGoldBeansAdapter2);
         //上拉监听
 
@@ -131,8 +130,6 @@ public class MyGoldBeanFragment extends BaseFragment implements IVenturegoldBean
                 initListdata("model1",page);
             }
         });
-//        lv_sub_myGoldenBean.setPullLoadEnable(mLoadMoreListener);
-//        lv_sub_myGoldenBean2.setPullLoadEnable(mLoadMoreListener1);
     }
 
     @Override
@@ -167,18 +164,18 @@ public class MyGoldBeanFragment extends BaseFragment implements IVenturegoldBean
         ischeckmodel = modeltype;
         if (modeltype.equals("model1")) {
             if(page==1&&(list == null || list.size() == 0)){
+                return;
             }
             if (list == null || list.size() == 0) {
-                 ToastUtils.showToast("没有更多数据了");
+                swipeRefreshView.setLoadingEnd();
                 return;
             }
             list1.addAll(list);
             ventureGoldBeansAdapter.notifyDataSetChanged();
             page++;
         } else {
-
             if (list == null || list.size() == 0) {
-                 ToastUtils.showToast("没有更多数据了");
+                swipeRefreshView.setLoadingEnd();
                 return;
             }
             list2.addAll(list);

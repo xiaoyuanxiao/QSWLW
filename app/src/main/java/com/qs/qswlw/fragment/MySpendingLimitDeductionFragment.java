@@ -69,8 +69,12 @@ public class MySpendingLimitDeductionFragment extends BaseFragment implements IM
     @Override
     public void setdata(MySpendingLimitBean mySpendingLimitBean) {
         swipeRefreshView.setLoading(false);
-        List<MySpendingLimitBean.DelQuotaListBean> del_quota_list = mySpendingLimitBean.getDel_quota_list();
-        listBean.addAll(del_quota_list);
+        List<MySpendingLimitBean.DelQuotaListBean> list = mySpendingLimitBean.getDel_quota_list();
+        if (list == null || list.size() == 0) {
+            swipeRefreshView.setLoadingEnd();
+            return;
+        }
+        listBean.addAll(list);
         mySpendingLimitDeductionAdapter.notifyDataSetChanged();
         page++;
 

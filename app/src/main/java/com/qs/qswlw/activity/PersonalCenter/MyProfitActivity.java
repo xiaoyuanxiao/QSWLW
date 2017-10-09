@@ -10,7 +10,6 @@ import com.qs.qswlw.adapter.MyProfitAdapter;
 import com.qs.qswlw.bean.MyProfitBean;
 import com.qs.qswlw.okhttp.Iview.IMyProfitView;
 import com.qs.qswlw.okhttp.Presenter.MyProfitPersenter;
-import com.qs.qswlw.utils.ToastUtils;
 import com.qs.qswlw.view.SwipeRefreshView;
 
 import java.util.ArrayList;
@@ -70,7 +69,7 @@ public class MyProfitActivity extends BaseInfoActivity implements IMyProfitView 
         tv_myprofit_two.setText("已让利合计:"+myProfitData.getCount());
         List<MyProfitBean.ListBean> list = myProfitData.getList();
         if (list == null || list.size() == 0) {
-            ToastUtils.showToast("没有更多数据了");
+            swipeRefreshView.setLoadingEnd();
             return;
         }
         myProfitBeanlist.addAll(list);

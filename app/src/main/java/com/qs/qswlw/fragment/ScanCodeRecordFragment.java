@@ -90,6 +90,7 @@ public class ScanCodeRecordFragment extends BaseFragment implements IScanCodeRec
         tv_foot_two.setText(sum_data.getNone());
         swipeRefreshView.setLoading(false);
         if (list == null || list.size() == 0) {
+            swipeRefreshView.setLoadingEnd();
             return;
         }
         if (page == 1)

@@ -88,7 +88,7 @@ public class MySilverBeanActivity extends BaseInfoActivity implements IMySliverB
     @Override
     public void setMySliverBeanListData(List<MySliverBean.SingleLogBean> list) {
         Log.d("TAG", "===========setMySliverBeanListData===" + list.size());
-        pb_itemforestry.setVisibility(View.GONE);//这是什么  就第一次那个旋转圈圈 就加一次的
+        pb_itemforestry.setVisibility(View.GONE);
         swipeRefreshView.setLoading(false);
         if (list == null || list.size() == 0) {
             swipeRefreshView.setLoadingEnd();

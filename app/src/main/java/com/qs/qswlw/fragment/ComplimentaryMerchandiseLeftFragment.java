@@ -9,7 +9,6 @@ import com.qs.qswlw.adapter.ComplimentaryMerchandiseRecordAdapter;
 import com.qs.qswlw.bean.ComplimentaryMerchandiseRecordBean;
 import com.qs.qswlw.okhttp.Iview.IComplimentaryMerchandiseRecordView;
 import com.qs.qswlw.okhttp.Presenter.ComplimentaryMerchandiseRecordPresenter;
-import com.qs.qswlw.utils.ToastUtils;
 import com.qs.qswlw.view.SwipeRefreshView;
 
 import java.util.ArrayList;
@@ -71,7 +70,7 @@ public class ComplimentaryMerchandiseLeftFragment extends BaseFragment implement
         List<ComplimentaryMerchandiseRecordBean.GoodsInfoBean> list = complimentaryMerchandiseRecordBean.getGoodsInfo();
         swipeRefreshView.setLoading(false);
         if (list == null || list.size() == 0) {
-            ToastUtils.showToast("没有更多数据了");
+            swipeRefreshView.setLoadingEnd();
             return;
         }
         listBean.addAll(list);

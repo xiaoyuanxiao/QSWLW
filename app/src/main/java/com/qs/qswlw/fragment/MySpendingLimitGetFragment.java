@@ -69,8 +69,12 @@ public class MySpendingLimitGetFragment extends BaseFragment implements IMySpend
     @Override
     public void setdata(MySpendingLimitBean mySpendingLimitBean) {
         swipeRefreshView.setLoading(false);
-        List<MySpendingLimitBean.AddQuotaListBean> add_quota_list = mySpendingLimitBean.getAdd_quota_list();
-        listBean.addAll(add_quota_list);
+        List<MySpendingLimitBean.AddQuotaListBean> list = mySpendingLimitBean.getAdd_quota_list();
+        if (list == null || list.size() == 0) {
+            swipeRefreshView.setLoadingEnd();
+            return;
+        }
+        listBean.addAll(list);
         mySpendingLimitGetAdapter.notifyDataSetChanged();
         page++;
 

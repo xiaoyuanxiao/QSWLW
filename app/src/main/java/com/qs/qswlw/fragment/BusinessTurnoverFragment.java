@@ -92,6 +92,7 @@ public class BusinessTurnoverFragment extends BaseFragment implements IBusinessT
         }
         swipeRefreshView.setLoading(false);
         if (list == null || list.size() == 0) {
+            swipeRefreshView.setLoadingEnd();
             return;
         }
         listBeen.addAll(list);

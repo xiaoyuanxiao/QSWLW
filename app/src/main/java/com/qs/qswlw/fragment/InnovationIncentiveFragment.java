@@ -103,7 +103,7 @@ public class InnovationIncentiveFragment extends BaseFragment implements IEntrep
         tv_entrepreneurial_four.setText("可转为创业种子数："+i + "");
         tv_entrepreneurial_model.setText(entrepreneurialData.getModel2()+"");
         if(entrepreneurialData.getList_model2()==null||entrepreneurialData.getList_model2().size()==0){
-            ToastUtils.showToast("没有更多数据了");
+            swipeRefreshView.setLoadingEnd();
             return;
         }
         innovationList.addAll(entrepreneurialData.getList_model2());

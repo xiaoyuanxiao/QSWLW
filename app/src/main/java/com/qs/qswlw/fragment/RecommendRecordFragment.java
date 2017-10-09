@@ -11,7 +11,6 @@ import com.qs.qswlw.adapter.RecommendedRecordsAdapter;
 import com.qs.qswlw.bean.RecommendedRecordsBean;
 import com.qs.qswlw.okhttp.Iview.IRecommendRecordView;
 import com.qs.qswlw.okhttp.Presenter.RecommendedRecordsPersenter;
-import com.qs.qswlw.utils.ToastUtils;
 import com.qs.qswlw.view.SwipeRefreshView;
 
 import java.util.ArrayList;
@@ -96,7 +95,7 @@ public class RecommendRecordFragment extends BaseFragment implements IRecommendR
     public void setRecommendRecordList(List<RecommendedRecordsBean> list, String recode) {
         swipeRefreshView.setLoading(false);
         if (list == null || list.size() == 0) {
-            ToastUtils.showToast("没有更多数据了");
+            swipeRefreshView.setLoadingEnd();
             return;
         }
         if(page==1&&a==1){

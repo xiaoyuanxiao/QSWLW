@@ -14,7 +14,6 @@ import com.qs.qswlw.adapter.ConsumptionLimitAdapter;
 import com.qs.qswlw.bean.ConsumptionLimitBean;
 import com.qs.qswlw.okhttp.Iview.IConsumptionLimitView;
 import com.qs.qswlw.okhttp.Presenter.ConsumptionLimitPersenter;
-import com.qs.qswlw.utils.ToastUtils;
 import com.qs.qswlw.view.SwipeRefreshView;
 
 import java.util.ArrayList;
@@ -117,7 +116,7 @@ public class ConsumptionLimitActivity extends BaseInfoActivity implements IConsu
         swipeRefreshView.setLoading(false);
         tv_consumptionlimit_tagold.setText(shop.getTagold());
         if (list == null || list.size() == 0) {
-            ToastUtils.showToast("没有更多数据了");
+            swipeRefreshView.setLoadingEnd();
             return;
         }
         listBeen.addAll(list);

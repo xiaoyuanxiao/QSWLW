@@ -110,7 +110,7 @@ public class EntrepreneurialIncentiveFragment extends BaseFragment implements IE
         list_model1 = entrepreneurialData.getList_model1();
      //   swipeRefreshView.setLoading(false);
         if (entrepreneurialData.getList_model1() == null || entrepreneurialData.getList_model1().size() == 0) {
-            ToastUtils.showToast("没有更多数据了");
+            swipeRefreshView.setLoadingEnd();
             return;
         }
         entrepreneurialList.addAll(list_model1);
