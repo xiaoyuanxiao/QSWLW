@@ -18,7 +18,8 @@ import com.qs.qswlw.R;
 
 public class SwipeRefreshView extends FrameLayout {
     private static final String TAG = SwipeRefreshView.class.getSimpleName();
-    private final View mFooterView;
+    boolean isend = false;
+    private View mFooterView;
     private ListView mListView;
     private OnLoadListener mListener;
     /**
@@ -71,7 +72,6 @@ public class SwipeRefreshView extends FrameLayout {
         }
     }
 
-
     /**
      * 在分发事件的时候处理子控件的触摸事件
      */
@@ -94,7 +94,7 @@ public class SwipeRefreshView extends FrameLayout {
 
     private boolean islast() {
         Log.d("TAG", "getlastPosition()======" + getlastPosition() + "mListView.getAdapter().getCount()" + mListView.getAdapter().getCount());
-        return getlastPosition() == mListView.getAdapter().getCount() - 1;
+        return getlastPosition() == mListView.getAdapter().getCount() - 1 && !isend;
     }
 
     private int getlastPosition() {
@@ -143,13 +143,25 @@ public class SwipeRefreshView extends FrameLayout {
     }
 
     /**
-     * 上拉加载的接口回调
+     * 最后一个布局
      */
-    public interface OnLoadListener {
-        void onLoad();
+    public void setLoadingEnd() {
+        if (isend) {
+            return;
+        }
+        View mFooterView = View.inflate(getContext(), R.layout.view_footview_nodata, null);
+        mListView.addFooterView(mFooterView);
+        isend = true;
     }
 
     public void setOnLoadListener(OnLoadListener listener) {
         this.mListener = listener;
+    }
+
+    /**
+     * 上拉加载的接口回调
+     */
+    public interface OnLoadListener {
+        void onLoad();
     }
 }

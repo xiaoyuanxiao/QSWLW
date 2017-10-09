@@ -13,7 +13,6 @@ import com.qs.qswlw.adapter.MySliverBeanAdapter;
 import com.qs.qswlw.bean.MySliverBean;
 import com.qs.qswlw.okhttp.Iview.IMySliverBeanView;
 import com.qs.qswlw.okhttp.Presenter.MySliverBeanPresenter;
-import com.qs.qswlw.utils.ToastUtils;
 import com.qs.qswlw.view.SwipeRefreshView;
 
 import java.util.ArrayList;
@@ -92,7 +91,7 @@ public class MySilverBeanActivity extends BaseInfoActivity implements IMySliverB
         pb_itemforestry.setVisibility(View.GONE);//这是什么  就第一次那个旋转圈圈 就加一次的
         swipeRefreshView.setLoading(false);
         if (list == null || list.size() == 0) {
-            ToastUtils.showToast("没有更多数据了");
+            swipeRefreshView.setLoadingEnd();
             return;
         }
         sliverbeanList.addAll(list);
