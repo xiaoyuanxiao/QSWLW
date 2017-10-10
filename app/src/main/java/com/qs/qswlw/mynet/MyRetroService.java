@@ -203,7 +203,7 @@ public interface MyRetroService {
      * 删除银行卡
      */
     @FormUrlEncoded
-    @POST("index.php?m=Appapi&c=Bankroll&a=steup_card")
+    @POST("index.php?m=Appapi&c=Bankroll&a=del_bank")
     Observable<MainBean> PostWithdrawalsDel(@Field("token") String token, @Field("id") int id);
 
     /**

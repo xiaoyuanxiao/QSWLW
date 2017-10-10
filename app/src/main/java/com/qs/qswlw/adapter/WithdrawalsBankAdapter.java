@@ -79,7 +79,7 @@ public class WithdrawalsBankAdapter extends BaseListAdapter<MyBankListBean.CardL
     /**
      * 删除数据
      * @param token
-     * @param i
+     * @param id
      */
     private void PostDelData(final String token, final int id) {
         ReHttpUtils.instans().httpRequest(new HttpSubCribe<MainBean>() {
