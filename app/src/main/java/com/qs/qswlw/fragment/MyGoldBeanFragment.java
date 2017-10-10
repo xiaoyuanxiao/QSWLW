@@ -85,7 +85,7 @@ public class MyGoldBeanFragment extends BaseFragment implements IVenturegoldBean
             rb_myGoldenBean_right.setText("创新激励");
             initListViewtitle("获奖时间");
         } else if (Gold_type.equals(GIVE)) {
-            rb_myGoldenBean_left.setText("100%激励");//这个翻了？嗯，这个text没饭
+            rb_myGoldenBean_left.setText("100%激励");
             rb_myGoldenBean_right.setText("20%激励");
             initListViewtitle("获赠时间");
         } else if (Gold_type.equals("")) {
@@ -119,15 +119,13 @@ public class MyGoldBeanFragment extends BaseFragment implements IVenturegoldBean
         swipeRefreshView.setOnLoadListener(new SwipeRefreshView.OnLoadListener() {
             @Override
             public void onLoad() {
-                page++;
                 initListdata("model1",page);
             }
         });
         swipeRefreshView1.setOnLoadListener(new SwipeRefreshView.OnLoadListener() {
             @Override
             public void onLoad() {
-                page++;
-                initListdata("model1",page);
+                initListdata("model2",page);
             }
         });
     }
@@ -136,9 +134,11 @@ public class MyGoldBeanFragment extends BaseFragment implements IVenturegoldBean
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.rb_myGoldenBean_left:
+                page=1;
                 checklisy(true);
                 break;
             case R.id.rb_myGoldenBean_right:
+                page=1;
                 checklisy(false);
                 break;
         }
@@ -165,18 +165,23 @@ public class MyGoldBeanFragment extends BaseFragment implements IVenturegoldBean
         if (modeltype.equals("model1")) {
             if(page==1&&(list == null || list.size() == 0)){
                 return;
-            }
-            if (list == null || list.size() == 0) {
+            }else if(page>1&&(list == null || list.size() == 0)){
                 swipeRefreshView.setLoadingEnd();
                 return;
+            }else if(page==1&&list!=null){
+                list1.clear();
             }
             list1.addAll(list);
             ventureGoldBeansAdapter.notifyDataSetChanged();
             page++;
         } else {
-            if (list == null || list.size() == 0) {
-                swipeRefreshView.setLoadingEnd();
+            if(page==1&&(list == null || list.size() == 0)){
                 return;
+            }else if(page>1&&(list == null || list.size() == 0)){
+                swipeRefreshView1.setLoadingEnd();
+                return;
+            }else if(page==1&&list!=null){
+                list2.clear();
             }
             list2.addAll(list);
             ventureGoldBeansAdapter2.notifyDataSetChanged();
