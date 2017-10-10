@@ -40,7 +40,7 @@ public class WithdrawalsActivity extends BaseInfoActivity implements IWithdrawal
     private Button btn_withdrawals_confirm;
     private EditText edt_withdrawals_password;
     private String model = "model2";
-
+    private RadioGroup rg_dialog_consumption;
 
     @Override
     public View setConetnView() {
@@ -80,6 +80,7 @@ public class WithdrawalsActivity extends BaseInfoActivity implements IWithdrawal
         tv_withdrawals_three.setOnClickListener(this);
         btn_withdrawals_confirm.setOnClickListener(this);
     }
+
     @Override
     public void onClick(View v) {
         super.onClick(v);
@@ -133,7 +134,6 @@ public class WithdrawalsActivity extends BaseInfoActivity implements IWithdrawal
 
     }
 
-    private RadioGroup rg_dialog_consumption;
     private void showDialog() {
         final AlertDialog.Builder builder = new AlertDialog.Builder(this);
         final AlertDialog dialog = builder.create();
@@ -167,7 +167,7 @@ public class WithdrawalsActivity extends BaseInfoActivity implements IWithdrawal
         tv_withdrawals_bank.setText(withdrawalsBean.getBank().getCardxy());
         tv_withdrawals_banknumber.setText(withdrawalsBean.getBank().getNumber());
         tv_withdrawals_one_right.setText(withdrawalsBean.getUser().getGold2()+"颗");
-        tv_withdrawals_two.setText(withdrawalsBean.getTotal_count_cash());
+        tv_withdrawals_two.setText(withdrawalsBean.getTotal_count_cash()+"");
     }
 
     @Override
