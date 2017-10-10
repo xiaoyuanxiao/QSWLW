@@ -19,12 +19,13 @@ import java.util.List;
  */
 
 public class WithDrawalsRecordApplyingFragment extends BaseFragment implements IWithDrawalsRecordView{
+    int page = 1;
     private ListView lv_withdrawalsrecord;
     private SwipeRefreshView swipeRefreshView;
     private List<WithDrawalsRecordBean.ListBean> listBeen;
     private WithdrawalsRecordApplyingAdapter withdrawalsRecordAdapter;
     private WithDrawalsRecordPersenter withDrawalsRecordPersenter = new WithDrawalsRecordPersenter(this);
-    int page = 1;
+
     public static WithDrawalsRecordApplyingFragment newInstance() {
         return  new WithDrawalsRecordApplyingFragment();
     }
@@ -68,6 +69,7 @@ public class WithDrawalsRecordApplyingFragment extends BaseFragment implements I
         List<WithDrawalsRecordBean.ListBean> list = withDrawalsRecordBean.getList();
         swipeRefreshView.setLoading(false);
         if (list == null || list.size() == 0) {
+            swipeRefreshView.setLoadingEnd();
             return;
         }
         listBeen.addAll(list);

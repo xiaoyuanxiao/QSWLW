@@ -21,17 +21,17 @@ import java.util.List;
  */
 
 public class WithDrawalsRecordCompletedFragment extends BaseFragment implements IWithDrawalsRecordView {
+    public static String COMPLETED = "";
+    public static String PROCESSING = "pre";
+    public static String FAILED = "fail";
+    int page = 1;
     private ListView lv_withdrawalsrecord;
     private SwipeRefreshView swipeRefreshView;
     private List<WithDrawalsRecordBean.ListBean> listBeen;
     private WithdrawalsRecordCompletedAdapter withdrawalsRecordCompletedAdapter;
     private WithDrawalsRecordPersenter withDrawalsRecordPersenter = new WithDrawalsRecordPersenter(this);
     private WithdrawalsRecordAdapter withdrawalsRecordAdapter;
-    int page = 1;
     private String Gold_type = "";
-    public static String COMPLETED = "";
-    public static String PROCESSING = "pre";
-    public static String FAILED = "fail";
     private TextView tv_item_withdrawals_headview;
 
 
@@ -110,7 +110,10 @@ public class WithDrawalsRecordCompletedFragment extends BaseFragment implements 
 
         List<WithDrawalsRecordBean.ListBean> list = withDrawalsRecordBean.getList();
         swipeRefreshView.setLoading(false);
-        if (list == null || list.size() == 0) {
+        if (page ==1&&(list == null || list.size() == 0)) {
+            return;
+        }else if(page >1&&(list == null || list.size() == 0)){
+            swipeRefreshView.setLoadingEnd();
             return;
         }
         System.out.println("==========setdata=========" + Gold_type + "====page==="
