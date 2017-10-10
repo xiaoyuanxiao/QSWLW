@@ -94,7 +94,7 @@ public class RecommendRecordFragment extends BaseFragment implements IRecommendR
     @Override
     public void setRecommendRecordList(List<RecommendedRecordsBean> list, String recode) {
         swipeRefreshView.setLoading(false);
-        if (list == null || list.size() == 0) {
+        if (page>1&&(list == null || list.size() == 0)) {
             swipeRefreshView.setLoadingEnd();
             return;
         }
