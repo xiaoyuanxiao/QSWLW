@@ -80,7 +80,10 @@ public class MerchantAuditFragment extends BaseFragment implements IMerchantAudi
     public void setData(MerchantAuditBean merchantAuditBean) {
         List<MerchantAuditBean.ListBean> list = merchantAuditBean.getList();
         swipeRefreshView.setLoading(false);
-        if (list == null || list.size() == 0) {
+        if (page>1&&(list == null || list.size() == 0)) {
+            swipeRefreshView.setLoadingEnd();
+            return;
+        }else if(list == null || list.size() == 0){
             return;
         }
         if (page == 1)
