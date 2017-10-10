@@ -21,7 +21,7 @@
         <EditText
             android:id="@+id/edt_withdrawalsadd_name"
             style="@style/edit_standred"
-            android:hint="" />
+            android:hint="请选择持卡人姓名" />
     </LinearLayout>
 
     <View
@@ -166,8 +166,8 @@
         android:layout_width="match_parent"
         android:layout_height="35dp"
         android:layout_margin="6dp"
-        android:textColor="@color/white"
-        android:textSize="12sp"
+        android:background="@drawable/btn_corner"
         android:text="添加"
-        android:background="@drawable/btn_corner"/>
+        android:textColor="@color/white"
+        android:textSize="12sp"/>
 </LinearLayout>
