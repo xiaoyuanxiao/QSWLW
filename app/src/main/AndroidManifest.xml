@@ -71,6 +71,7 @@
         <activity android:name=".activity.PersonalCenter.OtherUserSettingActivity"/>
         <activity android:name=".activity.PersonalCenter.MerchantAuditActivity"/>
         <activity android:name=".activity.PersonalCenter.RecommendConsumptionActivity"/>
+        <activity android:name=".activity.PersonalCenter.MerchantSalesReviewActivity"/>
 
         <activity android:name=".activity.PersonalCenter.RecommendedRecordsActivity"/>
         <activity android:name=".activity.PersonalCenter.ScanCodeRecordActivity"/>

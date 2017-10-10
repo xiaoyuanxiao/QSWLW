@@ -229,7 +229,7 @@ public class BusinessSettingActivity extends BaseActivity implements IPersonalSe
                     startActivity(new Intent(BusinessSettingActivity.this, MerchantAuditActivity.class));
                     break;
                 case 3:
-
+                    startActivity(new Intent(BusinessSettingActivity.this, MerchantSalesReviewActivity.class));
                     break;
                 case 4:
                     intent = new Intent(BusinessSettingActivity.this, RecommendActivity.class);
