@@ -45,6 +45,7 @@ public class BusinessSettingActivity extends BaseActivity implements IPersonalSe
     private TextView setting_one;
     private String user_id, nickname, role;
     private String mobile;
+    private String shopName;
 
     @Override
     public void setUserInfo(PersonalSettingBean personalSettingBean) {
@@ -52,7 +53,8 @@ public class BusinessSettingActivity extends BaseActivity implements IPersonalSe
         tv_recommender.setText("推荐人:" + personalSettingBean.getRe_info().getNickname());
         tv_setting_id.setText("ID:" + personalSettingBean.getUser_info().getUser_id());
         tv_setting_name.setText("昵称:" + personalSettingBean.getUser_info().getNickname());
-        tv_setting_shopname.setText("店铺名称:" + personalSettingBean.getShop().getName());
+        shopName = personalSettingBean.getShop().getName();
+        tv_setting_shopname.setText("店铺名称:" + shopName);
 
         tv_setting_consumptionMoney.setText(personalSettingBean.getNone() + "");
         tv_setting_consumerSilverbeans.setText(personalSettingBean.getUser_info().getSilver_total() + "");
@@ -206,10 +208,19 @@ public class BusinessSettingActivity extends BaseActivity implements IPersonalSe
 
     class ItemClickListener implements AdapterView.OnItemClickListener {
 
+        private Intent intent;
+
         @Override
         public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
             switch (i) {
                 case 0:
+                    intent = new Intent(BusinessSettingActivity.this, RecommendActivity.class);
+                    intent.putExtra("userid", user_id);
+                    intent.putExtra("nickname", nickname);
+                    intent.putExtra("shopname", shopName);
+                    intent.putExtra("role", role);
+                    intent.putExtra("position", "position");
+                    startActivity(intent);
                     break;
                 case 1:
                     startActivity(new Intent(BusinessSettingActivity.this, ScanCodeRecordActivity.class));
@@ -221,7 +232,7 @@ public class BusinessSettingActivity extends BaseActivity implements IPersonalSe
 
                     break;
                 case 4:
-                    Intent intent = new Intent(BusinessSettingActivity.this, RecommendActivity.class);
+                    intent = new Intent(BusinessSettingActivity.this, RecommendActivity.class);
                     intent.putExtra("userid", user_id);
                     intent.putExtra("nickname", nickname);
                     intent.putExtra("role", role);

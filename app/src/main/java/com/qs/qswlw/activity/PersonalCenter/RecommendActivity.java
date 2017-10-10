@@ -32,6 +32,9 @@ public class RecommendActivity extends BaseInfoActivity implements View.OnLongCl
     private TextView tv_recommend_name, tv_recommend_id;
     private String userid,role;
     private String name;
+    private TextView tv_recommend_shopname;
+    private String position;
+    private LinearLayout ll_recommend;
 
 
     @Override
@@ -40,6 +43,8 @@ public class RecommendActivity extends BaseInfoActivity implements View.OnLongCl
         iv_qrCode = (ImageView) inflate.findViewById(iv_QRCode);
         tv_recommend_name = (TextView) inflate.findViewById(R.id.tv_recommend_name);
         tv_recommend_id = (TextView) inflate.findViewById(R.id.tv_recommend_id);
+        tv_recommend_shopname = (TextView) inflate.findViewById(R.id.tv_recommend_shopname);
+        ll_recommend = (LinearLayout) inflate.findViewById(R.id.ll_recommend);
         return inflate;
     }
 
@@ -48,6 +53,13 @@ public class RecommendActivity extends BaseInfoActivity implements View.OnLongCl
         super.initfindviewByid();
         Intent intent = getIntent();
         role = intent.getStringExtra("role");
+        position = intent.getStringExtra("position");
+        if(("position").equals(position)){
+            tv_titlebar_center.setText("我的商家码");
+        }else{
+            tv_titlebar_center.setText("推荐"+name);
+            tv_titlebar_right.setText("推荐记录");
+        }
         switch (role) {
             case "0":
             case "10":
@@ -65,17 +77,26 @@ public class RecommendActivity extends BaseInfoActivity implements View.OnLongCl
             default:
         }
 
-        tv_titlebar_center.setText("推荐"+name);
-        tv_titlebar_right.setText("推荐记录");
     }
 
     @Override
     public void initData() {
         super.initData();
         Intent intent = getIntent();
-        tv_recommend_name.setText(intent.getStringExtra("nickname"));
+        String nickname = intent.getStringExtra("nickname");
         userid = intent.getStringExtra("userid");
-        tv_recommend_id.setText(userid);
+        if(("position").equals(position)){
+            tv_recommend_shopname.setVisibility(View.VISIBLE);
+            ll_recommend.setVisibility(View.GONE);
+            String shopname = intent.getStringExtra("shopname");
+            tv_recommend_shopname.setText(shopname+"("+nickname+")");
+        }else{
+            ll_recommend.setVisibility(View.VISIBLE);
+            tv_recommend_shopname.setVisibility(View.GONE);
+            tv_recommend_name.setText(nickname);
+
+            tv_recommend_id.setText(userid);
+        }
 
         createQRCode();
 
@@ -83,9 +104,7 @@ public class RecommendActivity extends BaseInfoActivity implements View.OnLongCl
 
     private void createQRCode() {
         try
-
         {
-
             //根据输入的文本生成对应的二维码并且显示出来
             Bitmap mBitmap = EncodingHandler.createQRCode(userid, 500);
             if (mBitmap != null) {
@@ -144,13 +163,20 @@ public class RecommendActivity extends BaseInfoActivity implements View.OnLongCl
         //xoff,yoff基于anchor的左下角进行偏移。
         popupWindow.showAtLocation(v, Gravity.BOTTOM, 0, 0);
 
+
         tv_recommendpw_distinguish.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if(("position").equals(position)){
+                    Intent intent = new Intent(RecommendActivity.this, RecommendConsumptionActivity .class);
+                    startActivity(intent);
+                }else{
+                    Intent intent = new Intent(RecommendActivity.this, RegisterActivity.class);
+                    intent.putExtra("userid",userid);
+                    startActivity(intent);
+                }
 
-                Intent intent = new Intent(RecommendActivity.this, RegisterActivity.class);
-                intent.putExtra("userid",userid);
-             startActivity(intent);
+
 
             }
 
