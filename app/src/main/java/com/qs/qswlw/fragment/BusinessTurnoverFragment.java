@@ -87,11 +87,13 @@ public class BusinessTurnoverFragment extends BaseFragment implements IBusinessT
         tv_businesstonover_one.setText(businessTurnoverBean.getCount_money());
         tv_businesstonover_two.setText(businessTurnoverBean.getCount_none());
         List<BusinessTurnoverBean.ListBean> list = businessTurnoverBean.getList();
+        swipeRefreshView.setLoading(false);
         if(page==1&&(list == null || list.size() == 0)){
             ll_businesstornover.setVisibility(View.GONE);
+            return;
         }
-        swipeRefreshView.setLoading(false);
-        if (list == null || list.size() == 0) {
+
+        if (page>1&&(list == null || list.size() == 0)) {
             swipeRefreshView.setLoadingEnd();
             return;
         }
