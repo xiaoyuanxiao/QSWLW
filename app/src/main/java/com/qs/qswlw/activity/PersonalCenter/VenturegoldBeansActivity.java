@@ -40,9 +40,9 @@ public class VenturegoldBeansActivity extends BaseInfoActivity {
         tv_venturegold_left = (TextView) inflate.findViewById(R.id.tv_venturegold_left);
         tv_venturegold_center = (TextView) inflate.findViewById(R.id.tv_venturegold_center);
         tv_venturegold_right = (TextView) inflate.findViewById(R.id.tv_venturegold_right);
-        view_left = (View) inflate.findViewById(R.id.view_left);
-        view_center = (View) inflate.findViewById(R.id.view_center);
-        view_right = (View) inflate.findViewById(R.id.view_right);
+        view_left =  inflate.findViewById(R.id.view_left);
+        view_center = inflate.findViewById(R.id.view_center);
+        view_right =  inflate.findViewById(R.id.view_right);
         ll_venturegold_container = (LinearLayout) inflate.findViewById(R.id.ll_venturegold_container);
 
         return inflate;

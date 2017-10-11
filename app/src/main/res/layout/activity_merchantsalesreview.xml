@@ -1,6 +1,101 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
     android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="25dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingBottom="6dp"
+        android:paddingTop="6dp">
+
+        <TextView
+            android:id="@+id/tv_merchantsalesreview_one"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:text="他已付款"
+            android:textColor="@color/red"
+            android:textSize="10sp" />
+
+
+        <TextView
+            android:id="@+id/tv_merchantsalesreview_two"
+            style="@style/tv_harvestaddress_weight_grey"
+            android:gravity="center_horizontal"
+            android:text="已发货"/>
+        <TextView
+            android:id="@+id/tv_merchantsalesreview_three"
+            style="@style/tv_harvestaddress_weight_grey"
+            android:gravity="center_horizontal"
+            android:text="全部" />
+
+        <TextView
+            android:id="@+id/tv_merchantsalesreview_four"
+            style="@style/tv_harvestaddress_weight_grey"
+            android:gravity="center_horizontal"
+            android:text="已完成" />
+
+        <TextView
+            android:id="@+id/tv_merchantsalesreview_five"
+            style="@style/tv_harvestaddress_weight_grey"
+            android:gravity="center_horizontal"
+            android:text="总报表" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <View
+            android:id="@+id/view_one"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_weight="1"
+            android:background="@color/red" />
+
+        <View
+            android:id="@+id/view_two"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_weight="1"
+            android:background="@color/view" />
+
+        <View
+            android:id="@+id/view_three"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_weight="1"
+            android:background="@color/view" />
+
+        <View
+            android:id="@+id/view_four"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_weight="1"
+            android:background="@color/view" />
+
+        <View
+            android:id="@+id/view_five"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_weight="1"
+            android:background="@color/view" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_container"
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="11"
+        android:orientation="vertical"></LinearLayout>
 
 </LinearLayout>
