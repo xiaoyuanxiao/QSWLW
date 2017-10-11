@@ -1,7 +1,16 @@
 package com.qs.qswlw.mynet;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.qs.qswlw.bean.WithdrawalsBean;
 import com.trello.rxlifecycle.LifecycleProvider;
 
+import java.lang.reflect.Type;
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.Interceptor;
@@ -23,14 +32,13 @@ import rx.schedulers.Schedulers;
 
 public class ReHttpUtils {
     private static String baseUrl = "http://www.qiansheng.com/";
-
-    public static String getBaseUrl() {
-        return baseUrl;
-    }
-
     private static ReHttpUtils reHttpUtils;
 
     private ReHttpUtils() {
+    }
+
+    public static String getBaseUrl() {
+        return baseUrl;
     }
 
     public synchronized static ReHttpUtils instans() {
@@ -60,6 +68,13 @@ public class ReHttpUtils {
                 .client(client)
                 .build();
         return retrofit;
+    }
+
+    private Gson test() {
+        GsonBuilder gsonBuilder = new GsonBuilder();
+        // newgsonBuilder.s
+        gsonBuilder.registerTypeAdapter(WithdrawalsBean.CheckBean.class, new CheckBeanAdapter());
+        return gsonBuilder.create();
     }
 
     public OkHttpClient getMyclient(Interceptor interceptor) {
@@ -93,6 +108,22 @@ public class ReHttpUtils {
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(frext);
+    }
+
+    class CheckBeanAdapter implements JsonDeserializer<WithdrawalsBean.CheckBean> {
+
+        @Override
+        public WithdrawalsBean.CheckBean deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
+            WithdrawalsBean.CheckBean check = null;
+            if (json.isJsonObject()) {
+                check = new WithdrawalsBean.CheckBean();
+                JsonObject asJsonObject = json.getAsJsonObject();
+                JsonElement fail_num1 = asJsonObject.get("fail_num");
+                String fail_num = fail_num1.getAsString();
+                check.setFail_num(fail_num);
+            }
+            return check;
+        }
     }
 
    /* Class<MyRetroService> service = MyRetroService.class;

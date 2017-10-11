@@ -20,9 +20,9 @@ public class BusinessTurnoverActivity extends BaseInfoActivity {
 
     private TextView tv_businessturnover_left, tv_businessturnover_right;
     private View view_turnover_left, view_turnover_right;
+
     private ArrayList<Fragment> fragments;
     private FragmentManager fragmentManager;
-
 
     @Override
     public View setConetnView() {
