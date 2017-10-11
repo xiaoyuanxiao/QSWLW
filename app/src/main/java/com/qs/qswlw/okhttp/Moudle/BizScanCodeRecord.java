@@ -34,6 +34,10 @@ public class BizScanCodeRecord implements IScanCodeRecordBiz {
             @Override
             public void onNext(MainBean<ScanCodeRecordBean> scanCodeRecordBeanMainBean) {
                 ScanCodeRecordBean result = scanCodeRecordBeanMainBean.getResult();
+                int status = scanCodeRecordBeanMainBean.getStatus();
+                if (status == -4||status == -3) {
+                    scanCodeRecordListener.onTokenFail();
+                }
                 scanCodeRecordListener.onSuccess(result);
             }
 

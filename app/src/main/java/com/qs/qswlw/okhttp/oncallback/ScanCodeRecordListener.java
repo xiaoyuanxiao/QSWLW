@@ -8,4 +8,5 @@ import com.qs.qswlw.bean.ScanCodeRecordBean;
 
 public interface ScanCodeRecordListener extends BaseOnlistener {
     void onSuccess(ScanCodeRecordBean scanCodeRecordBean);
+    void onTokenFail();
 }

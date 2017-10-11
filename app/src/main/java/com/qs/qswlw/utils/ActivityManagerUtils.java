@@ -1,6 +1,10 @@
 package com.qs.qswlw.utils;
 
 import android.app.Activity;
+import android.content.Intent;
+import android.os.Handler;
+
+import com.qs.qswlw.activity.LoginActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,10 +27,22 @@ public class ActivityManagerUtils {
 
     private List<Activity> activities = new ArrayList<Activity>();
 
+
     private ActivityManagerUtils() {
         /**
          * 这里面写一些需要执行初始化的工作
          */
+    }
+
+    public static void tokenfailfg(final Activity activity) {
+        ToastUtils.showToast("token失效请重新登录");
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                activity.startActivity(new Intent(activity, LoginActivity.class));
+                activity.finish();
+            }
+        }, 2000);
     }
 
     public static ActivityManagerUtils getInstance() {

@@ -26,6 +26,11 @@ public class ScanCodeRecordPersenter {
             }
 
             @Override
+            public void onTokenFail() {
+                iScanCodeRecordView.setTokenFail();
+            }
+
+            @Override
             public void onFailure(String code) {
 
             }

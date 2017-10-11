@@ -10,6 +10,7 @@ import com.qs.qswlw.adapter.ScanCodeRecordAdapter;
 import com.qs.qswlw.bean.ScanCodeRecordBean;
 import com.qs.qswlw.okhttp.Iview.IScanCodeRecordView;
 import com.qs.qswlw.okhttp.Presenter.ScanCodeRecordPersenter;
+import com.qs.qswlw.utils.ActivityManagerUtils;
 import com.qs.qswlw.view.SwipeRefreshView;
 
 import java.util.ArrayList;
@@ -99,4 +100,10 @@ public class ScanCodeRecordFragment extends BaseFragment implements IScanCodeRec
         scanCodeRecordAdapter.notifyDataSetChanged();
         page++;
     }
+
+    @Override
+    public void setTokenFail() {
+        ActivityManagerUtils.getInstance().tokenfailfg(getActivity());
+    }
+
 }
