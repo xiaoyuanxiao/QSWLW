@@ -37,6 +37,7 @@ import com.qs.qswlw.okhttp.Iview.IConsumptionRecordView;
 import com.qs.qswlw.okhttp.Iview.IMerchantAuditClickView;
 import com.qs.qswlw.okhttp.Presenter.ConsumptionRecordPresenter;
 import com.qs.qswlw.okhttp.Presenter.MerchantAuditClickPersenter;
+import com.qs.qswlw.utils.ActivityManagerUtils;
 import com.qs.qswlw.utils.ImageTools;
 import com.qs.qswlw.utils.ToastUtils;
 import com.qs.qswlw.view.GenderPopupWindow;
@@ -361,6 +362,8 @@ public class ConsumptionRecordActivity extends BaseInfoActivity implements ICons
         }
     }
 
+
+
     @Override
     public void setData(MerchantAuditClickBean merchantAuditClickBean) {
         type = 1;
@@ -382,6 +385,11 @@ public class ConsumptionRecordActivity extends BaseInfoActivity implements ICons
         edt_consumptionrecord_five.setText(old_list.getPay_name());  //汇款人
         edt_consumptionrecord_sex.setText(old_list.getAdd_time());   //时间
 
+    }
+
+    @Override
+    public void setTokenFail() {
+        ActivityManagerUtils.getInstance().tokenfailfg(this);
     }
 
     //上传图片

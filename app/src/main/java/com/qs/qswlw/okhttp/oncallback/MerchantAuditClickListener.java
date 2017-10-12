@@ -8,4 +8,5 @@ import com.qs.qswlw.bean.MerchantAuditClickBean;
 
 public interface MerchantAuditClickListener extends BaseOnlistener {
     void onSuccess(MerchantAuditClickBean merchantAuditClickBean);
+    void onTokenFail();
 }

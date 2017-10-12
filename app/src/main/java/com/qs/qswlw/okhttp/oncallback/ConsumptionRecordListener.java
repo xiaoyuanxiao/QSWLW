@@ -9,4 +9,5 @@ import com.qs.qswlw.bean.MainBean;
 
 public interface ConsumptionRecordListener extends BaseOnlistener {
     void onSuccess(MainBean<ConsumptionRecordBean> consumptionRecordBean);
+    void onTokenFail();
 }

@@ -27,6 +27,11 @@ public class MerchantAuditClickPersenter {
             }
 
             @Override
+            public void onTokenFail() {
+                iMerchantAuditView.setTokenFail();
+            }
+
+            @Override
             public void onFailure(String code) {
 
             }

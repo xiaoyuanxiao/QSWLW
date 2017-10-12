@@ -10,4 +10,5 @@ import java.util.List;
 
 public interface RecordListListener extends BaseOnlistener {
     void onSuccess(List<RecordListBean> list);
+    void onTokenFail();
 }

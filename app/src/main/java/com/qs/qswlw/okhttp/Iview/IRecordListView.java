@@ -12,4 +12,5 @@ public interface IRecordListView {
     void setRecordList(List<RecordListBean> recordListBeen);
     void setRecordListRefresh(List<RecordListBean> recordListBeen);
     void isgetDataFaile(String meg);
+    void setTokenFail();
 }

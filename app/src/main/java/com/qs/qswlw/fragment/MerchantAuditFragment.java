@@ -9,6 +9,7 @@ import com.qs.qswlw.adapter.MerchantAuditAdapter;
 import com.qs.qswlw.bean.MerchantAuditBean;
 import com.qs.qswlw.okhttp.Iview.IMerchantAuditView;
 import com.qs.qswlw.okhttp.Presenter.MerchantAuditPersenter;
+import com.qs.qswlw.utils.ActivityManagerUtils;
 import com.qs.qswlw.view.SwipeRefreshView;
 
 import java.util.ArrayList;
@@ -91,5 +92,10 @@ public class MerchantAuditFragment extends BaseFragment implements IMerchantAudi
         listBeen.addAll(list);
         merchantAuditAdapter.notifyDataSetChanged();
         page++;
+    }
+
+    @Override
+    public void setTokenFail() {
+        ActivityManagerUtils.getInstance().tokenfailfg(getActivity());
     }
 }

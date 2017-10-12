@@ -40,6 +40,10 @@ public class BizRecordList implements IRecordListBiz {
             @Override
             public void onNext(MainBean<RecordListBaseBean> recordListBean) {
                 RecordListBaseBean result = recordListBean.getResult();
+                int status = recordListBean.getStatus();
+                if (status == -4||status == -3) {
+                    recordListListener.onTokenFail();
+                }
                 if(result==null){
                     recordListListener.onFailure(result+"");
                 }else{

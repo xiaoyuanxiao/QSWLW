@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.os.Handler;
 
 import com.qs.qswlw.activity.LoginActivity;
+import com.qs.qswlw.activity.PersonalCenter.BusinessSettingActivity;
+import com.qs.qswlw.activity.PersonalCenter.ConsumerSettingActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -41,6 +43,8 @@ public class ActivityManagerUtils {
             public void run() {
                 activity.startActivity(new Intent(activity, LoginActivity.class));
                 activity.finish();
+                mActivityManagerUtils.finishActivityclass(BusinessSettingActivity.class);
+                mActivityManagerUtils.finishActivityclass(ConsumerSettingActivity.class);
             }
         }, 2000);
     }

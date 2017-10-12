@@ -8,4 +8,5 @@ import com.qs.qswlw.bean.MerchantAuditClickBean;
 
 public interface IMerchantAuditClickView {
     void setData(MerchantAuditClickBean merchantAuditClickBean);
+    void setTokenFail();
 }

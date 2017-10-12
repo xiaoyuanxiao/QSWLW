@@ -34,6 +34,10 @@ public class BizMerchantAudit implements IMerchantAuditBiz {
             @Override
             public void onNext(MainBean<MerchantAuditBean> merchantAuditBeanMainBean) {
                 MerchantAuditBean result = merchantAuditBeanMainBean.getResult();
+                int status = merchantAuditBeanMainBean.getStatus();
+                if (status == -4||status == -3) {
+                    merchantAuditListener.onTokenFail();
+                }
                 merchantAuditListener.onSuccess(result);
             }
 

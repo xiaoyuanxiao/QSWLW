@@ -10,5 +10,5 @@ import com.qs.qswlw.bean.MainBean;
 public interface IConsumptionRecordView {
     void setConsumptionRecordData(MainBean<ConsumptionRecordBean> consumptionRecordBean);
     void runOnUiThread(Runnable runnable);
-
+    void setTokenFail();
 }

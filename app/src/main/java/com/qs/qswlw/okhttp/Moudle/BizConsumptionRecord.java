@@ -37,6 +37,10 @@ public class BizConsumptionRecord implements IConsumptionRecordBiz {
             @Override
             public void onNext(MainBean<ConsumptionRecordBean> consumptionRecordBeanMainBean) {
                 ConsumptionRecordBean result = consumptionRecordBeanMainBean.getResult();
+                int status = consumptionRecordBeanMainBean.getStatus();
+                if (status == -4||status == -3) {
+                    consumptionRecordListener.onTokenFail();
+                }
                 consumptionRecordListener.onSuccess(consumptionRecordBeanMainBean);
             }
 

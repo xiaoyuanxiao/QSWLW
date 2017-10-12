@@ -31,6 +31,11 @@ public class RecordListPresenter {
             }
 
             @Override
+            public void onTokenFail() {
+                iRecordListView.setTokenFail();
+            }
+
+            @Override
             public void onFailure(String code) {
                 iRecordListView.isgetDataFaile(code);
 
@@ -42,6 +47,11 @@ public class RecordListPresenter {
             @Override
             public void onSuccess(List<RecordListBean> list) {
                 iRecordListView.setRecordListRefresh(list);
+            }
+
+            @Override
+            public void onTokenFail() {
+                iRecordListView.setTokenFail();
             }
 
             @Override

@@ -28,6 +28,11 @@ public class ConsumptionRecordPresenter {
             }
 
             @Override
+            public void onTokenFail() {
+                iConsumptionRecordView.setTokenFail();
+            }
+
+            @Override
             public void onFailure(String code) {
 
             }

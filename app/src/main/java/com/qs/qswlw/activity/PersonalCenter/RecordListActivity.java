@@ -12,6 +12,7 @@ import com.qs.qswlw.adapter.RecordListAdapter;
 import com.qs.qswlw.bean.RecordListBean;
 import com.qs.qswlw.okhttp.Iview.IRecordListView;
 import com.qs.qswlw.okhttp.Presenter.RecordListPresenter;
+import com.qs.qswlw.utils.ActivityManagerUtils;
 import com.qs.qswlw.utils.ToastUtils;
 import com.qs.qswlw.view.SwipeRefreshView;
 
@@ -175,5 +176,10 @@ public class RecordListActivity extends BaseInfoActivity implements IRecordListV
     @Override
     public void isgetDataFaile(String meg) {
         swipeRefreshView.setLoading(false);
+    }
+
+    @Override
+    public void setTokenFail() {
+        ActivityManagerUtils.getInstance().tokenfailfg(this);
     }
 }
