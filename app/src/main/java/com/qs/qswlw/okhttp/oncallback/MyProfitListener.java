@@ -7,4 +7,5 @@ import com.qs.qswlw.bean.MyProfitBean;
 
 public interface MyProfitListener extends BaseOnlistener {
     void onSuccess(MyProfitBean myProfitBean);
+    void onTokenFail();
 }

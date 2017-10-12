@@ -34,6 +34,7 @@ import com.qs.qswlw.okhttp.Iview.IImproveCityView;
 import com.qs.qswlw.okhttp.Iview.IImproveDocumentationView;
 import com.qs.qswlw.okhttp.Presenter.ImproveCityPersenter;
 import com.qs.qswlw.okhttp.Presenter.ImproveDocumentationPersenter;
+import com.qs.qswlw.utils.ActivityManagerUtils;
 import com.qs.qswlw.utils.ImageTools;
 import com.qs.qswlw.utils.ToastUtils;
 import com.qs.qswlw.view.GenderPopupWindow;
@@ -397,6 +398,11 @@ public class ImproveDocumentationActivity extends BaseInfoActivity implements II
             classification.add(themsBean.getName());
         }
         classification_adapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void setTokenFail() {
+        ActivityManagerUtils.getInstance().tokenfailfg(this);
     }
 
     private void selectxxx() {

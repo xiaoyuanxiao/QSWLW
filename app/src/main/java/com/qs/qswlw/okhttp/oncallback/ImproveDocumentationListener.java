@@ -8,4 +8,5 @@ import com.qs.qswlw.bean.ImproveDocumentationBean;
 
 public interface ImproveDocumentationListener extends BaseOnlistener {
     void onSuccess(ImproveDocumentationBean improveDocumentationBean);
+    void onTokenFail();
 }

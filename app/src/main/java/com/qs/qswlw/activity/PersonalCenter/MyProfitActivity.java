@@ -10,6 +10,7 @@ import com.qs.qswlw.adapter.MyProfitAdapter;
 import com.qs.qswlw.bean.MyProfitBean;
 import com.qs.qswlw.okhttp.Iview.IMyProfitView;
 import com.qs.qswlw.okhttp.Presenter.MyProfitPersenter;
+import com.qs.qswlw.utils.ActivityManagerUtils;
 import com.qs.qswlw.view.SwipeRefreshView;
 
 import java.util.ArrayList;
@@ -75,6 +76,11 @@ public class MyProfitActivity extends BaseInfoActivity implements IMyProfitView 
         myProfitBeanlist.addAll(list);
         myProfitAdapter.notifyDataSetChanged();
         page++;
+    }
+
+    @Override
+    public void setTokenFail() {
+        ActivityManagerUtils.getInstance().tokenfailfg(this);
     }
 
 }

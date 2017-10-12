@@ -27,6 +27,11 @@ public class ImproveDocumentationPersenter {
             }
 
             @Override
+            public void onTokenFail() {
+                iImproveDocumentationView.setTokenFail();
+            }
+
+            @Override
             public void onFailure(String code) {
 
             }

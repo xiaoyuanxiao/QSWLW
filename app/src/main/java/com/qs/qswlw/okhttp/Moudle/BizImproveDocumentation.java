@@ -35,6 +35,10 @@ public class BizImproveDocumentation implements IImproveDocumentationBiz{
             @Override
             public void onNext(MainBean<ImproveDocumentationBean> improveDocumentationBeanMainBean) {
                 ImproveDocumentationBean result = improveDocumentationBeanMainBean.getResult();
+                int status = improveDocumentationBeanMainBean.getStatus();
+                if (status == -4||status == -3) {
+                    improveDocumentationListener.onTokenFail();
+                }
                 improveDocumentationListener.onSuccess(result);
             }
 

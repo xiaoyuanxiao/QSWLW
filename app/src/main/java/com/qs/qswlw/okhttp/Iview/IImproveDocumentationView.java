@@ -8,4 +8,5 @@ import com.qs.qswlw.bean.ImproveDocumentationBean;
 
 public interface IImproveDocumentationView {
     void setData(ImproveDocumentationBean improveDocumentationBean);
+    void setTokenFail();
 }

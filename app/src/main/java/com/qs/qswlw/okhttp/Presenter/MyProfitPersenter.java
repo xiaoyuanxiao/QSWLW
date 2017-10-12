@@ -27,6 +27,11 @@ public class MyProfitPersenter {
             }
 
             @Override
+            public void onTokenFail() {
+                iMyProfitView.setTokenFail();
+            }
+
+            @Override
             public void onFailure(String code) {
 
             }

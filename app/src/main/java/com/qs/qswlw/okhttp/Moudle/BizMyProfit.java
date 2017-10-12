@@ -35,6 +35,10 @@ public class BizMyProfit implements IMyProfitBiz {
             @Override
             public void onNext(MainBean<MyProfitBean> myProfitBizMainBean) {
                 MyProfitBean result = myProfitBizMainBean.getResult();
+                int status = myProfitBizMainBean.getStatus();
+                if (status == -4||status == -3) {
+                    myProfitListener.onTokenFail();
+                }
                 myProfitListener.onSuccess(result);
             }
 

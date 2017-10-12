@@ -8,4 +8,5 @@ import com.qs.qswlw.bean.MyProfitBean;
 
 public interface IMyProfitView {
     void setMyProfitData(MyProfitBean myProfitData);
+    void setTokenFail();
 }
