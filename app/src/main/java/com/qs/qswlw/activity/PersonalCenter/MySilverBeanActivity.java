@@ -4,7 +4,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.qs.qswlw.MyApplication;
@@ -33,7 +32,6 @@ public class MySilverBeanActivity extends BaseInfoActivity implements IMySliverB
     private ListView lv_mysliverbean;
     private MySliverBeanAdapter mySliverBeanAdapter;
     private MySliverBeanPresenter mySliverBeanPresenter = new MySliverBeanPresenter(this);
-    private ProgressBar pb_itemforestry;
 
     @Override
     public View setConetnView() {
@@ -47,7 +45,6 @@ public class MySilverBeanActivity extends BaseInfoActivity implements IMySliverB
         lv_mysliverbean = (ListView) inflate.findViewById(R.id.lv_mysliverbean);
         lv_mysliverbean.addHeaderView(inflate1);
         swipeRefreshView = (SwipeRefreshView) inflate.findViewById(R.id.lv_mysliverbean_sw);
-        pb_itemforestry = (ProgressBar) inflate.findViewById(R.id.pb_itemforestry);
         return inflate;
     }
 
@@ -89,7 +86,6 @@ public class MySilverBeanActivity extends BaseInfoActivity implements IMySliverB
     @Override
     public void setMySliverBeanListData(List<MySliverBean.SingleLogBean> list) {
         Log.d("TAG", "===========setMySliverBeanListData===" + list.size());
-        pb_itemforestry.setVisibility(View.GONE);
         swipeRefreshView.setLoading(false);
         if (list == null || list.size() == 0) {
             swipeRefreshView.setLoadingEnd();

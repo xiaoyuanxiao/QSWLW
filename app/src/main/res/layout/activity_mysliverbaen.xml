@@ -15,11 +15,4 @@
             android:divider="@null"></ListView>
     </com.qs.qswlw.view.SwipeRefreshView>
 
-    <ProgressBar
-        android:id="@+id/pb_itemforestry"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:indeterminateDrawable="@anim/large_progressbar_animator"
-        android:indeterminateDuration="1000" />
 </RelativeLayout>
