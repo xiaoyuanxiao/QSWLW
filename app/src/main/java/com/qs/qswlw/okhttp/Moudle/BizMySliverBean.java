@@ -41,6 +41,10 @@ public class BizMySliverBean implements IMySliverBeanBiz {
             @Override
             public void onNext(MainBean<MySliverBean> mySliverBeanMainBean) {
                 MySliverBean result = mySliverBeanMainBean.getResult();
+                int status = mySliverBeanMainBean.getStatus();
+                if (status == -4||status == -3) {
+                    mySliverBeanListener.onTokenFail();
+                }
                 if (result == null || mySliverBeanMainBean.getStatus() == -1)
                     mySliverBeanListener.onFailure(mySliverBeanMainBean.getMsg());
                 else

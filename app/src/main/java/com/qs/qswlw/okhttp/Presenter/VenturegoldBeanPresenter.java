@@ -25,6 +25,11 @@ public class VenturegoldBeanPresenter {
             public void onSuccess(VenturegoldBean venturegoldBean) {
                 iVenturegoldBeansView.setVenturegoldBeanData(venturegoldBean, model);
             }
+
+            @Override
+            public void onTokenFail() {
+                iVenturegoldBeansView.setTokenFail();;
+            }
         }, token, p, model, gold_type, type);
 
     }

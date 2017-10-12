@@ -26,6 +26,11 @@ public class MySpendingLimitPresenter {
             }
 
             @Override
+            public void onTokenFail() {
+                iMySpendingLimitView.setTokenFail();
+            }
+
+            @Override
             public void onFailure(String code) {
 
             }

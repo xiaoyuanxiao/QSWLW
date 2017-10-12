@@ -14,6 +14,7 @@ import com.qs.qswlw.adapter.ConsumptionLimitAdapter;
 import com.qs.qswlw.bean.ConsumptionLimitBean;
 import com.qs.qswlw.okhttp.Iview.IConsumptionLimitView;
 import com.qs.qswlw.okhttp.Presenter.ConsumptionLimitPersenter;
+import com.qs.qswlw.utils.ActivityManagerUtils;
 import com.qs.qswlw.view.SwipeRefreshView;
 
 import java.util.ArrayList;
@@ -127,5 +128,10 @@ public class ConsumptionLimitActivity extends BaseInfoActivity implements IConsu
     @Override
     public void isgetDataFaile(String meg) {
         swipeRefreshView.setLoading(false);
+    }
+
+    @Override
+    public void setTokenFail() {
+        ActivityManagerUtils.getInstance().tokenfailfg(this);
     }
 }

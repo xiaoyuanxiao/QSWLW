@@ -9,6 +9,7 @@ import com.qs.qswlw.adapter.MySpendingLimitDeductionAdapter;
 import com.qs.qswlw.bean.MySpendingLimitBean;
 import com.qs.qswlw.okhttp.Iview.IMySpendingLimitView;
 import com.qs.qswlw.okhttp.Presenter.MySpendingLimitPresenter;
+import com.qs.qswlw.utils.ActivityManagerUtils;
 import com.qs.qswlw.view.SwipeRefreshView;
 
 import java.util.ArrayList;
@@ -78,5 +79,10 @@ public class MySpendingLimitDeductionFragment extends BaseFragment implements IM
         mySpendingLimitDeductionAdapter.notifyDataSetChanged();
         page++;
 
+    }
+
+    @Override
+    public void setTokenFail() {
+        ActivityManagerUtils.getInstance().tokenfailfg(getActivity());
     }
 }

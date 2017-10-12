@@ -38,6 +38,10 @@ public class BizVentureGold implements IVentureGoldBiz{
 
             @Override
             public void onNext(MainBean<VenturegoldBean> venturegoldBeanMainBean) {
+                int status = venturegoldBeanMainBean.getStatus();
+                if (status == -4||status == -3) {
+                    venturegoldBeanListener.onTokenFail();
+                }
                 venturegoldBeanListener.onSuccess(venturegoldBeanMainBean.getResult());
             }
 

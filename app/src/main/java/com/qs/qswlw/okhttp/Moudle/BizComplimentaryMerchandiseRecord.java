@@ -35,6 +35,10 @@ public class BizComplimentaryMerchandiseRecord implements  IComplimentaryMerchan
             @Override
             public void onNext(MainBean<ComplimentaryMerchandiseRecordBean> complimentaryMerchandiseRecordBeanMainBean) {
                 ComplimentaryMerchandiseRecordBean result = complimentaryMerchandiseRecordBeanMainBean.getResult();
+                int status = complimentaryMerchandiseRecordBeanMainBean.getStatus();
+                if (status == -4||status == -3) {
+                    complimentaryMerchandiseRecordListener.onTokenFail();
+                }
                 complimentaryMerchandiseRecordListener.onSuccess(result);
             }
 

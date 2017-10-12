@@ -29,6 +29,11 @@ public class EntrepreneurialPresenter {
             }
 
             @Override
+            public void onTokenFail() {
+                iEntrepreneurialView.setTokenFail();
+            }
+
+            @Override
             public void onFailure(String code) {
                 Log.e("tag",code+"");
             }

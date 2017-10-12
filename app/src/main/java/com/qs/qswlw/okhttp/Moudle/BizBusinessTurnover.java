@@ -36,6 +36,10 @@ public class BizBusinessTurnover implements IBusinessTurnoverBiz{
             @Override
             public void onNext(MainBean<BusinessTurnoverBean> data) {
                 BusinessTurnoverBean result = data.getResult();
+                int status = data.getStatus();
+                if (status == -4||status == -3) {
+                    businessTurnoverListener.onTokenFail();
+                }
                 businessTurnoverListener.onSuccess(result);
             }
         });

@@ -9,5 +9,6 @@ import com.qs.qswlw.bean.ValidateOldMemberBean;
 public interface IValidateOldMemberView {
     void setValidateOldMemberViewData(ValidateOldMemberBean validateOldMemberBean);
     void runOnUiThread(Runnable runnable);
+    void setTokenFail();
 
 }

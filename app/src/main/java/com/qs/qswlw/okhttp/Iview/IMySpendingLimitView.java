@@ -8,4 +8,5 @@ import com.qs.qswlw.bean.MySpendingLimitBean;
 
 public interface IMySpendingLimitView {
     void setdata(MySpendingLimitBean mySpendingLimitBean);
+    void setTokenFail();
 }

@@ -27,6 +27,11 @@ public class ComplimentaryMerchandiseRecordPresenter {
             }
 
             @Override
+            public void onTokenFail() {
+                iComplimentaryMerchandiseRecordView.setTokenFail();
+            }
+
+            @Override
             public void onFailure(String code) {
 
             }

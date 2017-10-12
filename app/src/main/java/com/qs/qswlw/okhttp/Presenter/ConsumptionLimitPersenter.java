@@ -28,6 +28,11 @@ public class ConsumptionLimitPersenter {
             }
 
             @Override
+            public void onTokenFail() {
+                iConsumptionLimitView.setTokenFail();
+            }
+
+            @Override
             public void onFailure(String code) {
                 Log.e("e",code+"");
             }

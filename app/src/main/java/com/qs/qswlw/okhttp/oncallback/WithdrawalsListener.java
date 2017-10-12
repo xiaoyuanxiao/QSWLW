@@ -8,4 +8,5 @@ import com.qs.qswlw.bean.WithdrawalsBean;
 
 public interface WithdrawalsListener extends BaseOnlistener {
     void onSuccess(WithdrawalsBean withdrawalsBean);
+    void onTokenFail();
 }

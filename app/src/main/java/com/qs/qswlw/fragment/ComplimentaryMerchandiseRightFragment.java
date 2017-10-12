@@ -9,6 +9,7 @@ import com.qs.qswlw.adapter.ComplimentaryMerchandiseRecordAdapter;
 import com.qs.qswlw.bean.ComplimentaryMerchandiseRecordBean;
 import com.qs.qswlw.okhttp.Iview.IComplimentaryMerchandiseRecordView;
 import com.qs.qswlw.okhttp.Presenter.ComplimentaryMerchandiseRecordPresenter;
+import com.qs.qswlw.utils.ActivityManagerUtils;
 import com.qs.qswlw.view.SwipeRefreshView;
 
 import java.util.ArrayList;
@@ -81,5 +82,10 @@ public class ComplimentaryMerchandiseRightFragment extends BaseFragment implemen
     @Override
     public void isgetDataFaile(String meg) {
         swipeRefreshView.setLoading(false);
+    }
+
+    @Override
+    public void setTokenFail() {
+        ActivityManagerUtils.getInstance().tokenfailfg(getActivity());
     }
 }

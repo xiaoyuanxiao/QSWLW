@@ -33,6 +33,10 @@ public class BizMySpendingLimit implements IMySpendingLimitBiz {
             @Override
             public void onNext(MainBean<MySpendingLimitBean> mySpendingLimitBeanMainBean) {
                 MySpendingLimitBean result = mySpendingLimitBeanMainBean.getResult();
+                int status = mySpendingLimitBeanMainBean.getStatus();
+                if (status == -4||status == -3) {
+                    mySpendingLimitListener.onTokenFail();
+                }
                 mySpendingLimitListener.onSuccess(result);
             }
 

@@ -10,4 +10,5 @@ public interface IEntrepreneurialView {
     void setEntrepreneurialData(EntrepreneurialIncentiveBean entrepreneurialData);
     void runOnUiThread(Runnable runnable);
     void isgetDataFaile(String meg);
+    void setTokenFail();
 }

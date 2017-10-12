@@ -35,6 +35,10 @@ public class BizMyRole implements IMyRoleBiz{
             @Override
             public void onNext(MainBean<MyRoleBean> myRoleBeanMainBean) {
                 MyRoleBean result = myRoleBeanMainBean.getResult();
+                int status = myRoleBeanMainBean.getStatus();
+                if (status == -4||status == -3) {
+                    myRoleListener.onTokenFail();
+                }
                 myRoleListener.onSuccess(result);
             }
 

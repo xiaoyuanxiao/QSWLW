@@ -10,4 +10,5 @@ public interface IMyRoleView {
     void setMyRoleViewList(MyRoleBean myRoleBean);
 
     void runOnUiThread(Runnable runnable);
+    void setTokenFail();
 }

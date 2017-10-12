@@ -27,6 +27,11 @@ public class BusinessTurnoverPersenter {
             }
 
             @Override
+            public void onTokenFail() {
+                iBusinessTurnoverView.setTokenFail();
+            }
+
+            @Override
             public void onFailure(String code) {
 
             }

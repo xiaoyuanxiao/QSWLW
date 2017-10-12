@@ -8,4 +8,5 @@ import com.qs.qswlw.bean.EntrepreneurialIncentiveBean;
 
 public interface EntrepreneurialListener extends BaseOnlistener {
     void onSuccess(EntrepreneurialIncentiveBean entrepreneurialIncentiveBean);
+    void onTokenFail();
 }

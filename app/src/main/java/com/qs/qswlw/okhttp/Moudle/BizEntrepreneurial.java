@@ -38,6 +38,10 @@ public class BizEntrepreneurial implements IEntrepreneurialBiz {
             @Override
             public void onNext(MainBean<EntrepreneurialIncentiveBean> data) {
                 EntrepreneurialIncentiveBean result = data.getResult();
+                int status = data.getStatus();
+                if (status == -4||status == -3) {
+                    entrepreneuriaListener.onTokenFail();
+                }
                 entrepreneuriaListener.onSuccess(result);
             }
 

@@ -9,6 +9,7 @@ import com.qs.qswlw.R;
 import com.qs.qswlw.bean.MyRoleBean;
 import com.qs.qswlw.okhttp.Iview.IMyRoleView;
 import com.qs.qswlw.okhttp.Presenter.MyRolePresenter;
+import com.qs.qswlw.utils.ActivityManagerUtils;
 import com.qs.qswlw.utils.DateUtils;
 
 /**
@@ -63,5 +64,10 @@ public class MyRoleActivity extends BaseInfoActivity implements IMyRoleView {
         tv_role_time.setText(DateUtils.long2date(Integer.parseInt(myRoleBean.getReg_time()) * 1000L));
        // tv_role_time.setText(DateUtils.stampToDate(Integer.parseInt(myRoleBean.getReg_time()) * 1000L));
 
+    }
+
+    @Override
+    public void setTokenFail() {
+        ActivityManagerUtils.getInstance().tokenfailfg(this);
     }
 }

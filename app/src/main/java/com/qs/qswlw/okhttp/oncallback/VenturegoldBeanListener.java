@@ -8,4 +8,5 @@ import com.qs.qswlw.bean.VenturegoldBean;
 
 public interface VenturegoldBeanListener {
     void onSuccess(VenturegoldBean venturegoldBean);
+    void onTokenFail();
 }

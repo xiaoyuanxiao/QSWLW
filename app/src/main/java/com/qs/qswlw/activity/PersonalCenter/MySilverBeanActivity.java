@@ -13,6 +13,7 @@ import com.qs.qswlw.adapter.MySliverBeanAdapter;
 import com.qs.qswlw.bean.MySliverBean;
 import com.qs.qswlw.okhttp.Iview.IMySliverBeanView;
 import com.qs.qswlw.okhttp.Presenter.MySliverBeanPresenter;
+import com.qs.qswlw.utils.ActivityManagerUtils;
 import com.qs.qswlw.view.SwipeRefreshView;
 
 import java.util.ArrayList;
@@ -103,5 +104,10 @@ public class MySilverBeanActivity extends BaseInfoActivity implements IMySliverB
     @Override
     public void isgetDataFaile(String meg) {
         swipeRefreshView.setLoading(false);
+    }
+
+    @Override
+    public void setTokenFail() {
+        ActivityManagerUtils.getInstance().tokenfailfg(this);
     }
 }

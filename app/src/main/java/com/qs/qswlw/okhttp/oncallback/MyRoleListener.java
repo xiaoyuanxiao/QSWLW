@@ -8,4 +8,5 @@ import com.qs.qswlw.bean.MyRoleBean;
 
 public interface MyRoleListener extends BaseOnlistener {
     void onSuccess(MyRoleBean myRoleBean);
+    void onTokenFail();
 }

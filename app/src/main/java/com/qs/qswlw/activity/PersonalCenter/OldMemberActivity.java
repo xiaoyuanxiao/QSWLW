@@ -18,6 +18,7 @@ import com.qs.qswlw.okhttp.Iview.IOldMemberView;
 import com.qs.qswlw.okhttp.Iview.IValidateOldMemberView;
 import com.qs.qswlw.okhttp.Presenter.OldMemberPresenter;
 import com.qs.qswlw.okhttp.Presenter.ValidateOldMemberPresenter;
+import com.qs.qswlw.utils.ActivityManagerUtils;
 
 /**
  * Created by xiaoyu on 2017/5/11.
@@ -76,6 +77,12 @@ public class OldMemberActivity extends BaseInfoActivity implements IOldMemberVie
         }
 
     }
+
+    @Override
+    public void setTokenFail() {
+        ActivityManagerUtils.getInstance().tokenfailfg(this);
+    }
+
     @Override
     public void initfindviewByid() {
         super.initfindviewByid();

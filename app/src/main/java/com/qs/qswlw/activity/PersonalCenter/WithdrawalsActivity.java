@@ -22,6 +22,7 @@ import com.qs.qswlw.mynet.MyRetroService;
 import com.qs.qswlw.mynet.ReHttpUtils;
 import com.qs.qswlw.okhttp.Iview.IWithdrawalsView;
 import com.qs.qswlw.okhttp.Presenter.WithdrawalsPersenter;
+import com.qs.qswlw.utils.ActivityManagerUtils;
 import com.qs.qswlw.utils.ToastUtils;
 
 import rx.Observable;
@@ -168,6 +169,11 @@ public class WithdrawalsActivity extends BaseInfoActivity implements IWithdrawal
         tv_withdrawals_banknumber.setText(withdrawalsBean.getBank().getNumber());
         tv_withdrawals_one_right.setText(withdrawalsBean.getUser().getGold2()+"颗");
         tv_withdrawals_two.setText(withdrawalsBean.getTotal_count_cash()+"");
+    }
+
+    @Override
+    public void setTokenFail() {
+        ActivityManagerUtils.getInstance().tokenfailfg(this);
     }
 
     @Override

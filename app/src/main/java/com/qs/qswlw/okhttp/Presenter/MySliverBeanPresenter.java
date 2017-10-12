@@ -18,13 +18,12 @@ import java.util.List;
 public class MySliverBeanPresenter {
     IMySliverBeanBiz iMySliverBeanBiz;
     IMySliverBeanView iMySliverBeanView;
+    private List<MySliverBean.SingleLogBean> single_log;
 
     public MySliverBeanPresenter(IMySliverBeanView iMySliverBeanView) {
         iMySliverBeanBiz = IBizFactory.getMySliverBeanBiz();
         this.iMySliverBeanView = iMySliverBeanView;
     }
-
-    private List<MySliverBean.SingleLogBean> single_log;
 
     public void getdata(int p) {
         iMySliverBeanBiz.getdata(new MySliverBeanListener() {
@@ -34,6 +33,11 @@ public class MySliverBeanPresenter {
                 single_log = mySliverBean.getSingle_log();
                 Log.d("TAG", "===========MySliverBeanListener===" + mySliverBean.getSingle_log().size());
                 iMySliverBeanView.setMySliverBeanListData(single_log);
+            }
+
+            @Override
+            public void onTokenFail() {
+                iMySliverBeanView.setTokenFail();
             }
 
             @Override

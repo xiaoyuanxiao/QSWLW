@@ -10,4 +10,5 @@ public interface IConsumptionLimitView {
     void setdata(ConsumptionLimitBean consumptionLimitBean);
     void isgetDataFaile(String meg);
     void runOnUiThread(Runnable runnable);
+    void setTokenFail();
 }

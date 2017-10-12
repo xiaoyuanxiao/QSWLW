@@ -8,4 +8,5 @@ import com.qs.qswlw.bean.ValidateOldMemberBean;
 
 public interface ValidateOldMemberListener extends BaseOnlistener{
     void success(ValidateOldMemberBean validateOldMemberBean);
+    void onTokenFail();
 }

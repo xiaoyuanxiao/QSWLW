@@ -20,6 +20,7 @@ import com.qs.qswlw.mynet.MyRetroService;
 import com.qs.qswlw.mynet.ReHttpUtils;
 import com.qs.qswlw.okhttp.Iview.IEntrepreneurialView;
 import com.qs.qswlw.okhttp.Presenter.EntrepreneurialPresenter;
+import com.qs.qswlw.utils.ActivityManagerUtils;
 import com.qs.qswlw.utils.ToastUtils;
 import com.qs.qswlw.view.SwipeRefreshView;
 
@@ -121,6 +122,11 @@ public class EntrepreneurialIncentiveFragment extends BaseFragment implements IE
     @Override
     public void isgetDataFaile(String meg) {
         swipeRefreshView.setLoading(false);
+    }
+
+    @Override
+    public void setTokenFail() {
+        ActivityManagerUtils.getInstance().tokenfailfg(getActivity());
     }
 
 

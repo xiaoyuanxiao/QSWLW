@@ -35,6 +35,10 @@ public class BizValidateOldMember implements  IValidateOldMemberBiz{
             @Override
             public void onNext(MainBean<ValidateOldMemberBean> validateOldMemberBeanMainBean) {
                 ValidateOldMemberBean result = validateOldMemberBeanMainBean.getResult();
+                int status = validateOldMemberBeanMainBean.getStatus();
+                if (status == -4||status == -3) {
+                    validateOldMemberListener.onTokenFail();
+                }
                 validateOldMemberListener.success(result);
             }
 

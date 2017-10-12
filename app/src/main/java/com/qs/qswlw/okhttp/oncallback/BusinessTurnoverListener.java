@@ -8,4 +8,5 @@ import com.qs.qswlw.bean.BusinessTurnoverBean;
 
 public interface BusinessTurnoverListener extends BaseOnlistener {
     void onSuccess(BusinessTurnoverBean businessTurnoverBean);
+    void onTokenFail();
 }

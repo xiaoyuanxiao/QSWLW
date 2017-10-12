@@ -26,6 +26,11 @@ public class MyRolePresenter {
             }
 
             @Override
+            public void onTokenFail() {
+                iMyRoleView.setTokenFail();
+            }
+
+            @Override
             public void onFailure(String code) {
 
             }

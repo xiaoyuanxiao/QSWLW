@@ -8,4 +8,5 @@ import com.qs.qswlw.bean.WithdrawalsBean;
 
 public interface IWithdrawalsView {
     void setdata(WithdrawalsBean withdrawalsBean);
+    void setTokenFail();
 }

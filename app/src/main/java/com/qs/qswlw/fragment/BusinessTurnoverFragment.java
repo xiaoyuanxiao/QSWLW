@@ -11,6 +11,7 @@ import com.qs.qswlw.adapter.BusinessTurnoverAdapter;
 import com.qs.qswlw.bean.BusinessTurnoverBean;
 import com.qs.qswlw.okhttp.Iview.IBusinessTurnoverView;
 import com.qs.qswlw.okhttp.Presenter.BusinessTurnoverPersenter;
+import com.qs.qswlw.utils.ActivityManagerUtils;
 import com.qs.qswlw.view.SwipeRefreshView;
 
 import java.util.ArrayList;
@@ -101,5 +102,10 @@ public class BusinessTurnoverFragment extends BaseFragment implements IBusinessT
         businessTurnoverAdapter.notifyDataSetChanged();
         page++;
 
+    }
+
+    @Override
+    public void setTokenFail() {
+        ActivityManagerUtils.getInstance().tokenfailfg(getActivity());
     }
 }

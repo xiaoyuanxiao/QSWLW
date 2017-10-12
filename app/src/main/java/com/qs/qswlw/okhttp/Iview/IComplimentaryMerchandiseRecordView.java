@@ -9,5 +9,6 @@ import com.qs.qswlw.bean.ComplimentaryMerchandiseRecordBean;
 public interface IComplimentaryMerchandiseRecordView {
     void setdata(ComplimentaryMerchandiseRecordBean complimentaryMerchandiseRecordBean);
     void isgetDataFaile(String meg);
+    void setTokenFail();
 
 }

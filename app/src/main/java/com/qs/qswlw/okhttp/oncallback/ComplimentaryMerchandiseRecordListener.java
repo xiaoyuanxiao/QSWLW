@@ -8,4 +8,5 @@ import com.qs.qswlw.bean.ComplimentaryMerchandiseRecordBean;
 
 public interface ComplimentaryMerchandiseRecordListener extends BaseOnlistener {
     void onSuccess(ComplimentaryMerchandiseRecordBean complimentaryMerchandiseRecordBean);
+    void onTokenFail();
 }

@@ -36,6 +36,10 @@ public class BizConsumptionLimit implements IConsumptionLimitBiz {
             @Override
             public void onNext(MainBean<ConsumptionLimitBean> consumptionLimitBeanMainBean) {
                 ConsumptionLimitBean result = consumptionLimitBeanMainBean.getResult();
+                int status = consumptionLimitBeanMainBean.getStatus();
+                if (status == -4||status == -3) {
+                    consumptionLimitListener.onTokenFail();
+                }
                 consumptionLimitListener.onSuccess(result);
             }
 

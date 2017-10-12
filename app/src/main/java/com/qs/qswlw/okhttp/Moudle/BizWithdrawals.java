@@ -35,6 +35,10 @@ public class BizWithdrawals implements IWithdrawalsBiz{
 
             @Override
             public void onNext(MainBean<WithdrawalsBean> withdrawalsBeanMainBean) {
+                int status = withdrawalsBeanMainBean.getStatus();
+                if (status == -4||status == -3) {
+                    withdrawalsListener.onTokenFail();
+                }
                 withdrawalsListener.onSuccess(withdrawalsBeanMainBean.getResult());
             }
 

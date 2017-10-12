@@ -8,4 +8,5 @@ import com.qs.qswlw.bean.MySpendingLimitBean;
 
 public interface MySpendingLimitListener extends BaseOnlistener {
     void onSuccess(MySpendingLimitBean mySpendingLimitBean);
+    void onTokenFail();
 }

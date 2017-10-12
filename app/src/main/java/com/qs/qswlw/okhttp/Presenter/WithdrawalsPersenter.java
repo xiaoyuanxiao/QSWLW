@@ -27,6 +27,11 @@ public class WithdrawalsPersenter {
             }
 
             @Override
+            public void onTokenFail() {
+                iWithdrawalsView.setTokenFail();
+            }
+
+            @Override
             public void onFailure(String code) {
 
             }

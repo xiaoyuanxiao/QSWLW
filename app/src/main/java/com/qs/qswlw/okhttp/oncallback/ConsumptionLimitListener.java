@@ -8,4 +8,5 @@ import com.qs.qswlw.bean.ConsumptionLimitBean;
 
 public interface ConsumptionLimitListener extends  BaseOnlistener{
     void onSuccess(ConsumptionLimitBean consumptionLimitBean);
+    void onTokenFail();
 }

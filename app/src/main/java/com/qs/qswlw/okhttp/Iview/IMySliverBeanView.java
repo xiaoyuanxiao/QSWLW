@@ -16,4 +16,7 @@ public interface IMySliverBeanView {
     void isgetDataFaile(String meg);
 
     void runOnUiThread(Runnable runnable);
+
+    void setTokenFail();
+
 }

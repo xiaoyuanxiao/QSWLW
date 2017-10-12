@@ -27,6 +27,11 @@ public class ValidateOldMemberPresenter {
             }
 
             @Override
+            public void onTokenFail() {
+                iValidateOldMemberView.setTokenFail();
+            }
+
+            @Override
             public void onFailure(String code) {
 
             }

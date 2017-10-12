@@ -13,6 +13,7 @@ import com.qs.qswlw.adapter.VentureGoldBeansAdapter;
 import com.qs.qswlw.bean.VenturegoldBean;
 import com.qs.qswlw.okhttp.Iview.IVenturegoldBeansView;
 import com.qs.qswlw.okhttp.Presenter.VenturegoldBeanPresenter;
+import com.qs.qswlw.utils.ActivityManagerUtils;
 import com.qs.qswlw.view.SwipeRefreshView;
 
 import java.util.ArrayList;
@@ -198,5 +199,10 @@ public class MyGoldBeanFragment extends BaseFragment implements IVenturegoldBean
            tv_sub_mygoldenbean_toptwo.setText("累计消费金豆："+venturegoldBeanData.getModel().getTaxgold());
        }
 
+    }
+
+    @Override
+    public void setTokenFail() {
+        ActivityManagerUtils.getInstance().tokenfailfg(getActivity());
     }
 }
