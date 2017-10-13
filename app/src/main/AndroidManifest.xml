@@ -93,6 +93,7 @@
         <activity android:name=".activity.PersonalCenter.ConsumptionDialogActivity"/>
         <activity android:name=".activity.PersonalCenter.ConsumptionLimitActivity"/>
         <activity android:name=".activity.PersonalCenter.ConsumptionLimitRechargeActivity"/>
+        <activity android:name=".activity.PersonalCenter.MyShoppingActivity"/>
         <activity android:name=".activity.PersonalCenter.WithdrawalsAddActivity"
             android:windowSoftInputMode="adjustUnspecified|stateHidden"/>
 

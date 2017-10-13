@@ -46,6 +46,12 @@
             style="@style/tv_harvestaddress_weight_grey"
             android:gravity="center_horizontal"
             android:text="总报表" />
+        <TextView
+            android:id="@+id/tv_merchantsalesreview_six"
+            style="@style/tv_harvestaddress_weight_grey"
+            android:gravity="center_horizontal"
+            android:text="总报表"
+            android:visibility="gone"/>
 
     </LinearLayout>
 
@@ -89,6 +95,13 @@
             android:layout_weight="1"
             android:background="@color/view" />
 
+        <View
+            android:id="@+id/view_six"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_weight="1"
+            android:background="@color/view"
+            android:visibility="gone"/>
     </LinearLayout>
 
     <LinearLayout

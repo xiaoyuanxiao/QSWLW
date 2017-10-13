@@ -45,6 +45,7 @@ public class MerchantSalesReviewActivity extends BaseInfoActivity {
     @Override
     public void initfindviewByid() {
         super.initfindviewByid();
+        tv_titlebar_center.setText("我的销售记录");
 
     }
 
