@@ -49,56 +49,44 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        android:layout_marginLeft="8dp"
         android:gravity="center_vertical"
-        android:layout_marginLeft="8dp">
+        android:orientation="horizontal">
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@mipmap/dizhi_03"/>
         <TextView
             style="@style/tv_grey"
-            android:text="广州市番禺区桥南龙歧路114号铺"
-            android:layout_marginLeft="5dp"/>
+            android:layout_marginLeft="5dp"
+            android:text="广州市番禺区桥南龙歧路114号铺"/>
     </LinearLayout>
 
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center_vertical"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="8dp">
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@mipmap/dianhua_03"/>
         <TextView
             style="@style/tv_grey"
-            android:text="020-31047357"
-            android:layout_marginLeft="5dp"
-            android:layout_marginBottom="5dp"/>
-    </LinearLayout>
+            android:layout_margin="8dp"
+            android:gravity="center_vertical"
+            android:text="上传时间： 2017-03-05 09:12:34"/>
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="10dp"
-        android:background="#f4f4f4"/>
+        android:layout_height="5dp"
+        android:background="@color/bg_role"/>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        android:layout_margin="8dp"
         android:gravity="center_vertical"
-        android:layout_margin="8dp">
+        android:orientation="horizontal">
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@mipmap/shangjia_03"/>
         <TextView
             style="@style/tv_grey"
-            android:text="商家详情"
-            android:layout_marginLeft="5dp"/>
+            android:layout_marginLeft="5dp"
+            android:text="商家详情"/>
     </LinearLayout>
     <View
         android:layout_width="match_parent"
@@ -107,16 +95,34 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        android:layout_margin="8dp"
         android:gravity="center_vertical"
-        android:layout_margin="8dp">
+        android:orientation="horizontal">
+        <TextView
+            style="@style/tv_harvestaddress"
+            android:text="商家ID:"/>
+        <TextView
+            style="@style/tv_grey"
+            android:layout_marginLeft="5dp"
+            android:text="7893"/>
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.2dp"
+        android:background="@color/view"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
         <TextView
             style="@style/tv_harvestaddress"
             android:text="主营业务"/>
         <TextView
             style="@style/tv_grey"
-            android:text="小儿游泳、小儿推拿、婴儿用品、DIY烘焙、催乳美胸"
-            android:layout_marginLeft="5dp"/>
+            android:layout_marginLeft="5dp"
+            android:text="小儿游泳、小儿推拿、婴儿用品、DIY烘焙、催乳美胸"/>
 </LinearLayout>
     <View
         android:layout_width="match_parent"
@@ -125,15 +131,19 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        android:layout_margin="8dp"
         android:gravity="center_vertical"
-        android:layout_margin="8dp">
+        android:orientation="horizontal">
         <TextView
             style="@style/tv_harvestaddress"
             android:text="商家类型:"/>
         <TextView
             style="@style/tv_grey"
-            android:text="线上商家"
-            android:layout_marginLeft="5dp"/>
+            android:layout_marginLeft="5dp"
+            android:text="线上商家"/>
     </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.2dp"
+        android:background="@color/view"/>
 </LinearLayout>
