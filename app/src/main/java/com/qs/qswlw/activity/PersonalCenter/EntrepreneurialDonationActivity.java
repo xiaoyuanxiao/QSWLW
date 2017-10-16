@@ -1,11 +1,9 @@
 package com.qs.qswlw.activity.PersonalCenter;
 
 import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import com.qs.qswlw.R;
@@ -17,10 +15,6 @@ import com.qs.qswlw.R;
 public class EntrepreneurialDonationActivity extends BaseInfoActivity {
 
     private TextView tv_entrepreneurialdonation;
-    private RadioGroup rg_entrepreneurialdialog;
-    private RadioButton radio_top,radio_bellow;
-    private AlertDialog dialog;
-    // private static final String[] PLANETS = new String[]{"创业基金", "创新基金"};
 
     @Override
     public View setConetnView() {
@@ -50,17 +44,7 @@ public class EntrepreneurialDonationActivity extends BaseInfoActivity {
         super.onClick(v);
         switch (v.getId()) {
             case R.id.tv_entrepreneurialdonation:
-                AlertDialog.Builder builder = new AlertDialog.Builder(this);
-                dialog = builder.create();
-                View dialogView = LayoutInflater.from(EntrepreneurialDonationActivity.this).inflate(R.layout.entrepreneurialdialog, null);
-                rg_entrepreneurialdialog = (RadioGroup) dialogView.findViewById(R.id.rg_entrepreneurialdialog);
-                rg_entrepreneurialdialog.setOnCheckedChangeListener(new CheckedChangeListener());
-                radio_top = (RadioButton) dialogView.findViewById(R.id.radio_top);
-                radio_bellow = (RadioButton) dialogView.findViewById(R.id.radio_bellow);
-                radio_top.setOnClickListener(this);
-                radio_bellow.setOnClickListener(this);
-                dialog.setView(dialogView);
-                dialog.show();
+                showDidlog();
                 break;
             case R.id.tv_titlebar_right:
                 startActivity(new Intent(this, EntrepreneurialDonationRecordActivity.class));
@@ -68,20 +52,23 @@ public class EntrepreneurialDonationActivity extends BaseInfoActivity {
         }
     }
 
-    class CheckedChangeListener implements RadioGroup.OnCheckedChangeListener{
+    private void showDidlog() {
 
-        @Override
-        public void onCheckedChanged(RadioGroup radioGroup, int i) {
-            if(i==radio_top.getId()){
-                tv_entrepreneurialdonation.setText(radio_top.getText());
-                dialog.dismiss();
-            }else if(i==radio_bellow.getId()){
-                tv_entrepreneurialdonation.setText(radio_bellow.getText());
+        final String[] items = {"创新基金","创业基金"};
+        final AlertDialog.Builder builder = new AlertDialog.Builder(this);//内部使用构建者的设计模式
+
+        builder.setSingleChoiceItems(items, -1,new DialogInterface.OnClickListener() {//第二个参数是设置默认选中哪一项-1代表默认都不选
+
+
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                tv_entrepreneurialdonation.setText(items[which]);
                 dialog.dismiss();
             }
-        }
+        });
+        builder.create().setCanceledOnTouchOutside(true);
+        builder.setCancelable(true);//设置dialog只能通过点击Dialog上的按钮退出，不能通过回退按钮退出关闭Dialog
+        builder.create().show();//创建对象
     }
-
-
 
 }
