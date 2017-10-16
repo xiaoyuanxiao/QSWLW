@@ -1,15 +1,12 @@
 package com.qs.qswlw.activity.PersonalCenter;
 
 import android.content.Intent;
-import android.support.v7.app.AlertDialog;
 import android.text.Html;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
@@ -23,6 +20,7 @@ import com.qs.qswlw.mynet.ReHttpUtils;
 import com.qs.qswlw.okhttp.Iview.IWithdrawalsView;
 import com.qs.qswlw.okhttp.Presenter.WithdrawalsPersenter;
 import com.qs.qswlw.utils.ActivityManagerUtils;
+import com.qs.qswlw.utils.DialogUtils;
 import com.qs.qswlw.utils.ToastUtils;
 
 import rx.Observable;
@@ -94,7 +92,7 @@ public class WithdrawalsActivity extends BaseInfoActivity implements IWithdrawal
                 startActivityForResult(intent,1);
                 break;
             case R.id.tv_withdrawals_three:
-                showDialog();
+                DialogUtils.showDidlog(this,new String[]{"创新模式二"},tv_withdrawals_three);
                 break;
             case R.id.btn_withdrawals_confirm:
                 String s = tv_withdrawals_three.getText().toString();
@@ -135,30 +133,6 @@ public class WithdrawalsActivity extends BaseInfoActivity implements IWithdrawal
 
     }
 
-    private void showDialog() {
-        final AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        final AlertDialog dialog = builder.create();
-        View alertview = LayoutInflater.from(this).inflate(R.layout.dialog_consumption_percent, null);
-        alertview.findViewById(R.id.eb_two).setVisibility(View.GONE);
-        final RadioButton eb_one = (RadioButton) alertview.findViewById(R.id.eb_one);
-        eb_one.setText("创新模式(二)");
-        rg_dialog_consumption = (RadioGroup) alertview.findViewById(R.id.rg_dialog_consumption);
-        rg_dialog_consumption.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup radioGroup, int i) {
-                switch (i){
-                    case R.id.eb_one:
-                        tv_withdrawals_three.setText(eb_one.getText().toString());
-                    break;
-                }
-                dialog.dismiss();
-            }
-
-        });
-
-        dialog.setView(alertview);
-        dialog.show();
-    }
 
     @Override
     public void setdata(WithdrawalsBean withdrawalsBean) {

@@ -1,12 +1,11 @@
 package com.qs.qswlw.activity.PersonalCenter;
 
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.view.View;
 import android.widget.TextView;
 
 import com.qs.qswlw.R;
+import com.qs.qswlw.utils.DialogUtils;
 
 /**
  * Created by xiaoyu on 2017/4/17.
@@ -45,26 +44,8 @@ public class MyInvestActivity extends BaseInfoActivity {
                 startActivity(new Intent(this,InvestRecordActivity.class));
                 break;
             case R.id.tv_myinvest_choice:
-                showDidlog();
+                DialogUtils.showDidlog(this,new String[]{"中国好物产"},tv_myinvest_choice);
                 break;
         }
-    }
-    private void showDidlog() {
-
-        final String[] items = {"中国好物产"};
-        final AlertDialog.Builder builder = new AlertDialog.Builder(this);//内部使用构建者的设计模式
-
-        builder.setSingleChoiceItems(items, -1,new DialogInterface.OnClickListener() {//第二个参数是设置默认选中哪一项-1代表默认都不选
-
-
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                tv_myinvest_choice.setText(items[which]);
-                dialog.dismiss();
-            }
-        });
-        builder.create().setCanceledOnTouchOutside(true);
-        builder.setCancelable(true);
-        builder.create().show();
     }
 }

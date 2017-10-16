@@ -144,18 +144,17 @@
             </LinearLayout>
 
 
-
-                <Spinner
-                    android:id="@+id/spinner_consumptionrecord_pos"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="65dp"
-                    android:layout_marginRight="30dp"
-                    android:layout_marginTop="15dp"
-                    android:background="@drawable/corners"
-                    android:spinnerMode="dialog"
-                    android:text="刷POS机(发票)"
-                    android:textColor="@color/black" />
+            <Spinner
+                android:id="@+id/spinner_consumptionrecord_pos"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="65dp"
+                android:layout_marginRight="30dp"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/corners"
+                android:spinnerMode="dialog"
+                android:text="刷POS机(发票)"
+                android:textColor="@color/black" />
 
             <LinearLayout style="@style/ll_consumptionrecord">
 

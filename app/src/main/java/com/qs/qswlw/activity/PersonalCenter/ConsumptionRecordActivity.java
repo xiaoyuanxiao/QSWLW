@@ -224,7 +224,7 @@ public class ConsumptionRecordActivity extends BaseInfoActivity implements ICons
             case R.id.btn_sonsumption_confirm:
                 if (1 == type) {//商家审核进入的
                     postMerchantAuditData();
-                } else if (2 == type) {//消费录单进入的，为嘛写两个接口-_-
+                } else if (2 == type) {//消费录单进入的
                     postData();
                 }
 

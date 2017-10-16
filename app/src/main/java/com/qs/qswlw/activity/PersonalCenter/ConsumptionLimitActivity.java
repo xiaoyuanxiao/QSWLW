@@ -1,7 +1,5 @@
 package com.qs.qswlw.activity.PersonalCenter;
 
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -15,6 +13,7 @@ import com.qs.qswlw.bean.ConsumptionLimitBean;
 import com.qs.qswlw.okhttp.Iview.IConsumptionLimitView;
 import com.qs.qswlw.okhttp.Presenter.ConsumptionLimitPersenter;
 import com.qs.qswlw.utils.ActivityManagerUtils;
+import com.qs.qswlw.utils.DialogUtils;
 import com.qs.qswlw.view.SwipeRefreshView;
 
 import java.util.ArrayList;
@@ -81,7 +80,7 @@ public class ConsumptionLimitActivity extends BaseInfoActivity implements IConsu
         super.onClick(v);
         switch (v.getId()){
             case R.id.tv_consumptionlimit_three:
-                showDidlog();
+                DialogUtils.showDidlog(this,new String[]{"类型","消费","充值"},tv_consumptionlimit_three);
                 break;
             case R.id.ll_click:
                 Intent intent = new Intent(this, ConsumptionLimitRechargeActivity.class);
@@ -89,26 +88,6 @@ public class ConsumptionLimitActivity extends BaseInfoActivity implements IConsu
                 break;
         }
     }
-
-    private void showDidlog() {
-
-        final String[] items = {"类型","消费","充值"};
-        final AlertDialog.Builder builder = new AlertDialog.Builder(this);//内部使用构建者的设计模式
-
-        builder.setSingleChoiceItems(items, -1,new DialogInterface.OnClickListener() {//第二个参数是设置默认选中哪一项-1代表默认都不选
-
-
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                tv_consumptionlimit_three.setText(items[which]);
-                dialog.dismiss();
-            }
-        });
-        builder.create().setCanceledOnTouchOutside(true);
-        builder.setCancelable(true);//设置dialog只能通过点击Dialog上的按钮退出，不能通过回退按钮退出关闭Dialog
-        builder.create().show();//创建对象
-    }
-
 
     @Override
     public void setdata(ConsumptionLimitBean consumptionLimitBean) {
