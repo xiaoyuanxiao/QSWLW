@@ -20,8 +20,16 @@
                 android:layout_width="60dp"
                 android:layout_height="60dp"
                 android:layout_gravity="center_horizontal"
-                android:layout_margin="20dp"
+                android:layout_marginTop="25dp"
                 android:src="@mipmap/image1" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="20dp"
+                android:layout_marginTop="5dp"
+                android:text="添加商品图片"
+                android:textSize="10sp"/>
 
             <View
                 android:layout_width="match_parent"
@@ -75,12 +83,12 @@
 
                 <TextView
                     style="@style/tv_harvestaddress"
-                    android:text="货号" />
+                    android:text="型号" />
 
                 <EditText
                     style="@style/edt_addproduct"
                     android:layout_marginLeft="70dp"
-                    android:hint="请输入商品货号" />
+                    android:hint="请输入商品型号" />
             </RelativeLayout>
 
             <View
@@ -115,7 +123,7 @@
 
                 <TextView
                     style="@style/tv_harvestaddress"
-                    android:text="创业金豆" />
+                    android:text="消费金豆" />
 
                 <EditText
                     style="@style/edt_addproduct"
@@ -123,6 +131,30 @@
                     android:hint="请输入创业金豆数" />
             </RelativeLayout>
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.2dp"
+                android:background="@color/view" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="8dp">
+
+                <TextView
+                    style="@style/tv_harvestaddress"
+                    android:text="人民币" />
+
+                <EditText
+                    style="@style/edt_addproduct"
+                    android:layout_marginLeft="70dp"
+                    android:hint="请输入金额" />
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.2dp"
+                android:background="@color/view" />
             <View
                 android:layout_width="match_parent"
                 android:layout_height="0.2dp"
@@ -147,7 +179,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="0.2dp"
                 android:background="@color/view" />
-
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -157,17 +188,42 @@
                     style="@style/tv_harvestaddress"
                     android:text="模式" />
 
-                <Spinner
-                    android:id="@+id/addproduct_spinner"
+                <TextView
+                    android:id="@+id/addproduct_model"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="70dp"></Spinner>
+                    android:layout_marginLeft="70dp"
+                    android:text="20%"
+                    android:textSize="10sp"></TextView>
             </RelativeLayout>
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="0.2dp"
                 android:background="@color/view" />
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="8dp">
+
+                <TextView
+                    style="@style/tv_harvestaddress"
+                    android:text="服务承诺" />
+
+                <TextView
+                    android:id="@+id/addproduct_promise"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="70dp"
+                    android:text="7天无条件退换货"
+                    android:textSize="10sp"></TextView>
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.2dp"
+                android:background="@color/view" />
+
 
             <TextView
                 style="@style/tv_harvestaddress"
@@ -180,8 +236,8 @@
                 android:layout_marginBottom="10dp"
                 android:layout_marginLeft="8dp"
                 android:layout_marginRight="8dp"
-                android:gravity="top"
                 android:background="@drawable/corner_grey_white"
+                android:gravity="top"
                 android:maxLines="6"
                 android:padding="6dp"
                 android:textSize="10sp" />

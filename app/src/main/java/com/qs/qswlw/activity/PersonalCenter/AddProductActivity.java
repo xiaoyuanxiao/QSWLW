@@ -1,11 +1,11 @@
 package com.qs.qswlw.activity.PersonalCenter;
 
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import com.qs.qswlw.R;
+import com.qs.qswlw.utils.DialogUtils;
 
 /**
  * Created by xiaoyu on 2017/5/11.
@@ -14,14 +14,14 @@ import com.qs.qswlw.R;
 public class AddProductActivity extends BaseInfoActivity {
 
     private Spinner addproduct_spinner,addproductclassify_spinner;
-    private ArrayAdapter<CharSequence> adapter;
-    private String strClassification;
+    private TextView addproduct_model,addproduct_promise;
 
     @Override
     public View setConetnView() {
         View inflate = View.inflate(this, R.layout.activity_addproduct, null);
-        addproduct_spinner = (Spinner) inflate.findViewById(R.id.addproduct_spinner);
         addproductclassify_spinner = (Spinner) inflate.findViewById(R.id.addproductclassify_spinner);
+        addproduct_model = (TextView) inflate.findViewById(R.id.addproduct_model);
+        addproduct_promise = (TextView) inflate.findViewById(R.id.addproduct_promise);
         return inflate;
     }
 
@@ -35,28 +35,28 @@ public class AddProductActivity extends BaseInfoActivity {
     @Override
     public void initData() {
         super.initData();
-        loadSpinner(addproduct_spinner,R.array.addproduct_mode);
-        loadSpinner(addproductclassify_spinner,R.array.addproduct_classification);
+
     }
 
-    /**
-     * spinner
-     */
-    private void loadSpinner(final Spinner spinner, int array) {
-        adapter = ArrayAdapter.createFromResource(this,array, android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
-        spinner.setAdapter(adapter);
-        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                spinner.getSelectedItemPosition();
-                strClassification = spinner.getSelectedItem().toString();
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
-
-            }
-        });
+    @Override
+    public void setOnclick() {
+        super.setOnclick();
+        addproduct_model.setOnClickListener(this);
+        addproduct_promise.setOnClickListener(this);
     }
+
+    @Override
+    public void onClick(View v) {
+        super.onClick(v);
+        switch (v.getId()){
+            case R.id.addproduct_model:
+                DialogUtils.showDidlog(this,new String[]{"20%"},addproduct_model);
+                break;
+            case R.id.addproduct_promise:
+                DialogUtils.showDidlog(this,new String[]{"7天无理由条件退换货","15天有条件退换货(咨询商家)"},addproduct_promise);
+                break;
+        }
+    }
+
+
 }
