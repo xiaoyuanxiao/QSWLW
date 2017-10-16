@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:orientation="vertical">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -10,17 +10,17 @@
             android:id="@+id/gv_qsmalllist"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:numColumns="2"
             android:horizontalSpacing="10dp"
+            android:numColumns="2"
             android:verticalSpacing="10dp"></com.qs.qswlw.view.MyGridView>
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="10sp"
-            android:gravity="center"
             android:layout_margin="5dp"
-            android:text="点击加载更多"/>
-        <include layout="@layout/radiogroup_mall"/>
+            android:gravity="center"
+            android:text="点击加载更多"
+            android:textSize="10sp"/>
+
     </LinearLayout>
 
 

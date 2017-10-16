@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:gravity="center_vertical"
         android:orientation="horizontal"
+        android:paddingBottom="5dp"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
-        android:paddingTop="5dp"
-        android:paddingBottom="5dp"
-        android:gravity="center_vertical">
+        android:paddingTop="5dp">
         <ImageView
             android:id="@+id/iv_back"
             android:layout_width="20dp"
@@ -21,10 +21,10 @@
             android:src="@mipmap/arrow_left"/>
         <LinearLayout
             android:layout_width="0dp"
-            android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:background="@drawable/corner_gray"
             android:layout_marginLeft="6dp"
+            android:layout_weight="1"
+            android:background="@drawable/corner_gray"
             android:gravity="center_vertical"
             android:padding="5dp">
             <ImageView
@@ -35,11 +35,11 @@
             <EditText
                 android:id="@+id/edt_qsmalllist"
                 android:layout_width="0dp"
-                android:layout_weight="1"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_weight="1"
                 android:background="@null"
                 android:hint="搜索关键字"
-                android:layout_marginLeft="5dp"
                 android:singleLine="true"
                 android:textSize="10sp" />
 
@@ -63,9 +63,9 @@
        <LinearLayout
            android:layout_width="wrap_content"
            android:layout_height="wrap_content"
-           android:orientation="horizontal"
+           android:layout_marginTop="10dp"
            android:gravity="center_vertical"
-           android:layout_marginTop="10dp">
+           android:orientation="horizontal">
            <ImageView
                android:layout_width="20dp"
                android:layout_height="20dp"
@@ -100,24 +100,25 @@
     <LinearLayout
         android:id="@+id/ll_content"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         android:orientation="vertical">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:gravity="center"
             android:orientation="horizontal"
-            android:paddingTop="6dp"
             android:paddingBottom="6dp"
-            android:gravity="center">
+            android:paddingTop="6dp">
             <android.support.design.widget.TabLayout
                 android:id="@+id/tabLayout"
                 android:layout_width="0dp"
-                android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="10dp"
-                app:tabTextColor="@color/text_grey"
-                app:tabSelectedTextColor="@color/red"
+                android:layout_weight="1"
                 app:tabIndicatorColor="@color/red"
+                app:tabSelectedTextColor="@color/red"
+                app:tabTextColor="@color/text_grey"
                 />
             <ImageView
                 android:id="@+id/iv_qsmalllist"
@@ -130,8 +131,8 @@
             android:id="@+id/viewpager_qsmalllist"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
-        <include layout="@layout/radiogroup_mall"/>
-    </LinearLayout>
 
+    </LinearLayout>
+    <include layout="@layout/radiogroup_mall"/>
 
 </LinearLayout>
