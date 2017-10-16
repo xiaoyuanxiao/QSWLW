@@ -15,6 +15,7 @@ import com.qs.qswlw.R;
 import com.qs.qswlw.activity.BaseActivity;
 import com.qs.qswlw.activity.LoginActivity;
 import com.qs.qswlw.activity.MainActivity;
+import com.qs.qswlw.activity.mall.QSMallActivity;
 import com.qs.qswlw.adapter.BusinessSettingAdapter;
 import com.qs.qswlw.bean.PersonalSettingBean;
 import com.qs.qswlw.manager.UserManage;
@@ -33,7 +34,7 @@ public class BusinessSettingActivity extends BaseActivity implements IPersonalSe
     Runnable runnable = new Runnable() {
         @Override
         public void run() {
-            startActivity(new Intent(BusinessSettingActivity.this,LoginActivity.class));
+            startActivity(new Intent(BusinessSettingActivity.this, LoginActivity.class));
             finish();
         }
     };
@@ -62,7 +63,7 @@ public class BusinessSettingActivity extends BaseActivity implements IPersonalSe
         tv_setting_withdrawals.setText(personalSettingBean.getUser_info().getGold_total() + "");
         tv_setting_consumerbeans.setText(personalSettingBean.getUser_info().getTaxgold_total() + "");
         tv_setting_paytaxes.setText(personalSettingBean.getLast_rebate_date() + "");
-         MyApplication.MOBILE =  mobile = personalSettingBean.getUser_info().getMobile();
+        MyApplication.MOBILE = mobile = personalSettingBean.getUser_info().getMobile();
         MyApplication.ID = user_id = personalSettingBean.getUser_info().getUser_id();
         MyApplication.NICKNAME = nickname = personalSettingBean.getUser_info().getNickname();
         //会员身份
@@ -139,7 +140,6 @@ public class BusinessSettingActivity extends BaseActivity implements IPersonalSe
         rb_main_exit.setOnClickListener(this);
 
 
-
     }
 
     @Override
@@ -147,15 +147,15 @@ public class BusinessSettingActivity extends BaseActivity implements IPersonalSe
         switch (v.getId()) {
             case R.id.rb_main_qsmall:
                 Intent intent = new Intent(BusinessSettingActivity.this, MainActivity.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP) ;
-                intent.putExtra("setting","setting");
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                intent.putExtra("setting", "setting");
                 startActivity(intent);
                 break;
             case R.id.rb_main_lianmeng:
-                showDialog();
+                startActivity(new Intent(this, QSMallActivity.class));
                 break;
             case R.id.rb_main_funtime:
-                startActivity(new Intent(this,SetModifyActivity.class));
+                startActivity(new Intent(this, SetModifyActivity.class));
                 break;
             case R.id.rb_main_luck:
                 showDialog();
@@ -197,10 +197,10 @@ public class BusinessSettingActivity extends BaseActivity implements IPersonalSe
             if (requestCode == 102) {
                 String msg = data.getStringExtra("msg");
                 //设置结果显示框的显示数值
-             //   ToastUtils.showToast(this,msg);
+                //   ToastUtils.showToast(this,msg);
                 //进入新界面
                 Intent intent = new Intent(BusinessSettingActivity.this, ConsumptionDialogActivity.class);
-                intent.putExtra("dialog",msg);
+                intent.putExtra("dialog", msg);
                 startActivity(intent);
             }
         }
@@ -237,10 +237,8 @@ public class BusinessSettingActivity extends BaseActivity implements IPersonalSe
                     intent.putExtra("nickname", nickname);
                     intent.putExtra("role", role);
                     startActivity(intent);
-
                     break;
                 case 5:
-
                     Intent intent1 = new Intent(BusinessSettingActivity.this, ConsumptionRecordActivity.class);
                     startActivityForResult(intent1, 102);
                     break;
@@ -251,7 +249,7 @@ public class BusinessSettingActivity extends BaseActivity implements IPersonalSe
                     startActivity(new Intent(BusinessSettingActivity.this, MyProfitActivity.class));
                     break;
                 case 8:
-                    startActivity(new Intent(BusinessSettingActivity.this, ImproveDocumentationActivity .class));
+                    startActivity(new Intent(BusinessSettingActivity.this, ImproveDocumentationActivity.class));
                     break;
                 case 9:
                     startActivity(new Intent(BusinessSettingActivity.this, CommodityManagementActivity.class));
@@ -284,7 +282,7 @@ public class BusinessSettingActivity extends BaseActivity implements IPersonalSe
                     startActivity(new Intent(BusinessSettingActivity.this, MyShoppingActivity.class));
                     break;
                 case 19:
-                  //  startActivity(new Intent(BusinessSettingActivity.this, ReceivingAddressActivity.class));
+                    //  startActivity(new Intent(BusinessSettingActivity.this, ReceivingAddressActivity.class));
                     startActivity(new Intent(BusinessSettingActivity.this, ReceivingAddress1Activity.class));
                     break;
                 case 20:
@@ -303,10 +301,10 @@ public class BusinessSettingActivity extends BaseActivity implements IPersonalSe
                     startActivity(new Intent(BusinessSettingActivity.this, DonationActivity.class));
                     break;
                 case 25:
-                   // startActivity(new Intent(BusinessSettingActivity.this, HarvestAddressListActivity.class));
+                    // startActivity(new Intent(BusinessSettingActivity.this, HarvestAddressListActivity.class));
                     break;
                 case 26:
-                   // startActivity(new Intent(BusinessSettingActivity.this, ScanCodeRecordActivity.class));
+                    // startActivity(new Intent(BusinessSettingActivity.this, ScanCodeRecordActivity.class));
                     break;
                 case 27:
                     startActivity(new Intent(BusinessSettingActivity.this, EntrepreneurialDonationActivity.class));
@@ -324,7 +322,7 @@ public class BusinessSettingActivity extends BaseActivity implements IPersonalSe
                     //    startActivity(new Intent(BusinessSettingActivity.this, MySpendingLimitActivity.class));
                     break;
                 case 32:
-                        startActivity(new Intent(BusinessSettingActivity.this, PromotionLuckDrawActivity.class));
+                    startActivity(new Intent(BusinessSettingActivity.this, PromotionLuckDrawActivity.class));
                     break;
                 case 33:
                     //    startActivity(new Intent(BusinessSettingActivity.this, MySpendingLimitActivity.class));
