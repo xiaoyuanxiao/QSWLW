@@ -54,6 +54,8 @@
         android:background="@color/view"/>
 
 
+
+
     <include layout="@layout/radiogroup_mall" />
 
 </RelativeLayout>

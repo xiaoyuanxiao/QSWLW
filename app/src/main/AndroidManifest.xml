@@ -95,6 +95,7 @@
         <activity android:name=".activity.PersonalCenter.ConsumptionLimitRechargeActivity"/>
         <activity android:name=".activity.PersonalCenter.ReceivingAddress1Activity"/>
         <activity android:name=".activity.PersonalCenter.MyShoppingActivity"/>
+        <activity android:name=".activity.PersonalCenter.MyMallSettingActivity"/>
         <activity android:name=".activity.PersonalCenter.NoConsumptionBeansActivity"/>
         <activity android:name=".activity.PersonalCenter.WithdrawalsAddActivity"
             android:windowSoftInputMode="adjustUnspecified|stateHidden"/>

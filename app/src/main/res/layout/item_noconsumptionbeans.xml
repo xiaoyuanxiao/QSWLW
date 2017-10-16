@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    android:padding="8dp">
+
+    <ImageView
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:scaleType="fitXY"
+        android:src="@mipmap/logo_l" />
+    <TextView
+        style="@style/tv_harvestaddress"
+        android:layout_marginTop="5dp"
+        android:ellipsize="end"
+        android:maxEms="18"
+        android:maxLines="2"
+        android:text="立邦漆" />
+
+    <TextView
+        style="@style/tv_harvestaddress"
+        android:ellipsize="end"
+        android:maxEms="18"
+        android:maxLines="2"
+        android:text="建材行" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="118.00"
+        android:textColor="@color/red"
+        android:textSize="11sp" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="消费金豆:0"
+        android:textColor="@color/red"
+        android:textSize="11sp" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="人名币:0"
+        android:textColor="@color/red"
+        android:textSize="11sp" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/corner_red"
+        android:padding="5dp"
+        android:text="马上买"
+        android:textColor="@color/white"/>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp">
+
+        <TextView
+            android:id="@+id/tv_minus"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:background="@drawable/text_angle_gray"
+            android:gravity="center"
+            android:text="一"
+            android:textColor="@color/grey_color"
+            android:textSize="@dimen/txt_12" />
+
+        <EditText
+            android:id="@+id/edt_num"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_toRightOf="@+id/tv_minus"
+            android:background="@drawable/text_angle"
+            android:focusable="false"
+            android:gravity="center"
+            android:singleLine="true"
+            android:text="1"
+            android:textColor="@color/grey_color"
+            android:textSize="@dimen/txt_12" />
+
+        <TextView
+            android:id="@+id/tv_add"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_toRightOf="@+id/edt_num"
+            android:background="@drawable/text_angle_right"
+            android:gravity="center"
+            android:text="+"
+            android:textColor="@color/grey_color"
+            android:textSize="@dimen/txt_12" />
+        <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_alignParentRight="true"
+            android:src="@mipmap/cart"/>
+    </RelativeLayout>
+
+
+</LinearLayout>
