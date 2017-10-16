@@ -20,6 +20,7 @@ import java.util.ArrayList;
  */
 
 public class ReceivingAddressActivity extends BaseActivity {
+
     private ImageView iv_titlebar;
     private TextView tv_titlebar_center;
     private EditText et_consigneeName,et_phone,et_detailedaddress,et_postcode;
@@ -31,7 +32,7 @@ public class ReceivingAddressActivity extends BaseActivity {
 
     @Override
     public Object initView() {
-        return R.layout.activity_receivingaddress;
+        return R.layout.activity_receivingaddress1;
     }
 
     @Override
@@ -84,4 +85,5 @@ public class ReceivingAddressActivity extends BaseActivity {
             }
         }
     }
+
 }
