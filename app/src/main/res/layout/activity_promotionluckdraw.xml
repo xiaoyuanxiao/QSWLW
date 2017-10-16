@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="40dp">
@@ -14,23 +15,21 @@
             <RadioButton
                 android:id="@+id/rb_joinRecord"
                 android:layout_width="0dp"
-                android:layout_weight="1"
                 android:layout_height="match_parent"
-                android:text="参加记录（2）"
-                android:textSize="10sp"
-                android:textColor="@color/view"
+                android:layout_weight="1"
+                android:button="@null"
                 android:gravity="center"
-                android:button="@null"/>
+                android:text="参加记录（2）"
+                android:textSize="10sp"/>
             <RadioButton
                 android:id="@+id/rb_winningRecord"
                 android:layout_width="0dp"
-                android:layout_weight="1"
                 android:layout_height="match_parent"
-                android:text="中奖纪录（1）"
-                android:textSize="10sp"
-                android:textColor="@color/view"
+                android:layout_weight="1"
+                android:button="@null"
                 android:gravity="center"
-                android:button="@null" />
+                android:text="中奖纪录（1）"
+                android:textSize="10sp" />
         </RadioGroup>
         <View
             android:id="@+id/view_promotionLuckDraw"
@@ -45,8 +44,8 @@
         android:id="@+id/viewpager_promotionLuckDraw"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
-        android:layout_weight="1"
-        android:layout_gravity="center" >
+        android:layout_gravity="center"
+        android:layout_weight="1" >
     </android.support.v4.view.ViewPager>
 
 
