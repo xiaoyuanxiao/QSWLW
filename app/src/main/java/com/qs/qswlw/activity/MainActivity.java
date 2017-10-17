@@ -26,7 +26,7 @@ import com.qs.qswlw.R;
 import com.qs.qswlw.activity.PersonalCenter.BusinessSettingActivity;
 import com.qs.qswlw.activity.PersonalCenter.ConsumerSettingActivity;
 import com.qs.qswlw.activity.mall.AllianceMallActivity;
-import com.qs.qswlw.activity.mall.QSMallActivity;
+import com.qs.qswlw.activity.mall.QSMallActivity1;
 import com.qs.qswlw.adapter.AngelAdapter;
 import com.qs.qswlw.adapter.BenefitAdapter;
 import com.qs.qswlw.adapter.ChinaAdapter;
@@ -413,7 +413,7 @@ public class MainActivity extends BaseActivity implements IMainView {
                 startActivity(intent);
                 break;
             case R.id.rb_main_mall:
-                intent = new Intent(this, QSMallActivity.class);
+                intent = new Intent(this, QSMallActivity1.class);
                 startActivity(intent);
                 break;
             case R.id.rb_main_WitnessChinaBusiness:

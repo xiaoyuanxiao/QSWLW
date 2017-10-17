@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="55dp"
+        android:background="#cd2244"
         android:gravity="center_vertical"
-        android:orientation="horizontal"
-        android:background="#cd2244">
+        android:orientation="horizontal">
 
         <TextView
             android:layout_width="wrap_content"
@@ -22,17 +23,17 @@
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="30dp"
             android:layout_weight="1"
             android:background="@drawable/corner_edt_interaction"
-            android:gravity="center_vertical"
-            android:layout_marginRight="30dp"
-            android:layout_marginLeft="20dp">
+            android:gravity="center_vertical">
 
             <EditText
                 android:id="@+id/edt_search"
                 android:layout_width="0dp"
-                android:layout_weight="1"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:background="@null"
                 android:hint="请输入商家、商圈、位置"
                 android:singleLine="true"
@@ -46,61 +47,70 @@
                 android:src="@mipmap/sous" />
         </LinearLayout>
     </LinearLayout>
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical"
             android:focusable="true"
-            android:focusableInTouchMode="true">
+            android:focusableInTouchMode="true"
+            android:orientation="vertical">
+
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:src="@mipmap/bg_head_02"
-                android:scaleType="fitXY"/>
+                android:scaleType="fitXY"
+                android:src="@mipmap/bg_head_02" />
+
             <com.qs.qswlw.view.MyGridView
                 android:id="@+id/gv_alliancemall"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingTop="20dp"
+                android:numColumns="4"
                 android:paddingBottom="20dp"
-                android:verticalSpacing="15dp"
-                android:numColumns="4"></com.qs.qswlw.view.MyGridView>
+                android:paddingTop="20dp"
+                android:verticalSpacing="15dp"></com.qs.qswlw.view.MyGridView>
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="10dp"
-                android:background="#f4f4f4"/>
+                android:background="#f4f4f4" />
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="联盟商家"
-                android:textSize="12sp"
-                android:gravity="center"
                 android:layout_marginTop="6dp"
+                android:gravity="center"
                 android:padding="10dp"
-                android:textColor="#656565"/>
+                android:text="联盟商家"
+                android:textColor="#656565"
+                android:textSize="12sp" />
+
             <View
                 android:layout_width="match_parent"
                 android:layout_height="2dp"
-                android:background="@color/red"/>
+                android:background="@color/red" />
+
             <com.qs.qswlw.view.MyListView
                 android:id="@+id/lv_alliancemall"
-                android:layout_marginTop="5dp"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"></com.qs.qswlw.view.MyListView>
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"></com.qs.qswlw.view.MyListView>
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="查看更多商家"
-                android:textSize="9sp"
-                android:gravity="center"
                 android:layout_margin="8dp"
-                android:textColor="#a4a2a2"/>
+                android:gravity="center"
+                android:text="查看更多商家"
+                android:textColor="#a4a2a2"
+                android:textSize="9sp" />
         </LinearLayout>
     </ScrollView>
-    <include layout="@layout/radiogroup_mall"/>
+
+    <include layout="@layout/radiogroup_mall" />
 </LinearLayout>

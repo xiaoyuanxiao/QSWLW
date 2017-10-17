@@ -121,6 +121,7 @@
         <activity android:name=".activity.AngelRankingActivity"/>
 
         <activity android:name=".activity.mall.ShoppingCartActivity"/>
+        <activity android:name=".activity.mall.QSMallActivity1"/>
         <activity android:name=".activity.mall.ClassiFicationActivity"/>
         <activity android:name=".activity.mall.ScreenActivity"/>
         <activity android:name=".activity.mall.QSMallActivity"

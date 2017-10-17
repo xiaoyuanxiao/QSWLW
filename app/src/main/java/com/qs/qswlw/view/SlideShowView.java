@@ -39,16 +39,14 @@ import java.util.concurrent.TimeUnit;
 
 public class SlideShowView extends FrameLayout {
 
-    // 使用universal-image-loader插件读取网络图片，需要工程导入universal-image-loader-1.8.6-with-sources.jar
-    private ImageLoader imageLoader = ImageLoader.getInstance();
-
     //轮播图图片数量
     private final static int IMAGE_COUNT = 5;
     //自动轮播的时间间隔
     private final static int TIME_INTERVAL = 5;
     //自动轮播启用开关
     private final static boolean isAutoPlay = true;
-
+    // 使用universal-image-loader插件读取网络图片，需要工程导入universal-image-loader-1.8.6-with-sources.jar
+    private ImageLoader imageLoader = ImageLoader.getInstance();
     //自定义轮播图的资源
     private String[] imageUrls;
     //放轮播图片的ImageView 的list
@@ -96,6 +94,27 @@ public class SlideShowView extends FrameLayout {
         }
 
     }
+
+    /**
+     * ImageLoader 图片组件初始化
+     *
+     * @param context
+     */
+    public static void initImageLoader(Context context) {
+        // This configuration tuning is custom. You can tune every option, you
+        // may tune some of them,
+        // or you can create default configuration by
+        // ImageLoaderConfiguration.createDefault(this);
+        // method.
+        ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(context).threadPriority(Thread.NORM_PRIORITY - 2).denyCacheImageMultipleSizesInMemory().discCacheFileNameGenerator(new Md5FileNameGenerator()).tasksProcessingOrder(QueueProcessingType.LIFO).writeDebugLogs() // Remove
+                // for
+                // release
+                // app
+                .build();
+        // Initialize ImageLoader with configuration.
+        ImageLoader.getInstance().init(config);
+    }
+
     /**
      * 开始轮播图切换
      */
@@ -103,12 +122,14 @@ public class SlideShowView extends FrameLayout {
         scheduledExecutorService = Executors.newSingleThreadScheduledExecutor();
         scheduledExecutorService.scheduleAtFixedRate(new SlideShowTask(), 1, 4, TimeUnit.SECONDS);
     }
+
     /**
      * 停止轮播图切换
      */
     private void stopPlay(){
         scheduledExecutorService.shutdown();
     }
+
     /**
      * 初始化相关Data
      */
@@ -119,6 +140,7 @@ public class SlideShowView extends FrameLayout {
         // 一步任务获取图片
         new GetListTask().execute("");
     }
+
     /**
      * 初始化Views等UI
      */
@@ -153,6 +175,22 @@ public class SlideShowView extends FrameLayout {
 
         viewPager.setAdapter(new MyPagerAdapter());
         viewPager.setOnPageChangeListener(new MyPageChangeListener());
+    }
+
+    /**
+     * 销毁ImageView资源，回收内存
+     *
+     */
+    private void destoryBitmaps() {
+
+        for (int i = 0; i < IMAGE_COUNT; i++) {
+            ImageView imageView = imageViewsList.get(i);
+            Drawable drawable = imageView.getDrawable();
+            if (drawable != null) {
+                //解除drawable对view的引用
+                drawable.setCallback(null);
+            }
+        }
     }
 
     /**
@@ -214,6 +252,7 @@ public class SlideShowView extends FrameLayout {
         }
 
     }
+
     /**
      * ViewPager的监听器
      * 当ViewPager中页面的状态发生改变时调用
@@ -286,23 +325,6 @@ public class SlideShowView extends FrameLayout {
     }
 
     /**
-     * 销毁ImageView资源，回收内存
-     *
-     */
-    private void destoryBitmaps() {
-
-        for (int i = 0; i < IMAGE_COUNT; i++) {
-            ImageView imageView = imageViewsList.get(i);
-            Drawable drawable = imageView.getDrawable();
-            if (drawable != null) {
-                //解除drawable对view的引用
-                drawable.setCallback(null);
-            }
-        }
-    }
-
-
-    /**
      * 异步任务,获取数据
      *
      */
@@ -314,10 +336,7 @@ public class SlideShowView extends FrameLayout {
                 // 这里一般调用服务端接口获取一组轮播图片，下面是从百度找的几个图片
 
                 imageUrls = new String[]{
-                        "http://img3.imgtn.bdimg.com/it/u=1481793145,775424306&fm=21&gp=0.jpg",
-                        "http://img3.imgtn.bdimg.com/it/u=3995366618,1796108945&fm=21&gp=0.jpg",
-                        "http://img2.imgtn.bdimg.com/it/u=3563009627,3065892043&fm=21&gp=0.jpg",
-                        "http://img4.imgtn.bdimg.com/it/u=2109668048,3543460182&fm=21&gp=0.jpg"
+
                 };
                 return true;
             } catch (Exception e) {
@@ -333,25 +352,5 @@ public class SlideShowView extends FrameLayout {
                 initUI(context);
             }
         }
-    }
-
-    /**
-     * ImageLoader 图片组件初始化
-     *
-     * @param context
-     */
-    public static void initImageLoader(Context context) {
-        // This configuration tuning is custom. You can tune every option, you
-        // may tune some of them,
-        // or you can create default configuration by
-        // ImageLoaderConfiguration.createDefault(this);
-        // method.
-        ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(context).threadPriority(Thread.NORM_PRIORITY - 2).denyCacheImageMultipleSizesInMemory().discCacheFileNameGenerator(new Md5FileNameGenerator()).tasksProcessingOrder(QueueProcessingType.LIFO).writeDebugLogs() // Remove
-                // for
-                // release
-                // app
-                .build();
-        // Initialize ImageLoader with configuration.
-        ImageLoader.getInstance().init(config);
     }
 }

@@ -20,8 +20,8 @@ import com.qs.qswlw.adapter.QSNewGVAdapter;
 
 public class QSMallActivity extends BaseActivity {
 
-    private GridView gv_qsmall,gv_new_qsmall,gv_hot_qsmall,gv_guess_qsmall;
-    private RadioButton rb_homepage,rb_qs,rb_mall,rb_shoppingCart,rb_mine;
+    private GridView gv_qsmall, gv_new_qsmall, gv_hot_qsmall, gv_guess_qsmall;
+    private RadioButton rb_homepage, rb_qs, rb_mall, rb_shoppingCart, rb_mine;
 
     @Override
     public Object initView() {
@@ -64,21 +64,21 @@ public class QSMallActivity extends BaseActivity {
 
     @Override
     public void onClick(View view) {
-        switch (view.getId()){
+        switch (view.getId()) {
             case R.id.rb_homepage:
-                startActivity(new Intent(this,MainActivity.class));
+                startActivity(new Intent(this, MainActivity.class));
                 finish();
                 break;
             case R.id.rb_qs:
-                startActivity(new Intent(this,QSMallActivity.class));
+                startActivity(new Intent(this, QSMallActivity.class));
                 finish();
                 break;
             case R.id.rb_mall:
-                startActivity(new Intent(this,AllianceMallActivity.class));
+                startActivity(new Intent(this, AllianceMallActivity.class));
                 finish();
                 break;
             case R.id.rb_shoppingCart:
-                startActivity(new Intent(this,ShoppingCartActivity.class));
+                startActivity(new Intent(this, ShoppingCartActivity.class));
                 finish();
                 break;
             case R.id.rb_mine:
@@ -90,7 +90,7 @@ public class QSMallActivity extends BaseActivity {
     private class GVOnItemClickListener implements android.widget.AdapterView.OnItemClickListener {
         @Override
         public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-            Intent intent = new Intent(QSMallActivity.this,QSMallListActivity.class);
+            Intent intent = new Intent(QSMallActivity.this, QSMallListActivity.class);
             startActivity(intent);
         }
     }

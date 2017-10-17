@@ -29,7 +29,7 @@
             android:id="@+id/rb_mall"
             style="@style/tv_iv_setting"
             android:drawableTop="@mipmap/footer_03"
-            android:text="联盟商城"
+            android:text="联盟商家"
             android:textSize="9sp"/>
 
         <RadioButton
