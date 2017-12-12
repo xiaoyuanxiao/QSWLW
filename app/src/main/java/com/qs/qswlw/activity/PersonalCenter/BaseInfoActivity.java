@@ -39,6 +39,7 @@ public abstract class BaseInfoActivity extends BaseActivity {
         ll_titlebar_right = (LinearLayout) findViewById(R.id.ll_titlebar_right);
     }
 
+
     @Override
     public void setOnclick() {
         iv_titlebar.setOnClickListener(this);

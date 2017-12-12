@@ -156,5 +156,5 @@
         </LinearLayout>
     </ScrollView>
 
-    <include layout="@layout/radiogroup_mall" />
+    <include layout="@layout/radiogroup_qsmall" />
 </LinearLayout>

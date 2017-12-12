@@ -21,6 +21,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ import com.bumptech.glide.Glide;
+ import com.qs.qswlw.R;
+ import com.qs.qswlw.activity.BaseActivity;
+ import com.qs.qswlw.adapter.QSMallLVAdapter;
+ import com.qs.qswlw.adapter.QSMallTopAdapter;
+ import com.qs.qswlw.adapter.QSMallTwoAdapter;
+
+ import java.util.ArrayList;
+ import java.util.List;
+
  * Created by xiaoyu on 2017/4/25.
  */
 
@@ -121,6 +131,14 @@ public class QSMallActivity1 extends BaseActivity {
         mHandler.postDelayed(mRunnable, 2000);
     }
 
+    private void  setdotDrawable(ImageView iv1,ImageView iv2,ImageView iv3,ImageView iv4){
+        iv1.setBackgroundResource(R.mipmap.dot_focus);
+        iv2.setBackgroundResource(R.mipmap.dot_blur);
+        iv3.setBackgroundResource(R.mipmap.dot_blur);
+        iv4.setBackgroundResource(R.mipmap.dot_blur);
+
+    }
+
     class MyPagerChangeListener implements ViewPager.OnPageChangeListener {
 
         @Override
@@ -139,37 +157,23 @@ public class QSMallActivity1 extends BaseActivity {
             arg0 = arg0 % imgList.size();
             switch (arg0) {
                 case 0:
-                    dot_focus.setBackgroundResource(R.mipmap.dot_focus);
-                    dot_blur.setBackgroundResource(R.mipmap.dot_blur);
-                    dot3.setBackgroundResource(R.mipmap.dot_blur);
-                    dot4.setBackgroundResource(R.mipmap.dot_blur);
+                    setdotDrawable(dot_focus,dot_blur,dot3,dot4);
                     break;
                 case 1:
-                    dot_focus.setBackgroundResource(R.mipmap.dot_blur);
-                    dot_blur.setBackgroundResource(R.mipmap.dot_focus);
-                    dot3.setBackgroundResource(R.mipmap.dot_blur);
-                    dot4.setBackgroundResource(R.mipmap.dot_blur);
+                    setdotDrawable(dot_blur,dot_focus,dot3,dot4);
                     break;
                 case 2:
-                    dot_focus.setBackgroundResource(R.mipmap.dot_blur);
-                    dot_blur.setBackgroundResource(R.mipmap.dot_blur);
-                    dot3.setBackgroundResource(R.mipmap.dot_focus);
-                    dot4.setBackgroundResource(R.mipmap.dot_blur);
+                    setdotDrawable(dot3,dot_focus,dot_blur,dot4);
                     break;
                 case 3:
-                    dot_focus.setBackgroundResource(R.mipmap.dot_blur);
-                    dot_blur.setBackgroundResource(R.mipmap.dot_blur);
-                    dot3.setBackgroundResource(R.mipmap.dot_blur);
-                    dot4.setBackgroundResource(R.mipmap.dot_focus);
+                    setdotDrawable(dot4,dot_focus,dot_blur,dot3);
                     break;
                 default:
                     break;
             }
 
         }
-
     }
-
 
     class MyAdapter extends PagerAdapter {
 

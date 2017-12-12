@@ -63,7 +63,9 @@ public class Maindatabean {
         String loveval_model2_xfz;
         String model1;
         String model2;
-        int money;
+        float money;
+        double sales_amount;
+        int shop;
 
         public int getCount() {
             return count;
@@ -129,11 +131,11 @@ public class Maindatabean {
             this.model2 = model2;
         }
 
-        public int getMoney() {
+        public float getMoney() {
             return money;
         }
 
-        public void setMoney(int money) {
+        public void setMoney(float money) {
             this.money = money;
         }
 
@@ -152,9 +154,6 @@ public class Maindatabean {
         public void setShop(int shop) {
             this.shop = shop;
         }
-
-        double sales_amount;
-        int shop;
 
     }
 

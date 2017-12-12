@@ -1,5 +1,7 @@
 package com.qs.qswlw.okhttp.Presenter;
 
+import android.util.Log;
+
 import com.qs.qswlw.bean.MainBean;
 import com.qs.qswlw.bean.Maindatabean;
 import com.qs.qswlw.okhttp.Factory.IBizFactory;
@@ -50,6 +52,7 @@ public class MainPresenter {
 
             @Override
             public void onFailure(String code) {
+                Log.e("MainPresenter",code);
             }
         });
         iMainBiz.getAlert(new MainAlertLisenter() {

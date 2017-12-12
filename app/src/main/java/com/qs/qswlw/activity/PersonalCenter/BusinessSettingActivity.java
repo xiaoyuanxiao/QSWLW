@@ -138,6 +138,7 @@ public class BusinessSettingActivity extends BaseActivity implements IPersonalSe
         rb_main_funtime.setOnClickListener(this);
         rb_main_luck.setOnClickListener(this);
         rb_main_exit.setOnClickListener(this);
+        tv_setting_set.setOnClickListener(this);
 
 
     }
@@ -162,6 +163,9 @@ public class BusinessSettingActivity extends BaseActivity implements IPersonalSe
                 break;
             case R.id.rb_main_exit:
                 showDialog();
+                break;
+            case R.id.tv_setting_set:
+                startActivity(new Intent(this,SetModifyActivity.class));
                 break;
         }
     }

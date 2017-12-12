@@ -24,17 +24,6 @@ import rx.Observable;
 
 public class BizMain implements IMainBiz {
     private static BizMain testMoudle;
-
-    private BizMain() {
-    }
-
-    public synchronized static BizMain getInstans() {
-        if (testMoudle == null)
-            testMoudle = new BizMain();
-        return testMoudle;
-    }
-
-
     private final String index_data = "index_data";
     private final String alert = "alert";
     private final String union = "union";
@@ -44,6 +33,14 @@ public class BizMain implements IMainBiz {
     private final String luck = "luck";
     private final String benefit = "benefit";
     private Maindatabean result;
+    private BizMain() {
+    }
+
+    public synchronized static BizMain getInstans() {
+        if (testMoudle == null)
+            testMoudle = new BizMain();
+        return testMoudle;
+    }
 
     public void getALLdata(final MainBaseListener baseOnlistener) {
 
@@ -56,7 +53,7 @@ public class BizMain implements IMainBiz {
 
             @Override
             public void onError(Throwable e) {
-                System.out.println("=========onError==============" + e);
+                System.out.println("=========BizMainonError==============" + e);
             }
 
             @Override
