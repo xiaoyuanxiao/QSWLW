@@ -1,14 +1,19 @@
 package com.qs.qswlw.activity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.qs.qswlw.R;
-import com.qs.qswlw.activity.PersonalCenter.*;
+import com.qs.qswlw.activity.PersonalCenter.BaseInfoActivity;
+import com.qs.qswlw.activity.PersonalCenter.BusinessSettingActivity;
+import com.qs.qswlw.activity.PersonalCenter.ConsumerSettingActivity;
 import com.qs.qswlw.bean.LoginBean;
 import com.qs.qswlw.bean.MainBean;
 import com.qs.qswlw.manager.UserManage;
@@ -27,6 +32,7 @@ public class LoginActivity extends BaseInfoActivity {
     private Button btn_login;
     private EditText edt_username,edt_password;
     private TextView tv_newuser_register,tv_forgetPassword;
+    private RelativeLayout rl_login;
 
 
     @Override
@@ -35,6 +41,7 @@ public class LoginActivity extends BaseInfoActivity {
         btn_login = (Button) inflate.findViewById(R.id.btn_login);
         edt_username = (EditText) inflate.findViewById(R.id.edt_username);
         edt_password = (EditText) inflate.findViewById(R.id.edt_password);
+        rl_login = (RelativeLayout) inflate.findViewById(R.id.rl_login);
         tv_newuser_register = (TextView) inflate.findViewById(R.id.tv_newuser_register);
         tv_forgetPassword = (TextView) inflate.findViewById(R.id.tv_forgetPassword);
         return inflate;
@@ -60,6 +67,7 @@ public class LoginActivity extends BaseInfoActivity {
         btn_login.setOnClickListener(this);
         tv_newuser_register.setOnClickListener(this);
         tv_forgetPassword.setOnClickListener(this);
+        rl_login.setOnClickListener(this);
     }
 
     @Override
@@ -77,6 +85,11 @@ public class LoginActivity extends BaseInfoActivity {
 
             case R.id.tv_forgetPassword:
                 startActivity(new Intent(this,ForgetPasswordActivity.class));
+                break;
+            case R.id.rl_login:
+                InputMethodManager imm = (InputMethodManager)
+                        getSystemService(Context.INPUT_METHOD_SERVICE);
+                imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
                 break;
         }
     }
@@ -123,7 +136,7 @@ public class LoginActivity extends BaseInfoActivity {
                     startActivity(intent);
                 } else {
                     //其他页面
-                    intent.setClass(LoginActivity.this, ConsumerSettingActivity.class);
+                    intent.setClass(LoginActivity.this, BusinessSettingActivity.class);
                     startActivity(intent);
                 }
                 finish();

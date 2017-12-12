@@ -26,7 +26,7 @@ public class SplashActivity extends BaseActivity implements Observer {
         System.out.println("=================SplashActivity===");
         View inflate = View.inflate(this, R.layout.activity_splash, null);
         iv_splash = (ImageView) inflate.findViewById(R.id.iv_splash);
-        new Handler().postDelayed(r, 3000);// 1秒后关闭，并跳转到主页面
+        new Handler().postDelayed(r, 5000);// 1秒后关闭，并跳转到主页面
         return inflate;
     }
 

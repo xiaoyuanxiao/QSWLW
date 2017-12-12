@@ -74,6 +74,9 @@ public class BusinessSettingActivity extends BaseActivity implements IPersonalSe
         } else if (role.equals("10")) {
             tv_role.setText("商家");
             MyApplication.USERROLE = "商家";
+        }else if (role.equals("8")) {
+            tv_role.setText("创业经理");
+            MyApplication.USERROLE = "创业经理";
         }
 
 
