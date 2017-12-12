@@ -1,5 +1,7 @@
 package com.qs.qswlw.activity;
 
+import android.app.Dialog;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
@@ -12,6 +14,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.WindowManager;
 import android.webkit.WebView;
+import android.webkit.WebViewClient;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -19,7 +22,6 @@ import android.widget.PopupWindow;
 import android.widget.RadioButton;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.qs.qswlw.MyApplication;
 import com.qs.qswlw.R;
@@ -74,9 +76,9 @@ public class MainActivity extends BaseActivity implements IMainView {
     MainPresenter mainPresenter = new MainPresenter(this);
     private Image3DSwitchView imageSwitchView;
     private Image3DView benefitList, unionList, entrepList, angelList, chinaList, luckList;
-    private TextView tv_dialog_index_title, tv_dialog_index_content, tv_dialog_index_name, tv_dialog_index_time;
+    private TextView tv_dialog_index_title, tv_dialog_index_content, tv_dialog_index_name,tv_dialog_index_department, tv_dialog_index_time;
     private View alertview;
-    private Button btn_dialog;
+    private Button btn_dialog_list,btn_dialog_delay;
     private ImageView iv_setting_main;
     private ImageView iv_ranking_main, iv_main_avater;
     private LinearLayout ll_footview_union;
@@ -85,9 +87,11 @@ public class MainActivity extends BaseActivity implements IMainView {
     private Intent intent;
     private PopupWindow popupWindow;
     private LinearLayout ll_ranking_popup, main_ll_avater;
+    private Maindatabean.Current_sales entrepBaen;
+    private LinearLayout ll_dialogmain_bg;
 
 
-//    private volatile static MainActivity singleton;
+    //    private volatile static MainActivity singleton;
 //    private MainActivity (){}
 //    public static MainActivity getSingleton() {
 //        if (singleton == null) {
@@ -99,14 +103,14 @@ public class MainActivity extends BaseActivity implements IMainView {
 //        }
 //        return singleton;
 //    }
-
+//
     @Override
-    public void setAlertList(AlertBean title) {
-//        tv_dialog_index_title.setText(title.getIndex_title());
-//        //   tv_dialog_index_content.setText(allist.getIndex_content());
-//        tv_dialog_index_content.setText(title.getIndex_content());
-//        tv_dialog_index_name.setText(title.getIndex_name());
-//        tv_dialog_index_time.setText(title.getIndex_time());
+    public void setAlertList(Maindatabean.Notices title) {
+        tv_dialog_index_title.setText(title.getIndex_title());
+        tv_dialog_index_content.setText(title.getIndex_content());
+        tv_dialog_index_name.setText(title.getIndex_name());
+        tv_dialog_index_department.setText(title.getIndex_faburen());
+        tv_dialog_index_time.setText(title.getIndex_time());
     }
 
     @Override
@@ -123,13 +127,14 @@ public class MainActivity extends BaseActivity implements IMainView {
 
     @Override
     public void setEntrepList(Maindatabean.Current_sales entrepBaen) {
+        this.entrepBaen = entrepBaen;
         enlist.clear();
-        enlist.add(entrepBaen.getLoveval_model2_xfz() + "");
-        enlist.add(entrepBaen.getLoveval_model2_shop());
-        enlist.add(entrepBaen.getSales_amount() + "");
-        enlist.add(entrepBaen.getMoney() + "");
-        enlist.add(entrepBaen.getCount() + "");
-        enlist.add(entrepBaen.getShop() + "");
+        enlist.add(entrepBaen.getProducts() + "");
+        enlist.add(entrepBaen.getElla());
+//        enlist.add(entrepBaen.getSales_amount() + "");
+//        enlist.add(entrepBaen.getMoney() + "");
+//        enlist.add(entrepBaen.getCount() + "");
+//        enlist.add(entrepBaen.getShop() + "");
         entrepAdapter.notifyDataSetChanged();
         Log.d("TAG", "-------setEntrepList---");
     }
@@ -202,7 +207,7 @@ public class MainActivity extends BaseActivity implements IMainView {
         main_ll_avater = (LinearLayout) findViewById(R.id.main_ll_avater);
         iv_main_avater = (ImageView) findViewById(R.id.iv_main_avater);
         imageSwitchView.setCurrentImage(0);
-   //     showDilog();
+        showDilog();
 
 //        if(userInfo!=null||registerUserInfo!=null){
 //            main_ll_avater.setVisibility(View.VISIBLE);
@@ -218,20 +223,31 @@ public class MainActivity extends BaseActivity implements IMainView {
         View alertview = LayoutInflater.from(MainActivity.this).inflate(R.layout.dialog_main, null);
         tv_dialog_index_title = (TextView) alertview.findViewById(R.id.tv_dialog_index_title);
         tv_dialog_index_content = (TextView) alertview.findViewById(R.id.tv_dialog_index_content);
+        tv_dialog_index_department = (TextView) alertview.findViewById(R.id.tv_dialog_index_department);
         tv_dialog_index_name = (TextView) alertview.findViewById(R.id.tv_dialog_index_name);
         tv_dialog_index_time = (TextView) alertview.findViewById(R.id.tv_dialog_index_time);
-        btn_dialog = (Button) alertview.findViewById(R.id.btn_dialog);
-        btn_dialog.setOnClickListener(new View.OnClickListener() {
+        ll_dialogmain_bg = (LinearLayout) alertview.findViewById(R.id.ll_dialogmain_bg);
+        btn_dialog_list = (Button) alertview.findViewById(R.id.btn_dialog_list);
+        btn_dialog_list.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this,NoticeActivity.class));
+            }
+        });
+        btn_dialog_delay = (Button) alertview.findViewById(R.id.btn_dialog_delay);
+        btn_dialog_delay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // TODO Auto-generated method stub
                 dialog.dismiss();
-                Toast.makeText(MainActivity.this, "表单填写完成",
-                        Toast.LENGTH_SHORT).show();
             }
         });
         dialog.setView(alertview);
         dialog.show();
+/*        WindowManager.LayoutParams params =
+                dialog.getWindow().getAttributes();
+        params.width = android.app.ActionBar.LayoutParams.WRAP_CONTENT;
+        params.height = 800 ;
+        dialog.getWindow().setAttributes(params);*/
     }
 
     @Override
@@ -402,33 +418,54 @@ public class MainActivity extends BaseActivity implements IMainView {
                 // startActivity(new Intent(this, RankingActivity.class));
                 showPw(iv_ranking_main);
                 break;
+            //项目推荐
             case R.id.rb_main_goodprojects:
                 startActivity(new Intent(this, ProjectRecommendationActivity.class));
                 break;
+            //互动吧
             case R.id.rb_main_media:
-                startActivity(new Intent(this, InteractionActivity.class));
+                WebView webView = new WebView(this);
+                webView.loadUrl(entrepBaen.getInteraction());
+                //覆盖WebView默认使用第三方或系统默认浏览器打开网页的行为，使网页用WebView打开
+                webView.setWebViewClient(new WebViewClient(){
+                    @Override
+                    public boolean shouldOverrideUrlLoading(WebView view, String url) {
+                        // TODO Auto-generated method stub
+                       Dialog  dialog = ProgressDialog.show(MainActivity.this,null,"页面加载中，请稍后..");
+                        //返回值是true的时候控制去WebView打开，为false调用系统浏览器或第三方浏览器
+                        view.loadUrl(url);
+                        return true;
+                    }
+                });
+                startActivity(this.intent);
                 break;
+            //钱盛联盟
             case R.id.rb_main_union:
                 intent = new Intent(this, AllianceMallActivity.class);
                 startActivity(intent);
                 break;
+            //钱盛商城
             case R.id.rb_main_mall:
                 intent = new Intent(this, QSMallActivity1.class);
                 startActivity(intent);
                 break;
+            //见证华商
             case R.id.rb_main_WitnessChinaBusiness:
                 this.intent = new Intent(this, WebviewActivity.class);
-                this.intent.putExtra("WitnessChinaBusiness", "http://case.dian7dian.com/qiansheng/jzhs.html");
+                this.intent.putExtra("WitnessChinaBusiness", entrepBaen.getWitness_url());
                 startActivity(this.intent);
                 break;
+            //人气王
             case R.id.rb_main_Win:
                 this.intent = new Intent(this, WebviewActivity.class);
                 this.intent.putExtra("Win", "http://case.dian7dian.com/qiansheng/yzqs.html");
                 startActivity(this.intent);
                 break;
+            //促销抽奖
             case R.id.rb_main_luckgame:
                 startActivity(new Intent(this, LuckGameActivity.class));
                 break;
+            //开心一刻
             case R.id.rb_main_funtime:
                 this.intent = new Intent(this, WebviewActivity.class);
                 this.intent.putExtra("Win", "http://case.dian7dian.com/qiansheng/kxyk.html");

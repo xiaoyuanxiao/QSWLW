@@ -3,6 +3,8 @@ package com.qs.qswlw.adapter;
 import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -25,18 +27,46 @@ public class EntrepAdapter extends BaseListAdapter<String> {
         view = View.inflate(context, R.layout.item_globalentrepreneurshipvalue, null);
         TextView tv_twentypercent_congtv = (TextView) view.findViewById(R.id.tv_twentypercent_congtv);
         TextView tv_twentypercent_busgtv = (TextView) view.findViewById(R.id.tv_twentypercent_busgtv);
-        TextView tv_yesterdayConsumption_gtv = (TextView) view.findViewById(R.id.tv_yesterdayConsumption_gtv);
-        TextView tv_totalEntrepreneurship_gtv = (TextView) view.findViewById(R.id.tv_totalEntrepreneurship_gtv);
-        TextView tv_totalnumber_gtv = (TextView) view.findViewById(R.id.tv_totalnumber_gtv);
-        TextView tv_llianceMerchant_gtv = (TextView) view.findViewById(R.id.tv_llianceMerchant_gtv);
+//        TextView tv_yesterdayConsumption_gtv = (TextView) view.findViewById(R.id.tv_yesterdayConsumption_gtv);
+//        TextView tv_totalEntrepreneurship_gtv = (TextView) view.findViewById(R.id.tv_totalEntrepreneurship_gtv);
+//        TextView tv_totalnumber_gtv = (TextView) view.findViewById(R.id.tv_totalnumber_gtv);
+//        TextView tv_llianceMerchant_gtv = (TextView) view.findViewById(R.id.tv_llianceMerchant_gtv);
         LinearLayout ll_entrep_width = (LinearLayout) view.findViewById(R.id.ll_entrep_width);
         ll_entrep_width.setLayoutParams(new LinearLayout.LayoutParams(MyApplication.WIDTH, MyApplication.Height-MyApplication.ENTREPHEIGHT));
-        tv_twentypercent_congtv.setText(data.get(0)+"元");
-        tv_twentypercent_busgtv.setText(data.get(1)+"元");
-        tv_yesterdayConsumption_gtv.setText(data.get(2)+"元");
-        tv_totalEntrepreneurship_gtv.setText(data.get(3)+"元");
-        tv_totalnumber_gtv.setText(data.get(4)+"人");
-        tv_llianceMerchant_gtv.setText(data.get(5)+"家");
+//        tv_twentypercent_congtv.setText(data.get(0)+"元");
+//        tv_twentypercent_busgtv.setText(data.get(1)+"元");
+//        tv_yesterdayConsumption_gtv.setText(data.get(2)+"元");
+//        tv_totalEntrepreneurship_gtv.setText(data.get(3)+"元");
+//        tv_totalnumber_gtv.setText(data.get(4)+"人");
+//        tv_llianceMerchant_gtv.setText(data.get(5)+"家");
+
+        tv_twentypercent_congtv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                WebView webView = new WebView(context);
+                webView.loadUrl(data.get(0));
+                //覆盖WebView默认使用第三方或系统默认浏览器打开网页的行为，使网页用WebView打开
+                webView.setWebViewClient(new WebViewClient(){
+                    @Override
+                    public boolean shouldOverrideUrlLoading(WebView view, String url) {
+                        // TODO Auto-generated method stub
+                        //返回值是true的时候控制去WebView打开，为false调用系统浏览器或第三方浏览器
+                        view.loadUrl(url);
+                        return true;
+                    }
+                });
+            }
+        });
+        tv_twentypercent_busgtv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                WebView webView = new WebView(context);
+                webView.loadUrl(data.get(1));
+
+            }
+        });
+
+
         return view;
     }
 

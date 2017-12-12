@@ -13,6 +13,15 @@ public class Maindatabean {
     List<Salema> salema_ranking;
     List<Shop> shop_ranking;
     Current_sales current_sales;
+    Notices notice;
+
+    public Notices getNotice() {
+        return notice;
+    }
+
+    public void setNotice(Notices notice) {
+        this.notice = notice;
+    }
 
     public Current_sales getCurrent_sales() {
         return current_sales;
@@ -54,6 +63,54 @@ public class Maindatabean {
         this.shop_ranking = shop_ranking;
     }
 
+    public class Notices{
+        String index_content;
+        String index_faburen;
+        String index_name;
+        String index_time;
+        String index_title;
+
+        public String getIndex_content() {
+            return index_content;
+        }
+
+        public void setIndex_content(String index_content) {
+            this.index_content = index_content;
+        }
+
+        public String getIndex_faburen() {
+            return index_faburen;
+        }
+
+        public void setIndex_faburen(String index_faburen) {
+            this.index_faburen = index_faburen;
+        }
+
+        public String getIndex_name() {
+            return index_name;
+        }
+
+        public void setIndex_name(String index_name) {
+            this.index_name = index_name;
+        }
+
+        public String getIndex_time() {
+            return index_time;
+        }
+
+        public void setIndex_time(String index_time) {
+            this.index_time = index_time;
+        }
+
+        public String getIndex_title() {
+            return index_title;
+        }
+
+        public void setIndex_title(String index_title) {
+            this.index_title = index_title;
+        }
+    }
+
     public class Current_sales{
         int count;
         String createtime;
@@ -66,6 +123,42 @@ public class Maindatabean {
         float money;
         double sales_amount;
         int shop;
+        String Interaction;
+        String witness_url;
+        String products;
+        String ella;
+
+        public String getElla() {
+            return ella;
+        }
+
+        public void setElla(String ella) {
+            this.ella = ella;
+        }
+
+        public String getProducts() {
+            return products;
+        }
+
+        public void setProducts(String products) {
+            this.products = products;
+        }
+
+        public String getWitness_url() {
+            return witness_url;
+        }
+
+        public void setWitness_url(String witness_url) {
+            this.witness_url = witness_url;
+        }
+
+        public String getInteraction() {
+            return Interaction;
+        }
+
+        public void setInteraction(String interaction) {
+            Interaction = interaction;
+        }
 
         public int getCount() {
             return count;

@@ -23,6 +23,7 @@ import com.qs.qswlw.bean.MyProfitBean;
 import com.qs.qswlw.bean.MyRoleBean;
 import com.qs.qswlw.bean.MySliverBean;
 import com.qs.qswlw.bean.MySpendingLimitBean;
+import com.qs.qswlw.bean.NoticesBean;
 import com.qs.qswlw.bean.OldMemberBean;
 import com.qs.qswlw.bean.PersonalSettingBean;
 import com.qs.qswlw.bean.RankingBean;
@@ -81,6 +82,13 @@ public interface MyRetroService {
     //如果有多个参数-就这样
     @POST("index.php?m=Appapi&c=Index&a=ranking_list4")
     Observable<MainBean<RankingBean>> getRankingData(@Part("time_slot") String a);
+
+    /**
+     *
+     */
+    @FormUrlEncoded
+    @POST("index.php?m=Appapi&c=Index&a=qsnotice")
+    Observable<List<NoticesBean>> getNotices(@Field("token") String token, @Field("p") int p, @Field("nid") int nid);
 
     /**
      * 获取短信验证码

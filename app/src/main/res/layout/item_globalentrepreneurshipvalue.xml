@@ -4,15 +4,14 @@
     android:layout_height="wrap_content"
     android:orientation="vertical">
     <LinearLayout
+        android:id="@+id/ll_entrep_width"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:id="@+id/ll_entrep_width"
         android:padding="6dp">
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_height="wrap_content"
         android:background="@color/entrep"
         android:gravity="center_vertical"
         android:padding="6dp">
@@ -20,121 +19,120 @@
         <TextView
             style="@style/tv_entrep"
             android:drawableLeft="@mipmap/xinxin"
-            android:text="消费创业值" />
+            android:text="中国好物产" />
 
         <TextView
             android:id="@+id/tv_twentypercent_congtv"
             style="@style/tv_entrep"
             android:layout_alignParentRight="true"
             android:gravity="right"
-            android:text="11111万" />
+            android:text="查看" />
     </RelativeLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:gravity="center_vertical"
+        android:layout_height="wrap_content"
         android:layout_marginTop="3dp"
         android:background="@color/entrep"
+        android:gravity="center_vertical"
         android:padding="6dp">
 
         <TextView
             style="@style/tv_entrep"
             android:drawableLeft="@mipmap/xinxin"
-            android:text="商家创新值" />
+            android:text="中国云裳" />
 
         <TextView
             android:id="@+id/tv_twentypercent_busgtv"
             style="@style/tv_entrep"
             android:layout_alignParentRight="true"
             android:gravity="right"
-            android:text="11111万" />
+            android:text="查看" />
     </RelativeLayout>
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:gravity="center_vertical"
-        android:layout_marginTop="3dp"
-        android:background="@color/entrep"
-        android:padding="6dp">
+    <!--<RelativeLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="0dp"-->
+        <!--android:layout_weight="1"-->
+        <!--android:gravity="center_vertical"-->
+        <!--android:layout_marginTop="3dp"-->
+        <!--android:background="@color/entrep"-->
+        <!--android:padding="6dp">-->
 
-        <TextView
-            style="@style/tv_entrep"
-            android:text="全联盟昨日消费" />
+        <!--<TextView-->
+            <!--style="@style/tv_entrep"-->
+            <!--android:text="全联盟昨日消费" />-->
 
-        <TextView
-            android:id="@+id/tv_yesterdayConsumption_gtv"
-            style="@style/tv_entrep"
-            android:layout_alignParentRight="true"
-            android:background="@color/entrep"
-            android:gravity="right"
-            android:text="11111万" />
-    </RelativeLayout>
+        <!--<TextView-->
+            <!--android:id="@+id/tv_yesterdayConsumption_gtv"-->
+            <!--style="@style/tv_entrep"-->
+            <!--android:layout_alignParentRight="true"-->
+            <!--android:background="@color/entrep"-->
+            <!--android:gravity="right"-->
+            <!--android:text="11111万" />-->
+    <!--</RelativeLayout>-->
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:gravity="center_vertical"
-        android:layout_marginTop="3dp"
-        android:background="@color/entrep"
-        android:padding="6dp">
+    <!--<RelativeLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="0dp"-->
+        <!--android:layout_weight="1"-->
+        <!--android:gravity="center_vertical"-->
+        <!--android:layout_marginTop="3dp"-->
+        <!--android:background="@color/entrep"-->
+        <!--android:padding="6dp">-->
 
-        <TextView
-            style="@style/tv_entrep"
-            android:text="全联盟创业总额" />
+        <!--<TextView-->
+            <!--style="@style/tv_entrep"-->
+            <!--android:text="全联盟创业总额" />-->
 
-        <TextView
-            android:id="@+id/tv_totalEntrepreneurship_gtv"
-            style="@style/tv_entrep"
-            android:layout_alignParentRight="true"
-            android:gravity="right"
-            android:text="11111万" />
-    </RelativeLayout>
+        <!--<TextView-->
+            <!--android:id="@+id/tv_totalEntrepreneurship_gtv"-->
+            <!--style="@style/tv_entrep"-->
+            <!--android:layout_alignParentRight="true"-->
+            <!--android:gravity="right"-->
+            <!--android:text="11111万" />-->
+    <!--</RelativeLayout>-->
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:gravity="center_vertical"
-        android:layout_marginTop="3dp"
-        android:background="@color/entrep"
-        android:padding="6dp">
+    <!--<RelativeLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="0dp"-->
+        <!--android:layout_weight="1"-->
+        <!--android:gravity="center_vertical"-->
+        <!--android:layout_marginTop="3dp"-->
+        <!--android:background="@color/entrep"-->
+        <!--android:padding="6dp">-->
 
-        <TextView
-            style="@style/tv_entrep"
-            android:text="全联盟创业总人数" />
+        <!--<TextView-->
+            <!--style="@style/tv_entrep"-->
+            <!--android:text="全联盟创业总人数" />-->
 
-        <TextView
-            android:id="@+id/tv_totalnumber_gtv"
-            style="@style/tv_entrep"
-            android:layout_alignParentRight="true"
-            android:gravity="right"
-            android:text="11111万" />
-    </RelativeLayout>
+        <!--<TextView-->
+            <!--android:id="@+id/tv_totalnumber_gtv"-->
+            <!--style="@style/tv_entrep"-->
+            <!--android:layout_alignParentRight="true"-->
+            <!--android:gravity="right"-->
+            <!--android:text="11111万" />-->
+    <!--</RelativeLayout>-->
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:gravity="center_vertical"
-        android:layout_marginTop="3dp"
-        android:background="@color/entrep"
-        android:padding="6dp">
+    <!--<RelativeLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="0dp"-->
+        <!--android:layout_weight="1"-->
+        <!--android:gravity="center_vertical"-->
+        <!--android:layout_marginTop="3dp"-->
+        <!--android:background="@color/entrep"-->
+        <!--android:padding="6dp">-->
 
-        <TextView
-            style="@style/tv_entrep"
-            android:text="联盟商家" />
+        <!--<TextView-->
+            <!--style="@style/tv_entrep"-->
+            <!--android:text="联盟商家" />-->
 
-        <TextView
-            android:id="@+id/tv_llianceMerchant_gtv"
-            style="@style/tv_entrep"
-            android:layout_alignParentRight="true"
-            android:gravity="right"
-            android:text="11111万" />
-    </RelativeLayout>
+        <!--<TextView-->
+            <!--android:id="@+id/tv_llianceMerchant_gtv"-->
+            <!--style="@style/tv_entrep"-->
+            <!--android:layout_alignParentRight="true"-->
+            <!--android:gravity="right"-->
+            <!--android:text="11111万" />-->
+    <!--</RelativeLayout>-->
     </LinearLayout>
 </LinearLayout>

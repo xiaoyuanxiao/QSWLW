@@ -35,7 +35,7 @@ public class WebviewActivity extends Activity {
     }
 
     private void init() {
-      url = witnessChinaBusiness;
+        url = witnessChinaBusiness;
         webView = (WebView) findViewById(R.id.webview);
         //启用支持JavaScript
         webView.getSettings().setJavaScriptEnabled(true);

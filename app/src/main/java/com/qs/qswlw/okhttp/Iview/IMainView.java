@@ -1,7 +1,6 @@
 package com.qs.qswlw.okhttp.Iview;
 
 import com.qs.qswlw.bean.Maindatabean;
-import com.qs.qswlw.okhttp.Moudle.AlertBean;
 import com.qs.qswlw.okhttp.Moudle.LuckBean;
 
 import java.util.List;
@@ -12,7 +11,7 @@ import java.util.List;
 
 public interface IMainView {
 
-    void setAlertList(AlertBean title);
+    void setAlertList(Maindatabean.Notices title);
 
     void setUnionList(List<Maindatabean.Shop> list);
 

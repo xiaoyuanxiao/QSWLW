@@ -21,7 +21,6 @@ public class AngelRankingPresenter {
         this.iAngelRankingView = iAngelRankingView;
     }
 
-    //我改一点
     public void getdata(final int code) {
         //日月是分开请求的
         iAngelRankingBiz.getdata(new AngelRankingBaseListener() {

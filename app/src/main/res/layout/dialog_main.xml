@@ -1,55 +1,82 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="wrap_content"
+    android:id="@+id/ll_dialogmain_bg" android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:background="#ea1e4f"
+    android:background="@mipmap/box3_03"
     android:gravity="center"
-    android:paddingTop="30dp"
+    android:orientation="vertical"
     android:paddingBottom="40dp"
     android:paddingLeft="30dp"
-    android:paddingRight="30dp">
+    android:paddingRight="30dp"
+    android:paddingTop="30dp">
     <TextView
         android:id="@+id/tv_dialog_index_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="15sp"
+        android:text="das"
         android:textColor="@color/text_yellow"
-        android:text=""/>
+        android:textSize="15sp"/>
     <TextView
-        android:layout_marginTop="15dp"
         android:id="@+id/tv_dialog_index_content"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="10sp"
+        android:layout_marginTop="15dp"
+        android:text="dasda2312"
         android:textColor="@color/text_yellow"
-        android:text=""/>
+        android:textSize="10sp"/>
     <TextView
         android:id="@+id/tv_dialog_index_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="10sp"
-        android:textColor="@color/text_yellow"
         android:layout_gravity="right"
-        android:text=""/>
+        android:text="sdqdqd"
+        android:textColor="@color/text_yellow"
+        android:textSize="10sp"/>
+    <TextView
+        android:id="@+id/tv_dialog_index_department"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:text="sdqddadaqd"
+        android:textColor="@color/text_yellow"
+        android:textSize="10sp"/>
     <TextView
         android:id="@+id/tv_dialog_index_time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="10sp"
-        android:layout_marginTop="5dp"
-        android:textColor="@color/text_yellow"
         android:layout_gravity="right"
-        android:text=""/>
-
-    <Button
-        android:id="@+id/btn_dialog"
-        android:layout_width="120dp"
-        android:layout_height="35dp"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/stroke_splash"
+        android:layout_marginTop="5dp"
+        android:text="dewqdwe"
         android:textColor="@color/text_yellow"
-        android:textSize="10sp"
-        android:text="确定"/>
+        android:textSize="10sp"/>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <Button
+            android:id="@+id/btn_dialog_list"
+            android:layout_width="0dp"
+            android:layout_height="35dp"
+            android:layout_marginTop="20dp"
+            android:layout_weight="1"
+            android:background="@drawable/stroke_splash"
+            android:text="公告列表"
+            android:textColor="@color/text_yellow"
+            android:textSize="10sp"/>
+        <Button
+            android:id="@+id/btn_dialog_delay"
+            android:layout_width="0dp"
+            android:layout_height="35dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="20dp"
+            android:layout_weight="1"
+            android:background="@drawable/stroke_splash"
+            android:text="稍后再说"
+            android:textColor="@color/text_yellow"
+            android:textSize="10sp"/>
+    </LinearLayout>
+
+
 
 
 </LinearLayout>

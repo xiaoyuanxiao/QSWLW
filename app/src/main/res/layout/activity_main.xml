@@ -21,10 +21,10 @@
             android:id="@+id/main_ll_avater"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
-            android:visibility="gone"
             android:layout_centerVertical="true"
-            android:orientation="vertical">
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:visibility="gone">
             <com.qs.qswlw.view.NoBorderCircleImageView
                 android:id="@+id/iv_main_avater"
                 android:layout_width="35dp"
@@ -32,9 +32,9 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:text="陆小曼"
                 android:textColor="@color/white"
-                android:textSize="9sp"
-                android:text="陆小曼"/>
+                android:textSize="9sp"/>
         </LinearLayout>
 
         <ImageView
@@ -47,9 +47,9 @@
             android:id="@+id/iv_ranking_main"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:scaleType="fitXY"
-
             android:layout_alignParentRight="true"
+
+            android:scaleType="fitXY"
             android:src="@mipmap/header_ico1" />
     </RelativeLayout>
 
@@ -142,7 +142,7 @@
             android:id="@+id/rb_main_Win"
             style="@style/tv_iv_main"
             android:drawableTop="@mipmap/lan3"
-            android:text="赢在钱盛" />
+            android:text="人气王" />
     </RadioGroup>
 
 </LinearLayout>

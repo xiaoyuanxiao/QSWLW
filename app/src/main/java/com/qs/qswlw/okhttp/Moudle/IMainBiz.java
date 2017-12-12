@@ -1,6 +1,5 @@
 package com.qs.qswlw.okhttp.Moudle;
 
-import com.qs.qswlw.okhttp.oncallback.MainAlertLisenter;
 import com.qs.qswlw.okhttp.oncallback.MainBaseListener;
 
 /**
@@ -11,5 +10,5 @@ public interface IMainBiz {
 
     void getALLdata(MainBaseListener mainBaseListener);
 
-    void getAlert(MainAlertLisenter mainAlertLisenter);
+//    void getAlert(MainAlertLisenter mainAlertLisenter);
 }
