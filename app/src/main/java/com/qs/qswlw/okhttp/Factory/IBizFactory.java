@@ -21,6 +21,7 @@ import com.qs.qswlw.okhttp.Moudle.BizMySpendingLimit;
 import com.qs.qswlw.okhttp.Moudle.BizNotices;
 import com.qs.qswlw.okhttp.Moudle.BizOldMember;
 import com.qs.qswlw.okhttp.Moudle.BizPersonalSetting;
+import com.qs.qswlw.okhttp.Moudle.BizPopRanking;
 import com.qs.qswlw.okhttp.Moudle.BizRanking;
 import com.qs.qswlw.okhttp.Moudle.BizRecommendRecord;
 import com.qs.qswlw.okhttp.Moudle.BizRecordList;
@@ -52,6 +53,7 @@ import com.qs.qswlw.okhttp.Moudle.IMySpendingLimitBiz;
 import com.qs.qswlw.okhttp.Moudle.INoticesBiz;
 import com.qs.qswlw.okhttp.Moudle.IOldMemberBiz;
 import com.qs.qswlw.okhttp.Moudle.IPersonalSettingBiz;
+import com.qs.qswlw.okhttp.Moudle.IPopRankingBiz;
 import com.qs.qswlw.okhttp.Moudle.IProductBiz;
 import com.qs.qswlw.okhttp.Moudle.IRankingBiz;
 import com.qs.qswlw.okhttp.Moudle.IRecommendRecordBiz;
@@ -178,5 +180,8 @@ public class IBizFactory {
 
     public static INoticesBiz getNoticesList(){
         return BizNotices.getInstans();
+    }
+    public static IPopRankingBiz getPopRankingList(){
+        return BizPopRanking.getInstans();
     }
 }

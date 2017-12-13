@@ -303,8 +303,6 @@ public class MainActivity extends BaseActivity implements IMainView {
         unionFootview.findViewById(R.id.ll_footview).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                Intent intent = new Intent(MainActivity.this, RankingActivity.class);
-//                intent.putExtra("footview", "unionranking");
                 Intent intent = new Intent(MainActivity.this, UnionRankingActivity.class);
                 startActivity(intent);
             }
@@ -424,7 +422,6 @@ public class MainActivity extends BaseActivity implements IMainView {
                // finish();
                 break;
             case R.id.iv_ranking_main:
-                // startActivity(new Intent(this, RankingActivity.class));
                 showPw(iv_ranking_main);
                 break;
             //项目推荐
@@ -481,7 +478,7 @@ public class MainActivity extends BaseActivity implements IMainView {
                 startActivity(this.intent);
                 break;
             case R.id.ll_ranking_popup:
-                //   startActivity(new Intent(MainActivity.this,MainRankingActivity.class));
+                   startActivity(new Intent(MainActivity.this,PopRankingActivity.class));
                 break;
         }
     }

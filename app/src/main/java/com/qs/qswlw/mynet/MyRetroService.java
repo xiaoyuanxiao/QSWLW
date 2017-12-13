@@ -26,6 +26,7 @@ import com.qs.qswlw.bean.MySpendingLimitBean;
 import com.qs.qswlw.bean.NoticesBean;
 import com.qs.qswlw.bean.OldMemberBean;
 import com.qs.qswlw.bean.PersonalSettingBean;
+import com.qs.qswlw.bean.PopRankingBean;
 import com.qs.qswlw.bean.RankingBean;
 import com.qs.qswlw.bean.RecommendedRecordsBean;
 import com.qs.qswlw.bean.RecordListBaseBean;
@@ -74,12 +75,12 @@ public interface MyRetroService {
     Observable<MainBean<Maindatabean>> getALLdata();
 
     /**
+     * 联盟商家排行榜
      * @param a
      * @return
      * @Multipart对应from-data
      */
-    @Multipart//这是什么--标注 参数格式 prat 括号里对应的是KEY 后面对应的是 v 那不应该写成这个吗 嗯就是这样，value不用该 到时候传就是是吧 对
-    //如果有多个参数-就这样
+    @Multipart// 参数格式
     @POST("index.php?m=Appapi&c=Index&a=ranking_list4")
     Observable<MainBean<RankingBean>> getRankingData(@Part("time_slot") String a);
 
@@ -478,5 +479,9 @@ public interface MyRetroService {
     @POST("index.php?m=Appapi&c=Index&a=good_product")
 /**括号里面是路径*/
     Observable<MainBean<GoodProductBean>> getCity();
+
+    @Multipart
+    @POST("index.php?m=Appapi&c=Index&a=rank_top")
+    Observable<MainBean<PopRankingBean>> getPopRankingData(@Part("role") String role,@Part("time_slot") String a);
 
 }

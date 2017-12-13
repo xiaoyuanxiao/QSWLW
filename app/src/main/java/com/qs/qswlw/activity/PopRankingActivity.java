@@ -23,7 +23,7 @@ import java.util.List;
  * Created by xiaoyu on 2017/8/28.
  */
 
-public class MainRankingActivity extends BaseInfoActivity implements IRankingView {
+public class PopRankingActivity extends BaseInfoActivity implements IRankingView {
     public RankingPresenter rankingPresenter = new RankingPresenter(this);
     private ViewPager viewpager_unionranking;
     private RadioGroup fg_unionranking;
@@ -41,6 +41,7 @@ public class MainRankingActivity extends BaseInfoActivity implements IRankingVie
         month_ranking = (RelativeLayout) inflate.findViewById(R.id.month_ranking);
         tv_ranking_left = (TextView) inflate.findViewById(R.id.tv_ranking_left);
         tv_ranking_right = (TextView) inflate.findViewById(R.id.tv_ranking_right);
+
         return  inflate;
     }
 
@@ -52,7 +53,6 @@ public class MainRankingActivity extends BaseInfoActivity implements IRankingVie
     @Override
     public void setOnclick() {
         super.setOnclick();
-        fg_unionranking.setOnCheckedChangeListener(new MyOnCheckedChangeListener());
         day_ranking.setOnClickListener(this);
         week_ranking.setOnClickListener(this);
         month_ranking.setOnClickListener(this);
@@ -80,6 +80,7 @@ public class MainRankingActivity extends BaseInfoActivity implements IRankingVie
                 showDialog(content);
                 break;
         }
+
 
     }
 
@@ -116,27 +117,6 @@ public class MainRankingActivity extends BaseInfoActivity implements IRankingVie
     @Override
     public void setRankMondayWek(List<RankingBean.SingleLogBean> list, int recode) {
 
-    }
-
-    /**
-     * 页面切换监听
-     */
-    class MyOnCheckedChangeListener implements RadioGroup.OnCheckedChangeListener {
-        @Override
-        public void onCheckedChanged(RadioGroup group, int checkedId) {
-            int position = 0;
-            switch (checkedId) {
-                case R.id.day_ranking:
-                    position = 0;
-                    break;
-                case R.id.week_ranking:
-                    position = 1;
-                    break;
-                case R.id.month_ranking:
-                    position = 2;
-                    break;
-            }
-        }
     }
 
 
