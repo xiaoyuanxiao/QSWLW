@@ -9,5 +9,5 @@ import java.util.List;
  */
 
 public interface INoticesView {
-    void setData(List<NoticesBean> noticesBeanList);
+    void setData(List<NoticesBean> noticesListBean);
 }

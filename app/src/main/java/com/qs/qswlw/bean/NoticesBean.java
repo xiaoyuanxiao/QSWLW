@@ -1,11 +1,25 @@
 package com.qs.qswlw.bean;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 /**
  * Created by xiaoyu on 2017/12/12.
  */
 
-public class NoticesBean {
+public class NoticesBean implements Parcelable {
 
+    public static final Parcelable.Creator<NoticesBean> CREATOR = new Parcelable.Creator<NoticesBean>() {
+        @Override
+        public NoticesBean createFromParcel(Parcel source) {
+            return new NoticesBean(source);
+        }
+
+        @Override
+        public NoticesBean[] newArray(int size) {
+            return new NoticesBean[size];
+        }
+    };
     /**
      * id : 22
      * index_title : 公告
@@ -22,6 +36,18 @@ public class NoticesBean {
     private String index_faburen;
     private String index_time;
     private String index_content;
+
+    public NoticesBean() {
+    }
+
+    protected NoticesBean(Parcel in) {
+        this.id = in.readString();
+        this.index_title = in.readString();
+        this.index_name = in.readString();
+        this.index_faburen = in.readString();
+        this.index_time = in.readString();
+        this.index_content = in.readString();
+    }
 
     public String getId() {
         return id;
@@ -70,4 +96,20 @@ public class NoticesBean {
     public void setIndex_content(String index_content) {
         this.index_content = index_content;
     }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(this.id);
+        dest.writeString(this.index_title);
+        dest.writeString(this.index_name);
+        dest.writeString(this.index_faburen);
+        dest.writeString(this.index_time);
+        dest.writeString(this.index_content);
+    }
 }
+

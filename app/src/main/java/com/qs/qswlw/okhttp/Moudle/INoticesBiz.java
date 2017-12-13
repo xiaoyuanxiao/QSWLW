@@ -7,5 +7,5 @@ import com.qs.qswlw.okhttp.oncallback.NoticesListener;
  */
 
 public interface INoticesBiz {
-    void getdata(NoticesListener noticesListener, String token, int p, int nid);
+    void getdata(NoticesListener noticesListener);
 }

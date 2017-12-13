@@ -1,5 +1,6 @@
 package com.qs.qswlw.okhttp.oncallback;
 
+import com.qs.qswlw.bean.MainBean;
 import com.qs.qswlw.bean.NoticesBean;
 
 import java.util.List;
@@ -9,5 +10,5 @@ import java.util.List;
  */
 
 public interface NoticesListener extends BaseOnlistener {
-    void onSuccess(List<NoticesBean> noticesBeanList);
+    void onSuccess(MainBean<List<NoticesBean>> noticesBeanList);
 }

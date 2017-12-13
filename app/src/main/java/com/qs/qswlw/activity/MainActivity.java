@@ -9,9 +9,11 @@ import android.graphics.drawable.BitmapDrawable;
 import android.support.v7.app.AlertDialog;
 import android.util.DisplayMetrics;
 import android.util.Log;
+import android.view.Display;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.Window;
 import android.view.WindowManager;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
@@ -45,6 +47,7 @@ import com.qs.qswlw.okhttp.Moudle.AlertBean;
 import com.qs.qswlw.okhttp.Moudle.ChinaBean;
 import com.qs.qswlw.okhttp.Moudle.LuckBean;
 import com.qs.qswlw.okhttp.Presenter.MainPresenter;
+import com.qs.qswlw.utils.ScreenUtils;
 import com.qs.qswlw.view.imageswitchview.Image3DSwitchView;
 import com.qs.qswlw.view.imageswitchview.Image3DView;
 
@@ -234,6 +237,8 @@ public class MainActivity extends BaseActivity implements IMainView {
                 startActivity(new Intent(MainActivity.this,NoticeActivity.class));
             }
         });
+        int width = ScreenUtils.getScreenWidth(this)-60;
+        ll_dialogmain_bg.setLayoutParams(new LinearLayout.LayoutParams(width, width-20));
         btn_dialog_delay = (Button) alertview.findViewById(R.id.btn_dialog_delay);
         btn_dialog_delay.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -243,11 +248,15 @@ public class MainActivity extends BaseActivity implements IMainView {
         });
         dialog.setView(alertview);
         dialog.show();
-/*        WindowManager.LayoutParams params =
-                dialog.getWindow().getAttributes();
-        params.width = android.app.ActionBar.LayoutParams.WRAP_CONTENT;
-        params.height = 800 ;
-        dialog.getWindow().setAttributes(params);*/
+
+        Window dialogWindow = dialog.getWindow();
+        WindowManager m = this.getWindowManager();
+        Display d = m.getDefaultDisplay(); // 获取屏幕宽、高度
+        WindowManager.LayoutParams p = dialogWindow.getAttributes(); // 获取对话框当前的参数值
+        p.width = (int) (d.getWidth() -20); // 宽度设置为屏幕的0.65，根据实际情况调整
+        p.height =  p.width ; // 高度设置为屏幕的0.6，根据实际情况调整
+        dialogWindow.setAttributes(p);
+
     }
 
     @Override

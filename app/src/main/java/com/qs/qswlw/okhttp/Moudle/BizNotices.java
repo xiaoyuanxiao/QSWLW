@@ -1,5 +1,8 @@
 package com.qs.qswlw.okhttp.Moudle;
 
+import android.util.Log;
+
+import com.qs.qswlw.bean.MainBean;
 import com.qs.qswlw.bean.NoticesBean;
 import com.qs.qswlw.mynet.HttpSubCribe;
 import com.qs.qswlw.mynet.MyRetroService;
@@ -23,22 +26,22 @@ public class BizNotices implements INoticesBiz {
         return testMoudle;
     }
     @Override
-    public void getdata(final NoticesListener noticesListener, final String token, final int p, final int nid) {
-        ReHttpUtils.instans().httpRequest(new HttpSubCribe<List<NoticesBean>>() {
+    public void getdata(final NoticesListener noticesListener) {
+        ReHttpUtils.instans().httpRequest(new HttpSubCribe<MainBean<List<NoticesBean>>>() {
 
             @Override
             public void onError(Throwable e) {
-
+                Log.e("BizNotices",e+"");
             }
 
             @Override
-            public void onNext(List<NoticesBean> noticesBeen) {
+            public void onNext(MainBean<List<NoticesBean>> noticesBeen) {
                 noticesListener.onSuccess(noticesBeen);
             }
 
             @Override
-            public Observable<List<NoticesBean>> getObservable(MyRetroService retrofit) {
-                return retrofit.getNotices(token,p,nid);
+            public Observable<MainBean<List<NoticesBean>>> getObservable(MyRetroService retrofit) {
+                return retrofit.getNotices();
             }
         });
     }

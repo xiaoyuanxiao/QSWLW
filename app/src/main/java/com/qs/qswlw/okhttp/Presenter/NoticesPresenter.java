@@ -1,5 +1,8 @@
 package com.qs.qswlw.okhttp.Presenter;
 
+import android.util.Log;
+
+import com.qs.qswlw.bean.MainBean;
 import com.qs.qswlw.bean.NoticesBean;
 import com.qs.qswlw.okhttp.Factory.IBizFactory;
 import com.qs.qswlw.okhttp.Iview.INoticesView;
@@ -21,17 +24,19 @@ public class NoticesPresenter {
         this.iNoticesView = iNoticesView;
     }
 
-    public void getdata(String token,int p,int nid){
+    public void getdata(){
         iNoticesBiz.getdata(new NoticesListener() {
+
+
             @Override
-            public void onSuccess(List<NoticesBean> noticesBeanList) {
-                iNoticesView.setData(noticesBeanList);
+            public void onSuccess(MainBean<List<NoticesBean>> noticesBeanList) {
+                iNoticesView.setData(noticesBeanList.getResult());
             }
 
             @Override
             public void onFailure(String code) {
-
+                Log.e("NoticesPresenter",code);
             }
-        },token,p,nid);
+        });
     }
 }

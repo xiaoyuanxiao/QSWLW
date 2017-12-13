@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data class="com.qs.qswlw.NoticesDetailBinding">
+
+    </data>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical">
+    <RelativeLayout
+        android:id="@+id/rl_dialogmain_bg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@mipmap/box3_03"
+        android:paddingRight="20dp">
+
+        <TextView
+            android:id="@+id/tv_notices_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="35dp"
+            android:text="das"
+            android:textColor="@color/text_yellow"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/tv_notices_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:maxEms="12"
+            android:text="dasda2312"
+            android:textColor="@color/text_yellow"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/tv_notices_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/tv_notices_content"
+            android:text="公司"
+            android:textColor="@color/text_yellow"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/tv_notices_department"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/tv_notices_name"
+            android:text="sdqddadaqd"
+            android:textColor="@color/text_yellow"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/tv_notices_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/tv_notices_department"
+            android:layout_marginTop="5dp"
+            android:text="dewqdwe"
+            android:textColor="@color/text_yellow"
+            android:textSize="12sp" />
+
+    </RelativeLayout>
+    </LinearLayout>
+</layout>

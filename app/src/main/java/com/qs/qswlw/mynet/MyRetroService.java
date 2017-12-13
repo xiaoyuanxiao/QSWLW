@@ -86,9 +86,8 @@ public interface MyRetroService {
     /**
      *
      */
-    @FormUrlEncoded
     @POST("index.php?m=Appapi&c=Index&a=qsnotice")
-    Observable<List<NoticesBean>> getNotices(@Field("token") String token, @Field("p") int p, @Field("nid") int nid);
+    Observable<MainBean<List<NoticesBean>>> getNotices();
 
     /**
      * 获取短信验证码

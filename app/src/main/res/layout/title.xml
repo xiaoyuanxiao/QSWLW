@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data class="com.qs.qswlw.activity.BaseInfoData">
+
+        <variable
+            name="baseInfoActivityonclic"
+            type="android.view.View.OnClickListener" />
+
+        <variable
+            name="titlename"
+            type="java.lang.String" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+
+        <RelativeLayout
+            android:id="@+id/rl_titlebar"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@color/red">
+
+            <ImageView
+                android:id="@+id/iv_titlebar_left"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="5dp"
+                android:paddingLeft="10dp"
+                android:src="@mipmap/left" />
+
+         <!--   <TextView
+                android:id="@+id/tv_titlebar_left"
+                android:layout_toRightOf="@+id/iv_titlebar_left"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:onClick="@{baseInfoActivityonclic::onClick}"
+                android:text="返回"
+                android:textColor="@color/white"
+                android:textSize="12sp" />-->
+
+            <TextView
+                android:id="@+id/tv_titlebar_center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="@{titlename}"
+                android:textColor="@color/white" />
+
+            <ImageView
+                android:id="@+id/iv_titlebar_right"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:paddingRight="10dp" />
+
+        </RelativeLayout>
+
+        <FrameLayout
+            android:id="@+id/content_parnt_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"></FrameLayout>
+    </LinearLayout>
+</layout>
