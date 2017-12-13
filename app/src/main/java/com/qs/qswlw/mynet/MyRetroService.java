@@ -480,8 +480,9 @@ public interface MyRetroService {
 /**括号里面是路径*/
     Observable<MainBean<GoodProductBean>> getCity();
 
-    @Multipart
+
+    @FormUrlEncoded
     @POST("index.php?m=Appapi&c=Index&a=rank_top")
-    Observable<MainBean<PopRankingBean>> getPopRankingData(@Part("role") String role,@Part("time_slot") String a);
+    Observable<MainBean<PopRankingBean>> getPopRankingData(@Field("role") String role,@Field("time_slot") String a);
 
 }

@@ -1,5 +1,9 @@
 package com.qs.qswlw.okhttp.Moudle;
 
+import android.util.Log;
+
+import com.qs.qswlw.bean.MainBean;
+import com.qs.qswlw.bean.PopRankingBean;
 import com.qs.qswlw.mynet.HttpSubCribe;
 import com.qs.qswlw.mynet.MyRetroService;
 import com.qs.qswlw.mynet.ReHttpUtils;
@@ -21,21 +25,23 @@ public class BizPopRanking implements IPopRankingBiz {
         return testMoudle;
     }
     @Override
-    public void getdata(PopRankingListener popRankingListener, final String role, final String time_slot) {
-        ReHttpUtils.instans().httpRequest(new HttpSubCribe() {
-            @Override
-            public Observable getObservable(MyRetroService retrofit) {
-                return retrofit.getPopRankingData(role,time_slot);
-            }
+    public void getdata(final PopRankingListener popRankingListener, final String role, final String time_slot) {
+        ReHttpUtils.instans().httpRequest(new HttpSubCribe<MainBean<PopRankingBean>>() {
 
             @Override
             public void onError(Throwable e) {
-
+                Log.e("BizPopRanking",e+"");
             }
 
             @Override
-            public void onNext(Object o) {
+            public void onNext(MainBean<PopRankingBean> popRankingBeanMainBean) {
+                PopRankingBean result = popRankingBeanMainBean.getResult();
+                popRankingListener.onSuccess(result);
+            }
 
+            @Override
+            public Observable<MainBean<PopRankingBean>> getObservable(MyRetroService retrofit) {
+                return retrofit.getPopRankingData(role,time_slot);
             }
         });
     }

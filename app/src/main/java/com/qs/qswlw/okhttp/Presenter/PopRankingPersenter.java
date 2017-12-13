@@ -1,5 +1,7 @@
 package com.qs.qswlw.okhttp.Presenter;
 
+import android.util.Log;
+
 import com.qs.qswlw.bean.PopRankingBean;
 import com.qs.qswlw.okhttp.Factory.IBizFactory;
 import com.qs.qswlw.okhttp.Iview.IPopRankingView;
@@ -20,6 +22,11 @@ public class PopRankingPersenter {
     }
     public void getdata(String role,String time_slot){
         iPopRankingBiz.getdata(new PopRankingListener() {
+            @Override
+            public void onFailure(String code) {
+                Log.e("PopRankingPersenter",code);
+            }
+
             @Override
             public void onSuccess(PopRankingBean popRankingBean) {
                 iPopRankingView.setData(popRankingBean);

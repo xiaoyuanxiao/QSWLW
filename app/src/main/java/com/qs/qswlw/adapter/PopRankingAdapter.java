@@ -24,38 +24,40 @@ public class PopRankingAdapter extends BaseListAdapter<PopRankingBean.ListBean> 
 
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
-        PopRankingBean.ListBean salemanBean = data.get(i);
+        PopRankingBean.ListBean popRankingBean = data.get(i);
         ViewHolder holder;
         if (view == null) {//咦
             holder = new PopRankingAdapter.ViewHolder();
-            view = View.inflate(context, R.layout.item_ranking, null);
-            holder.iv_union_ranking = (ImageView) view.findViewById(R.id.iv_union_ranking);
-            holder.union_ranking_name = (TextView) view.findViewById(R.id.union_ranking_name);
-            holder.union_ranking_id = (TextView) view.findViewById(R.id.union_ranking_id);
-            holder.union_ranking = (TextView) view.findViewById(R.id.union_ranking);
-            holder.union_ranking_volume = (TextView) view.findViewById(R.id.union_ranking_volume);
+            view = View.inflate(context, R.layout.item_popranking, null);
+            holder.iv_popranking = (ImageView) view.findViewById(R.id.iv_popranking);
+            holder.popranking_name = (TextView) view.findViewById(R.id.popranking_name);
+            holder.popranking_id = (TextView) view.findViewById(R.id.popranking_id);
+            holder.popranking_city = (TextView) view.findViewById(R.id.popranking_city);
+            holder.popranking = (TextView) view.findViewById(R.id.popranking);
+            holder.popranking_volume = (TextView) view.findViewById(R.id.popranking_volume);
             holder.tv_ranking_bottom = (TextView) view.findViewById(R.id.tv_ranking_bottom);
             view.setTag(holder);
         } else {
             holder = (ViewHolder) view.getTag();
         }
         holder.tv_ranking_bottom.setText("业绩:");
-     //   Glide.with(context).load(ReHttpUtils.getBaseUrl() + salemanBean.getHead_pic()).into(holder.iv_union_ranking);
-        holder.union_ranking_name.setText(salemanBean.getNickname());
-        holder.union_ranking_id.setText("ID:"+ salemanBean.getUser_id());
-        //    holder.union_ranking.setText(singleLogBean.get());
-        holder.union_ranking_volume.setText(salemanBean.getTotal());
-        holder.union_ranking.setText((i+1)+"");
+       // Glide.with(context).load(ReHttpUtils.getBaseUrl() + popRankingBean.get).into(holder.iv_popranking);
+        holder.popranking_name.setText("昵称:"+popRankingBean.getNickname());
+        holder.popranking_id.setText("ID:"+ popRankingBean.getUser_id());
+            holder.popranking_city.setText("代理点:"+popRankingBean.getSheng_name());
+            holder.popranking.setText(i+1+"");
+        holder.popranking_volume.setText(popRankingBean.getTotal());
 
         return view;
     }
 
     class ViewHolder {
-        ImageView iv_union_ranking;
-        TextView union_ranking_name;
-        TextView union_ranking_id;
-        TextView union_ranking;
-        TextView union_ranking_volume;
+        ImageView iv_popranking;
+        TextView popranking_name;
+        TextView popranking_id;
+        TextView popranking_city;
+        TextView popranking;
+        TextView popranking_volume;
         TextView tv_ranking_bottom;
 
     }
