@@ -41,7 +41,6 @@ public class OtherUserSettingActivity  extends BaseActivity implements IPersonal
     private GridView gv_setting;
     private RadioButton rb_main_qsmall,rb_main_lianmeng,rb_main_funtime,rb_main_luck,rb_main_exit;
     private OtherUserSettingAdapter otherUserSettingAdapter;
-    private TextView tv_setting_set;
     private TextView tv_setting_consumerSilverbeans,tv_setting_encourage,tv_setting_withdrawals,tv_setting_consumerbeans,tv_setting_paytaxes
             ,tv_cyzx,tv_recommender,tv_setting_id,tv_setting_name,tv_role;
     private TextView setting_one,tv_setting_topcount;
@@ -64,7 +63,6 @@ public class OtherUserSettingActivity  extends BaseActivity implements IPersonal
         rb_main_funtime = (RadioButton) findViewById(R.id.rb_main_funtime);
         rb_main_luck = (RadioButton) findViewById(R.id.rb_main_luck);
         rb_main_exit = (RadioButton) findViewById(R.id.rb_main_exit);
-        tv_setting_set = (TextView) findViewById(R.id.tv_setting_set);
 
 
         tv_setting_withdrawals = (TextView) findViewById(R.id.tv_setting_withdrawals);

@@ -34,6 +34,7 @@ import com.qs.qswlw.bean.RegisterBean;
 import com.qs.qswlw.bean.RegisterCheckIdBean;
 import com.qs.qswlw.bean.RegisterGetCodeBean;
 import com.qs.qswlw.bean.ScanCodeRecordBean;
+import com.qs.qswlw.bean.SetModifyBean;
 import com.qs.qswlw.bean.ValidateOldMemberBean;
 import com.qs.qswlw.bean.VenturegoldBean;
 import com.qs.qswlw.bean.WithDrawalsRecordBean;
@@ -484,5 +485,9 @@ public interface MyRetroService {
     @FormUrlEncoded
     @POST("index.php?m=Appapi&c=Index&a=rank_top")
     Observable<MainBean<PopRankingBean>> getPopRankingData(@Field("role") String role,@Field("time_slot") String a);
+
+    @FormUrlEncoded
+    @POST("index.php?m=Appapi&c=User&a=userinfo")
+    Observable<MainBean<SetModifyBean>> getSetModifyData(@Field("token") String token, @Field("user_id") int user_id);
 
 }

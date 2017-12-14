@@ -410,7 +410,7 @@ public class MainActivity extends BaseActivity implements IMainView {
                             startActivity(new Intent(MainActivity.this,BusinessSettingActivity.class));
                         } else {
                             //其他页面
-                            startActivity(new Intent(MainActivity.this,ConsumerSettingActivity.class));
+                            startActivity(new Intent(MainActivity.this,BusinessSettingActivity.class));
                         }
                     }
                 }

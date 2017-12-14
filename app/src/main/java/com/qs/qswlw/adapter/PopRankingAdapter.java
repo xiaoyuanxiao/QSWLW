@@ -6,8 +6,10 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.qs.qswlw.R;
 import com.qs.qswlw.bean.PopRankingBean;
+import com.qs.qswlw.mynet.ReHttpUtils;
 
 import java.util.List;
 
@@ -41,7 +43,7 @@ public class PopRankingAdapter extends BaseListAdapter<PopRankingBean.ListBean> 
             holder = (ViewHolder) view.getTag();
         }
         holder.tv_ranking_bottom.setText("业绩:");
-       // Glide.with(context).load(ReHttpUtils.getBaseUrl() + popRankingBean.get).into(holder.iv_popranking);
+        Glide.with(context).load(ReHttpUtils.getBaseUrl() + popRankingBean.getHead_pic()).into(holder.iv_popranking);
         holder.popranking_name.setText("昵称:"+popRankingBean.getNickname());
         holder.popranking_id.setText("ID:"+ popRankingBean.getUser_id());
             holder.popranking_city.setText("代理点:"+popRankingBean.getSheng_name());

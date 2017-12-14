@@ -7,6 +7,7 @@ import android.os.Handler;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.TextView;
 
@@ -41,7 +42,7 @@ public class BusinessSettingActivity extends BaseActivity implements IPersonalSe
     private GridView gv_setting;
     private RadioButton rb_main_qsmall, rb_main_lianmeng, rb_main_funtime, rb_main_luck, rb_main_exit;
     private BusinessSettingAdapter businessSettingAdapter;
-    private TextView tv_setting_set;
+    private ImageView iv_setting_set;
     private TextView tv_setting_consumptionMoney, tv_setting_consumerSilverbeans, tv_setting_encourage, tv_setting_withdrawals, tv_setting_consumerbeans, tv_setting_paytaxes, tv_cyzx, tv_recommender, tv_setting_id, tv_setting_name, tv_setting_shopname, tv_role;
     private TextView setting_one;
     private String user_id, nickname, role;
@@ -54,8 +55,8 @@ public class BusinessSettingActivity extends BaseActivity implements IPersonalSe
         tv_recommender.setText("推荐人:" + personalSettingBean.getRe_info().getNickname());
         tv_setting_id.setText("ID:" + personalSettingBean.getUser_info().getUser_id());
         tv_setting_name.setText("昵称:" + personalSettingBean.getUser_info().getNickname());
-        shopName = personalSettingBean.getShop().getName();
-        tv_setting_shopname.setText("店铺名称:" + shopName);
+   //     shopName = personalSettingBean.getShop().getName();
+//        tv_setting_shopname.setText("店铺名称:" + shopName);
 
         tv_setting_consumptionMoney.setText(personalSettingBean.getNone() + "");
         tv_setting_consumerSilverbeans.setText(personalSettingBean.getUser_info().getSilver_total() + "");
@@ -71,12 +72,30 @@ public class BusinessSettingActivity extends BaseActivity implements IPersonalSe
         if (role.equals("0")) {
             tv_role.setText("消费天使");
             MyApplication.USERROLE = "消费天使";
-        } else if (role.equals("10")) {
-            tv_role.setText("商家");
-            MyApplication.USERROLE = "商家";
-        }else if (role.equals("8")) {
+        } else if (role.equals("8")) {
             tv_role.setText("创业经理");
             MyApplication.USERROLE = "创业经理";
+        }else if (role.equals("10")) {
+            tv_role.setText("商家");
+            MyApplication.USERROLE = "商家";
+        }else if(role.equals("11")){
+            tv_role.setText("创业天使");
+            MyApplication.USERROLE = "创业天使";
+        }else if(role.equals("12")){
+            tv_role.setText("省代");
+            MyApplication.USERROLE = "省代";
+        }else if(role.equals("13")){
+            tv_role.setText("市代");
+            MyApplication.USERROLE = "市代";
+        }else if(role.equals("14")){
+            tv_role.setText("区代");
+            MyApplication.USERROLE = "区代";
+        }else if(role.equals("15")){
+            tv_role.setText("创业中心");
+            MyApplication.USERROLE = "创业中心";
+        }else if(role.equals("25")){
+            tv_role.setText("平台");
+            MyApplication.USERROLE = "平台";
         }
 
 
@@ -101,9 +120,7 @@ public class BusinessSettingActivity extends BaseActivity implements IPersonalSe
         rb_main_funtime = (RadioButton) findViewById(R.id.rb_main_funtime);
         rb_main_luck = (RadioButton) findViewById(R.id.rb_main_luck);
         rb_main_exit = (RadioButton) findViewById(R.id.rb_main_exit);
-        tv_setting_set = (TextView) findViewById(R.id.tv_setting_set);
-
-
+        iv_setting_set = (ImageView) findViewById(R.id.iv_setting_set);
         tv_setting_withdrawals = (TextView) findViewById(R.id.tv_setting_withdrawals);
         tv_setting_consumptionMoney = (TextView) findViewById(R.id.tv_setting_consumptionMoney);
         tv_setting_consumerSilverbeans = (TextView) findViewById(R.id.tv_setting_consumerSilverbeans);
@@ -141,7 +158,7 @@ public class BusinessSettingActivity extends BaseActivity implements IPersonalSe
         rb_main_funtime.setOnClickListener(this);
         rb_main_luck.setOnClickListener(this);
         rb_main_exit.setOnClickListener(this);
-        tv_setting_set.setOnClickListener(this);
+        iv_setting_set.setOnClickListener(this);
 
 
     }
@@ -167,7 +184,7 @@ public class BusinessSettingActivity extends BaseActivity implements IPersonalSe
             case R.id.rb_main_exit:
                 showDialog();
                 break;
-            case R.id.tv_setting_set:
+            case R.id.iv_setting_set:
                 startActivity(new Intent(this,SetModifyActivity.class));
                 break;
         }

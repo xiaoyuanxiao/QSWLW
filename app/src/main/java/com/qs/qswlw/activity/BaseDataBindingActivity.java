@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 
 import com.bumptech.glide.Glide;
+import com.qs.qswlw.BaseInfoData;
 import com.qs.qswlw.R;
 
 /**
@@ -17,7 +18,7 @@ import com.qs.qswlw.R;
 public abstract class BaseDataBindingActivity extends FragmentActivity {
     ViewDataBinding inflate;
     int titleview = View.VISIBLE;
-    com.qs.qswlw.activity.BaseInfoData baseInfoData;
+    BaseInfoData baseInfoData;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

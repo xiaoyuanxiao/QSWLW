@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    android:id="@+id/edit_info" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/edit_info">
+    android:orientation="vertical">
     <RelativeLayout
         android:id="@+id/rl_set_avater"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:paddingBottom="4dp"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
-        android:paddingTop="10dp"
-        android:paddingBottom="4dp">
+        android:paddingTop="10dp">
         <TextView
            style="@style/tv_harvestaddress"
             android:layout_centerVertical="true"
@@ -35,9 +35,10 @@
             android:layout_centerVertical="true"
             android:text="ID"/>
         <TextView
+            android:id="@+id/tv_setmodify_id"
             style="@style/tv_harvestaddress"
-            android:layout_centerVertical="true"
             android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
             android:text="16421585"/>
     </RelativeLayout>
     <View
@@ -54,10 +55,10 @@
             android:layout_centerVertical="true"
             android:text="用户名"/>
         <TextView
-            android:id="@+id/tv_userName"
+            android:id="@+id/tv_setmodify_userName"
             style="@style/tv_harvestaddress"
-            android:layout_centerVertical="true"
             android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
             android:text="华东"/>
     </RelativeLayout>
     <View
@@ -73,9 +74,10 @@
             android:layout_centerVertical="true"
             android:text="电话"/>
         <TextView
+            android:id="@+id/tv_setmodify_phone"
             style="@style/tv_harvestaddress"
-            android:layout_centerVertical="true"
             android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
             android:text="164212585"/>
     </RelativeLayout>
     <View
@@ -93,11 +95,11 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="30dp"
-            android:background="@drawable/corner_modify"
-            android:textSize="10sp"
-            android:textColor="@color/white"
             android:layout_alignParentRight="true"
-            android:text="修改密码"/>
+            android:background="@drawable/corner_modify"
+            android:text="修改密码"
+            android:textColor="@color/white"
+            android:textSize="10sp"/>
     </RelativeLayout>
     <View
         android:layout_width="match_parent"
@@ -114,11 +116,11 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="30dp"
-            android:background="@drawable/corner_modify"
-            android:textSize="10sp"
-            android:textColor="@color/white"
             android:layout_alignParentRight="true"
-            android:text="二级密码"/>
+            android:background="@drawable/corner_modify"
+            android:text="二级密码"
+            android:textColor="@color/white"
+            android:textSize="10sp"/>
     </RelativeLayout>
     <View
         android:layout_width="match_parent"
@@ -136,11 +138,11 @@
             android:id="@+id/btn_retrievePassword"
             android:layout_width="wrap_content"
             android:layout_height="30dp"
-            android:background="@drawable/corner_modify"
-            android:textSize="10sp"
-            android:textColor="@color/white"
             android:layout_alignParentRight="true"
-            android:text="找回密码"/>
+            android:background="@drawable/corner_modify"
+            android:text="找回密码"
+            android:textColor="@color/white"
+            android:textSize="10sp"/>
     </RelativeLayout>
     <View
         android:layout_width="match_parent"

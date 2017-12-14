@@ -34,18 +34,6 @@ import rx.Observable;
  */
 
 public class RegisterActivity extends BaseInfoActivity{
-    private Spinner consume_spinner;
-    private ArrayAdapter<CharSequence> consume_adapter;
-    private String strConsume;
-    private EditText edt_register_code, edt_register_myphone, edt_register_id, edt_register_phone, edt_register_username, edt_register_password, edt_register_name, edt_register_confirmPassword;
-    private Button register_getcode, btn_register;
-    private TimeCount time;
-
-
-
-   // PersonalSettingBean.CyzxInfoBean cyzxInfoBean;
-   // PersonalSettingBean.ReInfoBean reInfoBean;
-  //  PersonalSettingBean.UserInfoBean userInfoBean;
     /**
      * 返回信息
      *
@@ -55,6 +43,18 @@ public class RegisterActivity extends BaseInfoActivity{
     String role;
     String mobile;
     int succ;
+    private Spinner consume_spinner;
+    private ArrayAdapter<CharSequence> consume_adapter;
+
+
+
+   // PersonalSettingBean.CyzxInfoBean cyzxInfoBean;
+   // PersonalSettingBean.ReInfoBean reInfoBean;
+  //  PersonalSettingBean.UserInfoBean userInfoBean;
+    private String strConsume;
+    private EditText edt_register_code, edt_register_myphone, edt_register_id, edt_register_phone, edt_register_username, edt_register_password, edt_register_name, edt_register_confirmPassword;
+    private Button register_getcode, btn_register;
+    private TimeCount time;
     private CheckBox cbx_register;
     private int user_role;
 
@@ -92,6 +92,9 @@ public class RegisterActivity extends BaseInfoActivity{
                 switch (strConsume) {
                     case "消费天使":
                         user_role = 0;
+                        break;
+                    case "创业经理":
+                        user_role = 8;
                         break;
                     case "商家":
                         user_role = 10;

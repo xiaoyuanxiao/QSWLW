@@ -15,7 +15,11 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.qs.qswlw.MyApplication;
 import com.qs.qswlw.R;
+import com.qs.qswlw.bean.SetModifyBean;
+import com.qs.qswlw.okhttp.Iview.ISetModifyView;
+import com.qs.qswlw.okhttp.Presenter.SetModifyPersenter;
 import com.qs.qswlw.utils.ImageTools;
 import com.qs.qswlw.utils.ToastUtils;
 import com.qs.qswlw.view.GenderPopupWindow;
@@ -26,7 +30,7 @@ import java.io.File;
  * Created by xiaoyu on 2017/4/20.
  */
 
-public class SetModifyActivity extends BaseInfoActivity {
+public class SetModifyActivity extends BaseInfoActivity implements ISetModifyView {
 
     private static final int CAMERA = 2003;
     private static final int CHOOSE_PICTURE = 2004;
@@ -37,10 +41,11 @@ public class SetModifyActivity extends BaseInfoActivity {
     private Uri imageUri;
     private ImageView iv_set_avater;
     private RelativeLayout rl_userName;
-    private TextView tv_userName;
     private Intent intent;
     private String name;
     private Button btn_retrievePassword;
+    private SetModifyPersenter setModifyPersenter = new SetModifyPersenter(this);
+    private TextView tv_setmodify_id,tv_setmodify_userName,tv_setmodify_phone;
 
     @Override
     public View setConetnView() {
@@ -48,8 +53,10 @@ public class SetModifyActivity extends BaseInfoActivity {
         rl_set_avater = (RelativeLayout) inflate.findViewById(R.id.rl_set_avater);
         iv_set_avater = (ImageView) inflate.findViewById(R.id.iv_set_avater);
         rl_userName = (RelativeLayout) inflate.findViewById(R.id.rl_userName);
-        tv_userName = (TextView) inflate.findViewById(R.id.tv_userName);
         btn_retrievePassword = (Button) inflate.findViewById(R.id.btn_retrievePassword);
+        tv_setmodify_id = (TextView) inflate.findViewById(R.id.tv_setmodify_id);
+        tv_setmodify_userName = (TextView) inflate.findViewById(R.id.tv_setmodify_userName);
+        tv_setmodify_phone = (TextView) inflate.findViewById(R.id.tv_setmodify_phone);
         return inflate;
     }
 
@@ -62,6 +69,7 @@ public class SetModifyActivity extends BaseInfoActivity {
     @Override
     public void initData() {
         super.initData();
+        setModifyPersenter.getdata(MyApplication.TOKEN, Integer.parseInt(MyApplication.ID));
     }
 
     @Override
@@ -86,7 +94,7 @@ public class SetModifyActivity extends BaseInfoActivity {
                 break;
             case R.id.rl_userName:
                 intent = new Intent(this, ChangeUserNameActivity.class);
-                intent.putExtra("userName", tv_userName.getText().toString());
+                intent.putExtra("userName", tv_setmodify_userName.getText().toString());
                 startActivityForResult(intent, 200);
                 break;
             case R.id.btn_retrievePassword:
@@ -120,6 +128,14 @@ public class SetModifyActivity extends BaseInfoActivity {
         } else {
             ToastUtils.showToast(this, "请重新选取图片！");
         }
+    }
+
+    @Override
+    public void setData(SetModifyBean setModifyBean) {
+        tv_setmodify_id.setText(setModifyBean.getUser_id());
+        tv_setmodify_userName.setText(setModifyBean.getNickname());
+        tv_setmodify_phone.setText(setModifyBean.getMobile());
+
     }
 
     //上传图片

@@ -13,7 +13,6 @@ import android.widget.TextView;
 
 import com.qs.qswlw.R;
 import com.qs.qswlw.activity.PersonalCenter.BaseInfoActivity;
-import com.qs.qswlw.fragment.PopRankingCenterFragment;
 import com.qs.qswlw.fragment.PopRankingLeftFragment;
 import com.qs.qswlw.utils.TextcolorUtil;
 
@@ -36,8 +35,7 @@ public class PopRankingActivity extends BaseInfoActivity {
     private FragmentManager fragmentManager;
     private String role = "";
     private String time_slot = "";
-    private PopRankingLeftFragment popRankingLeftFragment, popRankingLeftFragment2;
-    private PopRankingCenterFragment popRankingCenterFragment;
+    private PopRankingLeftFragment popRankingLeftFragment, popRankingCenterFragment,popRankingRightFragment;
     private String city;
     private FragmentManager manager;
 
@@ -81,11 +79,6 @@ public class PopRankingActivity extends BaseInfoActivity {
         popRankingLeftFragment = new PopRankingLeftFragment(role, time_slot);
         transaction.add(ll_container, popRankingLeftFragment);
         transaction.commit();
-//        fragments = new ArrayList<Fragment>();
-//        popRankingLeftFragment = new PopRankingLeftFragment(role,time_slot);
-//        fragments.add(popRankingLeftFragment);
-//        showFragment(fragments.get(0));
-
     }
 
     /**
@@ -210,20 +203,15 @@ public class PopRankingActivity extends BaseInfoActivity {
                     popRankingLeftFragment = new PopRankingLeftFragment(role, time_slot);
                     transaction.add(R.id.ll_container, popRankingLeftFragment);
                     transaction.commit();
-
-                    //     showFragment(fragments.get(0));
                 } else if ("周排名".equals(content)) {
                     FragmentTransaction transaction= manager.beginTransaction();
-                    popRankingCenterFragment = new PopRankingCenterFragment(role, time_slot);
+                    popRankingCenterFragment = new PopRankingLeftFragment(role, time_slot);
                     transaction.replace(R.id.ll_container, popRankingCenterFragment);
-
                     transaction.commit();
-                    //       showFragment(fragments.get(1));
                 } else if ("月排名".equals(content)) {
                     FragmentTransaction transaction= manager.beginTransaction();
-                    popRankingLeftFragment2 = new PopRankingLeftFragment(role, time_slot);
-                    transaction.replace(R.id.ll_container, popRankingLeftFragment2);
-
+                    popRankingRightFragment = new PopRankingLeftFragment(role, time_slot);
+                    transaction.replace(R.id.ll_container, popRankingRightFragment);
                     transaction.commit();
                 }
                 dialog.dismiss();

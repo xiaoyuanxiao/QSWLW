@@ -7,6 +7,7 @@ import android.os.Handler;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.TextView;
 
@@ -38,7 +39,7 @@ public class ConsumerSettingActivity extends BaseActivity implements AdapterView
         }
     };
     private GridView gv_setting;
-    private TextView tv_setting_set;
+    private ImageView iv_setting_set;
     private ConsumerSettingAdapter consumerSettingAdapter;
     private RadioButton rb_main_qsmall,rb_main_lianmeng,rb_main_funtime,rb_main_luck,rb_main_exit;
     private TextView tv_setting_consumptionMoney,tv_setting_consumerSilverbeans,tv_setting_encourage,tv_setting_withdrawals,tv_setting_consumerbeans,
@@ -111,7 +112,7 @@ public class ConsumerSettingActivity extends BaseActivity implements AdapterView
     @Override
     public void initfindviewByid() {
         gv_setting = (GridView) findViewById(R.id.gv_setting);
-        tv_setting_set = (TextView) findViewById(R.id.tv_setting_set);
+        iv_setting_set = (ImageView) findViewById(R.id.iv_setting_set);
         rb_main_qsmall = (RadioButton) findViewById(R.id.rb_main_qsmall);
         rb_main_lianmeng = (RadioButton) findViewById(R.id.rb_main_lianmeng);
         rb_main_funtime = (RadioButton) findViewById(R.id.rb_main_funtime);
@@ -150,7 +151,7 @@ public class ConsumerSettingActivity extends BaseActivity implements AdapterView
     @Override
     public void setOnclick() {
         gv_setting.setOnItemClickListener(this);
-        tv_setting_set.setOnClickListener(this);
+        iv_setting_set.setOnClickListener(this);
         rb_main_qsmall.setOnClickListener(this);
         rb_main_lianmeng.setOnClickListener(this);
         rb_main_funtime.setOnClickListener(this);

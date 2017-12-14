@@ -65,15 +65,13 @@
                         android:textColor="@color/white"
                         android:textSize="13sp" />
 
-                    <TextView
-                        android:id="@+id/tv_setting_set"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                    <ImageView
+                        android:id="@+id/iv_setting_set"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
                         android:layout_alignParentRight="true"
                         android:layout_centerVertical="true"
-                        android:text="设置"
-                        android:textColor="@color/white"
-                        android:textSize="13sp" />
+                       android:src="@mipmap/shezhi"/>
                 </RelativeLayout>
 
                 <RelativeLayout
