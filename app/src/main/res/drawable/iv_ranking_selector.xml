@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@mipmap/oo_03" android:state_pressed="false" />
+    <item android:drawable="@mipmap/oo2_03" android:state_focused="true" />
+    <item android:drawable="@mipmap/oo2_03" android:state_pressed="true"/>
+</selector>

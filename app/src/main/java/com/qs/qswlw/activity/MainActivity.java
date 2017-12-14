@@ -1,7 +1,5 @@
 package com.qs.qswlw.activity;
 
-import android.app.Dialog;
-import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
@@ -16,7 +14,6 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.webkit.WebView;
-import android.webkit.WebViewClient;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -416,9 +413,7 @@ public class MainActivity extends BaseActivity implements IMainView {
                             startActivity(new Intent(MainActivity.this,ConsumerSettingActivity.class));
                         }
                     }
-
                 }
-
                // finish();
                 break;
             case R.id.iv_ranking_main:
@@ -430,19 +425,8 @@ public class MainActivity extends BaseActivity implements IMainView {
                 break;
             //互动吧
             case R.id.rb_main_media:
-                WebView webView = new WebView(this);
-                webView.loadUrl(entrepBaen.getInteraction());
-                //覆盖WebView默认使用第三方或系统默认浏览器打开网页的行为，使网页用WebView打开
-                webView.setWebViewClient(new WebViewClient(){
-                    @Override
-                    public boolean shouldOverrideUrlLoading(WebView view, String url) {
-                        // TODO Auto-generated method stub
-                       Dialog  dialog = ProgressDialog.show(MainActivity.this,null,"页面加载中，请稍后..");
-                        //返回值是true的时候控制去WebView打开，为false调用系统浏览器或第三方浏览器
-                        view.loadUrl(url);
-                        return true;
-                    }
-                });
+                this.intent = new Intent(this, WebviewActivity.class);
+                this.intent.putExtra("Interaction", entrepBaen.getInteraction());
                 startActivity(this.intent);
                 break;
             //钱盛联盟

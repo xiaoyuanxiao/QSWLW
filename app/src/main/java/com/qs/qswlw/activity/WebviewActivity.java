@@ -1,9 +1,14 @@
 package com.qs.qswlw.activity;
 
 import android.app.Activity;
+import android.app.Dialog;
+import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.net.http.SslError;
 import android.os.Bundle;
 import android.view.KeyEvent;
+import android.webkit.SslErrorHandler;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
@@ -17,7 +22,7 @@ public class WebviewActivity extends Activity {
 
     private WebView webView;
     private String url;
-    private String witnessChinaBusiness;
+    private String witnessChinaBusiness,interaction,products,ella;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,14 +33,27 @@ public class WebviewActivity extends Activity {
         init();
     }
 
+
+
     private void initData() {
         Intent intent = getIntent();
         witnessChinaBusiness = intent.getStringExtra("WitnessChinaBusiness");
+        interaction = intent.getStringExtra("Interaction");
+        products = intent.getStringExtra("products");
+        ella = intent.getStringExtra("ella");
+        if(witnessChinaBusiness!=null){
+           url = witnessChinaBusiness;
+        } else if (interaction != null) {
+            url = interaction;
+        }else if(products != null) {
+            url = products;
+        }else if(ella != null) {
+            url = ella;
+        }
 
     }
 
     private void init() {
-        url = witnessChinaBusiness;
         webView = (WebView) findViewById(R.id.webview);
         //启用支持JavaScript
         webView.getSettings().setJavaScriptEnabled(true);
@@ -45,10 +63,31 @@ public class WebviewActivity extends Activity {
         webView.loadUrl(url);
         //覆盖WebView默认使用第三方或系统默认浏览器打开网页的行为，使网页用WebView打开
         webView.setWebViewClient(new WebViewClient() {
+            Dialog progressDialog = ProgressDialog.show(WebviewActivity.this, null,
+                   "正在加载中");
+
             @Override
+            public void onReceivedSslError(WebView view, SslErrorHandler handler, SslError error) {
+                super.onReceivedSslError(view, handler, error);
+                handler.proceed();
+            }
+
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
                 view.loadUrl(url);
                 return true;
+            }
+
+            @Override
+            public void onPageStarted(WebView view, String url, Bitmap favicon) {
+                super.onPageStarted(view, url, favicon);
+                progressDialog.show();
+            }
+
+            @Override
+            public void onPageFinished(WebView view, String url) {
+                super.onPageFinished(view, url);
+                progressDialog.cancel();
+
             }
         });
     }

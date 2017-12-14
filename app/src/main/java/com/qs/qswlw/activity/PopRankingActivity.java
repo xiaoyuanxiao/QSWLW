@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -14,6 +15,7 @@ import com.qs.qswlw.R;
 import com.qs.qswlw.activity.PersonalCenter.BaseInfoActivity;
 import com.qs.qswlw.fragment.PopRankingCenterFragment;
 import com.qs.qswlw.fragment.PopRankingLeftFragment;
+import com.qs.qswlw.utils.TextcolorUtil;
 
 import java.util.ArrayList;
 
@@ -27,6 +29,8 @@ public class PopRankingActivity extends BaseInfoActivity {
     private RadioGroup fg_unionranking;
     private RelativeLayout day_ranking, week_ranking, month_ranking;
     private TextView tv_ranking_left, tv_ranking_right;
+    private TextView tv_dayranking, tv_weekranking,tv_monthranking;
+    private ImageView iv_dayranking, iv_weekranking,iv_monthranking;
     private String content;
     private ArrayList<Fragment> fragments;
     private FragmentManager fragmentManager;
@@ -46,6 +50,12 @@ public class PopRankingActivity extends BaseInfoActivity {
         month_ranking = (RelativeLayout) inflate.findViewById(R.id.month_ranking);
         tv_ranking_left = (TextView) inflate.findViewById(R.id.tv_ranking_left);
         tv_ranking_right = (TextView) inflate.findViewById(R.id.tv_ranking_right);
+        tv_dayranking = (TextView) inflate.findViewById(R.id.tv_dayranking);
+        tv_weekranking = (TextView) inflate.findViewById(R.id.tv_weekranking);
+        tv_monthranking = (TextView) inflate.findViewById(R.id.tv_monthranking);
+        iv_dayranking = (ImageView) inflate.findViewById(R.id.iv_dayranking);
+        iv_weekranking = (ImageView) inflate.findViewById(R.id.iv_weekranking);
+        iv_monthranking = (ImageView) inflate.findViewById(R.id.iv_monthranking);
         return inflate;
     }
 
@@ -120,23 +130,43 @@ public class PopRankingActivity extends BaseInfoActivity {
         super.onClick(v);
         switch (v.getId()) {
             case R.id.day_ranking:
+                setTextBg(day_ranking,week_ranking,month_ranking);
+                TextcolorUtil.setTextColor(this,0,tv_dayranking,tv_weekranking,tv_monthranking);
+                setImageView(iv_dayranking,iv_weekranking,iv_monthranking);
                 content = "日排名";
                 time_slot = "ri";
                 showDialog(content);
+
                 break;
             case R.id.week_ranking:
+                setTextBg(week_ranking,day_ranking,month_ranking);
+                TextcolorUtil.setTextColor(this,1,tv_dayranking,tv_weekranking,tv_monthranking);
+                setImageView(iv_weekranking,iv_dayranking,iv_monthranking);
                 content = "周排名";
                 time_slot = "zhou";
                 showDialog(content);
                 break;
             case R.id.month_ranking:
+                setTextBg(month_ranking,day_ranking,week_ranking);
+                TextcolorUtil.setTextColor(this,2,tv_dayranking,tv_weekranking,tv_monthranking);
+                setImageView(iv_monthranking,iv_dayranking,iv_weekranking);
                 content = "月排名";
                 time_slot = "yue";
                 showDialog(content);
                 break;
         }
+    }
 
+    private void setTextBg(RelativeLayout rl1,RelativeLayout rl2,RelativeLayout rl3){
+        rl1.setBackgroundColor(getResources().getColor(R.color.red));
+        rl2.setBackgroundColor(getResources().getColor(R.color.white));
+        rl3.setBackgroundColor(getResources().getColor(R.color.white));
+    }
 
+    private void setImageView(ImageView iv1,ImageView iv2,ImageView iv3){
+        iv1.setImageResource(R.mipmap.oo2_03);
+        iv2.setImageResource(R.mipmap.oo_03);
+        iv3.setImageResource(R.mipmap.oo_03);
     }
 
     private void showDialog(final String content) {
