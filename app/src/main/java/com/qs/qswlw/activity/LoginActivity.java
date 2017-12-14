@@ -10,6 +10,7 @@ import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.qs.qswlw.MyApplication;
 import com.qs.qswlw.R;
 import com.qs.qswlw.activity.PersonalCenter.BaseInfoActivity;
 import com.qs.qswlw.activity.PersonalCenter.BusinessSettingActivity;
@@ -125,6 +126,7 @@ public class LoginActivity extends BaseInfoActivity {
                 UserManage.getInstance().saveUserInfo(LoginActivity.this,userinfo);
                 String role = UserManage.getInstance().getUserInfo(LoginActivity.this).getRole();
                 String token = userinfo.getToken();
+                MyApplication.ID = userinfo.getUser_id();
                 //请求个人中心接口
                 Intent intent = new Intent();
             //    intent.putExtra("token",token);

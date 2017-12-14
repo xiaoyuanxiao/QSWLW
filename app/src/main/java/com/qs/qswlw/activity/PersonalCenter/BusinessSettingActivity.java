@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Handler;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
@@ -144,6 +145,7 @@ public class BusinessSettingActivity extends BaseActivity implements IPersonalSe
         tv_setting_shopname.setVisibility(View.VISIBLE);
         String token = UserManage.getInstance().getUserInfo(BusinessSettingActivity.this).getToken();
         MyApplication.TOKEN = token;
+        Log.e("token",token);
         personalSettingPresenter.getData(token);
         businessSettingAdapter = new BusinessSettingAdapter(this);
         gv_setting.setAdapter(businessSettingAdapter);

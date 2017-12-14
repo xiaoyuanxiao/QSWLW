@@ -15,7 +15,7 @@
            style="@style/tv_harvestaddress"
             android:layout_centerVertical="true"
             android:text="我的头像"/>
-        <com.qs.qswlw.view.CircleImageView
+        <com.qs.qswlw.view.NoBorderCircleImageView
             android:id="@+id/iv_set_avater"
             android:layout_width="30dp"
             android:layout_height="30dp"

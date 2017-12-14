@@ -7,6 +7,7 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
@@ -14,10 +15,13 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
 import com.qs.qswlw.MyApplication;
 import com.qs.qswlw.R;
+import com.qs.qswlw.bean.MainBean;
 import com.qs.qswlw.bean.SetModifyBean;
+import com.qs.qswlw.mynet.HttpSubCribe;
+import com.qs.qswlw.mynet.MyRetroService;
+import com.qs.qswlw.mynet.ReHttpUtils;
 import com.qs.qswlw.okhttp.Iview.ISetModifyView;
 import com.qs.qswlw.okhttp.Presenter.SetModifyPersenter;
 import com.qs.qswlw.utils.ImageTools;
@@ -25,6 +29,8 @@ import com.qs.qswlw.utils.ToastUtils;
 import com.qs.qswlw.view.GenderPopupWindow;
 
 import java.io.File;
+
+import rx.Observable;
 
 /**
  * Created by xiaoyu on 2017/4/20.
@@ -46,6 +52,7 @@ public class SetModifyActivity extends BaseInfoActivity implements ISetModifyVie
     private Button btn_retrievePassword;
     private SetModifyPersenter setModifyPersenter = new SetModifyPersenter(this);
     private TextView tv_setmodify_id,tv_setmodify_userName,tv_setmodify_phone;
+    private File file;
 
     @Override
     public View setConetnView() {
@@ -123,11 +130,35 @@ public class SetModifyActivity extends BaseInfoActivity implements ISetModifyVie
                 break;
         }
         if (photo_path != null) {
-            //图片处理
-            Glide.with(this).load(photo_path).into(iv_set_avater);
+            //图片处理,上传头像
+          //  Glide.with(this).load(photo_path).into(iv_set_avater);
+            file = new File(photo_path);
+            postAvater(MyApplication.TOKEN, Integer.parseInt(MyApplication.ID),photo_path);
         } else {
             ToastUtils.showToast(this, "请重新选取图片！");
         }
+    }
+
+    private void postAvater(final String token, final int user_id, final String images) {
+        ReHttpUtils.instans().httpRequest(new HttpSubCribe<MainBean>() {
+
+            @Override
+            public void onError(Throwable e) {
+                Log.e("postAvater",e+"");
+            }
+
+            @Override
+            public void onNext(MainBean mainBean) {
+                ToastUtils.showToast(mainBean.getMsg());
+            }
+
+            @Override
+            public Observable<MainBean> getObservable(MyRetroService retrofit) {
+                return retrofit.getUserAvaterData(token,user_id,images);
+            }
+        });
+
+
     }
 
     @Override

@@ -482,12 +482,46 @@ public interface MyRetroService {
     Observable<MainBean<GoodProductBean>> getCity();
 
 
+    /**
+     *省市区代排行榜
+     * @param role
+     * @param a
+     * @return
+     */
     @FormUrlEncoded
     @POST("index.php?m=Appapi&c=Index&a=rank_top")
     Observable<MainBean<PopRankingBean>> getPopRankingData(@Field("role") String role,@Field("time_slot") String a);
 
+    /**
+     * 个人中心资料
+     * @param token
+     * @param user_id
+     * @return
+     */
     @FormUrlEncoded
     @POST("index.php?m=Appapi&c=User&a=userinfo")
     Observable<MainBean<SetModifyBean>> getSetModifyData(@Field("token") String token, @Field("user_id") int user_id);
+
+    /**
+     * 个人资料头像修改
+     * @param token
+     * @param user_id
+     * @param images
+     * @return
+     */
+    @FormUrlEncoded
+    @POST("index.php?m=Appapi&c=user&a=updload_head")
+    Observable<MainBean> getUserAvaterData(@Field("token") String token, @Field("user_id") int user_id,@Field("images") String images);
+
+    /**
+     * 个人资料昵称修改
+     * @param token
+     * @param user_id
+     * @param nickname
+     * @return
+     */
+    @FormUrlEncoded
+    @POST("index.php?m=Appapi&c=User&a=editname")
+    Observable<MainBean> getUserNameData(@Field("token") String token, @Field("user_id") int user_id,@Field("nickname") String nickname);
 
 }
