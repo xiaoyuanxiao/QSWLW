@@ -127,6 +127,42 @@ public class Maindatabean {
         String witness_url;
         String products;
         String ella;
+        String winqs;//赢在钱盛
+        String qs_shop;//钱盛联盟
+        String qs_fun;
+        String qs_lack_draw;
+
+        public String getWinqs() {
+            return winqs;
+        }
+
+        public void setWinqs(String winqs) {
+            this.winqs = winqs;
+        }
+
+        public String getQs_shop() {
+            return qs_shop;
+        }
+
+        public void setQs_shop(String qs_shop) {
+            this.qs_shop = qs_shop;
+        }
+
+        public String getQs_fun() {
+            return qs_fun;
+        }
+
+        public void setQs_fun(String qs_fun) {
+            this.qs_fun = qs_fun;
+        }
+
+        public String getQs_lack_draw() {
+            return qs_lack_draw;
+        }
+
+        public void setQs_lack_draw(String qs_lack_draw) {
+            this.qs_lack_draw = qs_lack_draw;
+        }
 
         public String getElla() {
             return ella;

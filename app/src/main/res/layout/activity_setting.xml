@@ -180,7 +180,7 @@
                             <TextView
                                 android:id="@+id/setting_one"
                                 style="@style/tv_standard"
-                                android:text="消费总金额" />
+                                android:text="待审让利" />
 
                             <TextView
                                 android:id="@+id/tv_setting_consumptionMoney"
@@ -280,7 +280,7 @@
                             <TextView
                                 android:id="@+id/setting_six"
                                 style="@style/tv_standard"
-                                android:text="上个激励日" />
+                                android:text="日值" />
 
                             <TextView
                                 android:id="@+id/tv_setting_paytaxes"

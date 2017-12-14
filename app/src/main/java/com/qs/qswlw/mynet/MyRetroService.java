@@ -511,7 +511,7 @@ public interface MyRetroService {
      */
     @FormUrlEncoded
     @POST("index.php?m=Appapi&c=user&a=updload_head")
-    Observable<MainBean> getUserAvaterData(@Field("token") String token, @Field("user_id") int user_id,@Field("images") String images);
+    Observable<MainBean> getUserAvaterData(@Field("token") String token, @Field("user_id") int user_id,@Field("images") File images);
 
     /**
      * 个人资料昵称修改
@@ -524,4 +524,11 @@ public interface MyRetroService {
     @POST("index.php?m=Appapi&c=User&a=editname")
     Observable<MainBean> getUserNameData(@Field("token") String token, @Field("user_id") int user_id,@Field("nickname") String nickname);
 
+    /**
+     *用户密码设置
+     */
+    @FormUrlEncoded
+    @POST("index.php?m=Appapi&c=user&a=setup")
+    Observable<MainBean> getPasswordData(@Field("token") String token, @Field("user_id") int user_id,@Field("pass") String pass,
+                                         @Field("password") String password,@Field("repassword") String repassword );
 }

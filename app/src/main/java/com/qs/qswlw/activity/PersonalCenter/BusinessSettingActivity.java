@@ -59,12 +59,12 @@ public class BusinessSettingActivity extends BaseActivity implements IPersonalSe
    //     shopName = personalSettingBean.getShop().getName();
 //        tv_setting_shopname.setText("店铺名称:" + shopName);
 
-        tv_setting_consumptionMoney.setText(personalSettingBean.getNone() + "");
+        tv_setting_consumptionMoney.setText("0");
         tv_setting_consumerSilverbeans.setText(personalSettingBean.getUser_info().getSilver_total() + "");
         tv_setting_encourage.setText(personalSettingBean.getUser_info().getLove_total() + "");
         tv_setting_withdrawals.setText(personalSettingBean.getUser_info().getGold_total() + "");
         tv_setting_consumerbeans.setText(personalSettingBean.getUser_info().getTaxgold_total() + "");
-        tv_setting_paytaxes.setText(personalSettingBean.getLast_rebate_date() + "");
+        tv_setting_paytaxes.setText(personalSettingBean.getLoveval_model2_shop() + "");
         MyApplication.MOBILE = mobile = personalSettingBean.getUser_info().getMobile();
         MyApplication.ID = user_id = personalSettingBean.getUser_info().getUser_id();
         MyApplication.NICKNAME = nickname = personalSettingBean.getUser_info().getNickname();

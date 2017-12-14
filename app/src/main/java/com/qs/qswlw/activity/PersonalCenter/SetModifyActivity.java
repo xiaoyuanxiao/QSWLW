@@ -7,10 +7,16 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.support.v7.app.AlertDialog;
 import android.util.Log;
+import android.view.Display;
 import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -49,10 +55,10 @@ public class SetModifyActivity extends BaseInfoActivity implements ISetModifyVie
     private RelativeLayout rl_userName;
     private Intent intent;
     private String name;
-    private Button btn_retrievePassword;
     private SetModifyPersenter setModifyPersenter = new SetModifyPersenter(this);
-    private TextView tv_setmodify_id,tv_setmodify_userName,tv_setmodify_phone;
+    private TextView tv_setmodify_id, tv_setmodify_userName, tv_setmodify_phone;
     private File file;
+    private Button btn_setpassword, btn_settwopassword, btn_retrievePassword;
 
     @Override
     public View setConetnView() {
@@ -64,6 +70,8 @@ public class SetModifyActivity extends BaseInfoActivity implements ISetModifyVie
         tv_setmodify_id = (TextView) inflate.findViewById(R.id.tv_setmodify_id);
         tv_setmodify_userName = (TextView) inflate.findViewById(R.id.tv_setmodify_userName);
         tv_setmodify_phone = (TextView) inflate.findViewById(R.id.tv_setmodify_phone);
+        btn_setpassword = (Button) inflate.findViewById(R.id.btn_setpassword);
+        btn_settwopassword = (Button) inflate.findViewById(R.id.btn_settwopassword);
         return inflate;
     }
 
@@ -85,6 +93,8 @@ public class SetModifyActivity extends BaseInfoActivity implements ISetModifyVie
         rl_set_avater.setOnClickListener(this);
         rl_userName.setOnClickListener(this);
         btn_retrievePassword.setOnClickListener(this);
+        btn_setpassword.setOnClickListener(this);
+        btn_settwopassword.setOnClickListener(this);
     }
 
     @Override
@@ -108,7 +118,93 @@ public class SetModifyActivity extends BaseInfoActivity implements ISetModifyVie
                 intent = new Intent(this, RetrievePasswordActivity.class);
                 startActivity(intent);
                 break;
+            case R.id.btn_setpassword:
+                showDilog();
+                break;
+            case R.id.btn_settwopassword:
+                showDilog();
+                break;
         }
+
+    }
+
+    private void showDilog() {
+        final AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        final AlertDialog dialog = builder.create();
+        View alertview = LayoutInflater.from(SetModifyActivity.this).inflate(R.layout.dialog_modifypassword, null);
+        TextView tv_modifypassword_close = (TextView) alertview.findViewById(R.id.tv_modifypassword_close);
+        final EditText edt_modifypassword_old = (EditText) alertview.findViewById(R.id.edt_modifypassword_old);
+        final EditText edt_modifypassword_new = (EditText) alertview.findViewById(R.id.edt_modifypassword_new);
+        final EditText edt_modifypassword_confirmnew = (EditText) alertview.findViewById(R.id.edt_modifypassword_confirmnew);
+        Button btn_modifypassword_cancel = (Button) alertview.findViewById(R.id.btn_modifypassword_cancel);
+        Button btn_modifypassword_confirm = (Button) alertview.findViewById(R.id.btn_modifypassword_confirm);
+        btn_modifypassword_cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.dismiss();
+            }
+        });
+        tv_modifypassword_close.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.dismiss();
+            }
+        });
+        btn_modifypassword_confirm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String newpassword = edt_modifypassword_new.getText().toString();
+                String newpassword2 = edt_modifypassword_confirmnew.getText().toString();
+                String oldpassword = edt_modifypassword_old.getText().toString();
+                if(oldpassword.equals("")||newpassword.equals("")||newpassword2.equals("")){
+                    ToastUtils.showToast("密码不能为空");
+                }if(!newpassword.equals(newpassword2)){
+                    ToastUtils.showToast("两次密码不一致，请重新输入");
+                }else{
+                    postData(MyApplication.TOKEN, Integer.parseInt(MyApplication.ID),oldpassword,newpassword,newpassword2);
+                }
+
+            }
+        });
+        dialog.setView(alertview);
+        dialog.show();
+
+        Window dialogWindow = dialog.getWindow();
+        WindowManager m = this.getWindowManager();
+        Display d = m.getDefaultDisplay(); // 获取屏幕宽、高度
+        WindowManager.LayoutParams p = dialogWindow.getAttributes(); // 获取对话框当前的参数值
+        p.width = (int) (d.getWidth() * 0.8); // 宽度设置为屏幕的0.65，根据实际情况调整
+        p.height = p.width; // 高度设置为屏幕的0.6，根据实际情况调整
+        dialogWindow.setAttributes(p);
+
+    }
+
+    /**
+     * 修改密码设置
+     * @param token
+     * @param user_id
+     * @param pass
+     * @param password
+     * @param repassword
+     */
+    private void postData(final String token, final int user_id, final String pass, final String password, final String repassword) {
+        ReHttpUtils.instans().httpRequest(new HttpSubCribe<MainBean>() {
+
+            @Override
+            public void onError(Throwable e) {
+
+            }
+
+            @Override
+            public void onNext(MainBean mainBean) {
+                ToastUtils.showToast(mainBean.getMsg());
+            }
+
+            @Override
+            public Observable<MainBean> getObservable(MyRetroService retrofit) {
+                return retrofit.getPasswordData(token,user_id,pass,password,repassword);
+            }
+        });
 
     }
 
@@ -131,20 +227,20 @@ public class SetModifyActivity extends BaseInfoActivity implements ISetModifyVie
         }
         if (photo_path != null) {
             //图片处理,上传头像
-          //  Glide.with(this).load(photo_path).into(iv_set_avater);
+            //  Glide.with(this).load(photo_path).into(iv_set_avater);
             file = new File(photo_path);
-            postAvater(MyApplication.TOKEN, Integer.parseInt(MyApplication.ID),photo_path);
+            postAvater(MyApplication.TOKEN, Integer.parseInt(MyApplication.ID), file);
         } else {
             ToastUtils.showToast(this, "请重新选取图片！");
         }
     }
 
-    private void postAvater(final String token, final int user_id, final String images) {
+    private void postAvater(final String token, final int user_id, final File images) {
         ReHttpUtils.instans().httpRequest(new HttpSubCribe<MainBean>() {
 
             @Override
             public void onError(Throwable e) {
-                Log.e("postAvater",e+"");
+                Log.e("postAvater", e + "");
             }
 
             @Override
@@ -154,7 +250,7 @@ public class SetModifyActivity extends BaseInfoActivity implements ISetModifyVie
 
             @Override
             public Observable<MainBean> getObservable(MyRetroService retrofit) {
-                return retrofit.getUserAvaterData(token,user_id,images);
+                return retrofit.getUserAvaterData(token, user_id, images);
             }
         });
 
