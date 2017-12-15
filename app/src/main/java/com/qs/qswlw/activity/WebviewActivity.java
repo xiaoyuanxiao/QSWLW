@@ -22,7 +22,7 @@ public class WebviewActivity extends Activity {
 
     private WebView webView;
     private String url;
-    private String witnessChinaBusiness,interaction,products,ella,customerservice;
+    private String witnessChinaBusiness, interaction, products, ella, customerservice, winqs, qs_shop,qs_union,qs_fun,qs_lack_draw;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +34,6 @@ public class WebviewActivity extends Activity {
     }
 
 
-
     private void initData() {
         Intent intent = getIntent();
         witnessChinaBusiness = intent.getStringExtra("WitnessChinaBusiness");
@@ -42,16 +41,31 @@ public class WebviewActivity extends Activity {
         products = intent.getStringExtra("products");
         ella = intent.getStringExtra("ella");
         customerservice = intent.getStringExtra("customerservice");
-        if(witnessChinaBusiness!=null){
-           url = witnessChinaBusiness;
+        winqs = intent.getStringExtra("winqs");
+        qs_shop = intent.getStringExtra("qs_shop");
+        qs_union = intent.getStringExtra("qs_union");
+        qs_fun = intent.getStringExtra("qs_fun");
+        qs_lack_draw = intent.getStringExtra("qs_lack_draw");
+        if (witnessChinaBusiness != null) {
+            url = witnessChinaBusiness;
         } else if (interaction != null) {
             url = interaction;
-        }else if(products != null) {
+        } else if (products != null) {
             url = products;
-        }else if(ella != null) {
+        } else if (ella != null) {
             url = ella;
-        }else if(customerservice != null) {
+        } else if (customerservice != null) {
             url = customerservice;
+        } else if (winqs != null) {
+            url = winqs;
+        } else if (qs_shop != null) {
+            url = qs_shop;
+        }else if (qs_union != null) {
+            url = qs_union;
+        }else if (qs_fun != null) {
+            url = qs_fun;
+        }else if (qs_lack_draw != null) {
+            url = qs_lack_draw;
         }
 
     }
@@ -67,7 +81,7 @@ public class WebviewActivity extends Activity {
         //覆盖WebView默认使用第三方或系统默认浏览器打开网页的行为，使网页用WebView打开
         webView.setWebViewClient(new WebViewClient() {
             Dialog progressDialog = ProgressDialog.show(WebviewActivity.this, null,
-                   "正在加载中");
+                    "正在加载中");
 
             @Override
             public void onReceivedSslError(WebView view, SslErrorHandler handler, SslError error) {
@@ -90,7 +104,6 @@ public class WebviewActivity extends Activity {
             public void onPageFinished(WebView view, String url) {
                 super.onPageFinished(view, url);
                 progressDialog.cancel();
-
             }
         });
     }

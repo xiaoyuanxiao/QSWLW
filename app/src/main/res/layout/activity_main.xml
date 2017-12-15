@@ -48,7 +48,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-
             android:scaleType="fitXY"
             android:src="@mipmap/header_ico1" />
     </RelativeLayout>

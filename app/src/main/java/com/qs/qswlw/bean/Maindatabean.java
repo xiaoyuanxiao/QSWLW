@@ -128,9 +128,18 @@ public class Maindatabean {
         String products;
         String ella;
         String winqs;//赢在钱盛
-        String qs_shop;//钱盛联盟
+        String qs_shop;//钱盛商城
+        String qs_union;//钱盛联盟
         String qs_fun;
         String qs_lack_draw;
+
+        public String getQs_union() {
+            return qs_union;
+        }
+
+        public void setQs_union(String qs_union) {
+            this.qs_union = qs_union;
+        }
 
         public String getWinqs() {
             return winqs;

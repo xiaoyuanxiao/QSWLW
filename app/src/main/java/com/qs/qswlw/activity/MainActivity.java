@@ -26,8 +26,6 @@ import com.qs.qswlw.MyApplication;
 import com.qs.qswlw.R;
 import com.qs.qswlw.activity.PersonalCenter.BusinessSettingActivity;
 import com.qs.qswlw.activity.PersonalCenter.ConsumerSettingActivity;
-import com.qs.qswlw.activity.mall.AllianceMallActivity;
-import com.qs.qswlw.activity.mall.QSMallActivity1;
 import com.qs.qswlw.adapter.AngelAdapter;
 import com.qs.qswlw.adapter.BenefitAdapter;
 import com.qs.qswlw.adapter.ChinaAdapter;
@@ -86,7 +84,7 @@ public class MainActivity extends BaseActivity implements IMainView {
     private WebView webview;
     private Intent intent;
     private PopupWindow popupWindow;
-    private LinearLayout ll_ranking_popup, main_ll_avater;
+    private LinearLayout ll_ranking_popup, main_ll_avater,ll_notice_popup,ll_yzqs_popup;
     private Maindatabean.Current_sales entrepBaen;
     private LinearLayout ll_dialogmain_bg;
 
@@ -431,13 +429,19 @@ public class MainActivity extends BaseActivity implements IMainView {
                 break;
             //钱盛联盟
             case R.id.rb_main_union:
-                intent = new Intent(this, AllianceMallActivity.class);
-                startActivity(intent);
+//                intent = new Intent(this, AllianceMallActivity.class);
+//                startActivity(intent);
+                intent = new Intent(this, WebviewActivity.class);
+                intent.putExtra("qs_union", entrepBaen.getQs_union());
+                startActivity(this.intent);
                 break;
             //钱盛商城
             case R.id.rb_main_mall:
-                intent = new Intent(this, QSMallActivity1.class);
-                startActivity(intent);
+//                intent = new Intent(this, QSMallActivity1.class);
+//                startActivity(intent);
+                intent = new Intent(this, WebviewActivity.class);
+                intent.putExtra("qs_shop", entrepBaen.getQs_shop());
+                startActivity(this.intent);
                 break;
             //见证华商
             case R.id.rb_main_WitnessChinaBusiness:
@@ -453,16 +457,27 @@ public class MainActivity extends BaseActivity implements IMainView {
                 break;
             //促销抽奖
             case R.id.rb_main_luckgame:
-                startActivity(new Intent(this, LuckGameActivity.class));
+             //   startActivity(new Intent(this, LuckGameActivity.class));
+                this.intent = new Intent(this, WebviewActivity.class);
+                this.intent.putExtra("qs_lack_draw", entrepBaen.getQs_lack_draw());
+                startActivity(this.intent);
                 break;
             //开心一刻
             case R.id.rb_main_funtime:
                 this.intent = new Intent(this, WebviewActivity.class);
-                this.intent.putExtra("Win", "http://case.dian7dian.com/qiansheng/kxyk.html");
+                this.intent.putExtra("qs_fun", entrepBaen.getQs_fun());
                 startActivity(this.intent);
                 break;
             case R.id.ll_ranking_popup:
                    startActivity(new Intent(MainActivity.this,PopRankingActivity.class));
+                break;
+            case R.id.ll_notice_popup:
+                startActivity(new Intent(MainActivity.this,NoticeActivity.class));
+                break;
+            case R.id.ll_yzqs_popup:
+                this.intent = new Intent(this, WebviewActivity.class);
+                this.intent.putExtra("winqs",entrepBaen.getWinqs());
+                startActivity(this.intent);
                 break;
         }
     }
@@ -474,6 +489,9 @@ public class MainActivity extends BaseActivity implements IMainView {
         // 实例化popupWindow
         popupWindow = new PopupWindow(layout, RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
         ll_ranking_popup = (LinearLayout) layout.findViewById(R.id.ll_ranking_popup);
+        ll_notice_popup = (LinearLayout) layout.findViewById(R.id.ll_notice_popup);
+        ll_yzqs_popup = (LinearLayout) layout.findViewById(R.id.ll_yzqs_popup);
+
         //控制键盘是否可以获得焦点
         popupWindow.setFocusable(true);
         //设置popupWindow弹出窗体的背景
@@ -482,6 +500,8 @@ public class MainActivity extends BaseActivity implements IMainView {
         //xoff,yoff基于anchor的左下角进行偏移。
         popupWindow.showAtLocation(v, Gravity.TOP | Gravity.RIGHT, 10, 120);
         ll_ranking_popup.setOnClickListener(this);
+        ll_notice_popup.setOnClickListener(this);
+        ll_yzqs_popup.setOnClickListener(this);
     }
 
     @Override
