@@ -49,6 +49,7 @@ public class SetModifyActivity extends BaseInfoActivity implements ISetModifyVie
 
     private static final int CAMERA = 2003;
     private static final int CHOOSE_PICTURE = 2004;
+    private static final int SETUSERNAME = 200;
     final boolean isKitKat = Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT;
     private RelativeLayout rl_set_avater;
     private GenderPopupWindow menuWindow;
@@ -117,7 +118,7 @@ public class SetModifyActivity extends BaseInfoActivity implements ISetModifyVie
             case R.id.rl_userName:
                 intent = new Intent(this, ChangeUserNameActivity.class);
                 intent.putExtra("userName", tv_setmodify_userName.getText().toString());
-                startActivityForResult(intent, 200);
+                startActivityForResult(intent, SETUSERNAME);
                 break;
             case R.id.btn_retrievePassword:
                 intent = new Intent(this, RetrievePasswordActivity.class);
@@ -212,6 +213,9 @@ public class SetModifyActivity extends BaseInfoActivity implements ISetModifyVie
                     ActivityManagerUtils.getInstance().finishActivityclass(BusinessSettingActivity.class);
                 }else if(mainBean.getStatus()==1&type==1){
                     dialog.dismiss();
+                } else if(mainBean.getStatus()==-3||mainBean.getStatus()==-4){
+                    ActivityManagerUtils.getInstance().tokenfailfg(SetModifyActivity.this);
+                    finish();
                 }
 
             }
@@ -229,23 +233,31 @@ public class SetModifyActivity extends BaseInfoActivity implements ISetModifyVie
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         String photo_path = null;
-        switch (requestCode) {
-            //选择照片
-            case CHOOSE_PICTURE:
-                if (data != null) {
-                    imageUri = data.getData();
-                    photo_path = ImageTools.uri2File(imageUri, this);
-                }
-                break;
-            case CAMERA:
-                photo_path = imageUri.getPath();
-                break;
+        if( resultCode == RESULT_OK){
+            switch (requestCode) {
+                //选择照片
+                case CHOOSE_PICTURE:
+                    if (data != null) {
+                        imageUri = data.getData();
+                        photo_path = ImageTools.uri2File(imageUri, this);
+                    }
+                    break;
+                case CAMERA:
+                    photo_path = imageUri.getPath();
+                    break;
+                case SETUSERNAME:
+                    String name = data.getStringExtra("back");
+                    tv_setmodify_userName.setText(name);
+                    break;
+            }
         }
         if (photo_path != null) {
             //图片处理,上传头像
             //  Glide.with(this).load(photo_path).into(iv_set_avater);
             file = new File(photo_path);
+            Log.i("postAvaterfile",photo_path);
             postAvater(MyApplication.TOKEN, Integer.parseInt(MyApplication.ID), file);
+            Log.i("postAvater",photo_path);
         } else {
             ToastUtils.showToast(this, "请重新选取图片！");
         }
@@ -256,12 +268,14 @@ public class SetModifyActivity extends BaseInfoActivity implements ISetModifyVie
 
             @Override
             public void onError(Throwable e) {
-                Log.e("postAvater", e + "");
+                Log.e("postAvateronError", e + "");
             }
 
             @Override
             public void onNext(MainBean mainBean) {
-                ToastUtils.showToast(mainBean.getMsg());
+                Log.i("postAvateronNext",mainBean.getMsg());
+                String msg = mainBean.getMsg();
+                ToastUtils.showToast(msg);
             }
 
             @Override

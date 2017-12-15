@@ -83,9 +83,9 @@ public class ChangeUserNameActivity extends BaseInfoActivity {
         intent.putExtra("back", name1);
         setResult(RESULT_OK, intent);
         finish();
-        
         postUserName(MyApplication.TOKEN, Integer.parseInt(MyApplication.ID),name1);
     }
+
 
     private void postUserName(final String token, final int user_id, final String username) {
         ReHttpUtils.instans().httpRequest(new HttpSubCribe<MainBean>() {
@@ -99,6 +99,10 @@ public class ChangeUserNameActivity extends BaseInfoActivity {
             public void onNext(MainBean mainBean) {
                 Log.e("mainBean",mainBean+"");
                 ToastUtils.showToast(mainBean.getMsg());
+                int status = mainBean.getStatus();
+                if(status==1){
+
+                }
             }
 
             @Override

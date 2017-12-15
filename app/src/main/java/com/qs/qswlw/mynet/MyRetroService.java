@@ -531,4 +531,16 @@ public interface MyRetroService {
     @POST("index.php?m=Appapi&c=user&a=setup")
     Observable<MainBean> getPasswordData(@Field("token") String token, @Field("user_id") int user_id,@Field("pass") String pass,
                                          @Field("password") String password,@Field("repassword") String repassword,@Field("type") int type);
+
+    /**
+     * 找回二级密码
+     * @param token
+     * @param user_id
+     * @return
+     */
+    @FormUrlEncoded
+    @POST("index.php?m=Appapi&c=user&a=setup")
+    Observable<MainBean> getRetrievePassData(@Field("token") String token, @Field("user_id") int user_id,
+                                         @Field("mobile") String mobile,@Field("mobile_code") String mobile_code,@Field("roles") int roles,
+                                             @Field("pass") String pass, @Field("repass") String repass);
 }

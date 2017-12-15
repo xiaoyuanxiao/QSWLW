@@ -73,27 +73,33 @@ public class BusinessSettingActivity extends BaseActivity implements IPersonalSe
         if (role.equals("0")) {
             tv_role.setText("消费天使");
             MyApplication.USERROLE = "消费天使";
+        }else if (role.equals("7")) {
+            tv_role.setText("董事局");
+            MyApplication.USERROLE = "董事局";
         } else if (role.equals("8")) {
             tv_role.setText("创业董事");
             MyApplication.USERROLE = "创业董事";
+        } else if (role.equals("9")) {
+            tv_role.setText("创业总监");
+            MyApplication.USERROLE = "创业总监";
         }else if (role.equals("10")) {
             tv_role.setText("商家");
             MyApplication.USERROLE = "商家";
         }else if(role.equals("11")){
-            tv_role.setText("创业天使");
-            MyApplication.USERROLE = "创业天使";
+            tv_role.setText("创业主任");
+            MyApplication.USERROLE = "创业主任";
         }else if(role.equals("12")){
-            tv_role.setText("省代");
-            MyApplication.USERROLE = "省代";
+            tv_role.setText("省管理中心");
+            MyApplication.USERROLE = "省管理中心";
         }else if(role.equals("13")){
-            tv_role.setText("市代");
-            MyApplication.USERROLE = "市代";
+            tv_role.setText("市管理中心");
+            MyApplication.USERROLE = "市管理中新";
         }else if(role.equals("14")){
-            tv_role.setText("区代");
-            MyApplication.USERROLE = "区代";
+            tv_role.setText("区管理中心");
+            MyApplication.USERROLE = "区管理中心";
         }else if(role.equals("15")){
-            tv_role.setText("创业中心");
-            MyApplication.USERROLE = "创业中心";
+            tv_role.setText("创业经理");
+            MyApplication.USERROLE = "创业经理";
         }else if(role.equals("25")){
             tv_role.setText("平台");
             MyApplication.USERROLE = "平台";

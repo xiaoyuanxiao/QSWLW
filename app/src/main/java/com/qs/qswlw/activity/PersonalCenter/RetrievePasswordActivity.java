@@ -8,12 +8,14 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 
+import com.qs.qswlw.MyApplication;
 import com.qs.qswlw.R;
 import com.qs.qswlw.bean.MainBean;
 import com.qs.qswlw.bean.RegisterGetCodeBean;
 import com.qs.qswlw.mynet.HttpSubCribe;
 import com.qs.qswlw.mynet.MyRetroService;
 import com.qs.qswlw.mynet.ReHttpUtils;
+import com.qs.qswlw.utils.ActivityManagerUtils;
 import com.qs.qswlw.utils.ToastUtils;
 
 import rx.Observable;
@@ -30,7 +32,8 @@ public class RetrievePasswordActivity extends BaseInfoActivity {
     private EditText edt_retrieve_phone, edt_retrieve_code, edt_retrieve_password, edt_retrieve_confirmPassword;
     private Button btn_retrieve_getcode, btn_retreve_confirm;
     private String phone;
-
+    private String code,pass,confirmpass;
+    private int role;
     @Override
     public View setConetnView() {
         View inflate = View.inflate(this, R.layout.activity_retrievepassword, null);
@@ -68,14 +71,62 @@ public class RetrievePasswordActivity extends BaseInfoActivity {
         super.onClick(v);
         switch (v.getId()) {
             case R.id.btn_retrieve_getcode:
-                phone = edt_retrieve_phone.getText().toString();
+                phone = edt_retrieve_phone.getText().toString().trim();
                 getCodeData(phone);
                 break;
             case R.id.btn_retreve_confirm:
-
+                code = edt_retrieve_code.getText().toString().trim();
+                pass = edt_retrieve_password.getText().toString();
+                confirmpass = edt_retrieve_confirmPassword.getText().toString();
+                if(!pass.equals(confirmpass)){
+                    ToastUtils.showToast("两次密码不一致");
+                }
+                if(phone==null){
+                    ToastUtils.showToast("手机号不能为空");
+                }
+                if(code==null){
+                    ToastUtils.showToast("验证码不能为空");
+                }
+                /**
+                 * 提交找回密码信息
+                 */
+                PostRetrievePass(MyApplication.TOKEN, Integer.parseInt(MyApplication.ID),phone,code,role,pass,confirmpass);
                 break;
         }
     }
+
+    private void PostRetrievePass(final String token, final int user_id, final String mobile, final String mobile_code,
+                                  final int role, final String pass, final String repass) {
+        ReHttpUtils.instans().httpRequest(new HttpSubCribe<MainBean>() {
+
+            @Override
+            public void onError(Throwable e) {
+
+            }
+
+            @Override
+            public void onNext(MainBean mainBean) {
+                ToastUtils.showToast(mainBean.getMsg());
+                /**
+                 * token失效
+                 */
+                if(mainBean.getStatus()==1){
+                    finish();
+                }else if(mainBean.getStatus()==-3||mainBean.getStatus()==-4){
+                   ActivityManagerUtils.getInstance().tokenfailfg(RetrievePasswordActivity.this);
+                   finish();
+               }
+
+            }
+
+            @Override
+            public Observable<MainBean> getObservable(MyRetroService retrofit) {
+                return retrofit.getRetrievePassData(token,user_id,mobile,mobile_code,role,pass,repass);
+            }
+        });
+    }
+
+
     /**
      * 获取验证码
      *
@@ -119,7 +170,29 @@ public class RetrievePasswordActivity extends BaseInfoActivity {
         consume_spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                consume_spinner.getSelectedItemPosition();
+                int selectedItemPosition = consume_spinner.getSelectedItemPosition();
+                //i是选择的第几个，从0开始算起
+                switch (i) {
+                    case 1:
+                        role = 0;
+                        break;
+                    case 2:
+                        role = 10;
+                        break;
+                    case 3:
+                        role = 11;
+                        break;
+                    case 4:
+                        role = 15;
+                        break;
+                    case 5:
+                        role = 9;
+                        break;
+                    case 6:
+                        role = 8;
+                        break;
+
+                }
                 strClassification = consume_spinner.getSelectedItem().toString();
             }
 

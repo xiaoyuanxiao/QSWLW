@@ -270,7 +270,7 @@ public class RegisterActivity extends BaseInfoActivity{
                     RegisterBean result = regisetbean.getResult();
                     String role1 = result.getRole();
                     String token = result.getToken();
-                    // 0消费天使，10商家，11创业天使，12省代，13市代，14区代，15创业中心，25平台
+                    // 0消费天使，7董事局，8创业董事，9创业总监，10商家，11创业主任，12省管理中心，13市管理中心，14区管理中心，15创业经理，25平台
                     //请求个人中心接口
                     UserManage.getInstance().saveRegisterUser(RegisterActivity.this,result);
                     Intent intent = new Intent();
