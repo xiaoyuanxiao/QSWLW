@@ -240,10 +240,14 @@ public class SetModifyActivity extends BaseInfoActivity implements ISetModifyVie
                     if (data != null) {
                         imageUri = data.getData();
                         photo_path = ImageTools.uri2File(imageUri, this);
+                        if(photo_path==null)
+                            ToastUtils.showToast(this, "请重新选取图片！");
                     }
                     break;
                 case CAMERA:
                     photo_path = imageUri.getPath();
+                    if(photo_path==null)
+                        ToastUtils.showToast(this, "请重新选取图片！");
                     break;
                 case SETUSERNAME:
                     String name = data.getStringExtra("back");
@@ -258,9 +262,8 @@ public class SetModifyActivity extends BaseInfoActivity implements ISetModifyVie
             Log.i("postAvaterfile",photo_path);
             postAvater(MyApplication.TOKEN, Integer.parseInt(MyApplication.ID), file);
             Log.i("postAvater",photo_path);
-        } else {
-            ToastUtils.showToast(this, "请重新选取图片！");
         }
+
     }
 
     private void postAvater(final String token, final int user_id, final File images) {

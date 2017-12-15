@@ -39,7 +39,7 @@
             style="@style/tv_harvestaddress"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:text="16421585"/>
+            android:text=""/>
     </RelativeLayout>
     <View
         android:layout_width="match_parent"
@@ -59,7 +59,7 @@
             style="@style/tv_harvestaddress"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:text="华东"/>
+            android:text=""/>
     </RelativeLayout>
     <View
         android:layout_width="match_parent"
@@ -78,7 +78,7 @@
             style="@style/tv_harvestaddress"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:text="164212585"/>
+            android:text=""/>
     </RelativeLayout>
     <View
         android:layout_width="match_parent"
