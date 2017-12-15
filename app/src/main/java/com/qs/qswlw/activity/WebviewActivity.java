@@ -22,7 +22,7 @@ public class WebviewActivity extends Activity {
 
     private WebView webView;
     private String url;
-    private String witnessChinaBusiness,interaction,products,ella;
+    private String witnessChinaBusiness,interaction,products,ella,customerservice;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +41,7 @@ public class WebviewActivity extends Activity {
         interaction = intent.getStringExtra("Interaction");
         products = intent.getStringExtra("products");
         ella = intent.getStringExtra("ella");
+        customerservice = intent.getStringExtra("customerservice");
         if(witnessChinaBusiness!=null){
            url = witnessChinaBusiness;
         } else if (interaction != null) {
@@ -49,6 +50,8 @@ public class WebviewActivity extends Activity {
             url = products;
         }else if(ella != null) {
             url = ella;
+        }else if(customerservice != null) {
+            url = customerservice;
         }
 
     }

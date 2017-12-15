@@ -65,10 +65,10 @@ public abstract class BaseDataBindingActivity extends FragmentActivity {
         return (T) inflate;
     }
 
-    abstract int initview();
+    protected abstract int initview();
 
-    abstract void initdatabinding();
+    protected abstract void initdatabinding();
 
-    abstract void initData();
+    protected abstract void initData();
 
 }

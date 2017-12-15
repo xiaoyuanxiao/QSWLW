@@ -54,8 +54,8 @@
 
             <ImageView
                 android:id="@+id/iv_titlebar_right"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
                 android:paddingRight="10dp" />

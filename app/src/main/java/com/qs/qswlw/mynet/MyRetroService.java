@@ -35,6 +35,7 @@ import com.qs.qswlw.bean.RegisterCheckIdBean;
 import com.qs.qswlw.bean.RegisterGetCodeBean;
 import com.qs.qswlw.bean.ScanCodeRecordBean;
 import com.qs.qswlw.bean.SetModifyBean;
+import com.qs.qswlw.bean.SettingNewsBean;
 import com.qs.qswlw.bean.ValidateOldMemberBean;
 import com.qs.qswlw.bean.VenturegoldBean;
 import com.qs.qswlw.bean.WithDrawalsRecordBean;
@@ -543,4 +544,11 @@ public interface MyRetroService {
     Observable<MainBean> getRetrievePassData(@Field("token") String token, @Field("user_id") int user_id,
                                          @Field("mobile") String mobile,@Field("mobile_code") String mobile_code,@Field("roles") int roles,
                                              @Field("pass") String pass, @Field("repass") String repass);
+
+    /**
+     * 设置消息列表
+     */
+    @FormUrlEncoded
+    @POST("index.php?m=Appapi&c=User&a=minemsg")
+    Observable<MainBean<SettingNewsBean>> getSettingNewData(@Field("token") String token, @Field("user_id") int user_id);
 }

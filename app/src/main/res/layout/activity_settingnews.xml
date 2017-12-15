@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <data class = "com.qs.qswlw.SettingNewDataBinding">
+        <variable
+            name="SettingNewActivityclick"
+            type="android.view.View.OnClickListener" />
+
+    </data>
+
+
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_settingnews"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </android.support.v7.widget.RecyclerView>
+    <TextView
+        android:id="@+id/tv_settingnews_consultation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_margin="20dp"
+        android:onClick="@{SettingNewActivityclick::onClick}"
+        android:text="客服咨询"/>
+
+
+</FrameLayout>
+</layout>

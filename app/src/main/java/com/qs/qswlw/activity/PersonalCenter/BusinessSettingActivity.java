@@ -43,7 +43,7 @@ public class BusinessSettingActivity extends BaseActivity implements IPersonalSe
     private GridView gv_setting;
     private RadioButton rb_main_qsmall, rb_main_lianmeng, rb_main_funtime, rb_main_luck, rb_main_exit;
     private BusinessSettingAdapter businessSettingAdapter;
-    private ImageView iv_setting_set;
+    private ImageView iv_setting_set,iv_setting_news;
     private TextView tv_setting_consumptionMoney, tv_setting_consumerSilverbeans, tv_setting_encourage, tv_setting_withdrawals, tv_setting_consumerbeans, tv_setting_paytaxes, tv_cyzx, tv_recommender, tv_setting_id, tv_setting_name, tv_setting_shopname, tv_role;
     private TextView setting_one;
     private String user_id, nickname, role;
@@ -128,6 +128,7 @@ public class BusinessSettingActivity extends BaseActivity implements IPersonalSe
         rb_main_luck = (RadioButton) findViewById(R.id.rb_main_luck);
         rb_main_exit = (RadioButton) findViewById(R.id.rb_main_exit);
         iv_setting_set = (ImageView) findViewById(R.id.iv_setting_set);
+        iv_setting_news = (ImageView) findViewById(R.id.iv_setting_news);
         tv_setting_withdrawals = (TextView) findViewById(R.id.tv_setting_withdrawals);
         tv_setting_consumptionMoney = (TextView) findViewById(R.id.tv_setting_consumptionMoney);
         tv_setting_consumerSilverbeans = (TextView) findViewById(R.id.tv_setting_consumerSilverbeans);
@@ -167,6 +168,7 @@ public class BusinessSettingActivity extends BaseActivity implements IPersonalSe
         rb_main_luck.setOnClickListener(this);
         rb_main_exit.setOnClickListener(this);
         iv_setting_set.setOnClickListener(this);
+        iv_setting_news.setOnClickListener(this);
 
 
     }
@@ -194,6 +196,10 @@ public class BusinessSettingActivity extends BaseActivity implements IPersonalSe
                 break;
             case R.id.iv_setting_set:
                 startActivity(new Intent(this,SetModifyActivity.class));
+                break;
+            case R.id.iv_setting_news:
+                startActivity(new Intent(this,SettingNewActivity.class));
+
                 break;
         }
     }

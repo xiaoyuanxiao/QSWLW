@@ -3,6 +3,7 @@ package com.qs.qswlw.activity;
 import android.support.v7.widget.LinearLayoutManager;
 
 import com.qs.qswlw.BR;
+import com.qs.qswlw.NoticesBinding;
 import com.qs.qswlw.R;
 import com.qs.qswlw.adapter.NoticesAdapter;
 import com.qs.qswlw.bean.NoticesBean;
@@ -20,24 +21,24 @@ import java.util.Map;
 public class NoticeActivity extends BaseDataBindingActivity implements INoticesView{
 
     public NoticesAdapter adapter;
-    private com.qs.qswlw.NoticesBinding noticesBinding;
+    private NoticesBinding noticesBinding;
     private LinearLayoutManager linearLayoutManager;
     private List<NoticesBean> noticesBeen;
     private NoticesPresenter noticesPresenter = new NoticesPresenter(this);
     @Override
-    int initview() {
+    protected int initview() {
         return R.layout.activity_notices;
     }
 
     @Override
-    void initdatabinding() {
+    protected void initdatabinding() {
         noticesBinding = getBind();
         setDataTitle("通知公告");
     }
 
 
     @Override
-    void initData() {
+    protected void initData() {
         linearLayoutManager = new LinearLayoutManager(this);
         noticesBinding.rvNotices.setLayoutManager(linearLayoutManager);
         noticesPresenter.getdata();

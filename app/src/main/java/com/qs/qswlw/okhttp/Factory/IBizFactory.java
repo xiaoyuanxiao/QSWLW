@@ -27,6 +27,7 @@ import com.qs.qswlw.okhttp.Moudle.BizRecommendRecord;
 import com.qs.qswlw.okhttp.Moudle.BizRecordList;
 import com.qs.qswlw.okhttp.Moudle.BizScanCodeRecord;
 import com.qs.qswlw.okhttp.Moudle.BizSetModify;
+import com.qs.qswlw.okhttp.Moudle.BizSettingNew;
 import com.qs.qswlw.okhttp.Moudle.BizValidateOldMember;
 import com.qs.qswlw.okhttp.Moudle.BizVentureGold;
 import com.qs.qswlw.okhttp.Moudle.BizWithDrawalsRecord;
@@ -61,6 +62,7 @@ import com.qs.qswlw.okhttp.Moudle.IRecommendRecordBiz;
 import com.qs.qswlw.okhttp.Moudle.IRecordListBiz;
 import com.qs.qswlw.okhttp.Moudle.IScanCodeRecordBiz;
 import com.qs.qswlw.okhttp.Moudle.ISetModifyBiz;
+import com.qs.qswlw.okhttp.Moudle.ISettingNewBiz;
 import com.qs.qswlw.okhttp.Moudle.ITestaBiz;
 import com.qs.qswlw.okhttp.Moudle.IValidateOldMemberBiz;
 import com.qs.qswlw.okhttp.Moudle.IVentureGoldBiz;
@@ -189,5 +191,8 @@ public class IBizFactory {
 
     public static ISetModifyBiz getSetModifyList(){
         return BizSetModify.getInstans();
+    }
+    public static ISettingNewBiz getSettingNewList(){
+        return BizSettingNew.getInstans();
     }
 }

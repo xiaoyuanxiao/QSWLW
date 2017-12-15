@@ -17,18 +17,18 @@ public class NoticesDetailActivity extends BaseDataBindingActivity {
     private NoticesDetailBinding noticesDetailBinding;
 
     @Override
-    int initview() {
+    protected int initview() {
         return R.layout.activity_noticesdetail;
     }
 
     @Override
-    void initdatabinding() {
+    protected void initdatabinding() {
         noticesDetailBinding = getBind();
         setDataTitle("公告详情");
     }
 
     @Override
-    void initData() {
+    protected void initData() {
         Intent intent = getIntent();
         NoticesBean noticesBeen = intent.getParcelableExtra("noticesBeen");
         noticesDetailBinding.tvNoticesTitle.setText(noticesBeen.getIndex_title());

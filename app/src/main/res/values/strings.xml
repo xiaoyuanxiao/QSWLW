@@ -4214,5 +4214,6 @@
     <string name="xlistview_footer_hint_no_more">已经是最后一页了</string>
     <string name="xlistview_footer_hint_normal">上拉加载更多</string>
     <string name="xlistview_header_last_time">上次更新时间：</string>
+    <string name="guanliyuan">系统管理员</string>
 
 </resources>
