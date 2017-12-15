@@ -120,11 +120,10 @@
         <item>请选择用户类型</item>
         <item>消费天使</item>
         <item>商家</item>
-        <item>创业天使</item>
-        <item>省创业管理中心</item>
-        <item>市创业管理中心</item>
-        <item>区创业管理中心</item>
-        <item>创业中心</item>
+        <item>创业主任</item>
+        <item>创业经理</item>
+        <item>创业总监</item>
+        <item>创业董事</item>
     </string-array>
     <!-- 个地级市-->
     <string-array name="beijin_province_item">

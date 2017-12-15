@@ -6,6 +6,8 @@ import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 import android.view.View;
 
+import com.qs.qswlw.utils.ActivityManagerUtils;
+
 /**
  * Created by 小羽 on 2017/3/22.
  */
@@ -14,6 +16,7 @@ public abstract class BaseActivity extends FragmentActivity implements View.OnCl
 
     protected void onCreate(Bundle arg0) {
         super.onCreate(arg0);
+        ActivityManagerUtils.getInstance().addActivity(this);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         Log.d("ACTIVITY", "====================" + getClass().getName());
         Log.d("Activity", getClass().getName());
@@ -37,4 +40,10 @@ public abstract class BaseActivity extends FragmentActivity implements View.OnCl
     public abstract void initfindviewByid();
 
     public abstract void setOnclick();
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        ActivityManagerUtils.getInstance().removeActivity(this);
+    }
 }

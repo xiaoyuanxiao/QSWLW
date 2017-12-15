@@ -36,6 +36,12 @@ public class ActivityManagerUtils {
          */
     }
 
+
+    public static ActivityManagerUtils getInstance() {
+        return mActivityManagerUtils;
+
+    }
+
     public static void tokenfailfg(final Activity activity) {
         ToastUtils.showToast("token失效请重新登录");
         new Handler().postDelayed(new Runnable() {
@@ -49,11 +55,6 @@ public class ActivityManagerUtils {
         }, 2000);
     }
 
-    public static ActivityManagerUtils getInstance() {
-        return mActivityManagerUtils;
-
-    }
-
     /**
      * 新建了一个activity
      *
@@ -64,6 +65,10 @@ public class ActivityManagerUtils {
         activities.add(activity);
     }
 
+    public void removeActivity(Activity activity) {
+        activities.remove(activity);
+    }
+
     /**
      * 结束指定的Activity
      *
@@ -71,9 +76,8 @@ public class ActivityManagerUtils {
      */
 
     public void finishActivity(Activity activity) {
-
         if (activity != null) {
-            this.activities.remove(activity);
+            removeActivity(activity);
             activity.finish();
         }
     }
@@ -89,6 +93,7 @@ public class ActivityManagerUtils {
                 activity.finish();
             }
         }
+        activities.clear();
         System.exit(0);
 
     }
@@ -100,7 +105,6 @@ public class ActivityManagerUtils {
         if (activities != null) {
             for (Activity activity : activities) {
                 if (activity.getClass().equals(cls)) {
-                    this.activities.remove(activity);
                     finishActivity(activity);
                     break;
                 }

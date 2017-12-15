@@ -23,13 +23,16 @@ import android.widget.TextView;
 
 import com.qs.qswlw.MyApplication;
 import com.qs.qswlw.R;
+import com.qs.qswlw.activity.LoginActivity;
 import com.qs.qswlw.bean.MainBean;
 import com.qs.qswlw.bean.SetModifyBean;
+import com.qs.qswlw.manager.UserManage;
 import com.qs.qswlw.mynet.HttpSubCribe;
 import com.qs.qswlw.mynet.MyRetroService;
 import com.qs.qswlw.mynet.ReHttpUtils;
 import com.qs.qswlw.okhttp.Iview.ISetModifyView;
 import com.qs.qswlw.okhttp.Presenter.SetModifyPersenter;
+import com.qs.qswlw.utils.ActivityManagerUtils;
 import com.qs.qswlw.utils.ImageTools;
 import com.qs.qswlw.utils.ToastUtils;
 import com.qs.qswlw.view.GenderPopupWindow;
@@ -59,6 +62,8 @@ public class SetModifyActivity extends BaseInfoActivity implements ISetModifyVie
     private TextView tv_setmodify_id, tv_setmodify_userName, tv_setmodify_phone;
     private File file;
     private Button btn_setpassword, btn_settwopassword, btn_retrievePassword;
+    private AlertDialog dialog;
+    private int type;
 
     @Override
     public View setConetnView() {
@@ -119,18 +124,19 @@ public class SetModifyActivity extends BaseInfoActivity implements ISetModifyVie
                 startActivity(intent);
                 break;
             case R.id.btn_setpassword:
-                showDilog();
+                showDilog(0);
                 break;
             case R.id.btn_settwopassword:
-                showDilog();
+                showDilog(1);
                 break;
         }
 
     }
 
-    private void showDilog() {
+    private void showDilog(final int type) {
+        this.type = type;
         final AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        final AlertDialog dialog = builder.create();
+        dialog = builder.create();
         View alertview = LayoutInflater.from(SetModifyActivity.this).inflate(R.layout.dialog_modifypassword, null);
         TextView tv_modifypassword_close = (TextView) alertview.findViewById(R.id.tv_modifypassword_close);
         final EditText edt_modifypassword_old = (EditText) alertview.findViewById(R.id.edt_modifypassword_old);
@@ -161,7 +167,7 @@ public class SetModifyActivity extends BaseInfoActivity implements ISetModifyVie
                 }if(!newpassword.equals(newpassword2)){
                     ToastUtils.showToast("两次密码不一致，请重新输入");
                 }else{
-                    postData(MyApplication.TOKEN, Integer.parseInt(MyApplication.ID),oldpassword,newpassword,newpassword2);
+                    postData(MyApplication.TOKEN, Integer.parseInt(MyApplication.ID),oldpassword,newpassword,newpassword2,type);
                 }
 
             }
@@ -187,22 +193,32 @@ public class SetModifyActivity extends BaseInfoActivity implements ISetModifyVie
      * @param password
      * @param repassword
      */
-    private void postData(final String token, final int user_id, final String pass, final String password, final String repassword) {
+    private void postData(final String token, final int user_id, final String pass, final String password, final String repassword, final int type) {
         ReHttpUtils.instans().httpRequest(new HttpSubCribe<MainBean>() {
 
             @Override
             public void onError(Throwable e) {
-
+                Log.e("ThrowableModify",e+"");
             }
 
             @Override
             public void onNext(MainBean mainBean) {
                 ToastUtils.showToast(mainBean.getMsg());
+                if(mainBean.getStatus()==1&type==0){
+                    dialog.dismiss();
+                    UserManage.getInstance().clearUserInfo(SetModifyActivity.this);
+                    startActivity(new Intent(SetModifyActivity.this, LoginActivity.class));
+                    ActivityManagerUtils.getInstance().finishActivityclass(SetModifyActivity.class);
+                    ActivityManagerUtils.getInstance().finishActivityclass(BusinessSettingActivity.class);
+                }else if(mainBean.getStatus()==1&type==1){
+                    dialog.dismiss();
+                }
+
             }
 
             @Override
             public Observable<MainBean> getObservable(MyRetroService retrofit) {
-                return retrofit.getPasswordData(token,user_id,pass,password,repassword);
+                return retrofit.getPasswordData(token,user_id,pass,password,repassword,type);
             }
         });
 

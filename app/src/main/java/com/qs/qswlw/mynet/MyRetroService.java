@@ -530,5 +530,5 @@ public interface MyRetroService {
     @FormUrlEncoded
     @POST("index.php?m=Appapi&c=user&a=setup")
     Observable<MainBean> getPasswordData(@Field("token") String token, @Field("user_id") int user_id,@Field("pass") String pass,
-                                         @Field("password") String password,@Field("repassword") String repassword );
+                                         @Field("password") String password,@Field("repassword") String repassword,@Field("type") int type);
 }
