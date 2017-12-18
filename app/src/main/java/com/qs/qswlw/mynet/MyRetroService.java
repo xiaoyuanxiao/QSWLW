@@ -100,7 +100,8 @@ public interface MyRetroService {
      */
     @FormUrlEncoded
     @POST("index.php?m=Appapi&c=Login&a=get_register_send")
-    Observable<MainBean<RegisterGetCodeBean>> getCodeData(@Field("mobile") String a);
+    Observable<MainBean<RegisterGetCodeBean>> getCodeData(@Field("mobile") String a,@Field("type") int type);
+
 
     @FormUrlEncoded
     @POST("index.php?m=Appapi&c=Login&a=get_register_send")
@@ -526,7 +527,7 @@ public interface MyRetroService {
     Observable<MainBean> getUserNameData(@Field("token") String token, @Field("user_id") int user_id,@Field("nickname") String nickname);
 
     /**
-     *用户密码设置
+     *修改密码和修改二级密码
      */
     @FormUrlEncoded
     @POST("index.php?m=Appapi&c=user&a=setup")
@@ -540,11 +541,14 @@ public interface MyRetroService {
      * @return
      */
     @FormUrlEncoded
-    @POST("index.php?m=Appapi&c=user&a=setup")
+    @POST("index.php?m=Appapi&c=user&a=findpwd")
     Observable<MainBean> getRetrievePassData(@Field("token") String token, @Field("user_id") int user_id,
                                          @Field("mobile") String mobile,@Field("mobile_code") String mobile_code,@Field("roles") int roles,
                                              @Field("pass") String pass, @Field("repass") String repass);
 
+    /**
+     *
+     */
     /**
      * 设置消息列表
      */

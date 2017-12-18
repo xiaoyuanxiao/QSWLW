@@ -21,6 +21,7 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.qs.qswlw.MyApplication;
 import com.qs.qswlw.R;
 import com.qs.qswlw.activity.LoginActivity;
@@ -295,6 +296,7 @@ public class SetModifyActivity extends BaseInfoActivity implements ISetModifyVie
         tv_setmodify_id.setText(setModifyBean.getUser_id());
         tv_setmodify_userName.setText(setModifyBean.getNickname());
         tv_setmodify_phone.setText(setModifyBean.getMobile());
+        Glide.with(this).load(setModifyBean.getHead_pic()).into(iv_set_avater);
 
     }
 

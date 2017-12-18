@@ -327,7 +327,7 @@ public class RegisterActivity extends BaseInfoActivity {
 
             @Override
             public Observable<MainBean<RegisterGetCodeBean>> getObservable(MyRetroService retrofit) {
-                Observable<MainBean<RegisterGetCodeBean>> codeData = retrofit.getCodeData(number);
+                Observable<MainBean<RegisterGetCodeBean>> codeData = retrofit.getCodeData(number,0);
                 Log.e("Tag", codeData + "");
                 return codeData;
             }

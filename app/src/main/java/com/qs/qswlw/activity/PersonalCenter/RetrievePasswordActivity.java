@@ -72,7 +72,7 @@ public class RetrievePasswordActivity extends BaseInfoActivity {
         switch (v.getId()) {
             case R.id.btn_retrieve_getcode:
                 phone = edt_retrieve_phone.getText().toString().trim();
-                getCodeData(phone);
+                getCodeData(phone,2);
                 break;
             case R.id.btn_retreve_confirm:
                 code = edt_retrieve_code.getText().toString().trim();
@@ -101,7 +101,7 @@ public class RetrievePasswordActivity extends BaseInfoActivity {
 
             @Override
             public void onError(Throwable e) {
-
+                Log.e("e",e+"");
             }
 
             @Override
@@ -132,7 +132,7 @@ public class RetrievePasswordActivity extends BaseInfoActivity {
      *
      * @param number
      */
-    public void getCodeData(final String number) {
+    public void getCodeData(final String number,final int type) {
         /**
          * httpRequest为异步请求
          */
@@ -151,7 +151,7 @@ public class RetrievePasswordActivity extends BaseInfoActivity {
 
             @Override
             public Observable<MainBean<RegisterGetCodeBean>> getObservable(MyRetroService retrofit) {
-                Observable<MainBean<RegisterGetCodeBean>> codeData = retrofit.getCodeData(number);
+                Observable<MainBean<RegisterGetCodeBean>> codeData = retrofit.getCodeData(number,type);
                 Log.e("Tag", codeData + "");
                 return codeData;
             }
