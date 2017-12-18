@@ -48,6 +48,7 @@ public class MainPresenter {
                 iMainView.setUnionList(shop_ranking);
                 iMainView.setAlertList(notice);
                 //iMainView.setLuckList(shop_ranking);
+                Log.e("Maindatabean",list+"");
             }
 
             @Override

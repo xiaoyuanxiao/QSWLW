@@ -33,7 +33,7 @@ import rx.Observable;
  * Created by xiaoyu on 2017/4/12.
  */
 
-public class RegisterActivity extends BaseInfoActivity{
+public class RegisterActivity extends BaseInfoActivity {
     /**
      * 返回信息
      *
@@ -47,18 +47,15 @@ public class RegisterActivity extends BaseInfoActivity{
     private ArrayAdapter<CharSequence> consume_adapter;
 
 
-
-   // PersonalSettingBean.CyzxInfoBean cyzxInfoBean;
-   // PersonalSettingBean.ReInfoBean reInfoBean;
-  //  PersonalSettingBean.UserInfoBean userInfoBean;
+    // PersonalSettingBean.CyzxInfoBean cyzxInfoBean;
+    // PersonalSettingBean.ReInfoBean reInfoBean;
+    //  PersonalSettingBean.UserInfoBean userInfoBean;
     private String strConsume;
     private EditText edt_register_code, edt_register_myphone, edt_register_id, edt_register_phone, edt_register_username, edt_register_password, edt_register_name, edt_register_confirmPassword;
     private Button register_getcode, btn_register;
     private TimeCount time;
     private CheckBox cbx_register;
     private int user_role;
-
-
 
 
     @Override
@@ -76,7 +73,7 @@ public class RegisterActivity extends BaseInfoActivity{
         register_getcode = (Button) inflate.findViewById(R.id.register_getcode);
         btn_register = (Button) inflate.findViewById(R.id.btn_register);
         cbx_register = (CheckBox) inflate.findViewById(R.id.cbx_register);
-        loadSpinner(R.array.consume_item);
+        loadSpinner(R.array.business_item);
         return inflate;
     }
 
@@ -136,7 +133,7 @@ public class RegisterActivity extends BaseInfoActivity{
         time = new TimeCount(60000, 1000);
         Intent intent = getIntent();
         String userid = intent.getStringExtra("userid");
-        if(userid!=null){
+        if (userid != null) {
             edt_register_id.setText(userid);
             PostCheckID(Integer.parseInt(userid));
         }
@@ -164,7 +161,10 @@ public class RegisterActivity extends BaseInfoActivity{
                 getCodeData(edt_register_myphone.getText().toString());
                 break;
             case R.id.edt_register_name:
-                PostCheckID(Integer.parseInt(edt_register_id.getText().toString()));
+                if (!edt_register_id.getText().toString().trim().equals("")) {
+                    PostCheckID(Integer.parseInt(edt_register_id.getText().toString().trim()));
+                }
+
                 break;
             case R.id.btn_register:
                 if (edt_register_myphone.getText().toString().trim().equals("")) {
@@ -213,7 +213,7 @@ public class RegisterActivity extends BaseInfoActivity{
                     succ = IdBean.getSucc();
                     edt_register_name.setText(nickname);
                     edt_register_phone.setText(mobile);
-                    if (Integer.parseInt(role) >= 11) {
+                    if (Integer.parseInt(role) >= 0) {
                         loadSpinner(R.array.business_item);
                     } else {
                         loadSpinner(R.array.consume_item);
@@ -272,14 +272,14 @@ public class RegisterActivity extends BaseInfoActivity{
                     String token = result.getToken();
                     // 0消费天使，7董事局，8创业董事，9创业总监，10商家，11创业主任，12省管理中心，13市管理中心，14区管理中心，15创业经理，25平台
                     //请求个人中心接口
-                    UserManage.getInstance().saveRegisterUser(RegisterActivity.this,result);
+                    UserManage.getInstance().saveRegisterUser(RegisterActivity.this, result);
                     Intent intent = new Intent();
-                    intent.putExtra("token",token);
+                    intent.putExtra("token", token);
                     if (role1.equals("0")) {
-                        intent.setClass(RegisterActivity.this,ConsumerSettingActivity.class);
+                        intent.setClass(RegisterActivity.this, ConsumerSettingActivity.class);
                         startActivity(intent);
                     } else if (role1.equals("10")) {
-                        intent.setClass(RegisterActivity.this,BusinessSettingActivity.class);
+                        intent.setClass(RegisterActivity.this, BusinessSettingActivity.class);
                         startActivity(intent);
                     } else {
                         intent.setClass(RegisterActivity.this, OtherUserSettingActivity.class);
@@ -319,7 +319,7 @@ public class RegisterActivity extends BaseInfoActivity{
                 String message = registerGetCodeBeanMainBean.getMsg();
                 if (!message.equals("成功！")) {
                     ToastUtils.showToast(RegisterActivity.this, message);
-                }else{
+                } else {
                     time.start();
                 }
                 Log.i("TAG", registerGetCodeBeanMainBean.toString());

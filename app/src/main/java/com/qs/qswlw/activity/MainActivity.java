@@ -463,13 +463,13 @@ public class MainActivity extends BaseActivity implements IMainView {
             case R.id.rb_main_luckgame:
              //   startActivity(new Intent(this, LuckGameActivity.class));
                 this.intent = new Intent(this, WebViewActivity.class);
-                this.intent.putExtra("qs_lack_draw", entrepBaen.getQs_lack_draw());
+                this.intent.putExtra("qs_lack_draw", entrepBaen.getQs_lack_draw()+"&token="+MyApplication.TOKEN);
                 startActivity(this.intent);
                 break;
             //开心一刻
             case R.id.rb_main_funtime:
                 this.intent = new Intent(this, WebViewActivity.class);
-                this.intent.putExtra("qs_fun", entrepBaen.getQs_fun());
+                this.intent.putExtra("qs_fun", entrepBaen.getQs_fun()+"&token="+MyApplication.TOKEN);
                 startActivity(this.intent);
                 break;
             case R.id.ll_ranking_popup:

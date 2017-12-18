@@ -133,12 +133,8 @@ public class LoginActivity extends BaseInfoActivity {
                 if (role.equals("0")) {
                     intent.setClass(LoginActivity.this,ConsumerSettingActivity.class);
                     startActivity(intent);
-                } else if (role.equals("10")) {
-                    intent.setClass(LoginActivity.this,BusinessSettingActivity.class);
-                    startActivity(intent);
                 } else {
-                    //其他页面
-                    intent.setClass(LoginActivity.this, BusinessSettingActivity.class);
+                    intent.setClass(LoginActivity.this,BusinessSettingActivity.class);
                     startActivity(intent);
                 }
                 finish();
