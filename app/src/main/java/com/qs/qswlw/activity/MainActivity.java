@@ -88,6 +88,7 @@ public class MainActivity extends BaseActivity implements IMainView {
     private LinearLayout ll_ranking_popup, main_ll_avater,ll_notice_popup,ll_yzqs_popup;
     private Maindatabean.Current_sales entrepBaen;
     private LinearLayout ll_dialogmain_bg;
+    private Maindatabean.Notices notices;
 
 
     //    private volatile static MainActivity singleton;
@@ -105,6 +106,7 @@ public class MainActivity extends BaseActivity implements IMainView {
 //
     @Override
     public void setAlertList(Maindatabean.Notices title) {
+        notices = title;
         tv_dialog_index_title.setText(title.getIndex_title());
         tv_dialog_index_content.setText(title.getIndex_content());
         tv_dialog_index_name.setText(title.getIndex_name());
@@ -453,9 +455,12 @@ public class MainActivity extends BaseActivity implements IMainView {
                 break;
             //人气王
             case R.id.rb_main_Win:
-                this.intent = new Intent(this, WebViewActivity.class);
-                this.intent.putExtra("Win", "http://case.dian7dian.com/qiansheng/yzqs.html");
-                startActivity(this.intent);
+                showDilog();
+                tv_dialog_index_title.setText(notices.getIndex_title());
+                tv_dialog_index_content.setText(notices.getIndex_content());
+                tv_dialog_index_name.setText(notices.getIndex_name());
+                tv_dialog_index_department.setText(notices.getIndex_faburen());
+                tv_dialog_index_time.setText(notices.getIndex_time());
                 break;
             //促销抽奖
             case R.id.rb_main_luckgame:
