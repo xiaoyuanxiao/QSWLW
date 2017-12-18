@@ -32,7 +32,7 @@ import rx.schedulers.Schedulers;
 
 public class ReHttpUtils {
    // private static String baseUrl = "http://www.qiansheng.com/";
-    private static String baseUrl = "http://192.168.1.193/";
+    private static String baseUrl = "http://192.168.1.196/";
     private static ReHttpUtils reHttpUtils;
 
     private ReHttpUtils() {

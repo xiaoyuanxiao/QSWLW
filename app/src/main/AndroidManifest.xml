@@ -113,7 +113,7 @@
         <activity android:name=".activity.MyProductsActivity"/>
         <activity android:name=".activity.LuckDrawRecordActivity"/>
         <activity android:name=".activity.InteractionDetailActivity"/>
-        <activity android:name=".activity.WebviewActivity"/>
+        <activity android:name=".view.webview.WebViewActivity"/>
         <activity android:name=".activity.mall.AllianceMallDetailActivity"/>
         <activity android:name=".activity.mall.QSMallListActivity"
             android:windowSoftInputMode="adjustUnspecified|stateHidden"/>
