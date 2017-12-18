@@ -55,20 +55,5 @@ public class MainPresenter {
                 Log.e("MainPresenter",code);
             }
         });
-//        iMainBiz.getAlert(new MainAlertLisenter() {
-//            @Override
-//            public void onSuccess(final AlertBean e) {
-//                iMainView.runOnUiThread(new Runnable() {
-//                    @Override
-//                    public void run() {
-//                        iMainView.setAlertList(e);
-//                    }
-//                });
-//            }
-//
-//            @Override
-//            public void onFailure(String code) {
-//            }
-//        });
     }
 }

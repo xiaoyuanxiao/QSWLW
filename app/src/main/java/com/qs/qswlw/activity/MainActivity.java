@@ -38,7 +38,6 @@ import com.qs.qswlw.bean.Maindatabean;
 import com.qs.qswlw.bean.RegisterBean;
 import com.qs.qswlw.manager.UserManage;
 import com.qs.qswlw.okhttp.Iview.IMainView;
-import com.qs.qswlw.okhttp.Moudle.AlertBean;
 import com.qs.qswlw.okhttp.Moudle.ChinaBean;
 import com.qs.qswlw.okhttp.Moudle.LuckBean;
 import com.qs.qswlw.okhttp.Presenter.MainPresenter;
@@ -61,7 +60,6 @@ public class MainActivity extends BaseActivity implements IMainView {
     List<Maindatabean.Area> belist;
     List<Maindatabean.Salema> anlist;
     List<LuckBean> lulist;
-    AlertBean allist;
     ArrayList<ChinaBean> listtest;
     ArrayList<String> enlist;
     MytestAdapter myDataAdapter;
@@ -142,10 +140,10 @@ public class MainActivity extends BaseActivity implements IMainView {
 
     @Override
     public void setAngelList(List<Maindatabean.Salema> list) {
-        anlist.clear();
-        anlist.addAll(list);
-        Log.d("TAG", "-------setAngelList---");
-        angelAdapter.notifyDataSetChanged();
+//        anlist.clear();
+//        anlist.addAll(list);
+//        Log.d("TAG", "-------setAngelList---");
+//        angelAdapter.notifyDataSetChanged();
     }
 
     @Override
@@ -218,7 +216,6 @@ public class MainActivity extends BaseActivity implements IMainView {
     }
 
     private void showDilog() {
-        allist = new AlertBean();
         final AlertDialog.Builder builder = new AlertDialog.Builder(this);
         final AlertDialog dialog = builder.create();
         View alertview = LayoutInflater.from(MainActivity.this).inflate(R.layout.dialog_main, null);
@@ -322,24 +319,24 @@ public class MainActivity extends BaseActivity implements IMainView {
         /**
          * 创业天使创业排名榜内容填充
          */
-        View unionFootview2 = LayoutInflater.from(this).inflate(R.layout.union_homepage_foot, null);
-        View angelHeadview = LayoutInflater.from(this).inflate(R.layout.angel_homepage_head, null);
-        TextView tv_angel_head = (TextView) angelHeadview.findViewById(R.id.tv_angel_head);
-        tv_angel_head.setLayoutParams(new LinearLayout.LayoutParams(MyApplication.WIDTH, 60));
-        LinearLayout ll_footview1 = (LinearLayout) unionFootview2.findViewById(R.id.ll_footview);
-        ll_footview1.setLayoutParams(new LinearLayout.LayoutParams(MyApplication.WIDTH, LinearLayout.LayoutParams.WRAP_CONTENT));
-        anlist = new ArrayList<>();
-        angelAdapter = new AngelAdapter(this, anlist);
-        angelList.setAdapter(angelAdapter);
-        angelList.addHeaderView(angelHeadview);
-        angelList.addFooterView(unionFootview2);
-        unionFootview2.findViewById(R.id.ll_footview).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, AngelRankingActivity.class);
-                startActivity(intent);
-            }
-        });
+//        View unionFootview2 = LayoutInflater.from(this).inflate(R.layout.union_homepage_foot, null);
+//        View angelHeadview = LayoutInflater.from(this).inflate(R.layout.angel_homepage_head, null);
+//        TextView tv_angel_head = (TextView) angelHeadview.findViewById(R.id.tv_angel_head);
+//        tv_angel_head.setLayoutParams(new LinearLayout.LayoutParams(MyApplication.WIDTH, 60));
+//        LinearLayout ll_footview1 = (LinearLayout) unionFootview2.findViewById(R.id.ll_footview);
+//        ll_footview1.setLayoutParams(new LinearLayout.LayoutParams(MyApplication.WIDTH, LinearLayout.LayoutParams.WRAP_CONTENT));
+//        anlist = new ArrayList<>();
+//        angelAdapter = new AngelAdapter(this, anlist);
+//        angelList.setAdapter(angelAdapter);
+//        angelList.addHeaderView(angelHeadview);
+//        angelList.addFooterView(unionFootview2);
+//        unionFootview2.findViewById(R.id.ll_footview).setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent intent = new Intent(MainActivity.this, AngelRankingActivity.class);
+//                startActivity(intent);
+//            }
+//        });
 
         /**
          * 中国好产品排行榜内容填充

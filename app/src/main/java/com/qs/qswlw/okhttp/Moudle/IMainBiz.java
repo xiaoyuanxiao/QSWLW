@@ -10,5 +10,4 @@ public interface IMainBiz {
 
     void getALLdata(MainBaseListener mainBaseListener);
 
-//    void getAlert(MainAlertLisenter mainAlertLisenter);
 }

@@ -57,37 +57,4 @@ public class BizMain implements IMainBiz {
 
     }
 
-//    //这是弹框,doushuole，这是dialog
-//    @Override
-//    public void getAlert(final MainAlertLisenter mainAlertLisenter) {
-//        HashMap<String, String> stringStringHashMap = new HashMap<>();
-//        stringStringHashMap.put(index_data, alert);//
-//        Type type = new TypeToken<BaseBean<ResultAlertBean<AlertBean>>>() {
-//        }.getType();
-//        OKhttptUtils.httpPost(NetUrl.baseurl, stringStringHashMap,
-//                new DataCallBack<BaseBean<ResultAlertBean<AlertBean>>>(type) {
-//                    @Override
-//                    public void onSuccess(BaseBean<ResultAlertBean<AlertBean>> data) {
-//                        AlertBean result = null;
-//                        try {
-//                            result = data.getResult().getAlert();
-//
-//                        } catch (Exception e) {
-//
-//                        }
-//                        if (result == null)
-//                            mainAlertLisenter.onFailure("错误信息");
-//                        else
-//                            mainAlertLisenter.onSuccess(result);
-//                    }
-//
-//                    @Override
-//                    public void onFailure(int code) {
-//                        mainAlertLisenter.onFailure("错误信息" + code);
-//                    }
-//                });
-
- //   }
-
-
 }

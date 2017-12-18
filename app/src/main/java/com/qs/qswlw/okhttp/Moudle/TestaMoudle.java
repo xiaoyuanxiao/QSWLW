@@ -1,6 +1,8 @@
 package com.qs.qswlw.okhttp.Moudle;
 
 import com.google.gson.reflect.TypeToken;
+import com.qs.qswlw.bean.BaseBean;
+import com.qs.qswlw.bean.MainBean;
 import com.qs.qswlw.okhttp.DataCallBack;
 import com.qs.qswlw.okhttp.OKhttptUtils;
 
@@ -14,14 +16,16 @@ import java.util.HashMap;
 public class TestaMoudle implements ITestaBiz {
 
     private static TestaMoudle testMoudle;
+    String url = "http://www.qiansheng.com/api/index/index";
 
-    public interface OnLoginListener {
-        void onSucces(String msg);
-
-        void onFail();
+    private TestaMoudle() {
     }
 
-    String url = "http://www.qiansheng.com/api/index/index";
+    public synchronized static TestaMoudle getInstans() {
+        if (testMoudle == null)
+            testMoudle = new TestaMoudle();
+        return testMoudle;
+    }
 
     @Override
     public void login(String mobile, String password, final OnLoginListener onl) {
@@ -29,13 +33,13 @@ public class TestaMoudle implements ITestaBiz {
         HashMap<String, String> a = new HashMap<>();
         a.put("mobile"/**Key*/, mobile);
         a.put("password", password);
-        Type type = new TypeToken<BaseBean<AlertBeanRes>>() {
+        Type type = new TypeToken<BaseBean<MainBean>>() {
         }.getType();
         OKhttptUtils.httpPost(
                 url, a,
-                new DataCallBack<BaseBean<AlertBeanRes>>(type) {
+                new DataCallBack<BaseBean<MainBean>>(type) {
                     @Override
-                    public void onSuccess(BaseBean<AlertBeanRes> data) {
+                    public void onSuccess(BaseBean<MainBean> data) {
                         //onl.onSucces(data);
                     }
 
@@ -48,13 +52,10 @@ public class TestaMoudle implements ITestaBiz {
         );
     }
 
-    private TestaMoudle() {
-    }
+    public interface OnLoginListener {
+        void onSucces(String msg);
 
-    public synchronized static TestaMoudle getInstans() {
-        if (testMoudle == null)
-            testMoudle = new TestaMoudle();
-        return testMoudle;
+        void onFail();
     }
 
 }

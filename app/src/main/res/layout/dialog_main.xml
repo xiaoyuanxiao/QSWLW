@@ -13,7 +13,7 @@
         android:id="@+id/tv_dialog_index_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="das"
+        android:text=""
         android:textColor="@color/text_yellow"
         android:textSize="15sp"/>
     <TextView
@@ -21,7 +21,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
-        android:text="dasda2312"
+        android:text=""
         android:textColor="@color/text_yellow"
         android:textSize="11sp"/>
     <TextView
@@ -30,7 +30,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="right"
         android:layout_marginTop="10dp"
-        android:text="sdqdqd"
+        android:text=""
         android:textColor="@color/text_yellow"
         android:textSize="11sp"/>
     <TextView
@@ -38,7 +38,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="right"
-        android:text="sdqddadaqd"
+        android:text=""
         android:textColor="@color/text_yellow"
         android:textSize="11sp"/>
     <TextView
@@ -47,7 +47,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="right"
         android:layout_marginTop="5dp"
-        android:text="dewqdwe"
+        android:text=""
         android:textColor="@color/text_yellow"
         android:textSize="11sp"/>
     <LinearLayout
