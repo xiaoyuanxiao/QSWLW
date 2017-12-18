@@ -9,12 +9,12 @@ import com.qs.qswlw.MyApplication;
 import com.qs.qswlw.R;
 import com.qs.qswlw.SettingNewDataBinding;
 import com.qs.qswlw.activity.BaseDataBindingActivity;
-import com.qs.qswlw.activity.WebviewActivity;
 import com.qs.qswlw.adapter.SettingNewAdapter;
 import com.qs.qswlw.bean.SettingNewsBean;
 import com.qs.qswlw.okhttp.Iview.ISettingNewView;
 import com.qs.qswlw.okhttp.Presenter.SettingNewPersenter;
 import com.qs.qswlw.utils.ActivityManagerUtils;
+import com.qs.qswlw.view.webview.WebViewActivity;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -77,7 +77,7 @@ public class SettingNewActivity extends BaseDataBindingActivity implements ISett
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.tv_settingnews_consultation:
-               intent = new Intent(this, WebviewActivity.class);
+               intent = new Intent(this, WebViewActivity.class);
                 intent.putExtra("customerservice", customerservice);
                 startActivity(this.intent);
                 break;

@@ -9,7 +9,7 @@ import android.widget.TextView;
 
 import com.qs.qswlw.MyApplication;
 import com.qs.qswlw.R;
-import com.qs.qswlw.activity.WebviewActivity;
+import com.qs.qswlw.view.webview.WebViewActivity;
 
 import java.util.List;
 
@@ -44,7 +44,7 @@ public class EntrepAdapter extends BaseListAdapter<String> {
         tv_twentypercent_congtv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                intent  = new Intent(context, WebviewActivity.class);
+                intent  = new Intent(context, WebViewActivity.class);
                 intent.putExtra("products",data.get(0) );
                 context.startActivity(intent);
             }
@@ -52,7 +52,7 @@ public class EntrepAdapter extends BaseListAdapter<String> {
         tv_twentypercent_busgtv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                intent  = new Intent(context, WebviewActivity.class);
+                intent  = new Intent(context, WebViewActivity.class);
                 intent.putExtra("ella",data.get(1) );
                 context.startActivity(intent);
 
