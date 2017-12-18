@@ -199,7 +199,6 @@ public class BusinessSettingActivity extends BaseActivity implements IPersonalSe
                 break;
             case R.id.iv_setting_news:
                 startActivity(new Intent(this,SettingNewActivity.class));
-
                 break;
         }
     }

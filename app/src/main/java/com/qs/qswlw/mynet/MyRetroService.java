@@ -47,6 +47,8 @@ import com.qs.qswlw.bean.WithdrawalsFailedModifyBean;
 import java.io.File;
 import java.util.List;
 
+import okhttp3.RequestBody;
+import retrofit2.http.Body;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
@@ -78,6 +80,7 @@ public interface MyRetroService {
 
     /**
      * 联盟商家排行榜
+     *
      * @param a
      * @return
      * @Multipart对应from-data
@@ -100,7 +103,7 @@ public interface MyRetroService {
      */
     @FormUrlEncoded
     @POST("index.php?m=Appapi&c=Login&a=get_register_send")
-    Observable<MainBean<RegisterGetCodeBean>> getCodeData(@Field("mobile") String a,@Field("type") int type);
+    Observable<MainBean<RegisterGetCodeBean>> getCodeData(@Field("mobile") String a, @Field("type") int type);
 
 
     @FormUrlEncoded
@@ -298,11 +301,11 @@ public interface MyRetroService {
     Observable<MainBean<MyRoleBean>> getMyRoleData(@Field("token") String token);
 
     /**
-     *我的消费额度
+     * 我的消费额度
      */
     @FormUrlEncoded
     @POST("index.php?m=Appapi&c=ConsumeQuota&a=index")
-    Observable<MainBean<MySpendingLimitBean>> getMySpendingLimitData(@Field("token") String token,@Field("p") int p,@Field("tab_status") int tab_status);
+    Observable<MainBean<MySpendingLimitBean>> getMySpendingLimitData(@Field("token") String token, @Field("p") int p, @Field("tab_status") int tab_status);
 
 
     /**
@@ -310,7 +313,6 @@ public interface MyRetroService {
      */
     @FormUrlEncoded
     @POST("index.php?m=Appapi&c=Single&a=getmoney")
-
     Observable<MainBean<ConsumptionRecordBean>> getConsumptionRecordData(@Field("token") String token);
 
     /**
@@ -485,17 +487,19 @@ public interface MyRetroService {
 
 
     /**
-     *省市区代排行榜
+     * 省市区代排行榜
+     *
      * @param role
      * @param a
      * @return
      */
     @FormUrlEncoded
     @POST("index.php?m=Appapi&c=Index&a=rank_top")
-    Observable<MainBean<PopRankingBean>> getPopRankingData(@Field("role") String role,@Field("time_slot") String a);
+    Observable<MainBean<PopRankingBean>> getPopRankingData(@Field("role") String role, @Field("time_slot") String a);
 
     /**
      * 个人中心资料
+     *
      * @param token
      * @param user_id
      * @return
@@ -506,17 +510,20 @@ public interface MyRetroService {
 
     /**
      * 个人资料头像修改
+     *
      * @param token
      * @param user_id
      * @param images
      * @return
+     * @Part("token") String token, @Part("user_id") int user_id,@Part("images") File images
      */
-    @FormUrlEncoded
+    // @Multipart
     @POST("index.php?m=Appapi&c=user&a=updload_head")
-    Observable<MainBean> getUserAvaterData(@Field("token") String token, @Field("user_id") int user_id,@Field("images") File images);
+    Observable<MainBean> getUserAvaterData(@Body RequestBody requestBody);
 
     /**
      * 个人资料昵称修改
+     *
      * @param token
      * @param user_id
      * @param nickname
@@ -524,18 +531,19 @@ public interface MyRetroService {
      */
     @FormUrlEncoded
     @POST("index.php?m=Appapi&c=User&a=editname")
-    Observable<MainBean> getUserNameData(@Field("token") String token, @Field("user_id") int user_id,@Field("nickname") String nickname);
+    Observable<MainBean> getUserNameData(@Field("token") String token, @Field("user_id") int user_id, @Field("nickname") String nickname);
 
     /**
-     *修改密码和修改二级密码
+     * 修改密码和修改二级密码
      */
     @FormUrlEncoded
     @POST("index.php?m=Appapi&c=user&a=setup")
-    Observable<MainBean> getPasswordData(@Field("token") String token, @Field("user_id") int user_id,@Field("pass") String pass,
-                                         @Field("password") String password,@Field("repassword") String repassword,@Field("type") int type);
+    Observable<MainBean> getPasswordData(@Field("token") String token, @Field("user_id") int user_id, @Field("pass") String pass,
+                                         @Field("password") String password, @Field("repassword") String repassword, @Field("type") int type);
 
     /**
      * 找回二级密码
+     *
      * @param token
      * @param user_id
      * @return
@@ -543,7 +551,7 @@ public interface MyRetroService {
     @FormUrlEncoded
     @POST("index.php?m=Appapi&c=user&a=findpwd")
     Observable<MainBean> getRetrievePassData(@Field("token") String token, @Field("user_id") int user_id,
-                                         @Field("mobile") String mobile,@Field("mobile_code") String mobile_code,@Field("roles") int roles,
+                                             @Field("mobile") String mobile, @Field("mobile_code") String mobile_code, @Field("roles") int roles,
                                              @Field("pass") String pass, @Field("repass") String repass);
 
     /**

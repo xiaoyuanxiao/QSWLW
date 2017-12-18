@@ -40,6 +40,9 @@ import com.qs.qswlw.view.GenderPopupWindow;
 
 import java.io.File;
 
+import okhttp3.MediaType;
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 import rx.Observable;
 
 /**
@@ -258,7 +261,6 @@ public class SetModifyActivity extends BaseInfoActivity implements ISetModifyVie
         }
         if (photo_path != null) {
             //图片处理,上传头像
-            //  Glide.with(this).load(photo_path).into(iv_set_avater);
             file = new File(photo_path);
             Log.i("postAvaterfile",photo_path);
             postAvater(MyApplication.TOKEN, Integer.parseInt(MyApplication.ID), file);
@@ -280,11 +282,21 @@ public class SetModifyActivity extends BaseInfoActivity implements ISetModifyVie
                 Log.i("postAvateronNext",mainBean.getMsg());
                 String msg = mainBean.getMsg();
                 ToastUtils.showToast(msg);
+                if(mainBean.getStatus()==1){
+                    Glide.with(SetModifyActivity.this).load(file).into(iv_set_avater);
+                }
             }
 
             @Override
             public Observable<MainBean> getObservable(MyRetroService retrofit) {
-                return retrofit.getUserAvaterData(token, user_id, images);
+                RequestBody requestBody = RequestBody.create(MediaType.parse("image/*"), file);
+                RequestBody re = new MultipartBody.Builder()
+                        .setType(MultipartBody.FORM)
+                        .addFormDataPart("token",MyApplication.TOKEN)
+                        .addFormDataPart("user_id",MyApplication.ID)
+                        .addFormDataPart("images",file.getName(),requestBody)
+                        .build();
+                return retrofit.getUserAvaterData(re);
             }
         });
 
@@ -296,7 +308,7 @@ public class SetModifyActivity extends BaseInfoActivity implements ISetModifyVie
         tv_setmodify_id.setText(setModifyBean.getUser_id());
         tv_setmodify_userName.setText(setModifyBean.getNickname());
         tv_setmodify_phone.setText(setModifyBean.getMobile());
-        Glide.with(this).load(setModifyBean.getHead_pic()).into(iv_set_avater);
+        Glide.with(this).load(ReHttpUtils.getBaseUrl()+setModifyBean.getHead_pic()).into(iv_set_avater);
 
     }
 
