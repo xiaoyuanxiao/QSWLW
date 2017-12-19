@@ -13,7 +13,8 @@ import com.qs.qswlw.bean.MySliverBean;
 import com.qs.qswlw.okhttp.Iview.IMySliverBeanView;
 import com.qs.qswlw.okhttp.Presenter.MySliverBeanPresenter;
 import com.qs.qswlw.utils.ActivityManagerUtils;
-import com.qs.qswlw.view.SwipeRefreshView;
+import com.scwang.smartrefresh.layout.api.RefreshLayout;
+import com.scwang.smartrefresh.layout.listener.OnLoadmoreListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,8 +25,9 @@ import java.util.List;
 
 public class MySilverBeanActivity extends BaseInfoActivity implements IMySliverBeanView {
 
-    SwipeRefreshView swipeRefreshView;
     int page = 1;
+  //  SwipeRefreshView swipeRefreshView;
+  private RefreshLayout mRefreshLayout;
     private ImageView iv_mysliverbean_avater;
     private TextView tv_mysliverbean_id, tv_mysliverbean_nickname, tv_mysliverbean_sliver, tv_mysliverbean_total;
     private List<MySliverBean.SingleLogBean> sliverbeanList;
@@ -44,7 +46,8 @@ public class MySilverBeanActivity extends BaseInfoActivity implements IMySliverB
         tv_mysliverbean_total = (TextView) inflate1.findViewById(R.id.tv_mysliverbean_total);
         lv_mysliverbean = (ListView) inflate.findViewById(R.id.lv_mysliverbean);
         lv_mysliverbean.addHeaderView(inflate1);
-        swipeRefreshView = (SwipeRefreshView) inflate.findViewById(R.id.lv_mysliverbean_sw);
+     //   swipeRefreshView = (SwipeRefreshView) inflate.findViewById(R.id.lv_mysliverbean_sw);
+        mRefreshLayout = (RefreshLayout) inflate.findViewById(R.id.refreshLayout);
         return inflate;
     }
 
@@ -63,12 +66,18 @@ public class MySilverBeanActivity extends BaseInfoActivity implements IMySliverB
         mySliverBeanAdapter = new MySliverBeanAdapter(this, sliverbeanList);
         lv_mysliverbean.setAdapter(mySliverBeanAdapter);
         mySliverBeanPresenter.getdata(page);
-        swipeRefreshView.setOnLoadListener(new SwipeRefreshView.OnLoadListener() {
+        mRefreshLayout.setOnLoadmoreListener(new OnLoadmoreListener() {
             @Override
-            public void onLoad() {
+            public void onLoadmore(RefreshLayout refreshlayout) {
                 mySliverBeanPresenter.getdata(page);
             }
         });
+//        swipeRefreshView.setOnLoadListener(new SwipeRefreshView.OnLoadListener() {
+//            @Override
+//            public void onLoad() {
+//
+//            }
+//        });
     }
 
     @Override
@@ -86,11 +95,16 @@ public class MySilverBeanActivity extends BaseInfoActivity implements IMySliverB
     @Override
     public void setMySliverBeanListData(List<MySliverBean.SingleLogBean> list) {
         Log.d("TAG", "===========setMySliverBeanListData===" + list.size());
-        swipeRefreshView.setLoading(false);
+        mRefreshLayout.finishLoadmore();
         if (list == null || list.size() == 0) {
-            swipeRefreshView.setLoadingEnd();
+            mRefreshLayout.finishLoadmoreWithNoMoreData();
             return;
         }
+//        swipeRefreshView.setLoading(false);
+//        if (list == null || list.size() == 0) {
+//            swipeRefreshView.setLoadingEnd();
+//            return;
+//        }
         sliverbeanList.addAll(list);
         mySliverBeanAdapter.notifyDataSetChanged();
 
@@ -99,7 +113,7 @@ public class MySilverBeanActivity extends BaseInfoActivity implements IMySliverB
 
     @Override
     public void isgetDataFaile(String meg) {
-        swipeRefreshView.setLoading(false);
+        mRefreshLayout.finishLoadmore();
     }
 
     @Override
