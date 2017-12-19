@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.View;
+import android.webkit.JavascriptInterface;
 import android.webkit.WebResourceError;
 import android.webkit.WebResourceRequest;
 import android.webkit.WebView;
@@ -12,6 +13,7 @@ import android.webkit.WebViewClient;
 import android.widget.Toast;
 
 import com.qs.qswlw.R;
+import com.qs.qswlw.activity.MainActivity;
 
 
 public class WebViewActivity extends Activity {
@@ -20,7 +22,7 @@ public class WebViewActivity extends Activity {
     View mLadingView;
     CustomActionWebView mCustomActionWebView;
     private String url;
-    private String witnessChinaBusiness, interaction, products, ella, customerservice, winqs, qs_shop,qs_union,qs_fun,qs_lack_draw;
+    private String witnessChinaBusiness, interaction, products, ella, customerservice, winqs, qs_shop, qs_union, qs_fun, qs_lack_draw;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,21 +59,36 @@ public class WebViewActivity extends Activity {
             url = winqs;
         } else if (qs_shop != null) {
             url = qs_shop;
-        }else if (qs_union != null) {
+        } else if (qs_union != null) {
             url = qs_union;
-        }else if (qs_fun != null) {
+        } else if (qs_fun != null) {
             url = qs_fun;
-        }else if (qs_lack_draw != null) {
+        } else if (qs_lack_draw != null) {
             url = qs_lack_draw;
         }
 
 
     }
 
+    @JavascriptInterface
+    public void shop() {
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                System.out.println("===============shop============");
+                Intent intent = new Intent(WebViewActivity.this, MainActivity.class);
+                intent.putExtra("webview","webview");
+                startActivity(intent);
+             
+            }
+        });
+
+    }
+
     private void init() {
 
         mLadingView = findViewById(R.id.loadingView);
-        mCustomActionWebView = (CustomActionWebView)findViewById(R.id.customActionWebView);
+        mCustomActionWebView = (CustomActionWebView) findViewById(R.id.customActionWebView);
         mCustomActionWebView.setWebViewClient(new CustomWebViewClient());
         //链接js注入接口，使能选中返回数据
         mCustomActionWebView.linkJSInterface();
@@ -81,11 +98,12 @@ public class WebViewActivity extends Activity {
         //使用javascript
         mCustomActionWebView.getSettings().setJavaScriptEnabled(true);
         mCustomActionWebView.getSettings().setDomStorageEnabled(true);
+        mCustomActionWebView.addJavascriptInterface(this, "qsApp");
         //增加点击回调
         mCustomActionWebView.setActionSelectListener(new ActionSelectListener() {
             @Override
             public void onClick(String title, String selectText) {
-                if(title.equals("APIWeb")) {
+                if (title.equals("APIWeb")) {
                     Intent intent = new Intent(WebViewActivity.this, APIWebViewActivity.class);
                     startActivity(intent);
                     return;
@@ -104,11 +122,10 @@ public class WebViewActivity extends Activity {
     }
 
 
-
     @Override
     protected void onPause() {
         super.onPause();
-        if(mCustomActionWebView != null) {
+        if (mCustomActionWebView != null) {
             mCustomActionWebView.dismissAction();
         }
     }
@@ -116,7 +133,6 @@ public class WebViewActivity extends Activity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-
     }
 
     private class CustomWebViewClient extends WebViewClient {

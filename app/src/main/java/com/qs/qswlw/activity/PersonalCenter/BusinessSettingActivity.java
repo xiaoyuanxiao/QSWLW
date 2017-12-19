@@ -12,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.qs.qswlw.MyApplication;
 import com.qs.qswlw.R;
 import com.qs.qswlw.activity.BaseActivity;
@@ -21,9 +22,11 @@ import com.qs.qswlw.activity.mall.QSMallActivity;
 import com.qs.qswlw.adapter.BusinessSettingAdapter;
 import com.qs.qswlw.bean.PersonalSettingBean;
 import com.qs.qswlw.manager.UserManage;
+import com.qs.qswlw.mynet.ReHttpUtils;
 import com.qs.qswlw.okhttp.Iview.IPersonalSettingView;
 import com.qs.qswlw.okhttp.Presenter.PersonalSettingPresenter;
 import com.qs.qswlw.utils.RadioButtonImgUtil;
+import com.qs.qswlw.utils.RoleJudgeUtil;
 import com.qs.qswlw.utils.ToastUtils;
 
 
@@ -43,7 +46,7 @@ public class BusinessSettingActivity extends BaseActivity implements IPersonalSe
     private GridView gv_setting;
     private RadioButton rb_main_qsmall, rb_main_lianmeng, rb_main_funtime, rb_main_luck, rb_main_exit;
     private BusinessSettingAdapter businessSettingAdapter;
-    private ImageView iv_setting_set,iv_setting_news;
+    private ImageView iv_setting_set,iv_setting_news,iv_setting_avater;
     private TextView tv_setting_consumptionMoney, tv_setting_consumerSilverbeans, tv_setting_encourage, tv_setting_withdrawals, tv_setting_consumerbeans, tv_setting_paytaxes, tv_cyzx, tv_recommender, tv_setting_id, tv_setting_name, tv_setting_shopname, tv_role;
     private TextView setting_one;
     private String user_id, nickname, role;
@@ -65,46 +68,13 @@ public class BusinessSettingActivity extends BaseActivity implements IPersonalSe
         tv_setting_withdrawals.setText(personalSettingBean.getUser_info().getGold_total() + "");
         tv_setting_consumerbeans.setText(personalSettingBean.getUser_info().getTaxgold_total() + "");
         tv_setting_paytaxes.setText(personalSettingBean.getLoveval_model2_shop() + "");
+        Glide.with(this).load(ReHttpUtils.getBaseUrl()+personalSettingBean.getUser_info().getHead_pic()).into(iv_setting_avater);
         MyApplication.MOBILE = mobile = personalSettingBean.getUser_info().getMobile();
         MyApplication.ID = user_id = personalSettingBean.getUser_info().getUser_id();
         MyApplication.NICKNAME = nickname = personalSettingBean.getUser_info().getNickname();
         //会员身份
         role = personalSettingBean.getUser_info().getRole();
-        if (role.equals("0")) {
-            tv_role.setText("消费天使");
-            MyApplication.USERROLE = "消费天使";
-        }else if (role.equals("7")) {
-            tv_role.setText("董事局");
-            MyApplication.USERROLE = "董事局";
-        } else if (role.equals("8")) {
-            tv_role.setText("创业董事");
-            MyApplication.USERROLE = "创业董事";
-        } else if (role.equals("9")) {
-            tv_role.setText("创业总监");
-            MyApplication.USERROLE = "创业总监";
-        }else if (role.equals("10")) {
-            tv_role.setText("商家");
-            MyApplication.USERROLE = "商家";
-        }else if(role.equals("11")){
-            tv_role.setText("创业主任");
-            MyApplication.USERROLE = "创业主任";
-        }else if(role.equals("12")){
-            tv_role.setText("省管理中心");
-            MyApplication.USERROLE = "省管理中心";
-        }else if(role.equals("13")){
-            tv_role.setText("市管理中心");
-            MyApplication.USERROLE = "市管理中新";
-        }else if(role.equals("14")){
-            tv_role.setText("区管理中心");
-            MyApplication.USERROLE = "区管理中心";
-        }else if(role.equals("15")){
-            tv_role.setText("创业经理");
-            MyApplication.USERROLE = "创业经理";
-        }else if(role.equals("25")){
-            tv_role.setText("平台");
-            MyApplication.USERROLE = "平台";
-        }
-
+        tv_role.setText( RoleJudgeUtil.roleJudeg(role));
 
     }
 
@@ -129,6 +99,7 @@ public class BusinessSettingActivity extends BaseActivity implements IPersonalSe
         rb_main_exit = (RadioButton) findViewById(R.id.rb_main_exit);
         iv_setting_set = (ImageView) findViewById(R.id.iv_setting_set);
         iv_setting_news = (ImageView) findViewById(R.id.iv_setting_news);
+        iv_setting_avater = (ImageView) findViewById(R.id.iv_setting_avater);
         tv_setting_withdrawals = (TextView) findViewById(R.id.tv_setting_withdrawals);
         tv_setting_consumptionMoney = (TextView) findViewById(R.id.tv_setting_consumptionMoney);
         tv_setting_consumerSilverbeans = (TextView) findViewById(R.id.tv_setting_consumerSilverbeans);
@@ -251,33 +222,43 @@ public class BusinessSettingActivity extends BaseActivity implements IPersonalSe
         public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
             switch (i) {
                 case 0:
-                    intent = new Intent(BusinessSettingActivity.this, RecommendActivity.class);
-                    intent.putExtra("userid", user_id);
-                    intent.putExtra("nickname", nickname);
-                    intent.putExtra("shopname", shopName);
-                    intent.putExtra("role", role);
-                    intent.putExtra("position", "position");
-                    startActivity(intent);
-                    break;
-                case 1:
-                    startActivity(new Intent(BusinessSettingActivity.this, ScanCodeRecordActivity.class));
-                    break;
-                case 2:
-                    startActivity(new Intent(BusinessSettingActivity.this, MerchantAuditActivity.class));
-                    break;
-                case 3:
-                    startActivity(new Intent(BusinessSettingActivity.this, MerchantSalesReviewActivity.class));
-                    break;
-                case 4:
-                    intent = new Intent(BusinessSettingActivity.this, RecommendActivity.class);
-                    intent.putExtra("userid", user_id);
-                    intent.putExtra("nickname", nickname);
-                    intent.putExtra("role", role);
-                    startActivity(intent);
-                    break;
-                case 5:
+//                    intent = new Intent(BusinessSettingActivity.this, RecommendActivity.class);
+//                    intent.putExtra("userid", user_id);
+//                    intent.putExtra("nickname", nickname);
+//                    intent.putExtra("shopname", shopName);
+//                    intent.putExtra("role", role);
+//                    intent.putExtra("position", "position");
+//                    startActivity(intent);
                     Intent intent1 = new Intent(BusinessSettingActivity.this, ConsumptionRecordActivity.class);
                     startActivityForResult(intent1, 102);
+                    break;
+                case 1:
+//                    startActivity(new Intent(BusinessSettingActivity.this, ScanCodeRecordActivity.class));
+                    intent = new Intent(BusinessSettingActivity.this, RecommendActivity.class);
+                    intent.putExtra("userid", user_id);
+                    intent.putExtra("nickname", nickname);
+                    intent.putExtra("role", role);
+                    startActivity(intent);
+                    break;
+                case 2:
+//                    startActivity(new Intent(BusinessSettingActivity.this, MerchantAuditActivity.class));
+                    startActivity(new Intent(BusinessSettingActivity.this, RecordListActivity.class));
+                    break;
+                case 3:
+                    startActivity(new Intent(BusinessSettingActivity.this, MyOrganizationActivity.class));
+                 //   startActivity(new Intent(BusinessSettingActivity.this, MerchantSalesReviewActivity.class));
+                    break;
+                case 4:
+//                    intent = new Intent(BusinessSettingActivity.this, RecommendActivity.class);
+//                    intent.putExtra("userid", user_id);
+//                    intent.putExtra("nickname", nickname);
+//                    intent.putExtra("role", role);
+//                    startActivity(intent);
+                    startActivity(new Intent(BusinessSettingActivity.this, MyOrganizationActivity.class));
+                    break;
+                case 5:
+//                    Intent intent1 = new Intent(BusinessSettingActivity.this, ConsumptionRecordActivity.class);
+//                    startActivityForResult(intent1, 102);
                     break;
                 case 6:
                     startActivity(new Intent(BusinessSettingActivity.this, RecordListActivity.class));

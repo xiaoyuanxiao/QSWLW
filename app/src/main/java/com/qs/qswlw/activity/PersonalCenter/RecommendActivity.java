@@ -57,26 +57,8 @@ public class RecommendActivity extends BaseInfoActivity implements View.OnLongCl
         if(("position").equals(position)){
             tv_titlebar_center.setText("我的商家码");
         }else{
-            tv_titlebar_center.setText("推荐"+name);
+            tv_titlebar_center.setText("推荐");
             tv_titlebar_right.setText("推荐记录");
-        }
-        if(role!=null){
-            switch (role) {
-                case "0":
-                case "10":
-                    name = "消费者";
-                    break;
-                case "12":
-                case "13":
-                case "14":
-                case "25":
-                    name = "商家";
-                    break;
-                case "15":
-                    name = "创业天使";
-                    break;
-                default:
-            }
         }
 
 

@@ -16,10 +16,12 @@ public class MyApplication extends Application {
     public static String TOKEN = "";
     public static String USERROLE = "";
     public static String NICKNAME = "";
+    public static String ROLE = "";
     public static String ID = "";
     public static String MOBILE = "";
-    private static Application app ;
     public static int POSITION = 0 ;
+    private static Application app ;
+
     public static Application getApplication()
 
     {

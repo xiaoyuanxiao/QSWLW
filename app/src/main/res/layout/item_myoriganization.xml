@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <data class = "com.qs.qswlw.ItemMyOriganizationData">
+        <variable
+            name="tuiDataBean"
+            type="com.qs.qswlw.bean.MyOrganizationBean.TuiDataBean"/>
+        <variable
+            name="role"
+            type="java.lang.String"/>
+        <variable
+            name="id"
+            type="java.lang.String"/>
+        <variable
+            name="total"
+            type="java.lang.String"/>
+    </data>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="10dp">
+    <ImageView
+        android:id="@+id/iv_itemMyOriganization_avater"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginRight="10dp"
+        android:src="@mipmap/cyzz"/>
+    <TextView
+        android:id="@+id/tv_itemMyOriganization_role"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/iv_itemMyOriganization_avater"
+        android:text="@{role}"
+        android:textSize="11sp"/>
+
+    <TextView
+        android:id="@+id/tv_itemMyOriganization_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/tv_itemMyOriganization_role"
+        android:text="@{id}"
+        android:textSize="11sp"/>
+
+    <TextView
+        android:id="@+id/tv_itemMyOriganization_total"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:text="@{total}"
+        android:textColor="@color/red"
+        android:textSize="13sp"/>
+
+</RelativeLayout>
+</layout>

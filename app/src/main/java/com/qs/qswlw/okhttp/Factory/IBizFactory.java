@@ -14,6 +14,7 @@ import com.qs.qswlw.okhttp.Moudle.BizMain;
 import com.qs.qswlw.okhttp.Moudle.BizMerchantAudit;
 import com.qs.qswlw.okhttp.Moudle.BizMerchantAuditClick;
 import com.qs.qswlw.okhttp.Moudle.BizMyBankList;
+import com.qs.qswlw.okhttp.Moudle.BizMyOrganization;
 import com.qs.qswlw.okhttp.Moudle.BizMyProfit;
 import com.qs.qswlw.okhttp.Moudle.BizMyRole;
 import com.qs.qswlw.okhttp.Moudle.BizMySliverBean;
@@ -48,6 +49,7 @@ import com.qs.qswlw.okhttp.Moudle.IMainBiz;
 import com.qs.qswlw.okhttp.Moudle.IMerchantAuditBiz;
 import com.qs.qswlw.okhttp.Moudle.IMerchantAuditClickBiz;
 import com.qs.qswlw.okhttp.Moudle.IMyBankListBiz;
+import com.qs.qswlw.okhttp.Moudle.IMyOrganizationBiz;
 import com.qs.qswlw.okhttp.Moudle.IMyProfitBiz;
 import com.qs.qswlw.okhttp.Moudle.IMyRoleBiz;
 import com.qs.qswlw.okhttp.Moudle.IMySliverBeanBiz;
@@ -194,5 +196,8 @@ public class IBizFactory {
     }
     public static ISettingNewBiz getSettingNewList(){
         return BizSettingNew.getInstans();
+    }
+    public static IMyOrganizationBiz getMyOrganizationList(){
+        return BizMyOrganization.getInstans();
     }
 }

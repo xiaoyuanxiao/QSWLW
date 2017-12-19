@@ -55,6 +55,7 @@ import java.util.Observable;
  */
 public class MainActivity extends BaseActivity implements IMainView {
     public static MyObservable observable = new MyObservable();
+    private volatile static MainActivity singleton;
     List<Maindatabean.Goods> chlist;
     List<Maindatabean.Shop> unlist;
     List<Maindatabean.Area> belist;
@@ -88,28 +89,30 @@ public class MainActivity extends BaseActivity implements IMainView {
     private LinearLayout ll_dialogmain_bg;
     private Maindatabean.Notices notices;
 
+    public static MainActivity getSingleton() {
+        if (singleton == null) {
+            synchronized (MainActivity.class) {
+                if (singleton == null) {
+                    singleton = new MainActivity();
+                }
+            }
+        }
+        return singleton;
+    }
 
-    //    private volatile static MainActivity singleton;
-//    private MainActivity (){}
-//    public static MainActivity getSingleton() {
-//        if (singleton == null) {
-//            synchronized (MainActivity.class) {
-//                if (singleton == null) {
-//                    singleton = new MainActivity();
-//                }
-//            }
-//        }
-//        return singleton;
-//    }
-//
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        Log.e("webview===========================","webview");
+        showDilog();
+        setDialogText();
+
+    }
+
     @Override
     public void setAlertList(Maindatabean.Notices title) {
         notices = title;
-        tv_dialog_index_title.setText(title.getIndex_title());
-        tv_dialog_index_content.setText(title.getIndex_content());
-        tv_dialog_index_name.setText(title.getIndex_name());
-        tv_dialog_index_department.setText(title.getIndex_faburen());
-        tv_dialog_index_time.setText(title.getIndex_time());
+        setDialogText();
     }
 
     @Override
@@ -252,6 +255,13 @@ public class MainActivity extends BaseActivity implements IMainView {
         p.height =  p.width ; // 高度设置为屏幕的0.6，根据实际情况调整
         dialogWindow.setAttributes(p);
 
+    }
+    public void setDialogText(){
+        tv_dialog_index_title.setText(notices.getIndex_title());
+        tv_dialog_index_content.setText(notices.getIndex_content());
+        tv_dialog_index_name.setText(notices.getIndex_name());
+        tv_dialog_index_department.setText(notices.getIndex_faburen());
+        tv_dialog_index_time.setText(notices.getIndex_time());
     }
 
     @Override
@@ -399,7 +409,7 @@ public class MainActivity extends BaseActivity implements IMainView {
                 if(userInfo==null){
                     startActivity(new Intent(MainActivity.this,LoginActivity.class));
                 }else{
-                    String role = userInfo.getRole();
+                     String role = MyApplication.ROLE = userInfo.getRole();
                     if(role==null){
                         startActivity(new Intent(MainActivity.this,LoginActivity.class));
                     }else{
@@ -453,11 +463,7 @@ public class MainActivity extends BaseActivity implements IMainView {
             //人气王
             case R.id.rb_main_Win:
                 showDilog();
-                tv_dialog_index_title.setText(notices.getIndex_title());
-                tv_dialog_index_content.setText(notices.getIndex_content());
-                tv_dialog_index_name.setText(notices.getIndex_name());
-                tv_dialog_index_department.setText(notices.getIndex_faburen());
-                tv_dialog_index_time.setText(notices.getIndex_time());
+                setDialogText();
                 break;
             //促销抽奖
             case R.id.rb_main_luckgame:

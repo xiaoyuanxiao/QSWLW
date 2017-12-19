@@ -19,6 +19,7 @@ import com.qs.qswlw.bean.Maindatabean;
 import com.qs.qswlw.bean.MerchantAuditBean;
 import com.qs.qswlw.bean.MerchantAuditClickBean;
 import com.qs.qswlw.bean.MyBankListBean;
+import com.qs.qswlw.bean.MyOrganizationBean;
 import com.qs.qswlw.bean.MyProfitBean;
 import com.qs.qswlw.bean.MyRoleBean;
 import com.qs.qswlw.bean.MySliverBean;
@@ -322,7 +323,7 @@ public interface MyRetroService {
     @POST("index.php?m=Appapi&c=Single&a=do_money")
     Observable<MainBean> PostConsumptionData(@Field("token") String token, @Field("uid") int uid, @Field("money") float money, @Field("ratio") float ratio,
                                              @Field("none") float none, @Field("ratio_key") String ratio_key, @Field("pay_type") String pay_type, @Field("pay_time") String pay_time,
-                                             @Field("pay_name") String pay_name, @Field("proof") File proof, @Field("remittance") File remittance);
+                                             @Field("pay_name") String pay_name, @Field("remittance") File remittance);
 
     /**
      * 商家审核提交消费录单
@@ -332,7 +333,7 @@ public interface MyRetroService {
     Observable<MainBean> PostConsumptionData1(@Field("token") String token, @Field("id") int id, @Field("goods_id") int goods_id, @Field("uid") int uid,
                                               @Field("money") float money, @Field("ratio") float ratio, @Field("none") float none, @Field("ratio_key") String ratio_key,
                                               @Field("pay_type") String pay_type, @Field("pay_name") String pay_name, @Field("pay_time") String pay_time, @Field("msales_su") int msales_su,
-                                              @Field("proof") File proof, @Field("remittance") File remittance);
+                                             @Field("remittance") File remittance);
 
     /**
      * 线下门店扫码
@@ -555,12 +556,16 @@ public interface MyRetroService {
                                              @Field("pass") String pass, @Field("repass") String repass);
 
     /**
-     *
-     */
-    /**
      * 设置消息列表
      */
     @FormUrlEncoded
     @POST("index.php?m=Appapi&c=User&a=minemsg")
     Observable<MainBean<SettingNewsBean>> getSettingNewData(@Field("token") String token, @Field("user_id") int user_id);
+
+    /**
+     * 设置消息列表
+     */
+    @FormUrlEncoded
+    @POST("index.php?m=Appapi&c=User&a=mymech")
+    Observable<MainBean<MyOrganizationBean>> getMyOrganizationData(@Field("token") String token, @Field("user_id") int user_id);
 }

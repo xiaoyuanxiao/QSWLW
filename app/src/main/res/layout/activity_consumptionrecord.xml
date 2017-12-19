@@ -227,7 +227,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginRight="8dp"
                     android:gravity="right"
-                    android:text="发票凭证:"
+                    android:text="汇款凭证:"
                     android:textColor="@color/black"
                     android:textSize="11sp" />
 
@@ -275,7 +275,7 @@
                 android:textColor="@color/black"
                 android:textSize="9sp" />
 
-            <LinearLayout style="@style/ll_consumptionrecord">
+          <!--  <LinearLayout style="@style/ll_consumptionrecord">
 
                 <TextView
                     android:layout_width="60dp"
@@ -328,7 +328,7 @@
                 android:text="(仅支持图片类型)"
                 android:textColor="@color/black"
                 android:textSize="9sp" />
-
+-->
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

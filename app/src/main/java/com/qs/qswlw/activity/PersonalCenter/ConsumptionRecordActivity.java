@@ -69,7 +69,7 @@ public class ConsumptionRecordActivity extends BaseInfoActivity implements ICons
     private Button btn_selectorfile1, btn_selectorfile2;
     private GenderPopupWindow menuWindow;
     private ImageView iv_consumption1, iv_consumption2;
-    private String a;
+    private String aaa;
     private Bitmap bitmap;
     private Uri imageUri;
     private TextView tv_isselect_consumptionrecord, tv_isselect_consumptionrecord2;
@@ -94,7 +94,7 @@ public class ConsumptionRecordActivity extends BaseInfoActivity implements ICons
     private float money;
     private int uid;
     private File file1;
-    private File file2;
+  //  private File file2;
 
     @Override
     public View setConetnView() {
@@ -104,11 +104,11 @@ public class ConsumptionRecordActivity extends BaseInfoActivity implements ICons
         edt_consumptionrecord_two = (TextView) inflate.findViewById(R.id.edt_consumptionrecord_two);
         spinner = (Spinner) inflate.findViewById(spinner_consumptionrecord_pos);
         btn_selectorfile1 = (Button) inflate.findViewById(R.id.btn_selectorfile1);
-        btn_selectorfile2 = (Button) inflate.findViewById(R.id.btn_selectorfile2);
+     //   btn_selectorfile2 = (Button) inflate.findViewById(R.id.btn_selectorfile2);
         iv_consumption1 = (ImageView) inflate.findViewById(R.id.iv_consumption1);
-        iv_consumption2 = (ImageView) inflate.findViewById(R.id.iv_consumption2);
+      //  iv_consumption2 = (ImageView) inflate.findViewById(R.id.iv_consumption2);
         tv_isselect_consumptionrecord = (TextView) inflate.findViewById(R.id.tv_isselect_consumptionrecord);
-        tv_isselect_consumptionrecord2 = (TextView) inflate.findViewById(R.id.tv_isselect_consumptionrecord2);
+    //    tv_isselect_consumptionrecord2 = (TextView) inflate.findViewById(R.id.tv_isselect_consumptionrecord2);
         btn_sonsumption_confirm = (Button) inflate.findViewById(R.id.btn_sonsumption_confirm);
         edt_consumptionrecord_id = (EditText) inflate.findViewById(R.id.edt_consumptionrecord_id);
         edt_consumptionrecord_nickname = (EditText) inflate.findViewById(R.id.edt_consumptionrecord_nickname);
@@ -160,7 +160,7 @@ public class ConsumptionRecordActivity extends BaseInfoActivity implements ICons
     public void setOnclick() {
         super.setOnclick();
         btn_selectorfile1.setOnClickListener(this);
-        btn_selectorfile2.setOnClickListener(this);
+    //    btn_selectorfile2.setOnClickListener(this);
         edt_consumptionrecord_two.setOnClickListener(this);
         btn_sonsumption_confirm.setOnClickListener(this);
 //        eb_one.setOnClickListener(this);
@@ -218,9 +218,9 @@ public class ConsumptionRecordActivity extends BaseInfoActivity implements ICons
             case R.id.btn_selectorfile1:
                 showPW("1");
                 break;
-            case R.id.btn_selectorfile2:
-                showPW("2");
-                break;
+//            case R.id.btn_selectorfile2:
+//                showPW("2");
+//                break;
             case R.id.btn_sonsumption_confirm:
                 if (1 == type) {//商家审核进入的
                     postMerchantAuditData();
@@ -255,7 +255,7 @@ public class ConsumptionRecordActivity extends BaseInfoActivity implements ICons
             @Override
             public Observable<MainBean> getObservable(MyRetroService retrofit) {
 
-                return retrofit.PostConsumptionData1(MyApplication.TOKEN, Integer.parseInt(listBean.getId()), Integer.parseInt(goods_id), uid, money, ratio, none, ratio_key, pay_type, pay_name, pay_time, Integer.parseInt(edt_consumptionrecord_four.getText().toString()), file1, file2);
+                return retrofit.PostConsumptionData1(MyApplication.TOKEN, Integer.parseInt(listBean.getId()), Integer.parseInt(goods_id), uid, money, ratio, none, ratio_key, pay_type, pay_name, pay_time, Integer.parseInt(edt_consumptionrecord_four.getText().toString()), file1);
             }
         });
 
@@ -290,7 +290,7 @@ public class ConsumptionRecordActivity extends BaseInfoActivity implements ICons
                 pay_time = edt_consumptionrecord_sex.getText().toString();
                 //  long l = DateUtils.dateToStamp2();
                 pay_name = edt_consumptionrecord_nickname.getText().toString();
-                return retrofit.PostConsumptionData(MyApplication.TOKEN, uid, money, ratio, none, ratio_key, pay_type, pay_time, pay_name, file1, file2);
+                return retrofit.PostConsumptionData(MyApplication.TOKEN, uid, money, ratio, none, ratio_key, pay_type, pay_time, pay_name, file1);
                 //  return retrofit.PostConsumptionData(MyApplication.TOKEN,1,20,12,4,"4",pay_type,12345353,"a",file,file);
             }
         });
@@ -298,7 +298,7 @@ public class ConsumptionRecordActivity extends BaseInfoActivity implements ICons
     }
 
     private void showPW(String s) {
-        a = s;
+        aaa = s;
         menuWindow = new GenderPopupWindow(this, new MyOnClickListener());
         menuWindow.showAtLocation(this.findViewById(R.id.tv_isselect_consumptionrecord), Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL, 0, 0);
         menuWindow.setTitleName("选择图片来源");
@@ -325,14 +325,14 @@ public class ConsumptionRecordActivity extends BaseInfoActivity implements ICons
         }
         if (photo_path != null) {
             //图片处理\
-            boolean equals = a.equals("1");
+            boolean equals = aaa.equals("1");
             Glide.with(this).load(photo_path).into(equals ? iv_consumption1 : iv_consumption2);
             if (equals) {
                 file1 = new File(photo_path);
                 iv_consumption1.setVisibility(View.VISIBLE);
             } else {
-                file2 = new File(photo_path);
-                iv_consumption2.setVisibility(View.VISIBLE);
+//                file2 = new File(photo_path);
+//                iv_consumption2.setVisibility(View.VISIBLE);
             }
         } else {
             ToastUtils.showToast(this, "请重新选取图片！");
