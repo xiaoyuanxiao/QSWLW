@@ -2,10 +2,12 @@ package com.qs.qswlw.activity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -34,19 +36,25 @@ public class LoginActivity extends BaseInfoActivity {
     private EditText edt_username,edt_password;
     private TextView tv_newuser_register,tv_forgetPassword;
     private RelativeLayout rl_login;
+    private CheckBox cb_login;
+    private SharedPreferences sp = null;
+
 
 
     @Override
     public View setConetnView() {
         View inflate = View.inflate(this, R.layout.activity_login, null);
+        sp = this.getSharedPreferences("userinfo", Context.MODE_PRIVATE);
         btn_login = (Button) inflate.findViewById(R.id.btn_login);
         edt_username = (EditText) inflate.findViewById(R.id.edt_username);
         edt_password = (EditText) inflate.findViewById(R.id.edt_password);
         rl_login = (RelativeLayout) inflate.findViewById(R.id.rl_login);
         tv_newuser_register = (TextView) inflate.findViewById(R.id.tv_newuser_register);
         tv_forgetPassword = (TextView) inflate.findViewById(R.id.tv_forgetPassword);
+        cb_login = (CheckBox) inflate.findViewById(R.id.cb_login);
         return inflate;
     }
+
 
     @Override
     public void initfindviewByid() {
@@ -59,7 +67,13 @@ public class LoginActivity extends BaseInfoActivity {
     @Override
     public void initData() {
         super.initData();
+        if (sp.getBoolean("checkboxBoolean", false))
+        {
+            edt_username.setText(sp.getString("uname", null));
+            edt_password.setText(sp.getString("upswd", null));
+            cb_login.setChecked(true);
 
+        }
     }
 
     @Override
@@ -69,6 +83,7 @@ public class LoginActivity extends BaseInfoActivity {
         tv_newuser_register.setOnClickListener(this);
         tv_forgetPassword.setOnClickListener(this);
         rl_login.setOnClickListener(this);
+        cb_login.setOnClickListener(this);
     }
 
     @Override
@@ -78,12 +93,28 @@ public class LoginActivity extends BaseInfoActivity {
             case R.id.btn_login:
                 String username = edt_username.getText().toString();
                 String password = edt_password.getText().toString();
+                boolean CheckBoxLogin = cb_login.isChecked();
+                if (CheckBoxLogin)
+                {
+                    SharedPreferences.Editor editor = sp.edit();
+                    editor.putString("uname", username);
+                    editor.putString("upswd", password);
+                    editor.putBoolean("checkboxBoolean", true);
+                    editor.commit();
+                }
+                else
+                {
+                    SharedPreferences.Editor editor = sp.edit();
+                 //   editor.putString("uname", null);
+                    editor.putString("upswd", null);
+                    editor.putBoolean("checkboxBoolean", false);
+                    editor.commit();
+                }
                 getLogin(username,password);
                 break;
             case R.id.tv_newuser_register:
                 startActivity(new Intent(this,RegisterActivity.class));
                 break;
-
             case R.id.tv_forgetPassword:
                 startActivity(new Intent(this,ForgetPasswordActivity.class));
                 break;
@@ -92,8 +123,11 @@ public class LoginActivity extends BaseInfoActivity {
                         getSystemService(Context.INPUT_METHOD_SERVICE);
                 imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
                 break;
+            case R.id.cb_login:
+                break;
         }
     }
+
 
     /**
      * 登录接口
