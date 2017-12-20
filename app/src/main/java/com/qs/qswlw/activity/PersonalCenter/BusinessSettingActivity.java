@@ -83,6 +83,10 @@ public class BusinessSettingActivity extends BaseActivity implements IPersonalSe
         shop_order = personalSettingBean.getShop_order();
         cash_money  = personalSettingBean.getCash_money();//现金
         cons_gold = personalSettingBean.getCons_gold();//消费金豆
+        MyApplication.QSSHOP = personalSettingBean.getQs_shop();
+        MyApplication.QSCAT = personalSettingBean.getQs_cat();
+        MyApplication.QSCART = personalSettingBean.getQs_cart();
+        MyApplication.QSMINE = personalSettingBean.getQs_mine();
 
     }
 

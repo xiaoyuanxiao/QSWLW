@@ -18,6 +18,10 @@ public class MyApplication extends Application {
     public static String NICKNAME = "";
     public static String ROLE = "";
     public static String ID = "";
+    public static String QSSHOP = "";
+    public static String QSCAT = "";
+    public static String QSCART = "";
+    public static String QSMINE = "";
     public static String MOBILE = "";
     public static String CYZXID = "";
     public static int POSITION = 0 ;

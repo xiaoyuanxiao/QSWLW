@@ -1,6 +1,7 @@
 package com.qs.qswlw.activity.PersonalCenter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.drawable.BitmapDrawable;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -19,6 +20,7 @@ import com.qs.qswlw.bean.ReceivingAddressBean;
 import com.qs.qswlw.okhttp.Iview.IReceivingAddressView;
 import com.qs.qswlw.okhttp.Presenter.ReceivingAddressPersenter;
 import com.qs.qswlw.utils.ActivityManagerUtils;
+import com.qs.qswlw.view.webviewpb.WebviewActivity;
 
 import java.util.List;
 
@@ -35,6 +37,7 @@ public class ReceivingAddress1Activity extends BaseDataBindingActivity implement
     private ReceivingAddressPersenter receivingAddressPersenter = new ReceivingAddressPersenter(this);
     private String provinceName,cityName,districtName,twonName;
     private LinearLayout pw_commoditydetails_one,pw_commoditydetails_two,pw_commoditydetails_three,pw_commoditydetails_four;
+    private Intent intent;
 
     @Override
     protected int initview() {
@@ -132,16 +135,24 @@ public class ReceivingAddress1Activity extends BaseDataBindingActivity implement
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.pw_commoditydetails_one:
-
+                intent = new Intent(ReceivingAddress1Activity.this, WebviewActivity.class);
+                intent.putExtra("qs_shop_address",MyApplication.QSSHOP);
+                startActivity(this.intent);
                 break;
             case R.id.pw_commoditydetails_two:
-
+                intent = new Intent(ReceivingAddress1Activity.this, WebviewActivity.class);
+                intent.putExtra("qs_cat",MyApplication.QSCAT);
+                startActivity(this.intent);
                 break;
             case R.id.pw_commoditydetails_three:
-
+                intent = new Intent(ReceivingAddress1Activity.this, WebviewActivity.class);
+                intent.putExtra("qs_cart",MyApplication.QSCART);
+                startActivity(this.intent);
                 break;
             case R.id.pw_commoditydetails_four:
-
+                intent = new Intent(ReceivingAddress1Activity.this, WebviewActivity.class);
+                intent.putExtra("qs_mine",MyApplication.QSMINE);
+                startActivity(this.intent);
                 break;
 
         }

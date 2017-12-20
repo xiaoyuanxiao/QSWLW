@@ -28,6 +28,42 @@ public class PersonalSettingBean {
     private String cash_money;
     private String cons_gold;
     private String shop_order;
+    private String qs_shop;
+    private String qs_cat;
+    private String qs_cart;
+    private String qs_mine;
+
+    public String getQs_shop() {
+        return qs_shop;
+    }
+
+    public void setQs_shop(String qs_shop) {
+        this.qs_shop = qs_shop;
+    }
+
+    public String getQs_cart() {
+        return qs_cart;
+    }
+
+    public void setQs_cart(String qs_cart) {
+        this.qs_cart = qs_cart;
+    }
+
+    public String getQs_cat() {
+        return qs_cat;
+    }
+
+    public void setQs_cat(String qs_cat) {
+        this.qs_cat = qs_cat;
+    }
+
+    public String getQs_mine() {
+        return qs_mine;
+    }
+
+    public void setQs_mine(String qs_mine) {
+        this.qs_mine = qs_mine;
+    }
 
     public String getCash_money() {
         return cash_money;
