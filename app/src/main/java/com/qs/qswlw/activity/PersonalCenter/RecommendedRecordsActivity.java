@@ -24,13 +24,16 @@ import java.util.List;
 
 public class RecommendedRecordsActivity extends BaseInfoActivity implements IRecommendRecordView, RecommendRecordsMode.RemoudeOnLoad {
 
+    int tab_namepage1 = 1, tab_namepage2 = 1;
+    int isPage = 1;
     private ViewPager viewpager;
     private List<RecommendRecordsMode> viewpagedata;
     private RadioGroup rg_recommendrecords;
     private TextView tv_consumer, tv_business;
     private RecommendedRecordsPersenter recommendedRecordsPersenter = new RecommendedRecordsPersenter(this);
-    int tab_namepage1 = 1, tab_namepage2 = 1;
-    int isPage = 1;
+    private String tab_name1 = "jl_d4";
+    private String tab_name2 = "jl_d3";
+    private String istab_name = tab_name1;
 
     @Override
     public void setRecommendRecordList(List<RecommendedRecordsBean> list, String recode) {
@@ -57,12 +60,8 @@ public class RecommendedRecordsActivity extends BaseInfoActivity implements IRec
         } else {
             recommendedRecordsBean = viewpagedata.get(1);
         }
-        recommendedRecordsBean.setLoading(false);
+    //    recommendedRecordsBean.setLoading(false);
     }
-
-    private String tab_name1 = "jl_d4";
-    private String tab_name2 = "jl_d3";
-    private String istab_name = tab_name1;
 
     @Override
     public View setConetnView() {

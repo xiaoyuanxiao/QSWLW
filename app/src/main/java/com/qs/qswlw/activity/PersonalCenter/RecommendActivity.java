@@ -161,9 +161,6 @@ public class RecommendActivity extends BaseInfoActivity implements View.OnLongCl
                     intent.putExtra("userid",userid);
                     startActivity(intent);
                 }
-
-
-
             }
 
             
