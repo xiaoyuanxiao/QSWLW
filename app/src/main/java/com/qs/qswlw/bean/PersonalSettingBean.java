@@ -25,6 +25,33 @@ public class PersonalSettingBean {
     private String last_rebate_date;
     private String loveval_model2_xfz;
     private String loveval_model2_shop;
+    private String cash_money;
+    private String cons_gold;
+    private String shop_order;
+
+    public String getCash_money() {
+        return cash_money;
+    }
+
+    public void setCash_money(String cash_money) {
+        this.cash_money = cash_money;
+    }
+
+    public String getCons_gold() {
+        return cons_gold;
+    }
+
+    public void setCons_gold(String cons_gold) {
+        this.cons_gold = cons_gold;
+    }
+
+    public String getShop_order() {
+        return shop_order;
+    }
+
+    public void setShop_order(String shop_order) {
+        this.shop_order = shop_order;
+    }
 
     public String getLoveval_model2_xfz() {
         return loveval_model2_xfz;

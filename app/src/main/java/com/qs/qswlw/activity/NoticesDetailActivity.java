@@ -24,7 +24,7 @@ public class NoticesDetailActivity extends BaseDataBindingActivity {
     @Override
     protected void initdatabinding() {
         noticesDetailBinding = getBind();
-        setDataTitle("公告详情");
+        setTitleName("公告详情");
     }
 
     @Override

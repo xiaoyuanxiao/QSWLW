@@ -1,120 +1,145 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
-    <include layout="@layout/titlebar"
-        android:background="@color/line" />
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="0.3dp"
-        android:background="@color/view" />
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data class="com.qs.qswlw.ReceivingAddressDatabinding">
+
+        <variable
+            name="addressBean"
+            type="com.qs.qswlw.bean.ReceivingAddressBean.AddressBean" />
+    </data>
+
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#ffffff"
+        android:layout_height="match_parent"
         android:orientation="vertical">
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:padding="9dp">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="收货人姓名"
-                android:textSize="12sp" />
-            <EditText
-                android:id="@+id/et_consigneeName"
-                style="@style/editText_adaress"
-                android:layout_marginLeft="25dp"
-                android:maxLength="15"
-                android:maxLines="1"
-                 />
-        </LinearLayout>
         <View
-            style="@style/view_address" />
-        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:padding="9dp">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="地区"
-                android:textSize="12sp" />
-            <EditText
-                android:id="@+id/et_address"
-                style="@style/editText_adaress"
-                android:layout_marginLeft="20dp"
-                android:inputType="phone"
-                android:maxLength="15"
-                />
-        </LinearLayout>
-        <View
-            style="@style/view_address" />
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:padding="9dp">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="详细地址"
-                android:textSize="12sp" />
-            <EditText
-                android:id="@+id/et_location"
-                style="@style/editText_adaress"
-                android:layout_marginLeft="20dp"
-                android:inputType="phone"
-                android:maxLength="15"
-                />
-        </LinearLayout>
-        <View
-            style="@style/view_address" />
+            android:layout_height="0.3dp"
+            android:background="@color/view" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:padding="9dp">
-            <TextView
-                android:layout_width="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="手机"
-                android:textSize="12sp" />
-            <EditText
-                android:id="@+id/et_phone"
-                style="@style/editText_adaress"
-                android:layout_marginLeft="20dp"
-                android:inputType="number"
-                android:maxLength="6"
-              />
-        </LinearLayout>
-        <View
-            style="@style/view_address"
-            android:layout_marginBottom="10dp"/>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:padding="9dp">
-            <TextView
-                android:layout_width="wrap_content"
+                android:orientation="horizontal"
+                android:padding="9dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="收货人姓名"
+                    android:textSize="12sp" />
+
+                <EditText
+                    android:id="@+id/et_consigneeName"
+                    style="@style/editText_adaress"
+                    android:layout_marginLeft="25dp"
+                    android:editable="false"
+                    android:hint="@{addressBean.consignee}"
+                    android:maxLength="15"
+                    android:maxLines="1" />
+            </LinearLayout>
+
+            <View style="@style/view_address" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="邮政编码"
-                android:textSize="12sp" />
-            <EditText
-                android:id="@+id/et_postcode"
-                style="@style/editText_adaress"
-                android:layout_marginLeft="20dp"
-                android:inputType="number"
-                android:maxLength="6"
-                />
+                android:orientation="horizontal"
+                android:padding="9dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="地区"
+                    android:textSize="12sp" />
+
+                <EditText
+                    android:id="@+id/et_address"
+                    style="@style/editText_adaress"
+                    android:layout_marginLeft="20dp"
+                    android:inputType="phone"
+                    android:maxLength="15" />
+            </LinearLayout>
+
+            <View style="@style/view_address" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="9dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="详细地址"
+                    android:textSize="12sp" />
+
+                <EditText
+                    android:id="@+id/et_location"
+                    style="@style/editText_adaress"
+                    android:layout_marginLeft="20dp"
+                    android:editable="false"
+                    android:hint="@{addressBean.address}"
+                    android:inputType="phone"
+                    android:maxLength="15" />
+            </LinearLayout>
+
+            <View style="@style/view_address" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="9dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="手机"
+                    android:textSize="12sp" />
+
+                <EditText
+                    android:id="@+id/et_phone"
+                    style="@style/editText_adaress"
+                    android:layout_marginLeft="20dp"
+                    android:editable="false"
+                    android:hint="@{addressBean.mobile}"
+                    android:inputType="number"
+                    android:maxLength="6" />
+            </LinearLayout>
+
+            <View
+                style="@style/view_address"
+                android:layout_marginBottom="10dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="9dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="邮政编码"
+                    android:textSize="12sp" />
+
+                <EditText
+                    android:id="@+id/et_postcode"
+                    style="@style/editText_adaress"
+                    android:layout_marginLeft="20dp"
+                    android:editable="false"
+                    android:hint="@{addressBean.zipcode}"
+                    android:inputType="number"
+                    android:maxLength="6" />
+            </LinearLayout>
         </LinearLayout>
+
     </LinearLayout>
-
-</LinearLayout>
+</layout>

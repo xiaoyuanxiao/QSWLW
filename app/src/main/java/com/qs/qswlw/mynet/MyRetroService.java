@@ -29,6 +29,7 @@ import com.qs.qswlw.bean.OldMemberBean;
 import com.qs.qswlw.bean.PersonalSettingBean;
 import com.qs.qswlw.bean.PopRankingBean;
 import com.qs.qswlw.bean.RankingBean;
+import com.qs.qswlw.bean.ReceivingAddressBean;
 import com.qs.qswlw.bean.RecommendedRecordsBean;
 import com.qs.qswlw.bean.RecordListBaseBean;
 import com.qs.qswlw.bean.RegisterBean;
@@ -568,4 +569,11 @@ public interface MyRetroService {
     @FormUrlEncoded
     @POST("index.php?m=Appapi&c=User&a=mymech")
     Observable<MainBean<MyOrganizationBean>> getMyOrganizationData(@Field("token") String token, @Field("user_id") int user_id);
+
+    /**
+     * 收货地址
+     */
+    @FormUrlEncoded
+    @POST("index.php?m=Appapi&c=User&a=cyzx_address")
+    Observable<MainBean<ReceivingAddressBean>> getReceivingAddressData(@Field("token") String token, @Field("cyzx_id") int cyzx_id);
 }

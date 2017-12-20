@@ -25,7 +25,7 @@ public class SettingNewDetailActivity extends BaseDataBindingActivity {
     @Override
     protected void initdatabinding() {
         newDetailBinding = getBind();
-        setDataTitle("信息内容");
+        setTitleName("信息内容");
         setTitleRightimg(R.mipmap.shezhi);
 
     }

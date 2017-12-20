@@ -18,7 +18,8 @@ public class WebviewActivity extends AppCompatActivity {
     private SlowlyProgressBar slowlyProgressBar;
 
     private String url;
-    private String witnessChinaBusiness, interaction, products, ella, customerservice, winqs, qs_shop, qs_union, qs_fun, qs_lack_draw;
+    private String witnessChinaBusiness, interaction, products, ella, customerservice, winqs, qs_shop, qs_union, qs_fun, qs_lack_draw,
+            shop_order,cash_money,cons_gold;
     @JavascriptInterface
     public void shop() {
         runOnUiThread(new Runnable() {
@@ -52,6 +53,9 @@ public class WebviewActivity extends AppCompatActivity {
         qs_union = intent.getStringExtra("qs_union");
         qs_fun = intent.getStringExtra("qs_fun");
         qs_lack_draw = intent.getStringExtra("qs_lack_draw");
+        shop_order = intent.getStringExtra("shop_order");
+        cash_money = intent.getStringExtra("cash_money");
+        cons_gold = intent.getStringExtra("cons_gold");
         if (witnessChinaBusiness != null) {
             url = witnessChinaBusiness;
         } else if (interaction != null) {
@@ -72,6 +76,12 @@ public class WebviewActivity extends AppCompatActivity {
             url = qs_fun;
         } else if (qs_lack_draw != null) {
             url = qs_lack_draw;
+        } else if (shop_order != null) {
+            url = shop_order;
+        }else if (cash_money != null) {
+            url = cash_money;
+        }else if (cons_gold != null) {
+            url = cons_gold;
         }
 
     }

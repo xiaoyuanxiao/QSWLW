@@ -2,76 +2,93 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="100dp"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:background="#292828">
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center_vertical"
-        android:layout_margin="6dp">
-        <ImageView
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:src="@mipmap/sy_03"/>
-        <TextView
-            style="@style/tv_standard"
-            android:text="首页"/>
-    </LinearLayout>
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="0.2dp"
-        android:background="@color/view"/>
+    android:background="#292828"
+    android:orientation="vertical">
 
     <LinearLayout
-        android:id="@+id/ll_pw_classification"
+        android:id="@+id/pw_commoditydetails_one"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        android:layout_margin="6dp"
         android:gravity="center_vertical"
-        android:layout_margin="6dp">
+        android:orientation="horizontal">
+
         <ImageView
             android:layout_width="20dp"
             android:layout_height="20dp"
-            android:src="@mipmap/sy_03"/>
+            android:src="@mipmap/sy_03" />
+
         <TextView
             style="@style/tv_standard"
-            android:text="分类"/>
+            android:text="首页" />
     </LinearLayout>
+
     <View
         android:layout_width="match_parent"
         android:layout_height="0.2dp"
-        android:background="@color/view"/>
+        android:background="@color/view" />
+
     <LinearLayout
+        android:id="@+id/pw_commoditydetails_two"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        android:layout_margin="6dp"
         android:gravity="center_vertical"
-        android:layout_margin="6dp">
+        android:orientation="horizontal">
+
         <ImageView
             android:layout_width="20dp"
             android:layout_height="20dp"
-            android:src="@mipmap/sy_03"/>
+            android:src="@mipmap/sy_03" />
+
         <TextView
             style="@style/tv_standard"
-            android:text="购物车"/>
+            android:text="分类" />
     </LinearLayout>
+
     <View
         android:layout_width="match_parent"
         android:layout_height="0.2dp"
-        android:background="@color/view"/>
+        android:background="@color/view" />
+
     <LinearLayout
+        android:id="@+id/pw_commoditydetails_three"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        android:layout_margin="6dp"
         android:gravity="center_vertical"
-        android:layout_margin="6dp">
+        android:orientation="horizontal">
+
         <ImageView
             android:layout_width="20dp"
             android:layout_height="20dp"
-            android:src="@mipmap/sy_03"/>
+            android:src="@mipmap/sy_03" />
+
         <TextView
             style="@style/tv_standard"
-            android:text="我的"/>
+            android:text="购物车" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.2dp"
+        android:background="@color/view" />
+
+    <LinearLayout
+        android:id="@+id/pw_commoditydetails_four"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="6dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@mipmap/sy_03" />
+
+        <TextView
+            style="@style/tv_standard"
+            android:text="我的" />
     </LinearLayout>
 </LinearLayout>

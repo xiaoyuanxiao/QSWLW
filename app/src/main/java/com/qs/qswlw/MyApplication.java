@@ -19,6 +19,7 @@ public class MyApplication extends Application {
     public static String ROLE = "";
     public static String ID = "";
     public static String MOBILE = "";
+    public static String CYZXID = "";
     public static int POSITION = 0 ;
     private static Application app ;
 

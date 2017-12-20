@@ -28,6 +28,7 @@ import com.qs.qswlw.okhttp.Presenter.PersonalSettingPresenter;
 import com.qs.qswlw.utils.RadioButtonImgUtil;
 import com.qs.qswlw.utils.RoleJudgeUtil;
 import com.qs.qswlw.utils.ToastUtils;
+import com.qs.qswlw.view.webviewpb.WebviewActivity;
 
 
 /**
@@ -52,29 +53,36 @@ public class BusinessSettingActivity extends BaseActivity implements IPersonalSe
     private String user_id, nickname, role;
     private String mobile;
     private String shopName;
+    private String shop_order,cash_money,cons_gold;
 
     @Override
     public void setUserInfo(PersonalSettingBean personalSettingBean) {
+        PersonalSettingBean.UserInfoBean user_info = personalSettingBean.getUser_info();
         // tv_cyzx.setText("创业中心:"+personalSettingBean.getCyzx_info().getNickname());
-        tv_recommender.setText("推荐人:" + personalSettingBean.getRe_info().getNickname());
-        tv_setting_id.setText("ID:" + personalSettingBean.getUser_info().getUser_id());
-        tv_setting_name.setText("昵称:" + personalSettingBean.getUser_info().getNickname());
+        tv_recommender.setText("推荐人:" + user_info.getNickname());
+        tv_setting_id.setText("ID:" + user_info.getUser_id());
+        tv_setting_name.setText("昵称:" +user_info.getNickname());
    //     shopName = personalSettingBean.getShop().getName();
 //        tv_setting_shopname.setText("店铺名称:" + shopName);
 
         tv_setting_consumptionMoney.setText("0");
-        tv_setting_consumerSilverbeans.setText(personalSettingBean.getUser_info().getSilver_total() + "");
-        tv_setting_encourage.setText(personalSettingBean.getUser_info().getLove_total() + "");
-        tv_setting_withdrawals.setText(personalSettingBean.getUser_info().getGold_total() + "");
-        tv_setting_consumerbeans.setText(personalSettingBean.getUser_info().getTaxgold_total() + "");
+        tv_setting_consumerSilverbeans.setText(user_info.getSilver_total() + "");
+        tv_setting_encourage.setText(user_info.getLove_total() + "");
+        tv_setting_withdrawals.setText(user_info.getGold_total() + "");
+        tv_setting_consumerbeans.setText(user_info.getTaxgold_total() + "");
         tv_setting_paytaxes.setText(personalSettingBean.getLoveval_model2_shop() + "");
-        Glide.with(this).load(ReHttpUtils.getBaseUrl()+personalSettingBean.getUser_info().getHead_pic()).into(iv_setting_avater);
-        MyApplication.MOBILE = mobile = personalSettingBean.getUser_info().getMobile();
-        MyApplication.ID = user_id = personalSettingBean.getUser_info().getUser_id();
-        MyApplication.NICKNAME = nickname = personalSettingBean.getUser_info().getNickname();
+        Glide.with(this).load(ReHttpUtils.getBaseUrl()+user_info.getHead_pic()).into(iv_setting_avater);
+        MyApplication.MOBILE = mobile = user_info.getMobile();
+        MyApplication.ID = user_id = user_info.getUser_id();
+        MyApplication.CYZXID = user_info.getCyzx_id();
+        MyApplication.NICKNAME = nickname = user_info.getNickname();
         //会员身份
-        role = personalSettingBean.getUser_info().getRole();
+        role = user_info.getRole();
         tv_role.setText( RoleJudgeUtil.roleJudeg(role));
+        //商城订单
+        shop_order = personalSettingBean.getShop_order();
+        cash_money  = personalSettingBean.getCash_money();//现金
+        cons_gold = personalSettingBean.getCons_gold();//消费金豆
 
     }
 
@@ -249,22 +257,23 @@ public class BusinessSettingActivity extends BaseActivity implements IPersonalSe
                  //   startActivity(new Intent(BusinessSettingActivity.this, MerchantSalesReviewActivity.class));
                     break;
                 case 4:
-//                    intent = new Intent(BusinessSettingActivity.this, RecommendActivity.class);
-//                    intent.putExtra("userid", user_id);
-//                    intent.putExtra("nickname", nickname);
-//                    intent.putExtra("role", role);
-//                    startActivity(intent);
-                    startActivity(new Intent(BusinessSettingActivity.this, MyOrganizationActivity.class));
+                    intent = new Intent(BusinessSettingActivity.this, WebviewActivity.class);
+                    intent.putExtra("shop_order",shop_order+"&token="+MyApplication.TOKEN );
+                    startActivity(this.intent);
                     break;
                 case 5:
-//                    Intent intent1 = new Intent(BusinessSettingActivity.this, ConsumptionRecordActivity.class);
-//                    startActivityForResult(intent1, 102);
+                    intent = new Intent(BusinessSettingActivity.this, WebviewActivity.class);
+                    intent.putExtra("cash_money",cash_money);
+                    startActivity(this.intent);
                     break;
                 case 6:
-                    startActivity(new Intent(BusinessSettingActivity.this, RecordListActivity.class));
+                    intent = new Intent(BusinessSettingActivity.this, WebviewActivity.class);
+                    intent.putExtra("cons_gold",cons_gold);
+                    startActivity(this.intent);
                     break;
                 case 7:
-                    startActivity(new Intent(BusinessSettingActivity.this, MyProfitActivity.class));
+                  //  startActivity(new Intent(BusinessSettingActivity.this, MyProfitActivity.class));
+                    startActivity(new Intent(BusinessSettingActivity.this, ReceivingAddress1Activity.class));
                     break;
                 case 8:
                     startActivity(new Intent(BusinessSettingActivity.this, ImproveDocumentationActivity.class));

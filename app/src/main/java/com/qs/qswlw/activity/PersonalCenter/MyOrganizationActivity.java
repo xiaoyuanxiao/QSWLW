@@ -38,7 +38,7 @@ public class MyOrganizationActivity extends BaseDataBindingActivity implements I
 
     @Override
     protected void initdatabinding() {
-        setDataTitle("网络图");
+        setTitleName("网络图");
         myOriganizationData = getBind();
     }
 

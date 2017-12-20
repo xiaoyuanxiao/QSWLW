@@ -1,23 +1,24 @@
 package com.qs.qswlw.activity.PersonalCenter;
 
-import android.content.DialogInterface;
-import android.view.View;
-import android.widget.ListView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
+        import android.content.DialogInterface;
+        import android.view.View;
+        import android.widget.ListView;
+        import android.widget.ProgressBar;
+        import android.widget.RelativeLayout;
+        import android.widget.TextView;
 
-import com.qs.qswlw.MyApplication;
-import com.qs.qswlw.R;
-import com.qs.qswlw.adapter.RecordListAdapter;
-import com.qs.qswlw.bean.RecordListBean;
-import com.qs.qswlw.okhttp.Iview.IRecordListView;
-import com.qs.qswlw.okhttp.Presenter.RecordListPresenter;
-import com.qs.qswlw.utils.ActivityManagerUtils;
-import com.qs.qswlw.utils.ToastUtils;
-import com.qs.qswlw.view.SwipeRefreshView;
+        import com.qs.qswlw.MyApplication;
+        import com.qs.qswlw.R;
+        import com.qs.qswlw.adapter.RecordListAdapter;
+        import com.qs.qswlw.bean.RecordListBean;
+        import com.qs.qswlw.okhttp.Iview.IRecordListView;
+        import com.qs.qswlw.okhttp.Presenter.RecordListPresenter;
+        import com.qs.qswlw.utils.ActivityManagerUtils;
+        import com.scwang.smartrefresh.layout.api.RefreshLayout;
+        import com.scwang.smartrefresh.layout.listener.OnLoadmoreListener;
 
-import java.util.ArrayList;
-import java.util.List;
+        import java.util.ArrayList;
+        import java.util.List;
 
 /**
  * Created by xiaoyu on 2017/4/5.
@@ -27,7 +28,7 @@ public class RecordListActivity extends BaseInfoActivity implements IRecordListV
 
 
     int page = 1;
-    SwipeRefreshView swipeRefreshView;
+    //  SwipeRefreshView swipeRefreshView;
     String tv_recordlist_Text;
     private RelativeLayout rl_recordlist_left, rl_recordlist_right;
     private TextView tv_recordlist_left, tv_recordlist_right;
@@ -39,6 +40,8 @@ public class RecordListActivity extends BaseInfoActivity implements IRecordListV
     private List<RecordListBean> recordListBeanList;
     private String[] items;
     private String item;
+    private RefreshLayout mRefreshLayout;
+    private ProgressBar pb_itemforestry;
 
     @Override
     public View setConetnView() {
@@ -48,7 +51,9 @@ public class RecordListActivity extends BaseInfoActivity implements IRecordListV
         tv_recordlist_left = (TextView) inflate.findViewById(R.id.tv_recordlist_left);
         tv_recordlist_right = (TextView) inflate.findViewById(R.id.tv_recordlist_right);
         lv_recordlist = (ListView) inflate.findViewById(R.id.lv_recordlist);
-        swipeRefreshView = (SwipeRefreshView) inflate.findViewById(R.id.lv_recordlist_sw);
+        //  swipeRefreshView = (SwipeRefreshView) inflate.findViewById(R.id.lv_recordlist_sw);
+        mRefreshLayout = (RefreshLayout) inflate.findViewById(R.id.refreshLayout);
+        pb_itemforestry = (ProgressBar) inflate.findViewById(R.id.pb_itemforestry);
         return inflate;
     }
 
@@ -59,9 +64,16 @@ public class RecordListActivity extends BaseInfoActivity implements IRecordListV
         recordListAdapter = new RecordListAdapter(RecordListActivity.this, recordListBeanList);
         lv_recordlist.setAdapter(recordListAdapter);
         recordListPresenter.getData(MyApplication.TOKEN, page, type, is_go);
-        swipeRefreshView.setOnLoadListener(new SwipeRefreshView.OnLoadListener() {
+//        swipeRefreshView.setOnLoadListener(new SwipeRefreshView.OnLoadListener() {
+//            @Override
+//            public void onLoad() {
+//                recordListPresenter.getDataRefresh(MyApplication.TOKEN, page, type, is_go);
+//            }
+//        });
+        mRefreshLayout.setEnableLoadmoreWhenContentNotFull(false);
+        mRefreshLayout.setOnLoadmoreListener(new OnLoadmoreListener() {
             @Override
-            public void onLoad() {
+            public void onLoadmore(RefreshLayout refreshlayout) {
                 recordListPresenter.getDataRefresh(MyApplication.TOKEN, page, type, is_go);
             }
         });
@@ -153,7 +165,9 @@ public class RecordListActivity extends BaseInfoActivity implements IRecordListV
 
     @Override
     public void setRecordList(List<RecordListBean> list) {
-        swipeRefreshView.setLoading(false);
+        mRefreshLayout.finishLoadmore();
+        lv_recordlist.setVisibility(View.VISIBLE);
+        pb_itemforestry.setVisibility(View.GONE);
         recordListBeanList.clear();
         if (list != null) {
             recordListBeanList.addAll(list);
@@ -163,9 +177,9 @@ public class RecordListActivity extends BaseInfoActivity implements IRecordListV
 
     @Override
     public void setRecordListRefresh(List<RecordListBean> list) {
-        swipeRefreshView.setLoading(false);
+        mRefreshLayout.finishLoadmore();
         if (list == null || list.size() == 0) {
-            ToastUtils.showToast("没有更多数据了");
+            mRefreshLayout.finishLoadmoreWithNoMoreData();
             return;
         }
         recordListBeanList.addAll(list);
@@ -175,7 +189,8 @@ public class RecordListActivity extends BaseInfoActivity implements IRecordListV
 
     @Override
     public void isgetDataFaile(String meg) {
-        swipeRefreshView.setLoading(false);
+        pb_itemforestry.setVisibility(View.GONE);
+        mRefreshLayout.finishLoadmore();
     }
 
     @Override

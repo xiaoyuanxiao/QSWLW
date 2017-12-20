@@ -46,7 +46,8 @@ public class CommodityDetailsActivity extends BaseActivity {
     private Button btn_buy;
     private LinearLayout ll_customerService, ll_home;
     private ImageView iv_setting;
-    private LinearLayout ll_pw_classification;
+    private LinearLayout pw_commoditydetails_two;
+    private PopupWindow popupWindow;
 
     @Override
     public Object initView() {
@@ -75,7 +76,6 @@ public class CommodityDetailsActivity extends BaseActivity {
         tabLayout.setTabMode(TabLayout.MODE_FIXED);
 
     }
-
 
     /**
      * 初始化所有基fragment
@@ -118,7 +118,6 @@ public class CommodityDetailsActivity extends BaseActivity {
         }
     }
 
-
     @Override
     public void setOnclick() {
         btn_buy.setOnClickListener(this);
@@ -143,7 +142,7 @@ public class CommodityDetailsActivity extends BaseActivity {
             case R.id.iv_setting:
                 showpw(iv_setting);
                 break;
-            case R.id.ll_pw_classification:
+            case R.id.pw_commoditydetails_two:
                 startActivity(new Intent(this,ClassiFicationActivity.class));
                 break;
 
@@ -151,16 +150,14 @@ public class CommodityDetailsActivity extends BaseActivity {
 
     }
 
-    private PopupWindow popupWindow;
-
     private void showpw(ImageView v) {
         //加载布局
         LinearLayout layout = (LinearLayout) LayoutInflater.from(this).inflate(
                 R.layout.pw_commoditydetails, null);
         // 实例化popupWindow
         popupWindow = new PopupWindow(layout, 150, LinearLayout.LayoutParams.WRAP_CONTENT);
-        ll_pw_classification = (LinearLayout) layout.findViewById(R.id.ll_pw_classification);
-        ll_pw_classification.setOnClickListener(this);
+        pw_commoditydetails_two = (LinearLayout) layout.findViewById(R.id.pw_commoditydetails_two);
+        pw_commoditydetails_two.setOnClickListener(this);
         //控制键盘是否可以获得焦点
         popupWindow.setFocusable(true);
         //设置popupWindow弹出窗体的背景

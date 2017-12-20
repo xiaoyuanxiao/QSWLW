@@ -10,6 +10,7 @@
         <variable
             name="titlename"
             type="java.lang.String" />
+
     </data>
 
     <LinearLayout
@@ -21,8 +22,7 @@
         <RelativeLayout
             android:id="@+id/rl_titlebar"
             android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:background="@color/red">
+            android:layout_height="40dp">
 
             <ImageView
                 android:id="@+id/iv_titlebar_left"
@@ -34,16 +34,16 @@
                 android:paddingLeft="10dp"
                 android:src="@mipmap/left" />
 
-         <!--   <TextView
-                android:id="@+id/tv_titlebar_left"
-                android:layout_toRightOf="@+id/iv_titlebar_left"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:onClick="@{baseInfoActivityonclic::onClick}"
-                android:text="返回"
-                android:textColor="@color/white"
-                android:textSize="12sp" />-->
+            <!--   <TextView
+                   android:id="@+id/tv_titlebar_left"
+                   android:layout_toRightOf="@+id/iv_titlebar_left"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_centerVertical="true"
+                   android:onClick="@{baseInfoActivityonclic::onClick}"
+                   android:text="返回"
+                   android:textColor="@color/white"
+                   android:textSize="12sp" />-->
 
             <TextView
                 android:id="@+id/tv_titlebar_center"

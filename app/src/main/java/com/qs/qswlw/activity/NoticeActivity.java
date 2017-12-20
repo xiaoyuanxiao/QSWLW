@@ -33,7 +33,7 @@ public class NoticeActivity extends BaseDataBindingActivity implements INoticesV
     @Override
     protected void initdatabinding() {
         noticesBinding = getBind();
-        setDataTitle("通知公告");
+        setTitleName("通知公告");
     }
 
 

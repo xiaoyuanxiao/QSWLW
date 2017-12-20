@@ -43,7 +43,7 @@ public class SettingNewActivity extends BaseDataBindingActivity implements ISett
     @Override
     protected void initdatabinding() {
         bind = getBind();
-        setDataTitle("我的消息");
+        setTitleName("我的消息");
         setTitleRightimg(R.mipmap.shezhi);
     }
 

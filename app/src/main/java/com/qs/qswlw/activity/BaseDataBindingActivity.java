@@ -2,6 +2,7 @@ package com.qs.qswlw.activity;
 
 import android.databinding.DataBindingUtil;
 import android.databinding.ViewDataBinding;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
@@ -16,9 +17,9 @@ import com.qs.qswlw.R;
  */
 
 public abstract class BaseDataBindingActivity extends FragmentActivity {
+    public BaseInfoData baseInfoData;
     ViewDataBinding inflate;
     int titleview = View.VISIBLE;
-    BaseInfoData baseInfoData;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,12 +46,16 @@ public abstract class BaseDataBindingActivity extends FragmentActivity {
         });
     }
 
-    public void setDataTitle(String titlename) {
+    public void setTitleName(String titlename) {
         baseInfoData.setTitlename(titlename);
     }
 
     public <T> void setTitleLeftimg(T img) {
         Glide.with(this).load(img).into(baseInfoData.ivTitlebarLeft);
+    }
+
+    public void setTitleBg(int color) {
+        baseInfoData.rlTitlebar.setBackgroundColor(getResources().getColor(color));
     }
 
     public <T> void setTitleRightimg(T img) {
