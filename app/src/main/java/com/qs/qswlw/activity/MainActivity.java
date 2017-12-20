@@ -44,7 +44,7 @@ import com.qs.qswlw.okhttp.Presenter.MainPresenter;
 import com.qs.qswlw.utils.ScreenUtils;
 import com.qs.qswlw.view.imageswitchview.Image3DSwitchView;
 import com.qs.qswlw.view.imageswitchview.Image3DView;
-import com.qs.qswlw.view.webview.WebViewActivity;
+import com.qs.qswlw.view.webviewpb.WebviewActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -434,7 +434,7 @@ public class MainActivity extends BaseActivity implements IMainView {
                 break;
             //互动吧
             case R.id.rb_main_media:
-                this.intent = new Intent(this, WebViewActivity.class);
+                this.intent = new Intent(this, WebviewActivity.class);
                 this.intent.putExtra("Interaction", entrepBaen.getInteraction());
                 startActivity(this.intent);
                 break;
@@ -442,7 +442,7 @@ public class MainActivity extends BaseActivity implements IMainView {
             case R.id.rb_main_union:
 //                intent = new Intent(this, AllianceMallActivity.class);
 //                startActivity(intent);
-                intent = new Intent(this, WebViewActivity.class);
+                intent = new Intent(this, WebviewActivity.class);
                 intent.putExtra("qs_union", entrepBaen.getQs_union());
                 startActivity(this.intent);
                 break;
@@ -450,13 +450,13 @@ public class MainActivity extends BaseActivity implements IMainView {
             case R.id.rb_main_mall:
 //                intent = new Intent(this, QSMallActivity1.class);
 //                startActivity(intent);
-                intent = new Intent(this, WebViewActivity.class);
+                intent = new Intent(this, WebviewActivity.class);
                 intent.putExtra("qs_shop", entrepBaen.getQs_shop());
                 startActivity(this.intent);
                 break;
             //见证华商
             case R.id.rb_main_WitnessChinaBusiness:
-                this.intent = new Intent(this, WebViewActivity.class);
+                this.intent = new Intent(this, WebviewActivity.class);
                 this.intent.putExtra("WitnessChinaBusiness", entrepBaen.getWitness_url());
                 startActivity(this.intent);
                 break;
@@ -468,13 +468,13 @@ public class MainActivity extends BaseActivity implements IMainView {
             //促销抽奖
             case R.id.rb_main_luckgame:
              //   startActivity(new Intent(this, LuckGameActivity.class));
-                this.intent = new Intent(this, WebViewActivity.class);
+                this.intent = new Intent(this, WebviewActivity.class);
                 this.intent.putExtra("qs_lack_draw", entrepBaen.getQs_lack_draw()+"&token="+MyApplication.TOKEN);
                 startActivity(this.intent);
                 break;
             //开心一刻
             case R.id.rb_main_funtime:
-                this.intent = new Intent(this, WebViewActivity.class);
+                this.intent = new Intent(this, WebviewActivity.class);
                 this.intent.putExtra("qs_fun", entrepBaen.getQs_fun()+"&token="+MyApplication.TOKEN);
                 startActivity(this.intent);
                 break;
@@ -485,7 +485,7 @@ public class MainActivity extends BaseActivity implements IMainView {
                 startActivity(new Intent(MainActivity.this,NoticeActivity.class));
                 break;
             case R.id.ll_yzqs_popup:
-                this.intent = new Intent(this, WebViewActivity.class);
+                this.intent = new Intent(this, WebviewActivity.class);
                 this.intent.putExtra("winqs",entrepBaen.getWinqs());
                 startActivity(this.intent);
                 break;
