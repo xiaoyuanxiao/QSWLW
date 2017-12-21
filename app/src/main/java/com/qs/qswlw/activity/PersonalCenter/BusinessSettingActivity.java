@@ -293,19 +293,19 @@ public class BusinessSettingActivity extends BaseActivity implements IPersonalSe
                     startActivity(new Intent(BusinessSettingActivity.this, MyBonusActivity.class));
                     break;
                 case 12:
-                    startActivity(new Intent(BusinessSettingActivity.this, BusinessTurnoverActivity.class));
+                    startActivity(new Intent(BusinessSettingActivity.this, WithdrawalsActivity.class));
                     break;
                 case 13:
-                    startActivity(new Intent(BusinessSettingActivity.this, ComplimentaryMerchandiseRecordActivity.class));
+                //    startActivity(new Intent(BusinessSettingActivity.this, ComplimentaryMerchandiseRecordActivity.class));
                     break;
                 case 14:
-                    startActivity(new Intent(BusinessSettingActivity.this, MySilverBeanActivity.class));
+                    startActivity(new Intent(BusinessSettingActivity.this, MyRoleActivity.class));
                     break;
                 case 15:
-                    startActivity(new Intent(BusinessSettingActivity.this, EntrepreneurialSeedActivity.class));
+                  // startActivity(new Intent(BusinessSettingActivity.this, EntrepreneurialSeedActivity.class));
                     break;
                 case 16:
-                    startActivity(new Intent(BusinessSettingActivity.this, VenturegoldBeansActivity.class));
+                    startActivity(new Intent(BusinessSettingActivity.this, CommodityManagementActivity.class));
                     break;
                 case 17:
                 //   startActivity(new Intent(BusinessSettingActivity.this, WithdrawalsActivity.class));
@@ -314,7 +314,7 @@ public class BusinessSettingActivity extends BaseActivity implements IPersonalSe
                     startActivity(this.intent);
                     break;
                 case 18:
-                    startActivity(new Intent(BusinessSettingActivity.this, MyShoppingActivity.class));
+                    startActivity(new Intent(BusinessSettingActivity.this, BusinessTurnoverActivity .class));
                     break;
 
 

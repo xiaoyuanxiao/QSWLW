@@ -1,130 +1,425 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <LinearLayout
-        android:id="@+id/ll_myrole"
+    <data class = "com.qs.qswlw.MyRoleDatabinding">
+
+        <variable
+            name="roleBean"
+            type="com.qs.qswlw.bean.MyRoleBean" />
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/bg_role"
-        android:gravity="center"
-        android:orientation="vertical"
-        android:padding="10dp">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-        <com.qs.qswlw.view.NoBorderCircleImageView
-            android:id="@+id/iv_role_avater"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:src="@mipmap/image1" />
-
-        <TextView
-            android:id="@+id/tv_role_companyName"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:id="@+id/ll_myrole"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="津津食品"
-            android:textColor="@color/tv_role"
-            android:textSize="12sp" />
+            android:background="@color/bg_role"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="10dp">
+
+            <com.qs.qswlw.view.NoBorderCircleImageView
+                android:id="@+id/iv_role_avater"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                app:imgurl="@{roleBean.head_pic}" />
+
+            <TextView
+                android:id="@+id/tv_role_companyName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="津津食品"
+                android:textColor="@color/tv_role"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_myrole_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/ll_myrole"
+            android:background="@color/bg_role_bellow"
+            android:orientation="horizontal"
+            android:paddingTop="10dp">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/tv_standard"
+                    android:text="我的ID" />
+
+                <TextView
+                    android:id="@+id/tv_role_nickname"
+                    style="@style/tv_standard"
+                    android:text="@{roleBean.user_id}" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="0.2dp"
+                android:layout_height="30dp"
+                android:background="@color/white" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/tv_standard"
+                    android:text="我的身份" />
+
+                <TextView
+                    android:id="@+id/tv_role"
+                    style="@style/tv_standard"
+                    android:text="" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_role_two"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/ll_myrole_tv"
+            android:background="@color/bg_role_bellow"
+            android:orientation="horizontal"
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/tv_standard"
+                    android:text="收货地址" />
+
+                <TextView
+                    android:id="@+id/tv_role_address"
+                    style="@style/tv_standard"
+                    android:text="@{roleBean.cyzx_address.address}" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="0.2dp"
+                android:layout_height="30dp"
+                android:background="@color/white" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/tv_standard"
+                    android:text="注册时间" />
+
+                <TextView
+                    android:id="@+id/tv_role_time"
+                    style="@style/tv_standard"
+                    android:text="" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_role_three"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/ll_role_two"
+            android:background="@color/bg_role_bellow"
+            android:orientation="horizontal"
+            android:paddingTop="10dp">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/tv_standard"
+                    android:text="推荐消费者" />
+
+                <TextView
+                    style="@style/tv_standard"
+                    android:text="@{roleBean.role_count.xfz_num}" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="0.2dp"
+                android:layout_height="30dp"
+                android:background="@color/white" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/tv_standard"
+                    android:text="推荐商家" />
+
+                <TextView
+                    style="@style/tv_standard"
+                    android:text="@{roleBean.role_count.shop_num}" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_role_four"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/ll_role_three"
+            android:background="@color/bg_role_bellow"
+            android:orientation="horizontal"
+            android:paddingTop="10dp">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/tv_standard_red"
+                    android:text="参加动态奖还需推荐" />
+
+                <TextView
+                    style="@style/tv_standard_red"
+                    android:text="消费天使：已达标;" />
+
+                <TextView
+                    style="@style/tv_standard_red"
+                    android:text="创业总监:2;" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="0.2dp"
+                android:layout_height="30dp"
+                android:background="@color/white" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/tv_standard_red"
+                    android:text="参加动态奖还需让利业绩" />
+
+                <TextView
+                    style="@style/tv_standard_red"
+                    android:text="@{roleBean.up_grades.condition3}" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_role_five"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/ll_role_four"
+            android:background="@color/bg_role_bellow"
+            android:orientation="horizontal"
+            android:paddingTop="10dp">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/tv_standard"
+                    android:text="伞下业绩" />
+
+                <TextView
+                    style="@style/tv_standard"
+                    android:text="@{roleBean.role_count.shop_yj}" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="0.2dp"
+                android:layout_height="30dp"
+                android:background="@color/white" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/tv_standard"
+                    android:text="下个升级等级" />
+
+                <TextView
+                    style="@style/tv_standard"
+                    android:text="您已是最高等级" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_role_sex"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/ll_role_five"
+            android:background="@color/bg_role_bellow"
+            android:orientation="horizontal"
+            android:paddingTop="10dp">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/tv_standard_blue"
+                    android:text="伞下创业主任升级情况" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="0.2dp"
+                android:layout_height="20dp"
+                android:background="@color/white" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/tv_standard_blue"
+                    android:text="伞下创业经理升级情况" />
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_role_seven"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/ll_role_sex"
+            android:background="@color/bg_role_bellow"
+            android:orientation="horizontal"
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/tv_standard_blue"
+                    android:text="伞下创业总监升级情况" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="0.2dp"
+                android:layout_height="20dp"
+                android:background="@color/white" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/tv_standard_blue"
+                    android:text="伞下创业董事升级情况" />
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="@color/white"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:padding="5dp"
+                android:text="升级记录"
+                android:textColor="@color/text_blue"
+                android:textSize="10sp" />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.2dp"
+                android:background="@color/text_blue"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="4dp">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:text="原等级"
+                    android:textColor="@color/text_blue"
+                    android:textSize="12sp"/>
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:text="升级等级"
+                    android:textColor="@color/text_blue"
+                    android:textSize="12sp"/>
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:text="升级时间"
+                    android:textColor="@color/text_blue"
+                    android:textSize="12sp"/>
+
+            </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.2dp"
+                android:background="@color/text_blue"/>
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_role"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"></android.support.v7.widget.RecyclerView>
+        </LinearLayout>
     </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/ll_myrole_tv"
-        android:layout_below="@+id/ll_myrole"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/bg_role_bellow"
-        android:paddingTop="10dp"
-        android:orientation="horizontal">
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:orientation="vertical">
-
-            <TextView
-                style="@style/tv_standard"
-                android:text="创业中心" />
-
-            <TextView
-                android:id="@+id/tv_role_nickname"
-                style="@style/tv_standard"
-                android:text="无" />
-        </LinearLayout>
-
-        <View
-            android:layout_width="0.2dp"
-            android:layout_height="30dp"
-            android:background="@color/white" />
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:orientation="vertical">
-
-            <TextView
-
-                style="@style/tv_standard"
-                android:text="我的身份" />
-
-            <TextView
-                android:id="@+id/tv_role"
-                style="@style/tv_standard"
-                android:text="商家" />
-        </LinearLayout>
-
-    </LinearLayout>
-    <LinearLayout
-        android:layout_below="@+id/ll_myrole_tv"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/bg_role_bellow"
-        android:orientation="horizontal"
-        android:paddingTop="10dp"
-        android:paddingBottom="10dp">
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:orientation="vertical">
-
-            <TextView
-                style="@style/tv_standard"
-                android:text="收货地址" />
-
-            <TextView
-                android:id="@+id/tv_role_address"
-                style="@style/tv_standard"
-                android:text="无" />
-        </LinearLayout>
-
-        <View
-            android:layout_width="0.2dp"
-            android:layout_height="30dp"
-            android:background="@color/white" />
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:orientation="vertical">
-
-            <TextView
-                style="@style/tv_standard"
-                android:text="注册时间" />
-
-            <TextView
-                android:id="@+id/tv_role_time"
-                style="@style/tv_standard"
-                android:text="无" />
-        </LinearLayout>
-
-    </LinearLayout>
-</RelativeLayout>
+</layout>

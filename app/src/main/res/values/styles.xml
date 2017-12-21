@@ -24,6 +24,18 @@
         <item name="android:textColor">@color/white</item>
         <item name="android:textSize">10sp</item>
     </style>
+    <style name="tv_standard_blue">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/text_blue</item>
+        <item name="android:textSize">10sp</item>
+    </style>
+    <style name="tv_standard_red">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/red</item>
+        <item name="android:textSize">10sp</item>
+    </style>
     <style name="tv_standard_match">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
