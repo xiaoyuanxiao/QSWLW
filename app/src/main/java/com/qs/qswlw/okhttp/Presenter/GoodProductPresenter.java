@@ -39,6 +39,7 @@ public class GoodProductPresenter {
             public void onFailure(String code) {
 
             }
+
         });
     }
 

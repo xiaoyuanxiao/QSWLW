@@ -32,6 +32,15 @@ public class PersonalSettingBean {
     private String qs_cat;
     private String qs_cart;
     private String qs_mine;
+    private String my_shop;
+
+    public String getMy_shop() {
+        return my_shop;
+    }
+
+    public void setMy_shop(String my_shop) {
+        this.my_shop = my_shop;
+    }
 
     public String getQs_shop() {
         return qs_shop;

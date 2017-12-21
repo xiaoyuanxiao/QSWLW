@@ -14,6 +14,7 @@ import com.qs.qswlw.okhttp.Moudle.BizMain;
 import com.qs.qswlw.okhttp.Moudle.BizMerchantAudit;
 import com.qs.qswlw.okhttp.Moudle.BizMerchantAuditClick;
 import com.qs.qswlw.okhttp.Moudle.BizMyBankList;
+import com.qs.qswlw.okhttp.Moudle.BizMyBonus;
 import com.qs.qswlw.okhttp.Moudle.BizMyOrganization;
 import com.qs.qswlw.okhttp.Moudle.BizMyProfit;
 import com.qs.qswlw.okhttp.Moudle.BizMyRole;
@@ -50,6 +51,7 @@ import com.qs.qswlw.okhttp.Moudle.IMainBiz;
 import com.qs.qswlw.okhttp.Moudle.IMerchantAuditBiz;
 import com.qs.qswlw.okhttp.Moudle.IMerchantAuditClickBiz;
 import com.qs.qswlw.okhttp.Moudle.IMyBankListBiz;
+import com.qs.qswlw.okhttp.Moudle.IMyBonusBiz;
 import com.qs.qswlw.okhttp.Moudle.IMyOrganizationBiz;
 import com.qs.qswlw.okhttp.Moudle.IMyProfitBiz;
 import com.qs.qswlw.okhttp.Moudle.IMyRoleBiz;
@@ -204,5 +206,8 @@ public class IBizFactory {
     }
     public static IReceivingAddressBiz getReceivingAddressList(){
         return BizReceivingAddress.getInstans();
+    }
+    public static IMyBonusBiz getMyBonusList(){
+        return BizMyBonus.getInstans();
     }
 }

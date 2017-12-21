@@ -34,6 +34,7 @@ public class AngelRankingPresenter {
             public void onFailure(String code) {
 
             }
+
         }, code);
 
     }

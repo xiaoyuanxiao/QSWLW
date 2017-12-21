@@ -4216,5 +4216,10 @@
     <string name="xlistview_header_last_time">上次更新时间：</string>
     <string name="guanliyuan">系统管理员</string>
     <string name="ID">ID&#160;:</string>
+    <string name="LJCYJD">累计创业金豆&#160;:</string>
+    <string name="LJXFJD">累计消费金豆&#160;:</string>
+    <string name="TJJL">推荐奖励</string>
+    <string name="HJ">合计:&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</string>
+    <string name="space">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</string>
 
 </resources>

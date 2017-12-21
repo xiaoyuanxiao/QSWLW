@@ -28,6 +28,8 @@ public class RoleJudgeUtil {
             MyApplication.USERROLE = "区管理中心";
         }else if(role.equals("15")){
             MyApplication.USERROLE = "创业经理";
+        }else if(role.equals("16")){
+            MyApplication.USERROLE = "会员推荐";
         }else if(role.equals("25")){
             MyApplication.USERROLE = "平台";
         }

@@ -19,6 +19,7 @@ import com.qs.qswlw.bean.Maindatabean;
 import com.qs.qswlw.bean.MerchantAuditBean;
 import com.qs.qswlw.bean.MerchantAuditClickBean;
 import com.qs.qswlw.bean.MyBankListBean;
+import com.qs.qswlw.bean.MyBonusBean;
 import com.qs.qswlw.bean.MyOrganizationBean;
 import com.qs.qswlw.bean.MyProfitBean;
 import com.qs.qswlw.bean.MyRoleBean;
@@ -576,4 +577,12 @@ public interface MyRetroService {
     @FormUrlEncoded
     @POST("index.php?m=Appapi&c=User&a=cyzx_address")
     Observable<MainBean<ReceivingAddressBean>> getReceivingAddressData(@Field("token") String token, @Field("cyzx_id") int cyzx_id);
+
+
+    /**
+     * 我的奖金
+     */
+    @FormUrlEncoded
+    @POST("index.php?m=Appapi&c=User&a=gold_bonus")
+    Observable<MainBean<MyBonusBean>> getMyBonusData(@Field("token") String token, @Field("user_id") int user_id,@Field("bonus_type") String bonus_type);
 }

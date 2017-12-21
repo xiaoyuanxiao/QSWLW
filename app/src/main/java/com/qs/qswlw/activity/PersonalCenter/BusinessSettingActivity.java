@@ -53,7 +53,7 @@ public class BusinessSettingActivity extends BaseActivity implements IPersonalSe
     private String user_id, nickname, role;
     private String mobile;
     private String shopName;
-    private String shop_order,cash_money,cons_gold;
+    private String shop_order,cash_money,cons_gold,my_shop;
 
     @Override
     public void setUserInfo(PersonalSettingBean personalSettingBean) {
@@ -87,6 +87,7 @@ public class BusinessSettingActivity extends BaseActivity implements IPersonalSe
         MyApplication.QSCAT = personalSettingBean.getQs_cat();
         MyApplication.QSCART = personalSettingBean.getQs_cart();
         MyApplication.QSMINE = personalSettingBean.getQs_mine();
+        my_shop = personalSettingBean.getMy_shop();
 
     }
 
@@ -280,16 +281,16 @@ public class BusinessSettingActivity extends BaseActivity implements IPersonalSe
                     startActivity(new Intent(BusinessSettingActivity.this, ReceivingAddress1Activity.class));
                     break;
                 case 8:
-                    startActivity(new Intent(BusinessSettingActivity.this, ImproveDocumentationActivity.class));
+                    startActivity(new Intent(BusinessSettingActivity.this, MySilverBeanActivity.class));
                     break;
                 case 9:
-                    startActivity(new Intent(BusinessSettingActivity.this, CommodityManagementActivity.class));
+                    startActivity(new Intent(BusinessSettingActivity.this, EntrepreneurialSeedActivity.class));
                     break;
                 case 10:
-                    startActivity(new Intent(BusinessSettingActivity.this, ConsumptionLimitActivity.class));
+                    startActivity(new Intent(BusinessSettingActivity.this, VenturegoldBeansActivity.class));
                     break;
                 case 11:
-                    startActivity(new Intent(BusinessSettingActivity.this, MyMallActivity.class));
+                    startActivity(new Intent(BusinessSettingActivity.this, MyBonusActivity.class));
                     break;
                 case 12:
                     startActivity(new Intent(BusinessSettingActivity.this, BusinessTurnoverActivity.class));
@@ -307,11 +308,18 @@ public class BusinessSettingActivity extends BaseActivity implements IPersonalSe
                     startActivity(new Intent(BusinessSettingActivity.this, VenturegoldBeansActivity.class));
                     break;
                 case 17:
-                    startActivity(new Intent(BusinessSettingActivity.this, WithdrawalsActivity.class));
+                //   startActivity(new Intent(BusinessSettingActivity.this, WithdrawalsActivity.class));
+                    intent = new Intent(BusinessSettingActivity.this, WebviewActivity.class);
+                    intent.putExtra("my_shop",my_shop );
+                    startActivity(this.intent);
                     break;
                 case 18:
                     startActivity(new Intent(BusinessSettingActivity.this, MyShoppingActivity.class));
                     break;
+
+
+
+
                 case 19:
                     //  startActivity(new Intent(BusinessSettingActivity.this, ReceivingAddressActivity.class));
                     startActivity(new Intent(BusinessSettingActivity.this, ReceivingAddress1Activity.class));

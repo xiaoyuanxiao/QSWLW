@@ -9,4 +9,5 @@ import com.qs.qswlw.bean.MySliverBean;
 public interface MySliverBeanListener extends BaseOnlistener{
     void onSuccess(MySliverBean mySliverBean);
     void onTokenFail();
+
 }

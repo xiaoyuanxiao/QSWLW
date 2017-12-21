@@ -19,7 +19,7 @@ public class WebviewActivity extends AppCompatActivity {
 
     private String url;
     private String witnessChinaBusiness, interaction, products, ella, customerservice, winqs, qs_shop, qs_union, qs_fun, qs_lack_draw,
-            shop_order,cash_money,cons_gold,qs_shop_address,qs_cat,qs_cart,qs_mine;
+            shop_order,cash_money,cons_gold,qs_shop_address,qs_cat,qs_cart,qs_mine,my_shop;
     @JavascriptInterface
     public void shop() {
         runOnUiThread(new Runnable() {
@@ -60,6 +60,7 @@ public class WebviewActivity extends AppCompatActivity {
         qs_cat = intent.getStringExtra("qs_cat");
         qs_cart = intent.getStringExtra("qs_cart");
         qs_mine = intent.getStringExtra("qs_mine");
+        my_shop = intent.getStringExtra("my_shop");
         if (witnessChinaBusiness != null) {
             url = witnessChinaBusiness;
         } else if (interaction != null) {
@@ -94,6 +95,8 @@ public class WebviewActivity extends AppCompatActivity {
             url = qs_cart;
         }else if (qs_mine != null) {
             url = qs_mine;
+        }else if (my_shop != null) {
+            url = my_shop;
         }
 
     }

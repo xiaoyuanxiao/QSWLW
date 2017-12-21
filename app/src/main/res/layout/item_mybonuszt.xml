@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout  xmlns:android="http://schemas.android.com/apk/res/android">
+    <data class="com.qs.qswlw.MyBonusZTData">
+        <variable
+            name="myBonusZTBean"
+            type="com.qs.qswlw.bean.MyBonusBean.ListBean"/>
+    </data>
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:padding="5dp">
+
+    <TextView
+        android:id="@+id/tv_item_mygoldenbean_one"
+        style="@style/tv_harvestaddress"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center_horizontal"
+        android:text="@{myBonusZTBean.add_time}"
+        android:textSize="10sp" />
+    <TextView
+        android:id="@+id/tv_item_mybonus_type"
+        style="@style/tv_harvestaddress"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center_horizontal"
+        android:text="@{@string/TJJL}"
+        android:textSize="10sp" />
+
+    <LinearLayout
+        android:id="@+id/ll_item_mygoldenbean"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:src="@mipmap/fg" />
+
+        <TextView
+            android:id="@+id/tv_item_mygoldenbean_three"
+            style="@style/tv_harvestaddress"
+            android:text="@{myBonusZTBean.temp2}" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:src="@mipmap/jd" />
+
+        <TextView
+            android:id="@+id/tv_item_mygoldenbean_four"
+            style="@style/tv_harvestaddress"
+            android:text="@{myBonusZTBean.temp1}" />
+    </LinearLayout>
+
+
+</LinearLayout>
+</layout>
