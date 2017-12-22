@@ -20,6 +20,8 @@ public class WebviewActivity extends AppCompatActivity {
     private String url;
     private String witnessChinaBusiness, interaction, products, ella, customerservice, winqs, qs_shop, qs_union, qs_fun, qs_lack_draw,
             shop_order,cash_money,cons_gold,qs_shop_address,qs_cat,qs_cart,qs_mine,my_shop;
+    private WebView webView;
+
     @JavascriptInterface
     public void shop() {
         runOnUiThread(new Runnable() {
@@ -102,7 +104,7 @@ public class WebviewActivity extends AppCompatActivity {
     }
 
     private void init() {
-        WebView webView = (WebView) findViewById(R.id.webview);
+        webView = (WebView) findViewById(R.id.webview);
         // 设置与Js交互的权限
         webView.getSettings().setJavaScriptEnabled(true);
         // 设置允许JS弹窗
@@ -118,6 +120,7 @@ public class WebviewActivity extends AppCompatActivity {
     @Override
     public void finish() {
         super.finish();
+        webView.destroy();
         if(slowlyProgressBar!=null){
             slowlyProgressBar.destroy();
             slowlyProgressBar = null;
