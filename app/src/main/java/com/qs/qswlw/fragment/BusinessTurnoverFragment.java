@@ -3,6 +3,7 @@ package com.qs.qswlw.fragment;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.qs.qswlw.MyApplication;
@@ -12,7 +13,8 @@ import com.qs.qswlw.bean.BusinessTurnoverBean;
 import com.qs.qswlw.okhttp.Iview.IBusinessTurnoverView;
 import com.qs.qswlw.okhttp.Presenter.BusinessTurnoverPersenter;
 import com.qs.qswlw.utils.ActivityManagerUtils;
-import com.qs.qswlw.view.SwipeRefreshView;
+import com.scwang.smartrefresh.layout.api.RefreshLayout;
+import com.scwang.smartrefresh.layout.listener.OnLoadmoreListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,13 +28,15 @@ public class BusinessTurnoverFragment extends BaseFragment implements IBusinessT
     public static int HISTORY=1;//历史营业额
     int page = 1;
     private int type = 0;
-    private SwipeRefreshView swipeRefreshView;
+   // private SwipeRefreshView swipeRefreshView;
     private ListView lv_turnover;
     private BusinessTurnoverAdapter businessTurnoverAdapter;
     private List<BusinessTurnoverBean.ListBean> listBeen;
     private BusinessTurnoverPersenter businessTurnoverPersenter = new BusinessTurnoverPersenter(this);
     private TextView tv_businesstonover_one,tv_businesstonover_two;
     private LinearLayout ll_businesstornover;
+    private RefreshLayout mRefreshLayout;
+    private ProgressBar pb_itemforestry;
 
     public static BusinessTurnoverFragment newInstance(int type) {
         BusinessTurnoverFragment businessTurnoverFragment = new BusinessTurnoverFragment();
@@ -46,8 +50,10 @@ public class BusinessTurnoverFragment extends BaseFragment implements IBusinessT
     @Override
     View initView() {
         View inflate = View.inflate(getActivity(), R.layout.fg_businessturnover, null);
-        swipeRefreshView = (SwipeRefreshView) inflate.findViewById(R.id.lv_turnover_sw);
+      //  swipeRefreshView = (SwipeRefreshView) inflate.findViewById(R.id.lv_turnover_sw);
         lv_turnover = (ListView) inflate.findViewById(R.id.lv_turnover);
+        mRefreshLayout = (RefreshLayout) inflate.findViewById(R.id.refreshLayout);
+        pb_itemforestry = (ProgressBar) inflate.findViewById(R.id.pb_itemforestry);
         View inflate1 = View.inflate(getActivity(), R.layout.item_foot_businesstonover, null);
         tv_businesstonover_one = (TextView) inflate1.findViewById(R.id.tv_businesstonover_one);
         tv_businesstonover_two = (TextView) inflate1.findViewById(R.id.tv_businesstonover_two);
@@ -64,9 +70,9 @@ public class BusinessTurnoverFragment extends BaseFragment implements IBusinessT
         businessTurnoverAdapter = new BusinessTurnoverAdapter(getActivity(), listBeen);
         lv_turnover.setAdapter(businessTurnoverAdapter);
         businessTurnoverPersenter.getdata(MyApplication.TOKEN,page,type);
-        swipeRefreshView.setOnLoadListener(new SwipeRefreshView.OnLoadListener() {
+        mRefreshLayout.setOnLoadmoreListener(new OnLoadmoreListener() {
             @Override
-            public void onLoad() {
+            public void onLoadmore(RefreshLayout refreshlayout) {
                 businessTurnoverPersenter.getdata(MyApplication.TOKEN,page,type);
             }
         });
@@ -84,18 +90,19 @@ public class BusinessTurnoverFragment extends BaseFragment implements IBusinessT
 
     @Override
     public void getdata(BusinessTurnoverBean businessTurnoverBean) {
-
+        pb_itemforestry.setVisibility(View.GONE);
+        lv_turnover.setVisibility(View.VISIBLE);
         tv_businesstonover_one.setText(businessTurnoverBean.getCount_money());
         tv_businesstonover_two.setText(businessTurnoverBean.getCount_none());
         List<BusinessTurnoverBean.ListBean> list = businessTurnoverBean.getList();
-        swipeRefreshView.setLoading(false);
+        mRefreshLayout.finishLoadmore();
         if(page==1&&(list == null || list.size() == 0)){
             ll_businesstornover.setVisibility(View.GONE);
             return;
         }
 
         if (page>1&&(list == null || list.size() == 0)) {
-            swipeRefreshView.setLoadingEnd();
+            mRefreshLayout.finishLoadmoreWithNoMoreData();
             return;
         }
         listBeen.addAll(list);
