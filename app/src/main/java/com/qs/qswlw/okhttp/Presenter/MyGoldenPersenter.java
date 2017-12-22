@@ -2,33 +2,33 @@ package com.qs.qswlw.okhttp.Presenter;
 
 import com.qs.qswlw.bean.VenturegoldBean;
 import com.qs.qswlw.okhttp.Factory.IBizFactory;
-import com.qs.qswlw.okhttp.Iview.IVenturegoldBeansView;
+import com.qs.qswlw.okhttp.Iview.IMyGoldenView;
 import com.qs.qswlw.okhttp.Moudle.IVentureGoldBiz;
 import com.qs.qswlw.okhttp.oncallback.VenturegoldBeanListener;
 
 /**
- * Created by xiaoyu on 2017/9/8.
+ * Created by xiaoyu on 2017/12/22.
  */
 
-public class VenturegoldBeanPresenter {
+public class MyGoldenPersenter {
     IVentureGoldBiz iVentureGoldBiz;
-    IVenturegoldBeansView iVenturegoldBeansView;
+    IMyGoldenView iMyGoldenView;
 
-    public VenturegoldBeanPresenter(IVenturegoldBeansView iVenturegoldBeansView) {
+    public MyGoldenPersenter(IMyGoldenView iMyGoldenView) {
         iVentureGoldBiz = IBizFactory.getVentureGold();
-        this.iVenturegoldBeansView = iVenturegoldBeansView;
+        this.iMyGoldenView = iMyGoldenView;
     }
 
     public void getData(String token, int p, final String model, String gold_type, String type) {
         iVentureGoldBiz.getdata(new VenturegoldBeanListener() {
             @Override
             public void onSuccess(VenturegoldBean venturegoldBean) {
-                iVenturegoldBeansView.setVenturegoldBeanData(venturegoldBean, model);
+                iMyGoldenView.setVenturegoldBeanData(venturegoldBean);
             }
 
             @Override
             public void onTokenFail() {
-                iVenturegoldBeansView.setTokenFail();
+                iMyGoldenView.setTokenFail();
             }
         }, token, p, model, gold_type, type);
 

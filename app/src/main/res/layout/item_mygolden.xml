@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="5dp">
+
+        <TextView
+            android:id="@+id/tv_item_mygolden_one"
+            style="@style/tv_harvestaddress"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:text="2017-04-05"
+            android:textSize="10sp" />
+
+        <LinearLayout
+            android:id="@+id/ll_OutgoingSeed"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_horizontal|center_vertical"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_marginRight="2dp"
+                android:src="@mipmap/cyzz" />
+
+            <TextView
+                android:id="@+id/tv_item_mygolden_two"
+                style="@style/tv_harvestaddress"
+                android:text="2017-04-05" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_item_mygoldenbean"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:src="@mipmap/fg" />
+
+            <TextView
+                android:id="@+id/tv_item_mygolden_three"
+                style="@style/tv_harvestaddress"
+                android:text="2017-04-05" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:src="@mipmap/jd" />
+
+            <TextView
+                android:id="@+id/tv_item_mygolden_four"
+                style="@style/tv_harvestaddress"
+                android:text="2017-04-05" />
+        </LinearLayout>
+
+
+    </LinearLayout>
+</layout>

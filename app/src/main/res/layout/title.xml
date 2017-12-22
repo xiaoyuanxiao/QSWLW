@@ -10,7 +10,9 @@
         <variable
             name="titlename"
             type="java.lang.String" />
-
+        <variable
+            name="rightname"
+            type="java.lang.String" />
     </data>
 
     <LinearLayout
@@ -53,6 +55,17 @@
                 android:layout_centerInParent="true"
                 android:text="@{titlename}"
                 android:textColor="@color/white" />
+
+            <TextView
+                android:id="@+id/tv_titlebar_right"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="3dp"
+                android:layout_toLeftOf="@+id/iv_titlebar_right"
+                android:text="@{rightname}"
+                android:textColor="@color/white"
+                android:visibility="gone" />
 
             <ImageView
                 android:id="@+id/iv_titlebar_right"

@@ -23,6 +23,7 @@ import com.qs.qswlw.bean.MyBonusBean;
 import com.qs.qswlw.bean.MyOrganizationBean;
 import com.qs.qswlw.bean.MyProfitBean;
 import com.qs.qswlw.bean.MyRoleBean;
+import com.qs.qswlw.bean.MyRoleDatailBean;
 import com.qs.qswlw.bean.MySliverBean;
 import com.qs.qswlw.bean.MySpendingLimitBean;
 import com.qs.qswlw.bean.NoticesBean;
@@ -585,4 +586,11 @@ public interface MyRetroService {
     @FormUrlEncoded
     @POST("index.php?m=Appapi&c=User&a=gold_bonus")
     Observable<MainBean<MyBonusBean>> getMyBonusData(@Field("token") String token, @Field("user_id") int user_id,@Field("bonus_type") String bonus_type);
+
+    /**
+     * 伞下创业升级情况
+     */
+    @FormUrlEncoded
+    @POST("index.php?m=Appapi&c=User")
+    Observable<MainBean<MyRoleDatailBean>> getMyRoleDatailData(@Field("a") String a, @Field("token") String token);
 }

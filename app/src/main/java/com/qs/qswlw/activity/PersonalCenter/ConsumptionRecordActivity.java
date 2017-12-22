@@ -94,7 +94,7 @@ public class ConsumptionRecordActivity extends BaseInfoActivity implements ICons
     private float money;
     private int uid;
     private File file1;
-  //  private File file2;
+    //  private File file2;
 
     @Override
     public View setConetnView() {
@@ -104,11 +104,11 @@ public class ConsumptionRecordActivity extends BaseInfoActivity implements ICons
         edt_consumptionrecord_two = (TextView) inflate.findViewById(R.id.edt_consumptionrecord_two);
         spinner = (Spinner) inflate.findViewById(spinner_consumptionrecord_pos);
         btn_selectorfile1 = (Button) inflate.findViewById(R.id.btn_selectorfile1);
-     //   btn_selectorfile2 = (Button) inflate.findViewById(R.id.btn_selectorfile2);
+        //   btn_selectorfile2 = (Button) inflate.findViewById(R.id.btn_selectorfile2);
         iv_consumption1 = (ImageView) inflate.findViewById(R.id.iv_consumption1);
-      //  iv_consumption2 = (ImageView) inflate.findViewById(R.id.iv_consumption2);
+        //  iv_consumption2 = (ImageView) inflate.findViewById(R.id.iv_consumption2);
         tv_isselect_consumptionrecord = (TextView) inflate.findViewById(R.id.tv_isselect_consumptionrecord);
-    //    tv_isselect_consumptionrecord2 = (TextView) inflate.findViewById(R.id.tv_isselect_consumptionrecord2);
+        //    tv_isselect_consumptionrecord2 = (TextView) inflate.findViewById(R.id.tv_isselect_consumptionrecord2);
         btn_sonsumption_confirm = (Button) inflate.findViewById(R.id.btn_sonsumption_confirm);
         edt_consumptionrecord_id = (EditText) inflate.findViewById(R.id.edt_consumptionrecord_id);
         edt_consumptionrecord_nickname = (EditText) inflate.findViewById(R.id.edt_consumptionrecord_nickname);
@@ -160,7 +160,7 @@ public class ConsumptionRecordActivity extends BaseInfoActivity implements ICons
     public void setOnclick() {
         super.setOnclick();
         btn_selectorfile1.setOnClickListener(this);
-    //    btn_selectorfile2.setOnClickListener(this);
+        //    btn_selectorfile2.setOnClickListener(this);
         edt_consumptionrecord_two.setOnClickListener(this);
         btn_sonsumption_confirm.setOnClickListener(this);
 //        eb_one.setOnClickListener(this);
@@ -181,13 +181,13 @@ public class ConsumptionRecordActivity extends BaseInfoActivity implements ICons
                 builder.setSingleChoiceItems(items, -1, new DialogInterface.OnClickListener() {//第二个参数是设置默认选中哪一项-1代表默认都不选
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        switch (which){
+                        switch (which) {
                             case 0:
                                 ratio_key = "model1";
-                                if (1==type) {
+                                if (1 == type) {
                                     ratio = Float.parseFloat(get3);
                                 }
-                                if (2==type) {
+                                if (2 == type) {
                                     ratio = Float.parseFloat(get2);
                                 }
                                 dialog.dismiss();
@@ -195,10 +195,10 @@ public class ConsumptionRecordActivity extends BaseInfoActivity implements ICons
                                 break;
                             case 1:
                                 ratio_key = "model2";
-                                if (1==type) {
+                                if (1 == type) {
                                     ratio = Float.parseFloat(get);
                                 }
-                                if (2==type) {
+                                if (2 == type) {
                                     ratio = Float.parseFloat(get1);
                                 }
                                 dialog.dismiss();
@@ -225,7 +225,27 @@ public class ConsumptionRecordActivity extends BaseInfoActivity implements ICons
                 if (1 == type) {//商家审核进入的
                     postMerchantAuditData();
                 } else if (2 == type) {//消费录单进入的
-                    postData();
+
+
+                    String id = edt_consumptionrecord_id.getText().toString().trim();
+                    String money = edt_consumptionrecord_three.getText().toString();
+                    String none = edt_consumptionrecord_one.getText().toString();
+                    //   ratio = Float.parseFloat(edt_consumptionrecord_two.getText().toString());
+                    pay_type = strClassification;
+                    pay_time = edt_consumptionrecord_sex.getText().toString().trim();
+                    //  long l = DateUtils.dateToStamp2();
+                    pay_name = edt_consumptionrecord_five.getText().toString();
+                    if (money.equals("")) {
+                        ToastUtils.showToast("金额不能为空");
+                    }else if (id.equals("")) {
+                        ToastUtils.showToast("消费者ID不能为空");
+                    }else if(pay_name.equals("")){
+                        ToastUtils.showToast("汇款人不能为空");
+                    }else if(pay_time.equals("")){
+                        ToastUtils.showToast("支付时间不能为空");
+                    }else{
+                    postData(MyApplication.TOKEN,Integer.parseInt(id),Float.parseFloat(money),ratio, Float.parseFloat(none),ratio_key,pay_type,pay_time,pay_name,file1);
+                    }
                 }
 
                 break;
@@ -264,7 +284,8 @@ public class ConsumptionRecordActivity extends BaseInfoActivity implements ICons
     /**
      * 提交录单信息
      */
-    private void postData() {
+    private void postData(String token, final int uid, final float money, final float ratio, final float none, final String ratio_key, final String pay_type, final String pay_time,
+                          final String pay_name, File remittance) {
 
         ReHttpUtils.instans().httpRequest(new HttpSubCribe<MainBean>() {
 
@@ -282,14 +303,6 @@ public class ConsumptionRecordActivity extends BaseInfoActivity implements ICons
 
             @Override
             public Observable<MainBean> getObservable(MyRetroService retrofit) {
-                uid = Integer.parseInt(edt_consumptionrecord_id.getText().toString());
-                money = Float.parseFloat(edt_consumptionrecord_three.getText().toString());
-                //   ratio = Float.parseFloat(edt_consumptionrecord_two.getText().toString());
-                none = Float.parseFloat(edt_consumptionrecord_one.getText().toString());
-                pay_type = strClassification;
-                pay_time = edt_consumptionrecord_sex.getText().toString();
-                //  long l = DateUtils.dateToStamp2();
-                pay_name = edt_consumptionrecord_nickname.getText().toString();
                 return retrofit.PostConsumptionData(MyApplication.TOKEN, uid, money, ratio, none, ratio_key, pay_type, pay_time, pay_name, file1);
                 //  return retrofit.PostConsumptionData(MyApplication.TOKEN,1,20,12,4,"4",pay_type,12345353,"a",file,file);
             }
@@ -361,7 +374,6 @@ public class ConsumptionRecordActivity extends BaseInfoActivity implements ICons
             eb_two.setText(get1 + "%(B网)");
         }
     }
-
 
 
     @Override

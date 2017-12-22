@@ -32,8 +32,8 @@ import rx.Observable;
 public class WithdrawalsActivity extends BaseInfoActivity implements IWithdrawalsView {
 
     private ImageView iv_withdrawals_right;
-    private TextView tv_html,tv_withdrawals_bank,tv_withdrawals_banknumber,
-            tv_withdrawals_one_right,tv_withdrawals_two,tv_withdrawals_three,
+    private TextView tv_html, tv_withdrawals_bank, tv_withdrawals_banknumber,
+            tv_withdrawals_one_right, tv_withdrawals_two, tv_withdrawals_three,
             tv_withdrawals_four_right;
     private WithdrawalsPersenter withdrawalsPersenter = new WithdrawalsPersenter(this);
     private Button btn_withdrawals_confirm;
@@ -83,25 +83,35 @@ public class WithdrawalsActivity extends BaseInfoActivity implements IWithdrawal
     @Override
     public void onClick(View v) {
         super.onClick(v);
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.tv_titlebar_right:
-                startActivity(new Intent(this,WithdrawalsRecordActivity.class));
+                startActivity(new Intent(this, WithdrawalsRecordActivity.class));
                 break;
             case R.id.iv_withdrawals_right:
-                Intent intent = new Intent(this,WithdrawalsBankActivity.class);
-                startActivityForResult(intent,1);
+                Intent intent = new Intent(this, WithdrawalsBankActivity.class);
+                startActivityForResult(intent, 1);
                 break;
             case R.id.tv_withdrawals_three:
-                DialogUtils.showDidlog(this,new String[]{"创新模式二"},tv_withdrawals_three);
+                DialogUtils.showDidlog(this, new String[]{"创业模式一","创新模式"}, tv_withdrawals_three);
                 break;
             case R.id.btn_withdrawals_confirm:
                 String s = tv_withdrawals_three.getText().toString();
-                if(s.contains("二")){
+                if (s.contains("创新模式")) {
                     model = "model2";
-                }else if(s.contains("一")){
+                } else if (s.contains("创业模式一")) {
                     model = "model1";
                 }
-                PostData(MyApplication.TOKEN, Float.parseFloat(tv_withdrawals_four_right.getText().toString()),edt_withdrawals_password.getText().toString(),model);
+                String money = tv_withdrawals_four_right.getText().toString().trim();
+                String pass = edt_withdrawals_password.getText().toString().trim();
+                if (money.equals("")) {
+                    ToastUtils.showToast("请输入提现金额");
+                }
+                if (pass.equals("")) {
+                    ToastUtils.showToast("请输入二级密码");
+                }else{
+                    PostData(MyApplication.TOKEN, Float.parseFloat(money),pass, model);
+                }
+
                 break;
         }
     }
@@ -114,7 +124,7 @@ public class WithdrawalsActivity extends BaseInfoActivity implements IWithdrawal
 
             @Override
             public void onError(Throwable e) {
-                Log.e("PostData",e+"");
+                Log.e("PostData", e + "");
             }
 
             @Override
@@ -126,7 +136,7 @@ public class WithdrawalsActivity extends BaseInfoActivity implements IWithdrawal
 
             @Override
             public Observable<MainBean> getObservable(MyRetroService retrofit) {
-                return retrofit.PostWithDrawalsData(token,money,pass,gold_model);
+                return retrofit.PostWithDrawalsData(token, money, pass, gold_model);
             }
         });
 
@@ -136,13 +146,13 @@ public class WithdrawalsActivity extends BaseInfoActivity implements IWithdrawal
 
     @Override
     public void setdata(WithdrawalsBean withdrawalsBean) {
-        String content = withdrawalsBean.getContent();
+        String content = "&lt;p style=&quot;white-space: normal;&quot;&gt;&lt;span style=&quot;font-family: 微软雅黑, &amp;quot;Microsoft YaHei&amp;quot;;&quot;&gt;&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;white-space: normal;&quot;&gt;&lt;span style=&quot;font-family: 微软雅黑, &amp;quot;Microsoft YaHei&amp;quot;;&quot;&gt;1.提现请完善个人银行卡资料。&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;white-space: normal;&quot;&gt;&lt;span style=&quot;font-family: 微软雅黑, &amp;quot;Microsoft YaHei&amp;quot;;&quot;&gt;2.每笔提现扣除你所获得全部金豆5%的手续费。&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;white-space: normal;&quot;&gt;&lt;span style=&quot;font-family: 微软雅黑, &amp;quot;Microsoft YaHei&amp;quot;;&quot;&gt;3.每笔提现T+2到账。&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;white-space: normal;&quot;&gt;&lt;span style=&quot;color: rgb(34, 34, 34); white-space: pre-wrap; background-color: rgb(255, 255, 255); font-family: 微软雅黑, &amp;quot;Microsoft YaHei&amp;quot;;&quot;&gt;咨询电话：400-8071728（工作时间：09:00~17:00）&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;white-space: normal;&quot;&gt;&lt;span style=&quot;color: rgb(34, 34, 34); white-space: pre-wrap; background-color: rgb(255, 255, 255); font-family: 微软雅黑, &amp;quot;Microsoft YaHei&amp;quot;;&quot;&gt;&lt;/span&gt;&lt;br/&gt;&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;";
         String replace = content.replace("&lt;", "<").replace("&gt;", ">").replace("&quot;", "”").replace("&amp;", "&");
         tv_html.setText(Html.fromHtml(replace));
         tv_withdrawals_bank.setText(withdrawalsBean.getBank().getCardxy());
         tv_withdrawals_banknumber.setText(withdrawalsBean.getBank().getNumber());
-        tv_withdrawals_one_right.setText(withdrawalsBean.getUser().getGold2()+"颗");
-        tv_withdrawals_two.setText(withdrawalsBean.getTotal_count_cash()+"");
+        tv_withdrawals_one_right.setText(withdrawalsBean.getUser().getGold2() + "颗");
+        tv_withdrawals_two.setText(withdrawalsBean.getTotal_count_cash() + "");
     }
 
     @Override
@@ -153,8 +163,8 @@ public class WithdrawalsActivity extends BaseInfoActivity implements IWithdrawal
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode ==1){
-            if(resultCode==4){
+        if (requestCode == 1) {
+            if (resultCode == 4) {
                 withdrawalsPersenter.getdata(MyApplication.TOKEN);
             }
         }

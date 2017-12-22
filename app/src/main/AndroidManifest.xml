@@ -48,6 +48,8 @@
         <activity android:name=".activity.PersonalCenter.WithdrawalsActivity"/>
         <activity android:name=".activity.PersonalCenter.BusinessTurnoverActivity"/>
         <activity android:name=".activity.PersonalCenter.DonationActivity"/>
+        <activity android:name=".activity.PersonalCenter.RoleDetailsActivity"/>
+        <activity android:name=".activity.PersonalCenter.VenturegoldBeansActivity1"/>
         <activity android:name=".activity.PersonalCenter.ConsumeWithdrawalsActivity"/>
         <activity android:name=".activity.PersonalCenter.SilverBeanActivity"/>
         <activity android:name=".activity.PersonalCenter.MyGoldenBeanActivity"/>

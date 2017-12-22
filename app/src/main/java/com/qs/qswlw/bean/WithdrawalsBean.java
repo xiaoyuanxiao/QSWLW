@@ -1,7 +1,5 @@
 package com.qs.qswlw.bean;
 
-import java.util.List;
-
 /**
  * Created by xiaoyu on 2017/9/19.
  */
@@ -29,8 +27,8 @@ public class WithdrawalsBean {
     private String user_count_two;
     private String rawals_count;
     private String rawals_count_two;
-    private int total_count_cash;
-    private List<CheckBean> check;
+    private Float total_count_cash;
+    private CheckBean check;
     private String with;
     private String high;
     private String with2;
@@ -72,19 +70,19 @@ public class WithdrawalsBean {
         this.rawals_count_two = rawals_count_two;
     }
 
-    public int getTotal_count_cash() {
+    public Float getTotal_count_cash() {
         return total_count_cash;
     }
 
-    public void setTotal_count_cash(int total_count_cash) {
+    public void setTotal_count_cash(Float total_count_cash) {
         this.total_count_cash = total_count_cash;
     }
 
-    public List<CheckBean> getCheck() {
+    public CheckBean getCheck() {
         return check;
     }
 
-    public void setCheck(List<CheckBean> check) {
+    public void setCheck(CheckBean check) {
         this.check = check;
     }
 

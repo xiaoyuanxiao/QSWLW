@@ -50,6 +50,11 @@ public abstract class BaseDataBindingActivity extends FragmentActivity {
         baseInfoData.setTitlename(titlename);
     }
 
+    public void setTitleRightName(int visiable,String rightName) {
+        baseInfoData.tvTitlebarRight.setVisibility(visiable);
+        baseInfoData.setRightname(rightName);
+    }
+
     public <T> void setTitleLeftimg(T img) {
         Glide.with(this).load(img).into(baseInfoData.ivTitlebarLeft);
     }

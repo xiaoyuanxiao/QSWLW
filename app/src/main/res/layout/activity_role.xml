@@ -6,6 +6,9 @@
         <variable
             name="roleBean"
             type="com.qs.qswlw.bean.MyRoleBean" />
+        <variable
+            name="onclick"
+            type="android.view.View.OnClickListener"/>
     </data>
 
     <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
@@ -302,7 +305,9 @@
                 android:orientation="vertical">
 
                 <TextView
+                    android:id="@+id/tv_role_upgradeone"
                     style="@style/tv_standard_blue"
+                    android:onClick="@{onclick::onClick}"
                     android:text="伞下创业主任升级情况" />
             </LinearLayout>
 
@@ -319,7 +324,9 @@
                 android:orientation="vertical">
 
                 <TextView
+                    android:id="@+id/tv_role_upgradetwo"
                     style="@style/tv_standard_blue"
+                    android:onClick="@{onclick::onClick}"
                     android:text="伞下创业经理升级情况" />
 
             </LinearLayout>
@@ -343,7 +350,9 @@
                 android:orientation="vertical">
 
                 <TextView
+                    android:id="@+id/tv_role_upgradethree"
                     style="@style/tv_standard_blue"
+                    android:onClick="@{onclick::onClick}"
                     android:text="伞下创业总监升级情况" />
             </LinearLayout>
 
@@ -360,7 +369,9 @@
                 android:orientation="vertical">
 
                 <TextView
+                    android:id="@+id/tv_role_upgradefour"
                     style="@style/tv_standard_blue"
+                    android:onClick="@{onclick::onClick}"
                     android:text="伞下创业董事升级情况" />
 
             </LinearLayout>

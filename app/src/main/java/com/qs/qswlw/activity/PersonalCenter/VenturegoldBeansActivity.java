@@ -155,7 +155,7 @@ public class VenturegoldBeansActivity extends BaseInfoActivity {
         LinearLayout layout = (LinearLayout) LayoutInflater.from(this).inflate(
                 R.layout.pw_withdrawals, null);
         // 实例化popupWindow
-        popupWindow = new PopupWindow(layout, RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
+        popupWindow = new PopupWindow(layout, 200, RelativeLayout.LayoutParams.WRAP_CONTENT);
         //控制键盘是否可以获得焦点
         popupWindow.setFocusable(true);
         //设置popupWindow弹出窗体的背景

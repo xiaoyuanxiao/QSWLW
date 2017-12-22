@@ -165,7 +165,12 @@ public class EntrepreneurialIncentiveFragment extends BaseFragment implements IE
         btn_dialog_determine.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                PostDialog(MyApplication.TOKEN, "model1", Integer.parseInt(edt_seed.getText().toString()));
+                String seed = edt_seed.getText().toString().trim();
+                if(seed.equals("")){
+                    ToastUtils.showToast("请输入创业种子数");
+                }else{
+                    PostDialog(MyApplication.TOKEN, "model1", Integer.parseInt(seed));
+                }
             }
         });
     }

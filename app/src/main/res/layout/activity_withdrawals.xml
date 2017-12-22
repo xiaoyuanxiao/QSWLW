@@ -97,21 +97,21 @@
             android:id="@+id/tv_withdrawals_one_left"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="创新模式"
+            android:text="创业模式"
             android:textColor="@color/black"
             android:textSize="12sp" />
         <TextView
             android:id="@+id/tv_withdrawals_one_center"
-            android:layout_toRightOf="@+id/tv_withdrawals_one_left"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="(二)"
+            android:layout_toRightOf="@+id/tv_withdrawals_one_left"
+            android:text="(一)"
             android:textColor="@color/red"
             android:textSize="12sp" />
         <TextView
-            android:layout_toRightOf="@+id/tv_withdrawals_one_center"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/tv_withdrawals_one_center"
             android:text="可提现创业金豆："
             android:textColor="@color/black"
             android:textSize="12sp" />
@@ -177,9 +177,9 @@
             android:id="@+id/tv_withdrawals_three"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toRightOf="@+id/tv_withdrawals_three_left"
             android:layout_marginLeft="20dp"
-            android:text="创新模式(二)"
+            android:layout_toRightOf="@+id/tv_withdrawals_three_left"
+            android:text="创业模式(一)"
             android:textColor="@color/red"
             android:textSize="12sp" />
 
@@ -193,35 +193,35 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="8dp"
         android:focusable="true"
-        android:focusableInTouchMode="true">
+        android:focusableInTouchMode="true"
+        android:padding="8dp">
 
         <TextView
             android:id="@+id/tv_withdrawals_four_left"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="创业模式"
+            android:text="提现金额"
             android:textColor="@color/black"
             android:textSize="12sp" />
         <TextView
             android:id="@+id/tv_withdrawals_four_center"
-            android:layout_toRightOf="@+id/tv_withdrawals_four_left"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="(二)"
+            android:layout_toRightOf="@+id/tv_withdrawals_four_left"
+            android:text="(一)"
             android:textColor="@color/red"
             android:textSize="12sp" />
 
 
         <EditText
-            android:layout_toRightOf="@+id/tv_withdrawals_four_center"
             android:id="@+id/tv_withdrawals_four_right"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@+id/tv_withdrawals_four_center"
             android:background="@null"
-            android:hint="最高提现1000，最低提现100"
+            android:hint="最高提现100000000000，最低提现100"
             android:textColor="@color/red"
             android:textColorHint="@color/text_blue"
             android:textSize="12sp" />
@@ -268,10 +268,10 @@
         android:layout_width="match_parent"
         android:layout_height="35dp"
         android:layout_margin="6dp"
+        android:layout_marginBottom="10dp"
         android:background="@drawable/btn_corner"
         android:text="确定"
         android:textColor="@color/white"
-        android:layout_marginBottom="10dp"
         android:textSize="12sp" />
 </LinearLayout>
 </ScrollView>

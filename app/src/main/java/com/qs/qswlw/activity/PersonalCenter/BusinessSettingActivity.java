@@ -287,7 +287,9 @@ public class BusinessSettingActivity extends BaseActivity implements IPersonalSe
                     startActivity(new Intent(BusinessSettingActivity.this, EntrepreneurialSeedActivity.class));
                     break;
                 case 10:
+                   // startActivity(new Intent(BusinessSettingActivity.this, VenturegoldBeansActivity.class));
                     startActivity(new Intent(BusinessSettingActivity.this, VenturegoldBeansActivity.class));
+
                     break;
                 case 11:
                     startActivity(new Intent(BusinessSettingActivity.this, MyBonusActivity.class));

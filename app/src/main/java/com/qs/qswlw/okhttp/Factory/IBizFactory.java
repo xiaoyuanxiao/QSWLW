@@ -18,6 +18,7 @@ import com.qs.qswlw.okhttp.Moudle.BizMyBonus;
 import com.qs.qswlw.okhttp.Moudle.BizMyOrganization;
 import com.qs.qswlw.okhttp.Moudle.BizMyProfit;
 import com.qs.qswlw.okhttp.Moudle.BizMyRole;
+import com.qs.qswlw.okhttp.Moudle.BizMyRoleDetail;
 import com.qs.qswlw.okhttp.Moudle.BizMySliverBean;
 import com.qs.qswlw.okhttp.Moudle.BizMySpendingLimit;
 import com.qs.qswlw.okhttp.Moudle.BizNotices;
@@ -55,6 +56,7 @@ import com.qs.qswlw.okhttp.Moudle.IMyBonusBiz;
 import com.qs.qswlw.okhttp.Moudle.IMyOrganizationBiz;
 import com.qs.qswlw.okhttp.Moudle.IMyProfitBiz;
 import com.qs.qswlw.okhttp.Moudle.IMyRoleBiz;
+import com.qs.qswlw.okhttp.Moudle.IMyRoleDetailBiz;
 import com.qs.qswlw.okhttp.Moudle.IMySliverBeanBiz;
 import com.qs.qswlw.okhttp.Moudle.IMySpendingLimitBiz;
 import com.qs.qswlw.okhttp.Moudle.INoticesBiz;
@@ -209,5 +211,8 @@ public class IBizFactory {
     }
     public static IMyBonusBiz getMyBonusList(){
         return BizMyBonus.getInstans();
+    }
+    public static IMyRoleDetailBiz getMyRoleDetailList(){
+        return BizMyRoleDetail.getInstans();
     }
 }
