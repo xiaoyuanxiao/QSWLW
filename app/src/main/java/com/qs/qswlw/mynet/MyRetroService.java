@@ -592,5 +592,5 @@ public interface MyRetroService {
      */
     @FormUrlEncoded
     @POST("index.php?m=Appapi&c=User")
-    Observable<MainBean<MyRoleDatailBean>> getMyRoleDatailData(@Field("a") String a, @Field("token") String token);
+    Observable<MainBean<MyRoleDatailBean>> getMyRoleDatailData(@Field("a") String a, @Field("token") String token, @Field("user_id") int user_id);
 }

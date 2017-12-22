@@ -44,13 +44,13 @@ public class RoleDetailsActivity extends BaseDataBindingActivity implements IRol
         }else if("cyds_info".equals(info)){
             setTitleName("伞下创业董事");
         }
-        myRoleDetailsPersenter.getdata(info, MyApplication.TOKEN);
+        myRoleDetailsPersenter.getdata(info, MyApplication.TOKEN, Integer.parseInt(MyApplication.ID));
     }
 
     @Override
     public void setdata(MyRoleDatailBean myRoleDatailBean) {
         bind.setMyroleBean(myRoleDatailBean);
-        bind.tvMyroledetailTitle.setText("伞下共计"+myRoleDatailBean.getCount_num()+myRoleDatailBean.getRole_name());
+        bind.tvMyroledetailTitle.setText("伞下共计"+myRoleDatailBean.getCount_num()+"个"+myRoleDatailBean.getRole_name());
     }
 
     @Override

@@ -24,7 +24,7 @@ public class BizMyRoleDetail implements IMyRoleDetailBiz{
     }
 
     @Override
-    public void getdata(final MyRoleDetailListener myRoleDetailListener, final String a, final String token) {
+    public void getdata(final MyRoleDetailListener myRoleDetailListener, final String a, final String token, final int user_id) {
         ReHttpUtils.instans().httpRequest(new HttpSubCribe<MainBean<MyRoleDatailBean>>() {
 
             @Override
@@ -45,7 +45,7 @@ public class BizMyRoleDetail implements IMyRoleDetailBiz{
 
             @Override
             public Observable<MainBean<MyRoleDatailBean>> getObservable(MyRetroService retrofit) {
-                return retrofit.getMyRoleDatailData(a,token);
+                return retrofit.getMyRoleDatailData(a,token,user_id);
             }
         });
     }

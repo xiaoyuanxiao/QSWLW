@@ -19,7 +19,7 @@ public class MyRoleDetailsPersenter {
         this.iRoleDetailsView = iRoleDetailsView;
     }
 
-    public void getdata(String a,String token){
+    public void getdata(String a,String token,int user_id){
         iMyRoleDetailBiz.getdata(new MyRoleDetailListener() {
             @Override
             public void onSuccess(MyRoleDatailBean myRoleDatailBean) {
@@ -36,7 +36,7 @@ public class MyRoleDetailsPersenter {
 
 
             }
-        },a,token);
+        },a,token,user_id);
 
     }
 

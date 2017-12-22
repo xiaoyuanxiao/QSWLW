@@ -7,5 +7,5 @@ import com.qs.qswlw.okhttp.oncallback.MyRoleDetailListener;
  */
 
 public interface IMyRoleDetailBiz {
-    void getdata(MyRoleDetailListener myRoleDetailListener, String a, String token);
+    void getdata(MyRoleDetailListener myRoleDetailListener, String a, String token,int user_id);
 }
