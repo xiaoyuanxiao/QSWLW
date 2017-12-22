@@ -8,10 +8,14 @@
             type="com.qs.qswlw.bean.MyRoleBean" />
     </data>
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
         <LinearLayout
             android:id="@+id/ll_myrole"
@@ -33,7 +37,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:text="津津食品"
                 android:textColor="@color/tv_role"
                 android:textSize="12sp" />
         </LinearLayout>
@@ -159,7 +162,7 @@
 
                 <TextView
                     style="@style/tv_standard"
-                    android:text="@{roleBean.role_count.xfz_num}" />
+                    android:text="@{roleBean.role_count.xfz_num+@string/quot}" />
             </LinearLayout>
 
             <View
@@ -180,7 +183,7 @@
 
                 <TextView
                     style="@style/tv_standard"
-                    android:text="@{roleBean.role_count.shop_num}" />
+                    android:text="@{roleBean.role_count.shop_num+@string/quot}" />
             </LinearLayout>
         </LinearLayout>
 
@@ -257,7 +260,7 @@
 
                 <TextView
                     style="@style/tv_standard"
-                    android:text="@{roleBean.role_count.shop_yj}" />
+                    android:text="@{roleBean.role_count.shop_yj+@string/quot}" />
             </LinearLayout>
 
             <View
@@ -421,5 +424,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"></android.support.v7.widget.RecyclerView>
         </LinearLayout>
-    </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
 </layout>

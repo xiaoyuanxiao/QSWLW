@@ -53,6 +53,7 @@ public class MyRoleActivity extends BaseDataBindingActivity implements IMyRoleVi
         bind.setRoleBean(myRoleBean);
         bind.tvRole.setText(RoleJudgeUtil.roleJudeg(myRoleBean.getRole()));
         bind.tvRoleTime.setText(DateUtils.stampToDate(Integer.parseInt(myRoleBean.getReg_time()) * 1000L));
+        bind.tvRoleCompanyName.setText(MyApplication.NICKNAME);
         List<MyRoleBean.LogsBean> logs = myRoleBean.getLogs();
         Map<Integer,Integer> map = new HashMap<>();
         map.put(R.layout.item_role, BR.itemlogsBean);
