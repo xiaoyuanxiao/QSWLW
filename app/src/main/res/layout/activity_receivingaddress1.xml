@@ -63,7 +63,6 @@
                     style="@style/editText_adaress"
                     android:layout_marginLeft="20dp"
                     android:editable="false"
-                    android:inputType="phone"
                     android:maxLength="15" />
             </LinearLayout>
 
