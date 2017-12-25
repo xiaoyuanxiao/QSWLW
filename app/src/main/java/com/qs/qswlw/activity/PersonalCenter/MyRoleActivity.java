@@ -55,9 +55,34 @@ public class MyRoleActivity extends BaseDataBindingActivity implements IMyRoleVi
     @Override
     public void setMyRoleViewList(MyRoleBean myRoleBean) {
         bind.setRoleBean(myRoleBean);
+        MyRoleBean.CurrentAssBean current_ass = myRoleBean.getCurrent_ass();
         bind.tvRole.setText(RoleJudgeUtil.roleJudeg(myRoleBean.getRole()));
         bind.tvRoleTime.setText(DateUtils.stampToDate(Integer.parseInt(myRoleBean.getReg_time()) * 1000L));
         bind.tvRoleCompanyName.setText(MyApplication.NICKNAME);
+        int xfz_cha = current_ass.getXfz_cha();
+        if(xfz_cha>0){
+            bind.tvRoleConsumerCount.setText("消费天使："+ xfz_cha);
+        }else{
+            bind.tvRoleConsumerCount.setText("消费天使："+" 已达标;");
+        }
+        bind.tvRoleNameCount.setText(current_ass.getName()+": "+current_ass.getRole_cha());
+        switch (Integer.parseInt(MyApplication.ROLE)){
+            case 10:
+                bind.tvRoleGrade.setText("创业主任");
+                break;
+            case 11:
+                bind.tvRoleGrade.setText("创业经理");
+                break;
+            case 15:
+                bind.tvRoleGrade.setText("创业总监");
+                break;
+            case 9:
+                bind.tvRoleGrade.setText("创业董事");
+                break;
+            case 8:
+                bind.tvRoleGrade.setText("您已是最高等级");
+                break;
+        }
         List<MyRoleBean.LogsBean> logs = myRoleBean.getLogs();
         Map<Integer,Integer> map = new HashMap<>();
         map.put(R.layout.item_role, BR.itemlogsBean);
