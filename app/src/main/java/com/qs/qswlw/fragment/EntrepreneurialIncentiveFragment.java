@@ -53,8 +53,9 @@ public class EntrepreneurialIncentiveFragment extends BaseFragment implements IE
     private List<EntrepreneurialIncentiveBean.ListModel1Bean> list_model1;
     private int love;
     private RefreshLayout mRefreshLayout;
-    // private SwipeRefreshView swipeRefreshView;
     private ProgressBar pb_itemforestry;
+    // private SwipeRefreshView swipeRefreshView;
+
 
     public static EntrepreneurialIncentiveFragment newInstener() {
         return new EntrepreneurialIncentiveFragment();
