@@ -14,6 +14,7 @@ import com.qs.qswlw.bean.MyOrganizationBean;
 import com.qs.qswlw.mynet.ReHttpUtils;
 import com.qs.qswlw.okhttp.Iview.IMyOrganizationView;
 import com.qs.qswlw.okhttp.Presenter.MyOrganizationPersenter;
+import com.qs.qswlw.utils.ActivityManagerUtils;
 import com.qs.qswlw.utils.RoleJudgeUtil;
 
 import java.util.HashMap;
@@ -62,5 +63,10 @@ public class MyOrganizationActivity extends BaseDataBindingActivity implements I
         myOrganizationAdapter=  new MyOrganizationAdapter(myOrganizationBean.getTui_data(),map);
             myOriganizationData.rvMyoriganization.setAdapter(myOrganizationAdapter);
 
+    }
+
+    @Override
+    public void onTokenFail() {
+        ActivityManagerUtils.getInstance().tokenfailfg(this);
     }
 }

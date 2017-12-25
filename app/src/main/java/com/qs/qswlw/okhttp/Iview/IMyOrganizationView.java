@@ -8,4 +8,5 @@ import com.qs.qswlw.bean.MyOrganizationBean;
 
 public interface IMyOrganizationView {
     void setdata(MyOrganizationBean myOrganizationBean);
+    void onTokenFail();
 }

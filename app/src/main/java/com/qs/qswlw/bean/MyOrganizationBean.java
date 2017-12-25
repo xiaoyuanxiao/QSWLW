@@ -87,7 +87,7 @@ public class MyOrganizationBean {
 
         private String nickname;
         private String role;
-        private int total;
+        private double total;
         private String user_id;
 
         public String getNickname() {
@@ -106,11 +106,11 @@ public class MyOrganizationBean {
             this.role = role;
         }
 
-        public int getTotal() {
+        public double getTotal() {
             return total;
         }
 
-        public void setTotal(int total) {
+        public void setTotal(double total) {
             this.total = total;
         }
 

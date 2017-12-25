@@ -8,4 +8,5 @@ import com.qs.qswlw.bean.MyOrganizationBean;
 
 public interface MyOrganizationListener extends BaseOnlistener {
     void onSuccess(MyOrganizationBean myOrganizationBean);
+    void onTokenFail();
 }

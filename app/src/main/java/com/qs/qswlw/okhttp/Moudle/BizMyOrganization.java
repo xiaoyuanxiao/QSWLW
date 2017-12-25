@@ -1,5 +1,7 @@
 package com.qs.qswlw.okhttp.Moudle;
 
+import android.util.Log;
+
 import com.qs.qswlw.bean.MainBean;
 import com.qs.qswlw.bean.MyOrganizationBean;
 import com.qs.qswlw.mynet.HttpSubCribe;
@@ -29,12 +31,17 @@ public class BizMyOrganization implements IMyOrganizationBiz {
 
             @Override
             public void onError(Throwable e) {
-
+                Log.e("BizMyOrganization",e+"");
             }
 
             @Override
             public void onNext(MainBean<MyOrganizationBean> myOrganizationBean) {
-                myOrganizationListener.onSuccess(myOrganizationBean.getResult());
+                if(myOrganizationBean.getStatus()==1){
+                    myOrganizationListener.onSuccess(myOrganizationBean.getResult());
+                }if(myOrganizationBean.getStatus()==-3||myOrganizationBean.getStatus()==-4){
+                    myOrganizationListener.onTokenFail();
+                }
+
             }
 
             @Override

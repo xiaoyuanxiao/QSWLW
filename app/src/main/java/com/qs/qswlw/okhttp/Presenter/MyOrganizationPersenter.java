@@ -27,6 +27,11 @@ public class MyOrganizationPersenter {
             }
 
             @Override
+            public void onTokenFail() {
+                iMyOrganizationView.onTokenFail();
+            }
+
+            @Override
             public void onFailure(String code) {
 
             }

@@ -45,7 +45,6 @@ public class RoleDetailsActivity extends BaseDataBindingActivity implements IRol
 
     @Override
     protected void initData() {
-
         Intent intent = getIntent();
         String info = intent.getStringExtra("info");
         if("cyts_info".equals(info)){
