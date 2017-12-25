@@ -25,6 +25,7 @@ public class MyBonusZTFragment extends BaseDataBindingFragment implements IMyBon
     private MyBonusZTFGData bind;
     private LinearLayoutManager linearLayoutManager;
     private BaseRecyleAdapter adapter;
+    private String temp2,temp1;
 
     public static MyBonusZTFragment newInstance() {
         return new MyBonusZTFragment();
@@ -55,6 +56,17 @@ public class MyBonusZTFragment extends BaseDataBindingFragment implements IMyBon
         bind.llFgMybonuszt.setVisibility(View.VISIBLE);
         MyBonusBean.GoldCountModel1Bean goldCountModel1Bean = myBonusBean.getGold_count_model1().get(0);
         bind.setGoldcountmodel1Bean(goldCountModel1Bean);
+        if(goldCountModel1Bean.getTemp2()!=null){
+            temp2 = goldCountModel1Bean.getTemp2();
+        }else{
+            temp2 ="0.000";
+        }
+        if(goldCountModel1Bean.getTemp1()!=null){
+            temp1 = goldCountModel1Bean.getTemp1();
+        }else{
+            temp1 ="0.000";
+        }
+        bind.tvMybonusAll.setText("合计:    "+temp2+"     "+temp1);
         List<MyBonusBean.ListBean> list = myBonusBean.getList();
 
         Map<Integer, Integer> map = new HashMap<>();

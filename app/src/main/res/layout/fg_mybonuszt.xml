@@ -42,11 +42,12 @@
                 android:layout_height="wrap_content"></android.support.v7.widget.RecyclerView>
 
             <TextView
+                android:id="@+id/tv_mybonus_all"
                 style="@style/tv_harvestaddress"
                 android:layout_gravity="right"
                 android:layout_marginBottom="10dp"
                 android:layout_marginRight="40dp"
-                android:text="@{@string/HJ+@string/space+goldcountmodel1Bean.temp2+@string/space+goldcountmodel1Bean.temp1}" />
+                android:text="}" />
         </LinearLayout>
 
         <ProgressBar
