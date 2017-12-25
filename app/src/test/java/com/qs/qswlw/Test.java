@@ -1,12 +1,11 @@
 package com.qs.qswlw;
 
 import com.qs.qswlw.bean.MainBean;
-import com.qs.qswlw.bean.NoticesBean;
 import com.qs.qswlw.mynet.HttpSubCribe;
 import com.qs.qswlw.mynet.MyRetroService;
 import com.qs.qswlw.mynet.ReHttpUtils;
 
-import java.util.List;
+import java.io.File;
 
 import rx.Observable;
 
@@ -20,8 +19,8 @@ public class Test {
     @org.junit.Test
     public void addition_isCorrect() throws Exception {
         assertEquals(4, 2 + 2);
-        ReHttpUtils.initRetro("http://192.168.1.193/");//这个无所谓 我们有一个默认的了
-        ReHttpUtils.instans().httpRequestMain/**这是单线程 测试多线程 不好看结果*/(new HttpSubCribe<MainBean<List<NoticesBean>>>() {
+        ReHttpUtils.initRetro("http://192.168.1.196/qianshengapp/");//这个无所谓 我们有一个默认的了
+        ReHttpUtils.instans().httpRequestMain/**这是单线程 测试多线程 不好看结果*/(new HttpSubCribe<MainBean>() {
 
 
             @Override
@@ -35,16 +34,16 @@ public class Test {
             }
 
             @Override
-            public void onNext(MainBean<List<NoticesBean>> s) {
+            public void onNext(MainBean s) {
                 System.out.println("onNext============" + s);
             }
 
             @Override
-            public Observable<MainBean<List<NoticesBean>>> getObservable(MyRetroService retrofit) {
+            public Observable<MainBean> getObservable(MyRetroService retrofit) {
                 /**
                  *
                  */
-                return retrofit.getNotices();//参数 不是乱写的。。。。你说乱写的  只要格式对上 。。。我什么时候说过呵呵
+                return  retrofit.PostConsumptionData(MyApplication.TOKEN, 1655, 413.333, 15, 62, "model1","直汇招商行(让利)", "2017-12-25", "xiao", new File("C:\\Users\\qs\\Pictures\\snapshot20170713113055.jpg"));//参数 不是乱写的。。。。你说乱写的  只要格式对上 。。。我什么时候说过呵呵
             }
         });
 

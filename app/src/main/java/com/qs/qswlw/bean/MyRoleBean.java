@@ -7,7 +7,9 @@ import java.util.List;
  */
 
 public class MyRoleBean {
+
     /**
+     * current_ass : {"name":"创业总监","role_cha":2,"xfz_cha":-6,"yj_cha":992920}
      * cyts_id : 178
      * cyzx_address : {"address":"荔新公路"}
      * cyzx_id : 175
@@ -18,15 +20,16 @@ public class MyRoleBean {
      * is_qu : 0
      * is_sheng : 0
      * is_shi : 0
-     * logs : [{"id":"2400","is_to":"1","nickname":"取消","role_name":"创业总监","up_time":"1508638225","up_to_role":"9","up_yuan_role":"10","user_id":"187","verify_time":"1508638225","verify_user":"xiaoqin","yuan_role_name":"商家"},{"id":"2401","is_to":"1","nickname":"取消","role_name":"创业总监","up_time":"1508638395","up_to_role":"9","up_yuan_role":"0","user_id":"187","verify_time":"1508638395","verify_user":"xiaoqin","yuan_role_name":"消费天使"},{"id":"2402","is_to":"1","nickname":"取消","role_name":"创业总监","up_time":"1508638684","up_to_role":"9","up_yuan_role":"0","user_id":"187","verify_time":"1508638684","verify_user":"xiaoqin","yuan_role_name":"消费天使"},{"id":"2403","is_to":"1","nickname":"取消","role_name":"创业总监","up_time":"1508638767","up_to_role":"9","up_yuan_role":"0","user_id":"187","verify_time":"1508638767","verify_user":"xiaoqin","yuan_role_name":"消费天使"},{"id":"2404","is_to":"1","nickname":"取消","role_name":"创业董事","up_time":"1508638831","up_to_role":"8","up_yuan_role":"9","user_id":"187","verify_time":"1508638831","verify_user":"xiaoqin","yuan_role_name":"创业总监"}]
-     * nickname : 取消
+     * logs : [{"id":"2400","is_to":"1","nickname":"确定","role_name":"创业总监","up_time":"1508638225","up_to_role":"9","up_yuan_role":"10","user_id":"187","verify_time":"1508638225","verify_user":"xiaoqin","yuan_role_name":"商家"},{"id":"2401","is_to":"1","nickname":"确定","role_name":"创业总监","up_time":"1508638395","up_to_role":"9","up_yuan_role":"0","user_id":"187","verify_time":"1508638395","verify_user":"xiaoqin","yuan_role_name":"消费天使"},{"id":"2402","is_to":"1","nickname":"确定","role_name":"创业总监","up_time":"1508638684","up_to_role":"9","up_yuan_role":"0","user_id":"187","verify_time":"1508638684","verify_user":"xiaoqin","yuan_role_name":"消费天使"},{"id":"2403","is_to":"1","nickname":"确定","role_name":"创业总监","up_time":"1508638767","up_to_role":"9","up_yuan_role":"0","user_id":"187","verify_time":"1508638767","verify_user":"xiaoqin","yuan_role_name":"消费天使"},{"id":"2404","is_to":"1","nickname":"确定","role_name":"创业董事","up_time":"1508638831","up_to_role":"8","up_yuan_role":"9","user_id":"187","verify_time":"1508638831","verify_user":"xiaoqin","yuan_role_name":"创业总监"}]
+     * nickname : 确定
      * reg_time : 1491813970
      * role : 8
-     * role_count : {"shop_none":0,"shop_num":3,"shop_yj":0,"xfz_num":13}
+     * role_count : {"shop_none":7080,"shop_num":4,"shop_yj":47200,"xfz_num":13}
      * up_grades : {"condition1":"10","condition2":"0","condition3":"100000","id":"1","type":"11","use_money":"288.00","value1":"5","value2":"5"}
      * user_id : 187
      */
 
+    private CurrentAssBean current_ass;
     private String cyts_id;
     private CyzxAddressBean cyzx_address;
     private String cyzx_id;
@@ -44,6 +47,14 @@ public class MyRoleBean {
     private UpGradesBean up_grades;
     private String user_id;
     private List<LogsBean> logs;
+
+    public CurrentAssBean getCurrent_ass() {
+        return current_ass;
+    }
+
+    public void setCurrent_ass(CurrentAssBean current_ass) {
+        this.current_ass = current_ass;
+    }
 
     public String getCyts_id() {
         return cyts_id;
@@ -181,6 +192,52 @@ public class MyRoleBean {
         this.logs = logs;
     }
 
+    public static class CurrentAssBean {
+        /**
+         * name : 创业总监
+         * role_cha : 2
+         * xfz_cha : -6
+         * yj_cha : 992920
+         */
+
+        private String name;
+        private int role_cha;
+        private int xfz_cha;
+        private int yj_cha;
+
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
+
+        public int getRole_cha() {
+            return role_cha;
+        }
+
+        public void setRole_cha(int role_cha) {
+            this.role_cha = role_cha;
+        }
+
+        public int getXfz_cha() {
+            return xfz_cha;
+        }
+
+        public void setXfz_cha(int xfz_cha) {
+            this.xfz_cha = xfz_cha;
+        }
+
+        public int getYj_cha() {
+            return yj_cha;
+        }
+
+        public void setYj_cha(int yj_cha) {
+            this.yj_cha = yj_cha;
+        }
+    }
+
     public static class CyzxAddressBean {
         /**
          * address : 荔新公路
@@ -215,9 +272,9 @@ public class MyRoleBean {
 
     public static class RoleCountBean {
         /**
-         * shop_none : 0
-         * shop_num : 3
-         * shop_yj : 0
+         * shop_none : 7080
+         * shop_num : 4
+         * shop_yj : 47200
          * xfz_num : 13
          */
 
@@ -349,7 +406,7 @@ public class MyRoleBean {
         /**
          * id : 2400
          * is_to : 1
-         * nickname : 取消
+         * nickname : 确定
          * role_name : 创业总监
          * up_time : 1508638225
          * up_to_role : 9
@@ -460,4 +517,5 @@ public class MyRoleBean {
             this.yuan_role_name = yuan_role_name;
         }
     }
+
 }

@@ -325,7 +325,7 @@ public interface MyRetroService {
      */
     @FormUrlEncoded
     @POST("index.php?m=Appapi&c=Single&a=do_money")
-    Observable<MainBean> PostConsumptionData(@Field("token") String token, @Field("uid") int uid, @Field("money") float money, @Field("ratio") float ratio,
+    Observable<MainBean> PostConsumptionData(@Field("token") String token, @Field("uid") int uid, @Field("money") double money, @Field("ratio") float ratio,
                                              @Field("none") float none, @Field("ratio_key") String ratio_key, @Field("pay_type") String pay_type, @Field("pay_time") String pay_time,
                                              @Field("pay_name") String pay_name, @Field("remittance") File remittance);
 

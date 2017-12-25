@@ -76,6 +76,7 @@ public class BusinessSettingActivity extends BaseActivity implements IPersonalSe
         MyApplication.ID = user_id = user_info.getUser_id();
         MyApplication.CYZXID = user_info.getCyzx_id();
         MyApplication.NICKNAME = nickname = user_info.getNickname();
+        MyApplication.ROLE = user_info.getRole();
         //会员身份
         role = user_info.getRole();
         tv_role.setText( RoleJudgeUtil.roleJudeg(role));
@@ -318,10 +319,6 @@ public class BusinessSettingActivity extends BaseActivity implements IPersonalSe
                 case 18:
                     startActivity(new Intent(BusinessSettingActivity.this, BusinessTurnoverActivity .class));
                     break;
-
-
-
-
                 case 19:
                     //  startActivity(new Intent(BusinessSettingActivity.this, ReceivingAddressActivity.class));
                     startActivity(new Intent(BusinessSettingActivity.this, ReceivingAddress1Activity.class));
