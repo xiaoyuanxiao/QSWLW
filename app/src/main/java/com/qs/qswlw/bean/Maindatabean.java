@@ -132,6 +132,15 @@ public class Maindatabean {
         String qs_union;//钱盛联盟
         String qs_fun;
         String qs_lack_draw;
+        String qs_ziying_shop;
+
+        public String getQs_ziying_shop() {
+            return qs_ziying_shop;
+        }
+
+        public void setQs_ziying_shop(String qs_ziying_shop) {
+            this.qs_ziying_shop = qs_ziying_shop;
+        }
 
         public String getQs_union() {
             return qs_union;
