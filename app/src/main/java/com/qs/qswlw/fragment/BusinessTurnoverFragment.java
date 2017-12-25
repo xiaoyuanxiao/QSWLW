@@ -70,6 +70,8 @@ public class BusinessTurnoverFragment extends BaseFragment implements IBusinessT
         businessTurnoverAdapter = new BusinessTurnoverAdapter(getActivity(), listBeen);
         lv_turnover.setAdapter(businessTurnoverAdapter);
         businessTurnoverPersenter.getdata(MyApplication.TOKEN,page,type);
+        mRefreshLayout.setEnableLoadmoreWhenContentNotFull(false);
+        mRefreshLayout.setEnableRefresh(false);
         mRefreshLayout.setOnLoadmoreListener(new OnLoadmoreListener() {
             @Override
             public void onLoadmore(RefreshLayout refreshlayout) {

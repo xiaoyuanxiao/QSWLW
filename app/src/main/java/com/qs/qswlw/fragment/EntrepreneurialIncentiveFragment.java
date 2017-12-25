@@ -88,7 +88,7 @@ public class EntrepreneurialIncentiveFragment extends BaseFragment implements IE
         lv_sub_entrepreneurialseed.setAdapter(entrepreneurialAdapter);
         entrepreneurialPresenter.getdata(MyApplication.TOKEN, page, "model1");
         mRefreshLayout.setEnableLoadmoreWhenContentNotFull(false);
-        mRefreshLayout.setEnableLoadmore(false);
+        mRefreshLayout.setEnableRefresh(false);
 //        swipeRefreshView.setOnLoadListener(new SwipeRefreshView.OnLoadListener() {
 //            @Override
 //            public void onLoad() {

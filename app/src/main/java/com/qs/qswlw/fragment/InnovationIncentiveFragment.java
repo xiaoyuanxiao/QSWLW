@@ -82,6 +82,8 @@ public class InnovationIncentiveFragment extends BaseFragment implements IEntrep
         innovationAdapter = new InnovationAdapter(getActivity(), innovationList);
         lv_sub_entrepreneurialseed.setAdapter(innovationAdapter);
         entrepreneurialPresenter.getdata(MyApplication.TOKEN, page, "model2");
+        mRefreshLayout.setEnableLoadmoreWhenContentNotFull(false);
+        mRefreshLayout.setEnableRefresh(false);
         mRefreshLayout.setOnLoadmoreListener(new OnLoadmoreListener() {
             @Override
             public void onLoadmore(RefreshLayout refreshlayout) {
