@@ -4,9 +4,9 @@
 <stroke android:width="0.3dip" android:color="@color/view"/>
 <corners android:radius="3dip" />
 <padding
-    android:left="8dp"
-    android:top="8dp"
-    android:right="6dp"
+
     android:bottom="9dp"
+    android:right="6dp"
+    android:top="8dp"
     />
 </shape>

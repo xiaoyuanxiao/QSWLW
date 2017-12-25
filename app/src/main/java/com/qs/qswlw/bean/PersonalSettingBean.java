@@ -23,8 +23,7 @@ public class PersonalSettingBean {
     private UserInfoBean user_info;
     private ShopBean shop;
     private String last_rebate_date;
-    private String loveval_model2_xfz;
-    private String loveval_model2_shop;
+
     private String cash_money;
     private String cons_gold;
     private String shop_order;
@@ -96,22 +95,6 @@ public class PersonalSettingBean {
 
     public void setShop_order(String shop_order) {
         this.shop_order = shop_order;
-    }
-
-    public String getLoveval_model2_xfz() {
-        return loveval_model2_xfz;
-    }
-
-    public void setLoveval_model2_xfz(String loveval_model2_xfz) {
-        this.loveval_model2_xfz = loveval_model2_xfz;
-    }
-
-    public String getLoveval_model2_shop() {
-        return loveval_model2_shop;
-    }
-
-    public void setLoveval_model2_shop(String loveval_model2_shop) {
-        this.loveval_model2_shop = loveval_model2_shop;
     }
 
     public String getCount_sum() {
@@ -286,6 +269,24 @@ public class PersonalSettingBean {
         private String uid;
         private String user_id;
         private String head_pic;
+        private String loveval_model2_xfz;
+        private String loveval_model2_shop;
+
+        public String getLoveval_model2_xfz() {
+            return loveval_model2_xfz;
+        }
+
+        public void setLoveval_model2_xfz(String loveval_model2_xfz) {
+            this.loveval_model2_xfz = loveval_model2_xfz;
+        }
+
+        public String getLoveval_model2_shop() {
+            return loveval_model2_shop;
+        }
+
+        public void setLoveval_model2_shop(String loveval_model2_shop) {
+            this.loveval_model2_shop = loveval_model2_shop;
+        }
 
         public String getHead_pic() {
             return head_pic;

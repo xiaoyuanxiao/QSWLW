@@ -78,17 +78,14 @@
     </string-array>
 
     <string-array name="dialog_item">
-        <item>刷POS机(发票)</item>
-        <item>汇入招行(发票)</item>
+        <item>直汇招商行(让利)</item>
+        <item>直汇农商行(让利)</item>
+        <item>刷POS机(让利)</item>
         <item>-------------</item>
-        <item>B网管理费(汇入招行)</item>
-        <item>B网管理费(刷POS机)</item>
+        <item>B网(直汇农商行)</item>
+        <item>B网管理费(直汇招商行)</item>
+        <item>B网(刷POS机)</item>
         <item>B网消费</item>
-        <item>-------------</item>
-        <item>购买消费金豆(汇入招行)</item>
-        <item>购买消费金豆(刷POS机)</item>
-        <item>-------------</item>
-        <item>汇入其它银行</item>
     </string-array>
     <string-array name="addproduct_classification">
     <item>选择商品分类</item>

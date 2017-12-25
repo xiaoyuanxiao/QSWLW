@@ -67,6 +67,7 @@
         <activity android:name=".activity.PersonalCenter.MyInvestActivity"/>
         <activity android:name=".activity.PersonalCenter.MyGoldActivity"/>
         <activity android:name=".activity.PersonalCenter.MallOrdersActivity"/>
+        <activity android:name=".activity.PersonalCenter.ConsumptionRecordActivity1"/>
         <activity android:name=".activity.PersonalCenter.ConsumerEntrepreneurialSeedActivity"/>
         <activity android:name=".activity.PersonalCenter.VenturegoldBeansActivity"/>
         <activity android:name=".activity.PersonalCenter.MyRoleActivity"/>

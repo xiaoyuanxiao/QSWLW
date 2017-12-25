@@ -70,7 +70,7 @@ public class BusinessSettingActivity extends BaseActivity implements IPersonalSe
         tv_setting_encourage.setText(user_info.getLove_total() + "");
         tv_setting_withdrawals.setText(user_info.getGold_total() + "");
         tv_setting_consumerbeans.setText(user_info.getTaxgold_total() + "");
-        tv_setting_paytaxes.setText(personalSettingBean.getLoveval_model2_shop() + "");
+        tv_setting_paytaxes.setText(user_info.getLoveval_model2_shop());
         Glide.with(this).load(ReHttpUtils.getBaseUrl()+user_info.getHead_pic()).into(iv_setting_avater);
         MyApplication.MOBILE = mobile = user_info.getMobile();
         MyApplication.ID = user_id = user_info.getUser_id();
@@ -242,7 +242,7 @@ public class BusinessSettingActivity extends BaseActivity implements IPersonalSe
 //                    intent.putExtra("role", role);
 //                    intent.putExtra("position", "position");
 //                    startActivity(intent);
-                    Intent intent1 = new Intent(BusinessSettingActivity.this, ConsumptionRecordActivity.class);
+                    Intent intent1 = new Intent(BusinessSettingActivity.this, ConsumptionRecordActivity1.class);
                     startActivityForResult(intent1, 102);
                     break;
                 case 1:

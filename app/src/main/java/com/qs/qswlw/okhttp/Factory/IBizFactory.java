@@ -32,6 +32,7 @@ import com.qs.qswlw.okhttp.Moudle.BizRecordList;
 import com.qs.qswlw.okhttp.Moudle.BizScanCodeRecord;
 import com.qs.qswlw.okhttp.Moudle.BizSetModify;
 import com.qs.qswlw.okhttp.Moudle.BizSettingNew;
+import com.qs.qswlw.okhttp.Moudle.BizUserIDSearch;
 import com.qs.qswlw.okhttp.Moudle.BizValidateOldMember;
 import com.qs.qswlw.okhttp.Moudle.BizVentureGold;
 import com.qs.qswlw.okhttp.Moudle.BizWithDrawalsRecord;
@@ -72,6 +73,7 @@ import com.qs.qswlw.okhttp.Moudle.IScanCodeRecordBiz;
 import com.qs.qswlw.okhttp.Moudle.ISetModifyBiz;
 import com.qs.qswlw.okhttp.Moudle.ISettingNewBiz;
 import com.qs.qswlw.okhttp.Moudle.ITestaBiz;
+import com.qs.qswlw.okhttp.Moudle.IUserIDSearchBiz;
 import com.qs.qswlw.okhttp.Moudle.IValidateOldMemberBiz;
 import com.qs.qswlw.okhttp.Moudle.IVentureGoldBiz;
 import com.qs.qswlw.okhttp.Moudle.IWithDrawalsRecordBiz;
@@ -214,5 +216,8 @@ public class IBizFactory {
     }
     public static IMyRoleDetailBiz getMyRoleDetailList(){
         return BizMyRoleDetail.getInstans();
+    }
+    public static IUserIDSearchBiz getUserIDSearchList(){
+        return BizUserIDSearch.getInstans();
     }
 }

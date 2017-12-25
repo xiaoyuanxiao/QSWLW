@@ -1,0 +1,425 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rl_consumption"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:orientation="vertical">
+            <LinearLayout style="@style/ll_consumptionrecord">
+
+                <TextView
+                    android:layout_width="60dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="8dp"
+                    android:gravity="right"
+                    android:text="让利金额:"
+                    android:textColor="@color/black"
+                    android:textSize="11sp" />
+
+                <EditText
+                    android:id="@+id/edt_consumptionrecord_one"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/corners"
+                    android:hint="让利金额"
+                    android:textSize="11sp" />
+            </LinearLayout>
+
+            <LinearLayout style="@style/ll_consumptionrecord">
+
+                <TextView
+                    android:layout_width="60dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="8dp"
+                    android:gravity="right"
+                    android:text="模式:"
+                    android:textColor="@color/black"
+                    android:textSize="11sp" />
+
+                <TextView
+                    android:id="@+id/edt_consumptionrecord_two"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/corners"
+                    android:text=""
+                    android:textColor="@color/black"
+                    android:textSize="11sp" />
+            </LinearLayout>
+
+
+            <LinearLayout style="@style/ll_consumptionrecord">
+                <TextView
+                    android:layout_width="60dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="8dp"
+                    android:gravity="right"
+                    android:text="消费金额:"
+                    android:textColor="@color/black"
+                    android:textSize="11sp" />
+                <EditText
+                    android:id="@+id/edt_consumptionrecord_three"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/corners"
+                    android:hint="发票金额"
+                    android:textSize="11sp" />
+
+
+
+            </LinearLayout>
+
+
+            <LinearLayout style="@style/ll_consumptionrecord">
+
+                <TextView
+                    android:layout_width="60dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="8dp"
+                    android:gravity="right"
+                    android:text="您将获得:"
+                    android:textColor="@color/black"
+                    android:textSize="11sp" />
+
+               <TextView
+                   android:id="@+id/edt_consumptionrecord_cyzz"
+                  style="@style/tv_standard_blue"
+                   android:text="0"/>
+                <TextView
+                    style="@style/tv_harvestaddress"
+                    android:text=" 创业种子。"/>
+                <TextView
+                    android:id="@+id/edt_consumptionrecord_yd"
+                    style="@style/tv_standard_blue"
+                    android:text="0"/>
+                <TextView
+                    style="@style/tv_harvestaddress"
+                    android:text=" 银豆"/>
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="30dp"
+                android:layout_marginTop="15dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="60dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="8dp"
+                    android:gravity="right"
+                    android:text="消费者ID:"
+                    android:textColor="@color/black"
+                    android:textSize="11sp" />
+
+                <EditText
+                    android:id="@+id/edt_consumptionrecord_id"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/corners"
+                    android:textSize="11sp" />
+            </LinearLayout>
+
+            <LinearLayout style="@style/ll_consumptionrecord">
+
+                <TextView
+                    android:layout_width="60dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="8dp"
+                    android:gravity="right"
+                    android:text="昵称:"
+                    android:textColor="@color/black"
+                    android:textSize="11sp" />
+
+                <EditText
+                    android:id="@+id/edt_consumptionrecord_nickname"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/corners"
+                    android:textSize="11sp" />
+            </LinearLayout>
+
+
+
+
+
+          <!--  <LinearLayout style="@style/ll_consumptionrecord">
+
+                <TextView
+                    android:layout_width="60dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="8dp"
+                    android:gravity="right"
+                    android:text="商品数量:"
+                    android:textColor="@color/black"
+                    android:textSize="11sp" />
+
+                <EditText
+                    android:id="@+id/edt_consumptionrecord_four"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/corners"
+                    android:hint="今日热销"
+                    android:textColor="@color/black"
+                    android:textSize="11sp" />
+            </LinearLayout>
+-->
+
+
+
+            <LinearLayout style="@style/ll_consumptionrecord">
+
+                <TextView
+                    android:layout_width="60dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="8dp"
+                    android:gravity="right"
+                    android:text="支付方式:"
+                    android:textColor="@color/black"
+                    android:textSize="11sp" />
+                <Spinner
+                    android:id="@+id/spinner_consumptionrecord_pos"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="30dp"
+                    android:background="@drawable/corners"
+                    android:spinnerMode="dialog"
+                    android:text="刷POS机(发票)"
+                    android:textColor="@color/black" />
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="65dp"
+                android:layout_marginTop="15dp"
+                android:text="请准确选择支付方式，如
+若选错，系统将会自动顺
+延审核，如若顺延请自行
+修正，修正准确后重新提交。"
+                android:textColor="@color/red"
+                android:textSize="10sp" />
+
+            <LinearLayout style="@style/ll_consumptionrecord">
+
+                <TextView
+                    android:layout_width="60dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="8dp"
+                    android:gravity="right"
+                    android:text="汇款人:"
+                    android:textColor="@color/black"
+                    android:textSize="11sp" />
+
+                <EditText
+                    android:id="@+id/edt_consumptionrecord_five"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/corners"
+                    android:hint="与银行凭证相符"
+                    android:textColor="@color/black"
+                    android:textSize="11sp" />
+            </LinearLayout>
+
+            <LinearLayout style="@style/ll_consumptionrecord">
+
+                <TextView
+                    android:layout_width="60dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="8dp"
+                    android:gravity="right"
+                    android:text="支付时间:"
+                    android:textColor="@color/black"
+                    android:textSize="11sp" />
+
+                <EditText
+                    android:id="@+id/edt_consumptionrecord_sex"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/corners"
+                    android:text=""
+                    android:textColor="@color/black"
+                    android:textSize="11sp" />
+            </LinearLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="65dp"
+                android:layout_marginTop="15dp"
+                android:text="时间格式：YYYY-mm-dd.
+如：2017-04-09"
+                android:textColor="@color/red"
+                android:textSize="10sp" />
+
+            <LinearLayout style="@style/ll_consumptionrecord">
+
+                <TextView
+                    android:layout_width="60dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="8dp"
+                    android:gravity="right"
+                    android:text="汇款凭证:"
+                    android:textColor="@color/black"
+                    android:textSize="11sp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/corners"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/btn_selectorfile1"
+                        android:layout_width="60dp"
+                        android:layout_height="20dp"
+                        android:background="@drawable/corners_black"
+                        android:text="选取文件"
+                        android:textSize="8sp" />
+
+                    <ImageView
+                        android:id="@+id/iv_consumption1"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginLeft="4dp"
+                        android:scaleType="fitXY"
+                        android:visibility="gone" />
+
+                    <TextView
+                        android:id="@+id/tv_isselect_consumptionrecord"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="6dp"
+                        android:text="未选择文件"
+                        android:textColor="@color/black"
+                        android:textSize="8sp" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="60dp"
+                android:layout_marginTop="1dp"
+                android:text="(仅支持图片类型)"
+                android:textColor="@color/black"
+                android:textSize="9sp" />
+
+          <!--  <LinearLayout style="@style/ll_consumptionrecord">
+
+                <TextView
+                    android:layout_width="60dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="8dp"
+                    android:gravity="right"
+                    android:text="发票凭证:"
+                    android:textColor="@color/black"
+                    android:textSize="11sp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/corners"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/btn_selectorfile2"
+                        android:layout_width="60dp"
+                        android:layout_height="20dp"
+                        android:background="@drawable/corners_black"
+                        android:text="选取文件"
+                        android:textSize="8sp" />
+
+                    <ImageView
+                        android:id="@+id/iv_consumption2"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginLeft="4dp"
+                        android:scaleType="fitXY"
+                        android:visibility="gone" />
+
+                    <TextView
+                        android:id="@+id/tv_isselect_consumptionrecord2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="6dp"
+                        android:text="未选择文件"
+                        android:textColor="@color/black"
+                        android:textSize="8sp" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="60dp"
+                android:layout_marginTop="1dp"
+                android:text="(仅支持图片类型)"
+                android:textColor="@color/black"
+                android:textSize="9sp" />
+-->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="注:若填写录单信息有误，请到录单记录中选择修改并更新！。"
+                android:textColor="@color/red"
+                android:textSize="10sp" />
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_marginTop="18dp"
+                android:background="@color/view" />
+
+            <Button
+                android:id="@+id/btn_sonsumption_confirm"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:layout_margin="10dp"
+                android:background="@drawable/btn_corner"
+                android:text="确认"
+                android:textColor="@color/white"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/consumptionrecord_bottom_one"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="让利款汇款账户："
+                android:textColor="@color/red"
+                android:textSize="9sp" />
+
+            <TextView
+                android:id="@+id/consumptionrecord_bottom_two"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text=""
+                android:textColor="@color/red"
+                android:textSize="9sp" />
+
+        </LinearLayout>
+    </ScrollView>
+
+</RelativeLayout>

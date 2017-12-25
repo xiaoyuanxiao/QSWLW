@@ -40,6 +40,7 @@ import com.qs.qswlw.bean.RegisterGetCodeBean;
 import com.qs.qswlw.bean.ScanCodeRecordBean;
 import com.qs.qswlw.bean.SetModifyBean;
 import com.qs.qswlw.bean.SettingNewsBean;
+import com.qs.qswlw.bean.UserIDSearchBean;
 import com.qs.qswlw.bean.ValidateOldMemberBean;
 import com.qs.qswlw.bean.VenturegoldBean;
 import com.qs.qswlw.bean.WithDrawalsRecordBean;
@@ -593,4 +594,11 @@ public interface MyRetroService {
     @FormUrlEncoded
     @POST("index.php?m=Appapi&c=User")
     Observable<MainBean<MyRoleDatailBean>> getMyRoleDatailData(@Field("a") String a, @Field("token") String token, @Field("user_id") int user_id);
+
+    /**
+     * 伞下创业升级情况
+     */
+    @FormUrlEncoded
+    @POST("index.php?m=Appapi&c=User&a=getName")
+    Observable<MainBean<UserIDSearchBean>> getUserIDSearchData( @Field("token") String token, @Field("uid") int uid, @Field("User_id") int User_id);
 }
