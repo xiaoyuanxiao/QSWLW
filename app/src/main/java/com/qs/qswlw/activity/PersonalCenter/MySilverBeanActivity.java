@@ -27,15 +27,15 @@ import java.util.List;
 public class MySilverBeanActivity extends BaseInfoActivity implements IMySliverBeanView {
 
     int page = 1;
-  //  SwipeRefreshView swipeRefreshView;
-  private RefreshLayout mRefreshLayout;
+    //  SwipeRefreshView swipeRefreshView;
+    private RefreshLayout mRefreshLayout;
+    private ProgressBar pb_itemforestry;
     private ImageView iv_mysliverbean_avater;
     private TextView tv_mysliverbean_id, tv_mysliverbean_nickname, tv_mysliverbean_sliver, tv_mysliverbean_total;
     private List<MySliverBean.SingleLogBean> sliverbeanList;
     private ListView lv_mysliverbean;
     private MySliverBeanAdapter mySliverBeanAdapter;
     private MySliverBeanPresenter mySliverBeanPresenter = new MySliverBeanPresenter(this);
-    private ProgressBar pb_itemforestry;
 
     @Override
     public View setConetnView() {
@@ -48,7 +48,7 @@ public class MySilverBeanActivity extends BaseInfoActivity implements IMySliverB
         tv_mysliverbean_total = (TextView) inflate1.findViewById(R.id.tv_mysliverbean_total);
         lv_mysliverbean = (ListView) inflate.findViewById(R.id.lv_mysliverbean);
         lv_mysliverbean.addHeaderView(inflate1);
-     //   swipeRefreshView = (SwipeRefreshView) inflate.findViewById(R.id.lv_mysliverbean_sw);
+        //   swipeRefreshView = (SwipeRefreshView) inflate.findViewById(R.id.lv_mysliverbean_sw);
         mRefreshLayout = (RefreshLayout) inflate.findViewById(R.id.refreshLayout);
         pb_itemforestry = (ProgressBar) inflate.findViewById(R.id.pb_itemforestry);
         return inflate;

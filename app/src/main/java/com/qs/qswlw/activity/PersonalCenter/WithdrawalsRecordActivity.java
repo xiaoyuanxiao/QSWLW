@@ -58,7 +58,7 @@ public class WithdrawalsRecordActivity extends BaseInfoActivity {
         tv_titlebar_center.setText("提现记录");
         tv_titlebar_right.setText("筛选");
         iv_titlebar_right.setVisibility(View.VISIBLE);
-        iv_titlebar_right.setImageResource(R.mipmap.left);
+        iv_titlebar_right.setImageResource(R.mipmap.top);
 
     }
 

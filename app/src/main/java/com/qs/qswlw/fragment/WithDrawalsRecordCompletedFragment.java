@@ -2,6 +2,7 @@ package com.qs.qswlw.fragment;
 
 import android.view.View;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.qs.qswlw.MyApplication;
@@ -11,7 +12,8 @@ import com.qs.qswlw.adapter.WithdrawalsRecordCompletedAdapter;
 import com.qs.qswlw.bean.WithDrawalsRecordBean;
 import com.qs.qswlw.okhttp.Iview.IWithDrawalsRecordView;
 import com.qs.qswlw.okhttp.Presenter.WithDrawalsRecordPersenter;
-import com.qs.qswlw.view.SwipeRefreshView;
+import com.scwang.smartrefresh.layout.api.RefreshLayout;
+import com.scwang.smartrefresh.layout.listener.OnLoadmoreListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,7 +28,9 @@ public class WithDrawalsRecordCompletedFragment extends BaseFragment implements 
     public static String FAILED = "fail";
     int page = 1;
     private ListView lv_withdrawalsrecord;
-    private SwipeRefreshView swipeRefreshView;
+ //   private SwipeRefreshView swipeRefreshView;
+ private RefreshLayout mRefreshLayout;
+    private ProgressBar pb_itemforestry;
     private List<WithDrawalsRecordBean.ListBean> listBeen;
     private WithdrawalsRecordCompletedAdapter withdrawalsRecordCompletedAdapter;
     private WithDrawalsRecordPersenter withDrawalsRecordPersenter = new WithDrawalsRecordPersenter(this);
@@ -39,7 +43,7 @@ public class WithDrawalsRecordCompletedFragment extends BaseFragment implements 
         return new WithDrawalsRecordCompletedFragment();
     }
 
-    public static WithDrawalsRecordCompletedFragment newInstance(String type) {//等下
+    public static WithDrawalsRecordCompletedFragment newInstance(String type) {
         WithDrawalsRecordCompletedFragment withDrawalsRecordCompletedFragment = new WithDrawalsRecordCompletedFragment();
         withDrawalsRecordCompletedFragment.setType(type);
         return withDrawalsRecordCompletedFragment;
@@ -62,7 +66,8 @@ public class WithDrawalsRecordCompletedFragment extends BaseFragment implements 
         View headview = View.inflate(getActivity(), R.layout.item_withdrawals_head, null);
         tv_item_withdrawals_headview = (TextView) headview.findViewById(R.id.tv_item_withdrawals_headview);
         lv_withdrawalsrecord.addHeaderView(headview);
-        swipeRefreshView = (SwipeRefreshView) inflate.findViewById(R.id.lv_fgwithdrawalsrecord_sw);
+        mRefreshLayout = (RefreshLayout) inflate.findViewById(R.id.refreshLayout);
+        pb_itemforestry = (ProgressBar) inflate.findViewById(R.id.pb_itemforestry);
         return inflate;
     }
 
@@ -70,6 +75,8 @@ public class WithDrawalsRecordCompletedFragment extends BaseFragment implements 
     protected void initData() {
         super.initData();
         listBeen = new ArrayList<>();
+        mRefreshLayout.setEnableLoadmoreWhenContentNotFull(false);
+        mRefreshLayout.setEnableRefresh(false);
         if (Gold_type.equals(COMPLETED)) {
             tv_item_withdrawals_headview.setText("提现总金额：1000.00");
             withdrawalsRecordCompletedAdapter = new WithdrawalsRecordCompletedAdapter(getActivity(), listBeen);
@@ -86,9 +93,9 @@ public class WithDrawalsRecordCompletedFragment extends BaseFragment implements 
         }
 
         withDrawalsRecordPersenter.getdata(MyApplication.TOKEN, page, Gold_type);
-        swipeRefreshView.setOnLoadListener(new SwipeRefreshView.OnLoadListener() {
+        mRefreshLayout.setOnLoadmoreListener(new OnLoadmoreListener() {
             @Override
-            public void onLoad() {
+            public void onLoadmore(RefreshLayout refreshlayout) {
                 withDrawalsRecordPersenter.getdata(MyApplication.TOKEN, page, Gold_type);
             }
         });
@@ -109,11 +116,13 @@ public class WithDrawalsRecordCompletedFragment extends BaseFragment implements 
     public void setdata(WithDrawalsRecordBean withDrawalsRecordBean) {
 
         List<WithDrawalsRecordBean.ListBean> list = withDrawalsRecordBean.getList();
-        swipeRefreshView.setLoading(false);
+        mRefreshLayout.finishLoadmore();
+        pb_itemforestry.setVisibility(View.GONE);
+        lv_withdrawalsrecord.setVisibility(View.VISIBLE);
         if (page ==1&&(list == null || list.size() == 0)) {
             return;
         }else if(page >1&&(list == null || list.size() == 0)){
-            swipeRefreshView.setLoadingEnd();
+            mRefreshLayout.finishLoadmoreWithNoMoreData();
             return;
         }
         System.out.println("==========setdata=========" + Gold_type + "====page==="
@@ -136,6 +145,6 @@ public class WithDrawalsRecordCompletedFragment extends BaseFragment implements 
 
     @Override
     public void isgetDataFaile(String meg) {
-        swipeRefreshView.setLoading(false);
+        mRefreshLayout.finishLoadmore();
     }
 }
