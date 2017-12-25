@@ -324,7 +324,7 @@
             style="@style/tv_iv_setting"
             android:drawablePadding="2dp"
             android:drawableTop="@mipmap/footer01"
-            android:text="钱盛首页"
+            android:text="钱盛平台"
             android:textSize="9sp"/>
 
         <RadioButton

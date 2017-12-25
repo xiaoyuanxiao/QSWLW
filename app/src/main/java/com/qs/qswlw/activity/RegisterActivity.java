@@ -14,7 +14,6 @@ import android.widget.Spinner;
 
 import com.qs.qswlw.R;
 import com.qs.qswlw.activity.PersonalCenter.BaseInfoActivity;
-import com.qs.qswlw.activity.PersonalCenter.BusinessSettingActivity;
 import com.qs.qswlw.activity.PersonalCenter.ConsumerSettingActivity;
 import com.qs.qswlw.activity.PersonalCenter.OtherUserSettingActivity;
 import com.qs.qswlw.bean.MainBean;
@@ -277,9 +276,6 @@ public class RegisterActivity extends BaseInfoActivity {
                     intent.putExtra("token", token);
                     if (role1.equals("0")) {
                         intent.setClass(RegisterActivity.this, ConsumerSettingActivity.class);
-                        startActivity(intent);
-                    } else if (role1.equals("10")) {
-                        intent.setClass(RegisterActivity.this, BusinessSettingActivity.class);
                         startActivity(intent);
                     } else {
                         intent.setClass(RegisterActivity.this, OtherUserSettingActivity.class);

@@ -76,7 +76,7 @@ public class SettingNewActivity extends BaseDataBindingActivity implements ISett
     @Override
     public void onClick(View view) {
         switch (view.getId()){
-            case R.id.tv_settingnews_consultation:
+            case R.id.ll_settingnews_consultation:
                intent = new Intent(this, WebviewActivity.class);
                 intent.putExtra("customerservice", customerservice);
                 startActivity(this.intent);

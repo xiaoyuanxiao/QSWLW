@@ -10,6 +10,8 @@ import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
  */
 
 public class MyApplication extends Application {
+    public static  String QSLACK = "";
+    public static  String QSFUN = "" ;
     public static String QSZY = "";
     public static int WIDTH = 240;
     public static int Height = 100;

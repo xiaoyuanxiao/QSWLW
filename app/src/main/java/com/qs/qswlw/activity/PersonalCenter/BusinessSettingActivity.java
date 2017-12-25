@@ -18,7 +18,6 @@ import com.qs.qswlw.R;
 import com.qs.qswlw.activity.BaseActivity;
 import com.qs.qswlw.activity.LoginActivity;
 import com.qs.qswlw.activity.MainActivity;
-import com.qs.qswlw.activity.mall.QSMallActivity;
 import com.qs.qswlw.adapter.BusinessSettingAdapter;
 import com.qs.qswlw.bean.PersonalSettingBean;
 import com.qs.qswlw.manager.UserManage;
@@ -44,6 +43,7 @@ public class BusinessSettingActivity extends BaseActivity implements IPersonalSe
             finish();
         }
     };
+    Intent intent;
     private GridView gv_setting;
     private RadioButton rb_main_qsmall, rb_main_lianmeng, rb_main_funtime, rb_main_luck, rb_main_exit;
     private BusinessSettingAdapter businessSettingAdapter;
@@ -54,9 +54,11 @@ public class BusinessSettingActivity extends BaseActivity implements IPersonalSe
     private String mobile;
     private String shopName;
     private String shop_order,cash_money,cons_gold,my_shop;
+    private PersonalSettingBean personalSettingBean;
 
     @Override
     public void setUserInfo(PersonalSettingBean personalSettingBean) {
+        this.personalSettingBean = personalSettingBean;
         PersonalSettingBean.UserInfoBean user_info = personalSettingBean.getUser_info();
         // tv_cyzx.setText("创业中心:"+personalSettingBean.getCyzx_info().getNickname());
         tv_recommender.setText("推荐人:" + user_info.getNickname());
@@ -162,19 +164,25 @@ public class BusinessSettingActivity extends BaseActivity implements IPersonalSe
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.rb_main_qsmall:
-                Intent intent = new Intent(BusinessSettingActivity.this, MainActivity.class);
+                intent  = new Intent(BusinessSettingActivity.this, MainActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 intent.putExtra("setting", "setting");
                 startActivity(intent);
                 break;
             case R.id.rb_main_lianmeng:
-                startActivity(new Intent(this, QSMallActivity.class));
+                intent = new Intent(this, WebviewActivity.class);
+                intent.putExtra("qs_shop",MyApplication.QSSHOP+"&token="+MyApplication.TOKEN);
+                startActivity(this.intent);
                 break;
             case R.id.rb_main_funtime:
-                startActivity(new Intent(this, SetModifyActivity.class));
+                intent = new Intent(this, WebviewActivity.class);
+                intent.putExtra("qs_fun",MyApplication.QSFUN+"&token="+MyApplication.TOKEN);
+                startActivity(this.intent);
                 break;
             case R.id.rb_main_luck:
-                showDialog();
+                intent = new Intent(this, WebviewActivity.class);
+                intent.putExtra("qs_lack_draw",MyApplication.QSLACK+"&token="+MyApplication.TOKEN);
+                startActivity(this.intent);
                 break;
             case R.id.rb_main_exit:
                 showDialog();

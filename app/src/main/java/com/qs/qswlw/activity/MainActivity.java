@@ -134,6 +134,8 @@ public class MainActivity extends BaseActivity implements IMainView {
         enlist.add(entrepBaen.getProducts() + "");
         enlist.add(entrepBaen.getElla());
         MyApplication.QSZY = entrepBaen.getQs_ziying_shop();
+        MyApplication.QSFUN = entrepBaen.getQs_fun();
+        MyApplication.QSLACK = entrepBaen.getQs_lack_draw();
 //        enlist.add(entrepBaen.getSales_amount() + "");
 //        enlist.add(entrepBaen.getMoney() + "");
 //        enlist.add(entrepBaen.getCount() + "");
@@ -416,8 +418,6 @@ public class MainActivity extends BaseActivity implements IMainView {
                     }else{
                         if (role.equals("0")) {
                             startActivity(new Intent(MainActivity.this,ConsumerSettingActivity.class));
-                        } else if (role.equals("10")) {
-                            startActivity(new Intent(MainActivity.this,BusinessSettingActivity.class));
                         } else {
                             //其他页面
                             startActivity(new Intent(MainActivity.this,BusinessSettingActivity.class));
@@ -452,6 +452,7 @@ public class MainActivity extends BaseActivity implements IMainView {
 //                intent = new Intent(this, QSMallActivity1.class);
 //                startActivity(intent);
                 intent = new Intent(this, WebviewActivity.class);
+                MyApplication.QSSHOP = entrepBaen.getQs_shop();
                 intent.putExtra("qs_shop", entrepBaen.getQs_shop());
                 startActivity(this.intent);
                 break;
@@ -476,7 +477,7 @@ public class MainActivity extends BaseActivity implements IMainView {
             //开心一刻
             case R.id.rb_main_funtime:
                 this.intent = new Intent(this, WebviewActivity.class);
-                this.intent.putExtra("qs_fun", entrepBaen.getQs_fun()+"&token="+MyApplication.TOKEN);
+                this.intent.putExtra("qs_fun",entrepBaen.getQs_fun() +"&token="+MyApplication.TOKEN);
                 startActivity(this.intent);
                 break;
             case R.id.ll_ranking_popup:
