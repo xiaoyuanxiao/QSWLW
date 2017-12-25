@@ -133,6 +133,7 @@ public class MainActivity extends BaseActivity implements IMainView {
         enlist.clear();
         enlist.add(entrepBaen.getProducts() + "");
         enlist.add(entrepBaen.getElla());
+        MyApplication.QSZY = entrepBaen.getQs_ziying_shop();
 //        enlist.add(entrepBaen.getSales_amount() + "");
 //        enlist.add(entrepBaen.getMoney() + "");
 //        enlist.add(entrepBaen.getCount() + "");
