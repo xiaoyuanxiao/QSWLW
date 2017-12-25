@@ -83,7 +83,7 @@ public class ConsumptionRecordActivity1 extends BaseInfoActivity implements ICon
     private TextView tv_isselect_consumptionrecord, tv_isselect_consumptionrecord2;
     private Button btn_sonsumption_confirm;
     private EditText edt_consumptionrecord_id, edt_consumptionrecord_nickname, edt_consumptionrecord_one, edt_consumptionrecord_three, edt_consumptionrecord_four, edt_consumptionrecord_five, edt_consumptionrecord_sex;
-    private String ratio_key = "model2";
+    private String ratio_key = "model1";
     private float ratio;
     private String get1;
     private String get2;
@@ -150,8 +150,8 @@ public class ConsumptionRecordActivity1 extends BaseInfoActivity implements ICon
             consumptionRecordPresenter.getdata(MyApplication.TOKEN);
         }
 
-        SimpleDateFormat formatter   =   new   SimpleDateFormat   ("yyyy-MM-dd");
-        Date curDate =  new Date(System.currentTimeMillis());
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+        Date curDate = new Date(System.currentTimeMillis());
         //获取当前时间
         edt_consumptionrecord_sex.setText(formatter.format(curDate));
         initSpinner();
@@ -270,35 +270,40 @@ public class ConsumptionRecordActivity1 extends BaseInfoActivity implements ICon
                 id = edt_consumptionrecord_id.getText().toString().trim();
                 if (id.equals("")) {
                     ToastUtils.showToast("消费者ID不能为空");
+                } else {
+                    userIDSearchPersenter.getdata(MyApplication.TOKEN, Integer.parseInt(id), Integer.parseInt(MyApplication.ID));
                 }
-                userIDSearchPersenter.getdata(MyApplication.TOKEN, Integer.parseInt(id), Integer.parseInt(MyApplication.ID));
                 break;
 
             case R.id.edt_consumptionrecord_three:
                 none1 = edt_consumptionrecord_one.getText().toString();
-                money1 = (float) (Float.parseFloat(none1) / model3 * 100);
-                edt_consumptionrecord_three.setText(money1 + "");
-                edt_consumptionrecord_cyzz.setText("");
-                if (Integer.parseInt(MyApplication.ROLE) == 0) {
-                    cyzz = (int) money1;
-                    if (cyzz < 500) {
-                        edt_consumptionrecord_yd.setText(cyzz + "");
-                        edt_consumptionrecord_cyzz.setText("0");
-                    } else {
-                        edt_consumptionrecord_yd.setText(cyzz % 500);
-                        edt_consumptionrecord_cyzz.setText(cyzz / 500);
-                    }
+                if (none1.equals("")) {
+                    ToastUtils.showToast("让利金额不能为空");
 
-                } else if (Integer.parseInt(MyApplication.ROLE) > 0) {
-                    cyzz = Integer.parseInt(none1);
-                    if (cyzz < 500) {
-                        edt_consumptionrecord_yd.setText(cyzz + "");
-                        edt_consumptionrecord_cyzz.setText("0");
-                    } else {
-                        edt_consumptionrecord_yd.setText(cyzz % 500);
-                        edt_consumptionrecord_cyzz.setText(cyzz / 500);
-                    }
+                } else {
+                    money1 = (float) (Float.parseFloat(none1) / model3 * 100);
+                    edt_consumptionrecord_three.setText(money1 + "");
+                    edt_consumptionrecord_cyzz.setText("");
+                    if (Integer.parseInt(MyApplication.ROLE) == 0) {
+                        cyzz = (int) money1;
+                        if (cyzz < 500) {
+                            edt_consumptionrecord_yd.setText(cyzz + "");
+                            edt_consumptionrecord_cyzz.setText("0");
+                        } else {
+                            edt_consumptionrecord_yd.setText((cyzz % 500)+"");
+                            edt_consumptionrecord_cyzz.setText((cyzz / 500)+"");
+                        }
 
+                    } else if (Integer.parseInt(MyApplication.ROLE) > 0) {
+                        cyzz = Integer.parseInt(none1);
+                        if (cyzz < 500) {
+                            edt_consumptionrecord_yd.setText(cyzz + "");
+                            edt_consumptionrecord_cyzz.setText("0");
+                        } else {
+                            edt_consumptionrecord_yd.setText((cyzz % 500)+"");
+                            edt_consumptionrecord_cyzz.setText((cyzz / 500)+"");
+                        }
+                    }
                 }
                 break;
 //            case R.id.btn_selectorfile2:
@@ -377,7 +382,7 @@ public class ConsumptionRecordActivity1 extends BaseInfoActivity implements ICon
 
             @Override
             public void onNext(MainBean mainBean) {
-
+                ToastUtils.showToast(mainBean.getMsg());
                 Log.e("TAG", mainBean + "");
             }
 
