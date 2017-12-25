@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.qs.qswlw.MyApplication;
@@ -23,7 +24,8 @@ import com.qs.qswlw.okhttp.Iview.IEntrepreneurialView;
 import com.qs.qswlw.okhttp.Presenter.EntrepreneurialPresenter;
 import com.qs.qswlw.utils.ActivityManagerUtils;
 import com.qs.qswlw.utils.ToastUtils;
-import com.qs.qswlw.view.SwipeRefreshView;
+import com.scwang.smartrefresh.layout.api.RefreshLayout;
+import com.scwang.smartrefresh.layout.listener.OnLoadmoreListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -46,7 +48,9 @@ public class InnovationIncentiveFragment extends BaseFragment implements IEntrep
     private Dialog dialog;
     private int silver;
     private String exchange_love;
-    private SwipeRefreshView swipeRefreshView;
+    private RefreshLayout mRefreshLayout;
+    // private SwipeRefreshView swipeRefreshView;
+    private ProgressBar pb_itemforestry;
 
     public static InnovationIncentiveFragment newInstener() {
         return new InnovationIncentiveFragment();
@@ -65,8 +69,8 @@ public class InnovationIncentiveFragment extends BaseFragment implements IEntrep
         tv_entrepreneurial_four = (TextView) inflate1.findViewById(R.id.tv_entrepreneurial_four);
         tv_entrepreneurial_model = (TextView) inflate1.findViewById(R.id.tv_entrepreneurial_model);
         ll_click = (LinearLayout) inflate1.findViewById(R.id.ll_click);
-        swipeRefreshView = (SwipeRefreshView) inflate.findViewById(R.id.lv_sub_entrepreneurialseed_sw);
-
+        mRefreshLayout = (RefreshLayout) inflate.findViewById(R.id.refreshLayout);
+        pb_itemforestry = (ProgressBar) inflate.findViewById(R.id.pb_itemforestry);
         return inflate;
     }
 
@@ -78,9 +82,9 @@ public class InnovationIncentiveFragment extends BaseFragment implements IEntrep
         innovationAdapter = new InnovationAdapter(getActivity(), innovationList);
         lv_sub_entrepreneurialseed.setAdapter(innovationAdapter);
         entrepreneurialPresenter.getdata(MyApplication.TOKEN, page, "model2");
-        swipeRefreshView.setOnLoadListener(new SwipeRefreshView.OnLoadListener() {
+        mRefreshLayout.setOnLoadmoreListener(new OnLoadmoreListener() {
             @Override
-            public void onLoad() {
+            public void onLoadmore(RefreshLayout refreshlayout) {
                 entrepreneurialPresenter.getdata(MyApplication.TOKEN, page, "model2");
             }
         });
@@ -93,7 +97,9 @@ public class InnovationIncentiveFragment extends BaseFragment implements IEntrep
 
     @Override
     public void setEntrepreneurialData(EntrepreneurialIncentiveBean entrepreneurialData) {
-        swipeRefreshView.setLoading(false);
+        mRefreshLayout.finishLoadmore();
+        pb_itemforestry.setVisibility(View.GONE);
+        lv_sub_entrepreneurialseed.setVisibility(View.VISIBLE);
         String allow_silver = entrepreneurialData.getAllow_silver_model2();
         silver = entrepreneurialData.getSilver2();
         tv_entrepreneurial_one.setText("消费银豆："+silver);
@@ -103,8 +109,10 @@ public class InnovationIncentiveFragment extends BaseFragment implements IEntrep
         tv_entrepreneurial_three.setText("正在激励创业种子："+entrepreneurialData.getLove2()+"");
         tv_entrepreneurial_four.setText("可转为创业种子数："+i + "");
         tv_entrepreneurial_model.setText(entrepreneurialData.getModel2()+"");
+        mRefreshLayout.setEnableLoadmoreWhenContentNotFull(false);
+        mRefreshLayout.setEnableLoadmore(false);
         if(entrepreneurialData.getList_model2()==null||entrepreneurialData.getList_model2().size()==0){
-            swipeRefreshView.setLoadingEnd();
+            mRefreshLayout.finishLoadmoreWithNoMoreData();
             return;
         }
         innovationList.addAll(entrepreneurialData.getList_model2());
@@ -115,7 +123,7 @@ public class InnovationIncentiveFragment extends BaseFragment implements IEntrep
 
     @Override
     public void isgetDataFaile(String meg) {
-        swipeRefreshView.setLoading(false);
+        mRefreshLayout.finishLoadmore();
     }
 
     @Override

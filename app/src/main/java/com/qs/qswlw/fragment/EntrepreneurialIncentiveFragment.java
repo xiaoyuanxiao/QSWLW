@@ -7,6 +7,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.qs.qswlw.MyApplication;
@@ -22,7 +23,8 @@ import com.qs.qswlw.okhttp.Iview.IEntrepreneurialView;
 import com.qs.qswlw.okhttp.Presenter.EntrepreneurialPresenter;
 import com.qs.qswlw.utils.ActivityManagerUtils;
 import com.qs.qswlw.utils.ToastUtils;
-import com.qs.qswlw.view.SwipeRefreshView;
+import com.scwang.smartrefresh.layout.api.RefreshLayout;
+import com.scwang.smartrefresh.layout.listener.OnLoadmoreListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -50,7 +52,9 @@ public class EntrepreneurialIncentiveFragment extends BaseFragment implements IE
     private Dialog dialog;
     private List<EntrepreneurialIncentiveBean.ListModel1Bean> list_model1;
     private int love;
-    private SwipeRefreshView swipeRefreshView;
+    private RefreshLayout mRefreshLayout;
+    // private SwipeRefreshView swipeRefreshView;
+    private ProgressBar pb_itemforestry;
 
     public static EntrepreneurialIncentiveFragment newInstener() {
         return new EntrepreneurialIncentiveFragment();
@@ -63,12 +67,14 @@ public class EntrepreneurialIncentiveFragment extends BaseFragment implements IE
 
         lv_sub_entrepreneurialseed = (ListView) inflate.findViewById(R.id.lv_sub_entrepreneurialseed);
         lv_sub_entrepreneurialseed.addHeaderView(inflate1);
-        swipeRefreshView = (SwipeRefreshView) inflate.findViewById(R.id.lv_sub_entrepreneurialseed_sw);
+     //   swipeRefreshView = (SwipeRefreshView) inflate.findViewById(R.id.lv_sub_entrepreneurialseed_sw);
+        mRefreshLayout = (RefreshLayout) inflate.findViewById(R.id.refreshLayout);
         tv_entrepreneurial_one = (TextView) inflate1.findViewById(R.id.tv_entrepreneurial_one);
         tv_entrepreneurial_two = (TextView) inflate1.findViewById(R.id.tv_entrepreneurial_two);
         tv_entrepreneurial_three = (TextView) inflate1.findViewById(R.id.tv_entrepreneurial_three);
         tv_entrepreneurial_four = (TextView) inflate1.findViewById(R.id.tv_entrepreneurial_four);
         tv_entrepreneurial_model = (TextView) inflate1.findViewById(R.id.tv_entrepreneurial_model);
+        pb_itemforestry = (ProgressBar) inflate.findViewById(R.id.pb_itemforestry);
         ll_click = (LinearLayout) inflate1.findViewById(R.id.ll_click);
 
         return inflate;
@@ -81,9 +87,17 @@ public class EntrepreneurialIncentiveFragment extends BaseFragment implements IE
         entrepreneurialAdapter = new EntrepreneurialAdapter(getActivity(), entrepreneurialList);
         lv_sub_entrepreneurialseed.setAdapter(entrepreneurialAdapter);
         entrepreneurialPresenter.getdata(MyApplication.TOKEN, page, "model1");
-        swipeRefreshView.setOnLoadListener(new SwipeRefreshView.OnLoadListener() {
+        mRefreshLayout.setEnableLoadmoreWhenContentNotFull(false);
+        mRefreshLayout.setEnableLoadmore(false);
+//        swipeRefreshView.setOnLoadListener(new SwipeRefreshView.OnLoadListener() {
+//            @Override
+//            public void onLoad() {
+//                entrepreneurialPresenter.getdata(MyApplication.TOKEN, page, "model1");
+//            }
+//        });
+        mRefreshLayout.setOnLoadmoreListener(new OnLoadmoreListener() {
             @Override
-            public void onLoad() {
+            public void onLoadmore(RefreshLayout refreshlayout) {
                 entrepreneurialPresenter.getdata(MyApplication.TOKEN, page, "model1");
             }
         });
@@ -97,7 +111,9 @@ public class EntrepreneurialIncentiveFragment extends BaseFragment implements IE
 
     @Override
     public void setEntrepreneurialData(EntrepreneurialIncentiveBean entrepreneurialData) {
-        swipeRefreshView.setLoading(false);
+        mRefreshLayout.finishLoadmore();
+        pb_itemforestry.setVisibility(View.GONE);
+        lv_sub_entrepreneurialseed.setVisibility(View.VISIBLE);
         allow_silver = entrepreneurialData.getAllow_silver();
         silver = entrepreneurialData.getSilver();
         exchange_love = entrepreneurialData.getExchange_love();
@@ -111,7 +127,7 @@ public class EntrepreneurialIncentiveFragment extends BaseFragment implements IE
         list_model1 = entrepreneurialData.getList_model1();
      //   swipeRefreshView.setLoading(false);
         if (entrepreneurialData.getList_model1() == null || entrepreneurialData.getList_model1().size() == 0) {
-            swipeRefreshView.setLoadingEnd();
+            mRefreshLayout.finishLoadmoreWithNoMoreData();
             return;
         }
         entrepreneurialList.addAll(list_model1);
@@ -121,7 +137,7 @@ public class EntrepreneurialIncentiveFragment extends BaseFragment implements IE
 
     @Override
     public void isgetDataFaile(String meg) {
-        swipeRefreshView.setLoading(false);
+        mRefreshLayout.finishLoadmore();
     }
 
     @Override
