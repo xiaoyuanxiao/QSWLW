@@ -211,10 +211,12 @@
                     android:text="参加动态奖还需推荐" />
 
                 <TextView
+                    android:id="@+id/tv_role_consumer_count"
                     style="@style/tv_standard_red"
                     android:text="消费天使：已达标;" />
 
                 <TextView
+                    android:id="@+id/tv_role_name_count"
                     style="@style/tv_standard_red"
                     android:text="创业总监:2;" />
             </LinearLayout>
@@ -237,7 +239,7 @@
 
                 <TextView
                     style="@style/tv_standard_red"
-                    android:text="@{roleBean.up_grades.condition3}" />
+                    android:text="@{roleBean.current_ass.yj_cha+@string/quot}" />
             </LinearLayout>
         </LinearLayout>
 
@@ -283,6 +285,7 @@
                     android:text="下个升级等级" />
 
                 <TextView
+                    android:id="@+id/tv_role_grade"
                     style="@style/tv_standard"
                     android:text="您已是最高等级" />
             </LinearLayout>
