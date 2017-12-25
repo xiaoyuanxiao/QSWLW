@@ -10,6 +10,7 @@ import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
  */
 
 public class MyApplication extends Application {
+    public static String QSZY = "";
     public static int WIDTH = 240;
     public static int Height = 100;
     public static int ENTREPHEIGHT = 100;
