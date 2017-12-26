@@ -213,9 +213,13 @@ public class ImproveDocumentationActivity extends BaseInfoActivity implements II
                 } else if (spinerIds.size() < 4) {
                     ToastUtils.showToast("没有选择完全");
                 } else {
-                    postData(MyApplication.TOKEN, Integer.parseInt(id1), file1, file2, shop_name, company_name, shop_tel, Integer.parseInt(spinerIds.get(0))
-                            , Integer.parseInt(spinerIds.get(1)), Integer.parseInt(spinerIds.get(2)), address, Integer.parseInt(spinerIds.get(3)), category,
-                            timetype, timetype, starttime, endtime, add_time, MyApplication.NICKNAME, MyApplication.MOBILE, Integer.parseInt(MyApplication.ID));
+                    try {
+                        postData(MyApplication.TOKEN, Integer.parseInt(id1), file1, file2, shop_name, company_name, shop_tel, Integer.parseInt(spinerIds.get(0))
+                                , Integer.parseInt(spinerIds.get(1)), Integer.parseInt(spinerIds.get(2)), address, Integer.parseInt(spinerIds.get(3)), category,
+                                timetype, timetype, starttime, endtime, add_time, MyApplication.NICKNAME, MyApplication.MOBILE, Integer.parseInt(MyApplication.ID));
+                    } catch (NumberFormatException e) {
+                        e.printStackTrace();
+                    }
                 }
                 break;
         }
@@ -235,6 +239,9 @@ public class ImproveDocumentationActivity extends BaseInfoActivity implements II
             @Override
             public void onNext(MainBean mainBean) {
                 ToastUtils.showToast(mainBean.getMsg());
+                if(mainBean.getStatus()==1){
+                    finish();
+                }
             }
 
             @Override
