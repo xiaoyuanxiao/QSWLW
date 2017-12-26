@@ -125,6 +125,8 @@ public class ImproveDocumentationActivity extends BaseInfoActivity implements II
     private Button btn_improved;
     private String id1;
     private String add_time;
+    private String province;
+    private String cat_id;
 
     @Override
     public View setConetnView() {
@@ -155,7 +157,7 @@ public class ImproveDocumentationActivity extends BaseInfoActivity implements II
         super.initData();
         loadSpinner();
         loadManagementClassificationSpinner();
-        improveDocumentationPersenter.getdata(MyApplication.TOKEN);
+        improveDocumentationPersenter.getdata(MyApplication.TOKEN, Integer.parseInt(MyApplication.ID));
     }
 
     @Override
@@ -185,21 +187,36 @@ public class ImproveDocumentationActivity extends BaseInfoActivity implements II
                 showPW("2");
                 break;
             case R.id.btn_improved:
-
-                String shop_name = edt_improve_name.getText().toString();
-                String company_name = edt_improve_companyname.getText().toString();
-                String shop_tel = edt_improve_mobile.getText().toString();
-                String address = edt_improve_address.getText().toString();
-                String category = edt_improve_catagory.getText().toString();
-                String starttime = tv_startTime.getText().toString();
-                String endtime = tv_endTime.getText().toString();
+                String shop_name = edt_improve_name.getText().toString().trim();
+                String company_name = edt_improve_companyname.getText().toString().trim();
+                String shop_tel = edt_improve_mobile.getText().toString().trim();
+                String address = edt_improve_address.getText().toString().trim();
+                String category = edt_improve_catagory.getText().toString().trim();
+                String starttime = tv_startTime.getText().toString().trim();
+                String endtime = tv_endTime.getText().toString().trim();
                 String timetype = "MM:dd";
                 List<String> spinerIds = getSpinerIds();
-                if (spinerIds.size() < 4)
+                if (file1 == null) {
+                    ToastUtils.showToast("请上传营业执照");
+                } else if (file1 == null) {
+                    ToastUtils.showToast("请上传门店照");
+                } else if (shop_name.equals("")) {
+                    ToastUtils.showToast("请填写店铺名称");
+                } else if (company_name.equals("")) {
+                    ToastUtils.showToast("请填写店铺商号");
+                } else if (shop_tel.equals("")) {
+                    ToastUtils.showToast("请填写店铺联系电话");
+                } else if (address.equals("")) {
+                    ToastUtils.showToast("请填写店铺地址");
+                } else if (category.equals("")) {
+                    ToastUtils.showToast("请填写店铺主营业务");
+                } else if (spinerIds.size() < 4) {
                     ToastUtils.showToast("没有选择完全");
-                postData(MyApplication.TOKEN,Integer.parseInt(id1), file1, file2, shop_name, company_name, shop_tel,Integer.parseInt(spinerIds.get(0))
-                        , Integer.parseInt(spinerIds.get(1)), Integer.parseInt(spinerIds.get(2)), address,Integer.parseInt(spinerIds.get(3)),category,
-                        timetype,timetype,starttime,endtime,add_time,MyApplication.NICKNAME,MyApplication.MOBILE,Integer.parseInt(MyApplication.ID));
+                } else {
+                    postData(MyApplication.TOKEN, Integer.parseInt(id1), file1, file2, shop_name, company_name, shop_tel, Integer.parseInt(spinerIds.get(0))
+                            , Integer.parseInt(spinerIds.get(1)), Integer.parseInt(spinerIds.get(2)), address, Integer.parseInt(spinerIds.get(3)), category,
+                            timetype, timetype, starttime, endtime, add_time, MyApplication.NICKNAME, MyApplication.MOBILE, Integer.parseInt(MyApplication.ID));
+                }
                 break;
         }
     }
@@ -212,7 +229,7 @@ public class ImproveDocumentationActivity extends BaseInfoActivity implements II
 
             @Override
             public void onError(Throwable e) {
-                Log.e("postData",e+"");
+                Log.e("postData", e + "");
             }
 
             @Override
@@ -237,6 +254,7 @@ public class ImproveDocumentationActivity extends BaseInfoActivity implements II
 
             int mHour;
             int mMinute;
+
             @Override
             public void onTimeSet(TimePicker timePicker, int hourOfDay, int minute) {
                 mHour = hourOfDay;
@@ -244,7 +262,7 @@ public class ImproveDocumentationActivity extends BaseInfoActivity implements II
                 //更新EditText控件时间 小于10加0
                 tv.setText(new StringBuilder()
                         .append(mHour < 10 ? "0" + mHour : mHour).append(":")
-                        .append(mMinute < 10 ? "0" + mMinute : mMinute) );
+                        .append(mMinute < 10 ? "0" + mMinute : mMinute));
             }
         }, mCalendar.get(Calendar.HOUR), mCalendar.get(Calendar.MINUTE), true);
         dialog.show();
@@ -313,7 +331,7 @@ public class ImproveDocumentationActivity extends BaseInfoActivity implements II
             strings.add(id2);
         }
         int countyselectedItemPosition = county_spinner.getSelectedItemPosition();
-        if (countyselectedItemPosition != 0) {
+        if (countyselectedItemPosition >0) {
             String id3 = county_list_selected.get(countyselectedItemPosition - 1).getId();
             strings.add(id3);
         }
@@ -362,20 +380,24 @@ public class ImproveDocumentationActivity extends BaseInfoActivity implements II
     @Override
     public void setData(ImproveDocumentationBean improveDocumentationBean) {
         ImproveDocumentationBean.InfoBean info = improveDocumentationBean.getInfo();
-        Glide.with(this).load(ReHttpUtils.getBaseUrl() + info.getPhoto()).into(pic_Storefacade);//店铺门店照
-        Glide.with(this).load(ReHttpUtils.getBaseUrl() + info.getLicense()).into(pic_uploadBusinessLicense);//营业执照
-        edt_improve_name.setText(info.getName());//店铺名称
-        edt_improve_companyname.setText(info.getCompany_name());//店铺商号
-        edt_improve_mobile.setText(info.getMobile());//电话
-        edt_improve_address.setText(info.getAddress());//地址
-        edt_improve_catagory.setText(info.getCategory());//地址
+        if (info != null) {
+            Glide.with(this).load(ReHttpUtils.getBaseUrl() + info.getPhoto()).into(pic_Storefacade);//店铺门店照
+            Glide.with(this).load(ReHttpUtils.getBaseUrl() + info.getLicense()).into(pic_uploadBusinessLicense);//营业执照
+            edt_improve_name.setText(info.getName());//店铺名称
+            edt_improve_companyname.setText(info.getCompany_name());//店铺商号
+            edt_improve_mobile.setText(info.getMobile());//电话
+            edt_improve_address.setText(info.getAddress());//地址
+            edt_improve_catagory.setText(info.getCategory());//商品分类
+            id1 = info.getId();//id
+            add_time = info.getAdd_time();
+            //省ID
+            province = info.getProvince();
+            cityID = info.getCity();//市ID
+            districtID = info.getDistrict();// 区ID
+            cat_id = improveDocumentationBean.getInfo().getCat_id();
+        }
         tv_startTime.setText("08:00");//开始时间
         tv_endTime.setText("20:00");//结束时间
-        id1 = info.getId();//id
-        add_time = info.getAdd_time();
-        String province = improveDocumentationBean.getInfo().getProvince();//省ID
-        cityID = improveDocumentationBean.getInfo().getCity();//市ID
-        districtID = improveDocumentationBean.getInfo().getDistrict();// 区ID
         improveDocumentationBeanclist = improveDocumentationBean.getClist();//省级列表
         for (ImproveDocumentationBean.ClistBean clistBean : improveDocumentationBeanclist) {
             provincelist.add(clistBean.getName());
@@ -387,14 +409,12 @@ public class ImproveDocumentationActivity extends BaseInfoActivity implements II
                 break;
             }
         }
-        String cat_id = improveDocumentationBean.getInfo().getCat_id();
         thems = improveDocumentationBean.getThems();
         for (ImproveDocumentationBean.ThemsBean themsBean : thems) {
             String id = themsBean.getId();
-            if (cat_id.equals(id)) {
+            if (id.equals(cat_id)) {
                 classification_spinner.setSelection(Integer.parseInt(cat_id));
             }
-
             classification.add(themsBean.getName());
         }
         classification_adapter.notifyDataSetChanged();

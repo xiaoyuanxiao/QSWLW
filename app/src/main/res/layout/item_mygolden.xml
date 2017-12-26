@@ -1,10 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout>
 
+    <data class="com.qs.qswlw.ItemMyGoldData">
+
+        <variable
+            name="listBean"
+            type="com.qs.qswlw.bean.VenturegoldBean.ListBean" />
+
+    </data>
+
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:gravity="center_vertical"
         android:orientation="horizontal"
         android:padding="5dp">
@@ -16,7 +24,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center_horizontal"
-            android:text="2017-04-05"
+            android:text="@{listBean.add_time}"
             android:textSize="10sp" />
 
         <LinearLayout
@@ -36,7 +44,7 @@
             <TextView
                 android:id="@+id/tv_item_mygolden_two"
                 style="@style/tv_harvestaddress"
-                android:text="2017-04-05" />
+                android:text="@{listBean.dellove}" />
         </LinearLayout>
 
         <LinearLayout
@@ -55,7 +63,7 @@
             <TextView
                 android:id="@+id/tv_item_mygolden_three"
                 style="@style/tv_harvestaddress"
-                android:text="2017-04-05" />
+                android:text="@{listBean.temp2}" />
         </LinearLayout>
 
         <LinearLayout
@@ -73,7 +81,7 @@
             <TextView
                 android:id="@+id/tv_item_mygolden_four"
                 style="@style/tv_harvestaddress"
-                android:text="2017-04-05" />
+                android:text="@{listBean.temp1}" />
         </LinearLayout>
 
 

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <data>
+        <variable
+            name="bean"
+            type="com.qs.qswlw.bean.VenturegoldBean"/>
+    </data>
+
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:orientation="vertical">
+    <TextView
+        style="@style/tv_harvestaddress_weight"/>
+    <TextView
+        style="@style/tv_harvestaddress_weight"
+        android:text="总计："/>
+    <TextView
+        style="@style/tv_harvestaddress_weight"
+        android:text="@{bean.temp2_count}"/>
+    <TextView
+        style="@style/tv_harvestaddress_weight"
+        android:text="@{bean.temp1_count}"/>
+</LinearLayout>
+</layout>

@@ -7,5 +7,5 @@ import com.qs.qswlw.okhttp.oncallback.ImproveDocumentationListener;
  */
 
 public interface IImproveDocumentationBiz {
-    void getdata(ImproveDocumentationListener improveDocumentationListener, String token);
+    void getdata(ImproveDocumentationListener improveDocumentationListener, String token,int id);
 }

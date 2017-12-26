@@ -21,10 +21,10 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Created by xiaoyu on 2017/12/22.
+ * Created by xiaoyu on 2017/12/26.
  */
 
-public class Sub2MyGoldenFragment extends BaseDataBindingFragment implements IMyGoldenView {
+public class Sub1MyGoldenTJFragment extends BaseDataBindingFragment implements IMyGoldenView {
 
     int page = 1;
     private ItemMyGoldenFGData bind;
@@ -34,7 +34,6 @@ public class Sub2MyGoldenFragment extends BaseDataBindingFragment implements IMy
     private List<VenturegoldBean.ListBean> listBean;
 
     @Override
-
     protected int initview() {
         return R.layout.item_fg_mygold;
     }
@@ -43,7 +42,7 @@ public class Sub2MyGoldenFragment extends BaseDataBindingFragment implements IMy
     protected void initdatabinding() {
         bind = getBind();
         setVisible(View.GONE);
-       // bind.refreshLayout.setEnableLoadmoreWhenContentNotFull(false);
+        //      bind.refreshLayout.setEnableLoadmoreWhenContentNotFull(false);
         bind.refreshLayout.setEnableRefresh(false);
 
 //        View unionHeadview = LayoutInflater.from(getActivity()).inflate(R.layout.item_bottom_total, null);
@@ -54,12 +53,12 @@ public class Sub2MyGoldenFragment extends BaseDataBindingFragment implements IMy
     protected void initData() {
         linearLayoutManager = new LinearLayoutManager(getActivity());
         bind.rvFgMygold.setLayoutManager(linearLayoutManager);
-        myGoldenPersenter.getData(MyApplication.TOKEN,page,"model2","","");
+        myGoldenPersenter.getData(MyApplication.TOKEN,page,"model1","tjjd","");
         listBean = new ArrayList<>();
         bind.refreshLayout.setOnLoadmoreListener(new OnLoadmoreListener() {
             @Override
             public void onLoadmore(RefreshLayout refreshlayout) {
-                myGoldenPersenter.getData(MyApplication.TOKEN,page,"model2","","");
+                myGoldenPersenter.getData(MyApplication.TOKEN,page,"model1","tjjd","");
             }
         });
     }
@@ -76,7 +75,7 @@ public class Sub2MyGoldenFragment extends BaseDataBindingFragment implements IMy
         }
         listBean.addAll(list);
         Map<Integer, Integer> map = new HashMap<>();
-        map.put(R.layout.item_mygolden, BR.listBean);
+        map.put(R.layout.item_mygolden_give, BR.mygoldengivelistbean);
         adapter = new BaseRecyleAdapter(listBean, map);
         bind.rvFgMygold.setAdapter(adapter);
         adapter.notifyDataSetChanged();

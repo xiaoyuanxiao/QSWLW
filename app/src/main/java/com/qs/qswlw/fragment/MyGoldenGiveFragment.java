@@ -14,13 +14,13 @@ import com.qs.qswlw.utils.ActivityManagerUtils;
 import java.util.ArrayList;
 
 /**
- * Created by xiaoyu on 2017/12/22.
+ * Created by xiaoyu on 2017/12/26.
  */
 
-public class MyGoldenFragment extends BaseDataBindingFragment implements IMyGoldenView, View.OnClickListener {
+public class MyGoldenGiveFragment extends BaseDataBindingFragment implements IMyGoldenView, View.OnClickListener {
 
-    Sub1MyGoldenFragment sub1MyGoldenFragment;
-    Sub2MyGoldenFragment sub2MyGoldenFragment;
+    Sub1MyGoldenGiveFragment sub1MyGoldenGiveFragment;
+    Sub2MyGoldenGiveFragment sub2MyGoldenGiveFragment;
     private MyGoldenFGData bind;
     private ArrayList<Fragment> fragments;
     private FragmentManager fragmentManager;
@@ -38,20 +38,24 @@ public class MyGoldenFragment extends BaseDataBindingFragment implements IMyGold
 
     @Override
     protected void initData() {
+        bind.tvSubMygoldenbeanThree.setVisibility(View.GONE);
+        bind.tvSubMygoldenbeanFour.setVisibility(View.GONE);
+        bind.tvSubMygoldenbeanTwo.setText("获得金豆");
+        bind.tvSubMygoldenbeanOne.setText("获赠时间");
         fragmentManager = getFragmentManager();
         initFragment();
         bind.setOnclick(this);
-
     }
+
     /**
      * 初始化所有基fragment
      */
     private void initFragment() {
         fragments = new ArrayList<Fragment>();
-        sub1MyGoldenFragment  = new Sub1MyGoldenFragment();
-        sub2MyGoldenFragment = new Sub2MyGoldenFragment();
-        fragments.add(sub1MyGoldenFragment);
-        fragments.add(sub2MyGoldenFragment);
+        sub1MyGoldenGiveFragment  = new Sub1MyGoldenGiveFragment();
+        sub2MyGoldenGiveFragment = new Sub2MyGoldenGiveFragment();
+        fragments.add(sub1MyGoldenGiveFragment);
+        fragments.add(sub2MyGoldenGiveFragment);
         showFragment(fragments.get(0));
 
     }
@@ -84,11 +88,12 @@ public class MyGoldenFragment extends BaseDataBindingFragment implements IMyGold
             }
         }
     }
+
     @Override
     public void setVenturegoldBeanData(VenturegoldBean venturegoldBeanData) {
         bind.setVenturegoldBean(venturegoldBeanData);
-        bind.tvFgMygoldenbeanGold.setText("累计创业金豆"+venturegoldBeanData.getModel().getGold());
-        bind.tvFgMygoldenbeanTaxgold.setText("累计消费金豆"+venturegoldBeanData.getModel().getTaxgold());
+        bind.tvFgMygoldenbeanGold.setText("累计创业金豆"+venturegoldBeanData.getGive_gold().getGold());
+        bind.tvFgMygoldenbeanTaxgold.setText("累计消费金豆"+venturegoldBeanData.getGive_gold().getTaxgold());
     }
 
     @Override

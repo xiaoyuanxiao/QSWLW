@@ -24,7 +24,7 @@ public class BizImproveDocumentation implements IImproveDocumentationBiz{
         return testMoudle;
     }
     @Override
-    public void getdata(final ImproveDocumentationListener improveDocumentationListener, final String token) {
+    public void getdata(final ImproveDocumentationListener improveDocumentationListener, final String token,final int id) {
         ReHttpUtils.instans().httpRequest(new HttpSubCribe<MainBean<ImproveDocumentationBean>>() {
 
             @Override
@@ -44,7 +44,7 @@ public class BizImproveDocumentation implements IImproveDocumentationBiz{
 
             @Override
             public Observable<MainBean<ImproveDocumentationBean>> getObservable(MyRetroService retrofit) {
-                return retrofit.getImproveDocumentationData(token);
+                return retrofit.getImproveDocumentationData(token,id);
             }
         });
     }

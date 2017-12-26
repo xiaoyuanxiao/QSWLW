@@ -38,9 +38,9 @@
                     android:id="@+id/iv_UploadBusinessLicense"
                     android:layout_width="0dp"
                     android:layout_height="110dp"
+                    android:layout_marginRight="10dp"
                     android:layout_weight="1"
                     android:scaleType="fitXY"
-                    android:layout_marginRight="10dp"
                     android:src="@mipmap/add_pro" />
 
                 <ImageView
@@ -69,8 +69,8 @@
                     android:id="@+id/iv_Storefacade"
                     android:layout_width="0dp"
                     android:layout_height="110dp"
-                    android:layout_weight="1"
                     android:layout_marginRight="10dp"
+                    android:layout_weight="1"
                     android:scaleType="fitXY"
                     android:src="@mipmap/add_pro" />
 
@@ -96,7 +96,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
                 android:background="@drawable/corner_name_improve"
-                android:text="葡萄牙酒庄联盟"
+                android:text=""
                 android:textSize="11sp" />
             <TextView
                 android:layout_width="wrap_content"
@@ -110,20 +110,20 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
                 android:background="@drawable/corner_name_improve"
-                android:text="葡萄牙酒庄联盟"
+                android:text=""
                 android:textSize="11sp" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:text="店铺简称或企业字号，长度不超过四个字！"
                 android:textColor="@color/red"
-                android:textSize="10sp"
-                android:text="店铺简称或企业字号，长度不超过四个字！"/>
+                android:textSize="10sp"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:text="如“广州市四申九物联网有限公司”填写为“四申九”"
                 android:textColor="@color/red"
-                android:textSize="10sp"
-                android:text="如“广州市四申九物联网有限公司”填写为“四申九”"/>
+                android:textSize="10sp"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -137,7 +137,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
                 android:background="@drawable/corner_name_improve"
-                android:text="13902224107"
+                android:text=""
                 android:textSize="11sp" />
 
             <TextView
@@ -189,7 +189,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
                 android:background="@drawable/corner_name_improve"
-                android:text="1678911"
+                android:text=""
                 android:textSize="11sp" />
 
             <TextView
@@ -219,7 +219,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
                 android:background="@drawable/corner_name_improve"
-                android:text="红酒123"
+                android:text=""
                 android:textSize="11sp" />
 
             <TextView
@@ -261,25 +261,22 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:text="已经通过审核的资料请勿再次修改，否则系统将重新审核，在审核期间将不能录单让利，请谨慎操作！"
                 android:textColor="@color/red"
-                android:textSize="10sp"
-                android:text="已经通过审核的资料请勿再次修改，否则系统将重新审核，在审核期间将不能录单让利，请谨慎操作！"/>
+                android:textSize="10sp"/>
 
 
             <Button
                 android:id="@+id/btn_improved"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
+                android:layout_marginBottom="15dp"
                 android:layout_marginTop="15dp"
                 android:background="@drawable/corner_btn_red"
                 android:text="提交"
                 android:textColor="@color/white"
-                android:layout_marginBottom="15dp"
                 android:textSize="12sp" />
-
         </LinearLayout>
-
     </ScrollView>
-
 
 </RelativeLayout>

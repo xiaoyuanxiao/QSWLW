@@ -368,7 +368,7 @@ public interface MyRetroService {
      */
     @FormUrlEncoded
     @POST("index.php?m=Appapi&c=Shop&a=shopadd")
-    Observable<MainBean<ImproveDocumentationBean>> getImproveDocumentationData(@Field("token") String token);
+    Observable<MainBean<ImproveDocumentationBean>> getImproveDocumentationData(@Field("token") String token,@Field("user_id") int user_id);
 
     /**
      * 省市区选择

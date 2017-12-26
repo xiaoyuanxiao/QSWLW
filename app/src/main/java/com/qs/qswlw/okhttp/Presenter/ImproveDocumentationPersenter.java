@@ -19,7 +19,7 @@ public class ImproveDocumentationPersenter {
         this.iImproveDocumentationView = iImproveDocumentationView;
     }
 
-    public void getdata(String token){
+    public void getdata(String token,int id){
         iImproveDocumentationBiz.getdata(new ImproveDocumentationListener() {
             @Override
             public void onSuccess(ImproveDocumentationBean improveDocumentationBean) {
@@ -35,6 +35,6 @@ public class ImproveDocumentationPersenter {
             public void onFailure(String code) {
 
             }
-        },token);
+        },token,id);
     }
 }
