@@ -54,6 +54,7 @@ public class SettingNewActivity extends BaseDataBindingActivity implements ISett
         settingNewsBean = new ArrayList<>();
         settingNewPersenter.getData(MyApplication.TOKEN, Integer.parseInt(MyApplication.ID));
         bind.setSettingNewActivityclick(this);
+        baseInfoData.ivTitlebarRight.setOnClickListener(new MyClick());
     }
 
     @Override
@@ -77,7 +78,7 @@ public class SettingNewActivity extends BaseDataBindingActivity implements ISett
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.ll_settingnews_consultation:
-               intent = new Intent(this, WebviewActivity.class);
+                intent = new Intent(this, WebviewActivity.class);
                 intent.putExtra("customerservice", customerservice);
                 startActivity(this.intent);
                 break;
@@ -85,4 +86,10 @@ public class SettingNewActivity extends BaseDataBindingActivity implements ISett
 
     }
 
+    private class MyClick implements View.OnClickListener {
+        @Override
+        public void onClick(View view) {
+            startActivity(new Intent(SettingNewActivity.this,SetModifyActivity.class));
+        }
+    }
 }
