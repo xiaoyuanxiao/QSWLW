@@ -244,18 +244,10 @@ public class BusinessSettingActivity extends BaseActivity implements IPersonalSe
         public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
             switch (i) {
                 case 0:
-//                    intent = new Intent(BusinessSettingActivity.this, RecommendActivity.class);
-//                    intent.putExtra("userid", user_id);
-//                    intent.putExtra("nickname", nickname);
-//                    intent.putExtra("shopname", shopName);
-//                    intent.putExtra("role", role);
-//                    intent.putExtra("position", "position");
-//                    startActivity(intent);
                     Intent intent1 = new Intent(BusinessSettingActivity.this, ConsumptionRecordActivity1.class);
                     startActivityForResult(intent1, 102);
                     break;
                 case 1:
-//                    startActivity(new Intent(BusinessSettingActivity.this, ScanCodeRecordActivity.class));
                     intent = new Intent(BusinessSettingActivity.this, RecommendActivity.class);
                     intent.putExtra("userid", user_id);
                     intent.putExtra("nickname", nickname);
@@ -263,12 +255,10 @@ public class BusinessSettingActivity extends BaseActivity implements IPersonalSe
                     startActivity(intent);
                     break;
                 case 2:
-//                    startActivity(new Intent(BusinessSettingActivity.this, MerchantAuditActivity.class));
                     startActivity(new Intent(BusinessSettingActivity.this, RecordListActivity.class));
                     break;
                 case 3:
                     startActivity(new Intent(BusinessSettingActivity.this, MyOrganizationActivity.class));
-                 //   startActivity(new Intent(BusinessSettingActivity.this, MerchantSalesReviewActivity.class));
                     break;
                 case 4:
                     intent = new Intent(BusinessSettingActivity.this, WebviewActivity.class);
@@ -277,109 +267,77 @@ public class BusinessSettingActivity extends BaseActivity implements IPersonalSe
                     break;
                 case 5:
                     intent = new Intent(BusinessSettingActivity.this, WebviewActivity.class);
-                    intent = new Intent(BusinessSettingActivity.this, WebviewActivity.class);
-                    intent.putExtra("qs_ziying",MyApplication.QSZY+MyApplication.TOKEN);
-                    startActivity(this.intent);
-                    break;
-
-                case 6:
-                    intent = new Intent(BusinessSettingActivity.this, WebviewActivity.class);
                     intent.putExtra("cash_money",cash_money);
                     startActivity(this.intent);
                     break;
-                case 7:
+                case 6:
                     intent = new Intent(BusinessSettingActivity.this, WebviewActivity.class);
                     intent.putExtra("cons_gold",cons_gold);
                     startActivity(this.intent);
                     break;
-                case 8:
+                case 7:
                   //  startActivity(new Intent(BusinessSettingActivity.this, MyProfitActivity.class));
                     startActivity(new Intent(BusinessSettingActivity.this, ReceivingAddress1Activity.class));
                     break;
-                case 9:
+                case 8:
                     startActivity(new Intent(BusinessSettingActivity.this, MySilverBeanActivity.class));
                     break;
-                case 10:
+                case 9:
                     startActivity(new Intent(BusinessSettingActivity.this, EntrepreneurialSeedActivity.class));
                     break;
-                case 11:
-                   // startActivity(new Intent(BusinessSettingActivity.this, VenturegoldBeansActivity.class));
+                case 10:
                     startActivity(new Intent(BusinessSettingActivity.this, VenturegoldBeansActivity.class));
-
                     break;
-                case 12:
+                case 11:
                     startActivity(new Intent(BusinessSettingActivity.this, MyBonusActivity.class));
                     break;
-                case 13:
+                case 12:
                     startActivity(new Intent(BusinessSettingActivity.this, WithdrawalsActivity.class));
                     break;
-                case 14:
+                case 13:
                 //    startActivity(new Intent(BusinessSettingActivity.this, ComplimentaryMerchandiseRecordActivity.class));
                     break;
-                case 15:
+                case 14:
                     startActivity(new Intent(BusinessSettingActivity.this, MyRoleActivity.class));
                     break;
+                case 15:
+                    intent = new Intent(BusinessSettingActivity.this, WebviewActivity.class);
+                    intent.putExtra("qs_ziying",MyApplication.QSZY+"&token="+MyApplication.TOKEN);
+                    startActivity(this.intent);
+                    break;
                 case 16:
-                  // startActivity(new Intent(BusinessSettingActivity.this, EntrepreneurialSeedActivity.class));
+                    intent = new Intent(BusinessSettingActivity.this, WebviewActivity.class);
+                    intent.putExtra("qs_tegong",MyApplication.QSTEGONG+"&token="+MyApplication.TOKEN);
+                    startActivity(this.intent);
                     break;
                 case 17:
-                //    startActivity(new Intent(BusinessSettingActivity.this, CommodityManagementActivity.class));
+                    intent = new Intent(BusinessSettingActivity.this, WebviewActivity.class);
+                    intent.putExtra("qs_xianfu",MyApplication.QSXIANFU+"&token="+MyApplication.TOKEN);
+                    startActivity(this.intent);
                     break;
                 case 18:
+                    startActivity(new Intent(BusinessSettingActivity.this,  ImproveDocumentationActivity.class));
+                    break;
+                case 19:
+                    intent = new Intent(BusinessSettingActivity.this, WebviewActivity.class);
+                    intent.putExtra("qs_chongzhi",MyApplication.QSCHONGZHI+"&token="+MyApplication.TOKEN);
+                    startActivity(this.intent);
+                    break;
+                case 20:
+                    //   startActivity(new Intent(BusinessSettingActivity.this, WithdrawalsActivity.class));
+                    intent = new Intent(BusinessSettingActivity.this, WebviewActivity.class);
+                    intent.putExtra("qs_spgl",MyApplication.QSSPGL+"&token="+MyApplication.TOKEN );
+                    startActivity(this.intent);
+                    break;
+                case 21:
                 //   startActivity(new Intent(BusinessSettingActivity.this, WithdrawalsActivity.class));
                     intent = new Intent(BusinessSettingActivity.this, WebviewActivity.class);
                     intent.putExtra("my_shop",my_shop );
                     startActivity(this.intent);
                     break;
-                case 19:
+                case 22:
                     startActivity(new Intent(BusinessSettingActivity.this, BusinessTurnoverActivity .class));
                     break;
-//                case 20:
-//                    //  startActivity(new Intent(BusinessSettingActivity.this, ReceivingAddressActivity.class));
-//                    startActivity(new Intent(BusinessSettingActivity.this, ReceivingAddress1Activity.class));
-//                    break;
-//                case 20:
-//                    startActivity(new Intent(BusinessSettingActivity.this, NoConsumptionBeansActivity.class));
-//                    break;
-//                case 21:
-//                    startActivity(new Intent(BusinessSettingActivity.this, NoConsumptionBeansActivity.class));
-//                    break;
-//                case 22:
-//                    startActivity(new Intent(BusinessSettingActivity.this, MySpendingLimitActivity.class));
-//                    break;
-//                case 23:
-//                    startActivity(new Intent(BusinessSettingActivity.this, MyMallSettingActivity.class));
-//                    break;
-//                case 24:
-//                    startActivity(new Intent(BusinessSettingActivity.this, DonationActivity.class));
-//                    break;
-//                case 25:
-//                    // startActivity(new Intent(BusinessSettingActivity.this, HarvestAddressListActivity.class));
-//                    break;
-//                case 26:
-//                    // startActivity(new Intent(BusinessSettingActivity.this, ScanCodeRecordActivity.class));
-//                    break;
-//                case 27:
-//                    startActivity(new Intent(BusinessSettingActivity.this, EntrepreneurialDonationActivity.class));
-//                    break;
-//                case 28:
-//                    startActivity(new Intent(BusinessSettingActivity.this, OldMemberActivity.class));
-//                    break;
-//                case 29:
-//                    startActivity(new Intent(BusinessSettingActivity.this, MyRoleActivity.class));
-//                    break;
-//                case 30:
-//                    startActivity(new Intent(BusinessSettingActivity.this, MyInvestActivity.class));
-//                    break;
-//                case 31:
-//                    //    startActivity(new Intent(BusinessSettingActivity.this, MySpendingLimitActivity.class));
-//                    break;
-//                case 32:
-//                    startActivity(new Intent(BusinessSettingActivity.this, PromotionLuckDrawActivity.class));
-//                    break;
-//                case 33:
-//                    //    startActivity(new Intent(BusinessSettingActivity.this, MySpendingLimitActivity.class));
-//                    break;
             }
         }
     }

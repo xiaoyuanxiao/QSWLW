@@ -242,44 +242,54 @@ public class ConsumerSettingActivity extends BaseActivity implements AdapterView
                 break;
             case 4:
                 intent = new Intent(ConsumerSettingActivity.this, WebviewActivity.class);
-                intent.putExtra("qs_ziying",MyApplication.QSZY+MyApplication.TOKEN);
+                intent.putExtra("cash_money",cash_money);
                 startActivity(this.intent);
                 break;
             case 5:
                 intent = new Intent(ConsumerSettingActivity.this, WebviewActivity.class);
-                intent.putExtra("cash_money",cash_money);
-                startActivity(this.intent);
-                break;
-            case 6:
-                intent = new Intent(ConsumerSettingActivity.this, WebviewActivity.class);
                 intent.putExtra("cons_gold",cons_gold);
                 startActivity(this.intent);
                 break;
-            case 7:
+            case 6:
                 startActivity(new Intent(ConsumerSettingActivity.this, ReceivingAddress1Activity.class));
                 break;
-            case 8:
+            case 7:
                 startActivity(new Intent(ConsumerSettingActivity.this, MySilverBeanActivity.class));
                 break;
-            case 9:
+            case 8:
                 startActivity(new Intent(ConsumerSettingActivity.this, EntrepreneurialSeedActivity.class));
                 break;
-            case 10:
+            case 9:
                 startActivity(new Intent(ConsumerSettingActivity.this, VenturegoldBeansActivity.class));
                 break;
-            case 11:
+            case 10:
                 startActivity(new Intent(ConsumerSettingActivity.this, MyBonusActivity.class));
                 break;
-            case 12:
+            case 11:
                 startActivity(new Intent(ConsumerSettingActivity.this, WithdrawalsActivity.class));
                 break;
-            case 13:
+            case 12:
 
                 break;
-            case 14:
+            case 13:
                 startActivity(new Intent(ConsumerSettingActivity.this, MyRoleActivity.class));
                 break;
+            case 14:
+                intent = new Intent(ConsumerSettingActivity.this, WebviewActivity.class);
+                intent.putExtra("qs_ziying",MyApplication.QSZY+"&token="+MyApplication.TOKEN);
+                startActivity(this.intent);
+                break;
             case 15:
+                intent = new Intent(ConsumerSettingActivity.this, WebviewActivity.class);
+                intent.putExtra("qs_tegong",MyApplication.QSTEGONG+"&token="+MyApplication.TOKEN);
+                startActivity(this.intent);
+                break;
+            case 16:
+                intent = new Intent(ConsumerSettingActivity.this, WebviewActivity.class);
+                intent.putExtra("qs_xianfu",MyApplication.QSXIANFU+"&token="+MyApplication.TOKEN);
+                startActivity(this.intent);
+                break;
+            case 17:
                 intent = new Intent(ConsumerSettingActivity.this, WebviewActivity.class);
                 intent.putExtra("qs_comment",MyApplication.QSCOMMENT+"&token="+MyApplication.TOKEN);
                 startActivity(this.intent);

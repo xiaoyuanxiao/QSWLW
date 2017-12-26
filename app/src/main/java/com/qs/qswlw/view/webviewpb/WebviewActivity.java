@@ -19,7 +19,8 @@ public class WebviewActivity extends AppCompatActivity {
 
     private String url;
     private String witnessChinaBusiness, interaction, products, ella, customerservice, winqs, qs_shop, qs_union, qs_fun, qs_lack_draw,
-            shop_order,cash_money,cons_gold,qs_shop_address,qs_cat,qs_cart,qs_mine,my_shop,qs_ziying,qs_comment;
+            shop_order,cash_money,cons_gold,qs_shop_address,qs_cat,qs_cart,qs_mine,my_shop,qs_ziying,qs_comment,qs_tegong,qs_xianfu,
+            qs_chongzhi,qs_spgl;
     private WebView webView;
 
     @JavascriptInterface
@@ -64,7 +65,11 @@ public class WebviewActivity extends AppCompatActivity {
         qs_mine = intent.getStringExtra("qs_mine");
         my_shop = intent.getStringExtra("my_shop");
         qs_ziying = intent.getStringExtra("qs_ziying");
-        qs_ziying = intent.getStringExtra("qs_comment");
+        qs_comment = intent.getStringExtra("qs_comment");
+        qs_tegong = intent.getStringExtra("qs_tegong");
+        qs_xianfu = intent.getStringExtra("qs_xianfu");
+        qs_chongzhi = intent.getStringExtra("qs_chongzhi");
+        qs_spgl = intent.getStringExtra("qs_spgl");
         if (witnessChinaBusiness != null) {
             url = witnessChinaBusiness;
         } else if (interaction != null) {
@@ -105,7 +110,16 @@ public class WebviewActivity extends AppCompatActivity {
             url = qs_ziying;
         }else if (qs_comment != null) {
             url = qs_comment;
+        }else if (qs_tegong != null) {
+            url = qs_tegong;
+        }else if (qs_xianfu != null) {
+            url = qs_xianfu;
+        }else if (qs_chongzhi != null) {
+            url = qs_chongzhi;
+        }else if (qs_spgl != null) {
+            url = qs_spgl;
         }
+
 
     }
 

@@ -74,9 +74,9 @@ public class MainActivity extends BaseActivity implements IMainView {
     MainPresenter mainPresenter = new MainPresenter(this);
     private Image3DSwitchView imageSwitchView;
     private Image3DView benefitList, unionList, entrepList, angelList, chinaList, luckList;
-    private TextView tv_dialog_index_title, tv_dialog_index_content, tv_dialog_index_name,tv_dialog_index_department, tv_dialog_index_time;
+    private TextView tv_dialog_index_title, tv_dialog_index_content, tv_dialog_index_name, tv_dialog_index_department, tv_dialog_index_time;
     private View alertview;
-    private Button btn_dialog_list,btn_dialog_delay;
+    private Button btn_dialog_list, btn_dialog_delay;
     private ImageView iv_setting_main;
     private ImageView iv_ranking_main, iv_main_avater;
     private LinearLayout ll_footview_union;
@@ -84,7 +84,7 @@ public class MainActivity extends BaseActivity implements IMainView {
     private WebView webview;
     private Intent intent;
     private PopupWindow popupWindow;
-    private LinearLayout ll_ranking_popup, main_ll_avater,ll_notice_popup,ll_yzqs_popup;
+    private LinearLayout ll_ranking_popup, main_ll_avater, ll_notice_popup, ll_yzqs_popup;
     private Maindatabean.Current_sales entrepBaen;
     private LinearLayout ll_dialogmain_bg;
     private Maindatabean.Notices notices;
@@ -103,7 +103,7 @@ public class MainActivity extends BaseActivity implements IMainView {
     @Override
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
-        Log.e("webview===========================","webview");
+        Log.e("webview===========================", "webview");
         showDilog();
         setDialogText();
 
@@ -136,7 +136,11 @@ public class MainActivity extends BaseActivity implements IMainView {
         MyApplication.QSZY = entrepBaen.getQs_ziying_shop();
         MyApplication.QSFUN = entrepBaen.getQs_fun();
         MyApplication.QSLACK = entrepBaen.getQs_lack_draw();
-            MyApplication.QSCOMMENT = entrepBaen.getQs_comment();
+        MyApplication.QSCOMMENT = entrepBaen.getQs_comment();
+        MyApplication.QSTEGONG = entrepBaen.getQs_tegong();
+        MyApplication.QSXIANFU = entrepBaen.getQs_xianfu();
+        MyApplication.QSCHONGZHI = entrepBaen.getQs_chongzhi();
+        MyApplication.QSSPGL = entrepBaen.getQs_spgl();
 //        enlist.add(entrepBaen.getSales_amount() + "");
 //        enlist.add(entrepBaen.getMoney() + "");
 //        enlist.add(entrepBaen.getCount() + "");
@@ -182,7 +186,7 @@ public class MainActivity extends BaseActivity implements IMainView {
     public Integer initView() {
         Intent intent1 = getIntent();
         String setting = intent1.getStringExtra("setting");
-        if(!"setting".equals(setting)){
+        if (!"setting".equals(setting)) {
             Intent intent = new Intent(this, SplashActivity.class);
             startActivity(intent);
         }
@@ -236,11 +240,11 @@ public class MainActivity extends BaseActivity implements IMainView {
         btn_dialog_list.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this,NoticeActivity.class));
+                startActivity(new Intent(MainActivity.this, NoticeActivity.class));
             }
         });
-        int width = ScreenUtils.getScreenWidth(this)-60;
-        ll_dialogmain_bg.setLayoutParams(new LinearLayout.LayoutParams(width, width-20));
+        int width = ScreenUtils.getScreenWidth(this) - 60;
+        ll_dialogmain_bg.setLayoutParams(new LinearLayout.LayoutParams(width, width - 20));
         btn_dialog_delay = (Button) alertview.findViewById(R.id.btn_dialog_delay);
         btn_dialog_delay.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -255,12 +259,13 @@ public class MainActivity extends BaseActivity implements IMainView {
         WindowManager m = this.getWindowManager();
         Display d = m.getDefaultDisplay(); // 获取屏幕宽、高度
         WindowManager.LayoutParams p = dialogWindow.getAttributes(); // 获取对话框当前的参数值
-        p.width = (int) (d.getWidth() -20); // 宽度设置为屏幕的0.65，根据实际情况调整
-        p.height =  p.width ; // 高度设置为屏幕的0.6，根据实际情况调整
+        p.width = (int) (d.getWidth() - 20); // 宽度设置为屏幕的0.65，根据实际情况调整
+        p.height = p.width; // 高度设置为屏幕的0.6，根据实际情况调整
         dialogWindow.setAttributes(p);
 
     }
-    public void setDialogText(){
+
+    public void setDialogText() {
         tv_dialog_index_title.setText(notices.getIndex_title());
         tv_dialog_index_content.setText(notices.getIndex_content());
         tv_dialog_index_name.setText(notices.getIndex_name());
@@ -404,28 +409,27 @@ public class MainActivity extends BaseActivity implements IMainView {
     }
 
 
-
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.iv_setting_main:
                 LoginBean.UserinfoBean userInfo = UserManage.getInstance().getUserInfo(MainActivity.this);
-                if(userInfo==null){
-                    startActivity(new Intent(MainActivity.this,LoginActivity.class));
-                }else{
-                     String role = MyApplication.ROLE = userInfo.getRole();
-                    if(role==null){
-                        startActivity(new Intent(MainActivity.this,LoginActivity.class));
-                    }else{
+                if (userInfo == null) {
+                    startActivity(new Intent(MainActivity.this, LoginActivity.class));
+                } else {
+                    String role = MyApplication.ROLE = userInfo.getRole();
+                    if (role == null) {
+                        startActivity(new Intent(MainActivity.this, LoginActivity.class));
+                    } else {
                         if (role.equals("0")) {
-                            startActivity(new Intent(MainActivity.this,ConsumerSettingActivity.class));
+                            startActivity(new Intent(MainActivity.this, ConsumerSettingActivity.class));
                         } else {
                             //其他页面
-                            startActivity(new Intent(MainActivity.this,BusinessSettingActivity.class));
+                            startActivity(new Intent(MainActivity.this, BusinessSettingActivity.class));
                         }
                     }
                 }
-               // finish();
+                // finish();
                 break;
             case R.id.iv_ranking_main:
                 showPw(iv_ranking_main);
@@ -470,26 +474,26 @@ public class MainActivity extends BaseActivity implements IMainView {
                 break;
             //促销抽奖
             case R.id.rb_main_luckgame:
-             //   startActivity(new Intent(this, LuckGameActivity.class));
+                //   startActivity(new Intent(this, LuckGameActivity.class));
                 this.intent = new Intent(this, WebviewActivity.class);
-                this.intent.putExtra("qs_lack_draw", entrepBaen.getQs_lack_draw()+"&token="+MyApplication.TOKEN);
+                this.intent.putExtra("qs_lack_draw", entrepBaen.getQs_lack_draw() + "&token=" + MyApplication.TOKEN);
                 startActivity(this.intent);
                 break;
             //开心一刻
             case R.id.rb_main_funtime:
                 this.intent = new Intent(this, WebviewActivity.class);
-                this.intent.putExtra("qs_fun",entrepBaen.getQs_fun() +"&token="+MyApplication.TOKEN);
+                this.intent.putExtra("qs_fun", entrepBaen.getQs_fun() + "&token=" + MyApplication.TOKEN);
                 startActivity(this.intent);
                 break;
             case R.id.ll_ranking_popup:
-                   startActivity(new Intent(MainActivity.this,PopRankingActivity.class));
+                startActivity(new Intent(MainActivity.this, PopRankingActivity.class));
                 break;
             case R.id.ll_notice_popup:
-                startActivity(new Intent(MainActivity.this,NoticeActivity.class));
+                startActivity(new Intent(MainActivity.this, NoticeActivity.class));
                 break;
             case R.id.ll_yzqs_popup:
                 this.intent = new Intent(this, WebviewActivity.class);
-                this.intent.putExtra("winqs",entrepBaen.getWinqs());
+                this.intent.putExtra("winqs", entrepBaen.getWinqs());
                 startActivity(this.intent);
                 break;
         }

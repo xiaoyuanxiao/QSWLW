@@ -134,6 +134,42 @@ public class Maindatabean {
         String qs_lack_draw;
         String qs_ziying_shop;
         String qs_comment;
+        String qs_tegong;
+        String qs_xianfu;
+        String qs_chongzhi;
+        String qs_spgl;
+
+        public String getQs_spgl() {
+            return qs_spgl;
+        }
+
+        public void setQs_spgl(String qs_spgl) {
+            this.qs_spgl = qs_spgl;
+        }
+
+        public String getQs_tegong() {
+            return qs_tegong;
+        }
+
+        public void setQs_tegong(String qs_tegong) {
+            this.qs_tegong = qs_tegong;
+        }
+
+        public String getQs_xianfu() {
+            return qs_xianfu;
+        }
+
+        public void setQs_xianfu(String qs_xianfu) {
+            this.qs_xianfu = qs_xianfu;
+        }
+
+        public String getQs_chongzhi() {
+            return qs_chongzhi;
+        }
+
+        public void setQs_chongzhi(String qs_chongzhi) {
+            this.qs_chongzhi = qs_chongzhi;
+        }
 
         public String getQs_comment() {
             return qs_comment;

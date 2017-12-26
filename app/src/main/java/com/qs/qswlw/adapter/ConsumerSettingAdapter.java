@@ -24,9 +24,9 @@ public class ConsumerSettingAdapter extends BaseAdapter {
 //            R.mipmap.citie,R.mipmap.user08,R.mipmap.shouh,R.mipmap.xfyd,R.mipmap.cyzz,R.mipmap.xfjd,
 //            R.mipmap.tx,R.mipmap.wdjb,R.mipmap.tz,R.mipmap.cyzj,R.mipmap.cj,R.mipmap.tubiao0028,R.mipmap.wslhy,R.mipmap.user_ren};
     public String[] contents = {"我要付款", "我要推荐", "我的订单", "商城订单",
-            "平台特供", "现金专区", "消费金豆专区", "收货地址","消费银豆",
+             "现金专区", "消费金豆专区", "收货地址","消费银豆",
             "创业种子","我的金豆","我的奖金","我要提现","促销抽奖记录",
-            "我的角色","商品评价"};
+            "我的角色","平台自营","平台特供","平台现付","商品评价"};
 //    public String[] contents = {"我要推荐", "直推联盟商", "升级申请", "我的机构",
 //            "门店扫码记录", "我的购物", "我的消费额度", "商品评价","(无)消费金豆专区",
 //            "商城消费金豆专区","收货地址","我的商城设置","我要转增","获赠记录",
@@ -34,9 +34,9 @@ public class ConsumerSettingAdapter extends BaseAdapter {
 //        "促销抽奖记录","我要创业","我是老会员","我的角色"};
 
     public int[] imgs = {R.mipmap.wslhy, R.mipmap.wytj, R.mipmap.tx,
-            R.mipmap.daizi, R.mipmap.is_me, R.mipmap.jinbi, R.mipmap.jinbi2,
+            R.mipmap.daizi, R.mipmap.jinbi, R.mipmap.jinbi2,
             R.mipmap.user_address,R.mipmap.xfyd,R.mipmap.cyzz,R.mipmap.xfjd,R.mipmap.xfjd,
-            R.mipmap.tx,R.mipmap.cj,R.mipmap.user_ren,R.mipmap.pingjia};
+            R.mipmap.tx,R.mipmap.cj,R.mipmap.user_ren, R.mipmap.is_me, R.mipmap.is_me, R.mipmap.is_me,R.mipmap.pingjia};
     private Context context;
     public ConsumerSettingAdapter(Context context) {
         this.context = context;
