@@ -35,6 +35,7 @@ import com.qs.qswlw.okhttp.Iview.IImproveDocumentationView;
 import com.qs.qswlw.okhttp.Presenter.ImproveCityPersenter;
 import com.qs.qswlw.okhttp.Presenter.ImproveDocumentationPersenter;
 import com.qs.qswlw.utils.ActivityManagerUtils;
+import com.qs.qswlw.utils.DateUtils;
 import com.qs.qswlw.utils.ImageTools;
 import com.qs.qswlw.utils.ToastUtils;
 import com.qs.qswlw.view.GenderPopupWindow;
@@ -194,7 +195,6 @@ public class ImproveDocumentationActivity extends BaseInfoActivity implements II
                 String category = edt_improve_catagory.getText().toString().trim();
                 String starttime = tv_startTime.getText().toString().trim();
                 String endtime = tv_endTime.getText().toString().trim();
-                String timetype = "MM:dd";
                 List<String> spinerIds = getSpinerIds();
                 if (file1 == null) {
                     ToastUtils.showToast("请上传营业执照");
@@ -215,8 +215,7 @@ public class ImproveDocumentationActivity extends BaseInfoActivity implements II
                 } else {
                     try {
                         postData(MyApplication.TOKEN, Integer.parseInt(id1), file1, file2, shop_name, company_name, shop_tel, Integer.parseInt(spinerIds.get(0))
-                                , Integer.parseInt(spinerIds.get(1)), Integer.parseInt(spinerIds.get(2)), address, Integer.parseInt(spinerIds.get(3)), category,
-                                timetype, timetype, starttime, endtime, add_time, MyApplication.NICKNAME, MyApplication.MOBILE, Integer.parseInt(MyApplication.ID));
+                                , Integer.parseInt(spinerIds.get(1)), Integer.parseInt(spinerIds.get(2)), address, Integer.parseInt(spinerIds.get(3)), category, starttime, endtime, add_time, MyApplication.NICKNAME, MyApplication.MOBILE, Integer.parseInt(MyApplication.ID));
                     } catch (NumberFormatException e) {
                         e.printStackTrace();
                     }
@@ -227,7 +226,7 @@ public class ImproveDocumentationActivity extends BaseInfoActivity implements II
 
     private void postData(final String token, final int id, final File file1, final File file2, final String shop_name, final String company_name,
                           final String shop_tel, final int province, final int city, final int district, final String address, final int cat_id, final String category,
-                          final String start, final String end, final String starttime, final String endtime, final String add_time, final String name, final String mobile,
+                          final String start, final String end, final String add_time, final String name, final String mobile,
                           final int business_id) {
         ReHttpUtils.instans().httpRequest(new HttpSubCribe<MainBean>() {
 
@@ -247,7 +246,7 @@ public class ImproveDocumentationActivity extends BaseInfoActivity implements II
             @Override
             public Observable<MainBean> getObservable(MyRetroService retrofit) {
                 return retrofit.postImproveCommit(token, id, file1, file2, shop_name, company_name, shop_tel, province, city, district, address, cat_id,
-                        category, start, end, starttime, endtime, add_time, name, mobile, business_id);
+                        category, start, end, add_time, name, mobile, business_id);
             }
         });
 
@@ -402,9 +401,9 @@ public class ImproveDocumentationActivity extends BaseInfoActivity implements II
             cityID = info.getCity();//市ID
             districtID = info.getDistrict();// 区ID
             cat_id = improveDocumentationBean.getInfo().getCat_id();
+            tv_startTime.setText(DateUtils.long2datetime(Long.parseLong(info.getStarttime())*1000L));
+            tv_endTime.setText(DateUtils.long2datetime(Long.parseLong(info.getEndtime())*1000L));
         }
-        tv_startTime.setText("08:00");//开始时间
-        tv_endTime.setText("20:00");//结束时间
         improveDocumentationBeanclist = improveDocumentationBean.getClist();//省级列表
         for (ImproveDocumentationBean.ClistBean clistBean : improveDocumentationBeanclist) {
             provincelist.add(clistBean.getName());

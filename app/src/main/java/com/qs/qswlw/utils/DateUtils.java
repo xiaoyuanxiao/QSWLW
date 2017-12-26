@@ -20,6 +20,7 @@ public class DateUtils {
     public static final String YYYY = "yyyy";
     public static final String MM = "MM";
     public static final String DD = "dd";
+    public static final String HHMM = "HH:MM";
 
     /**
      * @return
@@ -38,7 +39,11 @@ public class DateUtils {
         Date date = new Date(str);
         return sdf.format(date);
     }
-
+    public static String long2datetime(long str) {
+        SimpleDateFormat sdf = new SimpleDateFormat(HHMM);
+        Date date = new Date(str);
+        return sdf.format(date);
+    }
     /**
      * @param date
      * @return

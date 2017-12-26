@@ -386,8 +386,7 @@ public interface MyRetroService {
                                            @Field("photo") File photo, @Field("shop_name") String shop_name, @Field("company_name") String company_name,
                                            @Field("shop_tel") String shop_tel, @Field("province") int province, @Field("city") int city,
                                            @Field("district") int district, @Field("address") String address, @Field("cat_id") int cat_id,
-                                           @Field("category") String category, @Field("start") String start, @Field("end") String end,
-                                           @Field("starttime") String starttime, @Field("endtime") String endtime, @Field("add_time") String add_time,
+                                           @Field("category") String category, @Field("start") String start, @Field("end") String end, @Field("add_time") String add_time,
                                            @Field("name") String name, @Field("mobile") String mobile, @Field("business_id") int business_id);
 
 
