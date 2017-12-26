@@ -48,10 +48,9 @@ public class MyGoldenFragment extends BaseDataBindingFragment implements IMyGold
      */
     private void initFragment() {
         fragments = new ArrayList<Fragment>();
-        sub1MyGoldenFragment  = new Sub1MyGoldenFragment();
         sub2MyGoldenFragment = new Sub2MyGoldenFragment();
-        fragments.add(sub1MyGoldenFragment);
-        fragments.add(sub2MyGoldenFragment);
+        fragments.add(Sub1MyGoldenFragment.newInstance());
+        fragments.add(Sub2MyGoldenFragment.newInstance());
         showFragment(fragments.get(0));
 
     }

@@ -388,7 +388,8 @@ public interface MyRetroService {
                                            @Field("district") int district, @Field("address") String address, @Field("cat_id") int cat_id,
                                            @Field("category") String category, @Field("start") String start, @Field("end") String end, @Field("add_time") String add_time,
                                            @Field("name") String name, @Field("mobile") String mobile, @Field("business_id") int business_id);
-
+    @POST("index.php?m=Appapi&c=Shop&a=doshop")
+    Observable<MainBean> postImproveCommit(@Body RequestBody requestBody);
 
     /**
      * 提交验证老会员信息

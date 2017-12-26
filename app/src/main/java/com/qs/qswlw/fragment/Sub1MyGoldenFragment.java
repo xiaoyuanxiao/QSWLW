@@ -32,7 +32,9 @@ public class Sub1MyGoldenFragment extends BaseDataBindingFragment implements IMy
     private BaseRecyleAdapter adapter;
     private MyGoldenPersenter myGoldenPersenter = new MyGoldenPersenter(this);
     private List<VenturegoldBean.ListBean> listBean;
-
+    public static Sub1MyGoldenFragment newInstance(){
+        return new Sub1MyGoldenFragment();
+    }
     @Override
     protected int initview() {
         return R.layout.item_fg_mygold;

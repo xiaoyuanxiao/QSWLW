@@ -260,7 +260,8 @@ public class MainActivity extends BaseActivity implements IMainView {
         Display d = m.getDefaultDisplay(); // 获取屏幕宽、高度
         WindowManager.LayoutParams p = dialogWindow.getAttributes(); // 获取对话框当前的参数值
         p.width = (int) (d.getWidth() - 20); // 宽度设置为屏幕的0.65，根据实际情况调整
-        p.height = p.width; // 高度设置为屏幕的0.6，根据实际情况调整
+      //  p.height = p.width; // 高度设置为屏幕的0.6，根据实际情况调整
+        p.height = p.width+20; // 高度设置为屏幕的0.6，根据实际情况调整
         dialogWindow.setAttributes(p);
 
     }
