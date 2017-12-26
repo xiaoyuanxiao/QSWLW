@@ -133,6 +133,15 @@ public class Maindatabean {
         String qs_fun;
         String qs_lack_draw;
         String qs_ziying_shop;
+        String qs_comment;
+
+        public String getQs_comment() {
+            return qs_comment;
+        }
+
+        public void setQs_comment(String qs_comment) {
+            this.qs_comment = qs_comment;
+        }
 
         public String getQs_ziying_shop() {
             return qs_ziying_shop;

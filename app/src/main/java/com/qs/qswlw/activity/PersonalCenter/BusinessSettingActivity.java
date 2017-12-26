@@ -277,6 +277,7 @@ public class BusinessSettingActivity extends BaseActivity implements IPersonalSe
                     break;
                 case 5:
                     intent = new Intent(BusinessSettingActivity.this, WebviewActivity.class);
+                    intent = new Intent(BusinessSettingActivity.this, WebviewActivity.class);
                     intent.putExtra("qs_ziying",MyApplication.QSZY+MyApplication.TOKEN);
                     startActivity(this.intent);
                     break;

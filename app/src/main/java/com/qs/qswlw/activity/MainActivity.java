@@ -136,6 +136,7 @@ public class MainActivity extends BaseActivity implements IMainView {
         MyApplication.QSZY = entrepBaen.getQs_ziying_shop();
         MyApplication.QSFUN = entrepBaen.getQs_fun();
         MyApplication.QSLACK = entrepBaen.getQs_lack_draw();
+            MyApplication.QSCOMMENT = entrepBaen.getQs_comment();
 //        enlist.add(entrepBaen.getSales_amount() + "");
 //        enlist.add(entrepBaen.getMoney() + "");
 //        enlist.add(entrepBaen.getCount() + "");

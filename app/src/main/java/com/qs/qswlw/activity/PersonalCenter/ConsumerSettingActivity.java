@@ -9,6 +9,7 @@ import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.RadioButton;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.qs.qswlw.MyApplication;
@@ -22,7 +23,9 @@ import com.qs.qswlw.manager.UserManage;
 import com.qs.qswlw.okhttp.Iview.IPersonalSettingView;
 import com.qs.qswlw.okhttp.Presenter.PersonalSettingPresenter;
 import com.qs.qswlw.utils.RadioButtonImgUtil;
+import com.qs.qswlw.utils.RoleJudgeUtil;
 import com.qs.qswlw.utils.ToastUtils;
+import com.qs.qswlw.view.webviewpb.WebviewActivity;
 
 
 /**
@@ -47,59 +50,45 @@ public class ConsumerSettingActivity extends BaseActivity implements AdapterView
     private TextView setting_one;
     private String user_id,nickname,role,mobile;
     private Intent intent;
-
+    private RelativeLayout rl_setting_consumptionMoney;
+    private ImageView iv_setting_news;
+    private String shop_order,cash_money,cons_gold,my_shop;
     /**
      * 设置数据
      * @param personalSettingBean
      */
     @Override
     public void setUserInfo(PersonalSettingBean personalSettingBean) {
+        PersonalSettingBean.UserInfoBean user_info = personalSettingBean.getUser_info();
         tv_cyzx.setText("创业中心:"+personalSettingBean.getCyzx_info().getNickname());
         tv_recommender.setText("推荐人:"+personalSettingBean.getRe_info().getNickname());
-        tv_setting_id.setText("ID:"+personalSettingBean.getUser_info().getUser_id());
-        tv_setting_name.setText("昵称:"+personalSettingBean.getUser_info().getNickname());
+        tv_setting_id.setText("ID:"+user_info.getUser_id());
+        tv_setting_name.setText("昵称:"+user_info.getNickname());
 
         tv_setting_consumptionMoney.setText(personalSettingBean.getNone()+"");
-        tv_setting_consumerSilverbeans.setText(personalSettingBean.getUser_info().getSilver_total()+"");
-        tv_setting_encourage.setText(personalSettingBean.getUser_info().getLove_total()+"");
-        tv_setting_withdrawals.setText(personalSettingBean.getUser_info().getGold_total()+"");
-        tv_setting_consumerbeans.setText(personalSettingBean.getUser_info().getTaxgold_total()+"");
-        tv_setting_paytaxes.setText(personalSettingBean.getLast_rebate_date()+"");
-
-        MyApplication.ID =  user_id = personalSettingBean.getUser_info().getUser_id();
-        MyApplication.NICKNAME = nickname = personalSettingBean.getUser_info().getNickname();
-        MyApplication.MOBILE =  mobile = personalSettingBean.getUser_info().getMobile();
+        tv_setting_consumerSilverbeans.setText(user_info.getSilver_total()+"");
+        tv_setting_encourage.setText(user_info.getLove_total()+"");
+        tv_setting_withdrawals.setText(user_info.getGold_total()+"");
+        tv_setting_consumerbeans.setText(user_info.getTaxgold_total()+"");
+        tv_setting_paytaxes.setText(user_info.getLoveval_model2_xfz()+"");
+        //商城订单
+        shop_order = personalSettingBean.getShop_order();
+        cash_money  = personalSettingBean.getCash_money();//现金
+        cons_gold = personalSettingBean.getCons_gold();//消费金豆
+        MyApplication.ID =  user_id = user_info.getUser_id();
+        MyApplication.NICKNAME = nickname = user_info.getNickname();
+        MyApplication.MOBILE =  mobile =user_info.getMobile();
+        MyApplication.CYZXID = user_info.getCyzx_id();
         role = personalSettingBean.getUser_info().getRole();
-        if(role.equals("0")){
-            tv_role.setText("消费天使");
-            MyApplication.USERROLE = "消费天使";
-        } else if (role.equals("8")) {
-            tv_role.setText("创业董事");
-            MyApplication.USERROLE = "创业董事";
-        }else if(role.equals("10")){
-            tv_role.setText("商家");
-            MyApplication.USERROLE = "商家";
-        }else if(role.equals("11")){
-            tv_role.setText("创业天使");
-            MyApplication.USERROLE = "创业天使";
-        }else if(role.equals("12")){
-            tv_role.setText("省代");
-            MyApplication.USERROLE = "省代";
-        }else if(role.equals("13")){
-            tv_role.setText("市代");
-            MyApplication.USERROLE = "市代";
-        }else if(role.equals("14")){
-            tv_role.setText("区代");
-            MyApplication.USERROLE = "区代";
-        }else if(role.equals("15")){
-            tv_role.setText("创业中心");
-            MyApplication.USERROLE = "创业中心";
-        }else if(role.equals("25")){
-            tv_role.setText("平台");
-            MyApplication.USERROLE = "平台";
-        }
+        MyApplication.QSSHOP = personalSettingBean.getQs_shop();
+        MyApplication.QSCAT = personalSettingBean.getQs_cat();
+        MyApplication.QSCART = personalSettingBean.getQs_cart();
+        MyApplication.QSMINE = personalSettingBean.getQs_mine();
+        //会员身份
+        role = user_info.getRole();
+        tv_role.setText( RoleJudgeUtil.roleJudeg(role));
 
-    }
+}
 
     @Override
     public void setTokenFail() {
@@ -121,6 +110,7 @@ public class ConsumerSettingActivity extends BaseActivity implements AdapterView
         rb_main_funtime = (RadioButton) findViewById(R.id.rb_main_funtime);
         rb_main_luck = (RadioButton) findViewById(R.id.rb_main_luck);
         rb_main_exit = (RadioButton) findViewById(R.id.rb_main_exit);
+        rl_setting_consumptionMoney = (RelativeLayout) findViewById(R.id.rl_setting_consumptionMoney);
 
 
         tv_setting_withdrawals = (TextView) findViewById(R.id.tv_setting_withdrawals);
@@ -136,6 +126,7 @@ public class ConsumerSettingActivity extends BaseActivity implements AdapterView
         tv_recommender = (TextView) findViewById(R.id.tv_recommender);
         tv_setting_id = (TextView) findViewById(R.id.tv_setting_id);
         tv_setting_name = (TextView) findViewById(R.id.tv_setting_name);
+        iv_setting_news = (ImageView) findViewById(R.id.iv_setting_news);
         RadioButtonImgUtil.setRadioButtonImg(this,rb_main_qsmall,rb_main_lianmeng,rb_main_funtime,rb_main_luck,rb_main_exit);
 
 
@@ -143,7 +134,10 @@ public class ConsumerSettingActivity extends BaseActivity implements AdapterView
 
     @Override
     public void initData() {
-        super.initData();// 这些你不用管 是下面gridview的  你不用每个看 能不懂了嘛
+        super.initData();
+        rl_setting_consumptionMoney.setVisibility(View.GONE);
+        tv_cyzx.setVisibility(View.GONE);
+        tv_recommender.setVisibility(View.GONE);
         consumerSettingAdapter = new ConsumerSettingAdapter(this);
         String token = UserManage.getInstance().getUserInfo(ConsumerSettingActivity.this).getToken();
         MyApplication.TOKEN = token;
@@ -154,14 +148,13 @@ public class ConsumerSettingActivity extends BaseActivity implements AdapterView
     @Override
     public void setOnclick() {
         gv_setting.setOnItemClickListener(this);
-        iv_setting_set.setOnClickListener(this);
         rb_main_qsmall.setOnClickListener(this);
         rb_main_lianmeng.setOnClickListener(this);
         rb_main_funtime.setOnClickListener(this);
         rb_main_luck.setOnClickListener(this);
         rb_main_exit.setOnClickListener(this);
-
-
+        iv_setting_set.setOnClickListener(this);
+        iv_setting_news.setOnClickListener(this);
     }
 
     @Override
@@ -169,19 +162,34 @@ public class ConsumerSettingActivity extends BaseActivity implements AdapterView
 
         switch (view.getId()) {
             case R.id.rb_main_qsmall:
-                startActivity(new Intent(ConsumerSettingActivity.this, MainActivity.class));
+                intent  = new Intent(ConsumerSettingActivity.this, MainActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                intent.putExtra("setting", "setting");
+                startActivity(intent);
                 break;
             case R.id.rb_main_lianmeng:
-                showDialog();
+                intent = new Intent(this, WebviewActivity.class);
+                intent.putExtra("qs_shop",MyApplication.QSSHOP+"&token="+MyApplication.TOKEN);
+                startActivity(this.intent);
                 break;
             case R.id.rb_main_funtime:
-                startActivity(new Intent(this,SetModifyActivity.class));
+                intent = new Intent(this, WebviewActivity.class);
+                intent.putExtra("qs_fun",MyApplication.QSFUN+"&token="+MyApplication.TOKEN);
+                startActivity(this.intent);
                 break;
             case R.id.rb_main_luck:
-                showDialog();
+                intent = new Intent(this, WebviewActivity.class);
+                intent.putExtra("qs_lack_draw",MyApplication.QSLACK+"&token="+MyApplication.TOKEN);
+                startActivity(this.intent);
                 break;
             case R.id.rb_main_exit:
                 showDialog();
+                break;
+            case R.id.iv_setting_set:
+                startActivity(new Intent(this,SetModifyActivity.class));
+                break;
+            case R.id.iv_setting_news:
+                startActivity(new Intent(this,SettingNewActivity.class));
                 break;
         }
     }
@@ -214,75 +222,67 @@ public class ConsumerSettingActivity extends BaseActivity implements AdapterView
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
         switch (i) {
             case 0:
+                Intent intent1 = new Intent(ConsumerSettingActivity.this, ConsumptionRecordActivity1.class);
+                startActivity(intent1);
+                break;
+            case 1:
                 intent = new Intent(this,RecommendActivity.class);
                 intent.putExtra("userid",user_id);
                 intent.putExtra("nickname",nickname);
                 intent.putExtra("role",role);
                 startActivity(intent);
                 break;
-            case 1:
-
-                break;
             case 2:
+                startActivity(new Intent(ConsumerSettingActivity.this, RecordListActivity.class));
                 break;
             case 3:
-
+                intent = new Intent(ConsumerSettingActivity.this, WebviewActivity.class);
+                intent.putExtra("shop_order",shop_order+"&token="+MyApplication.TOKEN );
+                startActivity(this.intent);
                 break;
             case 4:
-                startActivity(new Intent(this,ScanCodeRecordActivity.class));
+                intent = new Intent(ConsumerSettingActivity.this, WebviewActivity.class);
+                intent.putExtra("qs_ziying",MyApplication.QSZY+MyApplication.TOKEN);
+                startActivity(this.intent);
                 break;
             case 5:
-
+                intent = new Intent(ConsumerSettingActivity.this, WebviewActivity.class);
+                intent.putExtra("cash_money",cash_money);
+                startActivity(this.intent);
                 break;
             case 6:
-                startActivity(new Intent(this,MySpendingLimitActivity.class));
+                intent = new Intent(ConsumerSettingActivity.this, WebviewActivity.class);
+                intent.putExtra("cons_gold",cons_gold);
+                startActivity(this.intent);
                 break;
             case 7:
-
+                startActivity(new Intent(ConsumerSettingActivity.this, ReceivingAddress1Activity.class));
                 break;
             case 8:
+                startActivity(new Intent(ConsumerSettingActivity.this, MySilverBeanActivity.class));
                 break;
             case 9:
+                startActivity(new Intent(ConsumerSettingActivity.this, EntrepreneurialSeedActivity.class));
                 break;
             case 10:
+                startActivity(new Intent(ConsumerSettingActivity.this, VenturegoldBeansActivity.class));
                 break;
             case 11:
+                startActivity(new Intent(ConsumerSettingActivity.this, MyBonusActivity.class));
                 break;
             case 12:
+                startActivity(new Intent(ConsumerSettingActivity.this, WithdrawalsActivity.class));
                 break;
             case 13:
 
                 break;
             case 14:
-                startActivity(new Intent(this,MySilverBeanActivity.class));
+                startActivity(new Intent(ConsumerSettingActivity.this, MyRoleActivity.class));
                 break;
             case 15:
-                startActivity(new Intent(this,EntrepreneurialSeedActivity.class));
-                break;
-            case 16:
-                startActivity(new Intent(this,VenturegoldBeansActivity.class));
-                break;
-            case 17:
-                startActivity(new Intent(this,WithdrawalsActivity.class));
-                break;
-            case 18:
-
-                break;
-            case 19:
-
-                break;
-            case 20:
-
-                break;
-            case 21:
-                break;
-            case 22:
-                break;
-            case 23:
-                startActivity(new Intent(this,OldMemberActivity.class));
-                break;
-            case 24:
-                startActivity(new Intent(this,MyRoleActivity.class));
+                intent = new Intent(ConsumerSettingActivity.this, WebviewActivity.class);
+                intent.putExtra("qs_comment",MyApplication.QSCOMMENT+"&token="+MyApplication.TOKEN);
+                startActivity(this.intent);
                 break;
         }
     }

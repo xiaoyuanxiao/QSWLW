@@ -91,8 +91,8 @@ public class LoginActivity extends BaseInfoActivity {
         super.onClick(view);
         switch (view.getId()){
             case R.id.btn_login:
-                String username = edt_username.getText().toString();
-                String password = edt_password.getText().toString();
+                String username = edt_username.getText().toString().trim();
+                String password = edt_password.getText().toString().trim();
                 boolean CheckBoxLogin = cb_login.isChecked();
                 if (CheckBoxLogin)
                 {

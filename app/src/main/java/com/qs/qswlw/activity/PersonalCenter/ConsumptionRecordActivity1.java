@@ -443,6 +443,7 @@ public class ConsumptionRecordActivity1 extends BaseInfoActivity implements ICon
         if (consumptionRecordBean.getSucc() != 1) {
             Intent intent = getIntent();
             String msg = consumptionRecordBean.getMsg();
+            ToastUtils.showToast(msg);
             intent.putExtra("msg", msg);
             setResult(103, intent);
             finish();
