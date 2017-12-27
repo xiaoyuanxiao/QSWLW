@@ -33,8 +33,8 @@ public class WithdrawalsActivity extends BaseInfoActivity implements IWithdrawal
 
     private ImageView iv_withdrawals_right;
     private TextView tv_html, tv_withdrawals_bank, tv_withdrawals_banknumber,
-            tv_withdrawals_one_right, tv_withdrawals_two, tv_withdrawals_three,
-            tv_withdrawals_four_right;
+            tv_withdrawals_one_right, tv_withdrawals_two_right, tv_withdrawals_three_right,
+            tv_withdrawals_four_right,tv_withdrawals_five,tv_withdrawals_sex_right;
     private WithdrawalsPersenter withdrawalsPersenter = new WithdrawalsPersenter(this);
     private Button btn_withdrawals_confirm;
     private EditText edt_withdrawals_password;
@@ -45,16 +45,18 @@ public class WithdrawalsActivity extends BaseInfoActivity implements IWithdrawal
     public View setConetnView() {
         View inflate = View.inflate(this, R.layout.activity_withdrawals, null);
         iv_withdrawals_right = (ImageView) inflate.findViewById(R.id.iv_withdrawals_right);
-        tv_withdrawals_three = (TextView) inflate.findViewById(R.id.tv_withdrawals_three);
+        tv_withdrawals_three_right = (TextView) inflate.findViewById(R.id.tv_withdrawals_three_right);
         tv_html = (TextView) inflate.findViewById(R.id.tv_html);
         tv_withdrawals_bank = (TextView) inflate.findViewById(R.id.tv_withdrawals_bank);
         tv_withdrawals_banknumber = (TextView) inflate.findViewById(R.id.tv_withdrawals_banknumber);
         tv_withdrawals_one_right = (TextView) inflate.findViewById(R.id.tv_withdrawals_one_right);
-        tv_withdrawals_two = (TextView) inflate.findViewById(R.id.tv_withdrawals_two);
-        tv_withdrawals_three = (TextView) inflate.findViewById(R.id.tv_withdrawals_three);
+        tv_withdrawals_two_right = (TextView) inflate.findViewById(R.id.tv_withdrawals_two_right);
         tv_withdrawals_four_right = (TextView) inflate.findViewById(R.id.tv_withdrawals_four_right);
         btn_withdrawals_confirm = (Button) inflate.findViewById(R.id.btn_withdrawals_confirm);
         edt_withdrawals_password = (EditText) inflate.findViewById(R.id.edt_withdrawals_password);
+        tv_withdrawals_five = (TextView) inflate.findViewById(R.id.tv_withdrawals_five);
+        tv_withdrawals_sex_right = (TextView) inflate.findViewById(R.id.tv_withdrawals_sex_right);
+
         return inflate;
     }
 
@@ -76,8 +78,8 @@ public class WithdrawalsActivity extends BaseInfoActivity implements IWithdrawal
         super.setOnclick();
         tv_titlebar_right.setOnClickListener(this);
         iv_withdrawals_right.setOnClickListener(this);
-        tv_withdrawals_three.setOnClickListener(this);
         btn_withdrawals_confirm.setOnClickListener(this);
+        tv_withdrawals_five.setOnClickListener(this);
     }
 
     @Override
@@ -91,17 +93,17 @@ public class WithdrawalsActivity extends BaseInfoActivity implements IWithdrawal
                 Intent intent = new Intent(this, WithdrawalsBankActivity.class);
                 startActivityForResult(intent, 1);
                 break;
-            case R.id.tv_withdrawals_three:
-                DialogUtils.showDidlog(this, new String[]{"创业模式一","创新模式"}, tv_withdrawals_three);
+            case R.id.tv_withdrawals_five:
+                DialogUtils.showDidlog(this, new String[]{"创业模式一","创新模式"}, tv_withdrawals_five);
                 break;
             case R.id.btn_withdrawals_confirm:
-                String s = tv_withdrawals_three.getText().toString();
+                String s = tv_withdrawals_five.getText().toString();
                 if (s.contains("创新模式")) {
                     model = "model2";
                 } else if (s.contains("创业模式一")) {
                     model = "model1";
                 }
-                String money = tv_withdrawals_four_right.getText().toString().trim();
+                String money = tv_withdrawals_sex_right.getText().toString().trim();
                 String pass = edt_withdrawals_password.getText().toString().trim();
                 if (money.equals("")) {
                     ToastUtils.showToast("请输入提现金额");
@@ -151,8 +153,10 @@ public class WithdrawalsActivity extends BaseInfoActivity implements IWithdrawal
         tv_html.setText(Html.fromHtml(replace));
         tv_withdrawals_bank.setText(withdrawalsBean.getBank().getCardxy());
         tv_withdrawals_banknumber.setText(withdrawalsBean.getBank().getNumber());
-        tv_withdrawals_one_right.setText(withdrawalsBean.getUser().getGold2() + "颗");
-        tv_withdrawals_two.setText(withdrawalsBean.getTotal_count_cash() + "");
+        tv_withdrawals_one_right.setText(withdrawalsBean.getUser().getGold() + "颗");
+        tv_withdrawals_two_right.setText(withdrawalsBean.getRawals_count() + "颗");
+        tv_withdrawals_three_right.setText(withdrawalsBean.getUser().getGold2() + "颗");
+        tv_withdrawals_four_right.setText(withdrawalsBean.getRawals_count_two()+ "颗");
     }
 
     @Override

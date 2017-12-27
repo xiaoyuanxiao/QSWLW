@@ -55,7 +55,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="80dp"
-            android:text="加人工一处"
+            android:text=""
             android:textSize="10sp" />
 
         <TextView
@@ -64,7 +64,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/tv_withdrawals_bank"
             android:layout_marginLeft="80dp"
-            android:text="6214578365412782862"
+            android:text=""
             android:textSize="10sp" />
 
         <ImageView
@@ -121,7 +121,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            android:text="7193.707颗"
+            android:text=""
             android:textColor="@color/black"
             android:textSize="12sp" />
 
@@ -144,11 +144,11 @@
             android:textSize="12sp" />
 
         <TextView
-            android:id="@+id/tv_withdrawals_two"
+            android:id="@+id/tv_withdrawals_two_right"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            android:text="7193"
+            android:text=""
             android:textColor="@color/red"
             android:textSize="12sp" />
     </RelativeLayout>
@@ -170,7 +170,7 @@
             android:textSize="12sp" />
 
         <TextView
-            android:id="@+id/tv_withdrawals_three"
+            android:id="@+id/tv_withdrawals_three_right"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
@@ -196,11 +196,11 @@
             android:textSize="12sp" />
 
         <TextView
-            android:id="@+id/tv_withdrawals_four"
+            android:id="@+id/tv_withdrawals_four_right"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            android:text="7193"
+            android:text=""
             android:textColor="@color/red"
             android:textSize="12sp" />
     </RelativeLayout>
@@ -264,7 +264,7 @@
 
 
         <EditText
-            android:id="@+id/tv_withdrawals_four_right"
+            android:id="@+id/tv_withdrawals_sex_right"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
