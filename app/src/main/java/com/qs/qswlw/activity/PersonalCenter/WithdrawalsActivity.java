@@ -40,10 +40,11 @@ public class WithdrawalsActivity extends BaseInfoActivity implements IWithdrawal
     private EditText edt_withdrawals_password;
     private String model = "model2";
     private RadioGroup rg_dialog_consumption;
+    private View inflate;
 
     @Override
     public View setConetnView() {
-        View inflate = View.inflate(this, R.layout.activity_withdrawals, null);
+        inflate = View.inflate(this, R.layout.activity_withdrawals, null);
         iv_withdrawals_right = (ImageView) inflate.findViewById(R.id.iv_withdrawals_right);
         tv_withdrawals_three_right = (TextView) inflate.findViewById(R.id.tv_withdrawals_three_right);
         tv_html = (TextView) inflate.findViewById(R.id.tv_html);
@@ -151,12 +152,30 @@ public class WithdrawalsActivity extends BaseInfoActivity implements IWithdrawal
         String content = "&lt;p style=&quot;white-space: normal;&quot;&gt;&lt;span style=&quot;font-family: 微软雅黑, &amp;quot;Microsoft YaHei&amp;quot;;&quot;&gt;&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;white-space: normal;&quot;&gt;&lt;span style=&quot;font-family: 微软雅黑, &amp;quot;Microsoft YaHei&amp;quot;;&quot;&gt;1.提现请完善个人银行卡资料。&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;white-space: normal;&quot;&gt;&lt;span style=&quot;font-family: 微软雅黑, &amp;quot;Microsoft YaHei&amp;quot;;&quot;&gt;2.每笔提现扣除你所获得全部金豆5%的手续费。&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;white-space: normal;&quot;&gt;&lt;span style=&quot;font-family: 微软雅黑, &amp;quot;Microsoft YaHei&amp;quot;;&quot;&gt;3.每笔提现T+2到账。&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;white-space: normal;&quot;&gt;&lt;span style=&quot;color: rgb(34, 34, 34); white-space: pre-wrap; background-color: rgb(255, 255, 255); font-family: 微软雅黑, &amp;quot;Microsoft YaHei&amp;quot;;&quot;&gt;咨询电话：400-8071728（工作时间：09:00~17:00）&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;white-space: normal;&quot;&gt;&lt;span style=&quot;color: rgb(34, 34, 34); white-space: pre-wrap; background-color: rgb(255, 255, 255); font-family: 微软雅黑, &amp;quot;Microsoft YaHei&amp;quot;;&quot;&gt;&lt;/span&gt;&lt;br/&gt;&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;";
         String replace = content.replace("&lt;", "<").replace("&gt;", ">").replace("&quot;", "”").replace("&amp;", "&");
         tv_html.setText(Html.fromHtml(replace));
-        tv_withdrawals_bank.setText(withdrawalsBean.getBank().getCardxy());
-        tv_withdrawals_banknumber.setText(withdrawalsBean.getBank().getNumber());
-        tv_withdrawals_one_right.setText(withdrawalsBean.getUser().getGold() + "颗");
-        tv_withdrawals_two_right.setText(withdrawalsBean.getRawals_count() + "颗");
+        if(withdrawalsBean.getBank()!=null){
+            tv_withdrawals_bank.setText(withdrawalsBean.getBank().getCardxy());
+            tv_withdrawals_banknumber.setText(withdrawalsBean.getBank().getNumber());
+        }else{
+            tv_withdrawals_bank.setText("没有记录");
+            tv_withdrawals_banknumber.setText("没有记录");
+        }
+
+        if(MyApplication.ROLE.equals("0")){
+            inflate.findViewById(R.id.rl_withdrawals_one).setVisibility(View.GONE);
+            inflate.findViewById(R.id.rl_withdrawals_two).setVisibility(View.GONE);
+            inflate.findViewById(R.id.view_withdrawals_one).setVisibility(View.GONE);
+            inflate.findViewById(R.id.view_withdrawals_two).setVisibility(View.GONE);
+        }else{
+            tv_withdrawals_one_right.setText(withdrawalsBean.getUser().getGold() + "颗");
+            tv_withdrawals_two_right.setText(withdrawalsBean.getRawals_count() + "颗");
+        }
         tv_withdrawals_three_right.setText(withdrawalsBean.getUser().getGold2() + "颗");
-        tv_withdrawals_four_right.setText(withdrawalsBean.getRawals_count_two()+ "颗");
+        if(withdrawalsBean.getRawals_count_two()==null){
+            tv_withdrawals_four_right.setText( "0颗");
+        }else{
+            tv_withdrawals_four_right.setText( withdrawalsBean.getRawals_count_two()+"颗");
+        }
+
     }
 
     @Override
