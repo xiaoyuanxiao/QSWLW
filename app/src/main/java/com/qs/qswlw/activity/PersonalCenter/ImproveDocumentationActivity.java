@@ -35,7 +35,6 @@ import com.qs.qswlw.okhttp.Iview.IImproveDocumentationView;
 import com.qs.qswlw.okhttp.Presenter.ImproveCityPersenter;
 import com.qs.qswlw.okhttp.Presenter.ImproveDocumentationPersenter;
 import com.qs.qswlw.utils.ActivityManagerUtils;
-import com.qs.qswlw.utils.DateUtils;
 import com.qs.qswlw.utils.ImageTools;
 import com.qs.qswlw.utils.ToastUtils;
 import com.qs.qswlw.view.GenderPopupWindow;
@@ -525,11 +524,9 @@ public class ImproveDocumentationActivity extends BaseInfoActivity implements II
             cityID = info.getCity();//市ID
             districtID = info.getDistrict();// 区ID
             cat_id = improveDocumentationBean.getInfo().getCat_id();
-        //    tv_startTime.setText(DateUtils.stampToDate(Long.parseLong(info.getStarttime()) * 1000L));
-           // tv_startTime.setText(DateUtils.stampToDate(1491813970 * 1000L));
-            tv_startTime.setText(DateUtils.getStrTime("1491813970"));
+            tv_startTime.setText(info.getStarttime());
 
-            tv_endTime.setText(DateUtils.stampToDate(Long.parseLong(info.getEndtime()) * 1000L));
+            tv_endTime.setText(info.getEndtime());
             Log.e("info.getStarttime()",info.getStarttime());
             Log.e("info.getEndtime()",info.getEndtime());
         }
