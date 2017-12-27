@@ -20,6 +20,7 @@ import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.qs.qswlw.MyApplication;
@@ -40,8 +41,11 @@ import com.qs.qswlw.utils.ToastUtils;
 import com.qs.qswlw.view.GenderPopupWindow;
 
 import java.io.File;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import okhttp3.MediaType;
@@ -198,6 +202,8 @@ public class ImproveDocumentationActivity extends BaseInfoActivity implements II
                 String category = edt_improve_catagory.getText().toString().trim();
                 String starttime = tv_startTime.getText().toString().trim();
                 String endtime = tv_endTime.getText().toString().trim();
+                long timeMillis = getTimeMillis(starttime);
+                long timeMillis1 = getTimeMillis(endtime);
                 List<String> spinerIds = getSpinerIds();
                 if (shop_name.equals("")) {
                     ToastUtils.showToast("请填写店铺名称");
@@ -209,6 +215,8 @@ public class ImproveDocumentationActivity extends BaseInfoActivity implements II
                     ToastUtils.showToast("请填写店铺地址");
                 } else if (category.equals("")) {
                     ToastUtils.showToast("请填写店铺主营业务");
+                } else if (timeMillis >= timeMillis1) {
+                    ToastUtils.showToast("开始时间应大于结束时间");
                 } else if (spinerIds.size() < 4) {
                     ToastUtils.showToast("没有选择完全");
                 } else {
@@ -222,6 +230,21 @@ public class ImproveDocumentationActivity extends BaseInfoActivity implements II
                 break;
         }
     }
+
+
+    private long getTimeMillis(String strTime) {
+        long returnMillis = 0;
+        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
+        Date d = null;
+        try {
+            d = sdf.parse(strTime);
+            returnMillis = d.getTime();
+        } catch (ParseException e) {
+            Toast.makeText(this, e.toString(), Toast.LENGTH_SHORT).show();
+        }
+        return returnMillis;
+    }
+
     private void postData(final String token, final int id, final File file1, final File file2, final String shop_name, final String company_name,
                           final String shop_tel, final int province, final int city, final int district, final String address, final int cat_id, final String category,
                           final String start, final String end, final String add_time, final String name, final String mobile,
@@ -240,103 +263,103 @@ public class ImproveDocumentationActivity extends BaseInfoActivity implements II
             @Override
             public void onNext(MainBean mainBean) {
                 ToastUtils.showToast(mainBean.getMsg());
-                if(mainBean.getStatus()==1){
+                if (mainBean.getStatus() == 1) {
                     finish();
                 }
             }
 
             @Override
             public Observable<MainBean> getObservable(MyRetroService retrofit) {
-                if(file1==null&&file2==null){
+                if (file1 == null && file2 == null) {
                     re = new MultipartBody.Builder()
                             .setType(MultipartBody.FORM)
-                            .addFormDataPart("token",token)
+                            .addFormDataPart("token", token)
                             .addFormDataPart("id", String.valueOf(id))
-                            .addFormDataPart("shop_name",shop_name)
-                            .addFormDataPart("company_name",company_name)
-                            .addFormDataPart("shop_tel",shop_tel)
+                            .addFormDataPart("shop_name", shop_name)
+                            .addFormDataPart("company_name", company_name)
+                            .addFormDataPart("shop_tel", shop_tel)
                             .addFormDataPart("province", String.valueOf(province))
                             .addFormDataPart("city", String.valueOf(city))
                             .addFormDataPart("district", String.valueOf(district))
-                            .addFormDataPart("address",address)
+                            .addFormDataPart("address", address)
                             .addFormDataPart("cat_id", String.valueOf(cat_id))
-                            .addFormDataPart("category",category)
-                            .addFormDataPart("start",start)
-                            .addFormDataPart("end",end)
-                            .addFormDataPart("add_time",add_time)
-                            .addFormDataPart("name",name)
-                            .addFormDataPart("mobile",mobile)
+                            .addFormDataPart("category", category)
+                            .addFormDataPart("start", start)
+                            .addFormDataPart("end", end)
+                            .addFormDataPart("add_time", add_time)
+                            .addFormDataPart("name", name)
+                            .addFormDataPart("mobile", mobile)
                             .addFormDataPart("business_id", String.valueOf(business_id))
                             .build();
-                }else if(file1==null&&file2!=null){
+                } else if (file1 == null && file2 != null) {
                     requestBody1 = RequestBody.create(MediaType.parse("image/*"), file2);
                     re = new MultipartBody.Builder()
                             .setType(MultipartBody.FORM)
-                            .addFormDataPart("token",token)
+                            .addFormDataPart("token", token)
                             .addFormDataPart("id", String.valueOf(id))
-                            .addFormDataPart("photo",file2.getName(),requestBody1)
-                            .addFormDataPart("shop_name",shop_name)
-                            .addFormDataPart("company_name",company_name)
-                            .addFormDataPart("shop_tel",shop_tel)
+                            .addFormDataPart("photo", file2.getName(), requestBody1)
+                            .addFormDataPart("shop_name", shop_name)
+                            .addFormDataPart("company_name", company_name)
+                            .addFormDataPart("shop_tel", shop_tel)
                             .addFormDataPart("province", String.valueOf(province))
                             .addFormDataPart("city", String.valueOf(city))
                             .addFormDataPart("district", String.valueOf(district))
-                            .addFormDataPart("address",address)
+                            .addFormDataPart("address", address)
                             .addFormDataPart("cat_id", String.valueOf(cat_id))
-                            .addFormDataPart("category",category)
-                            .addFormDataPart("start",start)
-                            .addFormDataPart("end",end)
-                            .addFormDataPart("add_time",add_time)
-                            .addFormDataPart("name",name)
-                            .addFormDataPart("mobile",mobile)
+                            .addFormDataPart("category", category)
+                            .addFormDataPart("start", start)
+                            .addFormDataPart("end", end)
+                            .addFormDataPart("add_time", add_time)
+                            .addFormDataPart("name", name)
+                            .addFormDataPart("mobile", mobile)
                             .addFormDataPart("business_id", String.valueOf(business_id))
                             .build();
-                }else if(file2==null&&file1!=null){
+                } else if (file2 == null && file1 != null) {
                     requestBody = RequestBody.create(MediaType.parse("image/*"), file1);
-                     re = new MultipartBody.Builder()
+                    re = new MultipartBody.Builder()
                             .setType(MultipartBody.FORM)
-                            .addFormDataPart("token",token)
+                            .addFormDataPart("token", token)
                             .addFormDataPart("id", String.valueOf(id))
-                             .addFormDataPart("license",file1.getName(),requestBody)
-                            .addFormDataPart("shop_name",shop_name)
-                            .addFormDataPart("company_name",company_name)
-                            .addFormDataPart("shop_tel",shop_tel)
+                            .addFormDataPart("license", file1.getName(), requestBody)
+                            .addFormDataPart("shop_name", shop_name)
+                            .addFormDataPart("company_name", company_name)
+                            .addFormDataPart("shop_tel", shop_tel)
                             .addFormDataPart("province", String.valueOf(province))
                             .addFormDataPart("city", String.valueOf(city))
                             .addFormDataPart("district", String.valueOf(district))
-                            .addFormDataPart("address",address)
+                            .addFormDataPart("address", address)
                             .addFormDataPart("cat_id", String.valueOf(cat_id))
-                            .addFormDataPart("category",category)
-                            .addFormDataPart("start",start)
-                            .addFormDataPart("end",end)
-                            .addFormDataPart("add_time",add_time)
-                            .addFormDataPart("name",name)
-                            .addFormDataPart("mobile",mobile)
+                            .addFormDataPart("category", category)
+                            .addFormDataPart("start", start)
+                            .addFormDataPart("end", end)
+                            .addFormDataPart("add_time", add_time)
+                            .addFormDataPart("name", name)
+                            .addFormDataPart("mobile", mobile)
                             .addFormDataPart("business_id", String.valueOf(business_id))
                             .build();
-                }else{
+                } else {
                     requestBody = RequestBody.create(MediaType.parse("image/*"), file1);
                     requestBody1 = RequestBody.create(MediaType.parse("image/*"), file2);
-                     re = new MultipartBody.Builder()
+                    re = new MultipartBody.Builder()
                             .setType(MultipartBody.FORM)
-                            .addFormDataPart("token",token)
+                            .addFormDataPart("token", token)
                             .addFormDataPart("id", String.valueOf(id))
-                            .addFormDataPart("license",file1.getName(),requestBody)
-                            .addFormDataPart("photo",file2.getName(),requestBody1)
-                            .addFormDataPart("shop_name",shop_name)
-                            .addFormDataPart("company_name",company_name)
-                            .addFormDataPart("shop_tel",shop_tel)
+                            .addFormDataPart("license", file1.getName(), requestBody)
+                            .addFormDataPart("photo", file2.getName(), requestBody1)
+                            .addFormDataPart("shop_name", shop_name)
+                            .addFormDataPart("company_name", company_name)
+                            .addFormDataPart("shop_tel", shop_tel)
                             .addFormDataPart("province", String.valueOf(province))
                             .addFormDataPart("city", String.valueOf(city))
                             .addFormDataPart("district", String.valueOf(district))
-                            .addFormDataPart("address",address)
+                            .addFormDataPart("address", address)
                             .addFormDataPart("cat_id", String.valueOf(cat_id))
-                            .addFormDataPart("category",category)
-                            .addFormDataPart("start",start)
-                            .addFormDataPart("end",end)
-                            .addFormDataPart("add_time",add_time)
-                            .addFormDataPart("name",name)
-                            .addFormDataPart("mobile",mobile)
+                            .addFormDataPart("category", category)
+                            .addFormDataPart("start", start)
+                            .addFormDataPart("end", end)
+                            .addFormDataPart("add_time", add_time)
+                            .addFormDataPart("name", name)
+                            .addFormDataPart("mobile", mobile)
                             .addFormDataPart("business_id", String.valueOf(business_id))
                             .build();
                 }
@@ -460,7 +483,7 @@ public class ImproveDocumentationActivity extends BaseInfoActivity implements II
             strings.add(id2);
         }
         int countyselectedItemPosition = county_spinner.getSelectedItemPosition();
-        if (countyselectedItemPosition >0) {
+        if (countyselectedItemPosition > 0) {
             String id3 = county_list_selected.get(countyselectedItemPosition - 1).getId();
             strings.add(id3);
         }
@@ -527,8 +550,8 @@ public class ImproveDocumentationActivity extends BaseInfoActivity implements II
             tv_startTime.setText(info.getStarttime());
 
             tv_endTime.setText(info.getEndtime());
-            Log.e("info.getStarttime()",info.getStarttime());
-            Log.e("info.getEndtime()",info.getEndtime());
+            Log.e("info.getStarttime()", info.getStarttime());
+            Log.e("info.getEndtime()", info.getEndtime());
         }
         improveDocumentationBeanclist = improveDocumentationBean.getClist();//省级列表
         for (ImproveDocumentationBean.ClistBean clistBean : improveDocumentationBeanclist) {
