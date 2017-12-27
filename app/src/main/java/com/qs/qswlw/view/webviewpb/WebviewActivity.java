@@ -4,10 +4,16 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
+import android.view.View;
 import android.webkit.JavascriptInterface;
 import android.webkit.WebChromeClient;
+import android.webkit.WebResourceError;
+import android.webkit.WebResourceRequest;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.FrameLayout;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 
 import com.qs.qswlw.R;
@@ -22,7 +28,9 @@ public class WebviewActivity extends AppCompatActivity {
             shop_order,cash_money,cons_gold,qs_shop_address,qs_cat,qs_cart,qs_mine,my_shop,qs_ziying,qs_comment,qs_tegong,qs_xianfu,
             qs_chongzhi,qs_spgl;
     private WebView webView;
-
+    private FrameLayout loadingLayout; //提示用户正在加载数据
+    private FrameLayout webParentView;
+    private View mErrorView; //加载错误的视图
     @JavascriptInterface
     public void shop() {
         runOnUiThread(new Runnable() {
@@ -40,6 +48,7 @@ public class WebviewActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.pb_webview);
+        initErrorPage();//初始化自定义页面
         initData();
         init();
     }
@@ -119,8 +128,7 @@ public class WebviewActivity extends AppCompatActivity {
         }else if (qs_spgl != null) {
             url = qs_spgl;
         }
-
-
+        Log.e("url----------------",url);
     }
 
     private void init() {
@@ -135,6 +143,7 @@ public class WebviewActivity extends AppCompatActivity {
 
         webView.setWebChromeClient(new webChromeClient());
         webView.loadUrl(url);
+        webParentView = (FrameLayout) webView.getParent(); //获取父容器
     }
 
     @Override
@@ -147,12 +156,49 @@ public class WebviewActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * 显示自定义错误提示页面，用一个View覆盖在WebView
+     */
+    private void showErrorPage() {
+        webParentView.removeAllViews(); //移除加载网页错误时，默认的提示信息
+        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT);
+        webParentView.addView(mErrorView, 0, layoutParams); //添加自定义的错误提示的View
+    }
+
+    /***
+     * 显示加载失败时自定义的网页
+     */
+    private void initErrorPage() {
+        if (mErrorView == null) {
+            mErrorView = View.inflate(this, R.layout.activity_error, null);
+        }
+    }
+
     private class webViewClient extends WebViewClient {
         @Override
         public void onPageStarted(WebView view, String url, Bitmap favicon) {
             super.onPageStarted(view, url, favicon);
             slowlyProgressBar.onProgressStart();
         }
+
+        @Override
+        public void onReceivedError(WebView view, int errorCode, String description, String failingUrl) {
+            super.onReceivedError(view, errorCode, description, failingUrl);
+            //6.0以下执行
+            Log.i("TAG", "onReceivedError: ------->errorCode" + errorCode + ":" + description);
+            //网络未连接
+            showErrorPage();
+        }
+
+        //处理网页加载失败时
+        @Override
+        public void onReceivedError(WebView view, WebResourceRequest request, WebResourceError error) {
+            super.onReceivedError(view, request, error);
+            //6.0以上执行
+            Log.i("TAG", "onReceivedError: ");
+            showErrorPage();//显示错误页面
+        }
+
     }
 
     private class webChromeClient extends WebChromeClient{
@@ -161,6 +207,14 @@ public class WebviewActivity extends AppCompatActivity {
             super.onProgressChanged(view, newProgress);
             slowlyProgressBar.onProgressChange(newProgress);
 
+        }
+        @Override
+        public void onReceivedTitle(WebView view, String title) {
+            super.onReceivedTitle(view, title);
+            showErrorPage();//显示错误页面
+//                if (title.contains("404")){
+//                    showErrorPage();
+//                }
         }
     }
 }
