@@ -172,7 +172,6 @@ public class WithdrawalsRecordAdapter extends BaseListAdapter<WithDrawalsRecordB
                     }
 //                    Intent intent = new Intent(context, WithdrawalsRecordActivity.class);
 //                    ((Activity) context).startActivityForResult(intent,100);
-                    //这里不刷新自己的数据了，直接去另一个fragment里面刷新数据，去WithDrawalsRecordApplyingFragment
 //                    data.remove(position);
 //                    notifyDataSetChanged();
                 }

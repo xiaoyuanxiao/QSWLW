@@ -46,7 +46,7 @@ public class AllianceMallDetailActivity extends BaseInfoActivity {
         faleft = new MallDetailLeftFragment();
         faright = new MallDetailRightFragment();
         transaction.add(R.id.ll_malldetail, faleft);
-        transaction.commit();//非常关键  这句话的意思提交  没有这句的话  是没有反应的
+        transaction.commit();
     }
 
     @Override

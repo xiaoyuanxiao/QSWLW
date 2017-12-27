@@ -1,4 +1,4 @@
-package com.qs.qswlw.mynet;
+package com.qs.qswlw.bean;
 
 import java.util.List;
 

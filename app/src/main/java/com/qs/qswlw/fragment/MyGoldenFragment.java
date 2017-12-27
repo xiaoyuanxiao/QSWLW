@@ -48,12 +48,12 @@ public class MyGoldenFragment extends BaseDataBindingFragment implements IMyGold
      */
     private void initFragment() {
         fragments = new ArrayList<Fragment>();
-        sub2MyGoldenFragment = new Sub2MyGoldenFragment();
         fragments.add(Sub1MyGoldenFragment.newInstance());
         fragments.add(Sub2MyGoldenFragment.newInstance());
         showFragment(fragments.get(0));
 
     }
+
 
     /**
      * 显示fragment
@@ -83,6 +83,7 @@ public class MyGoldenFragment extends BaseDataBindingFragment implements IMyGold
             }
         }
     }
+
     @Override
     public void setVenturegoldBeanData(VenturegoldBean venturegoldBeanData) {
         bind.setVenturegoldBean(venturegoldBeanData);
@@ -93,7 +94,6 @@ public class MyGoldenFragment extends BaseDataBindingFragment implements IMyGold
     @Override
     public void setTokenFail() {
         ActivityManagerUtils.getInstance().tokenfailfg(getActivity());
-
     }
 
     @Override

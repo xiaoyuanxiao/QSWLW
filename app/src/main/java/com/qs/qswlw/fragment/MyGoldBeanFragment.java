@@ -26,7 +26,7 @@ import static com.qs.qswlw.R.id.tv_sub_mygoldenbean_two;
 /**
  * Created by xiaoyu on 2017/9/8.
  */
-//这个我写了
+
 public class MyGoldBeanFragment extends BaseFragment implements IVenturegoldBeansView {
     public static String GIVE = "give";
     public static String TJJD = "tjjd";

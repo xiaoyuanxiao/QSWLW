@@ -5,7 +5,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.qs.qswlw.R;
-import com.qs.qswlw.okhttp.Moudle.LuckBean;
+import com.qs.qswlw.bean.LuckBean;
 
 import java.util.List;
 

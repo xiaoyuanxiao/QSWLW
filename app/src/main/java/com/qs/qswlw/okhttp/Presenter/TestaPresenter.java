@@ -10,8 +10,6 @@ import com.qs.qswlw.okhttp.Moudle.TestaMoudle;
  */
 
 public class TestaPresenter {
-    //此类只在相应的View 即 Activity 中存在  此对应在 Testa 为名称的TestaActivity
-
 
     private ITestaView testaViewIntfasce;
 

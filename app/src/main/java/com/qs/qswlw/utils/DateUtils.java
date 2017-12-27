@@ -1,9 +1,6 @@
 package com.qs.qswlw.utils;
 
 import android.util.Log;
-import android.widget.Toast;
-
-import com.qs.qswlw.activity.MainActivity;
 
 import java.sql.Timestamp;
 import java.text.DateFormat;
@@ -219,8 +216,7 @@ public class DateUtils {
 
 
     /*
-     * 将时间转换为时间戳 为什么你要系额两个逸雅阁的
-     * 我说了格式不同啊 SimpleDateFormat("yyyy-MM-dd") 这里面的
+     * 将时间转换为时间戳
      */
     public static String dateToStamp2(long s) {
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
@@ -239,7 +235,6 @@ public class DateUtils {
 
     public static String getStrTime(String cc_time) {
         String re_StrTime = null;
-        //同理也可以转为其它样式的时间格式.例如："yyyy/MM/dd HH:mm"
         SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
         // 例如：cc_time=1291778220
         long lcc_time = Long.valueOf(cc_time);

@@ -6,7 +6,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.qs.qswlw.R;
-import com.qs.qswlw.okhttp.Moudle.ChinaBean;
+import com.qs.qswlw.bean.ChinaBean;
 
 import java.util.List;
 

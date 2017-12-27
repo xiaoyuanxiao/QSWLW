@@ -6,7 +6,7 @@ import com.qs.qswlw.bean.MainBean;
 import com.qs.qswlw.bean.Maindatabean;
 import com.qs.qswlw.okhttp.Factory.IBizFactory;
 import com.qs.qswlw.okhttp.Iview.IMainView;
-import com.qs.qswlw.okhttp.Moudle.EntrepBean;
+import com.qs.qswlw.bean.EntrepBean;
 import com.qs.qswlw.okhttp.Moudle.IMainBiz;
 import com.qs.qswlw.okhttp.oncallback.MainBaseListener;
 

@@ -21,9 +21,7 @@ public class RankingPresenter {
         this.iRankingView = iRankingView;
     }
 
-    //我改一点
     public void getdata(final int code) {
-        //日月是分开请求的
         iRankingBiz.getdata(new RankingBaseListener() {
             @Override
             public void onSuccess(List<RankingBean.SingleLogBean> list) {

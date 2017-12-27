@@ -16,7 +16,7 @@ import com.qs.qswlw.adapter.AllianceMallGVAdapter;
 import com.qs.qswlw.adapter.AllianceMallLVAdapter;
 import com.qs.qswlw.utils.ToastUtils;
 
-                                                           /**
+/**
  * Created by xiaoyu on 2017/4/24.
  */
 

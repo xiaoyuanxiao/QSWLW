@@ -56,7 +56,7 @@ public class WithDrawalsRecordCompletedFragment extends BaseFragment implements 
     public void adapterNoty() {
         System.out.println("==========adapterNoty=========" + Gold_type);
         page = 1;
-        withDrawalsRecordPersenter.getdata(MyApplication.TOKEN, page, Gold_type);//不设置Gold_type怎么知道是哪个h,因为你设置了这个啊
+        withDrawalsRecordPersenter.getdata(MyApplication.TOKEN, page, Gold_type);
     }
 
     @Override

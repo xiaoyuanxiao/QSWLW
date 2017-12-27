@@ -1,4 +1,4 @@
-package com.qs.qswlw.okhttp.Moudle;
+package com.qs.qswlw.bean;
 
 /**
  * Created by xiaoyu on 2017/4/11.

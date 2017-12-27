@@ -1,7 +1,7 @@
 package com.qs.qswlw.okhttp.Iview;
 
 import com.qs.qswlw.bean.Maindatabean;
-import com.qs.qswlw.okhttp.Moudle.LuckBean;
+import com.qs.qswlw.bean.LuckBean;
 
 import java.util.List;
 

@@ -40,6 +40,7 @@ import com.qs.qswlw.bean.RegisterGetCodeBean;
 import com.qs.qswlw.bean.ScanCodeRecordBean;
 import com.qs.qswlw.bean.SetModifyBean;
 import com.qs.qswlw.bean.SettingNewsBean;
+import com.qs.qswlw.bean.TestBean;
 import com.qs.qswlw.bean.UserIDSearchBean;
 import com.qs.qswlw.bean.ValidateOldMemberBean;
 import com.qs.qswlw.bean.VenturegoldBean;
@@ -473,7 +474,7 @@ public interface MyRetroService {
      */
     @Multipart
     @POST("index.php?m=Appapi&c=Index&a=ranking_list3")
-//头去掉 因为写过了，在那些了
+
     Observable<MainBean<AngelRankingBean>> getAngelRankingData(@Part("time_slot") String a);
 
     @POST("index.php?m=Appapi&c=Index&a=good_product")

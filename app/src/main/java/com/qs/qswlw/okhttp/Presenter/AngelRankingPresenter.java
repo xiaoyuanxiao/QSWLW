@@ -22,7 +22,6 @@ public class AngelRankingPresenter {
     }
 
     public void getdata(final int code) {
-        //日月是分开请求的
         iAngelRankingBiz.getdata(new AngelRankingBaseListener() {
             @Override
             public void onSuccess(List<AngelRankingBean.SalemanBean> list) {

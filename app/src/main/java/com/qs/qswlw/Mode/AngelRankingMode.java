@@ -18,19 +18,20 @@ import java.util.List;
  */
 
 public class AngelRankingMode extends BaseMode {
+    List<AngelRankingBean.SalemanBean> data;
+    AngelRankingAdapter angelRankingAdapter;
+    boolean isthis = true;
     private ListView lv_sub_unionmonthranking;
     private int code = 100;
-    List<AngelRankingBean.SalemanBean> data;
-
     public AngelRankingMode(Context context, int code) {
         super(context);
         this.code = code;
 
     }
+
     public int getCode(){
         return code;
     }
-    AngelRankingAdapter angelRankingAdapter;
 
     @Override
     protected View initView() {
@@ -52,11 +53,8 @@ public class AngelRankingMode extends BaseMode {
         ((AngelRankingActivity) context).angelRankingPresenter.getdata(code);//自身的请求
     }
 
-    boolean isthis = true;
-
     public void setdata(List<AngelRankingBean.SalemanBean> data, int recode) {//然后就到了这里
-        isthis = (recode == code);//recode  是请求时用的数值-  和本身页面的数值做对比  不是第一次recode是0， 是携带的0 code是多少//
-        //正常的是  自己发出的请求 coade 是多少 就回传会是多少--所以 isthis 标识 的是是否加载了非本页面的数据
+        isthis = (recode == code);
         this.data.clear();
         this.data.addAll(data);
         angelRankingAdapter.notifyDataSetChanged();

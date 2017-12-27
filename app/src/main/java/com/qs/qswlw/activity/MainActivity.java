@@ -38,8 +38,8 @@ import com.qs.qswlw.bean.Maindatabean;
 import com.qs.qswlw.bean.RegisterBean;
 import com.qs.qswlw.manager.UserManage;
 import com.qs.qswlw.okhttp.Iview.IMainView;
-import com.qs.qswlw.okhttp.Moudle.ChinaBean;
-import com.qs.qswlw.okhttp.Moudle.LuckBean;
+import com.qs.qswlw.bean.ChinaBean;
+import com.qs.qswlw.bean.LuckBean;
 import com.qs.qswlw.okhttp.Presenter.MainPresenter;
 import com.qs.qswlw.utils.ScreenUtils;
 import com.qs.qswlw.view.imageswitchview.Image3DSwitchView;
@@ -124,7 +124,7 @@ public class MainActivity extends BaseActivity implements IMainView {
         imageSwitchView.scrollToNext();
         Log.d("TAG", "-------setUnionList---");
         observable.setChanged();
-        observable.notifyObservers("这不重要");
+        observable.notifyObservers("无所谓");
     }
 
     @Override

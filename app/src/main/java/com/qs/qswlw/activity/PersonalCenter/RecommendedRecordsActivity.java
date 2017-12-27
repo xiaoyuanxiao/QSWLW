@@ -71,7 +71,6 @@ public class RecommendedRecordsActivity extends BaseInfoActivity implements IRec
         tv_consumer = (TextView) inflate.findViewById(R.id.tv_consumer);
         tv_business = (TextView) inflate.findViewById(R.id.tv_business);
         viewpagedata = new ArrayList<>();
-        //这里不要写什么嘛不要动
         return inflate;
     }
 
@@ -131,7 +130,7 @@ public class RecommendedRecordsActivity extends BaseInfoActivity implements IRec
         viewpager.setAdapter(adapter);
         isPage = tab_namepage1;
         istab_name = tab_name1;
-        getdata();//刷新时改变这个的值
+        getdata();
     }
 
     private void getdata() {

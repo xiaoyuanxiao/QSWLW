@@ -43,13 +43,14 @@ public class WithdrawalsAddActivity extends BaseInfoActivity implements IWithdra
 
     ArrayList<String> provincelist = new ArrayList();
     ArrayList<String> citylist = new ArrayList();
+    String cityID;
+    int isfrist = 0;
     private Spinner spinner_bank, spinner_province, spinner_city;
     private ArrayAdapter<String> province_adapter;
     private ArrayAdapter<String> city_adapter;
     private ArrayAdapter<String> bank_adapter;
     //    List<WithdrawalsAddBean.ClistBean> clistprovince;
     private List<WithdrawalsCityBean.ClistBean> city_list_selected;
-
     private WithdrawalsAddPersenter withdrawalsAddPersenter = new WithdrawalsAddPersenter(this);
     private WithdrawalsFailedModifyPersenter withdrawalsFailedModifyPersenter = new WithdrawalsFailedModifyPersenter(this);
     private EditText edt_withdrawalsadd_name, edt_withdrawalsadd_card, edt_withdrawalsadd_number;
@@ -62,6 +63,35 @@ public class WithdrawalsAddActivity extends BaseInfoActivity implements IWithdra
     private Button btn_withdrawalsadd_add;
     private int id1;
     private String modify;
+    OnItemSelectedListener onItemSelectedListener = new OnItemSelectedListener() {
+        @Override
+        public void onItemSelected(AdapterView<?> arg0, View arg1,
+                                   int arg2, long arg3) {
+            if (arg2 == 0)
+                return;
+            switch (arg0.getId()) {
+                case R.id.spinner_withdrawalsadd_province:
+                    /**
+                     * 是从提现失败修改过来的
+                     */
+                    if (modify != null) {
+                        if (clistModify == null || clistModify.size() == 0)
+                            return;
+                        withdrawalsCityPersenter.getdata(MyApplication.TOKEN, Integer.parseInt(clistModify.get(arg2 - 1).getId()));
+                    } else {
+                        if (clist == null || clist.size() == 0)
+                            return;
+                        withdrawalsCityPersenter.getdata(MyApplication.TOKEN, Integer.parseInt(clist.get(arg2 - 1).getId()));
+                    }
+                    break;
+            }
+        }
+
+        @Override
+        public void onNothingSelected(AdapterView<?> arg0) {
+
+        }
+    };
     private Intent intent;
     private String id;
     private String modifyid;
@@ -164,7 +194,6 @@ public class WithdrawalsAddActivity extends BaseInfoActivity implements IWithdra
                     intent.putExtra("isok", true);
                     intent.putExtra("id", id);
                     setResult(200, intent);
-                    //这里才是失败修改调的接口
                     finish();
                 }
             }
@@ -207,7 +236,7 @@ public class WithdrawalsAddActivity extends BaseInfoActivity implements IWithdra
                     Intent intent = new Intent();
                  /*   intent.putExtra("isok", true);
                     intent.putExtra("id", id);*/
-                    setResult(200, intent);//不是在这 这是处理银行卡信息
+                    setResult(200, intent);
                     finish();
                 }
             }
@@ -220,7 +249,6 @@ public class WithdrawalsAddActivity extends BaseInfoActivity implements IWithdra
 
 
     }
-
 
     private void loadBankSpinner() {
         spinner_bank = (Spinner) findViewById(R.id.spinner_withdrawalsadd_bank);
@@ -252,37 +280,6 @@ public class WithdrawalsAddActivity extends BaseInfoActivity implements IWithdra
         spin.setOnItemSelectedListener(onItemSelectedListener);
     }
 
-    OnItemSelectedListener onItemSelectedListener = new OnItemSelectedListener() {
-        @Override
-        public void onItemSelected(AdapterView<?> arg0, View arg1,
-                                   int arg2, long arg3) {
-            if (arg2 == 0)
-                return;
-            switch (arg0.getId()) {
-                case R.id.spinner_withdrawalsadd_province://只需要请求市的
-                    /**
-                     * 是从提现失败修改过来的
-                     */
-                    if (modify != null) {
-                        if (clistModify == null || clistModify.size() == 0)
-                            return;
-                        withdrawalsCityPersenter.getdata(MyApplication.TOKEN, Integer.parseInt(clistModify.get(arg2 - 1).getId()));
-                    } else {
-                        if (clist == null || clist.size() == 0)
-                            return;
-                        withdrawalsCityPersenter.getdata(MyApplication.TOKEN, Integer.parseInt(clist.get(arg2 - 1).getId()));
-                    }
-                    break;
-            }
-        }
-
-        @Override
-        public void onNothingSelected(AdapterView<?> arg0) {
-
-        }
-    };
-
-
     private List<String> getSpinerIds() {
 
         ArrayList<String> strings = new ArrayList<>();
@@ -312,7 +309,6 @@ public class WithdrawalsAddActivity extends BaseInfoActivity implements IWithdra
         }
         return strings;
     }
-
 
     private ArrayAdapter getSpinerAdapter(ArrayList<String> args) {
         return new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, args);
@@ -354,9 +350,6 @@ public class WithdrawalsAddActivity extends BaseInfoActivity implements IWithdra
         int i = banklist.indexOf(cardxy);
         spinner_bank.setSelection(i >= 0 ? i : 0);
     }
-
-    String cityID;
-    int isfrist = 0;
 
     @Override
     public void setCitydata(WithdrawalsCityBean withdrawalsCityBean) {

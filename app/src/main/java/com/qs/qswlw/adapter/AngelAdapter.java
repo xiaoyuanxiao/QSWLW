@@ -14,7 +14,7 @@ import com.qs.qswlw.bean.Maindatabean;
 import java.util.List;
 
 /**
- * Created by 小猴子 on 2017/4/9.
+ * Created by  xiaoyu  on 2017/4/9.
  */
 
 public class AngelAdapter extends BaseListAdapter<Maindatabean.Salema> {

@@ -3,7 +3,7 @@ package com.qs.qswlw.okhttp.Iview;
 import java.util.ArrayList;
 
 /**
- * Created by 小猴子 on 2017/4/7.
+ * Created by xiaoyu on 2017/4/7.
  */
 public interface ITestaView {
 

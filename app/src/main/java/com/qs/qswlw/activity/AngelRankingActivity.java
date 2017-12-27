@@ -51,11 +51,10 @@ public class AngelRankingActivity extends BaseInfoActivity implements IAngelRank
         viewpagedata = new ArrayList<>();
         viewpagedata.add(new AngelRankingMode(this, 100));
         viewpagedata.add(new AngelRankingMode(this, 200));
-        viewpagedata.add(new AngelRankingMode(this, 300));//我对应着改了 为什么又改成这个呢
+        viewpagedata.add(new AngelRankingMode(this, 300));
         MyViewPagerAdapter adapter = new MyViewPagerAdapter();
         viewpager_unionranking.setAdapter(adapter);
         //加载界面
-        //首先呢 会这样----到这-我们先加载一个 0 去请求  然后 呢 请求过程 我们就不看了
         viewpager_unionranking.setOffscreenPageLimit(0);
         angelRankingPresenter.getdata(0);
         return inflate;
@@ -126,7 +125,7 @@ public class AngelRankingActivity extends BaseInfoActivity implements IAngelRank
     @Override
     public void setRankMondayWek(List<AngelRankingBean.SalemanBean> list, int recode) {
 
-        //返回请求结果  用0请求的   就到这里来了--是这里的回传*/
+        //返回请求结果
         if (recode == 0) {
             viewpagedata.get(0).setdata(list, recode);
             return;
@@ -179,7 +178,6 @@ public class AngelRankingActivity extends BaseInfoActivity implements IAngelRank
         public Object instantiateItem(ViewGroup container, int position) {
             container.addView(viewpagedata.get(position).view);
             viewpagedata.get(position).initData();
-            //因为加载第一页 的时候 会 100 所以呢
             return viewpagedata.get(position).view;
         }
 

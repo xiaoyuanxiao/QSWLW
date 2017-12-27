@@ -41,7 +41,7 @@ public class RecommendRecordFragment extends BaseFragment implements IRecommendR
     private ProgressBar pb_itemforestry;
 
 
-    public static RecommendRecordFragment newInstance(String type) {//等下
+    public static RecommendRecordFragment newInstance(String type) {
         RecommendRecordFragment withDrawalsRecordCompletedFragment = new RecommendRecordFragment();
         withDrawalsRecordCompletedFragment.setType(type);
         return withDrawalsRecordCompletedFragment;
