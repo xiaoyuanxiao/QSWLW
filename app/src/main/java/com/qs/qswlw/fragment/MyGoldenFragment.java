@@ -19,8 +19,6 @@ import java.util.ArrayList;
 
 public class MyGoldenFragment extends BaseDataBindingFragment implements IMyGoldenView, View.OnClickListener {
 
-    Sub1MyGoldenFragment sub1MyGoldenFragment;
-    Sub2MyGoldenFragment sub2MyGoldenFragment;
     private MyGoldenFGData bind;
     private ArrayList<Fragment> fragments;
     private FragmentManager fragmentManager;
@@ -43,6 +41,7 @@ public class MyGoldenFragment extends BaseDataBindingFragment implements IMyGold
         bind.setOnclick(this);
 
     }
+
     /**
      * 初始化所有基fragment
      */
@@ -66,7 +65,7 @@ public class MyGoldenFragment extends BaseDataBindingFragment implements IMyGold
         if (fragment.isAdded()) {
             transaction.show(fragment);
         } else {
-            transaction.add(R.id.ll_container1, fragment, fragment.getClass().getName());
+            transaction.add(R.id.ll_container1, fragment, fragment.getClass().getName()).show(fragment);
         }
         transaction.commit();
     }
@@ -87,8 +86,8 @@ public class MyGoldenFragment extends BaseDataBindingFragment implements IMyGold
     @Override
     public void setVenturegoldBeanData(VenturegoldBean venturegoldBeanData) {
         bind.setVenturegoldBean(venturegoldBeanData);
-        bind.tvFgMygoldenbeanGold.setText("累计创业金豆"+venturegoldBeanData.getModel().getGold());
-        bind.tvFgMygoldenbeanTaxgold.setText("累计消费金豆"+venturegoldBeanData.getModel().getTaxgold());
+        bind.tvFgMygoldenbeanGold.setText("累计创业金豆" + venturegoldBeanData.getModel().getGold());
+        bind.tvFgMygoldenbeanTaxgold.setText("累计消费金豆" + venturegoldBeanData.getModel().getTaxgold());
     }
 
     @Override
@@ -98,7 +97,7 @@ public class MyGoldenFragment extends BaseDataBindingFragment implements IMyGold
 
     @Override
     public void onClick(View view) {
-        switch (view.getId()){
+        switch (view.getId()) {
             case R.id.rb_myGoldenBean_left:
                 showFragment(fragments.get(0));
                 break;

@@ -87,22 +87,22 @@ public class VenturegoldBean {
          * return_model2_get : 20
          */
 
-        private int return_model1_get;
-        private int return_model2_get;
+        private double return_model1_get;
+        private double return_model2_get;
 
-        public int getReturn_model1_get() {
+        public double getReturn_model1_get() {
             return return_model1_get;
         }
 
-        public void setReturn_model1_get(int return_model1_get) {
+        public void setReturn_model1_get(double return_model1_get) {
             this.return_model1_get = return_model1_get;
         }
 
-        public int getReturn_model2_get() {
+        public double getReturn_model2_get() {
             return return_model2_get;
         }
 
-        public void setReturn_model2_get(int return_model2_get) {
+        public void setReturn_model2_get(double return_model2_get) {
             this.return_model2_get = return_model2_get;
         }
     }
