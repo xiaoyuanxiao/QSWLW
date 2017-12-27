@@ -525,8 +525,13 @@ public class ImproveDocumentationActivity extends BaseInfoActivity implements II
             cityID = info.getCity();//市ID
             districtID = info.getDistrict();// 区ID
             cat_id = improveDocumentationBean.getInfo().getCat_id();
-            tv_startTime.setText(DateUtils.long2datetime(Long.parseLong(info.getStarttime())*1000L));
-            tv_endTime.setText(DateUtils.long2datetime(Long.parseLong(info.getEndtime())*1000L));
+        //    tv_startTime.setText(DateUtils.stampToDate(Long.parseLong(info.getStarttime()) * 1000L));
+           // tv_startTime.setText(DateUtils.stampToDate(1491813970 * 1000L));
+            tv_startTime.setText(DateUtils.getStrTime("1491813970"));
+
+            tv_endTime.setText(DateUtils.stampToDate(Long.parseLong(info.getEndtime()) * 1000L));
+            Log.e("info.getStarttime()",info.getStarttime());
+            Log.e("info.getEndtime()",info.getEndtime());
         }
         improveDocumentationBeanclist = improveDocumentationBean.getClist();//省级列表
         for (ImproveDocumentationBean.ClistBean clistBean : improveDocumentationBeanclist) {

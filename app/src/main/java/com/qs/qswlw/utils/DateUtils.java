@@ -234,6 +234,17 @@ public class DateUtils {
         return simpleDateFormat.format(date);
     }
 
+    public static String getStrTime(String cc_time) {
+        String re_StrTime = null;
+        //同理也可以转为其它样式的时间格式.例如："yyyy/MM/dd HH:mm"
+        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
+        // 例如：cc_time=1291778220
+        long lcc_time = Long.valueOf(cc_time);
+        re_StrTime = sdf.format(new Date(lcc_time * 1000L));
+
+        return re_StrTime;
+    }
+
     /*
   * 将时间戳转换为时间
   */
