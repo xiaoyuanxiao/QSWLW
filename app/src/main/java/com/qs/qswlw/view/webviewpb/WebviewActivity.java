@@ -48,9 +48,9 @@ public class WebviewActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.pb_webview);
-        initErrorPage();//初始化自定义页面
         initData();
         init();
+        initErrorPage();//初始化自定义页面
     }
 
     private void initData() {
@@ -211,10 +211,10 @@ public class WebviewActivity extends AppCompatActivity {
         @Override
         public void onReceivedTitle(WebView view, String title) {
             super.onReceivedTitle(view, title);
-            showErrorPage();//显示错误页面
-//                if (title.contains("404")){
-//                    showErrorPage();
-//                }
+            Log.i("TAG", "onReceivedTitle:title ------>" + title);
+                if (title.contains("系统发生错误")){
+                    showErrorPage();
+                }
         }
     }
 }

@@ -223,17 +223,17 @@ public class BusinessSettingActivity extends BaseActivity implements IPersonalSe
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (resultCode == 103) {
-            if (requestCode == 102) {
-                String msg = data.getStringExtra("msg");
-                //设置结果显示框的显示数值
-                //   ToastUtils.showToast(this,msg);
-                //进入新界面
-                Intent intent = new Intent(BusinessSettingActivity.this, ConsumptionDialogActivity.class);
-                intent.putExtra("dialog", msg);
-                startActivity(intent);
-            }
-        }
+//        if (resultCode == 103) {
+//            if (requestCode == 102) {
+//                String msg = data.getStringExtra("msg");
+//                //设置结果显示框的显示数值
+//                //   ToastUtils.showToast(this,msg);
+//                //进入新界面
+//                Intent intent = new Intent(BusinessSettingActivity.this, ConsumptionDialogActivity.class);
+//                intent.putExtra("dialog", msg);
+//                startActivity(intent);
+//            }
+//        }
     }
 
     class ItemClickListener implements AdapterView.OnItemClickListener {
