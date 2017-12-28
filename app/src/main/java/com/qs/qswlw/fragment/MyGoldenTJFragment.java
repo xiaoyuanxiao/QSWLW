@@ -43,51 +43,14 @@ public class MyGoldenTJFragment extends BaseDataBindingFragment implements IMyGo
         bind.tvSubMygoldenbeanTwo.setText("获得金豆");
         bind.tvSubMygoldenbeanOne.setText("获奖时间");
         fragmentManager = getFragmentManager();
-        initFragment();
+        sub1MyGoldenTJFragment = new Sub1MyGoldenTJFragment();
+        sub2MyGoldenTJFragment = new Sub2MyGoldenTJFragment();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.add(R.id.ll_container1,sub1MyGoldenTJFragment);
+        fragmentTransaction.commit();
         bind.setOnclick(this);
     }
 
-    /**
-     * 初始化所有基fragment
-     */
-    private void initFragment() {
-        fragments = new ArrayList<Fragment>();
-        sub1MyGoldenTJFragment  = new Sub1MyGoldenTJFragment();
-        sub2MyGoldenTJFragment = new Sub2MyGoldenTJFragment();
-        fragments.add(sub1MyGoldenTJFragment);
-        fragments.add(sub2MyGoldenTJFragment);
-        showFragment(fragments.get(0));
-
-    }
-
-    /**
-     * 显示fragment
-     *
-     * @param fragment 要显示的fragment
-     */
-    private void showFragment(Fragment fragment) {
-        FragmentTransaction transaction = fragmentManager.beginTransaction();
-        hideFragment(transaction);
-        if (fragment.isAdded()) {
-            transaction.show(fragment);
-        } else {
-            transaction.add(R.id.ll_container1, fragment, fragment.getClass().getName());
-        }
-        transaction.commit();
-    }
-
-    /**
-     * 隐藏其他fragment
-     *
-     * @param transaction 控制器
-     */
-    private void hideFragment(FragmentTransaction transaction) {
-        for (int i = 0; fragments.size() > i; i++) {
-            if (fragments.get(i).isVisible()) {
-                transaction.hide(fragments.get(i));
-            }
-        }
-    }
 
     @Override
     public void setVenturegoldBeanData(VenturegoldBean venturegoldBeanData) {
@@ -106,10 +69,16 @@ public class MyGoldenTJFragment extends BaseDataBindingFragment implements IMyGo
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.rb_myGoldenBean_left:
-                showFragment(fragments.get(0));
+                FragmentTransaction fragmentTransaction1 = fragmentManager.beginTransaction();
+                fragmentTransaction1.remove(sub2MyGoldenTJFragment);
+                fragmentTransaction1.add(R.id.ll_container1,sub1MyGoldenTJFragment);
+                fragmentTransaction1.commit();
                 break;
             case R.id.rb_myGoldenBean_right:
-                showFragment(fragments.get(1));
+                FragmentTransaction fragmentTransaction2 = fragmentManager.beginTransaction();
+                fragmentTransaction2.remove(sub1MyGoldenTJFragment);
+                fragmentTransaction2.add(R.id.ll_container1,sub2MyGoldenTJFragment);
+                fragmentTransaction2.commit();
                 break;
         }
 
